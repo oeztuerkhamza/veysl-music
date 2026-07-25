@@ -92,10 +92,17 @@ die eigene Post.
    BOOKING_NOTIFY_EMAIL=info@veysl.de
    BOOKING_FROM_EMAIL="VEYSL <no-reply@veysl.de>"
    ```
-3. `ConsoleTransport` in `src/app/api/anfrage/_lib/transport.ts` durch eine
-   `ResendTransport` ersetzen — die Schnittstelle steht bereits.
-4. **`Reply-To: info@veysl.de`** in der Auto-Antwort setzen. Sonst antwortet
-   das Paar an `no-reply@` und die Anfrage verschwindet.
+3. ~~`ResendTransport` implementieren~~ — **erledigt**. `ResendMailSender` in
+   `src/app/api/anfrage/_lib/transport.ts` spricht die REST-API direkt an
+   (kein SDK) und wird über `BOOKING_TRANSPORT=resend` aktiviert. Fehlen
+   `RESEND_API_KEY` oder `RESEND_FROM_EMAIL`, wirft er sofort beim Start
+   statt erst bei der ersten echten Anfrage.
+4. ~~**`Reply-To: info@veysl.de`** in der Auto-Antwort setzen~~ — **erledigt**,
+   die Auto-Antwort trägt jetzt `BOOKING_NOTIFY_EMAIL` als Reply-To.
+   Offen geblieben: die Bestätigung des `/kontakt`-Formulars
+   (`MailContactTransport.sendConfirmation`) hat noch kein Reply-To. Dafür
+   müsste die Absenderadresse aus dem CMS bis dorthin durchgereicht werden —
+   eine Schnittstellenänderung, die hier bewusst nicht mitgemacht wurde.
 
 ## Schritt 4 — vor dem Launch prüfen
 

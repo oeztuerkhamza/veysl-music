@@ -83,11 +83,67 @@ class ConsoleMailSender implements MailSender {
   }
 }
 
+/** Zeitlimit für einen einzelnen Sendeversuch. Ohne das kann ein hängender Request den Handler blockieren, bis die Plattform ihn abschneidet. */
+const SEND_TIMEOUT_MS = 10_000;
+
+/**
+ * Resend über die REST-API — bewusst mit `fetch` statt dem `resend`-SDK:
+ * es geht um genau einen POST, und `.claude/CONTRACT.md` verlangt, keine
+ * Abhängigkeit ohne Not aufzunehmen.
+ *
+ * Wirft bei jedem Fehlschlag. Das ist die Bedingung, auf die sich
+ * `EnquiryTransport.notifyOwner` verlässt: eine Anfrage, die den DJ nicht
+ * erreicht, muss laut scheitern statt still verloren zu gehen.
+ */
+class ResendMailSender implements MailSender {
+  private readonly apiKey: string;
+  private readonly from: string;
+
+  constructor() {
+    const apiKey = process.env.RESEND_API_KEY;
+    const from = process.env.RESEND_FROM_EMAIL;
+    // Früh und deutlich scheitern: ein Transport, der ohne Zugangsdaten
+    // gebaut wird, würde sonst erst beim ersten echten Lead auffallen.
+    if (!apiKey) throw new Error('BOOKING_TRANSPORT=resend, aber RESEND_API_KEY ist nicht gesetzt (siehe .env.example)');
+    if (!from) throw new Error('BOOKING_TRANSPORT=resend, aber RESEND_FROM_EMAIL ist nicht gesetzt (siehe .env.example)');
+    this.apiKey = apiKey;
+    this.from = from;
+  }
+
+  async send(message: MailMessage): Promise<void> {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${this.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: this.from,
+        to: [message.to],
+        subject: message.subject,
+        text: message.text,
+        // Resends REST-Feld heißt snake_case, anders als im SDK.
+        ...(message.replyTo ? { reply_to: [message.replyTo] } : {}),
+      }),
+      signal: AbortSignal.timeout(SEND_TIMEOUT_MS),
+    });
+
+    if (!response.ok) {
+      // Fehlertext mitnehmen, aber nie den Body der Mail — der enthält
+      // personenbezogene Daten und landet sonst im Log.
+      const detail = await response.text().catch(() => '');
+      throw new Error(`Resend antwortete ${response.status}: ${detail.slice(0, 300)}`);
+    }
+  }
+}
+
 /** Selects the underlying mail sender via `BOOKING_TRANSPORT` (defaults to the console stand-in). Shared by both `EnquiryTransport` and `ContactTransport`. */
 function getMailSender(): MailSender {
   const kind = process.env.BOOKING_TRANSPORT ?? 'console';
   switch (kind) {
-    // Future: case 'resend': return new ResendMailSender(); case 'smtp': return new SmtpMailSender();
+    case 'resend':
+      return new ResendMailSender();
+    // Future: case 'smtp': return new SmtpMailSender();
     case 'console':
     default:
       return new ConsoleMailSender();
@@ -96,6 +152,15 @@ function getMailSender(): MailSender {
 
 function ownerRecipient(): string {
   return process.env.BOOKING_NOTIFY_EMAIL ?? '(BOOKING_NOTIFY_EMAIL not set — see .env.example)';
+}
+
+/**
+ * Antwortadresse für die Auto-Antwort an das Paar. `undefined`, solange
+ * `BOOKING_NOTIFY_EMAIL` fehlt — der Platzhalter aus `ownerRecipient()` ist
+ * keine gültige Adresse und würde als Reply-To-Header von Resend abgelehnt.
+ */
+function ownerReplyTo(): string | undefined {
+  return process.env.BOOKING_NOTIFY_EMAIL || undefined;
 }
 
 class MailEnquiryTransport implements EnquiryTransport {
@@ -108,7 +173,9 @@ class MailEnquiryTransport implements EnquiryTransport {
 
   async sendCustomerAutoReply(ctx: EnquiryContext): Promise<void> {
     const { subject, text } = buildCustomerAutoReply(ctx.enquiry, ctx.locale);
-    await this.sender.send({ to: ctx.enquiry.email, subject, text });
+    // Ohne Reply-To antwortet das Paar an die no-reply-Absenderadresse und
+    // die Antwort verschwindet — docs/MAIL-SETUP.md, Schritt 4.
+    await this.sender.send({ to: ctx.enquiry.email, subject, text, replyTo: ownerReplyTo() });
   }
 }
 
