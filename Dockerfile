@@ -23,7 +23,11 @@
 # because Next.js inlines those into the client bundle at build time; every
 # other env var is read live by the Node process at container start.
 
-ARG NODE_VERSION=22-alpine
+# Muss mit .nvmrc und der node-version im CI-Workflow übereinstimmen.
+# Gerät das auseinander, löst npm die optionalen Peer-Dependencies anders
+# auf als beim Erzeugen von package-lock.json und `npm ci` bricht mit EUSAGE
+# ab — erst hier im Image-Build, nicht lokal.
+ARG NODE_VERSION=24-alpine
 
 # ---------------------------------------------------------------------------
 # Stage 1 — dependencies (cached separately from source so `npm ci` doesn't

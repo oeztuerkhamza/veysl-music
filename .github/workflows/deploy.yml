@@ -27,7 +27,10 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          # Muss mit .nvmrc und Dockerfile's NODE_VERSION übereinstimmen —
+          # siehe den Kommentar dort. Node 22 hier gegen ein mit npm 11
+          # (Node 24) erzeugtes Lockfile hat `npm ci` mit EUSAGE abgebrochen.
+          node-version-file: '.nvmrc'
           cache: npm
 
       - name: Install dependencies
