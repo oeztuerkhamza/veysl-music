@@ -17,7 +17,7 @@ Weitere aufbaut.
 | Prüfung | Ergebnis |
 |---|---|
 | Nameserver `veysl.de` | ✅ netcup (`netcup.firstns.cc` + 4 weitere) — die Zone liegt am richtigen Ort |
-| `veysl.de` A | ⚠️ vorhanden: `46.38.243.234` — **aber unbestätigt**, siehe Warnung unten |
+| `veysl.de` A | ⚠️ vorhanden: `46.38.243.234` — **netcups Parking-IP**, nicht der VPS. Siehe unten |
 | `www.veysl.de` | ❌ `NXDOMAIN` — fehlt komplett |
 | `veysl.de` AAAA | ❌ nicht gesetzt |
 | MX | ❌ keine — Mail für `@veysl.de` wird derzeit nicht angenommen |
@@ -26,19 +26,22 @@ Weitere aufbaut.
 | `_dmarc` | ❌ `NXDOMAIN` |
 | Beobachtete TTL | 30 min – 4 h — für die Migration brauchbar, siehe TTL-Abschnitt |
 
-> ### ⚠️ Die bestehende A-Adresse ist vermutlich nicht der VPS
+> ### ⚠️ `46.38.243.234` ist netcups Parking-IP — nicht der Server
 >
-> Auf `46.38.243.234` antwortet **nichts**: Port 443, 80 und 22 laufen alle in
-> einen Timeout (nicht "connection refused" — es antwortet gar nichts). Ein
-> provisionierter netcup-VPS hätte mindestens SSH offen, und nach
-> `deploy/server-setup.sh` zusätzlich 80/443 (die ufw-Regeln dort öffnen genau
-> diese drei Ports).
+> Bestätigt: `http://veysl.de` liefert `200` mit netcups Parkseite
+> („Diese Domain wurde geparkt"), und deren Fußzeile sagt es wörtlich —
+> *„Diese Domain ist zur Zeit keinem Server oder Webhosting zugewiesen."*
+> `https://` läuft in einen Timeout, weil auf der Parking-IP kein 443 lauscht.
 >
-> Wahrscheinlichste Erklärung: ein Standard-/Parking-Eintrag aus der
-> Domainregistrierung, oder ein VPS, der noch nicht gestartet ist. **Diese
-> Adresse also nicht ungeprüft übernehmen** — die tatsächliche IP im netcup SCP
-> nachsehen und den A-Eintrag darauf zeigen lassen. Sind beide identisch, ist
-> nur der Server noch nicht bereit.
+> Die Domain zeigt also aktuell auf einen Platzhalter, nicht auf einen VPS.
+> **Diese Adresse nicht übernehmen.** Die echte IP steht im netcup **SCP**
+> (Server Control Panel) — das ist ein *anderes* Panel als das CCP, in dem die
+> Domains und diese DNS-Zone liegen. Genau daran scheitert die Zuordnung
+> üblicherweise: VPS und Domain sind bei netcup getrennte Produkte, und ein neu
+> registrierter Domainname zeigt bis zur manuellen Änderung auf die Parkseite.
+>
+> Reihenfolge: IP im SCP ablesen → A/AAAA im CCP auf diese IP ändern →
+> `deploy/server-setup.sh` → `deploy/setup-ssl.sh` (erst dann gibt es 443).
 
 ### Alte Domain — Zustand korrekt
 
