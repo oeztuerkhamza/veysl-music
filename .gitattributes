@@ -1,0 +1,27 @@
+# Dieses Repo wird auf Windows entwickelt und auf Debian deployt. Ohne die
+# folgenden Regeln normalisiert Git die Shell-Skripte in deploy/ beim
+# Auschecken auf CRLF — auf dem Server scheitern sie dann mit
+# "bad interpreter: /bin/bash^M", und zwar erst beim Deploy, nicht beim Commit.
+* text=auto
+
+# Alles, was auf dem Linux-Server ausgeführt oder von Docker gelesen wird,
+# bleibt zwingend LF — unabhängig von der Plattform des Entwicklers.
+*.sh            text eol=lf
+Dockerfile      text eol=lf
+*.yml           text eol=lf
+*.yaml          text eol=lf
+*.conf          text eol=lf
+.env.example    text eol=lf
+
+# Binärdateien nie anfassen.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.ico  binary
+*.woff binary
+*.woff2 binary
+*.mp3  binary
+*.mp4  binary
+*.pdf  binary
