@@ -1,0 +1,1269 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Bruiloft & events",
+    "packages": "Pakketten",
+    "weddings": "Echte bruiloften",
+    "music": "Muziek",
+    "process": "Werkwijze & FAQ",
+    "gallery": "Galerij",
+    "epk": "EPK",
+    "contact": "Contact",
+    "booking": "Datum aanvragen",
+    "menu": "Menu",
+    "close": "Sluiten",
+    "language": "Taal"
+  },
+  "cta": {
+    "primary": "Datum controleren & offerte ontvangen",
+    "short": "Datum aanvragen",
+    "whatsapp": "WhatsApp",
+    "call": "Bellen",
+    "listen": "Sets beluisteren",
+    "packages": "Pakketten bekijken",
+    "weddings": "Echte bruiloften bekijken",
+    "stickyLabel": "Is mijn datum nog vrij?",
+    "finalTitle": "Klaar voor uw datum?",
+    "finalSubtitle": "Controleer vrijblijvend de beschikbaarheid voor uw datum — antwoord binnen 24 uur.",
+    "whatsappFab": "Schrijven via WhatsApp"
+  },
+  "common": {
+    "onRequest": "Prijs op aanvraag",
+    "from": "vanaf",
+    "mostBooked": "Meest geboekt",
+    "readMore": "Meer informatie",
+    "back": "Terug",
+    "next": "Verder",
+    "submit": "Aanvraag versturen",
+    "required": "Verplicht veld",
+    "skipToContent": "Naar de inhoud",
+    "loading": "Wordt geladen …",
+    "scroll": "Scrollen"
+  },
+  "meta": {
+    "home": {
+      "title": "Bruiloft-DJ {city} — premium DJ & livemuziek | VEYSL",
+      "description": "Premium bruiloft- en event-DJ in {city} en omgeving. Persoonlijk voorgesprek, eigen geluid en licht, een volle dansvloer. Vraag uw datum aan."
+    },
+    "services": {
+      "title": "Bruiloft & events — diensten | VEYSL DJ",
+      "description": "DJ voor bruiloft, verloving, henna, after-party en bedrijfsfeesten. Wat er bij elke dienst inbegrepen is — transparant uitgelegd."
+    },
+    "packages": {
+      "title": "Pakketten & prijzen — bruiloft-DJ | VEYSL",
+      "description": "Drie duidelijke pakketten voor bruiloft en feest: uren, techniek en extra's in één oogopslag. Persoonlijke offerte binnen 24 uur."
+    },
+    "weddings": {
+      "title": "Echte bruiloften — referenties & locaties | VEYSL",
+      "description": "Echte bruiloften, echte dansvloeren: referentieclips, reacties van paren en weddingplanners en onze partnerlocaties."
+    },
+    "music": {
+      "title": "Muziek & sets — bruiloft-DJ mixen | VEYSL",
+      "description": "Bruiloft- en eventsets om te beluisteren: van receptie via diner tot peaktime. Duits, Turks, internationaal."
+    },
+    "process": {
+      "title": "Werkwijze & veelgestelde vragen | VEYSL DJ",
+      "description": "Van het eerste gesprek tot het laatste nummer: de werkwijze in vier stappen en antwoord op de meestgestelde vragen over een DJ-boeking."
+    },
+    "booking": {
+      "title": "Datum controleren & offerte aanvragen | VEYSL DJ",
+      "description": "Datum invullen, beschikbaarheid controleren, vrijblijvende offerte ontvangen — antwoord binnen 24 uur."
+    },
+    "gallery": {
+      "title": "Galerij & video's — bruiloft-DJ | VEYSL",
+      "description": "Foto's, aftermovies en reels van bruiloften en events."
+    },
+    "epk": {
+      "title": "EPK & partners — presskit | VEYSL",
+      "description": "Biografie, persfoto's, technical rider en partnerlocaties om te downloaden."
+    },
+    "contact": {
+      "title": "Contact — VEYSL DJ",
+      "description": "Direct via WhatsApp, telefoon of e-mail. U hoort binnen 24 uur van ons."
+    },
+    "imprint": {
+      "title": "Impressum | VEYSL",
+      "description": "Impressum — de wettelijk verplichte aanbiedersgegevens volgens § 5 DDG (Duitsland)."
+    },
+    "privacy": {
+      "title": "Privacy | VEYSL",
+      "description": "Informatie over de verwerking van persoonsgegevens volgens de AVG."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Bruiloft-DJ · Livemuziek · Presentatie",
+      "title": "De sound die iedereen",
+      "titleAccent": "zich herinnert.",
+      "subtitle": "Van de eerste noot bij de receptie tot het laatste nummer om vier uur 's nachts — een avond met opbouw en een dansvloer die niet leegloopt.",
+      "availability": "De data voor {year} raken op — controleer direct de beschikbaarheid."
+    },
+    "intro": "{name} is al meer dan {years} jaar bruiloft-DJ, livemuzikant op saz en gitaar en presentator uit {city}. Hij begeleidt bruiloften en events in heel Baden-Württemberg, heel Duitsland en heel Europa — presenteert live in het Duits, Turks en Engels en is gespecialiseerd in Duits-Turkse en multiculturele bruiloften.",
+    "trust": {
+      "title": "Waar u op kunt rekenen",
+      "items": {
+        "planning": {
+          "title": "Persoonlijk voorgesprek",
+          "text": "Voor elke bruiloft een uitgebreid gesprek over draaiboek, muzieksmaak, no-go's en timing."
+        },
+        "tech": {
+          "title": "Eigen geluid & licht",
+          "text": "Professionele apparatuur, netjes bekabeld, discreet opgebouwd — inclusief back-upapparatuur ter plaatse."
+        },
+        "contract": {
+          "title": "Schriftelijk contract",
+          "text": "Diensten, tijden en prijs staan vast. Geen verrassingen op de trouwdag."
+        },
+        "multilingual": {
+          "title": "Presentatie in drie talen",
+          "text": "Duits, Turks en Engels — voor families die twee culturen samenbrengen."
+        }
+      }
+    },
+    "stats": {
+      "years": "jaar ervaring",
+      "events": "bruiloften & events begeleid",
+      "languagesLabel": "talen live gepresenteerd"
+    },
+    "services": {
+      "eyebrow": "Diensten",
+      "title": "Voor de dag die maar één keer plaatsvindt",
+      "subtitle": "Elk feest heeft zijn eigen ritme. Dat plannen wij vooraf samen door.",
+      "cta": "Alle diensten bekijken"
+    },
+    "showreel": {
+      "eyebrow": "Aftermovie",
+      "title": "Zo klinkt een volle dansvloer",
+      "subtitle": "Fragmenten uit echte bruiloften en events.",
+      "play": "Showreel afspelen"
+    },
+    "packages": {
+      "eyebrow": "Pakketten",
+      "title": "Transparant gecalculeerd",
+      "subtitle": "Drie duidelijke pakketten als uitgangspunt — de definitieve omvang stemmen wij altijd persoonlijk af.",
+      "cta": "Details & prijzen"
+    },
+    "music": {
+      "eyebrow": "Muziek",
+      "title": "Luisteren in plaats van gokken",
+      "subtitle": "Geselecteerde sets uit receptie, diner en peaktime.",
+      "cta": "Alle sets beluisteren",
+      "moments": {
+        "reception": "Receptie",
+        "dinner": "Diner",
+        "peaktime": "Peaktime"
+      }
+    },
+    "testimonials": {
+      "eyebrow": "Reacties",
+      "title": "Wat paren en weddingplanners zeggen",
+      "subtitle": "Echte reacties van echte bruiloften.",
+      "ratingLabel": "{rating} ★ uit {count} Google-recensies"
+    },
+    "process": {
+      "eyebrow": "Werkwijze",
+      "title": "In vier stappen naar de avond van uw leven",
+      "cta": "Werkwijze in detail"
+    },
+    "serviceAreas": {
+      "eyebrow": "Werkgebied",
+      "title": "Bruiloft-DJ bij u in de buurt",
+      "subtitle": "Regelmatig geboekt in deze steden rond Stuttgart — en overal waar gefeest wordt.",
+      "coreTitle": "Kernregio — Stuttgart & Baden-Württemberg",
+      "germanyTitle": "Boekbaar in heel Duitsland",
+      "europeTitle": "Boekbaar in heel Europa",
+      "europeText": "Voor destination weddings en feesten in het buitenland reizen wij af — ook naar Nederland en België. Reiskosten, overnachting en de benodigde techniek worden transparant in de offerte vermeld, ook buiten de EU."
+    },
+    "finalCta": {
+      "eyebrow": "Volgende stap",
+      "title": "Is uw datum nog vrij?",
+      "subtitle": "Controleer in minder dan twee minuten de beschikbaarheid en ontvang een vrijblijvende offerte — antwoord binnen 24 uur.",
+      "reassurance": "Vrijblijvend · Geen verborgen kosten · Antwoord binnen 24 uur"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Bruiloft & events",
+      "title": "Eén DJ, vier gelegenheden, één standaard",
+      "subtitle": "Of het nu een vrije ceremonie op een wijngoed is of een bedrijfsgala in een balzaal — de voorbereiding is altijd dezelfde: grondig."
+    },
+    "items": {
+      "wedding": {
+        "title": "Bruiloft",
+        "tagline": "De hele dag uit één hand",
+        "text": "Vrije ceremonie, receptie, muziek bij het diner, openingsdans en feest — een doordachte opbouw over de hele dag, afgestemd met u en uw weddingplanner.",
+        "features": [
+          "Muziek bij de ceremonie incl. draadloze microfoon",
+          "Sfeermuziek bij de receptie en het diner",
+          "Begeleiding van de openingsdans",
+          "Afstemming met fotograaf, cateraar en locatie"
+        ]
+      },
+      "engagement": {
+        "title": "Verloving & henna",
+        "tagline": "Twee culturen, één avond",
+        "text": "Nişan, Kına Gecesi en verlovingsfeesten met het juiste gevoel voor traditie en timing — Turkse, Koerdische, Arabische en internationale repertoires trefzeker gecombineerd.",
+        "features": [
+          "Halay, Roman Havası & internationale sets",
+          "Presentatie live in het Duits en Turks",
+          "Afstemming met livemuzikanten en davul-zurna",
+          "Draaiboek voor intocht en ceremonies"
+        ]
+      },
+      "afterparty": {
+        "title": "After-party",
+        "tagline": "Wanneer de echte avond begint",
+        "text": "Na het diner verandert de avond van karakter. Precies daarvoor is er een apart concept: lichtsfeer, volume en opbouw over de laatste uren.",
+        "features": [
+          "Peaktime-set met een eigen opbouw",
+          "Lichtontwerp voor de wissel op de dansvloer",
+          "Verlenging per uur bij te boeken",
+          "Afgestemd op de geluidsnormen van de locatie"
+        ]
+      },
+      "corporate": {
+        "title": "Bedrijfsevent",
+        "tagline": "Professioneel, discreet, op tijd",
+        "text": "Zomerfeest, kerstborrel, gala of productlancering: heldere afspraken, verzorgde techniek, betrouwbare tijden — en muziek die bij het merk past in plaats van bij het toeval.",
+        "features": [
+          "Techniek voor toespraken, prijsuitreikingen en panels",
+          "Discrete opbouw in representatieve ruimtes",
+          "Factuur met vermelde btw",
+          "Eén aanspreekpunt tot het einde van het event"
+        ]
+      }
+    },
+    "included": {
+      "title": "Bij elke boeking inbegrepen",
+      "items": [
+        "Vrijblijvend kennismakingsgesprek",
+        "Persoonlijk planningsgesprek vóór de datum",
+        "Persoonlijke muziekwensenlijst inclusief no-go-lijst",
+        "Op- en afbouw buiten de speeltijd",
+        "Back-upapparatuur ter plaatse",
+        "Aansprakelijkheidsverzekerd & schriftelijk contract"
+      ]
+    },
+    "capabilitiesStrip": {
+      "eyebrow": "Meer dan DJ'en",
+      "title": "Eén aanspreekpunt voor muziek, presentatie en techniek",
+      "subtitle": "DJ, muzikant en presentator in één persoon — op elkaar afgestemd in plaats van bij elkaar gezocht.",
+      "items": {
+        "wedding-dj": {
+          "label": "Bruiloft-DJ",
+          "text": "De trouwdag van de ceremonie tot de laatste dans."
+        },
+        "event-dj": {
+          "label": "Event-DJ",
+          "text": "Verloving, verjaardag, bedrijfsfeest — DJ-sets voor elke gelegenheid."
+        },
+        "host": {
+          "label": "Presentatie",
+          "text": "Presentatie live in het Duits, Turks en Engels."
+        },
+        "live-music": {
+          "label": "Livemuziek",
+          "text": "Saz en gitaar live gespeeld — zijn instrument sinds zijn kindertijd."
+        },
+        "orchestra": {
+          "label": "DJ & orkest",
+          "text": "Liveband inclusief blazers voor het grote moment — alles uit één hand."
+        },
+        "traditional-turkish": {
+          "label": "Turkse tradities",
+          "text": "Gelin Çıkarma, bando en davul-zurna — de traditionele momenten van een Turkse bruiloft, met de juiste timing begeleid."
+        },
+        "av-rental": {
+          "label": "Geluid, licht & eventtechniek",
+          "text": "Eigen apparatuur, professioneel opgebouwd en ook te huur."
+        }
+      }
+    }
+  },
+  "packages": {
+    "hero": {
+      "eyebrow": "Pakketten & prijzen",
+      "title": "Heldere omvang, heldere prijs",
+      "subtitle": "Deze drie pakketten dekken de meeste bruiloften. Alles daarbuiten calculeren wij persoonlijk — zonder toeslag voor het advies."
+    },
+    "hours": "Speeltijd",
+    "hoursValue": "{hours} uur",
+    "hoursUnlimited": "Zonder vaste bovengrens",
+    "guests": "Aantal gasten",
+    "guestsValue": "tot {guests} gasten",
+    "guestsUnlimited": "150+, meerdere zones",
+    "includes": "Inbegrepen",
+    "cta": "Dit pakket aanvragen",
+    "customTitle": "Past er niets precies?",
+    "customText": "Destination wedding, meerdaags feest, een extra floor of livemuzikanten — vertel ons over uw dag, wij calculeren op maat.",
+    "customCta": "Offerte op maat aanvragen",
+    "note": "Alle prijzen zijn inclusief reiskosten binnen 50 km. De definitieve voorwaarden staan in de schriftelijke offerte.",
+    "items": {
+      "essential": {
+        "name": "Essential",
+        "tagline": "De heldere instap",
+        "description": "Voor feesten waarbij het vooral om het feest 's avonds gaat.",
+        "features": [
+          "Tot 6 uur speeltijd",
+          "Geluidsinstallatie voor maximaal 80 gasten",
+          "Basisverlichting voor de dansvloer",
+          "Planningsgesprek & wensenlijst",
+          "Draadloze microfoon voor toespraken"
+        ]
+      },
+      "signature": {
+        "name": "Signature",
+        "tagline": "De hele trouwdag",
+        "description": "Het meest geboekte pakket: doorlopende begeleiding van de ceremonie tot het laatste nummer.",
+        "features": [
+          "Tot 10 uur speeltijd",
+          "Muziek bij de vrije ceremonie & receptie",
+          "Geluidsinstallatie voor maximaal 150 gasten",
+          "Uitgebreid lichtontwerp incl. uplights",
+          "Tweede set speakers voor een aangrenzende ruimte",
+          "Begeleiding van de openingsdans",
+          "Twee planningsgesprekken"
+        ]
+      },
+      "prestige": {
+        "name": "Prestige",
+        "tagline": "Zonder compromissen",
+        "description": "Voor grote feesten, bijzondere locaties en avonden die niemand mag vergeten.",
+        "features": [
+          "Speeltijd zonder vaste bovengrens",
+          "Geluid voor 150+ gasten, meerdere zones",
+          "Moving heads, haze & een eigen lichtconcept",
+          "Technicus ter plaatse tijdens het hele feest",
+          "Eigen intocht & sounddesign voor sleutelmomenten",
+          "Vooraf een bezoek aan de locatie",
+          "Onbeperkt planningsgesprekken"
+        ]
+      }
+    }
+  },
+  "weddings": {
+    "hero": {
+      "eyebrow": "Referenties",
+      "title": "Echte bruiloften",
+      "subtitle": "Geen stockfoto's, geen geleende clips — momenten van avonden die echt hebben plaatsgevonden."
+    },
+    "venuesTitle": "Locaties & partners",
+    "venuesSubtitle": "Vaak geboekte huizen waar techniek, looproutes en akoestiek al bekend zijn.",
+    "empty": "De referentiegalerij wordt op dit moment gevuld. Vraag gerust naar voorbeelden bij uw locatie.",
+    "guests": "gasten",
+    "venue": "Locatie"
+  },
+  "music": {
+    "hero": {
+      "eyebrow": "Muziek & sets",
+      "title": "Luisteren in plaats van gokken",
+      "subtitle": "Zo klinkt de avond op de verschillende momenten van de nacht. Filter op moment of genre."
+    },
+    "filterAll": "Alle",
+    "empty": "Voor deze selectie is er nog geen set.",
+    "streamingTitle": "Op alle platforms",
+    "moments": {
+      "reception": "Receptie",
+      "dinner": "Diner",
+      "firstdance": "Openingsdans",
+      "peaktime": "Peaktime",
+      "afterhours": "After hours"
+    },
+    "genres": {
+      "international": "Internationaal",
+      "turkish": "Turks",
+      "german": "Duits",
+      "house": "House",
+      "classics": "Classics",
+      "live": "Live",
+      "arabesk": "Arabesk",
+      "halay": "Halay"
+    },
+    "player": {
+      "play": "Afspelen",
+      "pause": "Pauze",
+      "next": "Volgend nummer",
+      "previous": "Vorig nummer",
+      "mute": "Geluid uit",
+      "unmute": "Geluid aan",
+      "volume": "Volume",
+      "close": "Speler sluiten",
+      "nowPlaying": "Speelt nu",
+      "expand": "Speler uitklappen",
+      "collapse": "Speler inklappen",
+      "regionLabel": "Muziekspeler",
+      "queueTitle": "Afspeellijst",
+      "comingSoon": "Binnenkort beschikbaar",
+      "progress": "Voortgang",
+      "progressValue": "{current} van {duration}",
+      "playTrack": "“{title}” afspelen",
+      "pauseTrack": "“{title}” pauzeren",
+      "waveform": "Golfvorm",
+      "listenOn": "Beluisteren op {platform}"
+    }
+  },
+  "process": {
+    "hero": {
+      "eyebrow": "Werkwijze",
+      "title": "Zo werken wij samen",
+      "subtitle": "Transparant van het eerste bericht tot de afbouw — zodat u op uw trouwdag nergens aan hoeft te denken."
+    },
+    "steps": {
+      "one": {
+        "title": "Aanvraag & beschikbaarheid",
+        "text": "U stuurt de datum en de belangrijkste gegevens. Binnen 24 uur krijgt u een duidelijk antwoord over de beschikbaarheid."
+      },
+      "two": {
+        "title": "Kennismaking & offerte",
+        "text": "In een videogesprek of persoonlijk gesprek bespreken wij draaiboek, muzieksmaak en techniek. Daarna volgt een schriftelijke offerte."
+      },
+      "three": {
+        "title": "Boeking & fijnplanning",
+        "text": "Na het contract nemen wij timing, wensenlijst, no-go's en sleutelmomenten in detail door — afgestemd met de locatie en de weddingplanner."
+      },
+      "four": {
+        "title": "De dag zelf",
+        "text": "Vroege opbouw, soundcheck vóór aankomst van de gasten, discrete aanwezigheid, volle dansvloer. Afbouw na de laatste ronde."
+      }
+    },
+    "faqTitle": "Veelgestelde vragen",
+    "faqSubtitle": "De vragen die paren ons het vaakst stellen.",
+    "faq": [
+      {
+        "q": "Hoe vroeg moeten wij een DJ boeken?",
+        "a": "Voor zaterdagen in het hoogseizoen van mei tot september adviseren wij 12 tot 18 maanden vooraf. Op korte termijn is ook mogelijk — vraag gerust aan, de beschikbaarheid wordt binnen 24 uur gecontroleerd."
+      },
+      {
+        "q": "Wat kost een bruiloft-DJ?",
+        "a": "De prijs hangt af van de speeltijd, het aantal gasten, de techniek en de reisafstand. De drie pakketten op deze pagina laten de gebruikelijke bandbreedte zien; de bindende offerte ontvangt u na het planningsgesprek."
+      },
+      {
+        "q": "Kunnen wij muziekwensen doorgeven?",
+        "a": "Ja. U krijgt een gestructureerde wensenlijst voor must-play-nummers, wensnummers en uitdrukkelijke no-go's. Verzoeken van gasten worden 's avonds alleen gespeeld als ze binnen uw kader passen."
+      },
+      {
+        "q": "Verzorgt u ook de muziek bij de vrije ceremonie?",
+        "a": "Ja, in het Signature- en Prestige-pakket is het geluid bij de ceremonie inbegrepen, inclusief draadloze microfoon voor sprekers en de ceremoniespreker."
+      },
+      {
+        "q": "Draait u ook op Turkse bruiloften?",
+        "a": "Ja. Halay, Roman Havası, arabesk en actuele Turkse charts horen bij het vaste repertoire — gecombineerd met Duitse en internationale sets. Presentatie in het Duits en Turks is mogelijk."
+      },
+      {
+        "q": "Wat gebeurt er als de techniek uitvalt?",
+        "a": "Er is altijd back-upapparatuur ter plaatse: een tweede laptop, een reservecontroller en een reserve-eindversterker. Het uitvallen van één apparaat onderbreekt de avond niet."
+      },
+      {
+        "q": "Hoe lang duren op- en afbouw?",
+        "a": "De opbouw gebeurt in de regel twee tot drie uur vóór aankomst van de gasten en valt buiten de geboekte speeltijd. De afbouw begint na het laatste nummer."
+      },
+      {
+        "q": "Bent u verzekerd?",
+        "a": "Ja, er is een bedrijfsaansprakelijkheidsverzekering. Veel locaties vragen om een bewijs — dat sturen wij op verzoek rechtstreeks naar de locatie."
+      },
+      {
+        "q": "Reist u ook af voor destination weddings?",
+        "a": "Ja, binnen Europa en daarbuiten — ook naar Nederland en België. Reiskosten, overnachting en eventuele huur van techniek ter plaatse worden transparant in de offerte vermeld."
+      },
+      {
+        "q": "Hoe verloopt de betaling?",
+        "a": "Gebruikelijk zijn een aanbetaling bij het sluiten van het contract om de datum vast te leggen en het restbedrag vóór of op de dag van het feest. Alle voorwaarden staan in het contract."
+      }
+    ]
+  },
+  "answers": {
+    "hero": {
+      "eyebrow": "Vragen & antwoorden",
+      "title": "Alle antwoorden in één overzicht",
+      "subtitle": "{count} uitgebreide antwoorden over boeking, prijzen, draaiboek, muziek, techniek, contract en Turkse bruiloften — direct te lezen, zonder klikken of uitklappen."
+    },
+    "entity": "VEYSL is de bruiloft-DJ-, livemuziek- en presentatieservice van {owner} uit {city} in Duitsland. Al meer dan {years} jaar begeleidt hij bruiloften en events in Baden-Württemberg, heel Duitsland en heel Europa, presenteert live in het Duits, Turks en Engels en is gespecialiseerd in Duits-Turkse, Turkse en multiculturele bruiloften. Inmiddels heeft hij {events}+ feesten begeleid — als DJ, als livemuzikant op saz en gitaar en met een liveband inclusief blazers.",
+    "meta": {
+      "title": "Vragen & antwoorden — bruiloft-DJ Stuttgart | VEYSL",
+      "description": "{count} uitgebreide antwoorden over boeking, prijzen, draaiboek, muziek, techniek en Turkse bruiloften met VEYSL — direct te lezen, zonder omwegen."
+    },
+    "updated": "Laatst bijgewerkt: {date}",
+    "seeAlso": "Tien andere, kortere vragen over het verloop van de dag beantwoorden wij op de pagina",
+    "jsonFeedNote": "Deze vragenlijst is ook machineleesbaar beschikbaar als JSON.",
+    "jsonFeedLink": "JSON-feed openen",
+    "categories": {
+      "buchung": "Boeking & datum",
+      "preis": "Prijs & kosten",
+      "ablauf": "Het verloop van de trouwdag",
+      "musik": "Muziek & repertoire",
+      "technik": "Geluid & licht",
+      "tuerkisch": "Turkse & multiculturele bruiloften",
+      "location": "Locatie & reizen",
+      "recht": "Contract & juridisch"
+    },
+    "capabilities": {
+      "wedding-dj": "Bruiloft-DJ",
+      "event-dj": "Event-DJ",
+      "host": "Presentatie",
+      "live-music": "Livemuziek",
+      "orchestra": "DJ & Orkestra",
+      "traditional-turkish": "DJ & orkest · Gelin Çıkarma, bando, davul-zurna",
+      "av-rental": "Geluid, licht & techniek"
+    },
+    "keyFacts": {
+      "years": "jaar ervaring",
+      "events": "bruiloften & events begeleid",
+      "languages": "talen live gepresenteerd",
+      "serviceArea": "Werkgebied",
+      "capabilitiesLabel": "Diensten"
+    }
+  },
+  "booking": {
+    "hero": {
+      "eyebrow": "Offerte-aanvraag",
+      "title": "Is uw datum nog vrij?",
+      "subtitle": "Drie korte stappen, in minder dan twee minuten. Binnen 24 uur krijgt u persoonlijk antwoord — geheel vrijblijvend."
+    },
+    "stepLabel": "Stap {current} van {total}",
+    "steps": {
+      "date": "Datum & plaats",
+      "details": "Details",
+      "contact": "Contact"
+    },
+    "fields": {
+      "eventDate": "Datum van het feest",
+      "eventDatePlaceholder": "DD-MM-JJJJ",
+      "eventType": "Soort feest",
+      "city": "Plaats",
+      "cityPlaceholder": "bijv. Stuttgart",
+      "venue": "Locatie (indien bekend)",
+      "venuePlaceholder": "bijv. feestzaal, wijngoed …",
+      "guests": "Aantal gasten (ongeveer)",
+      "startTime": "Begin",
+      "endTime": "Einde (ca.)",
+      "package": "Interessant pakket",
+      "budget": "Budget",
+      "name": "Uw naam",
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "partnerName": "Naam van uw partner",
+      "email": "E-mail",
+      "phone": "Telefoon / WhatsApp",
+      "message": "Vertel ons over uw dag",
+      "messagePlaceholder": "Vrije ceremonie in de tuin, ca. 120 gasten, Turks-Duitse familie, feest tot 3 uur …",
+      "source": "Hoe heeft u ons gevonden?",
+      "services": "In welke diensten bent u geïnteresseerd?",
+      "hostingLanguage": "Gewenste taal voor de presentatie",
+      "consent": "Ik heb de {privacyLink} gelezen en ga akkoord met de verwerking van mijn gegevens voor de behandeling van deze aanvraag.",
+      "privacyLinkText": "privacyverklaring"
+    },
+    "eventTypes": {
+      "wedding": "Bruiloft",
+      "engagement": "Verloving / Nişan",
+      "henna": "Henna-avond / Kına",
+      "afterparty": "After-party",
+      "corporate": "Bedrijfsevent",
+      "birthday": "Verjaardag / jubileum",
+      "other": "Anders"
+    },
+    "packageOptions": {
+      "essential": "Essential",
+      "signature": "Signature",
+      "prestige": "Prestige",
+      "custom": "Op maat / nog niet zeker"
+    },
+    "budgets": {
+      "unsure": "Nog onduidelijk",
+      "a": "tot € 1.500",
+      "b": "€ 1.500 – 2.500",
+      "c": "€ 2.500 – 4.000",
+      "d": "meer dan € 4.000"
+    },
+    "sources": {
+      "google": "Google-zoekopdracht",
+      "instagram": "Instagram",
+      "recommendation": "Aanbeveling",
+      "venue": "Locatie / weddingplanner",
+      "ai": "ChatGPT / AI-assistent",
+      "other": "Anders"
+    },
+    "services": {
+      "dj": "DJ & muziek",
+      "hosting": "Presentatie (Duits/Turks/Engels)",
+      "liveMusic": "Livemuziek (saz & gitaar)",
+      "avRental": "Geluid, licht & eventtechniek"
+    },
+    "hostingLanguages": {
+      "noPreference": "Geen voorkeur",
+      "de": "Duits",
+      "tr": "Turks",
+      "en": "Engels"
+    },
+    "availability": {
+      "checking": "Beschikbaarheid wordt gecontroleerd …",
+      "free": "Deze datum is op dit moment vrij.",
+      "freeHint": "Gereserveerd is de datum pas met een contract — leg hem op tijd vast.",
+      "taken": "Voor deze datum ligt al een boeking vast.",
+      "takenHint": "Vraag toch gerust aan — voor tweede feesten en afzeggingen houden wij een wachtlijst bij.",
+      "unknown": "De beschikbaarheid wordt na uw aanvraag persoonlijk gecontroleerd.",
+      "pastDate": "Kies een datum in de toekomst."
+    },
+    "calendar": {
+      "pickerLabel": "Of kies direct in de kalender",
+      "instructions": "Wissel met de pijltoetsen tussen de dagen, wissel met Page Up en Page Down van maand en kies een dag met Enter of de spatiebalk.",
+      "previousMonth": "Vorige maand",
+      "nextMonth": "Volgende maand",
+      "today": "Vandaag",
+      "status": {
+        "free": "vrij",
+        "taken": "bezet",
+        "unknown": "onbekend",
+        "past": "verstreken"
+      },
+      "selectedAnnouncement": "{date} gekozen — {status}",
+      "loading": "Beschikbaarheid wordt geladen …",
+      "error": "Beschikbaarheid kon niet worden geladen."
+    },
+    "validation": {
+      "required": "Vul dit veld in",
+      "email": "Vul een geldig e-mailadres in",
+      "date": "Kies een geldige datum",
+      "consent": "Zonder uw toestemming kunnen wij de aanvraag niet behandelen",
+      "min": "Iets te kort",
+      "max": "Dat is iets te lang",
+      "guests": "Vul een getal tussen 1 en 5000 in"
+    },
+    "success": {
+      "title": "Uw aanvraag is binnen.",
+      "text": "Hartelijk dank, {name}. U ontvangt zo een bevestiging per e-mail en binnen 24 uur persoonlijk antwoord over uw datum op {date}.",
+      "whatsapp": "Via WhatsApp gaat het sneller",
+      "backHome": "Terug naar de startpagina"
+    },
+    "error": {
+      "title": "Dat is helaas niet gelukt.",
+      "text": "Probeer het opnieuw of schrijf ons direct via WhatsApp of e-mail.",
+      "retry": "Opnieuw proberen"
+    },
+    "aside": {
+      "title": "Liever direct contact?",
+      "text": "Voor korte termijn en losse vragen is WhatsApp de snelste weg.",
+      "responseTime": "Antwoord meestal binnen 24 uur."
+    }
+  },
+  "gallery": {
+    "hero": {
+      "eyebrow": "Galerij",
+      "title": "Beeld & bewegend beeld",
+      "subtitle": "Aftermovies, reels en foto's van bruiloften en events."
+    },
+    "filterAll": "Alle",
+    "filterPhoto": "Foto's",
+    "filterVideo": "Video's",
+    "empty": "Hier ontstaat op dit moment de galerij."
+  },
+  "epk": {
+    "hero": {
+      "eyebrow": "Press kit",
+      "title": "EPK & partners",
+      "subtitle": "Materiaal voor locaties, weddingplanners, bureaus en pers — direct te downloaden."
+    },
+    "bioShort": "Korte biografie",
+    "bioLong": "Lange versie",
+    "bio": {
+      "short": "Veysel Durmuş is al meer dan 12 jaar DJ, muzikant en presentator voor Duits-Turkse, Turkse en multiculturele bruiloften en events. Hij begeleidde meer dan 200 feesten, speelde live op saz en gitaar en presenteerde in drie talen: Duits, Turks, Engels.",
+      "long": [
+        "Veysel Durmuş speelt saz en gitaar sinds zijn kindertijd — muziek was nooit alleen een hobby, maar vanaf het begin een uitdrukkingsmiddel. Vandaag brengt hij dat gevoel voor klank en timing als DJ, livemuzikant en presentator naar Duits-Turkse, Turkse en multiculturele bruiloften en events, al meer dan 12 jaar en bij ruim 200 begeleide feesten.",
+        "In het dagelijks leven werkt hij als informaticus — de precisie en planningsdiscipline uit dat vak brengt hij rechtstreeks over op elk event: een doordacht draaiboek, verzorgde techniek, geen verrassingen.",
+        "Privé is hij marathonloper en triatleet. Niet zelden loopt hij op de ochtend van een bruiloft nog 10 kilometer, om 's avonds met volle energie op de dansvloer te staan. Na het bruiloftsseizoen trekt hij de bergen in om op te laden, kamperend in de Alpen.",
+        "Zijn eigen woorden vatten het samen: “Mijn doel is niet alleen muziek draaien. Mijn doel is emoties creëren.” En: “Alleen wie zelf vol energie zit, kan die energie ook aan anderen doorgeven.”"
+      ]
+    },
+    "stats": {
+      "years": "{years}+ jaar ervaring als DJ & muzikant",
+      "events": "{events}+ begeleide bruiloften & events",
+      "languages": "Presentatie in het Duits, Turks & Engels"
+    },
+    "downloads": "Downloads",
+    "downloadPress": "Persfoto's (ZIP)",
+    "downloadRider": "Technical rider (PDF)",
+    "downloadEpk": "Volledig EPK (PDF)",
+    "downloadPending": "In voorbereiding",
+    "partnersTitle": "Locaties & partners",
+    "pressTitle": "Pers & vermeldingen",
+    "contactTitle": "Bookingcontact"
+  },
+  "city": {
+    "eyebrow": "Bruiloft-DJ ter plaatse",
+    "hero": {
+      "title": "Bruiloft-DJ in {city}",
+      "ctaNote": "Vrijblijvende aanvraag – antwoord binnen 24 uur."
+    },
+    "meta": {
+      "title": "Bruiloft-DJ {city} — muzikant & presentator | VEYSL",
+      "description": "Premium bruiloft-DJ in {city}: DJ, muzikant en presentator in het Duits, Turks en Engels. Voor Duits-Turkse en internationale bruiloften."
+    },
+    "travel": {
+      "eyebrow": "Reis & transparantie",
+      "title": "Reis naar {city}"
+    },
+    "distance": {
+      "homeBase": "Woon- en werkplaats van Veysel — geen reistijd, geen reiskosten.",
+      "included": "De reis naar {city} is inbegrepen (ca. {km} km vanaf Stuttgart).",
+      "notIncluded": "De reis naar {city} valt buiten het inbegrepen bereik (ca. {km} km) en wordt apart in de offerte vermeld.",
+      "population": "ongeveer {count} inwoners"
+    },
+    "offer": {
+      "eyebrow": "Diensten ter plaatse",
+      "title": "Wat u in {city} krijgt",
+      "orchestraLabel": "DJ & live-orkest met blazers"
+    },
+    "bicultural": {
+      "eyebrow": "Twee culturen, één avond",
+      "title": "De Duits-Turkse kracht – ook in {city}",
+      "languagesTitle": "Presentatietalen"
+    },
+    "venues": {
+      "eyebrow": "Locaties",
+      "title": "Bekende trouwlocaties in {city}",
+      "note": "Let op: geen van deze locaties is een officiële partner – het gaat om bekende plekken in de stad, die ter oriëntatie dienen.",
+      "empty": "Deze lijst wordt voor {city} zorgvuldig uitgezocht in plaats van gevuld met onbevestigde namen. Vertel ons gerust over uw droomlocatie – de opstelling wordt daarop afgestemd."
+    },
+    "venueKind": {
+      "saal": "Zaal",
+      "schloss": "Kasteel",
+      "weingut": "Wijngoed",
+      "hotel": "Hotel",
+      "location": "Locatie"
+    },
+    "trust": {
+      "eyebrow": "Waar u op kunt rekenen",
+      "title": "Ook in {city} geldt dezelfde standaard"
+    },
+    "faq": {
+      "eyebrow": "Veelgestelde vragen",
+      "title": "Vragen over bruiloften in {city}"
+    },
+    "nearby": {
+      "eyebrow": "In de omgeving",
+      "title": "Ook geboekt rond {city}",
+      "servicesTitle": "Meer op VEYSL"
+    },
+    "cta": {
+      "eyebrow": "Volgende stap",
+      "title": "Is uw datum in {city} nog vrij?",
+      "subtitle": "Controleer in minder dan twee minuten de beschikbaarheid voor {city} en ontvang een vrijblijvende offerte.",
+      "button": "Datum voor {city} aanvragen"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "Laten wij het over uw dag hebben",
+      "subtitle": "Het snelst gaat het via WhatsApp. Voor uitgebreide aanvragen gebruikt u het aanvraagformulier."
+    },
+    "whatsappText": "Meestal binnen enkele uren antwoord",
+    "emailText": "Voor uitgebreide aanvragen en documenten",
+    "phoneText": "ma – vr, 10 – 18 uur",
+    "areaTitle": "Werkgebied",
+    "areaText": "Regelmatig geboekt in {areas} — en overal waar gefeest wordt.",
+    "formCta": "Naar het aanvraagformulier",
+    "formSectionEyebrow": "Bericht schrijven",
+    "socialTitle": "Volgen",
+    "instagramCta": "Volgen op Instagram",
+    "youtubeCta": "Abonneren op YouTube"
+  },
+  "contactForm": {
+    "title": "Een andere vraag?",
+    "subtitle": "Voor locaties, weddingplanners, pers of alles wat nog geen datumaanvraag is — schrijf ons kort, wij nemen persoonlijk contact op.",
+    "fields": {
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "email": "E-mail",
+      "phone": "Telefoon (optioneel)",
+      "subject": "Waar gaat het over?",
+      "company": "Bedrijf / locatie (optioneel)",
+      "companyPlaceholder": "bijv. feestzaal, wijngoed …",
+      "preferredContact": "Voorkeur voor contact (optioneel)",
+      "eventDate": "Datum, indien bekend (optioneel)",
+      "eventDatePlaceholder": "DD-MM-JJJJ",
+      "message": "Uw bericht",
+      "messagePlaceholder": "Vertel ons kort waar het over gaat …",
+      "consent": "Ik heb de {privacyLink} gelezen en ga akkoord met de verwerking van mijn gegevens voor de behandeling van dit bericht.",
+      "privacyLinkText": "privacyverklaring"
+    },
+    "subjects": {
+      "general": "Algemene vraag",
+      "booking": "Vraag over een boeking",
+      "technical": "Techniek / verhuur",
+      "partnership": "Partnerschap locatie / weddingplanner",
+      "press": "Pers",
+      "other": "Anders"
+    },
+    "preferredContactOptions": {
+      "email": "E-mail",
+      "phone": "Telefoon",
+      "whatsapp": "WhatsApp"
+    },
+    "success": {
+      "title": "Uw bericht is binnen.",
+      "text": "Hartelijk dank, {name}. Wij nemen zo snel mogelijk persoonlijk contact met u op."
+    }
+  },
+  "whatsappFlow": {
+    "title": "Kort vooraf, dan meteen naar WhatsApp",
+    "skipAll": "Liever meteen schrijven",
+    "skip": "Overslaan",
+    "close": "Sluiten",
+    "continueToWhatsapp": "Verder op WhatsApp",
+    "privacyNote": "Uw antwoorden worden opgeslagen om uw aanvraag te behandelen. <privacyLink>Privacyverklaring</privacyLink>",
+    "messageIntro": "Hallo VEYSL, ik ben op zoek naar een DJ.",
+    "messageLabels": {
+      "eventType": "Gelegenheid",
+      "date": "Datum",
+      "city": "Plaats",
+      "guests": "Gasten",
+      "service": "Dienst"
+    },
+    "steps": {
+      "eventType": {
+        "question": "Gelegenheid"
+      },
+      "date": {
+        "question": "Datum"
+      },
+      "city": {
+        "question": "Plaats (optioneel)",
+        "placeholder": "bijv. Stuttgart"
+      },
+      "guests": {
+        "question": "Aantal gasten (ongeveer)",
+        "options": {
+          "under80": "tot 80",
+          "from80to150": "80–150",
+          "from150to250": "150–250",
+          "over250": "250+"
+        }
+      },
+      "service": {
+        "question": "Gewenste dienst (optioneel)",
+        "options": {
+          "dj": "DJ",
+          "djOrchestra": "DJ & Orkestra",
+          "hosting": "+ presentatie",
+          "technik": "+ techniek"
+        }
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Bruiloft-DJ, muzikant & presentator — Stuttgart",
+    "navTitle": "Navigatie",
+    "legalTitle": "Juridisch",
+    "contactTitle": "Contact",
+    "followTitle": "Volgen",
+    "imprint": "Impressum",
+    "privacy": "Privacy",
+    "rights": "Alle rechten voorbehouden.",
+    "builtBy": "Ontwerp & realisatie",
+    "viewOnMaps": "Bekijken op Google Maps"
+  },
+  "theme": {
+    "toggle": "Weergave wisselen",
+    "light": "Licht",
+    "dark": "Donker",
+    "system": "Systeem"
+  },
+  "consent": {
+    "title": "Privacy-instellingen",
+    "text": "Wij gebruiken alleen technisch noodzakelijke cookies. Optionele statistiek helpt ons de site te verbeteren — uw keuze, op elk moment in te trekken.",
+    "acceptAll": "Alles accepteren",
+    "essentialOnly": "Alleen noodzakelijke",
+    "settings": "Instellingen",
+    "privacyLink": "privacyverklaring"
+  },
+  "notFound": {
+    "title": "Deze pagina bestaat niet.",
+    "text": "De link is waarschijnlijk verouderd. Vanaf hier vindt u de weg terug.",
+    "cta": "Naar de startpagina"
+  },
+  "legal": {
+    "draftNotice": "Concept — deze inhoud is gebaseerd op de nu beschikbare gegevens en moet vóór publicatie door een advocaat worden gecontroleerd.",
+    "missingValue": "TODO(kunde): wordt nog aangevuld",
+    "imprint": {
+      "heading": "Impressum",
+      "intro": "Gegevens volgens § 5 DDG (Duitse Digitale-Dienste-Gesetz) — het Impressum is de wettelijk verplichte aanbiedersinformatie naar Duits recht.",
+      "providerTitle": "Dienstverlener",
+      "nameLabel": "Handelsnaam",
+      "ownerLabel": "Eigenaar",
+      "addressLabel": "Adres",
+      "contactTitle": "Contact",
+      "phoneLabel": "Telefoon",
+      "emailLabel": "E-mail",
+      "websiteLabel": "Website",
+      "activityTitle": "Activiteiten",
+      "vatTitle": "Btw-identificatienummer",
+      "vatText": "Btw-identificatienummer volgens § 27a van de Duitse wet op de omzetbelasting (UStG):",
+      "responsibleTitle": "Verantwoordelijk voor de inhoud volgens § 18 lid 2 MStV",
+      "disputeTitle": "EU-geschillenbeslechting",
+      "disputeText": "De Europese Commissie stelt een platform voor onlinegeschillenbeslechting (ODR) beschikbaar: https://ec.europa.eu/consumers/odr/. Ons e-mailadres vindt u hierboven onder “Contact”.",
+      "consumerDisputeTitle": "Consumentengeschillenbeslechting (VSBG)",
+      "consumerDisputeText": "Wij zijn niet verplicht en niet bereid deel te nemen aan een geschillenbeslechtingsprocedure voor een consumentengeschillencommissie in de zin van de Duitse wet op de consumentengeschillenbeslechting.",
+      "sections": [
+        {
+          "id": "liability-content",
+          "title": "Aansprakelijkheid voor de inhoud",
+          "paragraphs": [
+            "Als dienstverlener zijn wij volgens de algemene wetgeving verantwoordelijk voor eigen inhoud op deze pagina's (§ 5 DDG). Volgens art. 4 tot en met 6 van Verordening (EU) 2022/2065 (Digital Services Act) zijn wij als dienstverlener echter niet verplicht om doorgegeven of opgeslagen informatie van derden te controleren of om onderzoek te doen naar omstandigheden die op een onrechtmatige activiteit wijzen.",
+            "Verplichtingen tot verwijdering of blokkering van het gebruik van informatie op grond van de algemene wetgeving blijven onverlet. Aansprakelijkheid op dit punt is pas mogelijk vanaf het moment waarop een concrete rechtsinbreuk bekend is. Zodra dergelijke inbreuken bekend worden, verwijderen wij deze inhoud onmiddellijk."
+          ]
+        },
+        {
+          "id": "liability-links",
+          "title": "Aansprakelijkheid voor links",
+          "paragraphs": [
+            "Ons aanbod bevat links naar externe websites van derden, op de inhoud waarvan wij geen invloed hebben. Daarom kunnen wij voor die externe inhoud ook geen aansprakelijkheid aanvaarden. Voor de inhoud van de gelinkte pagina's is steeds de betreffende aanbieder of beheerder van die pagina's verantwoordelijk.",
+            "De gelinkte pagina's zijn op het moment van linken gecontroleerd op mogelijke rechtsinbreuken. Een permanente inhoudelijke controle van de gelinkte pagina's is zonder concrete aanwijzingen van een rechtsinbreuk niet redelijk. Zodra rechtsinbreuken bekend worden, verwijderen wij dergelijke links onmiddellijk."
+          ]
+        },
+        {
+          "id": "copyright",
+          "title": "Auteursrecht",
+          "paragraphs": [
+            "De door de beheerder van de site gemaakte inhoud en werken op deze pagina's vallen onder het Duitse auteursrecht. Verveelvoudiging, bewerking, verspreiding en elke vorm van exploitatie buiten de grenzen van het auteursrecht vereisen de schriftelijke toestemming van de betreffende maker.",
+            "Foto's en video's op deze website zijn, voor zover niet anders aangegeven, afkomstig van de beheerder van de site of worden gebruikt met uitdrukkelijke toestemming van de makers. Mocht u toch een inbreuk op het auteursrecht opmerken, dan ontvangen wij graag een bericht; de betreffende inhoud wordt onmiddellijk verwijderd."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "heading": "Privacyverklaring",
+      "updated": "Stand: TODO(kunde) — datum van de laatste actualisering aanvullen",
+      "intro": "De bescherming van uw persoonsgegevens is belangrijk voor ons. Deze verklaring informeert u over welke gegevens op deze website worden verwerkt, met welk doel en op welke rechtsgrondslag.",
+      "sections": [
+        {
+          "id": "controller",
+          "title": "Verwerkingsverantwoordelijke",
+          "paragraphs": [
+            "Verwerkingsverantwoordelijke in de zin van de Algemene verordening gegevensbescherming (AVG) is de in het Impressum van deze website genoemde dienstverlener."
+          ]
+        },
+        {
+          "id": "rights-overview",
+          "title": "Uw rechten in het kort",
+          "paragraphs": [
+            "U heeft te allen tijde recht op informatie over uw opgeslagen persoonsgegevens, de herkomst en de ontvangers daarvan en het doel van de verwerking. Daarnaast heeft u recht op rectificatie, verwijdering, beperking van de verwerking, gegevensoverdraagbaarheid en bezwaar tegen de verwerking, en kunt u een gegeven toestemming intrekken met werking voor de toekomst.",
+            "Om deze rechten uit te oefenen kunt u te allen tijde contact met ons opnemen via de in het Impressum genoemde contactgegevens. Daarnaast heeft u het recht een klacht in te dienen bij de bevoegde toezichthoudende autoriteit voor gegevensbescherming."
+          ]
+        },
+        {
+          "id": "hosting",
+          "title": "Hosting",
+          "paragraphs": [
+            "Deze website wordt gehost bij een externe dienstverlener (TODO(kunde): naam, adres en vestigingsplaats van de hostingaanbieder aanvullen). De persoonsgegevens die op deze website worden verzameld, worden verwerkt op de servers van de hoster.",
+            "De hoster wordt ingezet met het oog op een veilige, snelle en efficiënte levering van ons onlineaanbod door een professionele aanbieder (art. 6 lid 1 sub f AVG). Met de hoster is een verwerkersovereenkomst volgens art. 28 AVG gesloten (TODO(kunde) bevestigen)."
+          ]
+        },
+        {
+          "id": "server-logs",
+          "title": "Serverlogbestanden",
+          "paragraphs": [
+            "De aanbieder van deze pagina's verzamelt en bewaart automatisch informatie in zogenoemde serverlogbestanden, die uw browser automatisch doorgeeft. Dit zijn: browsertype en -versie, gebruikt besturingssysteem, referrer-URL, hostnaam van de computer die toegang zoekt, tijdstip van de serveraanvraag en IP-adres.",
+            "Deze gegevens worden niet samengevoegd met andere gegevensbronnen. De verzameling gebeurt op grond van art. 6 lid 1 sub f AVG met het oog op een technisch foutloze weergave en optimalisatie van de website en op de beveiliging van het systeem. De gegevens worden verwijderd zodra ze voor het doel van de verzameling niet meer nodig zijn (TODO(kunde): concrete bewaartermijn aanvullen)."
+          ]
+        },
+        {
+          "id": "enquiry-form",
+          "title": "Aanvraagformulier",
+          "paragraphs": [
+            "Wanneer u via het aanvraagformulier contact met ons opneemt, verzamelen wij de door u ingevulde gegevens (onder meer datum en soort feest, plaats, aantal gasten, naam, e-mailadres, telefoonnummer en uw bericht) om uw aanvraag te behandelen en voor eventuele vervolgvragen.",
+            "De verwerking van deze gegevens gebeurt op grond van art. 6 lid 1 sub b AVG, voor zover de aanvraag dient ter voorbereiding van een overeenkomst, en op grond van art. 6 lid 1 sub f AVG vanwege ons gerechtvaardigde belang bij een effectieve behandeling van aanvragen.",
+            "De gegevens uit het aanvraagformulier worden verwijderd zodra de aanvraag volledig is afgehandeld en er geen overeenkomst tot stand komt, uiterlijk echter na TODO(kunde): termijn aanvullen. Komt er wel een overeenkomst tot stand, dan gelden de wettelijke bewaartermijnen uit het Duitse handels- en belastingrecht (met name §§ 147 AO, 257 HGB)."
+          ]
+        },
+        {
+          "id": "whatsapp",
+          "title": "Contact via WhatsApp",
+          "paragraphs": [
+            "Voor contact bieden wij WhatsApp aan als optioneel communicatiekanaal. Bij gebruik van WhatsApp worden uw berichten en de daarbij ontstane metagegevens verwerkt via de infrastructuur van WhatsApp Ireland Limited respectievelijk de Meta-bedrijvengroep, waarbij doorgifte van gegevens naar derde landen, in het bijzonder de Verenigde Staten, niet kan worden uitgesloten.",
+            "Het gebruik berust op uw vrijwillige contactopname (art. 6 lid 1 sub a respectievelijk sub b AVG). TODO(kunde) / juridisch laten toetsen: details over de gebruikte WhatsApp-variant (privé of Business-API) en over eventuele aanvullende verwerkers aanvullen."
+          ]
+        },
+        {
+          "id": "analytics",
+          "title": "Analyse & statistiek",
+          "paragraphs": [
+            "Op dit moment zetten wij geen analyse- of trackingtool in. Via de cookie-instellingen van deze website kan optioneel een statistiekfunctie worden geactiveerd; deze blijft inactief totdat u daar uitdrukkelijk mee instemt.",
+            "Mocht in de toekomst een statistiekdienst worden ingezet, dan wordt deze verklaring vóór activering aangevuld met de naam, het doel, de rechtsgrondslag en de bewaartermijn van die dienst (TODO(kunde))."
+          ]
+        },
+        {
+          "id": "cookies",
+          "title": "Cookies & toestemming",
+          "paragraphs": [
+            "Deze website gebruikt uitsluitend technisch noodzakelijke cookies, bijvoorbeeld om uw taalinstelling, uw weergavemodus (licht/donker) en uw cookiekeuze op te slaan. Deze zijn nodig voor de werking van de website en worden geplaatst op grond van § 25 lid 2 TTDSG respectievelijk art. 6 lid 1 sub f AVG.",
+            "Uw keuze voor optionele cookies kunt u te allen tijde via de cookie-instellingen wijzigen of intrekken."
+          ]
+        },
+        {
+          "id": "embeds",
+          "title": "Ingesloten inhoud van derden",
+          "paragraphs": [
+            "Muzieksets en video's op deze website worden ingesloten via een klik-om-te-laden-voorbeeld: inhoud van diensten als Spotify, YouTube, SoundCloud of Mixcloud wordt pas na een actieve klik geladen. Pas dan maakt uw browser een directe verbinding met de betreffende aanbieder, waardoor die uw IP-adres en verdere gegevens volgens zijn eigen privacyverklaring kan verwerken.",
+            "Meer informatie: Spotify (https://www.spotify.com/de/legal/privacy-policy/), YouTube / Google (https://policies.google.com/privacy), SoundCloud (https://soundcloud.com/pages/privacy), Mixcloud (https://www.mixcloud.com/privacy/).",
+            "Lettertypen worden lokaal via next/font ingeladen en worden bij het openen van de pagina niet van Google-servers opgehaald; daarbij vindt geen gegevensoverdracht aan Google plaats."
+          ]
+        },
+        {
+          "id": "security",
+          "title": "Gegevensbeveiliging",
+          "paragraphs": [
+            "Deze website gebruikt om veiligheidsredenen en ter bescherming van de overdracht van vertrouwelijke inhoud een SSL-/TLS-versleuteling. Een versleutelde verbinding herkent u aan het slotsymbool in uw browser en daaraan dat de adresbalk van “http://” naar “https://” wisselt."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Wijzigingen van deze verklaring",
+          "paragraphs": [
+            "Wij passen deze privacyverklaring aan zodra de gegevensverwerking of de juridische situatie verandert. Steeds geldt de versie die op deze pagina beschikbaar is."
+          ]
+        }
+      ]
+    }
+  },
+  "social": {
+    "grid": {
+      "eyebrow": "Social",
+      "title": "Nieuwste van Instagram & YouTube",
+      "lead": "Een actuele selectie uit bruiloften en events — samengesteld door @dj_veys en het YouTube-kanaal.",
+      "playLabel": "Video afspelen",
+      "altFallback": {
+        "instagram": "Bericht van VEYSL op Instagram",
+        "youtube": "Video van VEYSL op YouTube"
+      },
+      "typeLabel": {
+        "image": "Foto",
+        "video": "Video",
+        "carousel": "Galerij",
+        "reel": "Reel"
+      },
+      "openOn": {
+        "instagram": "Bericht op Instagram openen",
+        "youtube": "Video op YouTube openen"
+      },
+      "empty": {
+        "title": "De live-feed is er zo.",
+        "text": "Nieuwe berichten verschijnen hier automatisch. Tot die tijd is een blik op Instagram de moeite waard.",
+        "cta": "Volgen op Instagram"
+      }
+    },
+    "instagramStrip": {
+      "eyebrow": "Instagram",
+      "title": "@dj_veys",
+      "followerLabel": "Volgers",
+      "followerCaption": "Volg voor dagelijkse beelden van bruiloften en events.",
+      "cta": "Volgen op Instagram",
+      "empty": "Nieuwe berichten volgen binnenkort. Wees nu al op Instagram van de partij."
+    },
+    "youtubeStrip": {
+      "eyebrow": "YouTube",
+      "title": "Nieuwste video's",
+      "cta": "Abonneren op het kanaal",
+      "empty": "Nieuwe video's volgen binnenkort. Abonneer u nu alvast."
+    }
+  },
+  "regions": {
+    "eyebrow": "Destination wedding Europa",
+    "hub": {
+      "meta": {
+        "title": "Bruiloft-DJ voor destination weddings in Europa | VEYSL",
+        "description": "Duits-Turkse bruiloft-DJ voor destination weddings in Europa: Oostenrijk, Zwitserland, Nederland, België, Frankrijk. Presentatie in Duits, Turks, Engels."
+      },
+      "hero": {
+        "title": "Bruiloft-DJ voor destination weddings in Europa",
+        "subtitle": "Duits-Turks, gepresenteerd in het Duits, Turks en Engels en met transparant gecalculeerde reiskosten – boekbaar tot ver buiten Baden-Württemberg, zonder concessies aan de standaard uit Stuttgart."
+      },
+      "intent": {
+        "eyebrow": "Vaak gezocht",
+        "title": "Ook zonder stadsnaam: de juiste antwoorden",
+        "items": [
+          {
+            "q": "Is er een Turkse bruiloft-DJ die in heel Duitsland boekbaar is?",
+            "a": "Ja. VEYSL heeft zijn basis in Stuttgart en Baden-Württemberg en is in heel Duitsland boekbaar – van München tot Hamburg. Reiskosten en techniek worden voor elke plaats apart in de offerte gecalculeerd; de presentatie blijft overal dezelfde: Duits, Turks, Engels."
+          },
+          {
+            "q": "Kan ik een bruiloft-DJ boeken voor een destination wedding in het buitenland?",
+            "a": "Ja. Vijf landen zijn uitgebreid voorbereid – Oostenrijk, Zwitserland, Nederland, België, Frankrijk – met een eigen reislogica en eigen technische bijzonderheden per land. Ook andere Europese landen zijn boekbaar, met individueel gecalculeerde reiskosten."
+          },
+          {
+            "q": "Is er een DJ voor een Turkse bruiloft in het buitenland?",
+            "a": "Ja, dat is een van de kernkwaliteiten: Duits-Turkse, volledig Turkse en multiculturele bruiloften buiten Duitsland, met halay, live-orkestelementen en presentatie in het Duits, Turks en Engels – dezelfde standaard als in Stuttgart, alleen met reiskosten die apart in de offerte worden vermeld."
+          },
+          {
+            "q": "Hoe ver reist u voor bruiloften?",
+            "a": "Binnen de kernregio rond Stuttgart zijn de reiskosten meestal inbegrepen; daarbuiten is hij in heel Duitsland en in heel Europa boekbaar, en komen aanvragen daarvoor regelmatig binnen. De afstand bepaalt de voorbereidingstijd en de kosten, niet de bereidheid."
+          }
+        ]
+      },
+      "countries": {
+        "eyebrow": "Vijf landen in detail",
+        "title": "Uitgebreid uitgewerkt, geen standaardtekst",
+        "subtitle": "Elk land met een eigen reislogica, eigen technische bijzonderheden en een eigen band met de diaspora – bewust geen stadspagina's, zie de FAQ hieronder."
+      },
+      "more": {
+        "eyebrow": "Meer dan deze vijf landen",
+        "title": "Meer landen boekbaar in heel Europa",
+        "text": "Voor de volgende landen is er nog geen eigen pagina – boekbaar zijn ze wel, met dezelfde zorgvuldigheid. Reiskosten, overnachting en techniek worden in de persoonlijke offerte vermeld. Bij bestemmingen buiten de douane-unie van de EU (bijv. Noorwegen, net als Zwitserland) komt er voor de techniek een extra douanestap met een ATA-carnet bij – ook daarmee wordt in de offerte rekening gehouden.",
+        "cta": "Aanvragen voor {country}"
+      },
+      "languages": {
+        "eyebrow": "Eerlijk gezegd",
+        "title": "Welke talen er werkelijk live gepresenteerd worden",
+        "text": "Live gepresenteerd wordt er in het Duits, Turks en Engels – in elk van de genoemde landen, ongeacht de landstaal. Deze website staat ook in het Nederlands, zodat zo veel mogelijk paren comfortabel kunnen lezen en aanvragen; dat is iets anders dan de taal waarin de avond zelf gepresenteerd wordt."
+      },
+      "faq": {
+        "eyebrow": "Veelgestelde vragen",
+        "title": "Vragen over destination weddings",
+        "items": [
+          {
+            "q": "Waarom zijn er geen aparte pagina's voor afzonderlijke Europese steden?",
+            "a": "Omdat lokale Google-resultaten nabijheid en een Google-bedrijfsprofiel ter plaatse veronderstellen – en dat heeft een aanbieder uit Stuttgart in Oslo of Amsterdam allebei niet. Landenpagina's met echte, van elkaar verschillende inhoud zijn eerlijker en werken ook daadwerkelijk; tientallen gelijkluidende stadspagina's zijn precies wat Google in zijn spamrichtlijnen als doorway pages aanmerkt."
+          },
+          {
+            "q": "Hoe lang van tevoren kan ik het beste aanvragen voor een bruiloft in het buitenland?",
+            "a": "Zo vroeg mogelijk – reis en overnachting vragen meer voorbereidingstijd dan een feest in Stuttgart. Een eerste vrijblijvende aanvraag kan echter altijd, ook maanden vooruit."
+          },
+          {
+            "q": "Hoe worden de reiskosten naar het buitenland berekend?",
+            "a": "Altijd apart en transparant in de persoonlijke offerte: rijafstand of vlucht met lichte techniekbagage, overnachting en, bij bestemmingen buiten de douane-unie van de EU (bijv. Zwitserland, Noorwegen), een extra douanestap voor de techniek met een ATA-carnet."
+          },
+          {
+            "q": "Draait u ook in landen die hier niet staan?",
+            "a": "Ja. De vijf genoemde landen zijn het uitgebreidst voorbereid, andere Europese bestemmingen zijn in principe eveneens boekbaar – met individueel gecalculeerde reiskosten."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Volgende stap",
+        "title": "Uw bruiloft in het buitenland – laten we erover praten",
+        "subtitle": "Land, datum en het aantal gasten bij benadering zijn genoeg voor een eerste vrijblijvende inschatting.",
+        "button": "Destination wedding aanvragen"
+      }
+    },
+    "country": {
+      "meta": {
+        "title": "Bruiloft-DJ {country} — destination wedding | VEYSL",
+        "description": "Bruiloft-DJ boekbaar in {country}: Duits-Turks, gepresenteerd in het Duits, Turks en Engels. Reis en techniek transparant gecalculeerd."
+      },
+      "eyebrow": "Destination wedding",
+      "hero": {
+        "title": "Bruiloft-DJ voor {country}",
+        "ctaNote": "Vrijblijvende aanvraag – antwoord binnen 24 uur."
+      },
+      "availability": {
+        "verifiedTitle": "Al gedraaid",
+        "verifiedText": "VEYSL heeft al in {city} gedraaid – tot nu toe het enige aantoonbare optreden buiten Duitsland.",
+        "availableTitle": "Boekbaar in {country}",
+        "availableText": "Nog geen eigen referentie-event in {country} – maar altijd aan te vragen, met dezelfde zorgvuldigheid als elke andere boeking."
+      },
+      "logistics": {
+        "eyebrow": "Reis & transparantie",
+        "title": "Reis naar {country}"
+      },
+      "distance": {
+        "label": "ongeveer {km} km vanaf Stuttgart (hemelsbreed, {city})"
+      },
+      "whatChanges": {
+        "eyebrow": "Wat er in het buitenland verandert",
+        "title": "Techniek, stroom en voorschriften in {country}"
+      },
+      "diaspora": {
+        "eyebrow": "Twee culturen, één avond",
+        "title": "De Duits-Turkse kracht – ook in {country}"
+      },
+      "languages": {
+        "eyebrow": "Eerlijk gezegd",
+        "title": "Presentatietalen voor {country}"
+      },
+      "faq": {
+        "eyebrow": "Veelgestelde vragen",
+        "title": "Vragen over bruiloften in {country}"
+      },
+      "nearby": {
+        "eyebrow": "Ook in heel Europa boekbaar",
+        "title": "Meer landen in het overzicht",
+        "hubCta": "Alle landen in één overzicht"
+      },
+      "cta": {
+        "eyebrow": "Volgende stap",
+        "title": "Uw bruiloft in {country} – laten we erover praten",
+        "subtitle": "Controleer vrijblijvend datum en kader voor {country}.",
+        "button": "Aanvragen voor {country}"
+      }
+    }
+  },
+  "cro": {
+    "responseTimeBadge": "Meestal binnen 24 uur antwoord.",
+    "seasonScarcity": "Al {count} zaterdagen in {year} vergeven — vraag op tijd aan.",
+    "trust": {
+      "followers": "{count} volgers",
+      "years": "{count}+ jaar ervaring",
+      "events": "{count}+ events begeleid",
+      "languages": "{count} talen live gepresenteerd"
+    },
+    "saveForLater": {
+      "title": "Nog niet helemaal zeker?",
+      "text": "Geen probleem — meld u vrijblijvend, dan bespreken we alles zodra het u uitkomt.",
+      "whatsappCta": "Bewaren via WhatsApp",
+      "mailCta": "Bewaren per e-mail",
+      "whatsappPrefill": "Hallo, ik heb interesse in een boeking bij VEYSL, maar ben nog niet zeker. Kunnen we dat vrijblijvend bespreken?",
+      "whatsappPrefillWithDate": "Hallo, ik heb interesse in {date} bij VEYSL, maar ben nog niet zeker. Kunnen we dat vrijblijvend bespreken?",
+      "mailSubject": "Vrijblijvende aanvraag – datum voorlopig noteren"
+    }
+  },
+  "media": {
+    "comingSoon": "Foto volgt",
+    "placeholderAriaLabel": "Beeldplek – nog geen foto toegevoegd"
+  },
+  "blog": {
+    "meta": {
+      "title": "Gids: bruiloft-DJ, muziek & planning | VEYSL",
+      "description": "{count} uitgebreide gidsen over bruiloft-DJ, muziek, techniek, kosten en Duits-Turkse bruiloften — van VEYSL, DJ & Orkestra uit Stuttgart."
+    },
+    "index": {
+      "eyebrow": "Gids",
+      "title": "Gids voor uw bruiloft",
+      "subtitle": "{count} uitgebreide gidsen over planning, muziek, techniek en Duits-Turkse bruiloften — geschreven vanuit ruim 12 jaar praktijk.",
+      "updated": "Laatst bijgewerkt op {date}",
+      "meta": {
+        "emptyDescription": "De gids van VEYSL over bruiloft-DJ, muziek en planning — binnenkort ook in het Nederlands."
+      },
+      "empty": {
+        "title": "De gids verschijnt binnenkort in het Nederlands.",
+        "body": "Onze uitgebreide gidsen bestaan nu in het Duits, Turks en Engels. Tot de vertaling klaar is, beantwoorden wij uw vragen graag rechtstreeks.",
+        "questionsCta": "Veelgestelde vragen bekijken",
+        "requestCta": "Vrijblijvend aanvragen"
+      }
+    },
+    "categories": {
+      "planung": "Planning",
+      "kosten": "Kosten",
+      "musik": "Muziek",
+      "tuerkische-hochzeit": "Turkse bruiloft",
+      "technik": "Techniek",
+      "recht": "Juridisch",
+      "international": "Internationaal",
+      "real-wedding": "Echte bruiloft"
+    },
+    "post": {
+      "backToOverview": "Terug naar de gids",
+      "byAuthor": "Door {author}",
+      "publishedOn": "Gepubliceerd op {date}",
+      "updatedOn": "Bijgewerkt op {date}",
+      "readingTime": "{minutes} min. leestijd",
+      "furtherReadingTitle": "Meer lezen",
+      "relatedAnswersTitle": "Passende antwoorden",
+      "relatedCitiesTitle": "Ook bij u in de buurt",
+      "relatedPostsTitle": "Dit is misschien ook iets voor u",
+      "cta": {
+        "eyebrow": "Verder lezen is niet genoeg?",
+        "title": "Laten we het over uw datum hebben",
+        "subtitle": "Controleer vrijblijvend of uw gewenste datum nog vrij is — antwoord binnen 24 uur."
+      }
+    }
+  }
+}

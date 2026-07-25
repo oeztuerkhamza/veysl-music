@@ -32,6 +32,11 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...except the checked-in template itself — it has no secrets, only
+# documentation of which vars exist (see env.production.example, its
+# equivalent for the production/.env file, which never matched `.env*` in
+# the first place since it doesn't start with a literal dot).
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +44,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Payload CMS (payload.config.ts) — local SQLite dev database and uploaded
+# media are runtime data, not source. Swap to Postgres in production (see
+# the comment above `db:` in payload.config.ts) — nothing here is prod state.
+/veysl-cms.db
+/veysl-cms.db-*
+/media

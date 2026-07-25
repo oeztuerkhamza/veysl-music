@@ -1,0 +1,58 @@
+# Docker build context exclusions for veysl.de.
+#
+# Two jobs: (1) keep the build context small/fast, (2) never let runtime data
+# leak into an image layer. (2) is the important one — Next.js's output file
+# tracing for `output: 'standalone'` statically resolves the SQLite adapter's
+# fallback path in payload.config.ts and will happily bundle whatever
+# `veysl-cms.db` happens to sit in the build context straight into
+# `.next/standalone/`. Confirmed locally: a build run next to the dev DB
+# copied it byte-for-byte into the standalone output. Excluding it here means
+# Next's tracer never sees it, so the image can never ship a customer's
+# enquiry data or a stale test fixture. Production data lives only in the
+# `veysl-data`/`veysl-media` named volumes (see docker-compose.yml).
+
+# Dependencies (installed fresh inside the image)
+node_modules
+**/node_modules
+
+# Next.js build output (produced inside the image)
+.next
+out
+
+# Runtime data — SQLite DB + WAL/SHM sidecars, uploaded media
+veysl-cms.db
+veysl-cms.db-*
+media
+
+# Env files — secrets never enter the build context; compose passes them via
+# env_file/build.args at deploy time instead
+.env
+.env.*
+!.env.example
+
+# Version control / editor / OS cruft
+.git
+.gitignore
+.gitattributes
+.vscode
+.idea
+*.log
+.DS_Store
+Thumbs.db
+
+# Project docs/tooling not needed to build the app
+.claude
+docs
+*.md
+!README.md
+
+# Deployment artifacts themselves (no reason to ship deploy/ or nginx/ inside
+# the app image — they run on the host / in other containers)
+deploy
+nginx
+.github
+
+# Misc caches
+.cache
+coverage
+*.tsbuildinfo

@@ -1,0 +1,1269 @@
+{
+  "nav": {
+    "home": "Destpêk",
+    "services": "Dawet & Şahî",
+    "packages": "Paket",
+    "weddings": "Dawetên Rastîn",
+    "music": "Muzîk",
+    "process": "Pêvajo & Pirs",
+    "gallery": "Galerî",
+    "epk": "EPK",
+    "contact": "Têkilî",
+    "booking": "Dîrokê bipirsin",
+    "menu": "Menû",
+    "close": "Bigirin",
+    "language": "Ziman"
+  },
+  "cta": {
+    "primary": "Dîrokê bipirsin & teklîfê bistînin",
+    "short": "Dîrokê bipirsin",
+    "whatsapp": "WhatsApp",
+    "call": "Telefon bikin",
+    "listen": "Setan guhdarî bikin",
+    "packages": "Li paketan binêrin",
+    "weddings": "Dawetên rastîn bibînin",
+    "stickyLabel": "Dîroka min hê vala ye?",
+    "finalTitle": "Ji bo roja xwe amade ne?",
+    "finalSubtitle": "Bêyî mecbûrîyet ji bo dîroka xwe valahiyê kontrol bikin — bersiv di nav 24 saetan de.",
+    "whatsappFab": "Bi WhatsAppê binivîsin"
+  },
+  "common": {
+    "onRequest": "Biha li ser daxwazê",
+    "from": "ji",
+    "mostBooked": "Herî zêde tê hilbijartin",
+    "readMore": "Bêtir agahî",
+    "back": "Paşve",
+    "next": "Pêşve",
+    "submit": "Daxwazê bişînin",
+    "required": "Agahiya pêwîst",
+    "skipToContent": "Derbasî naverokê bibin",
+    "loading": "Tê barkirin …",
+    "scroll": "Bikişînin"
+  },
+  "meta": {
+    "home": {
+      "title": "DJ'ê dawetê {city} — DJ'ê premium ji bo dawet & şahiyan | VEYSL",
+      "description": "Li bajarê {city} û derdorê DJ'ê premium yê dawet û şahiyan. Hevpeyvîna kesane ya berê, sîstema deng û ronahiyê ya xwe, meydaneke govendê ya tijî. Dîroka xwe niha bipirsin."
+    },
+    "services": {
+      "title": "Dawet & Şahî — Xizmet | VEYSL DJ",
+      "description": "DJ ji bo dawet, nîşan, şeva henê, after-party û şahiyên şîrketan. Di her xizmetê de çi heye — bi zelalî hatiye ravekirin."
+    },
+    "packages": {
+      "title": "Paket & Biha — DJ'ê dawetê | VEYSL",
+      "description": "Sê paketên zelal ji bo dawet û şahiyan: berfirehî, saet, teknîk û ekstra bi carekê. Teklîfa taybet di nav 24 saetan de."
+    },
+    "weddings": {
+      "title": "Dawetên Rastîn — Referans & Mekan | VEYSL",
+      "description": "Dawetên rastîn, meydanên govendê yên rastîn: klîpên referansê, gotinên cot û organîzatoran û mekanên me yên hevkar."
+    },
+    "music": {
+      "title": "Muzîk & Set — Mîksên DJ'ê dawetê | VEYSL",
+      "description": "Setên dawet û şahiyan ji bo guhdarîkirinê: ji pêşwaziyê ber bi şîvê û peaktime ve. Almanî, tirkî, navneteweyî."
+    },
+    "process": {
+      "title": "Pêvajo & Pirsên pir têne kirin — DJ'ê dawetê | VEYSL",
+      "description": "Ji hevpeyvîna yekem heta stranê dawî: pêvajo di çar gavan de û bersivên pirsên herî zêde derbarê rezervasyona DJ'î de."
+    },
+    "booking": {
+      "title": "Dîrokê bipirsin & teklîfê bixwazin | VEYSL DJ",
+      "description": "Dîrokê binivîsin, valahiyê kontrol bikin, teklîfa bê mecbûrîyet bistînin — bersiv di nav 24 saetan de."
+    },
+    "gallery": {
+      "title": "Galerî & Vîdyo — DJ'ê dawetê | VEYSL",
+      "description": "Wêne, aftermovie û reelsên ji dawet û şahiyan."
+    },
+    "epk": {
+      "title": "EPK & Hevkar — Press Kit | VEYSL",
+      "description": "Jînenîgarî, wêneyên çapemeniyê, technical rider û mekanên hevkar ji bo daxistinê."
+    },
+    "contact": {
+      "title": "Têkilî — VEYSL DJ",
+      "description": "Rasterast bi WhatsApp, telefon an E-mailê. Em di nav 24 saetan de bersivê didin."
+    },
+    "imprint": {
+      "title": "Impressum | VEYSL",
+      "description": "Agahî li gorî § 5 DDG."
+    },
+    "privacy": {
+      "title": "Parastina Daneyan | VEYSL",
+      "description": "Agahî derbarê pêvajokirina daneyên kesane li gorî DSGVO."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "DJ'ê dawetê · Muzîka zindî · Pêşkêşî",
+      "title": "Ew deng ku her kes",
+      "titleAccent": "wê ji bîr neke.",
+      "subtitle": "Ji nota yekem a pêşwaziyê heta stranê dawî yê saet çaran ê sibehê — şeveke bi rêzeke hunerî û meydaneke govendê ku tu carî vala nabe.",
+      "availability": "Dîrokên {year}an kêm dibin — valahiyê rasterast kontrol bikin."
+    },
+    "intro": "{name} ji {years} salan zêdetir e ku wek DJ'ê dawetê, muzîkjenê zindî yê saz û gîtarê û pêşkêşvanê ji bajarê {city} kar dike. Ew dawet û şahiyan li seranserê Baden-Württemberg, li tevahiya Almanyayê û Ewropayê bi rê ve dibe — bi Almanî, Tirkî û Îngilîzî zindî pêşkêş dike û li ser dawetên alman-tirk û pirçandî pispor e.",
+    "trust": {
+      "title": "Tiştên ku hûn dikarin pişta xwe pê girêbidin",
+      "items": {
+        "planning": {
+          "title": "Hevpeyvîna kesane ya berê",
+          "text": "Beriya her dawetê hevpeyvîneke berfireh derbarê pêvajo, tama muzîkê, stranên nexwestî û demjimêrê de."
+        },
+        "tech": {
+          "title": "Sîstema deng & ronahiyê ya xwe",
+          "text": "Teknîka profesyonel, kabloyên pak, sazkirineke ku bala xwe nakişîne — bi amûrê yedek ê li cih re."
+        },
+        "contract": {
+          "title": "Peymana nivîskî",
+          "text": "Xizmet, saet û biha bi nivîskî hatine diyarkirin. Di roja dawetê de tu sûrprîz tune."
+        },
+        "multilingual": {
+          "title": "Pêşkêşiya pirzimanî",
+          "text": "Almanî, Tirkî û Îngilîzî — ji bo malbatên ku du çandan tînin ba hev."
+        }
+      }
+    },
+    "stats": {
+      "years": "Sal tecrûbe",
+      "events": "Dawet & şahiyên birêvebirî",
+      "languagesLabel": "Zimanên pêşkêşiya zindî"
+    },
+    "services": {
+      "eyebrow": "Xizmet",
+      "title": "Ji bo roja ku tenê carekê pêk tê",
+      "subtitle": "Her formatê ritma xwe heye. Em wê berê bi hev re plan dikin.",
+      "cta": "Li hemû xizmetan binêrin"
+    },
+    "showreel": {
+      "eyebrow": "Aftermovie",
+      "title": "Meydaneke govendê ya tijî wisa deng dide",
+      "subtitle": "Beşên ji dawet û şahiyên rastîn.",
+      "play": "Showreelê vekin"
+    },
+    "packages": {
+      "eyebrow": "Paket",
+      "title": "Bi hesabê zelal",
+      "subtitle": "Sê paketên zelal wek xala destpêkê — berfirehiya dawî her tim bi taybetî tê diyarkirin.",
+      "cta": "Detay & biha"
+    },
+    "music": {
+      "eyebrow": "Muzîk",
+      "title": "Guhdarî bikin, texmîn nekin",
+      "subtitle": "Setên hilbijartî ji pêşwazî, şîv û peaktime.",
+      "cta": "Hemû setan guhdarî bikin",
+      "moments": {
+        "reception": "Pêşwazî",
+        "dinner": "Şîv",
+        "peaktime": "Peaktime"
+      }
+    },
+    "testimonials": {
+      "eyebrow": "Gotin",
+      "title": "Cot û organîzator çi dibêjin",
+      "subtitle": "Bersivên rastîn ji dawetên rastîn.",
+      "ratingLabel": "{rating} ★ ji {count} nirxandinên Google"
+    },
+    "process": {
+      "eyebrow": "Pêvajo",
+      "title": "Bi çar gavan ber bi şeva jiyana we ve",
+      "cta": "Pêvajo bi hûrgulî"
+    },
+    "serviceAreas": {
+      "eyebrow": "Herêma xizmetê",
+      "title": "DJ'ê dawetê li nêzîkî we",
+      "subtitle": "Li van bajarên derdora Stuttgartê bi rêkûpêk tê rezervekirin — û li her derê ku şahî lê heye.",
+      "coreTitle": "Herêma sereke — Stuttgart & Baden-Württemberg",
+      "germanyTitle": "Li seranserê Almanyayê",
+      "europeTitle": "Li seranserê Ewropayê",
+      "europeText": "Ji bo daweta li derveyî welat em rê digirin. Rê, mayîn û teknîka pêwîst bi zelalî di pêşniyarê de tê nivîsandin — herwiha li derveyî YE."
+    },
+    "finalCta": {
+      "eyebrow": "Gava pêş",
+      "title": "Dîroka we hê vala ye?",
+      "subtitle": "Di bin du deqîqeyan de valahiyê kontrol bikin û teklîfeke bê mecbûrîyet bistînin — bersiv di nav 24 saetan de.",
+      "reassurance": "Bê mecbûrîyet · Bê lêçûnên veşartî · Bersiv di 24 saetan de"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Dawet & Şahî",
+      "title": "Yek DJ, çar şahî, yek standard",
+      "subtitle": "Çi merasîma zewacê li baxçeyê tiriyan be, çi gala şîrketê li salona balê — amadekarî her tim eynî ye: bi hûrgulî."
+    },
+    "items": {
+      "wedding": {
+        "title": "Dawet",
+        "tagline": "Tevahiya rojê ji yek destî",
+        "text": "Merasîma zewacê, pêşwazî, muzîka şîvê, dansa yekem û şahî — rêzeke hunerî ya baldar li ser tevahiya rojê, bi we û organîzatora we re hatiye plankirin.",
+        "features": [
+          "Muzîka merasîmê bi mîkrofona bêtêl",
+          "Muzîka pêşwazî û şîvê",
+          "Koreografî ji bo dansa yekem",
+          "Hevrêzî bi wênekêş, catering û mekanê re"
+        ]
+      },
+      "engagement": {
+        "title": "Nîşan & Şeva henê",
+        "tagline": "Du çand, yek şev",
+        "text": "Nîşan, şeva henê û şahiyên destgirtinê bi hesteke rast ji bo kevneşopî û demjimêrê — repertuwarên tirkî, kurdî, erebî û navneteweyî bi ewlehî tên hev.",
+        "features": [
+          "Govend, Halay, Roman havası & setên navneteweyî",
+          "Pêşkêşiya zindî bi Almanî, Tirkî û Îngilîzî",
+          "Hevrêzî bi muzîkjenên zindî û def û zirneyê re",
+          "Plana pêvajoyê ji bo derketina bûk û zavê û merasîman"
+        ]
+      },
+      "afterparty": {
+        "title": "After-Party",
+        "tagline": "Dema ku şeva rastîn dest pê dike",
+        "text": "Piştî şîvê karakterê şevê diguhere. Tam ji bo vê konseptek cuda heye: atmosfera ronahiyê, bilindahiya deng û pêla saetên dawî.",
+        "features": [
+          "Seta peaktime bi rêza xwe ya hunerî",
+          "Dîzayna ronahiyê ji bo guherîna meydana govendê",
+          "Dirêjkirina bi saetan tê rezervekirin",
+          "Lihevanîn bi qaîdeyên dengê yên mekanê re"
+        ]
+      },
+      "corporate": {
+        "title": "Şahiya şîrketê",
+        "tagline": "Profesyonel, bêdeng, li ser dem",
+        "text": "Şahiya havînê, şahiya Noelê, gala an lansmana hilberê: peymanên zelal, teknîka pak, demjimêrên pêbawer — û muzîka ku li marqeyê tê, ne ya tesadufî.",
+        "features": [
+          "Teknîk ji bo axaftin, xelatdan û panelan",
+          "Sazkirineke ku bala xwe nakişîne li cihên fermî",
+          "Fatûre bi MwSt. ya diyarkirî",
+          "Yek kesê têkiliyê heta dawiya şahiyê"
+        ]
+      }
+    },
+    "included": {
+      "title": "Di her rezervasyonê de heye",
+      "items": [
+        "Hevpeyvîna yekem a bê mecbûrîyet",
+        "Hevpeyvîna plansaziyê ya kesane beriya rojê",
+        "Lîsteya daxwazên muzîkê ya taybet bi lîsteya stranên nexwestî re",
+        "Sazkirin û berhevkirin li derveyî dema lêxistinê",
+        "Amûrên yedek li cih",
+        "Sîgorta berpirsiyariyê & peymana nivîskî"
+      ]
+    },
+    "capabilitiesStrip": {
+      "eyebrow": "Ji DJ'tiyê zêdetir",
+      "title": "Yek kesê têkiliyê ji bo muzîk, pêşkêşî û teknîkê",
+      "subtitle": "DJ, muzîkjen û pêşkêşvan di yek kesî de — lihevhatî, ne ji cihên cuda kirîn.",
+      "items": {
+        "wedding-dj": {
+          "label": "DJ'ê dawetê",
+          "text": "Roja dawetê ji merasîmê heta govenda dawî."
+        },
+        "event-dj": {
+          "label": "DJ'ê şahiyan",
+          "text": "Nîşan, rojbûn, şahiya şîrketê — setên DJ'î ji bo her bûyerê."
+        },
+        "host": {
+          "label": "Pêşkêşî",
+          "text": "Pêşkêşiya zindî bi Almanî, Tirkî û Îngilîzî."
+        },
+        "live-music": {
+          "label": "Muzîka zindî",
+          "text": "Saz û gîtar zindî tên lêxistin — ji zarokatiya wî ve amûrê wî."
+        },
+        "orchestra": {
+          "label": "DJ & Orkestra",
+          "text": "Koma zindî bi borîzanan re ji bo derketina mezin — her tişt ji yek destî."
+        },
+        "traditional-turkish": {
+          "label": "Kevneşopiyên tirkî",
+          "text": "Gelin Çıkarma, bando û def û zirne — kêliyên kevneşopî yên daweteke tirkî, di dema xwe ya rast de."
+        },
+        "av-rental": {
+          "label": "Teknîka deng, ronahî & organîzasyonê",
+          "text": "Teknîka xwe, bi profesyonelî tê sazkirin û ji bo kirêyê jî amade ye."
+        }
+      }
+    }
+  },
+  "packages": {
+    "hero": {
+      "eyebrow": "Paket & Biha",
+      "title": "Berfirehiya zelal, bihayê zelal",
+      "subtitle": "Ev sê paket piraniya dawetan digirin nav xwe. Her tiştê zêdetir bi taybetî tê hesibandin — bêyî zêdebûna ji bo şêwirmendiyê."
+    },
+    "hours": "Dema lêxistinê",
+    "hoursValue": "{hours} saet",
+    "hoursUnlimited": "Bê sînorê diyarkirî",
+    "guests": "Hejmara mêvanan",
+    "guestsValue": "heta {guests} mêvan",
+    "guestsUnlimited": "150+, çend beş",
+    "includes": "Tê de heye",
+    "cta": "Ji bo vî paketî bipirsin",
+    "customTitle": "Tu paket tam li we nayê?",
+    "customText": "Daweta li derveyî welat, şahiya çend rojan, meydaneke duyem an muzîkjenên zindî — roja xwe ji me re vebêjin, em bi taybetî hesab dikin.",
+    "customCta": "Teklîfa taybet bixwazin",
+    "note": "Hemû biha bi rêwîtiya heta 50 km re ne. Şertên dawî di teklîfa nivîskî de tên diyarkirin.",
+    "items": {
+      "essential": {
+        "name": "Essential",
+        "tagline": "Destpêka zelal",
+        "description": "Ji bo şahiyên ku bi giranî li ser partiya êvarê ne.",
+        "features": [
+          "Heta 6 saetan dema lêxistinê",
+          "Sîstema dengê ji bo heta 80 mêvanan",
+          "Ronahiya bingehîn ji bo meydana govendê",
+          "Hevpeyvîna plansaziyê & lîsteya daxwazan",
+          "Mîkrofona bêtêl ji bo axaftinan"
+        ]
+      },
+      "signature": {
+        "name": "Signature",
+        "tagline": "Tevahiya roja dawetê",
+        "description": "Paketa herî zêde tê hilbijartin: hevaltiya bênavber ji merasîmê heta stranê dawî.",
+        "features": [
+          "Heta 10 saetan dema lêxistinê",
+          "Muzîk ji bo merasîma zewacê & pêşwaziyê",
+          "Sîstema dengê ji bo heta 150 mêvanan",
+          "Dîzayna ronahiyê ya berfireh bi uplightan re",
+          "Seta duyem a hoparloran ji bo salona alî",
+          "Hevaltiya dansa yekem",
+          "Du hevpeyvînên plansaziyê"
+        ]
+      },
+      "prestige": {
+        "name": "Prestige",
+        "tagline": "Bê tawîz",
+        "description": "Ji bo şahiyên mezin, mekanên taybet û şevên ku divê kes ji bîr neke.",
+        "features": [
+          "Dema lêxistinê bê sînorê diyarkirî",
+          "Sîstema dengê ji bo 150+ mêvanan, çend beş",
+          "Moving head, haze & konsepta ronahiyê ya taybet",
+          "Teknîsyen li cih di tevahiya şahiyê de",
+          "Derketineke taybet & sound design ji bo kêliyên girîng",
+          "Serdana mekanê ya berê",
+          "Hevpeyvînên plansaziyê bê sînor"
+        ]
+      }
+    }
+  },
+  "weddings": {
+    "hero": {
+      "eyebrow": "Referans",
+      "title": "Dawetên rastîn",
+      "subtitle": "Ne wêneyên stokê, ne klîpên deyn — kêlî ji şevên ku bi rastî pêk hatine."
+    },
+    "venuesTitle": "Mekan & Hevkar",
+    "venuesSubtitle": "Mekanên ku pir tên rezervekirin, ku teknîk, rê û akustîka wan ji berê ve tê zanîn.",
+    "empty": "Galeriya referansê niha tê tijîkirin. Hûn dikarin ji bo mekanê xwe nimûneyan bipirsin.",
+    "guests": "mêvan",
+    "venue": "Mekan"
+  },
+  "music": {
+    "hero": {
+      "eyebrow": "Muzîk & Set",
+      "title": "Guhdarî bikin, texmîn nekin",
+      "subtitle": "Muzîk li xalên cuda yên şevê wisa deng dide. Li gorî kêlî an cureyê parzûn bikin."
+    },
+    "filterAll": "Hemû",
+    "empty": "Ji bo vê hilbijartinê hê set tune.",
+    "streamingTitle": "Li ser hemû platforman",
+    "moments": {
+      "reception": "Pêşwazî",
+      "dinner": "Şîv",
+      "firstdance": "Dansa yekem",
+      "peaktime": "Peaktime",
+      "afterhours": "After Hours"
+    },
+    "genres": {
+      "international": "Navneteweyî",
+      "turkish": "Tirkî",
+      "german": "Almanî",
+      "house": "House",
+      "classics": "Classics",
+      "live": "Zindî",
+      "arabesk": "Arabesk",
+      "halay": "Halay"
+    },
+    "player": {
+      "play": "Lê bidin",
+      "pause": "Rawestînin",
+      "next": "Parçeya pêş",
+      "previous": "Parçeya berê",
+      "mute": "Dengê bigirin",
+      "unmute": "Dengê vekin",
+      "volume": "Bilindahiya dengê",
+      "close": "Playerê bigirin",
+      "nowPlaying": "Niha lê dide",
+      "expand": "Playerê fireh bikin",
+      "collapse": "Playerê biçûk bikin",
+      "regionLabel": "Playerê muzîkê",
+      "queueTitle": "Lîsteya lêdanê",
+      "comingSoon": "Zû tê",
+      "progress": "Pêşketin",
+      "progressValue": "{current} ji {duration}",
+      "playTrack": "„{title}“ lê bidin",
+      "pauseTrack": "„{title}“ rawestînin",
+      "waveform": "Şeklê pêlan",
+      "listenOn": "Li ser {platform} guhdarî bikin"
+    }
+  },
+  "process": {
+    "hero": {
+      "eyebrow": "Pêvajo",
+      "title": "Em çawa bi hev re dixebitin",
+      "subtitle": "Ji peyama yekem heta berhevkirinê bi zelalî — da ku hûn di roja dawetê de li tiştekî nefikirin."
+    },
+    "steps": {
+      "one": {
+        "title": "Daxwaz & valahî",
+        "text": "Hûn dîrok û agahiyên bingehîn dişînin. Di nav 24 saetan de hûn bersiveke zelal a derbarê valahiyê distînin."
+      },
+      "two": {
+        "title": "Nasîn & teklîf",
+        "text": "Di hevpeyvîneke bi vîdyo an rûbirû de em pêvajo, tama muzîkê û teknîkê zelal dikin. Piştre teklîfeke nivîskî tê."
+      },
+      "three": {
+        "title": "Rezervasyon & plansaziya hûr",
+        "text": "Piştî peymanê em demjimêr, lîsteya daxwazan, stranên nexwestî û kêliyên girîng bi hûrgulî derbas dikin — li gorî mekan û organîzatorê."
+      },
+      "four": {
+        "title": "Roja bi xwe",
+        "text": "Sazkirina zû, kontrola dengê beriya hatina mêvanan, hebûneke bêdeng, meydaneke govendê ya tijî. Berhevkirin piştî govenda dawî."
+      }
+    },
+    "faqTitle": "Pirsên pir têne kirin",
+    "faqSubtitle": "Pirsên ku cot herî zêde ji me dikin.",
+    "faq": [
+      {
+        "q": "Divê em çiqas zû DJ'ekî rezerve bikin?",
+        "a": "Ji bo şemiyên demsala sereke ya ji gulanê heta îlonê em 12 heta 18 mehan berê pêşniyar dikin. Dîrokên nêz jî mimkun in — tenê bipirsin, valahî di nav 24 saetan de tê kontrolkirin."
+      },
+      {
+        "q": "DJ'ekî dawetê çiqas dike?",
+        "a": "Biha li gorî dema lêxistinê, hejmara mêvanan, hewcedariya teknîkê û rêwîtiyê tê diyarkirin. Sê paketên vê rûpelê çarçoveya asayî nîşan didin; teklîfa girêdayî piştî hevpeyvîna plansaziyê tê."
+      },
+      {
+        "q": "Em dikarin stranan bi xwe diyar bikin?",
+        "a": "Erê. Hûn lîsteyeke birêkûpêk ji bo stranên pêwîst, stranên xwestî û yên bi tundî nexwestî distînin. Daxwazên mêvanan ên şevê tenê dema ku li çarçoveya we tên, tên lêxistin."
+      },
+      {
+        "q": "Hûn muzîka merasîma zewacê jî digirin ser xwe?",
+        "a": "Erê, di paketên Signature û Prestige de dengê merasîmê bi mîkrofona bêtêl a ji bo axêver û merasîmvan re tê de ye."
+      },
+      {
+        "q": "Hûn di dawetên kurdî û tirkî de jî lê didin?",
+        "a": "Erê. Govend, halay, Roman havası, arabesk û lîsteyên tirkî yên rojane parçeyên repertuwara sabît in — bi setên almanî û navneteweyî re tên hev. Pêşkêşiya zindî bi Almanî, Tirkî û Îngilîzî tê kirin (ne bi Kurmancî)."
+      },
+      {
+        "q": "Ger teknîk xera bibe çi dibe?",
+        "a": "Bi bingehîn amûrên yedek li cih in: laptopa duyem, controllerê yedek û amplîfîkatorê rezerv. Xerabûna amûrekê şevê nabire."
+      },
+      {
+        "q": "Sazkirin û berhevkirin çiqas dikişîne?",
+        "a": "Sazkirin bi gelemperî du-sê saetan beriya hatina mêvanan pêk tê û ne beşek ji dema lêxistinê ya rezervekirî ye. Berhevkirin piştî stranê dawî dest pê dike."
+      },
+      {
+        "q": "Sîgorta we heye?",
+        "a": "Erê, sîgorta berpirsiyariya kar heye. Gelek mekan belgeyê dixwazin — ev li ser daxwazê rasterast ji mekanê re tê şandin."
+      },
+      {
+        "q": "Hûn ji bo dawetên li derveyî welat jî tên?",
+        "a": "Erê, li nav Ewropayê û derveyî wê. Rêwîtî, cihê razanê û heke pêwîst be kirêya teknîkê ya li cih di teklîfê de bi zelalî tên nîşandan."
+      },
+      {
+        "q": "Dravdan çawa pêk tê?",
+        "a": "Bi gelemperî pêşdravek bi girêdana peymanê re ji bo veqetandina dîrokê tê dayîn, mayî jî beriya rojê an di roja bûyerê de. Hemû şert di peymanê de ne."
+      }
+    ]
+  },
+  "answers": {
+    "hero": {
+      "eyebrow": "Pirs & Bersiv",
+      "title": "Hemû bersiv bi carekê",
+      "subtitle": "{count} bersivên berfireh derbarê rezervasyon, biha, pêvajo, muzîk, teknîk, hiqûq û dawetên tirkî de — tavilê têne xwendin, bêyî tikandin an vekirin."
+    },
+    "entity": "VEYSL xizmeta DJ'ê dawetê, muzîka zindî û pêşkêşiyê ya {owner} e, ku navenda wê li {city} ye. Ji {years} salan zêdetir e ku ew dawet û şahiyan li seranserê Baden-Württemberg, li tevahiya Almanyayê û Ewropayê bi rê ve dibe, bi Almanî, Tirkî û Îngilîzî zindî pêşkêş dike û li ser dawetên alman-tirk, tirkî û pirçandî pispor e. Heta niha ji {events}+ şahiyan zêdetir bi rê ve biriye — wek DJ, wek muzîkjenê zindî yê saz û gîtarê û bi komeke zindî ya bi borîzanan re.",
+    "meta": {
+      "title": "Pirs & Bersiv — DJ'ê dawetê Stuttgart | VEYSL",
+      "description": "{count} bersivên berfireh derbarê rezervasyon, biha, pêvajo, muzîk, teknîk û dawetên tirkî de bi VEYSL re — rasterast têne xwendin, bê dorhêl."
+    },
+    "updated": "Cara dawî hatiye nûkirin: {date}",
+    "seeAlso": "Deh pirsên din ên kurttir derbarê pêvajoyê de li vê rûpelê tên bersivandin:",
+    "jsonFeedNote": "Ev katalogê pirsan wek JSON bi awayekî ku makîne dikare bixwîne jî heye.",
+    "jsonFeedLink": "JSON-Feedê vekin",
+    "categories": {
+      "buchung": "Rezervasyon & dîrok",
+      "preis": "Biha & lêçûn",
+      "ablauf": "Pêvajo di roja dawetê de",
+      "musik": "Muzîk & repertuwar",
+      "technik": "Teknîka deng & ronahiyê",
+      "tuerkisch": "Dawetên tirkî & pirçandî",
+      "location": "Mekan & rêwîtî",
+      "recht": "Peyman & hiqûq"
+    },
+    "capabilities": {
+      "wedding-dj": "DJ'ê dawetê",
+      "event-dj": "DJ'ê şahiyan",
+      "host": "Pêşkêşî",
+      "live-music": "Muzîka zindî",
+      "orchestra": "DJ & Orkestra",
+      "traditional-turkish": "DJ & orkestra · Gelin Çıkarma, bando, def û zirne",
+      "av-rental": "Deng, ronahî & teknîk"
+    },
+    "keyFacts": {
+      "years": "Sal tecrûbe",
+      "events": "Dawet & şahiyên birêvebirî",
+      "languages": "Zimanên pêşkêşiya zindî",
+      "serviceArea": "Herêma xizmetê",
+      "capabilitiesLabel": "Xizmet"
+    }
+  },
+  "booking": {
+    "hero": {
+      "eyebrow": "Daxwaz",
+      "title": "Dîroka we hê vala ye?",
+      "subtitle": "Sê gavên kurt, di bin du deqîqeyan de. Hûn di nav 24 saetan de bersiveke kesane distînin — bê mecbûrîyet."
+    },
+    "stepLabel": "Gava {current} ji {total}",
+    "steps": {
+      "date": "Dîrok & cih",
+      "details": "Detay",
+      "contact": "Têkilî"
+    },
+    "fields": {
+      "eventDate": "Dîroka şahiyê",
+      "eventDatePlaceholder": "RR.MM.SSSS",
+      "eventType": "Cureyê şahiyê",
+      "city": "Bajar",
+      "cityPlaceholder": "mînak Stuttgart",
+      "venue": "Mekan (heke tê zanîn)",
+      "venuePlaceholder": "mînak Weingut Schloss …",
+      "guests": "Hejmara mêvanan a texmînî",
+      "startTime": "Destpêk",
+      "endTime": "Dawî (bi texmînî)",
+      "package": "Paketa ku bala we dikişîne",
+      "budget": "Çarçoveya budceyê",
+      "name": "Navê we",
+      "firstName": "Nav",
+      "lastName": "Paşnav",
+      "partnerName": "Navê hevjîna / hevjînê we",
+      "email": "E-mail",
+      "phone": "Telefon / WhatsApp",
+      "message": "Roja xwe ji me re vebêjin",
+      "messagePlaceholder": "Merasîma zewacê li baxçe, nêzîkî 120 mêvan, malbateke kurdî-almanî, şahî heta saet 3'yan …",
+      "source": "We em çawa dîtin?",
+      "services": "Kîjan xizmet bala we dikişînin?",
+      "hostingLanguage": "Zimanê pêşkêşiyê yê tercîhkirî",
+      "consent": "Min {privacyLink} xwend û ez razî me ku daneyên min ji bo pêvajokirina vê daxwazê bên bikaranîn.",
+      "privacyLinkText": "Beyannameya Parastina Daneyan"
+    },
+    "eventTypes": {
+      "wedding": "Dawet",
+      "engagement": "Nîşan / Destgirtin",
+      "henna": "Şeva henê / Kına",
+      "afterparty": "After-Party",
+      "corporate": "Şahiya şîrketê",
+      "birthday": "Rojbûn / Salveger",
+      "other": "Ya din"
+    },
+    "packageOptions": {
+      "essential": "Essential",
+      "signature": "Signature",
+      "prestige": "Prestige",
+      "custom": "Taybet / hê ne diyar"
+    },
+    "budgets": {
+      "unsure": "Hê ne diyar",
+      "a": "heta 1.500 €",
+      "b": "1.500 – 2.500 €",
+      "c": "2.500 – 4.000 €",
+      "d": "zêdetirî 4.000 €"
+    },
+    "sources": {
+      "google": "Lêgerîna Google",
+      "instagram": "Instagram",
+      "recommendation": "Pêşniyar",
+      "venue": "Mekan / organîzator",
+      "ai": "ChatGPT / asîstanê AI",
+      "other": "Ya din"
+    },
+    "services": {
+      "dj": "DJ & muzîk",
+      "hosting": "Pêşkêşî (Almanî/Tirkî/Îngilîzî)",
+      "liveMusic": "Muzîka zindî (saz & gîtar)",
+      "avRental": "Teknîka deng, ronahî & organîzasyonê"
+    },
+    "hostingLanguages": {
+      "noPreference": "Ferq nake",
+      "de": "Almanî",
+      "tr": "Tirkî",
+      "en": "Îngilîzî"
+    },
+    "availability": {
+      "checking": "Valahî tê kontrolkirin …",
+      "free": "Ev dîrok niha vala ye.",
+      "freeHint": "Veqetandin tenê bi peymanê pêk tê — zû wê ewle bikin.",
+      "taken": "Ji bo vê dîrokê jixwe rezervasyonek heye.",
+      "takenHint": "Dîsa jî bipirsin — ji bo şahiyên duyem û betalkirinan em lîsteyeke bendewariyê digirin.",
+      "unknown": "Valahî piştî daxwaza we bi kesane tê kontrolkirin.",
+      "pastDate": "Ji kerema xwe dîrokeke di pêşerojê de hilbijêrin."
+    },
+    "calendar": {
+      "pickerLabel": "An rasterast di salnameyê de hilbijêrin",
+      "instructions": "Bi bişkokên tîran di navbera rojan de biguherin, bi Page Up û Page Down meha biguherin, bi Enter an bişkoka valahiyê rojekê hilbijêrin.",
+      "previousMonth": "Meha berê",
+      "nextMonth": "Meha pêş",
+      "today": "Îro",
+      "status": {
+        "free": "vala",
+        "taken": "veqetandî",
+        "unknown": "ne diyar",
+        "past": "borî"
+      },
+      "selectedAnnouncement": "{date} hat hilbijartin — {status}",
+      "loading": "Valahî tê barkirin …",
+      "error": "Valahî nehat barkirin."
+    },
+    "validation": {
+      "required": "Ji kerema xwe tijî bikin",
+      "email": "Ji kerema xwe navnîşaneke E-mailê ya derbasdar binivîsin",
+      "date": "Ji kerema xwe dîrokeke derbasdar hilbijêrin",
+      "consent": "Bêyî razîbûna we em nikarin daxwazê pêvajo bikin",
+      "min": "Hinekî kin e",
+      "max": "Ev hinekî zêde dirêj e",
+      "guests": "Ji kerema xwe hejmareke di navbera 1 û 5000 de binivîsin"
+    },
+    "success": {
+      "title": "Daxwaza we gihîşt me.",
+      "text": "Gelek spas, {name}. Hûn ê niha bi E-mailê pejirandinekê bistînin û di nav 24 saetan de ji bo dîroka we ya {date} bersiveke kesane.",
+      "whatsapp": "Bi WhatsAppê zûtir dimeşe",
+      "backHome": "Vegerin rûpela sereke"
+    },
+    "error": {
+      "title": "Mixabin ev bi ser neket.",
+      "text": "Ji kerema xwe dîsa biceribînin an rasterast bi WhatsApp an E-mailê ji me re binivîsin.",
+      "retry": "Dîsa biceribînin"
+    },
+    "aside": {
+      "title": "Hûn tercîh dikin rasterast biaxivin?",
+      "text": "Ji bo dîrokên nêz û pirsên vekirî riya herî zû WhatsApp e.",
+      "responseTime": "Dema bersivê bi gelemperî di bin 24 saetan de ye."
+    }
+  },
+  "gallery": {
+    "hero": {
+      "eyebrow": "Galerî",
+      "title": "Wêne & vîdyo",
+      "subtitle": "Aftermovie, reels û wêneyên ji dawet û şahiyan."
+    },
+    "filterAll": "Hemû",
+    "filterPhoto": "Wêne",
+    "filterVideo": "Vîdyo",
+    "empty": "Galerî niha tê amadekirin."
+  },
+  "epk": {
+    "hero": {
+      "eyebrow": "Press Kit",
+      "title": "EPK & hevkar",
+      "subtitle": "Materyal ji bo mekan, organîzator, ajans û çapemeniyê — rasterast ji bo daxistinê."
+    },
+    "bioShort": "Jînenîgariya kurt",
+    "bioLong": "Guhertoya dirêj",
+    "bio": {
+      "short": "Veysel Durmuş ji 12 salan zêdetir e ku wek DJ, muzîkjen û pêşkêşvan ji bo dawet û şahiyên alman-tirk, tirkî û pirçandî kar dike. Ji 200 şahiyan zêdetir bi rê ve biriye, bi saz û gîtarê zindî lê xistiye û bi sê zimanan pêşkêş kiriye: Almanî, Tirkî, Îngilîzî.",
+      "long": [
+        "Veysel Durmuş ji zarokatiya xwe ve saz û gîtarê lê dide — muzîk tu carî tenê hobî nebû, ji destpêkê ve amûrekî derbirînê bû. Îro ew vê hestiyariya deng û demjimêrê wek DJ, muzîkjenê zindî û pêşkêşvan tîne dawet û şahiyên alman-tirk, tirkî û pirçandî; ji 12 salan zêdetir û bi zêdetirî 200 şahiyên birêvebirî.",
+        "Bi pîşe ew wek pisporê enformatîkê (Informatiker) dixebite — rastbûn û disîplîna plansaziyê ya vî karî rasterast li her bûyerê tîne: pêvajoyeke baldar, teknîkeke pak, bê sûrprîz.",
+        "Di jiyana xwe ya taybet de ew bezvanê maratonê û triatletek e. Ne kêm caran e ku sibeha dawetekê hê 10 kîlometreyan dibeze, da ku êvarê bi enerjiyeke tam li ser meydana govendê be. Piştî demsala dawetan ew ji bo enerjî berhevkirinê diçe çiyayan, kampê li Alpan.",
+        "Gotinên wî bi xwe rewşê baş vedibêjin: „Armanca min ne tenê lêxistina muzîkê ye. Armanca min afirandina hestan e.“ Û: „Tenê yê ku bi xwe tijî enerjî be, dikare vê enerjiyê bide yên din.“"
+      ]
+    },
+    "stats": {
+      "years": "{years}+ sal tecrûbe wek DJ & muzîkjen",
+      "events": "{events}+ dawet & şahiyên birêvebirî",
+      "languages": "Pêşkêşî bi Almanî, Tirkî & Îngilîzî"
+    },
+    "downloads": "Daxistin",
+    "downloadPress": "Wêneyên çapemeniyê (ZIP)",
+    "downloadRider": "Technical Rider (PDF)",
+    "downloadEpk": "EPK ya temam (PDF)",
+    "downloadPending": "Di amadekariyê de",
+    "partnersTitle": "Mekan & hevkar",
+    "pressTitle": "Çapemenî & behskirin",
+    "contactTitle": "Têkiliya bookingê"
+  },
+  "city": {
+    "eyebrow": "DJ'ê dawetê li cih",
+    "hero": {
+      "title": "DJ'ê dawetê li {city}",
+      "ctaNote": "Daxwaza bê mecbûrîyet – bersiv di nav 24 saetan de."
+    },
+    "meta": {
+      "title": "DJ'ê dawetê {city} — DJ, muzîkjen & pêşkêşvan | VEYSL",
+      "description": "DJ'ê dawetê yê premium li {city}: DJ, muzîkjen û pêşkêşvan bi Almanî, Tirkî û Îngilîzî ji bo dawetên alman-tirk. Niha dîrokê bipirsin."
+    },
+    "travel": {
+      "eyebrow": "Rêwîtî & zelalî",
+      "title": "Rêwîtiya bo {city}"
+    },
+    "distance": {
+      "homeBase": "Cihê jiyan û xebatê yê Veysel — bê rêwîtî, bê lêçûnên rêwîtiyê.",
+      "included": "Rêwîtiya bo {city} tê de ye (nêzîkî {km} km ji Stuttgartê).",
+      "notIncluded": "Rêwîtiya bo {city} li derveyî mesafeya tê de ye (nêzîkî {km} km) û di teklîfê de bi serê xwe tê nîşandan.",
+      "population": "nêzîkî {count} niştecih"
+    },
+    "offer": {
+      "eyebrow": "Xizmet li cih",
+      "title": "Hûn li {city} çi distînin",
+      "orchestraLabel": "DJ & orkestraya zindî bi borîzanan re"
+    },
+    "bicultural": {
+      "eyebrow": "Du çand, yek şev",
+      "title": "Hêza alman-tirk – li {city} jî",
+      "languagesTitle": "Zimanên pêşkêşiyê"
+    },
+    "venues": {
+      "eyebrow": "Mekan",
+      "title": "Mekanên dawetê yên naskirî li {city}",
+      "note": "Nîşe: Tu yek ji van mekanan hevkarekî fermî nîne – ev cihên naskirî yên bajêr in ku tenê ji bo rêberiyê hatine dayîn.",
+      "empty": "Ev lîste ji bo {city} bi baldarî tê lêkolînkirin, li şûna ku bi navên nepejirandî were tijîkirin. Mekanê xwe yê bijare ji me re vebêjin – setup li gorî wê tê amadekirin."
+    },
+    "venueKind": {
+      "saal": "Salon",
+      "schloss": "Qesr",
+      "weingut": "Baxçeyê tiriyan",
+      "hotel": "Otêl",
+      "location": "Mekan"
+    },
+    "trust": {
+      "eyebrow": "Tiştên ku hûn dikarin pişta xwe pê girêbidin",
+      "title": "Li {city} jî heman standard derbas dibe"
+    },
+    "faq": {
+      "eyebrow": "Pirsên pir têne kirin",
+      "title": "Pirs derbarê dawetên li {city}"
+    },
+    "nearby": {
+      "eyebrow": "Li derdorê",
+      "title": "Li derdora {city} jî tê rezervekirin",
+      "servicesTitle": "Bêtir li ser VEYSL"
+    },
+    "cta": {
+      "eyebrow": "Gava pêş",
+      "title": "Dîroka we ya li {city} hê vala ye?",
+      "subtitle": "Di bin du deqîqeyan de valahiyê ji bo {city} kontrol bikin û teklîfeke bê mecbûrîyet bistînin.",
+      "button": "Ji bo {city} dîrokê bipirsin"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Têkilî",
+      "title": "Werin em li ser roja we biaxivin",
+      "subtitle": "Riya herî zû WhatsApp e. Ji bo daxwazên berfireh forma daxwazê bi kar bînin."
+    },
+    "whatsappText": "Bersiv bi piranî di nav çend saetan de",
+    "emailText": "Ji bo daxwazên berfireh û belgeyan",
+    "phoneText": "Duşem – Îne, saet 10 – 18",
+    "areaTitle": "Herêma xizmetê",
+    "areaText": "Bi rêkûpêk li {areas} tê rezervekirin — û li her derê ku şahî lê heye.",
+    "formCta": "Biçin forma daxwazê",
+    "formSectionEyebrow": "Peyamekê binivîsin",
+    "socialTitle": "Bişopînin",
+    "instagramCta": "Li Instagramê bişopînin",
+    "youtubeCta": "Li YouTubeyê abone bibin"
+  },
+  "contactForm": {
+    "title": "Pirseke din heye?",
+    "subtitle": "Ji bo mekanan, organîzatoran, çapemeniyê an her tiştê ku hê ne daxwaza dîrokê ye — bi kurtî binivîsin, em ê bi kesane bersivê bidin.",
+    "fields": {
+      "firstName": "Nav",
+      "lastName": "Paşnav",
+      "email": "E-mail",
+      "phone": "Telefon (ne mecbûrî)",
+      "subject": "Mijar çi ye?",
+      "company": "Firme / mekan (ne mecbûrî)",
+      "companyPlaceholder": "mînak Weingut Schloss …",
+      "preferredContact": "Riya têkiliyê ya tercîhkirî (ne mecbûrî)",
+      "eventDate": "Dîrok, heke tê zanîn (ne mecbûrî)",
+      "eventDatePlaceholder": "RR.MM.SSSS",
+      "message": "Peyama we",
+      "messagePlaceholder": "Bi kurtî binivîsin ka mijar çi ye …",
+      "consent": "Min {privacyLink} xwend û ez razî me ku daneyên min ji bo pêvajokirina vê peyamê bên bikaranîn.",
+      "privacyLinkText": "Beyannameya Parastina Daneyan"
+    },
+    "subjects": {
+      "general": "Pirseke giştî",
+      "booking": "Pirs derbarê rezervasyonekê",
+      "technical": "Teknîk / kirê",
+      "partnership": "Hevkariya mekan / organîzator",
+      "press": "Çapemenî",
+      "other": "Ya din"
+    },
+    "preferredContactOptions": {
+      "email": "E-mail",
+      "phone": "Telefon",
+      "whatsapp": "WhatsApp"
+    },
+    "success": {
+      "title": "Peyama we gihîşt me.",
+      "text": "Gelek spas, {name}. Em ê di zûtirîn dem de bi kesane bersiva we bidin."
+    }
+  },
+  "whatsappFlow": {
+    "title": "Çend pirsên kurt, paşê rasterast bo WhatsAppê",
+    "skipAll": "Rasterast binivîsin",
+    "skip": "Derbas bikin",
+    "close": "Bigirin",
+    "continueToWhatsapp": "Bi WhatsAppê bidomînin",
+    "privacyNote": "Agahiyên we ji bo pêvajokirina daxwaza we têne tomarkirin. <privacyLink>Beyannameya Parastina Daneyan</privacyLink>",
+    "messageIntro": "Silav VEYSL, ez li DJ'ekî digerim.",
+    "messageLabels": {
+      "eventType": "Şahî",
+      "date": "Dîrok",
+      "city": "Cih",
+      "guests": "Mêvan",
+      "service": "Xizmet"
+    },
+    "steps": {
+      "eventType": {
+        "question": "Cureyê şahiyê"
+      },
+      "date": {
+        "question": "Dîrok"
+      },
+      "city": {
+        "question": "Cih (ne mecbûrî)",
+        "placeholder": "mînak Stuttgart"
+      },
+      "guests": {
+        "question": "Hejmara mêvanan a texmînî",
+        "options": {
+          "under80": "heta 80",
+          "from80to150": "80–150",
+          "from150to250": "150–250",
+          "over250": "250+"
+        }
+      },
+      "service": {
+        "question": "Xizmeta ku hûn dixwazin (ne mecbûrî)",
+        "options": {
+          "dj": "DJ",
+          "djOrchestra": "DJ & Orkestra",
+          "hosting": "+ Pêşkêşî",
+          "technik": "+ Teknîk"
+        }
+      }
+    }
+  },
+  "footer": {
+    "tagline": "DJ'ê dawetê, muzîkjen & pêşkêşvan — Stuttgart",
+    "navTitle": "Navîgasyon",
+    "legalTitle": "Yasayî",
+    "contactTitle": "Têkilî",
+    "followTitle": "Bişopînin",
+    "imprint": "Impressum",
+    "privacy": "Parastina daneyan",
+    "rights": "Hemû maf parastî ne.",
+    "builtBy": "Dîzayn & pêkanîn",
+    "viewOnMaps": "Li ser Google Maps binêrin"
+  },
+  "theme": {
+    "toggle": "Dîzaynê biguherînin",
+    "light": "Ronî",
+    "dark": "Tarî",
+    "system": "Sîstem"
+  },
+  "consent": {
+    "title": "Mîhengên parastina daneyan",
+    "text": "Em tenê çerezên ji aliyê teknîkî ve pêwîst bi kar tînin. Îstatîstîka bijarte alîkariya me dike ku em rûpelê baştir bikin — biryar ya we ye, her dem tê vegerandin.",
+    "acceptAll": "Hemûyan bipejirînin",
+    "essentialOnly": "Tenê yên pêwîst",
+    "settings": "Mîheng",
+    "privacyLink": "Beyannameya Parastina Daneyan"
+  },
+  "notFound": {
+    "title": "Ev rûpel tune.",
+    "text": "Girêdan belkî kevn bûye. Ji vir hûn dikarin vegerin.",
+    "cta": "Biçin rûpela sereke"
+  },
+  "legal": {
+    "draftNotice": "Reşnivîs — ev naverok li ser agahiyên heyî hatiye avakirin û divê beriya weşandinê ji aliyê parêzerekê an parêzerekî ve were kontrolkirin.",
+    "missingValue": "TODO(kunde): hê wê were temamkirin",
+    "imprint": {
+      "heading": "Impressum",
+      "intro": "Agahî li gorî § 5 DDG (Qanûna Xizmetên Dîjîtal).",
+      "providerTitle": "Pêşkêşvanê xizmetê",
+      "nameLabel": "Navê şîrketê",
+      "ownerLabel": "Xwedî",
+      "addressLabel": "Navnîşan",
+      "contactTitle": "Têkilî",
+      "phoneLabel": "Telefon",
+      "emailLabel": "E-mail",
+      "websiteLabel": "Malper",
+      "activityTitle": "Qada xebatê",
+      "vatTitle": "Hejmara nasnameya bacê ya lêzêdekirî",
+      "vatText": "Hejmara nasnameya bacê ya lêzêdekirî li gorî § 27a ya Qanûna Bacê ya Lêzêdekirî (UStG):",
+      "responsibleTitle": "Berpirsê naverokê li gorî § 18 Abs. 2 MStV",
+      "disputeTitle": "Çareserkirina nakokiyan a YE",
+      "disputeText": "Komîsyona Ewropayê platformekê ji bo çareserkirina nakokiyan a serhêl (OS) pêşkêş dike: https://ec.europa.eu/consumers/odr/. Navnîşana me ya E-mailê li jor di beşa „Têkilî“ de ye.",
+      "consumerDisputeTitle": "Çareserkirina nakokiyan a xerîdaran (VSBG)",
+      "consumerDisputeText": "Em ne mecbûr in û ne jî amade ne ku beşdarî pêvajoyeke çareserkirina nakokiyan a li ber saziyeke navbeynkariyê ya xerîdaran a di wateya Qanûna Çareserkirina Nakokiyan a Xerîdaran de bibin.",
+      "sections": [
+        {
+          "id": "liability-content",
+          "title": "Berpirsiyarî ji bo naverokê",
+          "paragraphs": [
+            "Wek pêşkêşvanê xizmetê em li gorî qanûnên giştî ji bo naveroka xwe ya li ser van rûpelan berpirsiyar in (§ 5 DDG). Lê belê li gorî Xalên 4 heta 6 yên Rêziknameya (YE) 2022/2065 (Digital Services Act) em wek pêşkêşvanê xizmetê ne mecbûr in ku agahiyên biyanî yên hatine veguhastin an tomarkirin çavdêrî bikin an lêkolîna rewşên ku destnîşana çalakiyeke neqanûnî dikin bikin.",
+            "Erkên rakirin an astengkirina bikaranîna agahiyan li gorî qanûnên giştî ji vê yekê bandor nabin. Berpirsiyariyeke di vî warî de tenê ji dema hînbûna binpêkirineke diyar ve mimkun e. Di dema hînbûna binpêkirinên wisa de ev naverok tavilê tên rakirin."
+          ]
+        },
+        {
+          "id": "liability-links",
+          "title": "Berpirsiyarî ji bo girêdanan",
+          "paragraphs": [
+            "Pêşkêşiya me girêdanan bi malperên derve yên kesên sêyem re dihewîne, ku em bandorê li naveroka wan nakin. Ji ber vê yekê em nikarin ji bo van naverokên biyanî garantiyê bidin. Ji bo naveroka rûpelên girêdayî her tim pêşkêşvan an gerînendeyê wan rûpelan berpirsiyar e.",
+            "Rûpelên girêdayî di dema girêdanê de ji bo binpêkirinên qanûnî yên mimkun hatin kontrolkirin. Kontrolkirineke domdar a naveroka rûpelên girêdayî bêyî nîşanên diyar ên binpêkirinekê ne maqûl e. Di dema hînbûna binpêkirinan de girêdanên wisa tavilê tên rakirin."
+          ]
+        },
+        {
+          "id": "copyright",
+          "title": "Mafê telîfê",
+          "paragraphs": [
+            "Naverok û berhemên ku ji aliyê gerînendeyê rûpelê ve li ser van rûpelan hatine afirandin di bin mafê telîfê yê alman de ne. Ji bo pirrakirin, guherandin, belavkirin û her cure bikaranîna li derveyî sînorên mafê telîfê razîbûna nivîskî ya afirînerê têkildar pêwîst e.",
+            "Wêne û vîdyoyên li ser vê malperê, heke wekî din nehatibe diyarkirin, ji gerînendeyê rûpelê ne an bi razîbûna eşkere ya afirîneran tên bikaranîn. Heke hûn dîsa jî binpêkirineke mafê telîfê bibînin, em ji we daxwaz dikin ku me agahdar bikin; naverokên wisa tavilê tên rakirin."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "heading": "Beyannameya Parastina Daneyan",
+      "updated": "Rewş: TODO(kunde) — dîroka nûkirina dawî were zêdekirin",
+      "intro": "Parastina daneyên we yên kesane ji bo me girîng e. Ev beyanname agahî dide ka kîjan dane li ser vê malperê tên pêvajokirin, ji bo çi armancê û li ser kîjan bingeha hiqûqî.",
+      "sections": [
+        {
+          "id": "controller",
+          "title": "Berpirsiyar",
+          "paragraphs": [
+            "Berpirsiyar di wateya Rêziknameya Giştî ya Parastina Daneyan (DSGVO) de pêşkêşvanê xizmetê ye ku di Impressuma vê malperê de hatiye nav kirin."
+          ]
+        },
+        {
+          "id": "rights-overview",
+          "title": "Mafên we bi kurtî",
+          "paragraphs": [
+            "Mafê we heye ku hûn her dem derbarê daneyên xwe yên kesane yên hatine tomarkirin, çavkanî û wergirên wan û armanca pêvajokirinê de agahiyan bistînin. Herwiha mafê we yê rastkirin, jêbirin, sînorkirina pêvajokirinê, veguhastina daneyan, îtirazkirina li pêvajokirinê û vegerandina razîbûneke hatiye dayîn bi bandor ji bo pêşerojê heye.",
+            "Ji bo bikaranîna van mafan hûn dikarin her dem bi agahiyên têkiliyê yên di Impressumê de hatine dayîn bi me re têkilî daynin. Herwiha mafê we yê gilîkirinê li ba desthilatdariya çavdêriyê ya parastina daneyan a berpirsiyar heye."
+          ]
+        },
+        {
+          "id": "hosting",
+          "title": "Hosting",
+          "paragraphs": [
+            "Ev malper li ba pêşkêşvanekî xizmetê yê derve tê hosting kirin (TODO(kunde): nav, navnîşan û navenda pêşkêşvanê hostingê were zêdekirin). Daneyên kesane yên ku li ser vê malperê tên berhevkirin li ser serverên hosterê tên pêvajokirin.",
+            "Bikaranîna hosterê ji bo pêşkêşkirina ewle, zû û bikêrhatî ya pêşkêşiya me ya serhêl ji aliyê pêşkêşvanekî profesyonel ve pêk tê (Xala 6 Abs. 1 lit. f DSGVO). Bi hosterê re peymaneke pêvajokirina daneyan li gorî Xala 28 DSGVO heye (TODO(kunde) were pejirandin)."
+          ]
+        },
+        {
+          "id": "server-logs",
+          "title": "Dosyayên server-log",
+          "paragraphs": [
+            "Pêşkêşvanê rûpelan bixweber agahiyan di dosyayên bi navê server-log de berhev dike û tomar dike, ku browserê we bixweber dişîne. Ev in: cure û guhertoya browserê, pergala xebitandinê ya hatiye bikaranîn, URL'a referrer, navê hostê yê komputera ku digihîje, dema daxwaza serverê û navnîşana IP.",
+            "Van daneyan bi çavkaniyên din ên daneyan re nayên girêdan. Berhevkirina van daneyan li ser bingeha Xala 6 Abs. 1 lit. f DSGVO ji bo pêşkêşkirina bêçewt a teknîkî û baştirkirina malperê û ji bo misogerkirina ewlehiya pergalê pêk tê. Dane tên jêbirin gava ku êdî ji bo armanca berhevkirina wan ne pêwîst bin (TODO(kunde): dema tomarkirinê ya diyar were zêdekirin)."
+          ]
+        },
+        {
+          "id": "enquiry-form",
+          "title": "Forma daxwazê",
+          "paragraphs": [
+            "Heke hûn bi forma daxwazê bi me re têkilî daynin, em daneyên ku we li wir dane (di nav wan de dîrok û cureyê şahiyê, cih, hejmara mêvanan, nav, navnîşana E-mailê, hejmara telefonê û peyama we) ji bo pêvajokirina daxwaza we û ji bo pirsên paşerojê berhev dikin.",
+            "Pêvajokirina van daneyan li ser bingeha Xala 6 Abs. 1 lit. b DSGVO pêk tê, heke daxwaz ji bo destpêkirina peymanekê be, û herwiha li ser bingeha Xala 6 Abs. 1 lit. f DSGVO ji ber berjewendiya me ya rewa ya pêvajokirina bikêrhatî ya daxwazan.",
+            "Daneyên ji forma daxwazê tên jêbirin gava ku daxwaz bi temamî hatibe pêvajokirin û peymanek pêk neyê, lê herî dereng piştî TODO(kunde): dem were zêdekirin. Heke peymanek pêk were, demên tomarkirinê yên qanûnî yên li gorî hiqûqa bazirganî û bacê derbas dibin (bi taybetî §§ 147 AO, 257 HGB)."
+          ]
+        },
+        {
+          "id": "whatsapp",
+          "title": "Têkilîdanîn bi WhatsAppê",
+          "paragraphs": [
+            "Ji bo têkiliyê em WhatsAppê wek kanaleke ragihandinê ya bijarte pêşkêş dikin. Di bikaranîna WhatsAppê de peyamên we û meta-daneyên ku çêdibin bi binesaziya WhatsApp Ireland Limited an koma şîrketan a Meta tên pêvajokirin, ku veguhastina daneyan bo welatên sêyem, bi taybetî DYA, nayê red kirin.",
+            "Bikaranîn li ser bingeha têkiliya we ya bi dilxwazî pêk tê (Xala 6 Abs. 1 lit. a an lit. b DSGVO). TODO(kunde) / ji aliyê parêzer ve were kontrolkirin: hûrgulî derbarê guhertoya WhatsAppê ya hatiye bikaranîn (kesane an Business-API) û derbarê pêvajokerên din ên mimkun de werin zêdekirin."
+          ]
+        },
+        {
+          "id": "analytics",
+          "title": "Analîz & îstatîstîk",
+          "paragraphs": [
+            "Niha em tu amûrekî analîz an şopandinê bi kar naynin. Bi mîhengên çerezan ên vê malperê fonksiyoneke îstatîstîkê dikare bi dilxwazî were çalakkirin; ev heta ku hûn bi eşkereyî razîbûna xwe nedin ne çalak dimîne.",
+            "Heke di pêşerojê de xizmeteke îstatîstîkê were bikaranîn, ev beyanname beriya çalakkirinê bi nav, armanc, bingeha hiqûqî û dema tomarkirinê ya wê xizmetê tê temamkirin (TODO(kunde))."
+          ]
+        },
+        {
+          "id": "cookies",
+          "title": "Çerez & razîbûn",
+          "paragraphs": [
+            "Ev malper tenê çerezên ji aliyê teknîkî ve pêwîst bi kar tîne, mînak ji bo tomarkirina mîhenga zimanê we, moda dîzaynê ya we (ronî/tarî) û hilbijartina we ya çerezan. Ev ji bo xebitandina malperê pêwîst in û li ser bingeha § 25 Abs. 2 TTDSG an Xala 6 Abs. 1 lit. f DSGVO tên danîn.",
+            "Hilbijartina xwe ya derbarê çerezên bijarte hûn dikarin her dem bi mîhengên çerezan biguherînin an vegerînin."
+          ]
+        },
+        {
+          "id": "embeds",
+          "title": "Naveroka girêdayî ya kesên sêyem",
+          "paragraphs": [
+            "Setên muzîkê û vîdyoyên li ser vê malperê bi pêşdîtineke „bitikîne û bar bike“ tên girêdan: naveroka xizmetên wek Spotify, YouTube, SoundCloud an Mixcloud tenê piştî tikandineke çalak tê barkirin. Tenê hingê browserê we girêdaneke rasterast bi pêşkêşvanê têkildar re çêdike, ku bi vê yekê ew dikare navnîşana we ya IP û daneyên din li gorî beyannameya xwe ya parastina daneyan pêvajo bike.",
+            "Agahiyên din: Spotify (https://www.spotify.com/de/legal/privacy-policy/), YouTube / Google (https://policies.google.com/privacy), SoundCloud (https://soundcloud.com/pages/privacy), Mixcloud (https://www.mixcloud.com/privacy/).",
+            "Cureyên nivîsê bi next/font bi awayekî herêmî tên girêdan û di dema vekirina rûpelê de ji serverên Google nayên barkirin; bi vê yekê tu veguhastina daneyan bo Google pêk nayê."
+          ]
+        },
+        {
+          "id": "security",
+          "title": "Ewlehiya daneyan",
+          "paragraphs": [
+            "Ev malper ji ber sedemên ewlehiyê û ji bo parastina veguhastina naverokên nepenî şîfrekirina SSL/TLS bi kar tîne. Girêdaneke şîfrekirî hûn ji sembola kilîtê ya browserê xwe û ji guherîna rêza navnîşanê ji „http://“ bo „https://“ nas dikin."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Guherînên vê beyannameyê",
+          "paragraphs": [
+            "Em vê beyannameya parastina daneyan diguherînin gava ku pêvajokirina daneyan an rewşa hiqûqî biguhere. Her tim guhertoya ku niha li ser vê rûpelê tê dîtin derbas dibe."
+          ]
+        }
+      ]
+    }
+  },
+  "social": {
+    "grid": {
+      "eyebrow": "Sosyal",
+      "title": "Ya herî nû ji Instagram & YouTubeyê",
+      "lead": "Perçeyeke rojane ji dawet û şahiyan — ji @dj_veys û kanala YouTubeyê hatiye hilbijartin.",
+      "playLabel": "Vîdeoyê lê bidin",
+      "altFallback": {
+        "instagram": "Şandiya VEYSL li ser Instagramê",
+        "youtube": "Vîdeoya VEYSL li ser YouTubeyê"
+      },
+      "typeLabel": {
+        "image": "Wêne",
+        "video": "Vîdeo",
+        "carousel": "Galerî",
+        "reel": "Reel"
+      },
+      "openOn": {
+        "instagram": "Şandiyê li ser Instagramê vekin",
+        "youtube": "Vîdeoyê li ser YouTubeyê vekin"
+      },
+      "empty": {
+        "title": "Feeda zindî di rê de ye.",
+        "text": "Şandiyên nû li vir bixweber xuya dibin. Heta hingê nêrînek rasterast li Instagramê hêjayî ye.",
+        "cta": "Li Instagramê bişopînin"
+      }
+    },
+    "instagramStrip": {
+      "eyebrow": "Instagram",
+      "title": "@dj_veys",
+      "followerLabel": "Şopîner",
+      "followerCaption": "Ji bo dîmenên rojane yên dawet û bûyeran bişopînin.",
+      "cta": "Li Instagramê bişopînin",
+      "empty": "Şandiyên nû di demeke nêz de tên. Ji niha ve li Instagramê beşdar bibin."
+    },
+    "youtubeStrip": {
+      "eyebrow": "YouTube",
+      "title": "Vîdeoyên herî nû",
+      "cta": "Li kanalê abone bibin",
+      "empty": "Vîdeoyên nû di demeke nêz de tên. Ji niha ve abone bibin."
+    }
+  },
+  "regions": {
+    "eyebrow": "Dawetên derveyî welat – Ewropa",
+    "hub": {
+      "meta": {
+        "title": "DJ'ê dawetê ji bo dawetên derveyî welat li Ewropayê | VEYSL",
+        "description": "DJ'ê dawetê yê alman-tirk ji bo dawetên derveyî welat li Ewropayê: Awistirya, Swîsre, Holenda, Belçîka, Fransa. Pêşkêşiya zindî bi Almanî, Tirkî û Îngilîzî."
+      },
+      "hero": {
+        "title": "DJ'ê dawetê ji bo dawetên derveyî welat li Ewropayê",
+        "subtitle": "Alman-tirk, bi gelek zimanan tê pêşkêşkirin û rêwîtî bi zelalî tê hesibandin – li derveyî Baden-Württembergê jî tê rezervekirin, bêyî ku ji standarda Stuttgartê tawîz were dayîn."
+      },
+      "intent": {
+        "eyebrow": "Pir tê lêgerîn",
+        "title": "Bêyî navê bajaran jî: bersivên rast",
+        "items": [
+          {
+            "q": "DJ'ekî dawetê yê tirk heye ku li tevahiya Almanyayê tê rezervekirin?",
+            "a": "Erê. Navenda VEYSL li Stuttgart û Baden-Württembergê ye û li tevahiya Almanyayê tê rezervekirin – ji Münchenê heta Hamburgê. Rêwîtî û teknîk ji bo her cihî bi serê xwe di teklîfê de tên hesibandin; pêşkêşî li her derê heman e: Almanî, Tirkî, Îngilîzî."
+          },
+          {
+            "q": "Ez dikarim ji bo daweteke derveyî welat DJ'ekî dawetê rezerve bikim?",
+            "a": "Erê. Pênc welat bi berfirehî hatine amadekirin – Awistirya, Swîsre, Holenda, Belçîka, Fransa – her yek bi mantiqa xwe ya rêwîtiyê û bi taybetmendiyên xwe yên teknîkî. Welatên din ên Ewropayê jî tên rezervekirin, bi rêwîtiyeke ku her carê bi serê xwe tê hesibandin."
+          },
+          {
+            "q": "Ji bo daweteke tirkî ya li derveyî welat DJ heye?",
+            "a": "Erê, ev yek ji hêzên bingehîn e: dawetên alman-tirk, bi temamî tirkî û pirçandî li derveyî Almanyayê, bi govend û halayê, bi hêmanên orkestraya zindî û bi pêşkêşiya sê zimanî – heman standarda Stuttgartê, tenê rêwîtî di teklîfê de bi serê xwe tê nîşandan."
+          },
+          {
+            "q": "Hûn ji bo dawetan çiqas dûr diçin?",
+            "a": "Di nav radiusa bingehîn a li dora Stuttgartê de rêwîtî bi piranî tê de ye; li tevahiya Almanyayê û li seranserê Ewropayê bi rêkûpêk daxwaz tên û rezervasyon mimkun e. Dûrahî demê amadekariyê û lêçûnê diyar dike, ne amadebûna me."
+          }
+        ]
+      },
+      "countries": {
+        "eyebrow": "Pênc welat bi hûrgulî",
+        "title": "Bi berfirehî hatine nivîsîn, ne şablon",
+        "subtitle": "Her welat bi mantiqa xwe ya rêwîtiyê, bi taybetmendiyên xwe yên teknîkî û bi girêdana xwe ya diasporayê – bi zanebûn ne rûpelên bajaran, li pirsên jêrîn binêrin."
+      },
+      "more": {
+        "eyebrow": "Li derveyî van pênc welatan",
+        "title": "Welatên din jî li seranserê Ewropayê tên rezervekirin",
+        "text": "Ji bo welatên jêrîn hê rûpeleke taybet tune – lê dîsa jî bi heman baldariyê tên rezervekirin. Rêwîtî, cihê razanê û teknîk di teklîfa kesane de bi serê xwe tên nîşandan. Ji bo cihên li derveyî yekîtiya gumrikê ya YE (mînak Norwêc, wek Swîsreyê jî) ji bo teknîkê gaveke gumrikê ya zêde bi ATA-Carnetê pêwîst e – ev jî di teklîfê de tê hesibandin.",
+        "cta": "Ji bo {country} bipirsin"
+      },
+      "languages": {
+        "eyebrow": "Bi rastî",
+        "title": "Bi kîjan zimanan bi rastî zindî tê pêşkêşkirin",
+        "text": "Pêşkêşiya zindî bi Almanî, Tirkî û Îngilîzî tê kirin (ne bi Kurmancî) – li her welatekî ku li vir hatiye behskirin, serbixwe ji zimanê wî welatî. Ev malper bi gelek zimanan heye da ku bi qasî pêkan zêde zewicî bikaribin bixwînin û bipirsin; ev tiştekî din e ji zimanê pêşkêşiyê yê şeva dawetê."
+      },
+      "faq": {
+        "eyebrow": "Pirsên pir têne kirin",
+        "title": "Pirs derbarê dawetên derveyî welat",
+        "items": [
+          {
+            "q": "Çima ji bo bajarên Ewropayê yên takekesî rûpelên taybet tune?",
+            "a": "Ji ber ku encamên Google yên herêmî nêzîkbûnê û profîleke Google Business a li cih dixwazin – pêşkêşvanekî ji Stuttgartê li Oslo an Amsterdamê ne yek ji wan heye. Rûpelên welatan bi naveroka rastîn û cuda hem dilsoztir in hem jî bi rastî kar dikin; bi dehan rûpelên bajaran ên wek hev tam ew tişt in ku rêbernameyên spamê yên Google wek rûpelên derbasbûnê (doorway pages) bi nav dikin."
+          },
+          {
+            "q": "Divê ez ji bo daweteke li derveyî welat çiqas zû bipirsim?",
+            "a": "Bi qasî ku pêkan e zû – plansaziya rêwîtî û cihê razanê ji şahiyeke li Stuttgartê bêtir dem dixwaze. Lê daxwaza yekem a bê mecbûrîyet her dem mimkun e, mehan berê jî."
+          },
+          {
+            "q": "Rêwîtiya bo derveyî welat çawa tê hesibandin?",
+            "a": "Her dem bi serê xwe û bi zelalî di teklîfa kesane de: mesafeya rê an firîn bi bagajê teknîkê yê sivik, cihê razanê û, ji bo cihên li derveyî yekîtiya gumrikê ya YE (mînak Swîsre, Norwêc), ji bo teknîkê gaveke gumrikê ya zêde bi ATA-Carnetê."
+          },
+          {
+            "q": "Hûn li welatên ku li vir nehatine rêzkirin jî lê didin?",
+            "a": "Erê. Pênc welatên hatine pêşkêşkirin bi berfirehî hatine amadekirin, cihên din ên Ewropayê jî bi bingehîn tên rezervekirin – bi rêwîtiyeke ku bi serê xwe tê hesibandin."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Gava pêş",
+        "title": "Daweta we ya li derveyî welat – werin em biaxivin",
+        "subtitle": "Ji bo nirxandineke yekem a bê mecbûrîyet welat, dîrok û hejmara mêvanan a texmînî bes in.",
+        "button": "Ji bo daweteke derveyî welat bipirsin"
+      }
+    },
+    "country": {
+      "meta": {
+        "title": "DJ'ê dawetê {country} — Dawet li derveyî welat | VEYSL",
+        "description": "DJ'ê dawetê ji bo {country} tê rezervekirin: alman-tirk, pêşkêşiya zindî bi Almanî, Tirkî û Îngilîzî. Rêwîtî û teknîk bi zelalî tên hesibandin."
+      },
+      "eyebrow": "Dawet li derveyî welat",
+      "hero": {
+        "title": "DJ'ê dawetê ji bo {country}",
+        "ctaNote": "Daxwaza bê mecbûrîyet – bersiv di nav 24 saetan de."
+      },
+      "availability": {
+        "verifiedTitle": "Berê lê daye",
+        "verifiedText": "VEYSL berê li {city} lê daye – heta niha tenê lêxistina belgekirî ya li derveyî Almanyayê.",
+        "availableTitle": "Li {country} tê rezervekirin",
+        "availableText": "Li {country} hê bûyereke referansê ya taybet tune – lê her dem dikare were pirsîn, bi heman baldariya her rezervasyoneke din."
+      },
+      "logistics": {
+        "eyebrow": "Rêwîtî & zelalî",
+        "title": "Rêwîtiya bo {country}"
+      },
+      "distance": {
+        "label": "nêzîkî {km} km ji Stuttgartê (xeta hewayî, {city})"
+      },
+      "whatChanges": {
+        "eyebrow": "Li derveyî welat çi diguhere",
+        "title": "Teknîk, elektrîk û mercên fermî li {country}"
+      },
+      "diaspora": {
+        "eyebrow": "Du çand, yek şev",
+        "title": "Hêza alman-tirk – li {country} jî"
+      },
+      "languages": {
+        "eyebrow": "Bi rastî",
+        "title": "Zimanên pêşkêşiyê ji bo {country}"
+      },
+      "faq": {
+        "eyebrow": "Pirsên pir têne kirin",
+        "title": "Pirs derbarê dawetên li {country}"
+      },
+      "nearby": {
+        "eyebrow": "Li seranserê Ewropayê jî tê rezervekirin",
+        "title": "Welatên din bi giştî",
+        "hubCta": "Hemû welat bi carekê"
+      },
+      "cta": {
+        "eyebrow": "Gava pêş",
+        "title": "Daweta we ya li {country} – werin em biaxivin",
+        "subtitle": "Dîrok û çarçoveyê ji bo {country} bê mecbûrîyet kontrol bikin.",
+        "button": "Ji bo {country} bipirsin"
+      }
+    }
+  },
+  "cro": {
+    "responseTimeBadge": "Bersiv bi gelemperî di nav 24 saetan de.",
+    "seasonScarcity": "Di sala {year}an de jixwe {count} şemî hatine veqetandin — zû bipirsin.",
+    "trust": {
+      "followers": "{count} şopîner",
+      "years": "{count}+ sal tecrûbe",
+      "events": "{count}+ şahî hatine birêvebirin",
+      "languages": "{count} ziman zindî tên pêşkêşkirin"
+    },
+    "saveForLater": {
+      "title": "Hûn hê ne bi temamî piştrast in?",
+      "text": "Ne pirsgirêk e — bê mecbûrîyet ji me re binivîsin, em ê her tiştî gava ku ji bo we guncav be biaxivin.",
+      "whatsappCta": "Bi WhatsAppê nîşe bikin",
+      "mailCta": "Bi E-mailê nîşe bikin",
+      "whatsappPrefill": "Silav, ez ji bo dîrokekê li VEYSL eleqedar im, lê hê ne piştrast im. Em dikarin vê bê mecbûrîyet biaxivin?",
+      "whatsappPrefillWithDate": "Silav, ez ji bo {date} li VEYSL eleqedar im, lê hê ne piştrast im. Em dikarin vê bê mecbûrîyet biaxivin?",
+      "mailSubject": "Daxwaza bê mecbûrîyet – nîşandana dîrokê"
+    }
+  },
+  "media": {
+    "comingSoon": "Wêne tê",
+    "placeholderAriaLabel": "Cihê wêneyê – hê wêne nehatiye danîn"
+  },
+  "blog": {
+    "meta": {
+      "title": "Rêbername: DJ'ê dawetê, muzîk & plansazî | VEYSL",
+      "description": "{count} rêbernameyên berfireh derbarê DJ'ê dawetê, muzîk, teknîk, lêçûn û dawetên alman-tirk de — ji VEYSL, DJ & Orkestra ji Stuttgartê."
+    },
+    "index": {
+      "eyebrow": "Rêbername",
+      "title": "Rêbername ji bo daweta we",
+      "subtitle": "{count} rêbernameyên berfireh derbarê plansazî, muzîk, teknîk û dawetên alman-tirk de — ji zêdetirî 12 salan tecrûbeya pratîkê hatine nivîsîn.",
+      "updated": "Cara dawî hat nûkirin: {date}",
+      "meta": {
+        "emptyDescription": "Rêbernameya VEYSL derbarê DJ'ê dawetê, muzîk û plansaziyê de — bi vî zimanî di demeke nêz de."
+      },
+      "empty": {
+        "title": "Rêbername di demeke nêz de bi vî zimanî tê.",
+        "body": "Rêbernameyên me yên berfireh niha bi Almanî, Tirkî û Îngilîzî hene. Heta ku werger amade bibe, em bi kêfxweşî pirsên we rasterast bersiv didin.",
+        "questionsCta": "Li pirsên pir têne kirin binêrin",
+        "requestCta": "Bê mecbûrîyet bipirsin"
+      }
+    },
+    "categories": {
+      "planung": "Plansazî",
+      "kosten": "Lêçûn",
+      "musik": "Muzîk",
+      "tuerkische-hochzeit": "Daweta tirkî",
+      "technik": "Teknîk",
+      "recht": "Hiqûq",
+      "international": "Navneteweyî",
+      "real-wedding": "Daweta rastîn"
+    },
+    "post": {
+      "backToOverview": "Vegerin rêbernameyê",
+      "byAuthor": "Ji {author}",
+      "publishedOn": "Hat weşandin: {date}",
+      "updatedOn": "Hat nûkirin: {date}",
+      "readingTime": "{minutes} deq. xwendin",
+      "furtherReadingTitle": "Girêdanên din",
+      "relatedAnswersTitle": "Bersivên têkildar",
+      "relatedCitiesTitle": "Li nêzîkî we jî",
+      "relatedPostsTitle": "Dibe ku ev jî bala we bikişîne",
+      "cta": {
+        "eyebrow": "Xwendin bes nake?",
+        "title": "Werin em li ser dîroka we biaxivin",
+        "subtitle": "Bê mecbûrîyet kontrol bikin ka dîroka we ya bijare hê vala ye — bersiv di nav 24 saetan de."
+      }
+    }
+  }
+}

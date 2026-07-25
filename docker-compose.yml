@@ -1,0 +1,87 @@
+networks:
+  veysl:
+    driver: bridge
+
+volumes:
+  # Payload's SQLite DB — see payload.config.ts / DATABASE_URI. Named volume
+  # so it survives `docker compose down` (and image rebuilds/redeploys);
+  # only `docker compose down -v` or manual `docker volume rm` destroys it.
+  veysl-data:
+  # Payload upload storage — src/payload/collections/media.ts staticDir.
+  veysl-media:
+  # Let's Encrypt certs + ACME webroot, shared between nginx and certbot.
+  certbot-conf:
+  certbot-www:
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Inlined into the client bundle at build time — see Dockerfile's
+        # top comment. Sourced from the same .env file compose auto-loads
+        # for variable interpolation (NOT the same mechanism as `env_file:`
+        # below, which is a *runtime* container env — see docs/DEPLOYMENT.md
+        # "One .env, two jobs").
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
+        NEXT_PUBLIC_PLAUSIBLE_DOMAIN: ${NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
+        NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL: ${NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL}
+        NEXT_PUBLIC_GA4_MEASUREMENT_ID: ${NEXT_PUBLIC_GA4_MEASUREMENT_ID}
+        NEXT_PUBLIC_CLARITY_PROJECT_ID: ${NEXT_PUBLIC_CLARITY_PROJECT_ID}
+    image: veysl-app:latest
+    container_name: veysl-app
+    restart: unless-stopped
+    # Not published to the host — only nginx is internet-facing. Reached at
+    # http://app:3000 from the nginx container over the `veysl` network.
+    expose:
+      - '3000'
+    env_file:
+      - .env
+    volumes:
+      - veysl-data:/app/data
+      - veysl-media:/app/media
+    networks:
+      - veysl
+    healthcheck:
+      test: ['CMD', 'wget', '--quiet', '--spider', 'http://127.0.0.1:3000/']
+      interval: 30s
+      timeout: 5s
+      start_period: 40s
+      retries: 3
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: veysl-nginx
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_healthy
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl-params.conf:/etc/nginx/ssl-params.conf:ro
+      - ./deploy/redirects-legacy.conf:/etc/nginx/redirects-legacy.conf:ro
+      - certbot-conf:/etc/letsencrypt:ro
+      - certbot-www:/var/www/certbot:ro
+    networks:
+      - veysl
+    # Picks up renewed certs without a full restart (nginx keeps running).
+    command: sh -c "while :; do sleep 12h & wait $${!}; nginx -s reload; done & nginx -g 'daemon off;'"
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: veysl-certbot
+    restart: unless-stopped
+    volumes:
+      - certbot-conf:/etc/letsencrypt
+      - certbot-www:/var/www/certbot
+    networks:
+      - veysl
+    # First issuance is a one-off command (see deploy/setup-ssl.sh referenced
+    # in docs/DEPLOYMENT.md, or run the `certonly` command manually) —  this
+    # entrypoint only handles renewal from then on, matching the client's
+    # existing stack.
+    entrypoint: sh -c "trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot --quiet; sleep 12h & wait $${!}; done"

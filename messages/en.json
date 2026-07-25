@@ -1,0 +1,1269 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Weddings & Events",
+    "packages": "Packages",
+    "weddings": "Real Weddings",
+    "music": "Music",
+    "process": "How It Works",
+    "gallery": "Gallery",
+    "epk": "EPK",
+    "contact": "Contact",
+    "booking": "Check your date",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language"
+  },
+  "cta": {
+    "primary": "Check your date & get a quote",
+    "short": "Check your date",
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "listen": "Listen to sets",
+    "packages": "View packages",
+    "weddings": "See real weddings",
+    "stickyLabel": "Is my date still free?",
+    "finalTitle": "Ready to check your date?",
+    "finalSubtitle": "Check availability with no obligation — reply within 24 hours.",
+    "whatsappFab": "Message on WhatsApp"
+  },
+  "common": {
+    "onRequest": "Price on request",
+    "from": "from",
+    "mostBooked": "Most booked",
+    "readMore": "Learn more",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Send enquiry",
+    "required": "Required",
+    "skipToContent": "Skip to content",
+    "loading": "Loading …",
+    "scroll": "Scroll"
+  },
+  "meta": {
+    "home": {
+      "title": "Wedding DJ {city} — Premium Wedding & Event DJ | VEYSL",
+      "description": "Premium wedding and event DJ in {city} and beyond. Personal planning call, own sound and lighting rig, a dance floor that stays full. Check your date."
+    },
+    "services": {
+      "title": "Weddings & Events — Services | VEYSL DJ",
+      "description": "DJ for weddings, engagements, henna nights, after-parties and corporate events. Exactly what each service includes."
+    },
+    "packages": {
+      "title": "Packages & Pricing — Wedding DJ | VEYSL",
+      "description": "Three clear wedding and event packages: hours, technical setup and extras at a glance. Individual quote within 24 hours."
+    },
+    "weddings": {
+      "title": "Real Weddings — References & Venues | VEYSL",
+      "description": "Real weddings, real dance floors: reference clips, words from couples and planners, and our partner venues."
+    },
+    "music": {
+      "title": "Music & Sets — Wedding DJ Mixes | VEYSL",
+      "description": "Wedding and event sets to listen to: from reception through dinner to peak time. German, Turkish, international."
+    },
+    "process": {
+      "title": "How It Works & FAQ — Wedding DJ | VEYSL",
+      "description": "From first message to the last song: the process in four steps and answers to the most common booking questions."
+    },
+    "booking": {
+      "title": "Check your date & request a quote | VEYSL DJ",
+      "description": "Enter your date, check availability, receive a no-obligation quote — reply within 24 hours."
+    },
+    "gallery": {
+      "title": "Gallery & Videos — Wedding DJ | VEYSL",
+      "description": "Photos, aftermovies and reels from weddings and events."
+    },
+    "epk": {
+      "title": "EPK & Partners — Press Kit | VEYSL",
+      "description": "Biography, press photos, technical rider and partner venues to download."
+    },
+    "contact": {
+      "title": "Contact — VEYSL DJ",
+      "description": "Reach us on WhatsApp, by phone or email. We reply within 24 hours."
+    },
+    "imprint": {
+      "title": "Imprint | VEYSL",
+      "description": "Legal information according to § 5 DDG."
+    },
+    "privacy": {
+      "title": "Privacy | VEYSL",
+      "description": "How personal data is processed under the GDPR."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Wedding DJ · Live Music · Hosting",
+      "title": "The sound everyone",
+      "titleAccent": "will remember.",
+      "subtitle": "From the first note at the reception to the last song at four in the morning — an evening with real dramaturgy and a dance floor that never empties.",
+      "availability": "{year} dates are filling up — check availability now."
+    },
+    "intro": "{name} has been a wedding DJ, live musician on saz and guitar, and host based in {city} for over {years} years. He accompanies weddings and events across Baden-Württemberg, throughout Germany and Europe — hosting live in German, Turkish and English, and specialising in German-Turkish and multicultural weddings.",
+    "trust": {
+      "title": "What you can count on",
+      "items": {
+        "planning": {
+          "title": "Personal planning call",
+          "text": "Before every wedding: a thorough conversation about timeline, taste, no-gos and timing."
+        },
+        "tech": {
+          "title": "Own sound & lighting rig",
+          "text": "Professional equipment, cleanly wired, discreetly installed — with backup gear on site."
+        },
+        "contract": {
+          "title": "Written contract",
+          "text": "Services, hours and price fixed in writing. No surprises on the day."
+        },
+        "multilingual": {
+          "title": "Multilingual hosting",
+          "text": "German, Turkish and English — for families bringing two cultures together."
+        }
+      }
+    },
+    "stats": {
+      "years": "Years of experience",
+      "events": "Weddings & events accompanied",
+      "languagesLabel": "Languages hosted live"
+    },
+    "services": {
+      "eyebrow": "Services",
+      "title": "For the day that happens only once",
+      "subtitle": "Every format has its own rhythm. We plan it together, in advance.",
+      "cta": "See all services"
+    },
+    "showreel": {
+      "eyebrow": "Aftermovie",
+      "title": "This is what a full dance floor sounds like",
+      "subtitle": "Moments from real weddings and events.",
+      "play": "Play showreel"
+    },
+    "packages": {
+      "eyebrow": "Packages",
+      "title": "Transparently priced",
+      "subtitle": "Three clear packages as a starting point — the final scope is always agreed individually.",
+      "cta": "Details & pricing"
+    },
+    "music": {
+      "eyebrow": "Music",
+      "title": "Listen, don't guess",
+      "subtitle": "Selected sets from reception, dinner and peak time.",
+      "cta": "Listen to all sets",
+      "moments": {
+        "reception": "Reception",
+        "dinner": "Dinner",
+        "peaktime": "Peak time"
+      }
+    },
+    "testimonials": {
+      "eyebrow": "Words",
+      "title": "What couples and planners say",
+      "subtitle": "Real feedback from real weddings.",
+      "ratingLabel": "{rating} ★ from {count} Google reviews"
+    },
+    "process": {
+      "eyebrow": "Process",
+      "title": "Four steps to the night of your life",
+      "cta": "See the full process"
+    },
+    "serviceAreas": {
+      "eyebrow": "Service area",
+      "title": "Wedding DJ near you",
+      "subtitle": "Regularly booked in these cities around Stuttgart — and anywhere there's a celebration.",
+      "coreTitle": "Core region — Stuttgart & Baden-Württemberg",
+      "germanyTitle": "Bookable across Germany",
+      "europeTitle": "Bookable across Europe",
+      "europeText": "We travel for destination weddings and celebrations abroad. Travel, accommodation and any equipment needed on site are itemised transparently in the quote — including outside the EU."
+    },
+    "finalCta": {
+      "eyebrow": "Next step",
+      "title": "Is your date still free?",
+      "subtitle": "Check availability in under two minutes and receive a no-obligation quote — reply within 24 hours.",
+      "reassurance": "No obligation · No hidden costs · Reply in 24 h"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Weddings & Events",
+      "title": "One DJ, four occasions, one standard",
+      "subtitle": "Whether it's an outdoor ceremony at a vineyard or a corporate gala in a ballroom — the preparation is always the same: thorough."
+    },
+    "items": {
+      "wedding": {
+        "title": "Wedding",
+        "tagline": "The whole day from one hand",
+        "text": "Ceremony, reception, dinner ambience, first dance and party — one considered arc across the entire day, agreed with you and your planner.",
+        "features": [
+          "Ceremony sound incl. wireless microphone",
+          "Reception and dinner ambience",
+          "First-dance choreography support",
+          "Coordination with photographer, caterer and venue"
+        ]
+      },
+      "engagement": {
+        "title": "Engagement & Henna",
+        "tagline": "Two cultures, one evening",
+        "text": "Nişan, Kına Gecesi and engagement parties with the right feel for tradition and timing — Turkish, Kurdish, Arabic and international repertoires confidently combined.",
+        "features": [
+          "Halay, Roman Havası & international sets",
+          "Live hosting in German and Turkish",
+          "Coordination with live musicians and davul-zurna",
+          "Run-of-show planning for entrances and ceremonies"
+        ]
+      },
+      "afterparty": {
+        "title": "After-party",
+        "tagline": "When the real evening begins",
+        "text": "After dinner the evening changes character. That deserves its own concept: lighting mood, volume and the curve across the final hours.",
+        "features": [
+          "Peak-time set with its own dramaturgy",
+          "Lighting design for the dance floor switch",
+          "Extra hours bookable on the night",
+          "Adapted to the venue's noise restrictions"
+        ]
+      },
+      "corporate": {
+        "title": "Corporate event",
+        "tagline": "Professional, discreet, on time",
+        "text": "Summer party, Christmas dinner, gala or product launch: clear agreements, clean technology, reliable timing — and music that fits the brand rather than chance.",
+        "features": [
+          "Audio for speeches, awards and panels",
+          "Discreet setup in representative spaces",
+          "Invoice with VAT stated",
+          "One contact person until the event ends"
+        ]
+      }
+    },
+    "included": {
+      "title": "Included in every booking",
+      "items": [
+        "No-obligation first conversation",
+        "Personal planning call before the event",
+        "Individual song wishlist including no-go list",
+        "Setup and teardown outside the booked hours",
+        "Backup equipment on site",
+        "Liability insured & written contract"
+      ]
+    },
+    "capabilitiesStrip": {
+      "eyebrow": "Beyond DJing",
+      "title": "One contact for music, hosting and technology",
+      "subtitle": "DJ, musician and host in one person — coordinated, not outsourced.",
+      "items": {
+        "wedding-dj": {
+          "label": "Wedding DJ",
+          "text": "The wedding day from the ceremony to the last dance."
+        },
+        "event-dj": {
+          "label": "Event DJ",
+          "text": "Engagements, birthdays, corporate parties — DJ sets for every occasion."
+        },
+        "host": {
+          "label": "Hosting",
+          "text": "Live hosting in German, Turkish and English."
+        },
+        "live-music": {
+          "label": "Live music",
+          "text": "Saz and guitar, played live — his instrument since childhood."
+        },
+        "orchestra": {
+          "label": "DJ & Orchestra",
+          "text": "Live band including horn players for the big moments — all from one hand."
+        },
+        "traditional-turkish": {
+          "label": "Turkish traditions",
+          "text": "Gelin Çıkarma, bando and davul-zurna — the traditional moments of a Turkish wedding, accompanied with the right timing."
+        },
+        "av-rental": {
+          "label": "Sound, light & event technology",
+          "text": "Own equipment, professionally set up and also available to hire."
+        }
+      }
+    }
+  },
+  "packages": {
+    "hero": {
+      "eyebrow": "Packages & pricing",
+      "title": "Clear scope, clear price",
+      "subtitle": "These three packages cover most weddings. Anything beyond is quoted individually — with no surcharge for the consultation."
+    },
+    "hours": "Playing time",
+    "hoursValue": "{hours} hrs",
+    "hoursUnlimited": "No fixed limit",
+    "guests": "Guests",
+    "guestsValue": "up to {guests} guests",
+    "guestsUnlimited": "150+, multiple zones",
+    "includes": "Included",
+    "cta": "Enquire about this package",
+    "customTitle": "Nothing quite fits?",
+    "customText": "Destination wedding, multi-day celebration, a second floor or live musicians — tell us about your day and we'll quote individually.",
+    "customCta": "Request an individual quote",
+    "note": "All prices include travel within 50 km. Final terms are confirmed in the written quote.",
+    "items": {
+      "essential": {
+        "name": "Essential",
+        "tagline": "The clear entry point",
+        "description": "For celebrations that are mainly about the party in the evening.",
+        "features": [
+          "Up to 6 hours playing time",
+          "Sound system for up to 80 guests",
+          "Basic dance floor lighting",
+          "Planning call & wishlist",
+          "Wireless microphone for speeches"
+        ]
+      },
+      "signature": {
+        "name": "Signature",
+        "tagline": "The full wedding day",
+        "description": "The most booked package: continuous coverage from ceremony to the last song.",
+        "features": [
+          "Up to 10 hours playing time",
+          "Ceremony and reception sound",
+          "Sound system for up to 150 guests",
+          "Extended lighting design incl. uplights",
+          "Second speaker set for an adjacent room",
+          "First-dance support",
+          "Two planning calls"
+        ]
+      },
+      "prestige": {
+        "name": "Prestige",
+        "tagline": "No compromises",
+        "description": "For large celebrations, exceptional venues and evenings nobody should forget.",
+        "features": [
+          "Playing time with no fixed limit",
+          "Sound for 150+ guests across multiple zones",
+          "Moving heads, haze & bespoke lighting concept",
+          "Technician on site throughout the celebration",
+          "Custom entrance & sound design for key moments",
+          "Venue site visit in advance",
+          "Unlimited planning calls"
+        ]
+      }
+    }
+  },
+  "weddings": {
+    "hero": {
+      "eyebrow": "References",
+      "title": "Real weddings",
+      "subtitle": "No stock photos, no borrowed clips — moments from evenings that actually happened."
+    },
+    "venuesTitle": "Venues & partners",
+    "venuesSubtitle": "Frequently booked houses where the technology, routes and acoustics are already known.",
+    "empty": "The reference gallery is being filled. Ask us for examples from your venue.",
+    "guests": "guests",
+    "venue": "Venue"
+  },
+  "music": {
+    "hero": {
+      "eyebrow": "Music & sets",
+      "title": "Listen, don't guess",
+      "subtitle": "This is how the evening sounds at its different points. Filter by moment or genre."
+    },
+    "filterAll": "All",
+    "empty": "No set for this selection yet.",
+    "streamingTitle": "On every platform",
+    "moments": {
+      "reception": "Reception",
+      "dinner": "Dinner",
+      "firstdance": "First dance",
+      "peaktime": "Peak time",
+      "afterhours": "After hours"
+    },
+    "genres": {
+      "international": "International",
+      "turkish": "Turkish",
+      "german": "German",
+      "house": "House",
+      "classics": "Classics",
+      "live": "Live",
+      "arabesk": "Arabesk",
+      "halay": "Halay"
+    },
+    "player": {
+      "play": "Play",
+      "pause": "Pause",
+      "next": "Next track",
+      "previous": "Previous track",
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "volume": "Volume",
+      "close": "Close player",
+      "nowPlaying": "Now playing",
+      "expand": "Expand player",
+      "collapse": "Collapse player",
+      "regionLabel": "Music player",
+      "queueTitle": "Playlist",
+      "comingSoon": "Coming soon",
+      "progress": "Progress",
+      "progressValue": "{current} of {duration}",
+      "playTrack": "Play \"{title}\"",
+      "pauseTrack": "Pause \"{title}\"",
+      "waveform": "Waveform",
+      "listenOn": "Listen on {platform}"
+    }
+  },
+  "process": {
+    "hero": {
+      "eyebrow": "Process",
+      "title": "How we work together",
+      "subtitle": "Transparent from the first message to teardown — so you don't have to think about anything on the day."
+    },
+    "steps": {
+      "one": {
+        "title": "Enquiry & availability",
+        "text": "You send the date and key details. Within 24 hours you receive a definitive answer on availability."
+      },
+      "two": {
+        "title": "Getting to know each other & quote",
+        "text": "In a video or in-person meeting we go through timeline, musical taste and technical needs. A written quote follows."
+      },
+      "three": {
+        "title": "Booking & detailed planning",
+        "text": "After signing we work through timing, wishlist, no-gos and key moments in detail — coordinated with venue and planner."
+      },
+      "four": {
+        "title": "The day itself",
+        "text": "Early setup, soundcheck before guests arrive, discreet presence, full dance floor. Teardown after the last round."
+      }
+    },
+    "faqTitle": "Frequently asked questions",
+    "faqSubtitle": "The questions couples ask us most.",
+    "faq": [
+      {
+        "q": "How early should we book a DJ?",
+        "a": "For Saturdays in the peak season from May to September we recommend 12 to 18 months ahead. Short-notice dates are possible — just ask, availability is checked within 24 hours."
+      },
+      {
+        "q": "What does a wedding DJ cost?",
+        "a": "The price depends on playing time, guest count, technical requirements and travel. The three packages on this page show the usual range; the binding quote follows the planning call."
+      },
+      {
+        "q": "Can we choose the music?",
+        "a": "Yes. You receive a structured wishlist for must-play songs, nice-to-have songs and explicit no-gos. Guest requests on the night are only played if they fit your frame."
+      },
+      {
+        "q": "Do you also cover the ceremony?",
+        "a": "Yes — the Signature and Prestige packages include ceremony sound with a wireless microphone for speakers and the celebrant."
+      },
+      {
+        "q": "Do you play Turkish weddings?",
+        "a": "Yes. Halay, Roman Havası, Arabesk and current Turkish charts are part of the core repertoire, combined with German and international sets. Hosting in German and Turkish is available."
+      },
+      {
+        "q": "What happens if equipment fails?",
+        "a": "Backup equipment is always on site: a second laptop, a spare controller and a reserve amplifier. A single device failure does not interrupt the evening."
+      },
+      {
+        "q": "How long do setup and teardown take?",
+        "a": "Setup usually happens two to three hours before guests arrive and is not part of the booked playing time. Teardown begins after the last song."
+      },
+      {
+        "q": "Are you insured?",
+        "a": "Yes, business liability insurance is in place. Many venues require proof — it is sent directly to the venue on request."
+      },
+      {
+        "q": "Do you travel for destination weddings?",
+        "a": "Yes, within Europe and beyond. Travel, accommodation and any local equipment rental are itemised transparently in the quote."
+      },
+      {
+        "q": "How does payment work?",
+        "a": "Typically a deposit on signing to reserve the date, with the balance due before or on the event day. All terms are set out in the contract."
+      }
+    ]
+  },
+  "answers": {
+    "hero": {
+      "eyebrow": "Questions & Answers",
+      "title": "Every answer at a glance",
+      "subtitle": "{count} in-depth answers on booking, pricing, the day itself, music, technical setup, contracts and Turkish weddings — readable instantly, no clicks or accordions required."
+    },
+    "entity": "VEYSL is the wedding-DJ, live-music and hosting service of {owner}, based in {city}, Germany. For over {years} years he has accompanied weddings and events across Baden-Württemberg, Germany and Europe, hosting live in German, Turkish and English, with a focus on German-Turkish, Turkish and multicultural weddings. He has played over {events}+ celebrations so far — as a DJ, a live musician on saz and guitar, and with a live band including horns.",
+    "meta": {
+      "title": "Questions & Answers — Wedding DJ Stuttgart | VEYSL",
+      "description": "{count} in-depth answers on booking, pricing, the wedding day, music, technical setup and Turkish weddings with VEYSL — read directly, no detours."
+    },
+    "updated": "Last updated: {date}",
+    "seeAlso": "Ten shorter, additional questions about the day itself are answered on the",
+    "jsonFeedNote": "This question catalogue is also available as a machine-readable JSON feed.",
+    "jsonFeedLink": "Open JSON feed",
+    "categories": {
+      "buchung": "Booking & Scheduling",
+      "preis": "Price & Cost",
+      "ablauf": "The Wedding Day",
+      "musik": "Music & Repertoire",
+      "technik": "Sound & Lighting",
+      "tuerkisch": "Turkish & Multicultural Weddings",
+      "location": "Location & Travel",
+      "recht": "Contract & Legal"
+    },
+    "capabilities": {
+      "wedding-dj": "Wedding DJ",
+      "event-dj": "Event DJ",
+      "host": "Hosting",
+      "live-music": "Live Music",
+      "orchestra": "DJ & Orchestra",
+      "traditional-turkish": "DJ & orchestra · Gelin Çıkarma, bando, davul-zurna",
+      "av-rental": "Sound, Light & AV"
+    },
+    "keyFacts": {
+      "years": "Years of experience",
+      "events": "Weddings & events accompanied",
+      "languages": "Languages hosted live",
+      "serviceArea": "Service area",
+      "capabilitiesLabel": "Capabilities"
+    }
+  },
+  "booking": {
+    "hero": {
+      "eyebrow": "Enquiry",
+      "title": "Is your date still free?",
+      "subtitle": "Three short steps, under two minutes. You receive a personal reply within 24 hours — no obligation."
+    },
+    "stepLabel": "Step {current} of {total}",
+    "steps": {
+      "date": "Date & place",
+      "details": "Details",
+      "contact": "Contact"
+    },
+    "fields": {
+      "eventDate": "Date of the celebration",
+      "eventDatePlaceholder": "DD/MM/YYYY",
+      "eventType": "Type of celebration",
+      "city": "City",
+      "cityPlaceholder": "e.g. Stuttgart",
+      "venue": "Venue (if known)",
+      "venuePlaceholder": "e.g. Schloss …",
+      "guests": "Approximate number of guests",
+      "startTime": "Start",
+      "endTime": "End (approx.)",
+      "package": "Package of interest",
+      "budget": "Budget range",
+      "name": "Your name",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "partnerName": "Partner's name",
+      "email": "Email",
+      "phone": "Phone / WhatsApp",
+      "message": "Tell us about your day",
+      "messagePlaceholder": "Outdoor ceremony, around 120 guests, Turkish-German family, party until 3 am …",
+      "source": "How did you find us?",
+      "services": "Which services are you interested in?",
+      "hostingLanguage": "Preferred hosting language",
+      "consent": "I have read the {privacyLink} and agree to my data being processed to handle this enquiry.",
+      "privacyLinkText": "privacy policy"
+    },
+    "eventTypes": {
+      "wedding": "Wedding",
+      "engagement": "Engagement / Nişan",
+      "henna": "Henna night / Kına",
+      "afterparty": "After-party",
+      "corporate": "Corporate event",
+      "birthday": "Birthday / anniversary",
+      "other": "Other"
+    },
+    "packageOptions": {
+      "essential": "Essential",
+      "signature": "Signature",
+      "prestige": "Prestige",
+      "custom": "Custom / not sure yet"
+    },
+    "budgets": {
+      "unsure": "Not sure yet",
+      "a": "up to €1,500",
+      "b": "€1,500 – €2,500",
+      "c": "€2,500 – €4,000",
+      "d": "over €4,000"
+    },
+    "sources": {
+      "google": "Google search",
+      "instagram": "Instagram",
+      "recommendation": "Recommendation",
+      "venue": "Venue / planner",
+      "ai": "ChatGPT / AI assistant",
+      "other": "Other"
+    },
+    "services": {
+      "dj": "DJ & music",
+      "hosting": "Hosting (German/Turkish/English)",
+      "liveMusic": "Live music (saz & guitar)",
+      "avRental": "Sound, light & event technology"
+    },
+    "hostingLanguages": {
+      "noPreference": "No preference",
+      "de": "German",
+      "tr": "Turkish",
+      "en": "English"
+    },
+    "availability": {
+      "checking": "Checking availability …",
+      "free": "This date is currently free.",
+      "freeHint": "It is only reserved with a contract — secure it soon.",
+      "taken": "There is already a booking for this date.",
+      "takenHint": "Ask anyway — we keep a waiting list for second celebrations and cancellations.",
+      "unknown": "Availability will be checked personally after your enquiry.",
+      "pastDate": "Please choose a date in the future."
+    },
+    "calendar": {
+      "pickerLabel": "Or pick a date from the calendar",
+      "instructions": "Use the arrow keys to move between days, Page Up/Page Down to change month, Enter or Space to select a day.",
+      "previousMonth": "Previous month",
+      "nextMonth": "Next month",
+      "today": "Today",
+      "status": {
+        "free": "free",
+        "taken": "taken",
+        "unknown": "unknown",
+        "past": "past"
+      },
+      "selectedAnnouncement": "{date} selected — {status}",
+      "loading": "Loading availability …",
+      "error": "Availability could not be loaded."
+    },
+    "validation": {
+      "required": "Please fill this in",
+      "email": "Please enter a valid email address",
+      "date": "Please choose a valid date",
+      "consent": "We cannot process the enquiry without your consent",
+      "min": "A little too short",
+      "max": "That's a bit too long",
+      "guests": "Please enter a number between 1 and 5000"
+    },
+    "success": {
+      "title": "Your enquiry has arrived.",
+      "text": "Thank you, {name}. A confirmation is on its way by email, and you'll receive a personal reply about your date on {date} within 24 hours.",
+      "whatsapp": "WhatsApp is even faster",
+      "backHome": "Back to the homepage"
+    },
+    "error": {
+      "title": "That didn't work.",
+      "text": "Please try again or message us directly on WhatsApp or by email.",
+      "retry": "Try again"
+    },
+    "aside": {
+      "title": "Prefer to talk directly?",
+      "text": "For short-notice dates and open questions, WhatsApp is the fastest route.",
+      "responseTime": "Usually answered within 24 hours."
+    }
+  },
+  "gallery": {
+    "hero": {
+      "eyebrow": "Gallery",
+      "title": "Stills & motion",
+      "subtitle": "Aftermovies, reels and photos from weddings and events."
+    },
+    "filterAll": "All",
+    "filterPhoto": "Photos",
+    "filterVideo": "Videos",
+    "empty": "The gallery is being built."
+  },
+  "epk": {
+    "hero": {
+      "eyebrow": "Press kit",
+      "title": "EPK & partners",
+      "subtitle": "Material for venues, planners, agencies and press — ready to download."
+    },
+    "bioShort": "Short biography",
+    "bioLong": "Long version",
+    "bio": {
+      "short": "Veysel Durmuş has spent over 12 years as a DJ, musician and host for German-Turkish, Turkish and multicultural weddings and events. He has accompanied more than 200 celebrations, performed live on saz and guitar, and hosted trilingually in German, Turkish and English.",
+      "long": [
+        "Veysel Durmuş has played saz and guitar since childhood — music was never just a hobby, but a means of expression from the start. Today he brings that ear for sound and timing to German-Turkish, Turkish and multicultural weddings and events as a DJ, live musician and host, with over 12 years and more than 200 celebrations behind him.",
+        "By day he works as an IT specialist (Informatiker) — the precision and planning discipline from that profession carries straight into every event: a considered run of show, clean technology, no surprises.",
+        "Off duty he's a marathon runner and triathlete. It's not unusual for him to run 10 kilometres on the morning of a wedding, to step onto the dance floor that evening full of energy. After the wedding season, he recharges by camping in the Alps.",
+        "His own words put it best: “My goal isn't just to play music. My goal is to create emotions.” And: “Only someone who is full of energy themselves can pass that energy on to others.”"
+      ]
+    },
+    "stats": {
+      "years": "{years}+ years of experience as a DJ & musician",
+      "events": "{events}+ weddings & events accompanied",
+      "languages": "Hosting in German, Turkish & English"
+    },
+    "downloads": "Downloads",
+    "downloadPress": "Press photos (ZIP)",
+    "downloadRider": "Technical rider (PDF)",
+    "downloadEpk": "Full EPK (PDF)",
+    "downloadPending": "Coming soon",
+    "partnersTitle": "Venues & partners",
+    "pressTitle": "Press & mentions",
+    "contactTitle": "Booking contact"
+  },
+  "city": {
+    "eyebrow": "Wedding DJ on location",
+    "hero": {
+      "title": "Wedding DJ in {city}",
+      "ctaNote": "No-obligation enquiry – reply within 24 hours."
+    },
+    "meta": {
+      "title": "Wedding DJ {city} — DJ, Musician & Host | VEYSL",
+      "description": "Premium wedding DJ in {city}: DJ, musician and multilingual host for German-Turkish and international weddings. Check your date now."
+    },
+    "travel": {
+      "eyebrow": "Travel & transparency",
+      "title": "Travel to {city}"
+    },
+    "distance": {
+      "homeBase": "Veysel's home and workplace — no travel, no travel fee.",
+      "included": "Travel to {city} is included (approx. {km} km from Stuttgart).",
+      "notIncluded": "{city} is outside the included-travel range (approx. {km} km) and is itemised individually in the quote.",
+      "population": "around {count} residents"
+    },
+    "offer": {
+      "eyebrow": "On location",
+      "title": "What you get in {city}",
+      "orchestraLabel": "DJ & live orchestra with horns"
+    },
+    "bicultural": {
+      "eyebrow": "Two cultures, one evening",
+      "title": "The German-Turkish strength — in {city} too",
+      "languagesTitle": "Hosting languages"
+    },
+    "venues": {
+      "eyebrow": "Venues",
+      "title": "Well-known wedding venues in {city}",
+      "note": "Note: none of these venues is an official partner — they're well-known local landmarks listed for orientation.",
+      "empty": "Rather than fill this list with unverified names, we're carefully researching venues for {city}. Tell us about your chosen venue — the setup is adapted to it."
+    },
+    "venueKind": {
+      "saal": "Hall",
+      "schloss": "Palace",
+      "weingut": "Vineyard",
+      "hotel": "Hotel",
+      "location": "Venue"
+    },
+    "trust": {
+      "eyebrow": "What you can count on",
+      "title": "The same standard applies in {city}"
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "Questions about weddings in {city}"
+    },
+    "nearby": {
+      "eyebrow": "Nearby",
+      "title": "Also booked around {city}",
+      "servicesTitle": "More on VEYSL"
+    },
+    "cta": {
+      "eyebrow": "Next step",
+      "title": "Is your date in {city} still free?",
+      "subtitle": "Check availability for {city} in under two minutes and receive a no-obligation quote.",
+      "button": "Enquire for {city}"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "Let's talk about your day",
+      "subtitle": "WhatsApp is fastest. For detailed enquiries, please use the enquiry form."
+    },
+    "whatsappText": "Usually answered within a few hours",
+    "emailText": "For detailed enquiries and documents",
+    "phoneText": "Mon – Fri, 10 am – 6 pm",
+    "areaTitle": "Where we play",
+    "areaText": "Regularly booked in {areas} — and wherever there's a celebration.",
+    "formCta": "Go to the enquiry form",
+    "formSectionEyebrow": "Write a message",
+    "socialTitle": "Follow",
+    "instagramCta": "Follow on Instagram",
+    "youtubeCta": "Subscribe on YouTube"
+  },
+  "contactForm": {
+    "title": "A different question?",
+    "subtitle": "For venues, planners, press, or anything that isn't a date enquiry yet — write a few lines, we'll get back to you personally.",
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "subject": "What's this about?",
+      "company": "Company / venue (optional)",
+      "companyPlaceholder": "e.g. Schloss …",
+      "preferredContact": "Preferred contact channel (optional)",
+      "eventDate": "Date, if you already have one (optional)",
+      "eventDatePlaceholder": "DD/MM/YYYY",
+      "message": "Your message",
+      "messagePlaceholder": "Tell us briefly what this is about …",
+      "consent": "I have read the {privacyLink} and agree to my data being processed to handle this message.",
+      "privacyLinkText": "privacy policy"
+    },
+    "subjects": {
+      "general": "General question",
+      "booking": "Question about a booking",
+      "technical": "Technical / AV rental",
+      "partnership": "Venue / planner partnership",
+      "press": "Press",
+      "other": "Other"
+    },
+    "preferredContactOptions": {
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp"
+    },
+    "success": {
+      "title": "Your message has arrived.",
+      "text": "Thank you, {name}. We'll get back to you personally as soon as possible."
+    }
+  },
+  "whatsappFlow": {
+    "title": "Just a couple of taps, then straight to WhatsApp",
+    "skipAll": "Write directly",
+    "skip": "Skip",
+    "close": "Close",
+    "continueToWhatsapp": "Continue on WhatsApp",
+    "privacyNote": "Your answers are stored to process your enquiry. <privacyLink>Privacy policy</privacyLink>",
+    "messageIntro": "Hi VEYSL, I'm interested in a DJ.",
+    "messageLabels": {
+      "eventType": "Occasion",
+      "date": "Date",
+      "city": "Place",
+      "guests": "Guests",
+      "service": "Service"
+    },
+    "steps": {
+      "eventType": {
+        "question": "Occasion"
+      },
+      "date": {
+        "question": "Date"
+      },
+      "city": {
+        "question": "Place (optional)",
+        "placeholder": "e.g. Stuttgart"
+      },
+      "guests": {
+        "question": "Approximate number of guests",
+        "options": {
+          "under80": "up to 80",
+          "from80to150": "80–150",
+          "from150to250": "150–250",
+          "over250": "250+"
+        }
+      },
+      "service": {
+        "question": "Service you're interested in (optional)",
+        "options": {
+          "dj": "DJ",
+          "djOrchestra": "DJ & orchestra",
+          "hosting": "+ Hosting",
+          "technik": "+ Technical equipment"
+        }
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Wedding DJ, Musician & Host — Stuttgart",
+    "navTitle": "Navigation",
+    "legalTitle": "Legal",
+    "contactTitle": "Contact",
+    "followTitle": "Follow",
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "rights": "All rights reserved.",
+    "builtBy": "Design & build",
+    "viewOnMaps": "View on Google Maps"
+  },
+  "theme": {
+    "toggle": "Switch theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "consent": {
+    "title": "Privacy settings",
+    "text": "We only use technically necessary cookies. Optional analytics helps us improve the site — your choice, revocable at any time.",
+    "acceptAll": "Accept all",
+    "essentialOnly": "Essential only",
+    "settings": "Settings",
+    "privacyLink": "privacy policy"
+  },
+  "notFound": {
+    "title": "This page doesn't exist.",
+    "text": "The link is probably out of date. Here's the way back.",
+    "cta": "Back to the homepage"
+  },
+  "legal": {
+    "draftNotice": "Draft — this content is based on currently available information and must be reviewed by a lawyer before publication.",
+    "missingValue": "TODO(kunde): still to be added",
+    "imprint": {
+      "heading": "Imprint",
+      "intro": "Information according to § 5 DDG (German Digital Services Act).",
+      "providerTitle": "Service provider",
+      "nameLabel": "Trading name",
+      "ownerLabel": "Owner",
+      "addressLabel": "Address",
+      "contactTitle": "Contact",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
+      "websiteLabel": "Website",
+      "activityTitle": "Scope of activity",
+      "vatTitle": "VAT identification number",
+      "vatText": "VAT identification number according to § 27a of the German VAT Act (UStG):",
+      "responsibleTitle": "Responsible for content according to § 18 (2) MStV",
+      "disputeTitle": "EU dispute resolution",
+      "disputeText": "The European Commission provides a platform for online dispute resolution (ODR): https://ec.europa.eu/consumers/odr/. Our email address can be found above under “Contact”.",
+      "consumerDisputeTitle": "Consumer dispute resolution",
+      "consumerDisputeText": "We are not obliged and not willing to participate in dispute resolution proceedings before a consumer arbitration board.",
+      "sections": [
+        {
+          "id": "liability-content",
+          "title": "Liability for content",
+          "paragraphs": [
+            "As a service provider, we are responsible for our own content on these pages under general law (§ 5 DDG). However, under Articles 4 to 6 of Regulation (EU) 2022/2065 (Digital Services Act), we are not obliged as a service provider to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.",
+            "Obligations to remove or block the use of information under general law remain unaffected. Any liability in this regard is only possible from the point in time at which a specific infringement becomes known. Upon becoming aware of any such infringements, we will remove this content immediately."
+          ]
+        },
+        {
+          "id": "liability-links",
+          "title": "Liability for links",
+          "paragraphs": [
+            "Our site contains links to external third-party websites over whose content we have no control. We therefore cannot accept any liability for this external content. The respective provider or operator of the linked pages is always responsible for its content.",
+            "The linked pages were checked for possible legal violations at the time of linking. Permanent monitoring of the content of linked pages is not reasonable without concrete evidence of a legal violation. Upon becoming aware of any infringements, we will remove such links immediately."
+          ]
+        },
+        {
+          "id": "copyright",
+          "title": "Copyright",
+          "paragraphs": [
+            "The content and works created by the site operator on these pages are subject to German copyright law. Reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective creator.",
+            "Unless otherwise noted, photos and videos on this website originate from the site operator or are used with the express consent of their creators. If you nevertheless become aware of a copyright infringement, please notify us; we will remove such content immediately."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "heading": "Privacy Policy",
+      "updated": "Last updated: TODO(kunde) — add the date of the last update",
+      "intro": "Protecting your personal data matters to us. This policy explains what data is processed on this website, for what purpose, and on what legal basis.",
+      "sections": [
+        {
+          "id": "controller",
+          "title": "Controller",
+          "paragraphs": [
+            "The controller within the meaning of the General Data Protection Regulation (GDPR) is the service provider named in this website's imprint."
+          ]
+        },
+        {
+          "id": "rights-overview",
+          "title": "Your rights at a glance",
+          "paragraphs": [
+            "You have the right at any time to information about your stored personal data, its origin and recipients, and the purpose of its processing. You also have the right to rectification, erasure, restriction of processing, data portability, objection to processing, and to withdraw any consent given, with effect for the future.",
+            "To exercise these rights, you can contact us at any time using the contact details given in the imprint. You also have the right to lodge a complaint with the competent data protection supervisory authority."
+          ]
+        },
+        {
+          "id": "hosting",
+          "title": "Hosting",
+          "paragraphs": [
+            "This website is hosted by an external service provider (TODO(kunde): add the hosting provider's name, address and registered office). The personal data collected on this website is processed on the host's servers.",
+            "The host is used to provide our online offering securely, quickly and efficiently through a professional provider (Art. 6(1)(f) GDPR). A data processing agreement under Art. 28 GDPR is in place with the host (TODO(kunde): confirm)."
+          ]
+        },
+        {
+          "id": "server-logs",
+          "title": "Server log files",
+          "paragraphs": [
+            "The provider of these pages automatically collects and stores information in so-called server log files, which your browser automatically transmits. These are: browser type and version, operating system used, referrer URL, host name of the accessing computer, time of the server request, and IP address.",
+            "This data is not combined with other data sources. It is collected on the basis of Art. 6(1)(f) GDPR for the technically error-free presentation and optimisation of the website and to ensure system security. The data is deleted once it is no longer required for the purpose for which it was collected (TODO(kunde): add the exact retention period)."
+          ]
+        },
+        {
+          "id": "enquiry-form",
+          "title": "Enquiry form",
+          "paragraphs": [
+            "If you contact us via the enquiry form, we collect the data you provide there (including the date and type of celebration, location, number of guests, name, email address, phone number and your message) in order to process your enquiry and for any follow-up questions.",
+            "This data is processed on the basis of Art. 6(1)(b) GDPR, insofar as the enquiry serves to initiate a contract, and on the basis of Art. 6(1)(f) GDPR due to our legitimate interest in handling enquiries effectively.",
+            "Data from the enquiry form is deleted once the enquiry has been fully processed and no contract results, at the latest after TODO(kunde): add retention period. If a contract is concluded, the statutory retention periods under German commercial and tax law apply (in particular §§ 147 AO, 257 HGB)."
+          ]
+        },
+        {
+          "id": "whatsapp",
+          "title": "Contact via WhatsApp",
+          "paragraphs": [
+            "We offer WhatsApp as an optional channel of communication. When you use WhatsApp, your messages and the associated metadata are processed via the infrastructure of WhatsApp Ireland Limited and/or the Meta group of companies, and a transfer of data to third countries, in particular the United States, cannot be ruled out.",
+            "This use is based on your voluntary contact with us (Art. 6(1)(a) or (b) GDPR). TODO(kunde) / to be reviewed by a lawyer: add details on the WhatsApp variant used (personal or Business API) and any additional processors involved."
+          ]
+        },
+        {
+          "id": "analytics",
+          "title": "Analytics & statistics",
+          "paragraphs": [
+            "We currently do not use any analytics or tracking tool. An optional statistics feature can be enabled via this website's cookie settings; it remains inactive until you explicitly consent to it.",
+            "Should a statistics service be introduced in the future, this policy will be updated before activation with the name, purpose, legal basis and retention period of that service (TODO(kunde))."
+          ]
+        },
+        {
+          "id": "cookies",
+          "title": "Cookies & consent",
+          "paragraphs": [
+            "This website uses only technically necessary cookies, for example to store your language preference, your display mode (light/dark) and your cookie choice. These are required to operate the website and are set on the basis of § 25(2) TTDSG and/or Art. 6(1)(f) GDPR.",
+            "You can change or withdraw your choice regarding optional cookies at any time via the cookie settings."
+          ]
+        },
+        {
+          "id": "embeds",
+          "title": "Embedded third-party content",
+          "paragraphs": [
+            "Music sets and videos on this website are embedded via a click-to-load preview: content from services such as Spotify, YouTube, SoundCloud or Mixcloud is only loaded after an active click. Only then does your browser establish a direct connection to the respective provider, which may process your IP address and other data according to its own privacy policy.",
+            "Further information: Spotify (https://www.spotify.com/de/legal/privacy-policy/), YouTube / Google (https://policies.google.com/privacy), SoundCloud (https://soundcloud.com/pages/privacy), Mixcloud (https://www.mixcloud.com/privacy/).",
+            "Fonts are self-hosted locally via next/font and are not loaded from Google's servers when the page is viewed; no data is transmitted to Google for this purpose."
+          ]
+        },
+        {
+          "id": "security",
+          "title": "Data security",
+          "paragraphs": [
+            "For security reasons and to protect the transmission of confidential content, this website uses SSL/TLS encryption. You can recognise an encrypted connection by the padlock icon in your browser and by the address bar changing from “http://” to “https://”."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Changes to this policy",
+          "paragraphs": [
+            "We will update this privacy policy whenever data processing or the legal situation changes. The version currently published on this page always applies."
+          ]
+        }
+      ]
+    }
+  },
+  "social": {
+    "grid": {
+      "eyebrow": "Social",
+      "title": "Latest from Instagram & YouTube",
+      "lead": "A current selection from weddings and events — curated from @dj_veys and the YouTube channel.",
+      "playLabel": "Play video",
+      "altFallback": {
+        "instagram": "Post by VEYSL on Instagram",
+        "youtube": "Video by VEYSL on YouTube"
+      },
+      "typeLabel": {
+        "image": "Photo",
+        "video": "Video",
+        "carousel": "Gallery",
+        "reel": "Reel"
+      },
+      "openOn": {
+        "instagram": "Open post on Instagram",
+        "youtube": "Open video on YouTube"
+      },
+      "empty": {
+        "title": "The live feed is almost here.",
+        "text": "New posts will appear here automatically. Until then, it's worth a look straight on Instagram.",
+        "cta": "Follow on Instagram"
+      }
+    },
+    "instagramStrip": {
+      "eyebrow": "Instagram",
+      "title": "@dj_veys",
+      "followerLabel": "Followers",
+      "followerCaption": "Follow for daily glimpses of weddings and events.",
+      "cta": "Follow on Instagram",
+      "empty": "New posts coming soon. Join on Instagram right now."
+    },
+    "youtubeStrip": {
+      "eyebrow": "YouTube",
+      "title": "Latest videos",
+      "cta": "Subscribe to the channel",
+      "empty": "New videos coming soon. Subscribe right now."
+    }
+  },
+  "regions": {
+    "eyebrow": "Destination Wedding Europe",
+    "hub": {
+      "meta": {
+        "title": "Wedding DJ for Destination Weddings in Europe | VEYSL",
+        "description": "German-Turkish wedding DJ for destination weddings in Europe: Austria, Switzerland, the Netherlands, Belgium, France. Live hosting in German, Turkish and English."
+      },
+      "hero": {
+        "title": "Wedding DJ for Destination Weddings in Europe",
+        "subtitle": "German-Turkish, hosted in multiple languages, with travel calculated transparently — bookable beyond Baden-Württemberg, with no compromise on the Stuttgart standard."
+      },
+      "intent": {
+        "eyebrow": "Frequently searched",
+        "title": "Even without a city name: the right answers",
+        "items": [
+          {
+            "q": "Is there a Turkish wedding DJ who books Germany-wide?",
+            "a": "Yes. VEYSL is based in Stuttgart and Baden-Württemberg and books Germany-wide — from Munich to Hamburg. Travel and equipment are calculated individually per location in the quote; hosting stays the same everywhere: German, Turkish, English."
+          },
+          {
+            "q": "Can I book a wedding DJ for a destination wedding abroad?",
+            "a": "Yes. Five countries are prepared in depth — Austria, Switzerland, the Netherlands, Belgium, France — each with its own travel logistics and technical specifics. Other European countries are bookable too, with travel calculated individually."
+          },
+          {
+            "q": "Is there a DJ for a Turkish wedding abroad?",
+            "a": "Yes, that's one of the core strengths: German-Turkish, purely Turkish and multicultural weddings outside Germany, with Halay, live-orchestra elements and trilingual hosting — the same standard as in Stuttgart, just with travel itemised separately in the quote."
+          },
+          {
+            "q": "How far do you travel for weddings?",
+            "a": "Within the core radius around Stuttgart, travel is usually included; enquiries arrive regularly from across Germany and Europe, and we are bookable there just the same. Distance affects lead time and cost, not willingness."
+          }
+        ]
+      },
+      "countries": {
+        "eyebrow": "Five countries in detail",
+        "title": "Written in depth, not templated",
+        "subtitle": "Each country with its own travel logistics, its own technical specifics and its own diaspora angle — deliberately not city pages, see the FAQ below."
+      },
+      "more": {
+        "eyebrow": "Beyond these five countries",
+        "title": "More countries bookable Europe-wide",
+        "text": "The following countries don't have a dedicated page yet — they're still bookable, with the same care. Travel, accommodation and equipment are itemised in your individual quote. For destinations outside the EU customs union (e.g. Norway, like Switzerland), equipment clearance adds an extra step via an ATA Carnet — that's factored into the quote too.",
+        "cta": "Enquire for {country}"
+      },
+      "languages": {
+        "eyebrow": "To be upfront",
+        "title": "Which languages are actually hosted live",
+        "text": "Live hosting is in German, Turkish and English — in every country listed here, regardless of the national language. This site exists in several languages so as many couples as possible can read it and get in touch; that's a different thing from the language spoken on the wedding night itself."
+      },
+      "faq": {
+        "eyebrow": "Frequently asked questions",
+        "title": "Questions about destination weddings",
+        "items": [
+          {
+            "q": "Why aren't there dedicated pages for individual European cities?",
+            "a": "Because local Google results require proximity and a Google Business Profile in that area — neither of which a Stuttgart-based provider has in Oslo or Amsterdam. Country pages with real, distinct content are more honest and actually work; dozens of near-identical city pages would be exactly what Google's spam policies define as doorway pages."
+          },
+          {
+            "q": "How far in advance should I enquire for a wedding abroad?",
+            "a": "As early as possible — travel and accommodation planning need more lead time than a celebration in Stuttgart. A first, no-obligation enquiry is possible at any time, even months ahead."
+          },
+          {
+            "q": "How is travel abroad calculated?",
+            "a": "Always itemised individually and transparently in your quote: mileage or a flight for lightweight gear, accommodation, and — for destinations outside the EU customs union (e.g. Switzerland, Norway) — an extra customs step for the equipment via an ATA Carnet."
+          },
+          {
+            "q": "Do you also play countries not listed here?",
+            "a": "Yes. The five featured countries are prepared in the most depth; other European destinations are generally bookable too, with travel calculated individually."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Next step",
+        "title": "Your wedding abroad — let's talk",
+        "subtitle": "Country, date and an approximate guest count are enough for a first, no-obligation assessment.",
+        "button": "Enquire about a destination wedding"
+      }
+    },
+    "country": {
+      "meta": {
+        "title": "Wedding DJ {country} — Destination Wedding | VEYSL",
+        "description": "Wedding DJ bookable in {country}: German-Turkish, hosted in German, Turkish and English. Travel and equipment calculated transparently."
+      },
+      "eyebrow": "Destination Wedding",
+      "hero": {
+        "title": "Wedding DJ for {country}",
+        "ctaNote": "No-obligation enquiry — reply within 24 hours."
+      },
+      "availability": {
+        "verifiedTitle": "Already played",
+        "verifiedText": "VEYSL has already played in {city} — so far the only verifiable booking outside Germany.",
+        "availableTitle": "Bookable in {country}",
+        "availableText": "No dedicated reference event in {country} yet — but enquiries are welcome any time, handled with the same care as any other booking."
+      },
+      "logistics": {
+        "eyebrow": "Travel & transparency",
+        "title": "Travel to {country}"
+      },
+      "distance": {
+        "label": "roughly {km} km from Stuttgart (straight line, {city})"
+      },
+      "whatChanges": {
+        "eyebrow": "What changes abroad",
+        "title": "Equipment, power and venue rules in {country}"
+      },
+      "diaspora": {
+        "eyebrow": "Two cultures, one night",
+        "title": "The German-Turkish strength — in {country} too"
+      },
+      "languages": {
+        "eyebrow": "To be upfront",
+        "title": "Hosting languages for {country}"
+      },
+      "faq": {
+        "eyebrow": "Frequently asked questions",
+        "title": "Questions about weddings in {country}"
+      },
+      "nearby": {
+        "eyebrow": "Also bookable Europe-wide",
+        "title": "Other countries at a glance",
+        "hubCta": "See all countries"
+      },
+      "cta": {
+        "eyebrow": "Next step",
+        "title": "Your wedding in {country} — let's talk",
+        "subtitle": "Check date and scope for {country} with no obligation.",
+        "button": "Enquire for {country}"
+      }
+    }
+  },
+  "cro": {
+    "responseTimeBadge": "Reply within 24 hours, usually much sooner.",
+    "seasonScarcity": "Already {count} Saturdays booked in {year} — enquire early.",
+    "trust": {
+      "followers": "{count} followers",
+      "years": "{count}+ years of experience",
+      "events": "{count}+ events hosted",
+      "languages": "{count} languages hosted live"
+    },
+    "saveForLater": {
+      "title": "Not quite ready?",
+      "text": "No problem — get in touch with no obligation, and we'll pick this up whenever suits you.",
+      "whatsappCta": "Save on WhatsApp",
+      "mailCta": "Save by email",
+      "whatsappPrefill": "Hi, I'm interested in booking VEYSL but not quite ready yet. Could we chat with no obligation?",
+      "whatsappPrefillWithDate": "Hi, I'm interested in booking VEYSL for {date} but not quite ready yet. Could we chat with no obligation?",
+      "mailSubject": "No-obligation enquiry – save my date"
+    }
+  },
+  "media": {
+    "comingSoon": "Photo coming soon",
+    "placeholderAriaLabel": "Image slot – no photo uploaded yet"
+  },
+  "blog": {
+    "meta": {
+      "title": "Wedding Guide: DJ, Music & Planning | VEYSL",
+      "description": "{count} in-depth guides on wedding DJs, music, technology, cost and German-Turkish weddings — from VEYSL, DJ & Orkestra based in Stuttgart."
+    },
+    "index": {
+      "eyebrow": "Guide",
+      "title": "Wedding planning guide",
+      "subtitle": "{count} in-depth guides on planning, music, technology and German-Turkish weddings — written from over 12 years of hands-on experience.",
+      "updated": "Last updated on {date}",
+      "meta": {
+        "emptyDescription": "VEYSL's guide to wedding DJs, music and planning — this language is coming soon."
+      },
+      "empty": {
+        "title": "The guide is coming soon in this language.",
+        "body": "Our in-depth guides currently exist in German, Turkish and English. Until the translation is ready, we're happy to answer your questions directly.",
+        "questionsCta": "See frequently asked questions",
+        "requestCta": "Send a free enquiry"
+      }
+    },
+    "categories": {
+      "planung": "Planning",
+      "kosten": "Cost",
+      "musik": "Music",
+      "tuerkische-hochzeit": "Turkish Wedding",
+      "technik": "Technology",
+      "recht": "Legal",
+      "international": "International",
+      "real-wedding": "Real Wedding"
+    },
+    "post": {
+      "backToOverview": "Back to the guide",
+      "byAuthor": "By {author}",
+      "publishedOn": "Published on {date}",
+      "updatedOn": "Updated on {date}",
+      "readingTime": "{minutes} min read",
+      "furtherReadingTitle": "Further reading",
+      "relatedAnswersTitle": "Related answers",
+      "relatedCitiesTitle": "Also near you",
+      "relatedPostsTitle": "You might also like",
+      "cta": {
+        "eyebrow": "Not ready to stop reading?",
+        "title": "Let's talk about your date",
+        "subtitle": "Check availability for your date with no obligation — reply within 24 hours."
+      }
+    }
+  }
+}

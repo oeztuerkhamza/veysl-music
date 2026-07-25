@@ -1,0 +1,1269 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Bodas y eventos",
+    "packages": "Paquetes",
+    "weddings": "Bodas reales",
+    "music": "Música",
+    "process": "Proceso y FAQ",
+    "gallery": "Galería",
+    "epk": "EPK",
+    "contact": "Contacto",
+    "booking": "Consultar fecha",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "language": "Idioma"
+  },
+  "cta": {
+    "primary": "Consultar fecha y pedir presupuesto",
+    "short": "Consultar fecha",
+    "whatsapp": "WhatsApp",
+    "call": "Llamar",
+    "listen": "Escuchar sets",
+    "packages": "Ver paquetes",
+    "weddings": "Ver bodas reales",
+    "stickyLabel": "¿Mi fecha sigue libre?",
+    "finalTitle": "¿Listos para su fecha?",
+    "finalSubtitle": "Consulten la disponibilidad de su fecha sin compromiso: respuesta en 24 horas.",
+    "whatsappFab": "Escribir por WhatsApp"
+  },
+  "common": {
+    "onRequest": "Precio bajo consulta",
+    "from": "desde",
+    "mostBooked": "El más contratado",
+    "readMore": "Saber más",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "submit": "Enviar solicitud",
+    "required": "Campo obligatorio",
+    "skipToContent": "Saltar al contenido",
+    "loading": "Cargando …",
+    "scroll": "Desplazar"
+  },
+  "meta": {
+    "home": {
+      "title": "DJ para bodas en {city} — DJ premium | VEYSL",
+      "description": "DJ premium para bodas y eventos en {city} y alrededores. Reunión de planificación, equipo de sonido y luces propio, pista llena. Consulten su fecha."
+    },
+    "services": {
+      "title": "DJ para bodas y eventos — Servicios | VEYSL",
+      "description": "DJ para bodas, pedidas de mano, noche de henna, after-party y eventos de empresa. Qué incluye exactamente cada servicio, sin letra pequeña."
+    },
+    "packages": {
+      "title": "Paquetes y precios de DJ para bodas | VEYSL",
+      "description": "Tres paquetes claros para boda y evento: horas, sonido, luces y extras de un vistazo. Presupuesto personalizado en 24 horas."
+    },
+    "weddings": {
+      "title": "Bodas reales — Referencias y fincas | VEYSL",
+      "description": "Bodas reales, pistas llenas de verdad: clips de referencia, opiniones de parejas y wedding planners, y nuestras fincas colaboradoras."
+    },
+    "music": {
+      "title": "Música y sets — Mixes de DJ de bodas | VEYSL",
+      "description": "Sets de boda y evento para escuchar: del cóctel de bienvenida al banquete y la peaktime. En alemán, turco e internacional."
+    },
+    "process": {
+      "title": "Cómo trabajamos y FAQ — DJ de bodas | VEYSL",
+      "description": "Del primer mensaje a la última canción: el proceso en cuatro pasos y las dudas más frecuentes al contratar un DJ para su boda."
+    },
+    "booking": {
+      "title": "Consultar fecha y pedir presupuesto | VEYSL DJ",
+      "description": "Indiquen su fecha, comprueben la disponibilidad y reciban un presupuesto sin compromiso: respuesta en 24 horas."
+    },
+    "gallery": {
+      "title": "Galería y vídeos — DJ para bodas | VEYSL",
+      "description": "Fotos, aftermovies y reels de bodas y eventos."
+    },
+    "epk": {
+      "title": "EPK y colaboradores — Press kit | VEYSL",
+      "description": "Biografía, fotos de prensa, rider técnico y fincas colaboradoras para descargar."
+    },
+    "contact": {
+      "title": "Contacto — VEYSL DJ",
+      "description": "Por WhatsApp, teléfono o correo electrónico. Respondemos en menos de 24 horas."
+    },
+    "imprint": {
+      "title": "Impressum | VEYSL",
+      "description": "Información legal según el § 5 de la DDG alemana."
+    },
+    "privacy": {
+      "title": "Privacidad | VEYSL",
+      "description": "Información sobre el tratamiento de datos personales conforme al RGPD."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "DJ de bodas · Música en directo · Presentación",
+      "title": "El sonido que",
+      "titleAccent": "todos recordarán.",
+      "subtitle": "Desde la primera canción del cóctel de bienvenida hasta la última a las cuatro de la mañana: una noche con dramaturgia y una pista que no se vacía.",
+      "availability": "Las fechas de {year} vuelan: consulten la disponibilidad ahora."
+    },
+    "intro": "{name} lleva más de {years} años como DJ de bodas, músico de saz y guitarra y maestro de ceremonias en {city}. Acompaña bodas y eventos por todo Baden-Württemberg, en toda Alemania y en Europa, presenta en directo en alemán, turco e inglés y está especializado en bodas germano-turcas, biculturales y multiculturales.",
+    "trust": {
+      "title": "En lo que pueden confiar",
+      "items": {
+        "planning": {
+          "title": "Reunión de planificación",
+          "text": "Antes de cada boda, una conversación a fondo sobre el guion del día, gustos musicales, vetos y tiempos."
+        },
+        "tech": {
+          "title": "Sonido e iluminación propios",
+          "text": "Equipo profesional, cableado limpio y montaje discreto, con material de repuesto siempre en la sala."
+        },
+        "contract": {
+          "title": "Contrato por escrito",
+          "text": "Servicios, horarios y precio cerrados. Ninguna sorpresa el día de la boda."
+        },
+        "multilingual": {
+          "title": "Presentación en alemán, turco e inglés",
+          "text": "Tres idiomas en directo, para las familias que unen dos culturas."
+        }
+      }
+    },
+    "stats": {
+      "years": "Años de experiencia",
+      "events": "Bodas y eventos acompañados",
+      "languagesLabel": "Idiomas: alemán, turco, inglés"
+    },
+    "services": {
+      "eyebrow": "Servicios",
+      "title": "Para el día que solo ocurre una vez",
+      "subtitle": "Cada formato tiene su propio ritmo. Lo planificamos juntos y con antelación.",
+      "cta": "Ver todos los servicios"
+    },
+    "showreel": {
+      "eyebrow": "Aftermovie",
+      "title": "Así suena una pista llena",
+      "subtitle": "Momentos de bodas y eventos reales.",
+      "play": "Reproducir showreel"
+    },
+    "packages": {
+      "eyebrow": "Paquetes",
+      "title": "Precios transparentes",
+      "subtitle": "Tres paquetes claros como punto de partida; el alcance final siempre se acuerda a medida.",
+      "cta": "Detalles y precios"
+    },
+    "music": {
+      "eyebrow": "Música",
+      "title": "Escuchar, no adivinar",
+      "subtitle": "Sets seleccionados del cóctel de bienvenida, el banquete y la peaktime.",
+      "cta": "Escuchar todos los sets",
+      "moments": {
+        "reception": "Cóctel de bienvenida",
+        "dinner": "Banquete",
+        "peaktime": "Peaktime"
+      }
+    },
+    "testimonials": {
+      "eyebrow": "Opiniones",
+      "title": "Lo que dicen parejas y wedding planners",
+      "subtitle": "Comentarios reales de bodas reales.",
+      "ratingLabel": "{rating} ★ de {count} reseñas en Google"
+    },
+    "process": {
+      "eyebrow": "Proceso",
+      "title": "Cuatro pasos hasta la noche de su vida",
+      "cta": "Ver el proceso completo"
+    },
+    "serviceAreas": {
+      "eyebrow": "Zona de trabajo",
+      "title": "DJ de bodas cerca de ustedes",
+      "subtitle": "Contratado con regularidad en estas ciudades alrededor de Stuttgart, y allí donde haya celebración.",
+      "coreTitle": "Región principal — Stuttgart y Baden-Wurtemberg",
+      "germanyTitle": "Disponible en toda Alemania",
+      "europeTitle": "Disponible en toda Europa",
+      "europeText": "Viajamos para bodas de destino y celebraciones en el extranjero. El desplazamiento, el alojamiento y el equipo necesario se detallan de forma transparente en el presupuesto, también fuera de la UE."
+    },
+    "finalCta": {
+      "eyebrow": "Siguiente paso",
+      "title": "¿Su fecha sigue libre?",
+      "subtitle": "Comprueben la disponibilidad en menos de dos minutos y reciban un presupuesto sin compromiso: respuesta en 24 horas.",
+      "reassurance": "Sin compromiso · Sin costes ocultos · Respuesta en 24 h"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Bodas y eventos",
+      "title": "Un DJ, cuatro ocasiones, un mismo nivel",
+      "subtitle": "Ya sea una ceremonia simbólica en una bodega o una gala de empresa en un salón de celebraciones: la preparación es siempre la misma, minuciosa."
+    },
+    "items": {
+      "wedding": {
+        "title": "Boda",
+        "tagline": "Todo el día en las mismas manos",
+        "text": "Ceremonia simbólica, cóctel de bienvenida, música de fondo en el banquete, primer baile y fiesta: un arco pensado para la jornada entera y acordado con ustedes y su wedding planner.",
+        "features": [
+          "Sonido para la ceremonia, con micrófono inalámbrico",
+          "Música de fondo en el cóctel y el banquete",
+          "Acompañamiento del primer baile y su coreografía",
+          "Coordinación con fotógrafo, catering y finca"
+        ]
+      },
+      "engagement": {
+        "title": "Pedida de mano y henna",
+        "tagline": "Dos culturas, una misma noche",
+        "text": "Nişan, Kına Gecesi y pedidas de mano con el instinto justo para la tradición y los tiempos: repertorios turco, kurdo, árabe e internacional combinados con seguridad.",
+        "features": [
+          "Halay, Roman Havası y sets internacionales",
+          "Presentación en directo en alemán y turco",
+          "Coordinación con músicos en directo y davul-zurna",
+          "Guion del día para entradas y ceremonias"
+        ]
+      },
+      "afterparty": {
+        "title": "After-party",
+        "tagline": "Cuando empieza la noche de verdad",
+        "text": "Después del banquete la noche cambia de carácter. Por eso tiene su propio concepto: ambiente de luz, volumen y curva de energía en las últimas horas.",
+        "features": [
+          "Set de peaktime con dramaturgia propia",
+          "Diseño de luz para el cambio de pista",
+          "Horas extra contratables sobre la marcha",
+          "Adaptado a las limitaciones de ruido de la finca"
+        ]
+      },
+      "corporate": {
+        "title": "Evento de empresa",
+        "tagline": "Profesional, discreto, puntual",
+        "text": "Fiesta de verano, cena de Navidad, gala o presentación de producto: acuerdos claros, técnica impecable, horarios fiables y una música que encaja con la marca, no con el azar.",
+        "features": [
+          "Sonido para discursos, premios y mesas redondas",
+          "Montaje discreto en espacios representativos",
+          "Factura con el IVA desglosado",
+          "Un único interlocutor hasta el final del evento"
+        ]
+      }
+    },
+    "included": {
+      "title": "Incluido en cada contratación",
+      "items": [
+        "Primera consulta sin compromiso",
+        "Reunión de planificación personal antes del evento",
+        "Lista de canciones a medida, con lista de vetos",
+        "Montaje y desmontaje fuera de las horas contratadas",
+        "Equipo de repuesto en la sala",
+        "Seguro de responsabilidad civil y contrato por escrito"
+      ]
+    },
+    "capabilitiesStrip": {
+      "eyebrow": "Más allá del DJ",
+      "title": "Un solo interlocutor para música, presentación y técnica",
+      "subtitle": "DJ, músico y maestro de ceremonias en la misma persona: todo coordinado, nada subcontratado.",
+      "items": {
+        "wedding-dj": {
+          "label": "DJ de bodas",
+          "text": "El día de la boda, de la ceremonia al último baile."
+        },
+        "event-dj": {
+          "label": "DJ de eventos",
+          "text": "Pedida de mano, cumpleaños, fiesta de empresa: sets para cada ocasión."
+        },
+        "host": {
+          "label": "Presentación",
+          "text": "Presentación en directo en alemán, turco e inglés."
+        },
+        "live-music": {
+          "label": "Música en directo",
+          "text": "Saz y guitarra tocados en directo: su instrumento desde la infancia."
+        },
+        "orchestra": {
+          "label": "DJ y orquesta",
+          "text": "Banda en directo con sección de viento para las grandes entradas: todo de un mismo proveedor."
+        },
+        "traditional-turkish": {
+          "label": "Tradiciones turcas",
+          "text": "Gelin Çıkarma, bando y davul-zurna: los momentos tradicionales de una boda turca, acompañados en el momento justo."
+        },
+        "av-rental": {
+          "label": "Sonido, luz y técnica de eventos",
+          "text": "Equipo propio, montado con criterio profesional y también disponible en alquiler."
+        }
+      }
+    }
+  },
+  "packages": {
+    "hero": {
+      "eyebrow": "Paquetes y precios",
+      "title": "Alcance claro, precio claro",
+      "subtitle": "Estos tres paquetes cubren la mayoría de las bodas. Todo lo que va más allá se calcula a medida, sin recargo por el asesoramiento."
+    },
+    "hours": "Horas de música",
+    "hoursValue": "{hours} h",
+    "hoursUnlimited": "Sin límite fijo",
+    "guests": "Invitados",
+    "guestsValue": "hasta {guests} invitados",
+    "guestsUnlimited": "Más de 150, varias zonas",
+    "includes": "Incluye",
+    "cta": "Solicitar este paquete",
+    "customTitle": "¿Nada encaja del todo?",
+    "customText": "Destination wedding, celebración de varios días, una segunda pista o músicos en directo: cuéntennos cómo es su día y lo calculamos a medida.",
+    "customCta": "Pedir un presupuesto a medida",
+    "note": "Todos los precios incluyen el desplazamiento dentro de un radio de 50 km. Las condiciones definitivas se fijan en el presupuesto por escrito.",
+    "items": {
+      "essential": {
+        "name": "Essential",
+        "tagline": "El punto de partida claro",
+        "description": "Para celebraciones en las que lo importante es la fiesta de la noche.",
+        "features": [
+          "Hasta 6 horas de música",
+          "Sonido para hasta 80 invitados",
+          "Iluminación básica de pista",
+          "Reunión de planificación y lista de canciones",
+          "Micrófono inalámbrico para los discursos"
+        ]
+      },
+      "signature": {
+        "name": "Signature",
+        "tagline": "El día de la boda completo",
+        "description": "El paquete más contratado: acompañamiento continuo desde la ceremonia hasta la última canción.",
+        "features": [
+          "Hasta 10 horas de música",
+          "Música para la ceremonia simbólica y el cóctel",
+          "Sonido para hasta 150 invitados",
+          "Iluminación ampliada, con uplights",
+          "Segundo juego de altavoces para otra sala",
+          "Acompañamiento del primer baile",
+          "Dos reuniones de planificación"
+        ]
+      },
+      "prestige": {
+        "name": "Prestige",
+        "tagline": "Sin concesiones",
+        "description": "Para grandes celebraciones, fincas singulares y noches que nadie debería olvidar.",
+        "features": [
+          "Horas de música sin límite fijo",
+          "Sonido para más de 150 invitados en varias zonas",
+          "Cabezas móviles, haze y concepto de luz a medida",
+          "Técnico en la sala durante toda la celebración",
+          "Entrada y diseño sonoro a medida para los momentos clave",
+          "Visita previa a la finca",
+          "Reuniones de planificación ilimitadas"
+        ]
+      }
+    }
+  },
+  "weddings": {
+    "hero": {
+      "eyebrow": "Referencias",
+      "title": "Bodas reales",
+      "subtitle": "Sin fotos de banco de imágenes ni clips prestados: momentos de noches que ocurrieron de verdad."
+    },
+    "venuesTitle": "Fincas y colaboradores",
+    "venuesSubtitle": "Espacios que pisamos con frecuencia y cuya técnica, accesos y acústica ya conocemos.",
+    "empty": "La galería de referencias se está completando. Pregúntennos por ejemplos en su finca.",
+    "guests": "invitados",
+    "venue": "Finca"
+  },
+  "music": {
+    "hero": {
+      "eyebrow": "Música y sets",
+      "title": "Escuchar, no adivinar",
+      "subtitle": "Así suena la noche en cada uno de sus momentos. Filtren por momento o por género."
+    },
+    "filterAll": "Todos",
+    "empty": "Todavía no hay ningún set para esta selección.",
+    "streamingTitle": "En todas las plataformas",
+    "moments": {
+      "reception": "Cóctel de bienvenida",
+      "dinner": "Banquete",
+      "firstdance": "Primer baile",
+      "peaktime": "Peaktime",
+      "afterhours": "After hours"
+    },
+    "genres": {
+      "international": "Internacional",
+      "turkish": "Turco",
+      "german": "Alemán",
+      "house": "House",
+      "classics": "Classics",
+      "live": "En directo",
+      "arabesk": "Arabesk",
+      "halay": "Halay"
+    },
+    "player": {
+      "play": "Reproducir",
+      "pause": "Pausa",
+      "next": "Pista siguiente",
+      "previous": "Pista anterior",
+      "mute": "Silenciar",
+      "unmute": "Activar el sonido",
+      "volume": "Volumen",
+      "close": "Cerrar el reproductor",
+      "nowPlaying": "Sonando ahora",
+      "expand": "Ampliar el reproductor",
+      "collapse": "Contraer el reproductor",
+      "regionLabel": "Reproductor de música",
+      "queueTitle": "Lista de reproducción",
+      "comingSoon": "Disponible próximamente",
+      "progress": "Progreso",
+      "progressValue": "{current} de {duration}",
+      "playTrack": "Reproducir «{title}»",
+      "pauseTrack": "Pausar «{title}»",
+      "waveform": "Forma de onda",
+      "listenOn": "Escuchar en {platform}"
+    }
+  },
+  "process": {
+    "hero": {
+      "eyebrow": "Proceso",
+      "title": "Así trabajamos juntos",
+      "subtitle": "Transparencia desde el primer mensaje hasta el desmontaje, para que el día de su boda no tengan que pensar en nada."
+    },
+    "steps": {
+      "one": {
+        "title": "Solicitud y disponibilidad",
+        "text": "Ustedes envían la fecha y los datos básicos. En 24 horas reciben una respuesta en firme sobre la disponibilidad."
+      },
+      "two": {
+        "title": "Conocernos y presupuesto",
+        "text": "En una videollamada o en persona repasamos el guion del día, los gustos musicales y la técnica. Después llega el presupuesto por escrito."
+      },
+      "three": {
+        "title": "Reserva y planificación fina",
+        "text": "Tras la firma del contrato repasamos en detalle tiempos, lista de canciones, vetos y momentos clave, en coordinación con la finca y la wedding planner."
+      },
+      "four": {
+        "title": "El día en sí",
+        "text": "Montaje con antelación, prueba de sonido antes de que lleguen los invitados, presencia discreta y pista llena. Desmontaje tras la última canción."
+      }
+    },
+    "faqTitle": "Preguntas frecuentes",
+    "faqSubtitle": "Las dudas que más nos plantean las parejas.",
+    "faq": [
+      {
+        "q": "¿Con cuánta antelación deberíamos contratar un DJ?",
+        "a": "Para los sábados de temporada alta, de mayo a septiembre, recomendamos entre 12 y 18 meses de antelación. Las fechas a corto plazo también son posibles: escríbannos y comprobamos la disponibilidad en 24 horas."
+      },
+      {
+        "q": "¿Cuánto cuesta un DJ para bodas?",
+        "a": "El precio depende de las horas de música, el número de invitados, la técnica necesaria y el desplazamiento. Los tres paquetes de esta página muestran el rango habitual; el presupuesto en firme llega después de la reunión de planificación."
+      },
+      {
+        "q": "¿Podemos elegir nosotros la música?",
+        "a": "Sí. Reciben una lista estructurada para las canciones imprescindibles, las deseadas y los vetos explícitos. Las peticiones de los invitados durante la noche solo se ponen si encajan con lo que ustedes han marcado."
+      },
+      {
+        "q": "¿Se encargan también de la música de la ceremonia simbólica?",
+        "a": "Sí: los paquetes Signature y Prestige incluyen la sonorización de la ceremonia, con micrófono inalámbrico para el oficiante y para quienes intervengan."
+      },
+      {
+        "q": "¿Pinchan también en bodas turcas?",
+        "a": "Sí. Halay, Roman Havası, arabesk y los éxitos turcos del momento forman parte del repertorio fijo, combinados con sets alemanes e internacionales. La presentación puede hacerse en alemán y en turco."
+      },
+      {
+        "q": "¿Qué pasa si falla algún equipo?",
+        "a": "Siempre hay material de repuesto en la sala: un segundo portátil, un controlador de reserva y una etapa de potencia adicional. La avería de un aparato no interrumpe la noche."
+      },
+      {
+        "q": "¿Cuánto duran el montaje y el desmontaje?",
+        "a": "El montaje se hace normalmente dos o tres horas antes de que lleguen los invitados y no cuenta dentro de las horas contratadas. El desmontaje empieza después de la última canción."
+      },
+      {
+        "q": "¿Tienen seguro?",
+        "a": "Sí, hay contratado un seguro de responsabilidad civil profesional. Muchas fincas piden el justificante: se lo enviamos directamente a la finca si lo desean."
+      },
+      {
+        "q": "¿Viajan también a destination weddings?",
+        "a": "Sí, dentro de Europa y más allá. El desplazamiento, el alojamiento y, si hace falta, el alquiler de técnica en destino se detallan de forma transparente en el presupuesto."
+      },
+      {
+        "q": "¿Cómo funciona el pago?",
+        "a": "Lo habitual es una señal al firmar el contrato para reservar la fecha y el resto antes del evento o el mismo día. Todas las condiciones constan en el contrato."
+      }
+    ]
+  },
+  "answers": {
+    "hero": {
+      "eyebrow": "Preguntas y respuestas",
+      "title": "Todas las respuestas de un vistazo",
+      "subtitle": "{count} respuestas detalladas sobre reserva, precios, el día de la boda, música, técnica, contrato y bodas turcas: se leen al instante, sin clics ni desplegables."
+    },
+    "entity": "VEYSL es el servicio de DJ de bodas, música en directo y presentación de {owner}, con sede en {city} (Alemania). Desde hace más de {years} años acompaña bodas y eventos en Baden-Württemberg, en toda Alemania y en Europa, presenta en directo en alemán, turco e inglés y está especializado en bodas germano-turcas, turcas y multiculturales. Suma ya {events}+ celebraciones: como DJ, como músico en directo al saz y la guitarra y con una banda en directo con sección de viento.",
+    "meta": {
+      "title": "Preguntas y respuestas — DJ de bodas Stuttgart | VEYSL",
+      "description": "{count} respuestas detalladas sobre reserva, precios, el día de la boda, música, técnica y bodas turcas con VEYSL: para leer directamente, sin rodeos."
+    },
+    "updated": "Última actualización: {date}",
+    "seeAlso": "Otras diez preguntas más breves sobre el desarrollo del día se responden en la página",
+    "jsonFeedNote": "Este catálogo de preguntas también está disponible en JSON, legible por máquinas.",
+    "jsonFeedLink": "Abrir el feed JSON",
+    "categories": {
+      "buchung": "Reserva y fecha",
+      "preis": "Precio y costes",
+      "ablauf": "El día de la boda",
+      "musik": "Música y repertorio",
+      "technik": "Sonido e iluminación",
+      "tuerkisch": "Bodas turcas y multiculturales",
+      "location": "Espacio y desplazamiento",
+      "recht": "Contrato y aspectos legales"
+    },
+    "capabilities": {
+      "wedding-dj": "DJ de bodas",
+      "event-dj": "DJ de eventos",
+      "host": "Presentación",
+      "live-music": "Música en directo",
+      "orchestra": "DJ y orquesta",
+      "traditional-turkish": "DJ y orquesta · Gelin Çıkarma, bando, davul-zurna",
+      "av-rental": "Sonido, luz y técnica"
+    },
+    "keyFacts": {
+      "years": "Años de experiencia",
+      "events": "Bodas y eventos acompañados",
+      "languages": "Idiomas de presentación en directo",
+      "serviceArea": "Zona de actuación",
+      "capabilitiesLabel": "Servicios"
+    }
+  },
+  "booking": {
+    "hero": {
+      "eyebrow": "Solicitud de presupuesto",
+      "title": "¿Su fecha sigue libre?",
+      "subtitle": "Tres pasos cortos, menos de dos minutos. Reciben una respuesta personal en 24 horas, sin compromiso."
+    },
+    "stepLabel": "Paso {current} de {total}",
+    "steps": {
+      "date": "Fecha y lugar",
+      "details": "Detalles",
+      "contact": "Contacto"
+    },
+    "fields": {
+      "eventDate": "Fecha de la celebración",
+      "eventDatePlaceholder": "DD/MM/AAAA",
+      "eventType": "Tipo de celebración",
+      "city": "Ciudad",
+      "cityPlaceholder": "p. ej. Stuttgart",
+      "venue": "Finca o local (si ya lo saben)",
+      "venuePlaceholder": "p. ej. Schloss …",
+      "guests": "Número aproximado de invitados",
+      "startTime": "Inicio",
+      "endTime": "Fin (aprox.)",
+      "package": "Paquete de interés",
+      "budget": "Presupuesto orientativo",
+      "name": "Su nombre",
+      "firstName": "Nombre",
+      "lastName": "Apellidos",
+      "partnerName": "Nombre de su pareja",
+      "email": "Correo electrónico",
+      "phone": "Teléfono / WhatsApp",
+      "message": "Cuéntennos cómo será su día",
+      "messagePlaceholder": "Ceremonia simbólica en el jardín, unos 120 invitados, familia germano-turca, fiesta hasta las 3 …",
+      "source": "¿Cómo nos han encontrado?",
+      "services": "¿Qué servicios les interesan?",
+      "hostingLanguage": "Idioma de presentación (alemán/turco/inglés)",
+      "consent": "He leído la {privacyLink} y acepto el tratamiento de mis datos para gestionar esta solicitud.",
+      "privacyLinkText": "política de privacidad"
+    },
+    "eventTypes": {
+      "wedding": "Boda",
+      "engagement": "Pedida de mano / Nişan",
+      "henna": "Noche de henna / Kına",
+      "afterparty": "After-party",
+      "corporate": "Evento de empresa",
+      "birthday": "Cumpleaños / aniversario",
+      "other": "Otro"
+    },
+    "packageOptions": {
+      "essential": "Essential",
+      "signature": "Signature",
+      "prestige": "Prestige",
+      "custom": "A medida / aún no lo sabemos"
+    },
+    "budgets": {
+      "unsure": "Todavía no lo sabemos",
+      "a": "hasta 1.500 €",
+      "b": "1.500 – 2.500 €",
+      "c": "2.500 – 4.000 €",
+      "d": "más de 4.000 €"
+    },
+    "sources": {
+      "google": "Búsqueda en Google",
+      "instagram": "Instagram",
+      "recommendation": "Recomendación",
+      "venue": "Finca / wedding planner",
+      "ai": "ChatGPT / asistente de IA",
+      "other": "Otro"
+    },
+    "services": {
+      "dj": "DJ y música",
+      "hosting": "Presentación (alemán/turco/inglés)",
+      "liveMusic": "Música en directo (saz y guitarra)",
+      "avRental": "Sonido, luz y técnica de eventos"
+    },
+    "hostingLanguages": {
+      "noPreference": "Sin preferencia",
+      "de": "Alemán",
+      "tr": "Türkçe",
+      "en": "Inglés"
+    },
+    "availability": {
+      "checking": "Comprobando la disponibilidad …",
+      "free": "Esta fecha está libre por ahora.",
+      "freeHint": "La reserva solo se confirma con contrato: asegúrenla cuanto antes.",
+      "taken": "Para esta fecha ya hay una reserva.",
+      "takenHint": "Escríbannos igualmente: mantenemos lista de espera para segundas celebraciones y cancelaciones.",
+      "unknown": "La disponibilidad se comprueba personalmente después de su solicitud.",
+      "pastDate": "La fecha debe ser posterior a hoy."
+    },
+    "calendar": {
+      "pickerLabel": "O elijan directamente en el calendario",
+      "instructions": "Usen las flechas para moverse entre los días, las teclas de página anterior y página siguiente para cambiar de mes, e Intro o la barra espaciadora para seleccionar un día.",
+      "previousMonth": "Mes anterior",
+      "nextMonth": "Mes siguiente",
+      "today": "Hoy",
+      "status": {
+        "free": "libre",
+        "taken": "reservada",
+        "unknown": "por confirmar",
+        "past": "pasada"
+      },
+      "selectedAnnouncement": "{date} seleccionada: {status}",
+      "loading": "Cargando la disponibilidad …",
+      "error": "No se ha podido cargar la disponibilidad."
+    },
+    "validation": {
+      "required": "Este campo es obligatorio",
+      "email": "La dirección de correo no parece válida",
+      "date": "La fecha no es válida",
+      "consent": "Sin su consentimiento no podemos tramitar la solicitud",
+      "min": "Se ha quedado un poco corto",
+      "max": "Es un poco demasiado largo",
+      "guests": "Debe ser un número entre 1 y 5000"
+    },
+    "success": {
+      "title": "Su solicitud ha llegado.",
+      "text": "Gracias, {name}. En breve recibirán una confirmación por correo y, en menos de 24 horas, una respuesta personal sobre su fecha del {date}.",
+      "whatsapp": "Por WhatsApp es aún más rápido",
+      "backHome": "Volver al inicio"
+    },
+    "error": {
+      "title": "No ha funcionado.",
+      "text": "Inténtenlo de nuevo o escríbannos directamente por WhatsApp o correo electrónico.",
+      "retry": "Volver a intentarlo"
+    },
+    "aside": {
+      "title": "¿Prefieren hablar directamente?",
+      "text": "Para fechas a corto plazo y dudas abiertas, WhatsApp es la vía más rápida.",
+      "responseTime": "Respuesta habitual en menos de 24 horas."
+    }
+  },
+  "gallery": {
+    "hero": {
+      "eyebrow": "Galería",
+      "title": "Imágenes y vídeo",
+      "subtitle": "Aftermovies, reels y fotos de bodas y eventos."
+    },
+    "filterAll": "Todo",
+    "filterPhoto": "Fotos",
+    "filterVideo": "Vídeos",
+    "empty": "La galería se está construyendo."
+  },
+  "epk": {
+    "hero": {
+      "eyebrow": "Press kit",
+      "title": "EPK y colaboradores",
+      "subtitle": "Material para fincas, wedding planners, agencias y prensa, listo para descargar."
+    },
+    "bioShort": "Biografía breve",
+    "bioLong": "Versión larga",
+    "bio": {
+      "short": "Veysel Durmuş lleva más de 12 años como DJ, músico y maestro de ceremonias en bodas y eventos germano-turcos, turcos y multiculturales. Ha acompañado más de 200 celebraciones, ha tocado en directo el saz y la guitarra y ha presentado en tres idiomas: alemán, turco e inglés.",
+      "long": [
+        "Veysel Durmuş toca el saz y la guitarra desde niño: la música nunca fue solo un pasatiempo, sino un medio de expresión desde el principio. Hoy lleva ese oído para el sonido y los tiempos a bodas y eventos germano-turcos, turcos y multiculturales como DJ, músico en directo y maestro de ceremonias, con más de 12 años y más de 200 celebraciones a sus espaldas.",
+        "Profesionalmente trabaja como informático, y traslada la precisión y la disciplina de planificación de ese oficio a cada evento: un guion pensado, técnica impecable, cero sorpresas.",
+        "Fuera del trabajo es maratoniano y triatleta. No es raro que la mañana de una boda salga a correr 10 kilómetros para llegar a la noche con toda la energía. Terminada la temporada de bodas, recarga pilas acampando en los Alpes.",
+        "Sus propias palabras lo resumen: «Mi objetivo no es solo poner música. Mi objetivo es crear emociones.» Y: «Solo quien está lleno de energía puede transmitírsela a los demás.»"
+      ]
+    },
+    "stats": {
+      "years": "{years}+ años de experiencia como DJ y músico",
+      "events": "{events}+ bodas y eventos acompañados",
+      "languages": "Presentación en alemán, turco e inglés"
+    },
+    "downloads": "Descargas",
+    "downloadPress": "Fotos de prensa (ZIP)",
+    "downloadRider": "Rider técnico (PDF)",
+    "downloadEpk": "EPK completo (PDF)",
+    "downloadPending": "En preparación",
+    "partnersTitle": "Fincas y colaboradores",
+    "pressTitle": "Prensa y menciones",
+    "contactTitle": "Contacto para contrataciones"
+  },
+  "city": {
+    "eyebrow": "DJ de bodas en la zona",
+    "hero": {
+      "title": "DJ de bodas en {city}",
+      "ctaNote": "Solicitud sin compromiso: respuesta en 24 horas."
+    },
+    "meta": {
+      "title": "DJ para bodas en {city} — músico y presentador | VEYSL",
+      "description": "DJ premium para bodas en {city}: DJ, músico y presentador en alemán, turco e inglés para bodas germano-turcas y biculturales. Consulten su fecha."
+    },
+    "travel": {
+      "eyebrow": "Desplazamiento y transparencia",
+      "title": "Desplazamiento a {city}"
+    },
+    "distance": {
+      "homeBase": "Donde Veysel vive y trabaja: sin desplazamiento ni gastos de kilometraje.",
+      "included": "El desplazamiento a {city} está incluido (unos {km} km desde Stuttgart).",
+      "notIncluded": "El desplazamiento a {city} queda fuera del radio incluido (unos {km} km) y se detalla por separado en el presupuesto.",
+      "population": "unos {count} habitantes"
+    },
+    "offer": {
+      "eyebrow": "Servicios en la zona",
+      "title": "Lo que reciben en {city}",
+      "orchestraLabel": "DJ y orquesta en directo con sección de viento"
+    },
+    "bicultural": {
+      "eyebrow": "Dos culturas, una misma noche",
+      "title": "La fuerza germano-turca, también en {city}",
+      "languagesTitle": "Idiomas de presentación"
+    },
+    "venues": {
+      "eyebrow": "Espacios",
+      "title": "Espacios de boda conocidos en {city}",
+      "note": "Aviso: ninguno de estos espacios es colaborador oficial; son lugares conocidos de la ciudad que sirven de orientación.",
+      "empty": "Esta lista se está investigando con cuidado para {city}, en lugar de rellenarla con nombres sin confirmar. Cuéntennos cuál es el espacio que tienen en mente: el montaje se adapta a él."
+    },
+    "venueKind": {
+      "saal": "Salón",
+      "schloss": "Castillo",
+      "weingut": "Bodega",
+      "hotel": "Hotel",
+      "location": "Espacio"
+    },
+    "trust": {
+      "eyebrow": "En lo que pueden confiar",
+      "title": "En {city} rige el mismo estándar"
+    },
+    "faq": {
+      "eyebrow": "Preguntas frecuentes",
+      "title": "Dudas sobre bodas en {city}"
+    },
+    "nearby": {
+      "eyebrow": "En los alrededores",
+      "title": "También contratado en los alrededores de {city}",
+      "servicesTitle": "Más en VEYSL"
+    },
+    "cta": {
+      "eyebrow": "Siguiente paso",
+      "title": "¿Su fecha en {city} sigue libre?",
+      "subtitle": "Comprueben en menos de dos minutos la disponibilidad para {city} y reciban un presupuesto sin compromiso.",
+      "button": "Solicitar fecha en {city}"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contacto",
+      "title": "Hablemos de su gran día",
+      "subtitle": "Lo más rápido es WhatsApp. Para solicitudes detalladas, usen el formulario."
+    },
+    "whatsappText": "Respuesta normalmente en pocas horas",
+    "emailText": "Para solicitudes detalladas y documentación",
+    "phoneText": "L – V, de 10 a 18 h",
+    "areaTitle": "Zona de trabajo",
+    "areaText": "Contratado con regularidad en {areas}, y allí donde haya celebración.",
+    "formCta": "Ir al formulario de solicitud",
+    "formSectionEyebrow": "Escribir un mensaje",
+    "socialTitle": "Seguir",
+    "instagramCta": "Seguir en Instagram",
+    "youtubeCta": "Suscribirse en YouTube"
+  },
+  "contactForm": {
+    "title": "¿Tienen otra pregunta?",
+    "subtitle": "Para fincas, wedding planners, prensa o cualquier cosa que todavía no sea una consulta de fecha: escríbannos unas líneas y les respondemos personalmente.",
+    "fields": {
+      "firstName": "Nombre",
+      "lastName": "Apellidos",
+      "email": "Correo electrónico",
+      "phone": "Teléfono (opcional)",
+      "subject": "¿Sobre qué nos escriben?",
+      "company": "Empresa / espacio (opcional)",
+      "companyPlaceholder": "p. ej. finca, hotel o sala …",
+      "preferredContact": "Vía de contacto preferida (opcional)",
+      "eventDate": "Fecha, si ya la conocen (opcional)",
+      "eventDatePlaceholder": "DD/MM/AAAA",
+      "message": "Su mensaje",
+      "messagePlaceholder": "Cuéntennos brevemente de qué se trata …",
+      "consent": "He leído la {privacyLink} y acepto el tratamiento de mis datos para gestionar este mensaje.",
+      "privacyLinkText": "política de privacidad"
+    },
+    "subjects": {
+      "general": "Consulta general",
+      "booking": "Consulta sobre una reserva",
+      "technical": "Técnica / alquiler de equipos",
+      "partnership": "Colaboración con espacios o wedding planners",
+      "press": "Prensa",
+      "other": "Otros"
+    },
+    "preferredContactOptions": {
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "whatsapp": "WhatsApp"
+    },
+    "success": {
+      "title": "Su mensaje ha llegado.",
+      "text": "Gracias, {name}. Les responderemos personalmente lo antes posible."
+    }
+  },
+  "whatsappFlow": {
+    "title": "Un par de preguntas y directos a WhatsApp",
+    "skipAll": "Escribir directamente",
+    "skip": "Omitir",
+    "close": "Cerrar",
+    "continueToWhatsapp": "Seguir en WhatsApp",
+    "privacyNote": "Sus respuestas se guardan para gestionar su solicitud. <privacyLink>Política de privacidad</privacyLink>",
+    "messageIntro": "Hola VEYSL, estoy buscando un DJ.",
+    "messageLabels": {
+      "eventType": "Ocasión",
+      "date": "Fecha",
+      "city": "Lugar",
+      "guests": "Invitados",
+      "service": "Servicio"
+    },
+    "steps": {
+      "eventType": {
+        "question": "Ocasión"
+      },
+      "date": {
+        "question": "Fecha"
+      },
+      "city": {
+        "question": "Lugar (opcional)",
+        "placeholder": "p. ej. Stuttgart"
+      },
+      "guests": {
+        "question": "Número aproximado de invitados",
+        "options": {
+          "under80": "hasta 80",
+          "from80to150": "80–150",
+          "from150to250": "150–250",
+          "over250": "250+"
+        }
+      },
+      "service": {
+        "question": "Servicio que les interesa (opcional)",
+        "options": {
+          "dj": "DJ",
+          "djOrchestra": "DJ y orquesta",
+          "hosting": "+ presentación",
+          "technik": "+ técnica"
+        }
+      }
+    }
+  },
+  "footer": {
+    "tagline": "DJ de bodas, músico y maestro de ceremonias — Stuttgart",
+    "navTitle": "Navegación",
+    "legalTitle": "Aviso legal",
+    "contactTitle": "Contacto",
+    "followTitle": "Seguir",
+    "imprint": "Impressum",
+    "privacy": "Privacidad",
+    "rights": "Todos los derechos reservados.",
+    "builtBy": "Diseño y desarrollo",
+    "viewOnMaps": "Ver en Google Maps"
+  },
+  "theme": {
+    "toggle": "Cambiar de tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  },
+  "consent": {
+    "title": "Ajustes de privacidad",
+    "text": "Solo utilizamos cookies técnicamente necesarias. Las estadísticas opcionales nos ayudan a mejorar la web: ustedes deciden y pueden revocarlo cuando quieran.",
+    "acceptAll": "Aceptar todas",
+    "essentialOnly": "Solo las necesarias",
+    "settings": "Ajustes",
+    "privacyLink": "política de privacidad"
+  },
+  "notFound": {
+    "title": "Esta página no existe.",
+    "text": "Es probable que el enlace esté obsoleto. Desde aquí pueden volver.",
+    "cta": "Ir al inicio"
+  },
+  "legal": {
+    "draftNotice": "Borrador: este contenido se basa en la información disponible actualmente y debe ser revisado por un abogado o una abogada antes de su publicación.",
+    "missingValue": "TODO(kunde): pendiente de completar",
+    "imprint": {
+      "heading": "Impressum",
+      "intro": "Información según el § 5 de la DDG (ley alemana de servicios digitales).",
+      "providerTitle": "Prestador del servicio",
+      "nameLabel": "Denominación comercial",
+      "ownerLabel": "Titular",
+      "addressLabel": "Dirección",
+      "contactTitle": "Contacto",
+      "phoneLabel": "Teléfono",
+      "emailLabel": "Correo electrónico",
+      "websiteLabel": "Sitio web",
+      "activityTitle": "Ámbito de actividad",
+      "vatTitle": "Número de identificación a efectos del IVA",
+      "vatText": "Número de identificación a efectos del IVA según el § 27a de la ley alemana del IVA (UStG):",
+      "responsibleTitle": "Responsable del contenido según el § 18, apdo. 2, MStV",
+      "disputeTitle": "Resolución de litigios en la UE",
+      "disputeText": "La Comisión Europea pone a disposición una plataforma de resolución de litigios en línea (RLL): https://ec.europa.eu/consumers/odr/. Nuestra dirección de correo electrónico figura más arriba, en «Contacto».",
+      "consumerDisputeTitle": "Resolución de litigios de consumo (VSBG)",
+      "consumerDisputeText": "No estamos obligados ni dispuestos a participar en un procedimiento de resolución de litigios ante una junta arbitral de consumo en el sentido de la ley alemana de resolución de litigios de consumo.",
+      "sections": [
+        {
+          "id": "liability-content",
+          "title": "Responsabilidad por los contenidos",
+          "paragraphs": [
+            "Como prestador de servicios, somos responsables de los contenidos propios de estas páginas conforme a la legislación general (§ 5 DDG). No obstante, según los artículos 4 a 6 del Reglamento (UE) 2022/2065 (Reglamento de Servicios Digitales), como prestador de servicios no estamos obligados a supervisar la información ajena transmitida o almacenada ni a investigar circunstancias que apunten a una actividad ilícita.",
+            "Las obligaciones de retirar o bloquear el uso de información conforme a la legislación general no se ven afectadas. Una responsabilidad al respecto solo es posible a partir del momento en que se tiene conocimiento de una infracción concreta. En cuanto tengamos constancia de infracciones de este tipo, retiraremos esos contenidos de inmediato."
+          ]
+        },
+        {
+          "id": "liability-links",
+          "title": "Responsabilidad por los enlaces",
+          "paragraphs": [
+            "Nuestra oferta contiene enlaces a sitios web externos de terceros sobre cuyos contenidos no tenemos ninguna influencia. Por ello tampoco podemos asumir ninguna garantía sobre esos contenidos ajenos. Del contenido de las páginas enlazadas responde siempre su respectivo proveedor u operador.",
+            "Las páginas enlazadas se revisaron en el momento de enlazarlas por si presentaban posibles infracciones legales. Un control permanente de sus contenidos no resulta exigible sin indicios concretos de una infracción. En cuanto tengamos constancia de infracciones, retiraremos dichos enlaces de inmediato."
+          ]
+        },
+        {
+          "id": "copyright",
+          "title": "Derechos de autor",
+          "paragraphs": [
+            "Los contenidos y las obras creados por el operador de estas páginas están sujetos a la legislación alemana sobre derechos de autor. La reproducción, edición, distribución y cualquier tipo de explotación fuera de los límites de los derechos de autor requieren el consentimiento por escrito de su respectivo autor.",
+            "Las fotos y los vídeos de este sitio web proceden, salvo indicación en contrario, del operador de la página o se utilizan con el consentimiento expreso de sus autores. Si aun así detecta una vulneración de derechos de autor, le rogamos que nos lo comunique; los contenidos correspondientes se retirarán de inmediato."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "heading": "Política de privacidad",
+      "updated": "Última actualización: TODO(kunde) — añadir la fecha de la última actualización",
+      "intro": "La protección de sus datos personales nos importa. Esta declaración informa sobre qué datos se tratan en este sitio web, con qué finalidad y sobre qué base jurídica.",
+      "sections": [
+        {
+          "id": "controller",
+          "title": "Responsable del tratamiento",
+          "paragraphs": [
+            "El responsable del tratamiento en el sentido del Reglamento General de Protección de Datos (RGPD) es el prestador de servicios indicado en el Impressum de este sitio web."
+          ]
+        },
+        {
+          "id": "rights-overview",
+          "title": "Sus derechos, de un vistazo",
+          "paragraphs": [
+            "Tiene derecho en todo momento a obtener información sobre sus datos personales almacenados, su origen y sus destinatarios, así como sobre la finalidad del tratamiento. Le asisten además los derechos de rectificación, supresión, limitación del tratamiento, portabilidad de los datos, oposición al tratamiento y retirada de un consentimiento otorgado, con efectos para el futuro.",
+            "Para ejercer estos derechos puede dirigirse a nosotros en cualquier momento a través de los datos de contacto indicados en el Impressum. Le asiste asimismo el derecho a presentar una reclamación ante la autoridad de control de protección de datos competente."
+          ]
+        },
+        {
+          "id": "hosting",
+          "title": "Alojamiento web",
+          "paragraphs": [
+            "Este sitio web está alojado en un proveedor externo (TODO(kunde): añadir el nombre, la dirección y el domicilio social del proveedor de alojamiento). Los datos personales que se recogen en este sitio web se tratan en los servidores de dicho proveedor.",
+            "El proveedor de alojamiento se utiliza con el fin de prestar nuestra oferta en línea de forma segura, rápida y eficiente a través de un proveedor profesional (art. 6, apdo. 1, letra f, RGPD). Con el proveedor de alojamiento existe un contrato de encargo del tratamiento conforme al art. 28 del RGPD (TODO(kunde) confirmar)."
+          ]
+        },
+        {
+          "id": "server-logs",
+          "title": "Archivos de registro del servidor",
+          "paragraphs": [
+            "El proveedor de estas páginas recoge y almacena automáticamente información en los denominados archivos de registro del servidor, que su navegador transmite de forma automática. Son los siguientes: tipo y versión del navegador, sistema operativo utilizado, URL de referencia, nombre de host del equipo que accede, hora de la petición al servidor y dirección IP.",
+            "Estos datos no se combinan con otras fuentes de datos. Su recogida se basa en el art. 6, apdo. 1, letra f, del RGPD, con el fin de presentar y optimizar el sitio web sin errores técnicos y de garantizar la seguridad de los sistemas. Los datos se suprimen en cuanto dejan de ser necesarios para la finalidad con la que se recogieron (TODO(kunde): añadir el plazo de conservación concreto)."
+          ]
+        },
+        {
+          "id": "enquiry-form",
+          "title": "Formulario de solicitud",
+          "paragraphs": [
+            "Cuando nos escribe a través del formulario de solicitud, recogemos los datos que indica en él (entre otros, la fecha y el tipo de celebración, el lugar, el número de invitados, su nombre, su dirección de correo electrónico, su teléfono y su mensaje) para tramitar su solicitud y para el caso de que surjan preguntas posteriores.",
+            "El tratamiento de estos datos se basa en el art. 6, apdo. 1, letra b, del RGPD, siempre que la solicitud sirva para preparar un contrato, así como en el art. 6, apdo. 1, letra f, del RGPD, por nuestro interés legítimo en tramitar las solicitudes de forma eficaz.",
+            "Los datos del formulario de solicitud se suprimen en cuanto la solicitud queda tramitada definitivamente y no se llega a un contrato, y como muy tarde después de TODO(kunde): añadir plazo. Si se celebra un contrato, se aplican los plazos legales de conservación del derecho mercantil y fiscal alemán (en particular, los §§ 147 AO y 257 HGB)."
+          ]
+        },
+        {
+          "id": "whatsapp",
+          "title": "Contacto a través de WhatsApp",
+          "paragraphs": [
+            "Ofrecemos WhatsApp como canal de comunicación opcional. Al utilizar WhatsApp, sus mensajes y los metadatos que se generan se tratan a través de la infraestructura de WhatsApp Ireland Limited o del grupo de empresas Meta, sin que pueda descartarse una transferencia de datos a terceros países, en particular a Estados Unidos.",
+            "Su uso se basa en el contacto voluntario por su parte (art. 6, apdo. 1, letras a o b, del RGPD). TODO(kunde) / pendiente de revisión legal: añadir los detalles sobre la variante de WhatsApp utilizada (personal o Business API) y sobre posibles encargados del tratamiento adicionales."
+          ]
+        },
+        {
+          "id": "analytics",
+          "title": "Análisis y estadísticas",
+          "paragraphs": [
+            "Actualmente no utilizamos ninguna herramienta de análisis o seguimiento. A través de los ajustes de cookies de este sitio web se puede activar de forma opcional una función de estadísticas, que permanece inactiva mientras usted no la consienta expresamente.",
+            "Si en el futuro se implantara un servicio de estadísticas, esta declaración se completará antes de su activación con el nombre, la finalidad, la base jurídica y el plazo de conservación de dicho servicio (TODO(kunde))."
+          ]
+        },
+        {
+          "id": "cookies",
+          "title": "Cookies y consentimiento",
+          "paragraphs": [
+            "Este sitio web utiliza exclusivamente cookies técnicamente necesarias, por ejemplo para guardar su preferencia de idioma, su modo de visualización (claro/oscuro) y su elección sobre las cookies. Son necesarias para el funcionamiento del sitio web y se instalan sobre la base del § 25, apdo. 2, de la TTDSG y del art. 6, apdo. 1, letra f, del RGPD.",
+            "Puede modificar o revocar en cualquier momento su elección sobre las cookies opcionales a través de los ajustes de cookies."
+          ]
+        },
+        {
+          "id": "embeds",
+          "title": "Contenidos integrados de terceros",
+          "paragraphs": [
+            "Los sets de música y los vídeos de este sitio web se integran mediante una vista previa que se carga solo al hacer clic: los contenidos de servicios como Spotify, YouTube, SoundCloud o Mixcloud no se cargan hasta que usted hace clic de forma activa. Solo entonces su navegador establece una conexión directa con el proveedor correspondiente, que puede tratar su dirección IP y otros datos conforme a su propia política de privacidad.",
+            "Más información: Spotify (https://www.spotify.com/de/legal/privacy-policy/), YouTube / Google (https://policies.google.com/privacy), SoundCloud (https://soundcloud.com/pages/privacy), Mixcloud (https://www.mixcloud.com/privacy/).",
+            "Las tipografías se integran localmente mediante next/font y no se cargan desde servidores de Google al abrir la página; con ello no se produce ninguna transferencia de datos a Google."
+          ]
+        },
+        {
+          "id": "security",
+          "title": "Seguridad de los datos",
+          "paragraphs": [
+            "Por motivos de seguridad y para proteger la transmisión de contenidos confidenciales, este sitio web utiliza cifrado SSL/TLS. Reconocerá una conexión cifrada por el icono del candado de su navegador y porque la barra de direcciones cambia de «http://» a «https://»."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Modificaciones de esta declaración",
+          "paragraphs": [
+            "Adaptaremos esta política de privacidad en cuanto cambien el tratamiento de datos o la situación legal. Será aplicable en cada caso la versión disponible en esta página."
+          ]
+        }
+      ]
+    }
+  },
+  "social": {
+    "grid": {
+      "eyebrow": "Social",
+      "title": "Lo último en Instagram y YouTube",
+      "lead": "Una selección actual de bodas y eventos, del perfil @dj_veys y del canal de YouTube.",
+      "playLabel": "Reproducir vídeo",
+      "altFallback": {
+        "instagram": "Publicación de VEYSL en Instagram",
+        "youtube": "Vídeo de VEYSL en YouTube"
+      },
+      "typeLabel": {
+        "image": "Foto",
+        "video": "Vídeo",
+        "carousel": "Galería",
+        "reel": "Reel"
+      },
+      "openOn": {
+        "instagram": "Abrir la publicación en Instagram",
+        "youtube": "Abrir el vídeo en YouTube"
+      },
+      "empty": {
+        "title": "El feed en directo llega enseguida.",
+        "text": "Las nuevas publicaciones aparecerán aquí automáticamente. Mientras tanto, merece la pena echar un vistazo a Instagram.",
+        "cta": "Seguir en Instagram"
+      }
+    },
+    "instagramStrip": {
+      "eyebrow": "Instagram",
+      "title": "@dj_veys",
+      "followerLabel": "Seguidores",
+      "followerCaption": "Síganos para ver a diario momentos de bodas y eventos.",
+      "cta": "Seguir en Instagram",
+      "empty": "Pronto habrá publicaciones nuevas. Únanse ya en Instagram."
+    },
+    "youtubeStrip": {
+      "eyebrow": "YouTube",
+      "title": "Últimos vídeos",
+      "cta": "Suscribirse al canal",
+      "empty": "Pronto habrá vídeos nuevos. Suscríbanse ya."
+    }
+  },
+  "regions": {
+    "eyebrow": "Destination wedding en Europa",
+    "hub": {
+      "meta": {
+        "title": "DJ de bodas para destination weddings en Europa | VEYSL",
+        "description": "DJ de bodas germano-turco para destination weddings en Europa: Austria, Suiza, Países Bajos, Bélgica y Francia. Presentación en alemán, turco e inglés."
+      },
+      "hero": {
+        "title": "DJ de bodas para destination weddings en Europa",
+        "subtitle": "Germano-turco, con presentación en directo en alemán, turco e inglés y desplazamiento calculado con transparencia: contratable mucho más allá de Baden-Württemberg, sin renunciar al estándar de Stuttgart."
+      },
+      "intent": {
+        "eyebrow": "Búsquedas frecuentes",
+        "title": "También sin nombre de ciudad: las respuestas correctas",
+        "items": [
+          {
+            "q": "¿Hay algún DJ de bodas turco que trabaje en toda Alemania?",
+            "a": "Sí. VEYSL tiene su base en Stuttgart y Baden-Württemberg y es contratable en toda Alemania, de München a Hamburg. El desplazamiento y la técnica se calculan por separado para cada lugar en el presupuesto; la presentación es la misma en todas partes: alemán, turco e inglés."
+          },
+          {
+            "q": "¿Puedo contratar un DJ de bodas para una destination wedding en el extranjero?",
+            "a": "Sí. Hay cinco países preparados en detalle (Austria, Suiza, Países Bajos, Bélgica y Francia), cada uno con su propia lógica de desplazamiento y sus propias particularidades técnicas. Otros países europeos también son contratables, con el viaje calculado de forma individual."
+          },
+          {
+            "q": "¿Hay un DJ para una boda turca en el extranjero?",
+            "a": "Sí, y es uno de los puntos fuertes: bodas germano-turcas, íntegramente turcas y multiculturales fuera de Alemania, con halay, elementos de orquesta en directo y presentación en alemán, turco e inglés. El mismo estándar que en Stuttgart, con el desplazamiento indicado por separado en el presupuesto."
+          },
+          {
+            "q": "¿Hasta dónde se desplazan para una boda?",
+            "a": "Dentro del radio cercano a Stuttgart el desplazamiento suele estar incluido; más allá, VEYSL es contratable en toda Alemania y en toda Europa, y llegan solicitudes con regularidad. La distancia determina la antelación y el coste, no la disposición a viajar."
+          }
+        ]
+      },
+      "countries": {
+        "eyebrow": "Cinco países en detalle",
+        "title": "Trabajados a fondo, nunca copiados y pegados",
+        "subtitle": "Cada país con su propia lógica de desplazamiento, sus particularidades técnicas y su vínculo con la diáspora. Deliberadamente sin páginas por ciudad: véanse las preguntas frecuentes más abajo."
+      },
+      "more": {
+        "eyebrow": "Más allá de esos cinco países",
+        "title": "Más países contratables en toda Europa",
+        "text": "Estos países todavía no tienen página propia, pero son igualmente contratables y con el mismo cuidado. El desplazamiento, el alojamiento y la técnica se detallan en el presupuesto personalizado. En destinos fuera de la unión aduanera de la UE (por ejemplo Noruega, igual que Suiza) se añade un trámite aduanero para la técnica mediante cuaderno ATA, que también se tiene en cuenta en el presupuesto.",
+        "cta": "Solicitar para {country}"
+      },
+      "languages": {
+        "eyebrow": "Con toda honestidad",
+        "title": "Qué idiomas se presentan realmente en directo",
+        "text": "La presentación en directo se hace en alemán, turco e inglés, en cualquiera de los países mencionados y con independencia del idioma local. Esta web existe también en español para que el mayor número posible de parejas pueda leer y solicitar con comodidad; eso es algo distinto del idioma en que se presenta la velada."
+      },
+      "faq": {
+        "eyebrow": "Preguntas frecuentes",
+        "title": "Preguntas sobre destination weddings",
+        "items": [
+          {
+            "q": "¿Por qué no hay páginas propias para cada ciudad europea?",
+            "a": "Porque los resultados locales de Google presuponen cercanía y un perfil de empresa en el lugar, y un proveedor de Stuttgart no tiene ninguna de las dos cosas en Oslo o en Ámsterdam. Las páginas por país, con contenido realmente distinto, son más honestas y además funcionan; decenas de páginas de ciudad intercambiables serían justo lo que las directrices antispam de Google llaman páginas puerta."
+          },
+          {
+            "q": "¿Con cuánta antelación conviene solicitar una boda en el extranjero?",
+            "a": "Cuanto antes mejor: el viaje y el alojamiento requieren más planificación que una fiesta en Stuttgart. Aun así, una primera solicitud sin compromiso es posible en cualquier momento, incluso con meses de antelación."
+          },
+          {
+            "q": "¿Cómo se calcula el desplazamiento al extranjero?",
+            "a": "Siempre por separado y con transparencia en el presupuesto personalizado: trayecto por carretera o vuelo con equipo técnico ligero, alojamiento y, en destinos fuera de la unión aduanera de la UE (por ejemplo Suiza o Noruega), un trámite aduanero adicional para la técnica mediante cuaderno ATA."
+          },
+          {
+            "q": "¿Pinchan también en países que no aparecen aquí?",
+            "a": "Sí. Los cinco países presentados son los más desarrollados, pero otros destinos europeos también son contratables, con el viaje calculado de forma individual."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Siguiente paso",
+        "title": "Su boda en el extranjero: hablemos",
+        "subtitle": "Con el país, la fecha y el número aproximado de invitados basta para una primera valoración sin compromiso.",
+        "button": "Solicitar una destination wedding"
+      }
+    },
+    "country": {
+      "meta": {
+        "title": "DJ de bodas en {country} — destination wedding | VEYSL",
+        "description": "DJ de bodas contratable en {country}: germano-turco, presentación en alemán, turco e inglés. Desplazamiento y técnica calculados con transparencia."
+      },
+      "eyebrow": "Destination wedding",
+      "hero": {
+        "title": "DJ de bodas en {country}",
+        "ctaNote": "Solicitud sin compromiso: respuesta en 24 horas."
+      },
+      "availability": {
+        "verifiedTitle": "Ya ha actuado allí",
+        "verifiedText": "VEYSL ya ha actuado en {city}: hasta ahora, la única actuación documentada fuera de Alemania.",
+        "availableTitle": "Contratable en {country}",
+        "availableText": "Todavía no hay un evento de referencia propio en {country}, pero se puede solicitar en cualquier momento y con el mismo cuidado que cualquier otra contratación."
+      },
+      "logistics": {
+        "eyebrow": "Desplazamiento y transparencia",
+        "title": "El viaje a {country}"
+      },
+      "distance": {
+        "label": "unos {km} km desde Stuttgart (en línea recta, {city})"
+      },
+      "whatChanges": {
+        "eyebrow": "Qué cambia en el extranjero",
+        "title": "Técnica, corriente y normativa en {country}"
+      },
+      "diaspora": {
+        "eyebrow": "Dos culturas, una sola noche",
+        "title": "La fuerza germano-turca, también en {country}"
+      },
+      "languages": {
+        "eyebrow": "Con toda honestidad",
+        "title": "Idiomas de presentación para {country}"
+      },
+      "faq": {
+        "eyebrow": "Preguntas frecuentes",
+        "title": "Preguntas sobre bodas en {country}"
+      },
+      "nearby": {
+        "eyebrow": "También contratable en toda Europa",
+        "title": "Los demás países de un vistazo",
+        "hubCta": "Ver todos los países"
+      },
+      "cta": {
+        "eyebrow": "Siguiente paso",
+        "title": "Su boda en {country}: hablemos",
+        "subtitle": "Comprueben sin compromiso la fecha y las condiciones para {country}.",
+        "button": "Solicitar para {country}"
+      }
+    }
+  },
+  "cro": {
+    "responseTimeBadge": "Respuesta habitual en menos de 24 horas.",
+    "seasonScarcity": "Ya hay {count} sábados de {year} reservados: consulten con tiempo.",
+    "trust": {
+      "followers": "{count} seguidores",
+      "years": "{count}+ años de experiencia",
+      "events": "{count}+ eventos acompañados",
+      "languages": "{count} idiomas presentados en directo"
+    },
+    "saveForLater": {
+      "title": "¿Aún no lo tienen decidido?",
+      "text": "No hay problema: escríbannos sin compromiso y lo hablamos cuando a ustedes les venga bien.",
+      "whatsappCta": "Guardar por WhatsApp",
+      "mailCta": "Guardar por correo",
+      "whatsappPrefill": "Hola, me interesa una fecha con VEYSL, pero todavía no lo tengo decidido. ¿Podemos hablarlo sin compromiso?",
+      "whatsappPrefillWithDate": "Hola, me interesa el {date} con VEYSL, pero todavía no lo tengo decidido. ¿Podemos hablarlo sin compromiso?",
+      "mailSubject": "Solicitud sin compromiso: reserva provisional de fecha"
+    }
+  },
+  "media": {
+    "comingSoon": "Foto en breve",
+    "placeholderAriaLabel": "Espacio para imagen: todavía sin foto"
+  },
+  "blog": {
+    "meta": {
+      "title": "Guía de bodas: DJ, música y organización | VEYSL",
+      "description": "{count} guías detalladas sobre DJ de bodas, música, técnica, costes y bodas germano-turcas, de VEYSL, DJ y orquesta con base en Stuttgart."
+    },
+    "index": {
+      "eyebrow": "Guía",
+      "title": "Guía para su boda",
+      "subtitle": "{count} guías detalladas sobre organización, música, técnica y bodas germano-turcas, escritas a partir de más de 12 años de práctica.",
+      "updated": "Última actualización: {date}",
+      "meta": {
+        "emptyDescription": "La guía de VEYSL sobre DJ de bodas, música y organización: la versión en español llega pronto."
+      },
+      "empty": {
+        "title": "La guía llegará pronto en español.",
+        "body": "Nuestras guías detalladas existen por ahora en alemán, turco e inglés. Hasta que esté lista la traducción, respondemos con mucho gusto a sus preguntas directamente.",
+        "questionsCta": "Ver preguntas frecuentes",
+        "requestCta": "Consultar sin compromiso"
+      }
+    },
+    "categories": {
+      "planung": "Organización",
+      "kosten": "Costes",
+      "musik": "Música",
+      "tuerkische-hochzeit": "Boda turca",
+      "technik": "Técnica",
+      "recht": "Legal",
+      "international": "Internacional",
+      "real-wedding": "Boda real"
+    },
+    "post": {
+      "backToOverview": "Volver a la guía",
+      "byAuthor": "Por {author}",
+      "publishedOn": "Publicado el {date}",
+      "updatedOn": "Actualizado el {date}",
+      "readingTime": "{minutes} min de lectura",
+      "furtherReadingTitle": "Para seguir leyendo",
+      "relatedAnswersTitle": "Respuestas relacionadas",
+      "relatedCitiesTitle": "También cerca de ustedes",
+      "relatedPostsTitle": "Esto también puede interesarles",
+      "cta": {
+        "eyebrow": "¿Leer no basta?",
+        "title": "Hablemos de su fecha",
+        "subtitle": "Comprueben sin compromiso si su fecha sigue libre: respuesta en 24 horas."
+      }
+    }
+  }
+}

@@ -1,0 +1,1269 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "services": "Düğün & Etkinlik",
+    "packages": "Paketler",
+    "weddings": "Gerçek Düğünler",
+    "music": "Müzik",
+    "process": "Süreç & SSS",
+    "gallery": "Galeri",
+    "epk": "EPK",
+    "contact": "İletişim",
+    "booking": "Tarih sorgulayın",
+    "menu": "Menü",
+    "close": "Kapat",
+    "language": "Dil"
+  },
+  "cta": {
+    "primary": "Müsaitliği sorgulayın, teklif alın",
+    "short": "Tarih sorgulayın",
+    "whatsapp": "WhatsApp",
+    "call": "Arayın",
+    "listen": "Setleri dinleyin",
+    "packages": "Paketleri inceleyin",
+    "weddings": "Gerçek düğünleri görün",
+    "stickyLabel": "Tarihim hâlâ boş mu?",
+    "finalTitle": "Tarihiniz için hazır mısınız?",
+    "finalSubtitle": "Tarihinizin müsaitliğini bağlayıcı olmadan sorgulayın — 24 saat içinde yanıt.",
+    "whatsappFab": "WhatsApp'tan yazın"
+  },
+  "common": {
+    "onRequest": "Fiyat talep üzerine",
+    "from": "başlangıç",
+    "mostBooked": "En çok tercih edilen",
+    "readMore": "Daha fazla bilgi",
+    "back": "Geri",
+    "next": "İleri",
+    "submit": "Talebi gönderin",
+    "required": "Zorunlu alan",
+    "skipToContent": "İçeriğe geçin",
+    "loading": "Yükleniyor …",
+    "scroll": "Kaydırın"
+  },
+  "meta": {
+    "home": {
+      "title": "Düğün DJ'i {city} — Premium Düğün & Etkinlik DJ'i | VEYSL",
+      "description": "{city} ve çevresinde premium düğün ve etkinlik DJ'i. Kişisel ön görüşme, kendi ses ve ışık sistemi, dolup taşan bir pist. Tarihinizi hemen sorgulayın."
+    },
+    "services": {
+      "title": "Düğün & Etkinlik — Hizmetler | VEYSL DJ",
+      "description": "Düğün, nişan, kına gecesi, after-party ve kurumsal etkinlik DJ'i. Her hizmete tam olarak neler dahil, şeffafça anlatıldı."
+    },
+    "packages": {
+      "title": "Paketler & Fiyatlar — Düğün DJ'i | VEYSL",
+      "description": "Düğün ve etkinlik için üç net paket: kapsam, saat, teknik donanım ve ekstralar tek bakışta. Size özel teklif 24 saat içinde."
+    },
+    "weddings": {
+      "title": "Gerçek Düğünler — Referanslar & Mekânlar | VEYSL",
+      "description": "Gerçek düğünler, gerçek pistler: referans klipleri, çiftlerin ve organizatörlerin yorumları ve partner mekânlarımız."
+    },
+    "music": {
+      "title": "Müzik & Setler — Düğün DJ Mixleri | VEYSL",
+      "description": "Dinlemeye açık düğün ve etkinlik setleri: kokteylden yemeğe, yemekten peaktime'a. Türkçe, Almanca ve uluslararası."
+    },
+    "process": {
+      "title": "Süreç & Sık Sorulan Sorular — Düğün DJ'i | VEYSL",
+      "description": "İlk mesajdan son şarkıya: dört adımda süreç ve DJ rezervasyonu hakkında en sık sorulan soruların yanıtları."
+    },
+    "booking": {
+      "title": "Tarih Sorgulayın & Teklif Alın | VEYSL DJ",
+      "description": "Tarihinizi girin, müsaitliği görün, bağlayıcı olmayan teklifinizi alın — 24 saat içinde yanıt."
+    },
+    "gallery": {
+      "title": "Galeri & Videolar — Düğün DJ'i | VEYSL",
+      "description": "Düğün ve etkinliklerden fotoğraflar, aftermovie'ler ve reels'ler."
+    },
+    "epk": {
+      "title": "EPK & Partnerler — Press Kit | VEYSL",
+      "description": "Biyografi, basın fotoğrafları, technical rider ve partner mekânlar — indirmeye hazır."
+    },
+    "contact": {
+      "title": "İletişim — VEYSL DJ",
+      "description": "WhatsApp, telefon veya e-posta ile doğrudan ulaşın. 24 saat içinde size dönüyoruz."
+    },
+    "imprint": {
+      "title": "Impressum | VEYSL",
+      "description": "§ 5 DDG uyarınca yasal bilgiler."
+    },
+    "privacy": {
+      "title": "Gizlilik Politikası | VEYSL",
+      "description": "DSGVO kapsamında kişisel verilerin işlenmesine ilişkin bilgiler."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Düğün DJ'i · Canlı müzik · Sunuculuk",
+      "title": "Herkesin yıllarca",
+      "titleAccent": "hatırlayacağı ses.",
+      "subtitle": "Kokteyldeki ilk notadan sabahın dördündeki son şarkıya kadar — kurgusu düşünülmüş bir gece ve hiç boşalmayan bir pist.",
+      "availability": "{year} tarihleri hızla doluyor — müsaitliği hemen sorgulayın."
+    },
+    "intro": "{name}, {years} yılı aşkın süredir düğün DJ'i, sazda ve gitarda canlı müzisyen ve sunucu olarak {city} şehrinden çalışıyor. Baden-Württemberg genelinde, Almanya'nın her yerinde ve Avrupa'da düğün ve etkinliklere eşlik ediyor — Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve Alman-Türk ile çok kültürlü düğünlerde uzmanlaştı.",
+    "trust": {
+      "title": "Güvenebileceğiniz detaylar",
+      "items": {
+        "planning": {
+          "title": "Kişisel ön görüşme",
+          "text": "Her düğünden önce ayrıntılı bir görüşme: akış, müzik zevkiniz, istemediğiniz şarkılar ve zamanlama."
+        },
+        "tech": {
+          "title": "Kendi ses & ışık sistemimiz",
+          "text": "Profesyonel ekipman, düzenli kablolama, göze batmayan kurulum — ve mekânda hazır bekleyen yedek cihaz."
+        },
+        "contract": {
+          "title": "Yazılı sözleşme",
+          "text": "Hizmetler, saatler ve fiyat yazılı olarak sabit. Düğün günü sürpriz yok."
+        },
+        "multilingual": {
+          "title": "Üç dilde canlı sunum",
+          "text": "Türkçe, Almanca ve İngilizce — iki kültürü bir araya getiren aileler için."
+        }
+      }
+    },
+    "stats": {
+      "years": "Yıllık deneyim",
+      "events": "Eşlik edilen düğün & etkinlik",
+      "languagesLabel": "Dilde canlı sunum"
+    },
+    "services": {
+      "eyebrow": "Hizmetler",
+      "title": "Yalnızca bir kez yaşanacak o gün için",
+      "subtitle": "Her organizasyonun kendi ritmi var. Onu önceden birlikte planlıyoruz.",
+      "cta": "Tüm hizmetleri görün"
+    },
+    "showreel": {
+      "eyebrow": "Aftermovie",
+      "title": "Dolu bir pist böyle ses verir",
+      "subtitle": "Gerçek düğün ve etkinliklerden kesitler.",
+      "play": "Showreel'i oynat"
+    },
+    "packages": {
+      "eyebrow": "Paketler",
+      "title": "Şeffaf fiyatlandırma",
+      "subtitle": "Başlangıç noktası olarak üç net paket — nihai kapsam her zaman size özel belirlenir.",
+      "cta": "Detaylar & fiyatlar"
+    },
+    "music": {
+      "eyebrow": "Müzik",
+      "title": "Tahmin etmeyin, dinleyin",
+      "subtitle": "Kokteyl, yemek ve peaktime'dan seçme setler.",
+      "cta": "Tüm setleri dinleyin",
+      "moments": {
+        "reception": "Kokteyl",
+        "dinner": "Yemek",
+        "peaktime": "Peaktime"
+      }
+    },
+    "testimonials": {
+      "eyebrow": "Yorumlar",
+      "title": "Çiftler ve organizatörler ne diyor",
+      "subtitle": "Gerçek düğünlerden gerçek geri bildirimler.",
+      "ratingLabel": "{count} Google değerlendirmesine göre {rating} ★"
+    },
+    "process": {
+      "eyebrow": "Süreç",
+      "title": "Dört adımda hayatınızın gecesi",
+      "cta": "Süreci ayrıntılı görün"
+    },
+    "serviceAreas": {
+      "eyebrow": "Hizmet bölgesi",
+      "title": "Yakınınızdaki düğün DJ'i",
+      "subtitle": "Stuttgart çevresindeki bu şehirlerde düzenli olarak çalıyoruz — ve kutlama olan her yerde.",
+      "coreTitle": "Ana bölge — Stuttgart & Baden-Württemberg",
+      "germanyTitle": "Almanya genelinde",
+      "europeTitle": "Avrupa genelinde",
+      "europeText": "Yurt dışındaki düğün ve kutlamalar için yola çıkıyoruz. Ulaşım, konaklama ve yerinde gereken teknik ekipman teklifte açıkça belirtilir — AB dışı ülkeler dahil."
+    },
+    "finalCta": {
+      "eyebrow": "Sonraki adım",
+      "title": "Tarihiniz hâlâ boş mu?",
+      "subtitle": "İki dakikadan kısa sürede müsaitliği öğrenin ve bağlayıcı olmayan teklifinizi alın — 24 saat içinde yanıt.",
+      "reassurance": "Bağlayıcı değil · Gizli maliyet yok · 24 saatte yanıt"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Düğün & Etkinlik",
+      "title": "Tek DJ, dört organizasyon, tek standart",
+      "subtitle": "İster bağ evinde bir nikâh töreni, ister balo salonunda kurumsal gala — hazırlık her zaman aynı: titiz."
+    },
+    "items": {
+      "wedding": {
+        "title": "Düğün",
+        "tagline": "Tüm gün tek elden",
+        "text": "Nikâh töreni, kokteyl, yemek fonu, ilk dans ve parti — gün boyunca kurgusu düşünülmüş tek bir akış; sizinle ve organizatörünüzle birlikte planlanır.",
+        "features": [
+          "Nikâh töreni müziği ve telsiz mikrofon",
+          "Kokteyl ve yemek fonu müziği",
+          "İlk dans için koreografi desteği",
+          "Fotoğrafçı, catering ve mekânla koordinasyon"
+        ]
+      },
+      "engagement": {
+        "title": "Nişan & Kına",
+        "tagline": "İki kültür, tek gece",
+        "text": "Nişan, kına gecesi ve söz törenlerinde geleneği ve zamanlamayı bilen bir kulak — Türkçe, Kürtçe, Arapça ve uluslararası repertuvarlar ustaca harmanlanır.",
+        "features": [
+          "Halay, Roman havası & uluslararası setler",
+          "Türkçe ve Almanca canlı sunum",
+          "Canlı saz, müzisyenler ve davul-zurna ile koordinasyon",
+          "Gelin-damat girişi ve törenler için akış planı"
+        ]
+      },
+      "afterparty": {
+        "title": "After-party",
+        "tagline": "Asıl gecenin başladığı an",
+        "text": "Yemekten sonra gecenin karakteri değişir. Tam bu yüzden ayrı bir kurgusu var: ışık atmosferi, ses seviyesi ve son saatlerin yükselen eğrisi.",
+        "features": [
+          "Kendi dramaturjisi olan peaktime seti",
+          "Pist değişimi için ışık tasarımı",
+          "Saatlik uzatma imkânı",
+          "Mekânın gürültü sınırlarına uyum"
+        ]
+      },
+      "corporate": {
+        "title": "Kurumsal etkinlik",
+        "tagline": "Profesyonel, sade, dakik",
+        "text": "Yaz partisi, yılbaşı yemeği, gala ya da ürün lansmanı: net anlaşmalar, temiz teknik kurulum, güvenilir zamanlama — ve rastgele değil, markaya uyan müzik.",
+        "features": [
+          "Konuşma, ödül töreni ve paneller için ses sistemi",
+          "Prestijli mekânlarda göze batmayan kurulum",
+          "KDV'si ayrıca gösterilen fatura",
+          "Etkinlik bitene kadar tek muhatap"
+        ]
+      }
+    },
+    "included": {
+      "title": "Her rezervasyona dahil",
+      "items": [
+        "Bağlayıcı olmayan ilk görüşme",
+        "Etkinlikten önce kişisel planlama görüşmesi",
+        "Size özel şarkı listesi ve istemediğiniz şarkılar listesi",
+        "Çalma saatleri dışında kurulum ve toplama",
+        "Mekânda yedek ekipman",
+        "Sorumluluk sigortası & yazılı sözleşme"
+      ]
+    },
+    "capabilitiesStrip": {
+      "eyebrow": "DJ'likten fazlası",
+      "title": "Müzik, sunum ve teknik için tek muhatap",
+      "subtitle": "Tek kişide DJ, müzisyen ve sunucu — farklı yerlerden toplanmış değil, baştan uyumlu.",
+      "items": {
+        "wedding-dj": {
+          "label": "Düğün DJ'i",
+          "text": "Nikâhtan son dansa kadar düğün gününün tamamı."
+        },
+        "event-dj": {
+          "label": "Etkinlik DJ'i",
+          "text": "Nişan, doğum günü, kurumsal kutlama — her organizasyon için DJ setleri."
+        },
+        "host": {
+          "label": "Sunuculuk",
+          "text": "Almanca, Türkçe ve İngilizce canlı sunum."
+        },
+        "live-music": {
+          "label": "Canlı müzik",
+          "text": "Saz ve gitar canlı çalınır — çocukluğundan beri onun enstrümanları."
+        },
+        "orchestra": {
+          "label": "DJ & Orkestra",
+          "text": "Büyük giriş için nefesli sazlarıyla canlı orkestra — hepsi tek elden."
+        },
+        "traditional-turkish": {
+          "label": "Türk gelenekleri",
+          "text": "Gelin çıkarma, bando ve davul-zurna — Türk düğününün geleneksel anları, doğru zamanlamayla."
+        },
+        "av-rental": {
+          "label": "Ses, ışık & sahne tekniği",
+          "text": "Kendi ekipmanı; profesyonelce kurulur, ayrıca kiralanabilir."
+        }
+      }
+    }
+  },
+  "packages": {
+    "hero": {
+      "eyebrow": "Paketler & Fiyatlar",
+      "title": "Net kapsam, net fiyat",
+      "subtitle": "Bu üç paket düğünlerin çoğunu karşılıyor. Fazlası size özel hesaplanır — danışmanlık için ek ücret alınmaz."
+    },
+    "hours": "Çalma süresi",
+    "hoursValue": "{hours} saat",
+    "hoursUnlimited": "Belirli bir üst sınır olmadan",
+    "guests": "Davetli sayısı",
+    "guestsValue": "{guests} davetliye kadar",
+    "guestsUnlimited": "150+, birden fazla bölge",
+    "includes": "Dahil olanlar",
+    "cta": "Bu paket için teklif alın",
+    "customTitle": "Hiçbiri tam oturmuyor mu?",
+    "customText": "Yurt dışında düğün, birkaç güne yayılan kutlama, ikinci bir pist ya da canlı müzisyenler — gününüzü anlatın, size özel hesaplayalım.",
+    "customCta": "Size özel teklif isteyin",
+    "note": "Tüm fiyatlara 50 km'ye kadar ulaşım dahildir. Nihai koşullar yazılı teklifte belirtilir.",
+    "items": {
+      "essential": {
+        "name": "Essential",
+        "tagline": "Net bir başlangıç",
+        "description": "Ağırlıklı olarak akşamki partiye odaklanan kutlamalar için.",
+        "features": [
+          "6 saate kadar çalma süresi",
+          "80 davetliye kadar ses sistemi",
+          "Pist için temel ışık",
+          "Planlama görüşmesi & şarkı listesi",
+          "Konuşmalar için telsiz mikrofon"
+        ]
+      },
+      "signature": {
+        "name": "Signature",
+        "tagline": "Düğün gününün tamamı",
+        "description": "En çok tercih edilen paket: nikâhtan son şarkıya kadar kesintisiz eşlik.",
+        "features": [
+          "10 saate kadar çalma süresi",
+          "Nikâh töreni & kokteyl müziği",
+          "150 davetliye kadar ses sistemi",
+          "Uplight'lar dahil genişletilmiş ışık tasarımı",
+          "Yan salon için ikinci hoparlör seti",
+          "İlk dans eşliği",
+          "İki planlama görüşmesi"
+        ]
+      },
+      "prestige": {
+        "name": "Prestige",
+        "tagline": "Ödünsüz",
+        "description": "Büyük kutlamalar, özel mekânlar ve kimsenin unutmaması gereken geceler için.",
+        "features": [
+          "Üst sınırı olmayan çalma süresi",
+          "150+ davetli için çok bölgeli ses sistemi",
+          "Moving head, haze & size özel ışık konsepti",
+          "Kutlama boyunca mekânda teknisyen",
+          "Özel giriş & önemli anlar için sound design",
+          "Önceden mekân keşfi",
+          "Sınırsız planlama görüşmesi"
+        ]
+      }
+    }
+  },
+  "weddings": {
+    "hero": {
+      "eyebrow": "Referanslar",
+      "title": "Gerçek düğünler",
+      "subtitle": "Stok fotoğraf yok, ödünç klip yok — gerçekten yaşanmış gecelerden anlar."
+    },
+    "venuesTitle": "Mekânlar & partnerler",
+    "venuesSubtitle": "Tekniğini, yollarını ve akustiğini önceden bildiğimiz, sık çalıştığımız mekânlar.",
+    "empty": "Referans galerisi şu anda hazırlanıyor. Kendi mekânınıza ait örnekleri bize sorabilirsiniz.",
+    "guests": "davetli",
+    "venue": "Mekân"
+  },
+  "music": {
+    "hero": {
+      "eyebrow": "Müzik & Setler",
+      "title": "Tahmin etmeyin, dinleyin",
+      "subtitle": "Gecenin farklı anlarında müzik böyle akıyor. Anına ya da türüne göre filtreleyin."
+    },
+    "filterAll": "Tümü",
+    "empty": "Bu seçim için henüz set yok.",
+    "streamingTitle": "Tüm platformlarda",
+    "moments": {
+      "reception": "Kokteyl",
+      "dinner": "Yemek",
+      "firstdance": "İlk dans",
+      "peaktime": "Peaktime",
+      "afterhours": "After Hours"
+    },
+    "genres": {
+      "international": "Uluslararası",
+      "turkish": "Türkçe",
+      "german": "Almanca",
+      "house": "House",
+      "classics": "Classics",
+      "live": "Canlı",
+      "arabesk": "Arabesk",
+      "halay": "Halay"
+    },
+    "player": {
+      "play": "Oynat",
+      "pause": "Duraklat",
+      "next": "Sonraki parça",
+      "previous": "Önceki parça",
+      "mute": "Sesi kapat",
+      "unmute": "Sesi aç",
+      "volume": "Ses seviyesi",
+      "close": "Oynatıcıyı kapat",
+      "nowPlaying": "Şimdi çalıyor",
+      "expand": "Oynatıcıyı genişlet",
+      "collapse": "Oynatıcıyı küçült",
+      "regionLabel": "Müzik oynatıcısı",
+      "queueTitle": "Çalma listesi",
+      "comingSoon": "Yakında",
+      "progress": "İlerleme",
+      "progressValue": "{current} / {duration}",
+      "playTrack": "“{title}” parçasını çal",
+      "pauseTrack": "“{title}” parçasını duraklat",
+      "waveform": "Dalga formu",
+      "listenOn": "{platform} üzerinde dinleyin"
+    }
+  },
+  "process": {
+    "hero": {
+      "eyebrow": "Süreç",
+      "title": "Birlikte nasıl çalışıyoruz",
+      "subtitle": "İlk mesajdan toplamaya kadar her adım şeffaf — düğün gününüzde hiçbir şeyi düşünmek zorunda kalmayın."
+    },
+    "steps": {
+      "one": {
+        "title": "Talep & müsaitlik",
+        "text": "Tarihi ve temel bilgileri gönderiyorsunuz. 24 saat içinde müsaitlik konusunda net bir yanıt alıyorsunuz."
+      },
+      "two": {
+        "title": "Tanışma & teklif",
+        "text": "Görüntülü ya da yüz yüze bir görüşmede akışı, müzik zevkinizi ve teknik ihtiyaçları netleştiriyoruz. Ardından yazılı teklif geliyor."
+      },
+      "three": {
+        "title": "Rezervasyon & ince planlama",
+        "text": "Sözleşmeden sonra zamanlamayı, şarkı listesini, istemediğiniz parçaları ve önemli anları ayrıntısıyla geçiyoruz — mekân ve organizatörle uyumlu şekilde."
+      },
+      "four": {
+        "title": "Günün kendisi",
+        "text": "Erken kurulum, davetliler gelmeden ses kontrolü, göze batmayan bir varlık ve dolu bir pist. Toplama son şarkının ardından."
+      }
+    },
+    "faqTitle": "Sık sorulan sorular",
+    "faqSubtitle": "Çiftlerin bize en çok sorduğu sorular.",
+    "faq": [
+      {
+        "q": "DJ'i ne kadar önceden ayırtmalıyız?",
+        "a": "Mayıs–Eylül arasındaki yoğun sezonun cumartesileri için 12–18 ay önceden rezervasyon öneririz. Yakın tarihler de mümkün — yazmanız yeterli, müsaitlik 24 saat içinde kontrol edilir."
+      },
+      {
+        "q": "Düğün DJ'i ne kadar tutar?",
+        "a": "Fiyat; çalma süresi, davetli sayısı, teknik ihtiyaç ve ulaşıma göre belirlenir. Bu sayfadaki üç paket alışılmış aralığı gösterir; bağlayıcı teklifi planlama görüşmesinden sonra alırsınız."
+      },
+      {
+        "q": "Şarkı seçimine biz karar verebilir miyiz?",
+        "a": "Evet. Mutlaka çalınmasını istediğiniz şarkılar, olursa iyi olur dedikleriniz ve kesinlikle istemedikleriniz için düzenli bir liste alırsınız. Gece gelen davetli istekleri yalnızca sizin çizginize uyuyorsa çalınır."
+      },
+      {
+        "q": "Nikâh töreninin müziğini de üstleniyor musunuz?",
+        "a": "Evet, Signature ve Prestige paketlerinde nikâh töreninin sesi; konuşmacılar ve tören sunucusu için telsiz mikrofon dahil olacak şekilde yer alır."
+      },
+      {
+        "q": "Türk düğünlerinde de çalıyor musunuz?",
+        "a": "Evet. Halay, Roman havası, arabesk ve güncel Türkçe listeler sabit repertuvarın parçası — Almanca ve uluslararası setlerle birlikte. Türkçe, Almanca ve İngilizce canlı sunum mümkün."
+      },
+      {
+        "q": "Teknik bir arıza olursa ne olur?",
+        "a": "Mekânda her zaman yedek ekipman bulunur: ikinci laptop, yedek controller ve yedek amfi. Tek bir cihazın arızalanması geceyi durdurmaz."
+      },
+      {
+        "q": "Kurulum ve toplama ne kadar sürer?",
+        "a": "Kurulum genellikle davetliler gelmeden iki-üç saat önce yapılır ve rezerve edilen çalma süresine dahil değildir. Toplama son şarkıdan sonra başlar."
+      },
+      {
+        "q": "Sigortanız var mı?",
+        "a": "Evet, işletme sorumluluk sigortası mevcut. Birçok mekân belge ister — talep edilmesi hâlinde doğrudan mekâna iletilir."
+      },
+      {
+        "q": "Yurt dışındaki düğünlere de geliyor musunuz?",
+        "a": "Evet, Avrupa içinde ve ötesinde. Ulaşım, konaklama ve gerekirse yerinde ekipman kirası teklifte ayrı ayrı, şeffaf şekilde belirtilir."
+      },
+      {
+        "q": "Ödeme nasıl işliyor?",
+        "a": "Genellikle sözleşmeyle birlikte tarihi bloke eden bir peşinat, kalan tutar ise etkinlikten önce veya etkinlik günü ödenir. Tüm koşullar sözleşmede yer alır."
+      }
+    ]
+  },
+  "answers": {
+    "hero": {
+      "eyebrow": "Sorular & Yanıtlar",
+      "title": "Tüm yanıtlar tek bakışta",
+      "subtitle": "Rezervasyon, fiyatlar, süreç, müzik, teknik donanım, hukuk ve Türk düğünleri hakkında {count} ayrıntılı yanıt — tıklamadan, açıp kapatmadan doğrudan okunur."
+    },
+    "entity": "VEYSL, {owner} tarafından {city} merkezli olarak yürütülen düğün DJ'i, canlı müzik ve sunuculuk hizmetidir. {years} yılı aşkın süredir Baden-Württemberg'de, Almanya genelinde ve Avrupa'da düğün ve etkinliklere eşlik ediyor; Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve Alman-Türk, Türk ve çok kültürlü düğünlerde uzmanlaştı. Bugüne kadar {events}+ kutlamaya eşlik etti — DJ olarak, sazda ve gitarda canlı müzisyen olarak ve nefesli sazları da olan canlı bir orkestrayla.",
+    "meta": {
+      "title": "Sorular & Yanıtlar — Düğün DJ'i Stuttgart | VEYSL",
+      "description": "VEYSL ile rezervasyon, fiyatlar, süreç, müzik, teknik donanım ve Türk düğünleri hakkında {count} ayrıntılı yanıt — dolambaçsız, doğrudan okunur."
+    },
+    "updated": "Son güncelleme: {date}",
+    "seeAlso": "Süreçle ilgili on kısa soruyu daha şu sayfada yanıtlıyoruz:",
+    "jsonFeedNote": "Bu soru kataloğu, makine tarafından okunabilir JSON biçiminde de sunuluyor.",
+    "jsonFeedLink": "JSON akışını açın",
+    "categories": {
+      "buchung": "Rezervasyon & tarih",
+      "preis": "Fiyat & maliyet",
+      "ablauf": "Düğün günündeki akış",
+      "musik": "Müzik & repertuvar",
+      "technik": "Ses & ışık tekniği",
+      "tuerkisch": "Türk & çok kültürlü düğünler",
+      "location": "Mekân & ulaşım",
+      "recht": "Sözleşme & hukuk"
+    },
+    "capabilities": {
+      "wedding-dj": "Düğün DJ'i",
+      "event-dj": "Etkinlik DJ'i",
+      "host": "Sunuculuk",
+      "live-music": "Canlı müzik",
+      "orchestra": "DJ & Orkestra",
+      "traditional-turkish": "DJ & orkestra · gelin çıkarma, bando, davul-zurna",
+      "av-rental": "Ses, ışık & teknik"
+    },
+    "keyFacts": {
+      "years": "Yıllık deneyim",
+      "events": "Eşlik edilen düğün & etkinlik",
+      "languages": "Dilde canlı sunum",
+      "serviceArea": "Hizmet bölgesi",
+      "capabilitiesLabel": "Hizmetler"
+    }
+  },
+  "booking": {
+    "hero": {
+      "eyebrow": "Talep",
+      "title": "Tarihiniz hâlâ boş mu?",
+      "subtitle": "Üç kısa adım, iki dakikadan az. 24 saat içinde size özel bir yanıt alırsınız — bağlayıcı değil."
+    },
+    "stepLabel": "Adım {current} / {total}",
+    "steps": {
+      "date": "Tarih & yer",
+      "details": "Detaylar",
+      "contact": "İletişim"
+    },
+    "fields": {
+      "eventDate": "Kutlamanın tarihi",
+      "eventDatePlaceholder": "GG.AA.YYYY",
+      "eventType": "Kutlama türü",
+      "city": "Şehir",
+      "cityPlaceholder": "örn. Stuttgart",
+      "venue": "Mekân (biliyorsanız)",
+      "venuePlaceholder": "örn. Weingut Schloss …",
+      "guests": "Yaklaşık davetli sayısı",
+      "startTime": "Başlangıç",
+      "endTime": "Bitiş (yaklaşık)",
+      "package": "İlgilendiğiniz paket",
+      "budget": "Bütçe aralığı",
+      "name": "Adınız",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "partnerName": "Eşinizin / nişanlınızın adı",
+      "email": "E-posta",
+      "phone": "Telefon / WhatsApp",
+      "message": "Bize gününüzü anlatın",
+      "messagePlaceholder": "Bahçede nikâh töreni, yaklaşık 120 davetli, Türk-Alman aile, saat 3'e kadar parti …",
+      "source": "Bizi nasıl buldunuz?",
+      "services": "Hangi hizmetlerle ilgileniyorsunuz?",
+      "hostingLanguage": "Tercih ettiğiniz sunum dili",
+      "consent": "{privacyLink} metnini okudum; bu talebin işlenmesi amacıyla verilerimin işlenmesini kabul ediyorum.",
+      "privacyLinkText": "Gizlilik Politikası"
+    },
+    "eventTypes": {
+      "wedding": "Düğün",
+      "engagement": "Nişan",
+      "henna": "Kına gecesi",
+      "afterparty": "After-party",
+      "corporate": "Kurumsal etkinlik",
+      "birthday": "Doğum günü / yıl dönümü",
+      "other": "Diğer"
+    },
+    "packageOptions": {
+      "essential": "Essential",
+      "signature": "Signature",
+      "prestige": "Prestige",
+      "custom": "Size özel / henüz emin değilim"
+    },
+    "budgets": {
+      "unsure": "Henüz belli değil",
+      "a": "1.500 €'ya kadar",
+      "b": "1.500 – 2.500 €",
+      "c": "2.500 – 4.000 €",
+      "d": "4.000 € üzeri"
+    },
+    "sources": {
+      "google": "Google araması",
+      "instagram": "Instagram",
+      "recommendation": "Tavsiye",
+      "venue": "Mekân / organizatör",
+      "ai": "ChatGPT / yapay zekâ asistanı",
+      "other": "Diğer"
+    },
+    "services": {
+      "dj": "DJ & müzik",
+      "hosting": "Sunum (Türkçe/Almanca/İngilizce)",
+      "liveMusic": "Canlı müzik (saz & gitar)",
+      "avRental": "Ses, ışık & sahne tekniği"
+    },
+    "hostingLanguages": {
+      "noPreference": "Fark etmez",
+      "de": "Almanca",
+      "tr": "Türkçe",
+      "en": "İngilizce"
+    },
+    "availability": {
+      "checking": "Müsaitlik kontrol ediliyor …",
+      "free": "Bu tarih şu an boş.",
+      "freeHint": "Tarih ancak sözleşmeyle bloke edilir — kısa sürede güvence altına alın.",
+      "taken": "Bu tarih için hâlihazırda bir rezervasyon var.",
+      "takenHint": "Yine de yazın — ikinci kutlamalar ve iptaller için bekleme listesi tutuyoruz.",
+      "unknown": "Müsaitlik, talebinizin ardından tarafımızca kişisel olarak kontrol edilecek.",
+      "pastDate": "Lütfen gelecekte bir tarih seçin."
+    },
+    "calendar": {
+      "pickerLabel": "Ya da doğrudan takvimden seçin",
+      "instructions": "Günler arasında ok tuşlarıyla gezinin, ayı Page Up ve Page Down tuşlarıyla değiştirin, bir günü Enter veya boşluk tuşuyla seçin.",
+      "previousMonth": "Önceki ay",
+      "nextMonth": "Sonraki ay",
+      "today": "Bugün",
+      "status": {
+        "free": "boş",
+        "taken": "dolu",
+        "unknown": "bilinmiyor",
+        "past": "geçmiş"
+      },
+      "selectedAnnouncement": "{date} seçildi — {status}",
+      "loading": "Müsaitlik yükleniyor …",
+      "error": "Müsaitlik yüklenemedi."
+    },
+    "validation": {
+      "required": "Lütfen doldurun",
+      "email": "Lütfen geçerli bir e-posta adresi girin",
+      "date": "Lütfen geçerli bir tarih seçin",
+      "consent": "Onayınız olmadan talebi işleme alamayız",
+      "min": "Biraz kısa kaldı",
+      "max": "Bu biraz fazla uzun",
+      "guests": "Lütfen 1 ile 5000 arasında bir sayı girin"
+    },
+    "success": {
+      "title": "Talebiniz bize ulaştı.",
+      "text": "Teşekkür ederiz, {name}. Birazdan e-posta ile onay alacaksınız; {date} tarihindeki gününüz için 24 saat içinde size özel bir dönüş yapacağız.",
+      "whatsapp": "WhatsApp'tan daha da hızlı ilerler",
+      "backHome": "Ana sayfaya dönün"
+    },
+    "error": {
+      "title": "Maalesef bu işlem gerçekleşmedi.",
+      "text": "Lütfen tekrar deneyin ya da doğrudan WhatsApp veya e-posta ile bize yazın.",
+      "retry": "Tekrar deneyin"
+    },
+    "aside": {
+      "title": "Doğrudan konuşmayı mı tercih edersiniz?",
+      "text": "Yakın tarihler ve aklınıza takılan sorular için en hızlı yol WhatsApp.",
+      "responseTime": "Yanıt süresi genellikle 24 saatin altında."
+    }
+  },
+  "gallery": {
+    "hero": {
+      "eyebrow": "Galeri",
+      "title": "Fotoğraf & video",
+      "subtitle": "Düğün ve etkinliklerden aftermovie'ler, reels'ler ve fotoğraflar."
+    },
+    "filterAll": "Tümü",
+    "filterPhoto": "Fotoğraflar",
+    "filterVideo": "Videolar",
+    "empty": "Galeri şu anda hazırlanıyor."
+  },
+  "epk": {
+    "hero": {
+      "eyebrow": "Press Kit",
+      "title": "EPK & partnerler",
+      "subtitle": "Mekânlar, organizatörler, ajanslar ve basın için materyaller — doğrudan indirilebilir."
+    },
+    "bioShort": "Kısa biyografi",
+    "bioLong": "Uzun versiyon",
+    "bio": {
+      "short": "Veysel Durmuş, 12 yılı aşkın süredir Alman-Türk, Türk ve çok kültürlü düğün ve etkinlikler için DJ, müzisyen ve sunucu olarak çalışıyor. 200'ü aşkın kutlamaya eşlik etti, sazda ve gitarda canlı çaldı ve üç dilde sunum yaptı: Almanca, Türkçe, İngilizce.",
+      "long": [
+        "Veysel Durmuş çocukluğundan beri saz ve gitar çalıyor — müzik onun için hiçbir zaman yalnızca bir hobi olmadı, en başından beri bir ifade biçimiydi. Bugün sese ve zamanlamaya dair bu kulağı DJ, canlı müzisyen ve sunucu olarak Alman-Türk, Türk ve çok kültürlü düğün ve etkinliklere taşıyor; 12 yılı aşkın süredir ve eşlik ettiği 200'den fazla kutlamayla.",
+        "Asıl mesleği bilişimci (Informatiker) — bu mesleğin getirdiği titizliği ve planlama disiplinini doğrudan her etkinliğe taşıyor: düşünülmüş bir akış, temiz teknik kurulum, sürpriz yok.",
+        "Özel hayatında maraton koşucusu ve triatloncu. Bir düğünün sabahında 10 kilometre koşup akşam piste tam enerjiyle çıktığı çok olur. Düğün sezonu bittiğinde ise enerji toplamak için dağlara, Alpler'de kamp yapmaya gidiyor.",
+        "Kendi sözleri bunu en iyi özetliyor: “Amacım sadece müzik çalmak değil. Amacım duygu yaratmak.” Ve: “Ancak kendisi enerji dolu olan, bu enerjiyi başkalarına da geçirebilir.”"
+      ]
+    },
+    "stats": {
+      "years": "DJ & müzisyen olarak {years}+ yıl deneyim",
+      "events": "Eşlik edilen {events}+ düğün & etkinlik",
+      "languages": "Almanca, Türkçe & İngilizce sunum"
+    },
+    "downloads": "İndirmeler",
+    "downloadPress": "Basın fotoğrafları (ZIP)",
+    "downloadRider": "Technical Rider (PDF)",
+    "downloadEpk": "Tam EPK (PDF)",
+    "downloadPending": "Hazırlanıyor",
+    "partnersTitle": "Mekânlar & partnerler",
+    "pressTitle": "Basın & medya",
+    "contactTitle": "Booking iletişimi"
+  },
+  "city": {
+    "eyebrow": "Yerinde düğün DJ'i",
+    "hero": {
+      "title": "{city} düğün DJ'i",
+      "ctaNote": "Bağlayıcı olmayan talep – 24 saat içinde yanıt."
+    },
+    "meta": {
+      "title": "Düğün DJ'i {city} — DJ, müzisyen & sunucu | VEYSL",
+      "description": "{city} ve çevresinde premium düğün DJ'i: Alman-Türk düğünleri için DJ, müzisyen ve çok dilli sunucu. Hemen tarih sorgulayın."
+    },
+    "travel": {
+      "eyebrow": "Ulaşım & şeffaflık",
+      "title": "{city} için ulaşım"
+    },
+    "distance": {
+      "homeBase": "Veysel'in yaşadığı ve çalıştığı yer — ulaşım yok, ulaşım ücreti yok.",
+      "included": "{city} için ulaşım dahildir (Stuttgart'tan yaklaşık {km} km).",
+      "notIncluded": "{city} için ulaşım, fiyata dahil mesafenin dışında kalıyor (yaklaşık {km} km) ve teklifte ayrıca gösterilir.",
+      "population": "yaklaşık {count} nüfus"
+    },
+    "offer": {
+      "eyebrow": "Yerinde hizmetler",
+      "title": "{city} için neler sunuyoruz",
+      "orchestraLabel": "Nefesli sazlarıyla DJ & canlı orkestra"
+    },
+    "bicultural": {
+      "eyebrow": "İki kültür, tek gece",
+      "title": "Alman-Türk gücü – {city} bölgesinde de",
+      "languagesTitle": "Sunum dilleri"
+    },
+    "venues": {
+      "eyebrow": "Mekânlar",
+      "title": "{city} bölgesindeki bilinen düğün mekânları",
+      "note": "Not: Bu mekânların hiçbiri resmî partnerimiz değildir – bunlar yalnızca fikir vermesi için sıralanmış, şehirde bilinen yerlerdir.",
+      "empty": "Bu listeyi doğrulanmamış isimlerle doldurmak yerine {city} için özenle araştırıyoruz. Tercih ettiğiniz mekânı bize anlatın – kurulum ona göre planlanır."
+    },
+    "venueKind": {
+      "saal": "Salon",
+      "schloss": "Şato",
+      "weingut": "Bağ evi",
+      "hotel": "Otel",
+      "location": "Mekân"
+    },
+    "trust": {
+      "eyebrow": "Güvenebileceğiniz detaylar",
+      "title": "{city} bölgesinde de aynı standart geçerli"
+    },
+    "faq": {
+      "eyebrow": "Sık sorulan sorular",
+      "title": "{city} bölgesindeki düğünlerle ilgili sorular"
+    },
+    "nearby": {
+      "eyebrow": "Çevrede",
+      "title": "{city} çevresinde de çalıyoruz",
+      "servicesTitle": "VEYSL'de daha fazlası"
+    },
+    "cta": {
+      "eyebrow": "Sonraki adım",
+      "title": "{city} için tarihiniz hâlâ boş mu?",
+      "subtitle": "İki dakikadan kısa sürede {city} için müsaitliği öğrenin ve bağlayıcı olmayan teklifinizi alın.",
+      "button": "{city} için tarih sorgulayın"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "İletişim",
+      "title": "Gününüzü birlikte konuşalım",
+      "subtitle": "En hızlısı WhatsApp. Ayrıntılı talepler için talep formunu kullanabilirsiniz."
+    },
+    "whatsappText": "Genellikle birkaç saat içinde yanıt",
+    "emailText": "Ayrıntılı talepler ve belgeler için",
+    "phoneText": "Pzt – Cum, 10 – 18 arası",
+    "areaTitle": "Hizmet bölgesi",
+    "areaText": "{areas} çevresinde düzenli olarak çalıyoruz — ve kutlama olan her yerde.",
+    "formCta": "Talep formuna gidin",
+    "formSectionEyebrow": "Mesaj yazın",
+    "socialTitle": "Takip edin",
+    "instagramCta": "Instagram'da takip edin",
+    "youtubeCta": "YouTube'da abone olun"
+  },
+  "contactForm": {
+    "title": "Başka bir sorunuz mu var?",
+    "subtitle": "Mekânlar, organizatörler, basın ya da henüz bir tarih talebi olmayan her konu için — kısaca yazın, size kişisel olarak dönüş yapalım.",
+    "fields": {
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "email": "E-posta",
+      "phone": "Telefon (isteğe bağlı)",
+      "subject": "Konu nedir?",
+      "company": "Firma / mekân (isteğe bağlı)",
+      "companyPlaceholder": "örn. Weingut Schloss …",
+      "preferredContact": "Tercih ettiğiniz iletişim yolu (isteğe bağlı)",
+      "eventDate": "Biliyorsanız tarih (isteğe bağlı)",
+      "eventDatePlaceholder": "GG.AA.YYYY",
+      "message": "Mesajınız",
+      "messagePlaceholder": "Konuyu bize kısaca anlatın …",
+      "consent": "{privacyLink} metnini okudum; bu mesajın işlenmesi amacıyla verilerimin işlenmesini kabul ediyorum.",
+      "privacyLinkText": "Gizlilik Politikası"
+    },
+    "subjects": {
+      "general": "Genel soru",
+      "booking": "Bir rezervasyonla ilgili soru",
+      "technical": "Teknik / ekipman kiralama",
+      "partnership": "Mekân / organizatör iş birliği",
+      "press": "Basın",
+      "other": "Diğer"
+    },
+    "preferredContactOptions": {
+      "email": "E-posta",
+      "phone": "Telefon",
+      "whatsapp": "WhatsApp"
+    },
+    "success": {
+      "title": "Mesajınız bize ulaştı.",
+      "text": "Teşekkür ederiz, {name}. En kısa sürede size kişisel olarak dönüş yapacağız."
+    }
+  },
+  "whatsappFlow": {
+    "title": "Kısa birkaç soru, ardından doğrudan WhatsApp'a",
+    "skipAll": "Doğrudan yazın",
+    "skip": "Geçin",
+    "close": "Kapat",
+    "continueToWhatsapp": "WhatsApp'tan devam edin",
+    "privacyNote": "Verdiğiniz bilgiler, talebinizin işlenmesi amacıyla saklanır. <privacyLink>Gizlilik Politikası</privacyLink>",
+    "messageIntro": "Merhaba VEYSL, bir DJ ile ilgileniyorum.",
+    "messageLabels": {
+      "eventType": "Kutlama",
+      "date": "Tarih",
+      "city": "Yer",
+      "guests": "Davetli",
+      "service": "Hizmet"
+    },
+    "steps": {
+      "eventType": {
+        "question": "Kutlama türü"
+      },
+      "date": {
+        "question": "Tarih"
+      },
+      "city": {
+        "question": "Yer (isteğe bağlı)",
+        "placeholder": "örn. Stuttgart"
+      },
+      "guests": {
+        "question": "Yaklaşık davetli sayısı",
+        "options": {
+          "under80": "80'e kadar",
+          "from80to150": "80–150",
+          "from150to250": "150–250",
+          "over250": "250+"
+        }
+      },
+      "service": {
+        "question": "İstediğiniz hizmet (isteğe bağlı)",
+        "options": {
+          "dj": "DJ",
+          "djOrchestra": "DJ & Orkestra",
+          "hosting": "+ Sunum",
+          "technik": "+ Teknik"
+        }
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Düğün DJ'i, müzisyen & sunucu — Stuttgart",
+    "navTitle": "Menü",
+    "legalTitle": "Yasal",
+    "contactTitle": "İletişim",
+    "followTitle": "Takip edin",
+    "imprint": "Impressum",
+    "privacy": "Gizlilik",
+    "rights": "Tüm hakları saklıdır.",
+    "builtBy": "Tasarım & uygulama",
+    "viewOnMaps": "Google Maps'te görüntüleyin"
+  },
+  "theme": {
+    "toggle": "Temayı değiştir",
+    "light": "Açık",
+    "dark": "Koyu",
+    "system": "Sistem"
+  },
+  "consent": {
+    "title": "Gizlilik ayarları",
+    "text": "Yalnızca teknik olarak zorunlu çerezleri kullanıyoruz. İsteğe bağlı istatistikler siteyi geliştirmemize yardımcı olur — karar sizin, istediğiniz zaman geri alabilirsiniz.",
+    "acceptAll": "Tümünü kabul edin",
+    "essentialOnly": "Yalnızca zorunlu olanlar",
+    "settings": "Ayarlar",
+    "privacyLink": "Gizlilik Politikası"
+  },
+  "notFound": {
+    "title": "Böyle bir sayfa yok.",
+    "text": "Bağlantı büyük ihtimalle güncelliğini yitirmiş. Buradan geri dönebilirsiniz.",
+    "cta": "Ana sayfaya dönün"
+  },
+  "legal": {
+    "draftNotice": "Taslak — bu içerik hâlihazırda mevcut bilgilere dayanmaktadır ve yayımlanmadan önce bir avukat tarafından kontrol edilmelidir.",
+    "missingValue": "TODO(kunde): daha sonra eklenecek",
+    "imprint": {
+      "heading": "Impressum",
+      "intro": "§ 5 DDG (Dijital Hizmetler Yasası) uyarınca yasal bilgiler.",
+      "providerTitle": "Hizmet sağlayıcı",
+      "nameLabel": "Ticari unvan",
+      "ownerLabel": "Sahibi",
+      "addressLabel": "Adres",
+      "contactTitle": "İletişim",
+      "phoneLabel": "Telefon",
+      "emailLabel": "E-posta",
+      "websiteLabel": "İnternet sitesi",
+      "activityTitle": "Faaliyet alanı",
+      "vatTitle": "Katma değer vergisi kimlik numarası",
+      "vatText": "§ 27a Umsatzsteuergesetz uyarınca katma değer vergisi kimlik numarası:",
+      "responsibleTitle": "§ 18 Abs. 2 MStV uyarınca içerikten sorumlu",
+      "disputeTitle": "AB uyuşmazlık çözümü",
+      "disputeText": "Avrupa Komisyonu, çevrimiçi uyuşmazlık çözümü (OS) için bir platform sunmaktadır: https://ec.europa.eu/consumers/odr/. E-posta adresimizi yukarıda “İletişim” başlığı altında bulabilirsiniz.",
+      "consumerDisputeTitle": "Tüketici uyuşmazlıklarının çözümü (VSBG)",
+      "consumerDisputeText": "Tüketici Uyuşmazlıklarının Çözümü Yasası anlamındaki bir tüketici hakem heyeti önünde yürütülecek uyuşmazlık çözüm sürecine katılmakla yükümlü değiliz ve katılmaya hazır da değiliz.",
+      "sections": [
+        {
+          "id": "liability-content",
+          "title": "İçerik sorumluluğu",
+          "paragraphs": [
+            "Hizmet sağlayıcı olarak bu sayfalardaki kendi içeriklerimizden genel yasalar uyarınca sorumluyuz (§ 5 DDG). Ancak (AB) 2022/2065 sayılı Tüzüğün (Digital Services Act) 4 ilâ 6. maddeleri uyarınca, hizmet sağlayıcı olarak iletilen veya saklanan yabancı bilgileri denetlemekle ya da hukuka aykırı bir faaliyete işaret eden koşulları araştırmakla yükümlü değiliz.",
+            "Genel yasalar uyarınca bilgilerin kaldırılmasına veya kullanımının engellenmesine ilişkin yükümlülükler bundan etkilenmez. Bu yöndeki bir sorumluluk ancak somut bir hak ihlalinin öğrenildiği andan itibaren doğar. İlgili hak ihlalleri öğrenildiğinde bu içerikler derhâl kaldırılır."
+          ]
+        },
+        {
+          "id": "liability-links",
+          "title": "Bağlantı sorumluluğu",
+          "paragraphs": [
+            "Sunduğumuz içerik, içeriklerine hiçbir etkimizin olmadığı üçüncü kişilere ait harici internet sitelerine bağlantılar içermektedir. Bu nedenle söz konusu yabancı içerikler için herhangi bir güvence veremeyiz. Bağlantı verilen sayfaların içeriğinden her zaman ilgili sayfanın sağlayıcısı veya işletmecisi sorumludur.",
+            "Bağlantı verilen sayfalar, bağlantının kurulduğu anda olası hukuka aykırılıklar bakımından incelenmiştir. Somut bir hak ihlali belirtisi olmaksızın, bağlantı verilen sayfaların içeriğinin sürekli denetlenmesi beklenemez. Hak ihlalleri öğrenildiğinde bu tür bağlantılar derhâl kaldırılır."
+          ]
+        },
+        {
+          "id": "copyright",
+          "title": "Telif hakkı",
+          "paragraphs": [
+            "Sayfa işletmecisi tarafından bu sayfalarda oluşturulan içerikler ve eserler Alman telif hakkı hukukuna tabidir. Telif hakkının sınırları dışında kalan çoğaltma, işleme, yayma ve her türlü değerlendirme, ilgili eser sahibinin yazılı iznini gerektirir.",
+            "Bu internet sitesindeki fotoğraf ve videolar, aksi belirtilmedikçe sayfa işletmecisine aittir veya eser sahiplerinin açık izniyle kullanılmaktadır. Buna rağmen bir telif hakkı ihlali fark ederseniz, bize bildirmenizi rica ederiz; ilgili içerikler derhâl kaldırılır."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "heading": "Gizlilik Politikası",
+      "updated": "Son durum: TODO(kunde) — son güncelleme tarihi eklenecek",
+      "intro": "Kişisel verilerinizin korunması bizim için önemlidir. Bu metin, bu internet sitesinde hangi verilerin, hangi amaçla ve hangi hukuki dayanakla işlendiği konusunda bilgi verir.",
+      "sections": [
+        {
+          "id": "controller",
+          "title": "Veri sorumlusu",
+          "paragraphs": [
+            "Genel Veri Koruma Tüzüğü (DSGVO) anlamında veri sorumlusu, bu internet sitesinin Impressum bölümünde belirtilen hizmet sağlayıcıdır."
+          ]
+        },
+        {
+          "id": "rights-overview",
+          "title": "Haklarınıza genel bakış",
+          "paragraphs": [
+            "Saklanan kişisel verileriniz, bunların kaynağı ve alıcıları ile işlenme amacı hakkında her zaman bilgi talep etme hakkına sahipsiniz. Ayrıca düzeltme, silme, işlemenin kısıtlanması, veri taşınabilirliği, işlemeye itiraz etme ve verdiğiniz bir rızayı geleceğe etkili olacak şekilde geri alma haklarına sahipsiniz.",
+            "Bu hakları kullanmak için Impressum bölümünde belirtilen iletişim bilgileri üzerinden her zaman bize başvurabilirsiniz. Ayrıca yetkili veri koruma denetim makamına şikâyette bulunma hakkına da sahipsiniz."
+          ]
+        },
+        {
+          "id": "hosting",
+          "title": "Hosting",
+          "paragraphs": [
+            "Bu internet sitesi harici bir hizmet sağlayıcıda barındırılmaktadır (TODO(kunde): hosting sağlayıcısının adı, adresi ve merkezi eklenecek). Bu sitede toplanan kişisel veriler, hosting sağlayıcısının sunucularında işlenir.",
+            "Hosting sağlayıcısının kullanılması, çevrimiçi hizmetimizin profesyonel bir sağlayıcı tarafından güvenli, hızlı ve verimli biçimde sunulması amacıyla gerçekleşir (Art. 6 Abs. 1 lit. f DSGVO). Hosting sağlayıcısıyla Art. 28 DSGVO uyarınca bir veri işleme sözleşmesi bulunmaktadır (TODO(kunde) teyit edilecek)."
+          ]
+        },
+        {
+          "id": "server-logs",
+          "title": "Sunucu günlük dosyaları",
+          "paragraphs": [
+            "Sayfaların sağlayıcısı, tarayıcınızın otomatik olarak ilettiği bilgileri sunucu günlük dosyalarında otomatik olarak toplar ve saklar. Bunlar şunlardır: tarayıcı türü ve sürümü, kullanılan işletim sistemi, referrer URL'si, erişen bilgisayarın ana bilgisayar adı, sunucu talebinin saati ve IP adresi.",
+            "Bu veriler başka veri kaynaklarıyla birleştirilmez. Verilerin toplanması, sitenin teknik açıdan hatasız sunulması ve iyileştirilmesi ile sistem güvenliğinin sağlanması amacıyla Art. 6 Abs. 1 lit. f DSGVO uyarınca gerçekleşir. Veriler, toplanma amaçları için artık gerekli olmadıkları anda silinir (TODO(kunde): somut saklama süresi eklenecek)."
+          ]
+        },
+        {
+          "id": "enquiry-form",
+          "title": "Talep formu",
+          "paragraphs": [
+            "Bize talep formu üzerinden ulaştığınızda, orada belirttiğiniz verileri (kutlamanın tarihi ve türü, yer, davetli sayısı, adınız, e-posta adresiniz, telefon numaranız ve mesajınız dâhil) talebinizin işlenmesi ve olası sonraki sorular için topluyoruz.",
+            "Bu verilerin işlenmesi, talebin bir sözleşmenin hazırlanmasına hizmet etmesi hâlinde Art. 6 Abs. 1 lit. b DSGVO uyarınca, ayrıca taleplerin etkin biçimde işlenmesindeki meşru menfaatimiz nedeniyle Art. 6 Abs. 1 lit. f DSGVO uyarınca gerçekleşir.",
+            "Talep formundaki veriler, talep tamamen işlendiğinde ve bir sözleşme kurulmadığında, en geç TODO(kunde): süre eklenecek sonrasında silinir. Bir sözleşme kurulması hâlinde ticaret ve vergi hukukundan doğan yasal saklama süreleri geçerlidir (özellikle §§ 147 AO, 257 HGB)."
+          ]
+        },
+        {
+          "id": "whatsapp",
+          "title": "WhatsApp üzerinden iletişim",
+          "paragraphs": [
+            "İletişim için WhatsApp'ı isteğe bağlı bir iletişim kanalı olarak sunuyoruz. WhatsApp kullanıldığında mesajlarınız ve bu sırada oluşan meta veriler WhatsApp Ireland Limited'in ya da Meta şirketler grubunun altyapısı üzerinden işlenir; bu kapsamda üçüncü ülkelere, özellikle ABD'ye veri aktarımı olasılığı dışlanamaz.",
+            "Kullanım, gönüllü olarak kurduğunuz iletişime dayanır (Art. 6 Abs. 1 lit. a veya lit. b DSGVO). TODO(kunde) / avukat kontrolü: kullanılan WhatsApp sürümüne (bireysel veya Business API) ve olası ek veri işleyenlere ilişkin ayrıntılar eklenecek."
+          ]
+        },
+        {
+          "id": "analytics",
+          "title": "Analiz & istatistik",
+          "paragraphs": [
+            "Şu anda herhangi bir analiz veya izleme aracı kullanmıyoruz. Bu sitenin çerez ayarları üzerinden isteğe bağlı bir istatistik işlevi etkinleştirilebilir; bu işlev, siz açıkça onay verene kadar devre dışı kalır.",
+            "İleride bir istatistik hizmeti kullanılırsa, bu metin etkinleştirilmeden önce ilgili hizmetin adı, amacı, hukuki dayanağı ve saklama süresiyle tamamlanacaktır (TODO(kunde))."
+          ]
+        },
+        {
+          "id": "cookies",
+          "title": "Çerezler & onay",
+          "paragraphs": [
+            "Bu internet sitesi yalnızca teknik olarak zorunlu çerezleri kullanır; örneğin dil tercihinizi, tema modunuzu (açık/koyu) ve çerez seçiminizi saklamak için. Bunlar sitenin çalışması için gereklidir ve § 25 Abs. 2 TTDSG ya da Art. 6 Abs. 1 lit. f DSGVO uyarınca yerleştirilir.",
+            "İsteğe bağlı çerezlere ilişkin seçiminizi çerez ayarları üzerinden istediğiniz zaman değiştirebilir veya geri alabilirsiniz."
+          ]
+        },
+        {
+          "id": "embeds",
+          "title": "Üçüncü kişilere ait gömülü içerikler",
+          "paragraphs": [
+            "Bu sitedeki müzik setleri ve videolar tıkla-ve-yükle önizlemesiyle gömülür: Spotify, YouTube, SoundCloud veya Mixcloud gibi hizmetlerin içerikleri yalnızca siz tıkladıktan sonra yüklenir. Ancak o zaman tarayıcınız ilgili sağlayıcıyla doğrudan bağlantı kurar ve sağlayıcı, kendi gizlilik politikası uyarınca IP adresinizi ve diğer verilerinizi işleyebilir.",
+            "Ayrıntılı bilgi: Spotify (https://www.spotify.com/de/legal/privacy-policy/), YouTube / Google (https://policies.google.com/privacy), SoundCloud (https://soundcloud.com/pages/privacy), Mixcloud (https://www.mixcloud.com/privacy/).",
+            "Yazı tipleri next/font ile yerel olarak yüklenir ve sayfa açıldığında Google sunucularından çekilmez; bu sırada Google'a herhangi bir veri aktarımı gerçekleşmez."
+          ]
+        },
+        {
+          "id": "security",
+          "title": "Veri güvenliği",
+          "paragraphs": [
+            "Bu internet sitesi, güvenlik gerekçesiyle ve gizli içeriklerin aktarımını korumak amacıyla SSL/TLS şifrelemesi kullanır. Şifreli bir bağlantıyı, tarayıcınızdaki kilit simgesinden ve adres satırının “http://” yerine “https://” olarak değişmesinden anlayabilirsiniz."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Bu metindeki değişiklikler",
+          "paragraphs": [
+            "Veri işleme süreçleri veya hukuki durum değiştiğinde bu gizlilik politikasını güncelleriz. Her zaman bu sayfada güncel olarak erişilebilen sürüm geçerlidir."
+          ]
+        }
+      ]
+    }
+  },
+  "social": {
+    "grid": {
+      "eyebrow": "Sosyal",
+      "title": "Instagram & YouTube'dan en yeniler",
+      "lead": "Düğün ve etkinliklerden güncel bir kesit — @dj_veys hesabından ve YouTube kanalından derlendi.",
+      "playLabel": "Videoyu oynatın",
+      "altFallback": {
+        "instagram": "VEYSL'in Instagram'daki gönderisi",
+        "youtube": "VEYSL'in YouTube'daki videosu"
+      },
+      "typeLabel": {
+        "image": "Fotoğraf",
+        "video": "Video",
+        "carousel": "Galeri",
+        "reel": "Reel"
+      },
+      "openOn": {
+        "instagram": "Gönderiyi Instagram'da açın",
+        "youtube": "Videoyu YouTube'da açın"
+      },
+      "empty": {
+        "title": "Canlı akış birazdan burada.",
+        "text": "Yeni gönderiler burada otomatik olarak görünecek. O zamana kadar doğrudan Instagram'a göz atmaya değer.",
+        "cta": "Instagram'da takip edin"
+      }
+    },
+    "instagramStrip": {
+      "eyebrow": "Instagram",
+      "title": "@dj_veys",
+      "followerLabel": "Takipçi",
+      "followerCaption": "Düğün ve etkinliklerden günlük kareler için takip edin.",
+      "cta": "Instagram'da takip edin",
+      "empty": "Yeni gönderiler çok yakında. Şimdiden Instagram'da aramıza katılın."
+    },
+    "youtubeStrip": {
+      "eyebrow": "YouTube",
+      "title": "En yeni videolar",
+      "cta": "Kanala abone olun",
+      "empty": "Yeni videolar çok yakında. Şimdiden abone olun."
+    }
+  },
+  "regions": {
+    "eyebrow": "Avrupa'da Destination Wedding",
+    "hub": {
+      "meta": {
+        "title": "Avrupa'da destination wedding için düğün DJ'i | VEYSL",
+        "description": "Avrupa'da destination wedding için Alman-Türk düğün DJ'i: Avusturya, İsviçre, Hollanda, Belçika, Fransa. Almanca, Türkçe ve İngilizce canlı sunum."
+      },
+      "hero": {
+        "title": "Avrupa'da destination wedding için düğün DJ'i",
+        "subtitle": "Alman-Türk, çok dilli sunum ve şeffaf hesaplanan ulaşım – Baden-Württemberg'in ötesinde de rezerve edilebilir, Stuttgart standardından ödün vermeden."
+      },
+      "intent": {
+        "eyebrow": "Sık aranan",
+        "title": "Şehir adı olmadan da: doğru yanıtlar",
+        "items": [
+          {
+            "q": "Almanya genelinde çalışan bir Türk düğün DJ'i var mı?",
+            "a": "Evet. VEYSL'in merkezi Stuttgart ve Baden-Württemberg'dir; München'den Hamburg'a Almanya genelinde rezerve edilebilir. Ulaşım ve teknik, her yer için teklifte ayrı ayrı hesaplanır; sunum her yerde aynıdır: Almanca, Türkçe, İngilizce."
+          },
+          {
+            "q": "Yurt dışındaki bir destination wedding için düğün DJ'i rezerve edebilir miyim?",
+            "a": "Evet. Beş ülke ayrıntılı olarak hazırlandı – Avusturya, İsviçre, Hollanda, Belçika, Fransa – her biri kendi ulaşım mantığı ve kendi teknik özellikleriyle. Diğer Avrupa ülkeleri de rezerve edilebilir; ulaşım her seferinde ayrıca hesaplanır."
+          },
+          {
+            "q": "Yurt dışındaki bir Türk düğünü için DJ bulunur mu?",
+            "a": "Evet, bu en güçlü yanlardan biri: Almanya dışında Alman-Türk, tamamen Türk ve çok kültürlü düğünler; halay, canlı orkestra unsurları ve üç dilli sunumla – Stuttgart'takiyle aynı standart, yalnızca ulaşım teklifte ayrıca gösterilir."
+          },
+          {
+            "q": "Düğünler için ne kadar uzağa gidiyorsunuz?",
+            "a": "Stuttgart çevresindeki çekirdek yarıçapta ulaşım genellikle dahildir; Almanya genelinde ve Avrupa genelinde düzenli olarak talep alıyoruz ve her iki durumda da rezervasyon yapılabilir. Mesafe; ön hazırlık süresini ve maliyeti belirler, gelme isteğimizi değil."
+          }
+        ]
+      },
+      "countries": {
+        "eyebrow": "Beş ülke ayrıntılı olarak",
+        "title": "Ayrıntılı hazırlandı, hazır kalıp değil",
+        "subtitle": "Her ülke kendi ulaşım mantığı, kendi teknik özellikleri ve kendi diaspora bağıyla – bilinçli olarak şehir sayfaları yok, aşağıdaki sorulara bakın."
+      },
+      "more": {
+        "eyebrow": "Beş ülkenin ötesinde",
+        "title": "Avrupa genelinde diğer ülkeler de rezerve edilebilir",
+        "text": "Aşağıdaki ülkeler için henüz ayrı bir sayfa yok – yine de aynı özenle rezerve edilebilirler. Ulaşım, konaklama ve teknik, size özel teklifte ayrıca gösterilir. AB gümrük birliği dışındaki hedeflerde (örn. Norveç, İsviçre'de olduğu gibi) teknik ekipman için ATA Karnesi ile ek bir gümrük adımı gerekir – bu da teklifte hesaba katılır.",
+        "cta": "{country} için talep gönderin"
+      },
+      "languages": {
+        "eyebrow": "Açıkçası",
+        "title": "Canlı sunum gerçekte hangi dillerde yapılıyor",
+        "text": "Canlı sunum Almanca, Türkçe ve İngilizce yapılır – burada anılan her ülkede, o ülkenin dilinden bağımsız olarak. Bu web sitesi, mümkün olduğunca çok çiftin okuyup talep gönderebilmesi için birden fazla dilde yayında; bu, düğün gecesindeki sunum dilinden farklı bir şeydir."
+      },
+      "faq": {
+        "eyebrow": "Sık sorulan sorular",
+        "title": "Destination wedding hakkında sorular",
+        "items": [
+          {
+            "q": "Neden tek tek Avrupa şehirleri için ayrı sayfalar yok?",
+            "a": "Çünkü yerel Google sonuçları yakınlık ve o bölgede bir Google İşletme Profili gerektirir – Stuttgart merkezli bir sağlayıcının Oslo'da ya da Amsterdam'da ikisi de yoktur. Gerçek ve birbirinden farklı içeriğe sahip ülke sayfaları hem daha dürüst hem de gerçekten işe yarar; birbirinin aynısı onlarca şehir sayfası ise tam olarak Google'ın spam kurallarının doorway sayfa saydığı şeydir."
+          },
+          {
+            "q": "Yurt dışındaki bir düğün için ne kadar önceden talep göndermeliyim?",
+            "a": "Mümkün olduğunca erken – seyahat ve konaklama planlaması, Stuttgart'taki bir kutlamaya göre daha uzun bir hazırlık süresi gerektirir. Yine de ilk, bağlayıcı olmayan talebi istediğiniz zaman gönderebilirsiniz; aylar öncesinden bile."
+          },
+          {
+            "q": "Yurt dışına ulaşım nasıl hesaplanır?",
+            "a": "Her zaman size özel teklifte ayrı ayrı ve şeffaf şekilde: yol mesafesi ya da hafif teknik ekipmanla uçuş, konaklama ve AB gümrük birliği dışındaki hedeflerde (örn. İsviçre, Norveç) teknik ekipman için ATA Karnesi ile ek bir gümrük adımı."
+          },
+          {
+            "q": "Burada listelenmeyen ülkelerde de çalıyor musunuz?",
+            "a": "Evet. En ayrıntılı hazırlanan beş ülke bunlar; diğer Avrupa hedefleri de prensip olarak rezerve edilebilir – ulaşım her seferinde ayrıca hesaplanır."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Sonraki adım",
+        "title": "Yurt dışındaki düğününüz – gelin konuşalım",
+        "subtitle": "İlk, bağlayıcı olmayan bir değerlendirme için ülke, tarih ve yaklaşık davetli sayısı yeterli.",
+        "button": "Destination wedding için talep gönderin"
+      }
+    },
+    "country": {
+      "meta": {
+        "title": "Düğün DJ'i {country} — Destination Wedding | VEYSL",
+        "description": "{country} için düğün DJ'i rezerve edilebilir: Alman-Türk, Almanca, Türkçe ve İngilizce çok dilli sunum. Ulaşım ve teknik şeffaf şekilde hesaplanır."
+      },
+      "eyebrow": "Destination Wedding",
+      "hero": {
+        "title": "{country} için düğün DJ'i",
+        "ctaNote": "Bağlayıcı olmayan talep – 24 saat içinde yanıt."
+      },
+      "availability": {
+        "verifiedTitle": "Daha önce çaldık",
+        "verifiedText": "VEYSL daha önce {city} şehrinde çaldı – bugüne kadar Almanya dışındaki tek belgelenebilir sahne.",
+        "availableTitle": "{country} için rezerve edilebilir",
+        "availableText": "{country} için henüz kendi referans etkinliğimiz yok – ama her zaman talep edebilirsiniz; diğer her rezervasyonla aynı özenle ele alınır."
+      },
+      "logistics": {
+        "eyebrow": "Ulaşım & şeffaflık",
+        "title": "{country} için ulaşım"
+      },
+      "distance": {
+        "label": "Stuttgart'tan yaklaşık {km} km (kuş uçuşu, {city})"
+      },
+      "whatChanges": {
+        "eyebrow": "Yurt dışında ne değişir",
+        "title": "{country} ülkesinde teknik, elektrik ve resmi koşullar"
+      },
+      "diaspora": {
+        "eyebrow": "İki kültür, tek gece",
+        "title": "Alman-Türk gücü – {country} ülkesinde de"
+      },
+      "languages": {
+        "eyebrow": "Açıkçası",
+        "title": "{country} için sunum dilleri"
+      },
+      "faq": {
+        "eyebrow": "Sık sorulan sorular",
+        "title": "{country} ülkesindeki düğünlerle ilgili sorular"
+      },
+      "nearby": {
+        "eyebrow": "Avrupa genelinde de rezerve edilebilir",
+        "title": "Diğer ülkelere genel bakış",
+        "hubCta": "Tüm ülkeler tek bakışta"
+      },
+      "cta": {
+        "eyebrow": "Sonraki adım",
+        "title": "{country} ülkesindeki düğününüz – gelin konuşalım",
+        "subtitle": "{country} için tarihi ve kapsamı bağlayıcı olmadan sorgulayın.",
+        "button": "{country} için talep gönderin"
+      }
+    }
+  },
+  "cro": {
+    "responseTimeBadge": "Yanıt genellikle 24 saat içinde.",
+    "seasonScarcity": "{year} yılında {count} cumartesi şimdiden doldu — erken sorgulayın.",
+    "trust": {
+      "followers": "{count} takipçi",
+      "years": "{count}+ yıl deneyim",
+      "events": "{count}+ etkinliğe eşlik edildi",
+      "languages": "{count} dilde canlı sunum"
+    },
+    "saveForLater": {
+      "title": "Henüz tam emin değil misiniz?",
+      "text": "Sorun değil — bağlayıcı olmadan yazın, size uygun olduğunda her şeyi konuşuruz.",
+      "whatsappCta": "WhatsApp'tan not bırakın",
+      "mailCta": "E-posta ile not bırakın",
+      "whatsappPrefill": "Merhaba, VEYSL'de bir tarihle ilgileniyorum ama henüz emin değilim. Bunu bağlayıcı olmadan konuşabilir miyiz?",
+      "whatsappPrefillWithDate": "Merhaba, VEYSL'de {date} tarihiyle ilgileniyorum ama henüz emin değilim. Bunu bağlayıcı olmadan konuşabilir miyiz?",
+      "mailSubject": "Bağlayıcı olmayan talep – tarih ön kaydı"
+    }
+  },
+  "media": {
+    "comingSoon": "Fotoğraf yakında",
+    "placeholderAriaLabel": "Görsel alanı – henüz fotoğraf eklenmedi"
+  },
+  "blog": {
+    "meta": {
+      "title": "Rehber: Düğün DJ'i, müzik & planlama | VEYSL",
+      "description": "Düğün DJ'i, müzik, teknik, maliyet ve Alman-Türk düğünleri üzerine {count} ayrıntılı rehber — Stuttgart'tan VEYSL, DJ & Orkestra."
+    },
+    "index": {
+      "eyebrow": "Rehber",
+      "title": "Düğününüz için rehber",
+      "subtitle": "Planlama, müzik, teknik ve Alman-Türk düğünleri üzerine {count} ayrıntılı rehber — 12 yılı aşkın sahne deneyiminden yazıldı.",
+      "updated": "Son güncelleme: {date}",
+      "meta": {
+        "emptyDescription": "VEYSL'in düğün DJ'i, müzik ve planlama rehberi — bu dilde çok yakında."
+      },
+      "empty": {
+        "title": "Rehber bu dilde çok yakında yayında.",
+        "body": "Ayrıntılı rehberlerimiz şu anda Almanca, Türkçe ve İngilizce olarak mevcut. Çeviri hazır olana kadar sorularınızı memnuniyetle doğrudan yanıtlarız.",
+        "questionsCta": "Sık sorulan soruları görün",
+        "requestCta": "Bağlayıcı olmadan talep gönderin"
+      }
+    },
+    "categories": {
+      "planung": "Planlama",
+      "kosten": "Maliyet",
+      "musik": "Müzik",
+      "tuerkische-hochzeit": "Türk düğünü",
+      "technik": "Teknik",
+      "recht": "Hukuk",
+      "international": "Uluslararası",
+      "real-wedding": "Gerçek düğün"
+    },
+    "post": {
+      "backToOverview": "Rehbere dönün",
+      "byAuthor": "{author} tarafından",
+      "publishedOn": "Yayın tarihi: {date}",
+      "updatedOn": "Güncelleme: {date}",
+      "readingTime": "{minutes} dk. okuma",
+      "furtherReadingTitle": "İlgili bağlantılar",
+      "relatedAnswersTitle": "İlgili yanıtlar",
+      "relatedCitiesTitle": "Yakınınızda da",
+      "relatedPostsTitle": "Bunlar da ilginizi çekebilir",
+      "cta": {
+        "eyebrow": "Okumak yetmiyor mu?",
+        "title": "Gelin tarihiniz hakkında konuşalım",
+        "subtitle": "İstediğiniz tarihin hâlâ boş olup olmadığını bağlayıcı olmadan sorgulayın — 24 saat içinde yanıt."
+      }
+    }
+  }
+}

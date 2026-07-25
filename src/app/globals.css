@@ -1,26 +1,217 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/**
+ * VEYSL design tokens — Tailwind v4 CSS-first theme.
+ * Token names match `.claude/CONTRACT.md` §4 exactly. Never hardcode a hex
+ * value in a component; consume these via Tailwind utilities (bg-bg,
+ * text-ink-muted, border-line, text-gold, font-display, rounded-lg, ...).
+ *
+ * Colour values declared here are the dark palette (dark is the project
+ * default). `.dark` / `.light` blocks below (in @layer base) override the
+ * same custom properties per active theme — see next-themes wiring in
+ * `src/app/[locale]/layout.tsx`.
+ */
+@theme {
+  --color-bg: #08080a;
+  --color-surface: #101013;
+  --color-surface-2: #17171b;
+  --color-ink: #f6f3ed;
+  --color-ink-muted: #a6a19a;
+  --color-ink-faint: #6e6a64;
+  --color-line: #232329;
+
+  /* Brand accent — identical in both themes. */
+  --color-gold: #d6b36a;
+  --color-gold-soft: #e8ce96;
+  --color-gold-deep: #a8853f;
+
+  --color-success: #4e9e7a;
+  --color-danger: #c9564b;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-full: 999px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 10px rgba(0, 0, 0, 0.18);
+  --shadow-lift: 0 16px 40px -12px rgba(0, 0, 0, 0.55), 0 6px 16px -4px rgba(0, 0, 0, 0.3);
 }
 
+/**
+ * `inline` because the source value is itself a CSS variable that next/font
+ * sets on the <html> element (via fontDisplay.variable / fontSans.variable in
+ * src/lib/fonts.ts), not a literal — see Tailwind v4 docs on theme variables
+ * that reference existing custom properties.
+ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: dark;
+    /* Total rendered height of <StickyCtaBar> (4rem content row + safe-area
+       inset). GlobalPlayer (audio) reads this to stack above it on mobile —
+       keep in sync with the row height in components/layout/sticky-cta-bar.tsx. */
+    --mobile-cta-height: calc(4rem + env(safe-area-inset-bottom, 0px));
+    /* Not a @theme token on purpose (CONTRACT §4 lists the exact token set).
+       Gold (#D6B36A) is identical in both themes and only clears WCAG AA
+       against a dark foreground — the theme's `ink` token flips to near-white
+       in dark mode, which fails contrast on gold. Anything sitting on a gold
+       surface (Button variant="gold", .text-on-gold) uses this fixed value
+       instead, in both themes. */
+    --gold-ink: #14131a;
+  }
+
+  /* Dark theme — mirrors the @theme defaults above, applied once next-themes
+     commits the "dark" class (it always sets an explicit class, never none). */
+  .dark {
+    color-scheme: dark;
+    --color-bg: #08080a;
+    --color-surface: #101013;
+    --color-surface-2: #17171b;
+    --color-ink: #f6f3ed;
+    --color-ink-muted: #a6a19a;
+    --color-ink-faint: #6e6a64;
+    --color-line: #232329;
+  }
+
+  .light {
+    color-scheme: light;
+    --color-bg: #faf8f4;
+    --color-surface: #ffffff;
+    --color-surface-2: #f2eee7;
+    --color-ink: #14131a;
+    --color-ink-muted: #5e5850;
+    --color-ink-faint: #8b857c;
+    --color-line: #e3ddd2;
+  }
+
+  /* Pre-hydration fallback: honour the system preference for the brief
+     window before next-themes' blocking script commits .dark/.light. */
+  @media (prefers-color-scheme: light) {
+    :root:not(.dark):not(.light) {
+      color-scheme: light;
+      --color-bg: #faf8f4;
+      --color-surface: #ffffff;
+      --color-surface-2: #f2eee7;
+      --color-ink: #14131a;
+      --color-ink-muted: #5e5850;
+      --color-ink-faint: #8b857c;
+      --color-line: #e3ddd2;
+    }
+  }
+
+  html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      transition-delay: 0ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Visually hidden until focused — first tab stop on every page. */
+  .skip-link {
+    position: absolute;
+    z-index: 100;
+    left: 1rem;
+    top: -4rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md);
+    background-color: var(--color-gold);
+    color: var(--gold-ink);
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: top 0.25s var(--ease-out-expo);
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Subtle film-grain overlay — inline SVG turbulence, no external asset. */
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Accessible foreground for content sitting on the gold accent — see the
+     --gold-ink note on :root above. Used by Button's `gold` variant. */
+  .text-on-gold {
+    color: var(--gold-ink);
+  }
+
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-repeat: repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Fluid display type helpers (Cormorant), for hero/section/subsection headings. */
+@utility text-display-1 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: clamp(2.75rem, 1.9rem + 4vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+@utility text-display-2 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: clamp(2.25rem, 1.85rem + 2vw, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+}
+
+@utility text-display-3 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  line-height: 1.2;
 }

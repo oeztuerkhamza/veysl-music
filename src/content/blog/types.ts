@@ -1,0 +1,147 @@
+/**
+ * Blog content types — shared by every post module in `src/content/blog/`.
+ *
+ * Design goals (see the brief this was built against, and `.claude/CONTRACT.md` §6):
+ *
+ * 1. **CMS-ready.** `id` and `slug` are stable and locale-independent so a future
+ *    headless CMS (Sanity, per CONTRACT.md) can import each post as one document with
+ *    per-locale translation fields, without renaming keys. Nothing here is JSX.
+ * 2. **One slug per post, not one per locale.** Every other route in this project uses
+ *    localized slugs (`/pakete` → `/packages` → `/paketler`, see `src/i18n/routing.ts`),
+ *    because those are fixed navigation pages maintained by hand. A 15-post blog with a
+ *    translation backlog (ku/fr/es still pending, see `docs/BLOG-PLAN.md`) is a
+ *    different shape of content: the same slug across `de`/`tr`/`en` keeps one canonical
+ *    URL per article family and is what CMS platforms do by default for a "translated
+ *    document" pattern. Whoever wires up `/ratgeber/[slug]` later can still localize the
+ *    slug per-locale by extending `BlogLocaleContent` with an optional `slug` override —
+ *    nothing here forecloses that, it just isn't needed yet.
+ * 3. **No hardcoded hrefs inside body prose.** Internal links live in the structured
+ *    `links` / `relatedAnswers` / `relatedCities` / `relatedPosts` arrays, exactly like
+ *    `src/content/answers.ts` already does with its own `links?: StaticPathname[]`. The
+ *    markdown `body` mentions a related page by name in prose ("die Paketübersicht"),
+ *    never as a raw `/pakete` link — because the real slug depends on locale
+ *    (`/pakete` vs `/packages` vs `/paketler`) and only `getPathname()` from
+ *    `@/i18n/navigation` may resolve that (CONTRACT.md §5: "never build URLs by hand").
+ *    A future renderer reads the structured arrays and injects real `<Link>`s, typically
+ *    as a "Weiterführende Links" block.
+ * 4. **Markdown, not JSX.** `body` is a plain MDX-ready markdown string: `##`/`###`
+ *    headings, `-`/`1.` lists, GFM tables, `**bold**`. No inline code spans are used
+ *    anywhere in this corpus specifically so post bodies can be safely written as
+ *    JS template literals without escaping backticks.
+ */
+
+import type { Locale } from '@/i18n/routing';
+import type { StaticPathname } from '@/lib/seo';
+
+/** Locales this corpus is actually written in today. ku/fr/es are a deliberate backlog — see docs/BLOG-PLAN.md. */
+export const BLOG_LOCALES = ['de', 'tr', 'en'] as const;
+export type BlogLocale = (typeof BLOG_LOCALES)[number];
+
+/**
+ * Editorial buckets — used for the future `/ratgeber` index/filter UI and to keep an
+ * eye on keyword cannibalization (one primary keyword per post, see docs/BLOG-PLAN.md).
+ * `real-wedding` is reserved for the two recap templates in (5) and is never used by a
+ * `type: 'guide'` post.
+ */
+export type BlogCategory =
+  | 'planung'
+  | 'kosten'
+  | 'musik'
+  | 'tuerkische-hochzeit'
+  | 'technik'
+  | 'recht'
+  | 'international'
+  | 'real-wedding';
+
+/**
+ * `guide` = evergreen advice content (the 15 articles in Part 1).
+ * `recap` = a real-event write-up. VEYSL has zero verified real-wedding details right
+ * now (see `.claude/BRAND-FACTS.md` — no couple names, venues or dates are confirmed),
+ * so every `recap` currently ships as `status: 'template'`: real structure and prompts,
+ * blanks left for the owner to fill in once he has a couple's written permission.
+ */
+export type BlogPostType = 'guide' | 'recap';
+
+/**
+ * `draft` = not yet editorially finished.
+ * `published` = content-complete and fact-checked against BRAND-FACTS.md; ready to go
+ * live the moment a `/ratgeber/[slug]` route exists. This does NOT mean it is live —
+ * no blog route is wired up by this content pass, see docs/BLOG-PLAN.md.
+ * `template` = intentionally not a finished article — a fill-in-the-blank skeleton
+ * (used only by the two `type: 'recap'` posts).
+ */
+export type BlogPostStatus = 'draft' | 'published' | 'template';
+
+export interface BlogSeo {
+  /** ≤ 60 characters, `[...string].length` (umlauts count as one), matches the convention in docs/SEO-KEYWORD-MAP.md. */
+  metaTitle: string;
+  /** ≤ 155 characters. */
+  metaDescription: string;
+}
+
+export interface BlogLocaleContent {
+  /** The page's single H1. */
+  title: string;
+  /**
+   * The 2–3 sentence answer-style opening paragraph. Doubles as the card teaser on a
+   * future `/ratgeber` index and as the passage most likely to be lifted verbatim by an
+   * AI answer engine — same rationale as `Answer.a` in `src/content/answers.ts`, see
+   * `docs/GEO-STRATEGY.md` §2 ("heading-then-answer adjacency").
+   */
+  excerpt: string;
+  /** MDX-ready markdown body. H1 is NOT repeated here — rendering owns the H1 from `title`. */
+  body: string;
+  seo: BlogSeo;
+}
+
+/**
+ * `de`/`tr`/`en` are mandatory on every post per the brief. `ku`/`fr`/`es` are typed as
+ * optional so the translation backlog in docs/BLOG-PLAN.md can be filled in later
+ * without a breaking-change to this interface — mirrors the exact pattern
+ * `LocalizedAnswerText` already uses in `src/content/answers.ts`.
+ */
+export type BlogTranslations = { de: BlogLocaleContent; tr: BlogLocaleContent; en: BlogLocaleContent } & Partial<
+  Record<Exclude<Locale, 'de' | 'tr' | 'en'>, BlogLocaleContent>
+>;
+
+/**
+ * One fill-in-the-blank field for a `recap` template. `key` is the token used inside
+ * `body` as `{{KEY}}` — a future editor UI can render one form field per entry and
+ * do a straight find-and-replace, which is what "turn a real event into a post in
+ * fifteen minutes" (per the brief) actually requires.
+ */
+export interface BlogTemplateField {
+  key: string;
+  label: Record<BlogLocale, string>;
+  hint: Record<BlogLocale, string>;
+  example?: string;
+}
+
+export interface BlogPost {
+  /** Stable, locale-independent identifier — the CMS primary key. Never changes once published. */
+  id: string;
+  /** Stable slug, identical across every locale — see file header point 2. */
+  slug: string;
+  category: BlogCategory;
+  type: BlogPostType;
+  status: BlogPostStatus;
+  /** ISO date (YYYY-MM-DD). Planned/actual go-live date — see docs/BLOG-PLAN.md for the cadence this follows. */
+  publishedAt: string;
+  /** ISO date (YYYY-MM-DD). Last substantive content edit. */
+  updatedAt: string;
+  /** Locale-independent, lowercase-kebab tags for future filtering — not display strings. */
+  tags: string[];
+  /** Approximate reading time in minutes, based on the German body (~200 words/min). Informational only. */
+  readingTimeMinutes: number;
+  /** German route keys (from `src/i18n/routing.ts` → `pathnames`) this post should link to — resolved per-locale by the renderer, never hardcoded. */
+  links: StaticPathname[];
+  /** Ids from `src/content/answers.ts` worth cross-linking (GEO corpus). */
+  relatedAnswers?: string[];
+  /** Slugs from `src/content/cities.ts` worth cross-linking (local SEO). */
+  relatedCities?: string[];
+  /** Ids of other posts in this corpus worth reading next. */
+  relatedPosts?: string[];
+  /** Only present on `type: 'recap'` posts — the fill-in-the-blank field list for `body`'s `{{TOKENS}}`. */
+  templateFields?: BlogTemplateField[];
+  translations: BlogTranslations;
+}

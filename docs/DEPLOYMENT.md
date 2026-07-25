@@ -1,0 +1,479 @@
+# Deployment runbook — veysl.de
+
+Single netcup VPS, Debian 13 (trixie) minimal, Docker Compose (app + nginx +
+certbot), SQLite on a persistent volume. No separate database container —
+see "Why SQLite" below for the reasoning.
+
+Every command below uses placeholders (`<SERVER_IP>`, `<SSH_USER>`, …). Fill
+in your own values when running them; never write real ones into any file in
+this repo.
+
+---
+
+## Architecture
+
+```
+Internet
+   |
+   v
+nginx (host ports 80, 443) ── TLS termination, gzip, legacy-domain redirect
+   |
+   v (docker network "veysl", not published to the host)
+app :3000  — single Next.js container: marketing site + /admin (Payload) + /api/*
+   |
+   +-- veysl-data volume   -> /app/data/veysl-cms.db   (SQLite)
+   +-- veysl-media volume  -> /app/media               (Payload uploads)
+
+certbot — renews the shared TLS cert every 12h, writes into certbot-conf
+          (mounted read-only into nginx)
+```
+
+One app container, not the split admin-SPA/API/homepage shape some other
+projects use — Payload's admin panel is built into the same Next.js app at
+`/admin`, so there's nothing else to route.
+
+---
+
+## Why SQLite, not Postgres
+
+`payload.config.ts` documents the adapter swap as a ~3-line change if you
+ever need it — this section is why we're *not* making that change now.
+
+**CHECKLIST.md (A.3) says "switch to Postgres"** — but its own stated reason
+is that SQLite's file doesn't survive a redeploy on **Vercel-style**
+platforms with an ephemeral filesystem. That reasoning doesn't apply here:
+this is a single VPS with a named, persistent Docker volume
+(`veysl-data:/app/data`) that survives `docker compose down`, image rebuilds,
+and redeploys — only `docker compose down -v` or an explicit `docker volume
+rm` destroys it, and nothing in deploy.sh does either.
+
+Evaluated honestly against the actual workload (a single-operator wedding-DJ
+lead-gen site — a handful of booking enquiries a day, one admin editing
+content occasionally, not a multi-tenant SaaS):
+
+- **Concurrent writes**: trivial at this scale. SQLite's single-writer model
+  is a non-issue when writes are enquiries/admin edits, not a shopping cart
+  under load.
+- **Backup story**: a single file, backed up with SQLite's own `.backup`
+  command for a consistent snapshot even mid-write (see `deploy/backup.sh`)
+  — no separate `pg_dump`/base-backup tooling, no second container to keep
+  patched and monitored on a resource-constrained VPS.
+- **Operational familiarity**: matches the shape of the client's other
+  production stack (also Docker + nginx + certbot, also SQLite-on-a-volume)
+  — one fewer moving part to learn.
+- **Cost of being wrong**: real, but bounded. If the site ever outgrows
+  SQLite (meaningfully concurrent admin users, need for read replicas,
+  etc.), the migration is: `npm install @payloadcms/db-postgres`, swap the
+  adapter in `payload.config.ts` (see the comment directly above `db:` in
+  that file), add a Postgres container + volume to `docker-compose.yml`, run
+  `payload migrate` once against the new database, and — this is the part
+  that isn't "3 lines" — write a one-off data-export/import script, since
+  Payload doesn't ship a generic cross-adapter data migrator. Low
+  probability at this project's scale, but not zero-effort; documented here
+  so it's a conscious tradeoff, not a surprise later.
+
+**If you choose to move to Postgres anyway**: add a `postgres:16-alpine`
+service to `docker-compose.yml` with its own named volume, set
+`DATABASE_URI=postgres://user:password@postgres:5432/veysl` in `.env`, make
+the adapter swap in `payload.config.ts`, and run
+`docker compose run --rm app npx payload migrate` once before first boot.
+
+---
+
+## CMS migrations — RESOLVED, here's how it works now
+
+Found while building this deployment pipeline (not on `CHECKLIST.md`), and
+since fixed application-side:
+
+`@payloadcms/db-sqlite`'s connection code (`connect.js`) only
+auto-creates/syncs the database schema ("push mode") when
+`NODE_ENV !== 'production'`, and only runs formal migrations when
+`prodMigrations` is explicitly passed into `sqliteAdapter({...})` in the
+config. Left unwired, a genuinely fresh production database would get zero
+tables — not an error, just silence, until `POST /api/anfrage` (no fallback
+by design — see that route's own comments) 500s on every single booking
+attempt while the rest of the site looks fine (`getSite()` and the
+site-image slot resolver both fail soft to static defaults, so most pages
+render normally regardless).
+
+**Fixed**: `src/migrations/` (one baseline migration covering every
+collection/global) is committed, and `payload.config.mts` passes
+`prodMigrations: migrations` into `sqliteAdapter({...})` — see that file's
+own comment for the full story, including a real, non-obvious blocker along
+the way: generating the migration requires the standalone `payload` CLI,
+which hit a genuine `require()`-of-ESM-with-top-level-await incompatibility
+in `@payloadcms/richtext-lexical` (reproduced identically on Node 22.23.1
+*and* 24.15 — not the Node-version issue it first looked like). Fixed by
+making the config file itself `.mts` (forces real ESM loading end to end);
+the running app is unaffected since it never goes through that file-search
+path. **Verified end-to-end, not just type-checked**: built the standalone
+`server.js` output, ran `payload migrate` against a brand-new empty SQLite
+file with `NODE_ENV=production`, started the server against that database,
+and posted a real submission to `/api/anfrage`, `/api/kontakt` and
+`/api/whatsapp-lead` — all three returned `200` and the rows are in the
+(then-deleted) test database.
+
+`deploy/deploy.sh` (step 4/6, "Database migrations") runs `npx payload
+migrate` — with `PAYLOAD_CONFIG_PATH=payload.config.mts` set for that
+invocation specifically — against the `builder` stage image before any app
+container (re)starts, so a bad migration fails the deploy loudly instead of
+silently bricking the enquiry form. `connect()` also auto-applies
+`prodMigrations` on every boot as a second safety net (idempotent — Payload
+tracks applied migrations in `payload_migrations`), in case that step is
+ever skipped.
+
+**Regenerating a migration after a schema change**: see the command
+documented directly above `db:` in `payload.config.mts` — generate against a
+throwaway empty SQLite file (not the real dev DB), then commit the new file
+under `src/migrations/`.
+
+---
+
+## Prerequisites
+
+- A netcup VPS, Debian 13 (trixie) minimal, root access.
+- The `veysl.de` domain, DNS access to it (and to `veystunesofficial.de` for
+  the migration step).
+- This repo cloned or otherwise synced onto the box.
+
+## DNS records to set
+
+The records this pipeline depends on are below. For the **complete zone** —
+these plus the mail records, CAA, the netcup-panel specifics and the TTL
+handling for the migration — see `docs/DNS-RECORDS.md`.
+
+| Host | Type | Value | When |
+|---|---|---|---|
+| `veysl.de` | A (+ AAAA if the VPS has IPv6) | `<SERVER_IP>` | Before first deploy |
+| `www.veysl.de` | A (+ AAAA) | `<SERVER_IP>` | Before first deploy |
+| `veystunesofficial.de` | A (+ AAAA) | `<SERVER_IP>` | At the domain-migration step — see below, **not** day one |
+| `www.veystunesofficial.de` | A (+ AAAA) | `<SERVER_IP>` | Same as above |
+
+Mail DNS (MX/SPF/DKIM/DMARC) is a separate concern, hosted externally
+(Mailbox.org) — see `docs/MAIL-SETUP.md`. Nothing in this deploy pipeline
+touches mail DNS.
+
+**Do not repoint `veystunesofficial.de` on day one.** Launch `veysl.de`
+first, verify it's healthy and indexed, *then* do the domain migration as
+its own deliberate step (see "Domain migration" below) — CHECKLIST.md (A.4)
+flags this as the single highest technical/SEO risk in the project, and
+rushing both at once makes it harder to tell which change caused what if
+something goes wrong.
+
+---
+
+## First deploy, start to finish
+
+```bash
+# 1. On your own machine: provision the box (run once)
+ssh root@<SERVER_IP> 'bash -s' < deploy/server-setup.sh
+# Reads deploy/server-setup.sh's own summary at the end for next steps.
+# Verify you can SSH in as the new deploy user in a NEW terminal before
+# closing this session — the script disables root SSH login as its last step.
+
+# 2. As the deploy user: get the code onto the box
+ssh <SSH_USER>@<SERVER_IP>
+git clone <REPO_URL> /opt/veysl/app
+cd /opt/veysl/app
+
+# 3. Production env
+cp env.production.example .env
+# Generate PAYLOAD_SECRET ON THIS BOX, never reuse the dev one:
+openssl rand -hex 32
+# Paste the result into .env's PAYLOAD_SECRET, then fill in every other
+# <...> placeholder — see the comments inside env.production.example.
+nano .env   # or your editor of choice
+
+# 4. DNS: point veysl.de + www.veysl.de at this box now (see table above),
+#    and wait for it to propagate (`dig veysl.de` from your own machine).
+
+# 5. First TLS certificate (one-time)
+CERTBOT_EMAIL=<owner-email> deploy/setup-ssl.sh
+
+# 6. First deploy
+deploy/deploy.sh
+```
+
+`deploy/deploy.sh` builds the image, runs Payload's database migrations (see
+the section above), recreates the app container, starts nginx once it
+confirms a certificate exists, health-checks, and rolls back automatically
+if the health check fails.
+
+### Creating the first Payload admin user
+
+Payload's `Users` collection has no seeded account. The **first** visit to
+`https://veysl.de/admin` after migrations have run (step 4/6 above)
+automatically shows a "Create your first admin user" form instead of a login
+form — this is standard Payload behavior, not something this
+pipeline sets up separately. Use a real email + a strong, unique password;
+this account can create further admin users from `/admin` afterwards.
+
+---
+
+## Environment variables
+
+All documented in `env.production.example` with inline comments; summary:
+
+| Variable | Required | Notes |
+|---|---|---|
+| `PAYLOAD_SECRET` | Yes | ≥32 bytes, generated on the server, never committed |
+| `DATABASE_URI` | Yes | `file:/app/data/veysl-cms.db` — must match the volume mount |
+| `PAYLOAD_SERVER_URL` | Yes | `https://veysl.de` |
+| `NEXT_PUBLIC_SITE_URL` | Yes | `https://veysl.de` — also a Docker **build** arg, see below |
+| `BOOKING_TRANSPORT` / `BOOKING_NOTIFY_EMAIL` | Yes | See "Known issues" — `console` is dev-only |
+| `RESEND_*` / `SMTP_*` | Once a real transport is implemented | See docs/MAIL-SETUP.md |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` etc. | Optional | Analytics — see docs/ANALYTICS.md |
+| `INSTAGRAM_*` / `YOUTUBE_CHANNEL_ID` | Optional | Social feed — see docs/SOCIAL-FEED.md |
+
+**Build-time vs. runtime**: only `NEXT_PUBLIC_*` variables need to be set
+*before* `docker compose build` (Next.js inlines them into the client bundle
+at build time — see the Dockerfile's top comment). Everything else
+(`PAYLOAD_SECRET`, `DATABASE_URI`, booking/mail/social vars) is read live by
+the Node process when the container starts, so changing them only needs
+`docker compose up -d app` (via `deploy/deploy.sh`), not a rebuild.
+
+---
+
+## Updating / redeploying
+
+```bash
+cd /opt/veysl/app
+deploy/deploy.sh
+```
+
+Idempotent — safe to run with no changes pending (everything no-ops
+cleanly). Pulls the latest `git` commit on the current branch (fast-forward
+only; refuses to run if the server has local changes it can't cleanly merge
+— resolve that manually first), rebuilds the image, checks migrations,
+recreates the app container, health-checks, and **automatically rolls back**
+to the previous image if the new one doesn't pass its health check within
+60 seconds.
+
+## Rolling back manually
+
+`deploy/deploy.sh` tags the previous working image as `veysl-app:previous`
+before every deploy. To roll back by hand (e.g. you noticed a problem after
+the health check already passed):
+
+```bash
+docker tag veysl-app:previous veysl-app:latest
+docker compose up -d --force-recreate --no-deps app
+```
+
+This only rolls back the **application code/image** — it does not touch the
+database. If a bad deploy also corrupted data, restore from backup instead
+(next section).
+
+---
+
+## Backups
+
+```bash
+deploy/backup.sh                 # take a backup now (DB + media)
+deploy/backup.sh list            # see what's available
+```
+
+Writes timestamped, gzip-compressed files to `backups/db/` and
+`backups/media/` under the app directory, with a configurable retention
+window (`RETENTION_DAYS`, default 14 days — older backups are deleted
+automatically). The DB backup uses SQLite's own `.backup` command for a
+consistent snapshot even while the app is live and writing — never a raw
+file copy (see the comment at the top of `deploy/backup.sh` for why that
+matters).
+
+**Schedule it** — as the deploy user, `crontab -e`:
+
+```
+0 3 * * * /opt/veysl/app/deploy/backup.sh >> /opt/veysl/app/backups/backup.log 2>&1
+```
+
+### Restoring a backup — and testing that restore actually works
+
+A backup nobody has ever restored is not a backup. `deploy/backup.sh` has a
+restore command; test it **before you need it**, on a fresh VPS/VM if
+possible (never rehearse a destructive restore against the live production
+volumes):
+
+```bash
+deploy/backup.sh restore backups/db/veysl-cms-<timestamp>.db.gz \
+                          backups/media/veysl-media-<timestamp>.tar.gz
+```
+
+This stops the app, overwrites the `veysl-data`/`veysl-media` volumes with
+the chosen backup (after an explicit `yes` confirmation prompt), and starts
+the app back up. After it finishes:
+
+1. Load `https://veysl.de/admin`, log in, and confirm the enquiries/media
+   you expect to see are actually there.
+2. Open a few blog/gallery pages that reference uploaded media and confirm
+   images load (proves the media volume round-tripped correctly, not just
+   the DB).
+3. If either check fails, you still have the pre-restore state until you
+   run `restore` again — nothing is deleted until the moment of restore, so
+   re-running with a different backup file is safe.
+
+**Do this restore-test once, right after your first real backup exists**,
+so the first time you *need* a restore isn't also the first time you've
+ever run one.
+
+---
+
+## Domain migration (`veystunesofficial.de` -> `veysl.de`)
+
+The highest technical/SEO risk in this project (CHECKLIST.md A.4). Sequence:
+
+1. **Do not cancel the old domain.** Keep the registration active
+   indefinitely — it's still carrying the redirect and whatever residual
+   direct traffic/backlinks point at it.
+2. Launch `veysl.de` first (steps above), verify it's healthy, and let it
+   settle for a few days.
+3. Point `veystunesofficial.de` + `www.veystunesofficial.de` DNS at
+   `<SERVER_IP>` (see DNS table above).
+4. Expand the TLS certificate to cover the legacy domain too (no downtime,
+   updates the existing cert in place):
+   ```bash
+   CERTBOT_EMAIL=<owner-email> \
+   CERTBOT_DOMAINS="veysl.de www.veysl.de veystunesofficial.de www.veystunesofficial.de" \
+   deploy/setup-ssl.sh
+   ```
+5. Verify the redirect: `curl -I https://veystunesofficial.de/kontakt/` should
+   return `301` with `Location: https://veysl.de/kontakt`. Check every path
+   in `deploy/redirects-legacy.conf` the same way.
+6. **Google Search Console**: verify `veysl.de` as a new property, then run
+   the **Change of Address** tool from the *old* verified property, pointing
+   it at the new one. This is a distinct step from the 301s — it tells
+   Google directly rather than waiting for re-crawling to figure it out.
+7. Submit the new sitemap (`https://veysl.de/sitemap.xml`) in Search
+   Console and watch the coverage report over the following weeks.
+8. Update the site address on Google Business Profile to `veysl.de` —
+   **do not create a new GBP listing**; edit the existing one so the
+   current 5.0★ profile carries over (CHECKLIST.md A.4/B.2).
+9. Update the link in the Instagram bio (currently pointing at the old
+   domain — CHECKLIST.md B.3, flagged there as "5 minutes, your fastest
+   traffic source").
+10. Watch the legacy-domain nginx access log for real 404-turned-301 paths
+    that hit the catch-all (`default '/'` in `deploy/redirects-legacy.conf`)
+    instead of a precise match — add them to that file if the same path
+    shows up repeatedly, rather than leaving real traffic on the catch-all.
+
+`deploy/redirects-legacy.conf` currently maps the six old paths known at
+build time (`/`, `/ueber-uns/`, `/kontakt/`, `/blog-hochzeitstipps/`,
+`/impressum/`, `/datenschutzerklaerung/`) to their nearest real equivalent on
+the new site — never a blanket redirect to the homepage. Anything not listed
+falls through to `/` as a last resort rather than 404ing.
+
+---
+
+## Known issues / follow-ups found while building this pipeline
+
+- **Standalone-server redirect loop (fixed here)**: `next.config.ts` needed
+  two additional lines beyond `output: 'standalone'` —
+  `skipProxyUrlNormalize: true` and `skipTrailingSlashRedirect: true`.
+  Without them, the built-in standalone `server.js` turns next-intl's
+  locale-rewrite middleware into an infinite `307` self-redirect on
+  **every** page — confirmed locally: `next start` serves `/` as `200`
+  fine, `node server.js` (the standalone/Docker path) loops until curl's
+  50-redirect ceiling. This is a documented Next.js pattern for
+  self-hosted/custom servers with middleware, not app-specific — but it
+  only shows up in exactly the runtime mode Docker uses, so it's easy to
+  miss if you only ever tested with `next start`/`next dev`.
+- **`answers.capabilities.traditional-turkish` missing translation key** —
+  every locale's `messages/*.json` (including `de`) is missing this key
+  under the `answers.capabilities` namespace (`site.capabilities` in
+  `src/content/site.ts` has 7 entries; the message files only have 6).
+  Doesn't fail the build (next-intl logs and degrades), but the `/fragen`
+  page's capability list is rendering wrong/incomplete in every locale right
+  now. Fix is a one-line addition to each `messages/*.json` — not a
+  deployment-config issue, flagged for whoever owns i18n content.
+- **`src/app/[locale]/fragen/metadata.ts`'s `FRAGEN_SLUG` map is missing
+  `nl`** — this one **does** fail `next build` outright (`Property 'nl' is
+  missing...`), so it blocks the entire pipeline until fixed. The file's own
+  comment says it's a temporary duplicate of `routing.pathnames['/fragen']`
+  "until the orchestrator adds the real entry" — but `routing.ts` already
+  has the real entry (all 7 locales, `nl: '/veelgestelde-vragen'`), so this
+  file is just stale. Confirmed fix (verified locally, not applied — outside
+  this pipeline's file-ownership; see `.claude/CONTRACT.md`): add
+  `nl: '/veelgestelde-vragen'` to the `FRAGEN_SLUG` map, or better, delete
+  the map entirely and switch to `absoluteUrl('/fragen', locale)` per that
+  file's own comment.
+- **`BOOKING_TRANSPORT=console` is the only implemented transport** — every
+  booking enquiry currently just gets logged to stdout; no email is actually
+  sent to the owner or the customer. This is fine for local dev, **not** for
+  production (also: it logs personal data — name/email/phone — into
+  container logs). `ResendTransport` needs to be implemented in
+  `src/app/api/anfrage/_lib/transport.ts` before going live with real
+  traffic — see docs/MAIL-SETUP.md.
+- **No Content-Security-Policy** — deliberately not shipped. This site loads
+  its own WebGL hero, GSAP, wavesurfer.js, Payload's Lexical rich-text admin
+  editor, and Spotify/SoundCloud/YouTube embed facades; a guessed CSP is
+  more likely to silently break one of those than to add real protection.
+  Recommended follow-up once the site is live and stable: add a
+  `Content-Security-Policy-Report-Only` header first, watch real violation
+  reports for a few weeks, then tighten to an enforcing policy informed by
+  what's actually observed loading — not guessed up front.
+- **No brotli compression** — `nginx:1.27-alpine` doesn't ship the
+  `ngx_brotli` module. gzip is fully configured and gets most of the
+  practical win; brotli would need a custom-compiled nginx image, judged not
+  worth the added maintenance surface for the first production cut.
+- **In-memory rate limiter** (`src/app/api/_lib/rate-limit.ts`) — resets on
+  every container restart and doesn't share state across replicas. **This is
+  fine for this deployment**: one app container, no horizontal scaling. If
+  you ever scale `app` to multiple replicas (e.g. `docker compose up -d
+  --scale app=2` behind nginx load-balancing), this stops working correctly
+  — each replica would enforce its own independent limit — and needs to move
+  to a shared store (Redis/Upstash) first.
+
+---
+
+## Go-live checklist
+
+- [ ] `.env` fully filled in, `PAYLOAD_SECRET` freshly generated on the server
+- [ ] `deploy/setup-ssl.sh` run, `https://veysl.de` serves valid TLS
+- [ ] First admin user created at `/admin` (needs migrations to have run —
+      step 4/6 of `deploy/deploy.sh`, see "CMS migrations" above)
+- [ ] **Submit a real test enquiry through `/anfrage` and confirm it appears
+      in `/admin` → Enquiries** — still the single most important pre-launch
+      test (verified locally against a fresh DB — see "CMS migrations" above
+      — but a real box can still differ), and cheap insurance either way
+- [ ] `BOOKING_TRANSPORT` is not `console` (once a real transport exists —
+      until then, launching means enquiries are captured in `/admin` but no
+      email notification goes out; know that going in)
+- [ ] `deploy/backup.sh` run at least once, and its `restore` path tested
+      (see "Restoring a backup" above)
+- [ ] Legal blockers from `CHECKLIST.md`'s "🔴 LAUNCH BLOKERLERİ" table
+      resolved (Impressum address, USt-IdNr./Kleinunternehmer statement,
+      Datenschutzerklärung legal review) — business-side, not this
+      pipeline's job, but genuinely launch-blocking
+- [ ] Lighthouse run against the live site (target 90+, per CHECKLIST.md A.3)
+- [ ] Domain migration steps above completed in order, including the
+      **Search Console Change of Address tool** — not just the 301s
+- [ ] Google Business Profile site link updated (existing profile, not a new one)
+- [ ] Instagram bio link updated to `veysl.de`
+- [ ] Uptime monitoring pointed at `https://veysl.de/` (external, e.g.
+      UptimeRobot/Better Uptime — nothing in this repo provides this)
+
+---
+
+## What this pipeline cannot verify without a real server
+
+Honest list — all of the above was built and tested locally (production
+`next build`, the standalone server end-to-end including the redirect-loop
+fix, `docker compose config` validation of the compose file shape) but
+**not** against an actual VPS:
+
+- Whether `server-setup.sh` behaves correctly on an actual fresh Debian 13
+  install (package names, `docker.list` repo line, `ufw`/`fail2ban` service
+  names) — written against current Debian 13/Docker docs, not executed on
+  real hardware.
+- Real certbot issuance against real DNS (the bootstrap/swap dance in
+  `deploy/setup-ssl.sh` was designed and reasoned through, not run against a
+  live ACME challenge).
+- Actual image size/pull time and container start time on the target VPS's
+  actual CPU/disk/network.
+- Whether netcup's specific VPS image has any quirks (custom kernel,
+  pre-installed agents) that interact with `server-setup.sh`.
+- End-to-end email delivery (moot until `ResendTransport` is implemented —
+  see "Known issues").
+- Real-world SQLite write throughput under actual production traffic
+  (expected to be a non-issue at this project's scale — see "Why SQLite" —
+  but "expected" is not "measured").

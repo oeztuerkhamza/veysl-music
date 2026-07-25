@@ -1,0 +1,1269 @@
+{
+  "nav": {
+    "home": "Start",
+    "services": "Hochzeit & Events",
+    "packages": "Pakete",
+    "weddings": "Echte Hochzeiten",
+    "music": "Musik",
+    "process": "Ablauf & FAQ",
+    "gallery": "Galerie",
+    "epk": "EPK",
+    "contact": "Kontakt",
+    "booking": "Termin anfragen",
+    "menu": "Menü",
+    "close": "Schließen",
+    "language": "Sprache"
+  },
+  "cta": {
+    "primary": "Termin prüfen & Angebot erhalten",
+    "short": "Termin anfragen",
+    "whatsapp": "WhatsApp",
+    "call": "Anrufen",
+    "listen": "Sets anhören",
+    "packages": "Pakete ansehen",
+    "weddings": "Echte Hochzeiten ansehen",
+    "stickyLabel": "Ist mein Termin noch frei?",
+    "finalTitle": "Bereit für Ihren Termin?",
+    "finalSubtitle": "Prüfen Sie unverbindlich die Verfügbarkeit für Ihr Datum — Antwort innerhalb von 24 Stunden.",
+    "whatsappFab": "Auf WhatsApp schreiben"
+  },
+  "common": {
+    "onRequest": "Preis auf Anfrage",
+    "from": "ab",
+    "mostBooked": "Am häufigsten gebucht",
+    "readMore": "Mehr erfahren",
+    "back": "Zurück",
+    "next": "Weiter",
+    "submit": "Anfrage absenden",
+    "required": "Pflichtfeld",
+    "skipToContent": "Zum Inhalt springen",
+    "loading": "Wird geladen …",
+    "scroll": "Scrollen"
+  },
+  "meta": {
+    "home": {
+      "title": "Hochzeits-DJ {city} — Premium DJ für Hochzeit & Event | VEYSL",
+      "description": "Premium Hochzeits- und Event-DJ in {city} und Umgebung. Persönliches Vorgespräch, eigene Ton- und Lichtanlage, volle Tanzfläche. Termin jetzt prüfen."
+    },
+    "services": {
+      "title": "Hochzeit & Events — Leistungen | VEYSL DJ",
+      "description": "DJ für Hochzeit, Verlobung, Henna, After-Party und Firmenevents. Was in jeder Leistung enthalten ist — transparent erklärt."
+    },
+    "packages": {
+      "title": "Pakete & Preise — Hochzeits-DJ | VEYSL",
+      "description": "Drei klare Pakete für Hochzeit und Event: Umfang, Stunden, Technik und Extras auf einen Blick. Individuelles Angebot in 24 Stunden."
+    },
+    "weddings": {
+      "title": "Echte Hochzeiten — Referenzen & Locations | VEYSL",
+      "description": "Echte Hochzeiten, echte Tanzflächen: Referenzclips, Stimmen von Paaren und Planern sowie unsere Partner-Locations."
+    },
+    "music": {
+      "title": "Musik & Sets — Hochzeits-DJ Mixe | VEYSL",
+      "description": "Hochzeits- und Event-Sets zum Reinhören: von Sektempfang über Dinner bis zur Peaktime. Deutsch, türkisch, international."
+    },
+    "process": {
+      "title": "Ablauf & häufige Fragen — Hochzeits-DJ | VEYSL",
+      "description": "Vom ersten Gespräch bis zum letzten Song: der Ablauf in vier Schritten und Antworten auf die häufigsten Fragen zur DJ-Buchung."
+    },
+    "booking": {
+      "title": "Termin prüfen & Angebot anfragen | VEYSL DJ",
+      "description": "Datum eingeben, Verfügbarkeit prüfen, unverbindliches Angebot erhalten — Antwort innerhalb von 24 Stunden."
+    },
+    "gallery": {
+      "title": "Galerie & Videos — Hochzeits-DJ | VEYSL",
+      "description": "Fotos, Aftermovies und Reels von Hochzeiten und Events."
+    },
+    "epk": {
+      "title": "EPK & Partner — Presskit | VEYSL",
+      "description": "Biografie, Pressefotos, Technical Rider und Partner-Locations zum Download."
+    },
+    "contact": {
+      "title": "Kontakt — VEYSL DJ",
+      "description": "Direkt per WhatsApp, Telefon oder E-Mail. Wir melden uns innerhalb von 24 Stunden."
+    },
+    "imprint": {
+      "title": "Impressum | VEYSL",
+      "description": "Angaben gemäß § 5 DDG."
+    },
+    "privacy": {
+      "title": "Datenschutz | VEYSL",
+      "description": "Informationen zur Verarbeitung personenbezogener Daten nach DSGVO."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Hochzeits-DJ · Live-Musik · Moderation",
+      "title": "Der Sound, an den sich",
+      "titleAccent": "alle erinnern.",
+      "subtitle": "Vom ersten Ton beim Sektempfang bis zum letzten Song um vier Uhr morgens — ein Abend mit Dramaturgie und eine Tanzfläche, die nicht leer wird.",
+      "availability": "Termine für {year} werden knapp — Verfügbarkeit direkt prüfen."
+    },
+    "intro": "{name} ist seit über {years} Jahren Hochzeits-DJ, Live-Musiker an Saz und Gitarre sowie Moderator aus {city}. Er begleitet Hochzeiten und Events in ganz Baden-Württemberg, deutschlandweit und europaweit — moderiert live auf Deutsch, Türkisch und Englisch und hat sich auf deutsch-türkische und multikulturelle Hochzeiten spezialisiert.",
+    "trust": {
+      "title": "Worauf Sie sich verlassen können",
+      "items": {
+        "planning": {
+          "title": "Persönliches Vorgespräch",
+          "text": "Vor jeder Hochzeit ein ausführliches Gespräch zu Ablauf, Musikgeschmack, No-Gos und Timing."
+        },
+        "tech": {
+          "title": "Eigene Ton- & Lichtanlage",
+          "text": "Professionelle Technik, sauber verkabelt, dezent aufgebaut — inklusive Backup-Gerät vor Ort."
+        },
+        "contract": {
+          "title": "Schriftlicher Vertrag",
+          "text": "Leistungen, Zeiten und Preis fixiert. Keine Überraschungen am Hochzeitstag."
+        },
+        "multilingual": {
+          "title": "Mehrsprachig moderiert",
+          "text": "Deutsch, Türkisch und Englisch — für Familien, die zwei Kulturen zusammenbringen."
+        }
+      }
+    },
+    "stats": {
+      "years": "Jahre Erfahrung",
+      "events": "Hochzeiten & Events begleitet",
+      "languagesLabel": "Sprachen live moderiert"
+    },
+    "services": {
+      "eyebrow": "Leistungen",
+      "title": "Für den Tag, der nur einmal stattfindet",
+      "subtitle": "Jedes Format hat seinen eigenen Rhythmus. Wir planen ihn vorher gemeinsam durch.",
+      "cta": "Alle Leistungen ansehen"
+    },
+    "showreel": {
+      "eyebrow": "Aftermovie",
+      "title": "So klingt eine volle Tanzfläche",
+      "subtitle": "Ausschnitte aus echten Hochzeiten und Events.",
+      "play": "Showreel abspielen"
+    },
+    "packages": {
+      "eyebrow": "Pakete",
+      "title": "Transparent kalkuliert",
+      "subtitle": "Drei klare Pakete als Ausgangspunkt — der finale Umfang wird immer individuell abgestimmt.",
+      "cta": "Details & Preise"
+    },
+    "music": {
+      "eyebrow": "Musik",
+      "title": "Reinhören statt raten",
+      "subtitle": "Ausgewählte Sets aus Sektempfang, Dinner und Peaktime.",
+      "cta": "Alle Sets anhören",
+      "moments": {
+        "reception": "Sektempfang",
+        "dinner": "Dinner",
+        "peaktime": "Peaktime"
+      }
+    },
+    "testimonials": {
+      "eyebrow": "Stimmen",
+      "title": "Was Paare und Planer sagen",
+      "subtitle": "Echte Rückmeldungen von echten Hochzeiten.",
+      "ratingLabel": "{rating} ★ aus {count} Google-Bewertungen"
+    },
+    "process": {
+      "eyebrow": "Ablauf",
+      "title": "In vier Schritten zum Abend Ihres Lebens",
+      "cta": "Ablauf im Detail"
+    },
+    "serviceAreas": {
+      "eyebrow": "Einzugsgebiet",
+      "title": "Hochzeits-DJ in Ihrer Nähe",
+      "subtitle": "Regelmäßig gebucht in diesen Städten rund um Stuttgart — und überall dort, wo gefeiert wird.",
+      "coreTitle": "Kernregion — Stuttgart & Baden-Württemberg",
+      "germanyTitle": "Deutschlandweit buchbar",
+      "europeTitle": "Europaweit buchbar",
+      "europeText": "Für Destination Weddings und Feiern im Ausland reisen wir an. Anfahrt, Übernachtung und benötigte Technik werden im Angebot transparent ausgewiesen — auch außerhalb der EU."
+    },
+    "finalCta": {
+      "eyebrow": "Nächster Schritt",
+      "title": "Ist Ihr Datum noch frei?",
+      "subtitle": "Prüfen Sie in unter zwei Minuten die Verfügbarkeit und erhalten Sie ein unverbindliches Angebot — Antwort innerhalb von 24 Stunden.",
+      "reassurance": "Unverbindlich · Keine versteckten Kosten · Antwort in 24 h"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Hochzeit & Events",
+      "title": "Ein DJ, vier Anlässe, ein Anspruch",
+      "subtitle": "Ob freie Trauung im Weingut oder Firmengala im Ballsaal — die Vorbereitung ist immer dieselbe: gründlich."
+    },
+    "items": {
+      "wedding": {
+        "title": "Hochzeit",
+        "tagline": "Der ganze Tag aus einer Hand",
+        "text": "Freie Trauung, Sektempfang, Dinner-Untermalung, Eröffnungstanz und Party — ein durchdachter Spannungsbogen über den kompletten Tag, abgestimmt mit Ihnen und Ihrer Planerin.",
+        "features": [
+          "Musik zur Trauung inkl. Funkmikrofon",
+          "Dinner- und Sektempfang-Untermalung",
+          "Choreografie für den Eröffnungstanz",
+          "Abstimmung mit Fotograf, Caterer und Location"
+        ]
+      },
+      "engagement": {
+        "title": "Verlobung & Henna",
+        "tagline": "Zwei Kulturen, ein Abend",
+        "text": "Nişan, Kına Gecesi und Verlobungsfeiern mit dem richtigen Gespür für Tradition und Timing — türkische, kurdische, arabische und internationale Repertoires sicher kombiniert.",
+        "features": [
+          "Halay, Roman Havası & internationale Sets",
+          "Live-Moderation auf Deutsch und Türkisch",
+          "Abstimmung mit Live-Musikern und Davul-Zurna",
+          "Ablaufplanung für Einzug und Zeremonien"
+        ]
+      },
+      "afterparty": {
+        "title": "After-Party",
+        "tagline": "Wenn der eigentliche Abend beginnt",
+        "text": "Nach dem Dinner wechselt der Abend den Charakter. Genau dafür gibt es ein eigenes Konzept: Lichtstimmung, Lautstärke und Kurve über die letzten Stunden.",
+        "features": [
+          "Peaktime-Set mit eigener Dramaturgie",
+          "Lichtdesign für den Tanzflächenwechsel",
+          "Verlängerung stundenweise buchbar",
+          "Abstimmung auf Lärmschutz-Auflagen der Location"
+        ]
+      },
+      "corporate": {
+        "title": "Firmenevent",
+        "tagline": "Professionell, diskret, pünktlich",
+        "text": "Sommerfest, Weihnachtsfeier, Gala oder Produktlaunch: klare Absprachen, saubere Technik, verlässliche Zeiten — und Musik, die zur Marke passt statt zum Zufall.",
+        "features": [
+          "Technik für Reden, Preisverleihungen und Panels",
+          "Dezenter Aufbau in repräsentativen Räumen",
+          "Rechnung mit ausgewiesener USt.",
+          "Ansprechpartner bis zum Veranstaltungsende"
+        ]
+      }
+    },
+    "included": {
+      "title": "In jeder Buchung enthalten",
+      "items": [
+        "Unverbindliches Erstgespräch",
+        "Persönliches Planungsgespräch vor dem Termin",
+        "Individuelle Musikwunschliste inkl. No-Go-Liste",
+        "Auf- und Abbau außerhalb der Spielzeit",
+        "Backup-Equipment vor Ort",
+        "Haftpflichtversichert & schriftlicher Vertrag"
+      ]
+    },
+    "capabilitiesStrip": {
+      "eyebrow": "Mehr als DJing",
+      "title": "Ein Ansprechpartner für Musik, Moderation und Technik",
+      "subtitle": "DJ, Musiker und Moderator in einer Person — abgestimmt statt zusammengekauft.",
+      "items": {
+        "wedding-dj": {
+          "label": "Hochzeits-DJ",
+          "text": "Der Hochzeitstag von der Trauung bis zur letzten Tanzrunde."
+        },
+        "event-dj": {
+          "label": "Event-DJ",
+          "text": "Verlobung, Geburtstag, Firmenfeier — DJ-Sets für jeden Anlass."
+        },
+        "host": {
+          "label": "Moderation",
+          "text": "Live-Moderation auf Deutsch, Türkisch und Englisch."
+        },
+        "live-music": {
+          "label": "Live-Musik",
+          "text": "Saz und Gitarre live gespielt — sein Instrument seit der Kindheit."
+        },
+        "orchestra": {
+          "label": "DJ & Orchester",
+          "text": "Live-Band inklusive Bläsern für den großen Auftritt — alles aus einer Hand."
+        },
+        "traditional-turkish": {
+          "label": "Türkische Traditionen",
+          "text": "Gelin Çıkarma, Bando und Davul-Zurna — die traditionellen Momente einer türkischen Hochzeit, mit dem richtigen Timing begleitet."
+        },
+        "av-rental": {
+          "label": "Ton-, Licht- & Veranstaltungstechnik",
+          "text": "Eigene Technik, professionell aufgebaut und auch zur Miete verfügbar."
+        }
+      }
+    }
+  },
+  "packages": {
+    "hero": {
+      "eyebrow": "Pakete & Preise",
+      "title": "Klarer Umfang, klarer Preis",
+      "subtitle": "Diese drei Pakete decken die meisten Hochzeiten ab. Alles darüber hinaus wird individuell kalkuliert — ohne Aufschlag für Beratung."
+    },
+    "hours": "Spielzeit",
+    "hoursValue": "{hours} Std.",
+    "hoursUnlimited": "Ohne feste Obergrenze",
+    "guests": "Gästezahl",
+    "guestsValue": "bis {guests} Gäste",
+    "guestsUnlimited": "150+, mehrere Zonen",
+    "includes": "Enthalten",
+    "cta": "Dieses Paket anfragen",
+    "customTitle": "Nichts passt genau?",
+    "customText": "Destination Wedding, mehrtägige Feier, zusätzliche Floor oder Live-Musiker — erzählen Sie uns von Ihrem Tag, wir kalkulieren individuell.",
+    "customCta": "Individuelles Angebot anfragen",
+    "note": "Alle Preise verstehen sich inkl. Anfahrt innerhalb von 50 km. Endgültige Konditionen im schriftlichen Angebot.",
+    "items": {
+      "essential": {
+        "name": "Essential",
+        "tagline": "Der klare Einstieg",
+        "description": "Für Feiern, bei denen es vor allem um die Party am Abend geht.",
+        "features": [
+          "Bis zu 6 Stunden Spielzeit",
+          "Tonanlage für bis zu 80 Gäste",
+          "Grundlicht für die Tanzfläche",
+          "Planungsgespräch & Wunschliste",
+          "Funkmikrofon für Reden"
+        ]
+      },
+      "signature": {
+        "name": "Signature",
+        "tagline": "Der ganze Hochzeitstag",
+        "description": "Das meistgebuchte Paket: durchgehende Begleitung von der Trauung bis zum letzten Song.",
+        "features": [
+          "Bis zu 10 Stunden Spielzeit",
+          "Musik zur freien Trauung & Sektempfang",
+          "Tonanlage für bis zu 150 Gäste",
+          "Erweitertes Lichtdesign inkl. Uplights",
+          "Zweites Lautsprecher-Set für Nebenraum",
+          "Eröffnungstanz-Begleitung",
+          "Zwei Planungsgespräche"
+        ]
+      },
+      "prestige": {
+        "name": "Prestige",
+        "tagline": "Ohne Kompromisse",
+        "description": "Für große Feiern, besondere Locations und Abende, die niemand vergessen soll.",
+        "features": [
+          "Spielzeit ohne feste Obergrenze",
+          "Tonanlage für 150+ Gäste, mehrere Zonen",
+          "Moving Heads, Haze & individuelles Lichtkonzept",
+          "Techniker vor Ort während der gesamten Feier",
+          "Individueller Einzug & Sound-Design für Schlüsselmomente",
+          "Location-Begehung vorab",
+          "Unbegrenzte Planungsgespräche"
+        ]
+      }
+    }
+  },
+  "weddings": {
+    "hero": {
+      "eyebrow": "Referenzen",
+      "title": "Echte Hochzeiten",
+      "subtitle": "Keine Stockfotos, keine geliehenen Clips — Momente von Abenden, die tatsächlich stattgefunden haben."
+    },
+    "venuesTitle": "Locations & Partner",
+    "venuesSubtitle": "Häufig gebuchte Häuser, in denen Technik, Wege und Akustik bereits bekannt sind.",
+    "empty": "Die Referenz-Galerie wird gerade befüllt. Fragen Sie gerne nach Beispielen zu Ihrer Location.",
+    "guests": "Gäste",
+    "venue": "Location"
+  },
+  "music": {
+    "hero": {
+      "eyebrow": "Musik & Sets",
+      "title": "Reinhören statt raten",
+      "subtitle": "So klingt der Abend an den verschiedenen Punkten der Nacht. Filtern Sie nach Moment oder Genre."
+    },
+    "filterAll": "Alle",
+    "empty": "Für diese Auswahl gibt es noch kein Set.",
+    "streamingTitle": "Auf allen Plattformen",
+    "moments": {
+      "reception": "Sektempfang",
+      "dinner": "Dinner",
+      "firstdance": "Eröffnungstanz",
+      "peaktime": "Peaktime",
+      "afterhours": "After Hours"
+    },
+    "genres": {
+      "international": "International",
+      "turkish": "Türkisch",
+      "german": "Deutsch",
+      "house": "House",
+      "classics": "Classics",
+      "live": "Live",
+      "arabesk": "Arabesk",
+      "halay": "Halay"
+    },
+    "player": {
+      "play": "Abspielen",
+      "pause": "Pause",
+      "next": "Nächster Track",
+      "previous": "Vorheriger Track",
+      "mute": "Stumm schalten",
+      "unmute": "Ton an",
+      "volume": "Lautstärke",
+      "close": "Player schließen",
+      "nowPlaying": "Läuft gerade",
+      "expand": "Player erweitern",
+      "collapse": "Player einklappen",
+      "regionLabel": "Musik-Player",
+      "queueTitle": "Wiedergabeliste",
+      "comingSoon": "Demnächst verfügbar",
+      "progress": "Fortschritt",
+      "progressValue": "{current} von {duration}",
+      "playTrack": "„{title}“ abspielen",
+      "pauseTrack": "„{title}“ pausieren",
+      "waveform": "Wellenform",
+      "listenOn": "Auf {platform} anhören"
+    }
+  },
+  "process": {
+    "hero": {
+      "eyebrow": "Ablauf",
+      "title": "So arbeiten wir zusammen",
+      "subtitle": "Transparent von der ersten Nachricht bis zum Abbau — damit Sie am Hochzeitstag an nichts denken müssen."
+    },
+    "steps": {
+      "one": {
+        "title": "Anfrage & Verfügbarkeit",
+        "text": "Sie senden Datum und Eckdaten. Innerhalb von 24 Stunden erhalten Sie eine verbindliche Rückmeldung zur Verfügbarkeit."
+      },
+      "two": {
+        "title": "Kennenlernen & Angebot",
+        "text": "In einem Video- oder Vor-Ort-Gespräch klären wir Ablauf, Musikgeschmack und Technik. Danach folgt ein schriftliches Angebot."
+      },
+      "three": {
+        "title": "Buchung & Feinplanung",
+        "text": "Nach Vertragsabschluss gehen wir Timing, Wunschliste, No-Gos und Schlüsselmomente im Detail durch — abgestimmt mit Location und Planerin."
+      },
+      "four": {
+        "title": "Der Tag selbst",
+        "text": "Frühzeitiger Aufbau, Soundcheck vor Ankunft der Gäste, dezente Präsenz, volle Tanzfläche. Abbau nach der letzten Runde."
+      }
+    },
+    "faqTitle": "Häufige Fragen",
+    "faqSubtitle": "Die Fragen, die uns Paare am häufigsten stellen.",
+    "faq": [
+      {
+        "q": "Wie früh sollten wir einen DJ buchen?",
+        "a": "Für Samstage in der Hauptsaison von Mai bis September empfehlen wir 12 bis 18 Monate Vorlauf. Kurzfristige Termine sind möglich — fragen Sie einfach an, die Verfügbarkeit wird innerhalb von 24 Stunden geprüft."
+      },
+      {
+        "q": "Was kostet ein Hochzeits-DJ?",
+        "a": "Der Preis richtet sich nach Spielzeit, Gästezahl, Technikbedarf und Anfahrt. Die drei Pakete auf dieser Seite zeigen den üblichen Rahmen; das verbindliche Angebot erhalten Sie nach dem Planungsgespräch."
+      },
+      {
+        "q": "Können wir Musikwünsche vorgeben?",
+        "a": "Ja. Sie erhalten eine strukturierte Wunschliste für Muss-Songs, Wunschsongs und ausdrückliche No-Gos. Gästewünsche am Abend werden nur gespielt, wenn sie zu Ihrem Rahmen passen."
+      },
+      {
+        "q": "Übernehmen Sie auch die Musik zur freien Trauung?",
+        "a": "Ja, im Signature- und Prestige-Paket ist die Beschallung der Trauung inklusive Funkmikrofon für Redner und Trauredner enthalten."
+      },
+      {
+        "q": "Spielen Sie auch türkische Hochzeiten?",
+        "a": "Ja. Halay, Roman Havası, Arabesk und aktuelle türkische Charts gehören zum festen Repertoire — kombiniert mit deutschen und internationalen Sets. Moderation auf Deutsch und Türkisch ist möglich."
+      },
+      {
+        "q": "Was passiert, wenn die Technik ausfällt?",
+        "a": "Es ist grundsätzlich Backup-Equipment vor Ort: zweiter Laptop, Ersatz-Controller und Reserve-Endstufe. Der Ausfall eines Geräts unterbricht den Abend nicht."
+      },
+      {
+        "q": "Wie lange dauern Aufbau und Abbau?",
+        "a": "Der Aufbau erfolgt in der Regel zwei bis drei Stunden vor Gästeankunft und ist nicht Teil der gebuchten Spielzeit. Der Abbau beginnt nach dem letzten Song."
+      },
+      {
+        "q": "Sind Sie versichert?",
+        "a": "Ja, es besteht eine Betriebshaftpflichtversicherung. Viele Locations verlangen einen Nachweis — dieser wird auf Wunsch direkt an die Location gesendet."
+      },
+      {
+        "q": "Fahren Sie auch zu Destination Weddings?",
+        "a": "Ja, innerhalb Europas und darüber hinaus. Anfahrt, Übernachtung und gegebenenfalls Technikmiete vor Ort werden im Angebot transparent ausgewiesen."
+      },
+      {
+        "q": "Wie läuft die Bezahlung ab?",
+        "a": "Üblich sind eine Anzahlung bei Vertragsabschluss zur Terminreservierung und der Restbetrag vor oder am Veranstaltungstag. Alle Konditionen stehen im Vertrag."
+      }
+    ]
+  },
+  "answers": {
+    "hero": {
+      "eyebrow": "Fragen & Antworten",
+      "title": "Alle Antworten auf einen Blick",
+      "subtitle": "{count} ausführliche Antworten zu Buchung, Preisen, Ablauf, Musik, Technik, Recht und türkischen Hochzeiten — sofort lesbar, ohne Klicks oder Aufklappen."
+    },
+    "entity": "VEYSL ist der Hochzeits-DJ-, Live-Musik- und Moderationsservice von {owner} mit Sitz in {city}. Seit über {years} Jahren begleitet er Hochzeiten und Events in Baden-Württemberg, deutschlandweit und europaweit, moderiert live auf Deutsch, Türkisch und Englisch und hat sich auf deutsch-türkische, türkische und multikulturelle Hochzeiten spezialisiert. Über {events}+ Feiern hat er bereits begleitet — als DJ, Live-Musiker an Saz und Gitarre und mit einer Live-Band inklusive Bläsern.",
+    "meta": {
+      "title": "Fragen & Antworten — Hochzeits-DJ Stuttgart | VEYSL",
+      "description": "{count} ausführliche Antworten zu Buchung, Preisen, Ablauf, Musik, Technik und türkischen Hochzeiten mit VEYSL — direkt lesbar, ohne Umwege."
+    },
+    "updated": "Zuletzt aktualisiert: {date}",
+    "seeAlso": "Zehn weitere, kürzere Fragen rund um den Ablauf beantworten wir auf der Seite",
+    "jsonFeedNote": "Dieser Fragenkatalog ist auch maschinenlesbar als JSON verfügbar.",
+    "jsonFeedLink": "JSON-Feed öffnen",
+    "categories": {
+      "buchung": "Buchung & Termin",
+      "preis": "Preis & Kosten",
+      "ablauf": "Ablauf am Hochzeitstag",
+      "musik": "Musik & Repertoire",
+      "technik": "Ton- & Lichttechnik",
+      "tuerkisch": "Türkische & multikulturelle Hochzeiten",
+      "location": "Location & Anreise",
+      "recht": "Vertrag & Recht"
+    },
+    "capabilities": {
+      "wedding-dj": "Hochzeits-DJ",
+      "event-dj": "Event-DJ",
+      "host": "Moderation",
+      "live-music": "Live-Musik",
+      "orchestra": "DJ & Orkestra",
+      "traditional-turkish": "DJ & Orkestra · Gelin Çıkarma, Bando, Davul-Zurna",
+      "av-rental": "Ton-, Licht- & Technik"
+    },
+    "keyFacts": {
+      "years": "Jahre Erfahrung",
+      "events": "Hochzeiten & Events begleitet",
+      "languages": "Sprachen live moderiert",
+      "serviceArea": "Einzugsgebiet",
+      "capabilitiesLabel": "Leistungen"
+    }
+  },
+  "booking": {
+    "hero": {
+      "eyebrow": "Anfrage",
+      "title": "Ist Ihr Datum noch frei?",
+      "subtitle": "Drei kurze Schritte, unter zwei Minuten. Sie erhalten innerhalb von 24 Stunden eine persönliche Rückmeldung — unverbindlich."
+    },
+    "stepLabel": "Schritt {current} von {total}",
+    "steps": {
+      "date": "Termin & Ort",
+      "details": "Details",
+      "contact": "Kontakt"
+    },
+    "fields": {
+      "eventDate": "Datum der Feier",
+      "eventDatePlaceholder": "TT.MM.JJJJ",
+      "eventType": "Art der Feier",
+      "city": "Stadt",
+      "cityPlaceholder": "z. B. Stuttgart",
+      "venue": "Location (falls bekannt)",
+      "venuePlaceholder": "z. B. Weingut Schloss …",
+      "guests": "Ungefähre Gästezahl",
+      "startTime": "Beginn",
+      "endTime": "Ende (ca.)",
+      "package": "Interessantes Paket",
+      "budget": "Budgetrahmen",
+      "name": "Ihr Name",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "partnerName": "Name des Partners / der Partnerin",
+      "email": "E-Mail",
+      "phone": "Telefon / WhatsApp",
+      "message": "Erzählen Sie uns von Ihrem Tag",
+      "messagePlaceholder": "Freie Trauung im Garten, ca. 120 Gäste, türkisch-deutsche Familie, Party bis 3 Uhr …",
+      "source": "Wie haben Sie uns gefunden?",
+      "services": "Welche Leistungen interessieren Sie?",
+      "hostingLanguage": "Bevorzugte Moderationssprache",
+      "consent": "Ich habe die {privacyLink} gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung dieser Anfrage einverstanden.",
+      "privacyLinkText": "Datenschutzerklärung"
+    },
+    "eventTypes": {
+      "wedding": "Hochzeit",
+      "engagement": "Verlobung / Nişan",
+      "henna": "Henna-Abend / Kına",
+      "afterparty": "After-Party",
+      "corporate": "Firmenevent",
+      "birthday": "Geburtstag / Jubiläum",
+      "other": "Sonstiges"
+    },
+    "packageOptions": {
+      "essential": "Essential",
+      "signature": "Signature",
+      "prestige": "Prestige",
+      "custom": "Individuell / noch unsicher"
+    },
+    "budgets": {
+      "unsure": "Noch unklar",
+      "a": "bis 1.500 €",
+      "b": "1.500 – 2.500 €",
+      "c": "2.500 – 4.000 €",
+      "d": "über 4.000 €"
+    },
+    "sources": {
+      "google": "Google-Suche",
+      "instagram": "Instagram",
+      "recommendation": "Empfehlung",
+      "venue": "Location / Planerin",
+      "ai": "ChatGPT / KI-Assistent",
+      "other": "Sonstiges"
+    },
+    "services": {
+      "dj": "DJ & Musik",
+      "hosting": "Moderation (Deutsch/Türkisch/Englisch)",
+      "liveMusic": "Live-Musik (Saz & Gitarre)",
+      "avRental": "Ton-, Licht- & Veranstaltungstechnik"
+    },
+    "hostingLanguages": {
+      "noPreference": "Keine Präferenz",
+      "de": "Deutsch",
+      "tr": "Türkçe",
+      "en": "Englisch"
+    },
+    "availability": {
+      "checking": "Verfügbarkeit wird geprüft …",
+      "free": "Dieser Termin ist aktuell frei.",
+      "freeHint": "Reserviert wird erst mit Vertrag — sichern Sie ihn sich zeitnah.",
+      "taken": "Für dieses Datum liegt bereits eine Buchung vor.",
+      "takenHint": "Fragen Sie trotzdem an — für Zweitfeiern und Nachrücker führen wir eine Warteliste.",
+      "unknown": "Verfügbarkeit wird nach Ihrer Anfrage persönlich geprüft.",
+      "pastDate": "Bitte wählen Sie ein Datum in der Zukunft."
+    },
+    "calendar": {
+      "pickerLabel": "Oder direkt im Kalender wählen",
+      "instructions": "Mit den Pfeiltasten zwischen den Tagen wechseln, mit Bild-auf/Bild-ab den Monat wechseln, mit Eingabe oder Leertaste einen Tag auswählen.",
+      "previousMonth": "Vorheriger Monat",
+      "nextMonth": "Nächster Monat",
+      "today": "Heute",
+      "status": {
+        "free": "frei",
+        "taken": "belegt",
+        "unknown": "unbekannt",
+        "past": "vergangen"
+      },
+      "selectedAnnouncement": "{date} ausgewählt — {status}",
+      "loading": "Verfügbarkeit wird geladen …",
+      "error": "Verfügbarkeit konnte nicht geladen werden."
+    },
+    "validation": {
+      "required": "Bitte ausfüllen",
+      "email": "Bitte eine gültige E-Mail-Adresse angeben",
+      "date": "Bitte ein gültiges Datum wählen",
+      "consent": "Ohne Ihre Einwilligung können wir die Anfrage nicht bearbeiten",
+      "min": "Etwas zu kurz",
+      "max": "Das ist etwas zu lang",
+      "guests": "Bitte eine Zahl zwischen 1 und 5000 angeben"
+    },
+    "success": {
+      "title": "Anfrage ist angekommen.",
+      "text": "Vielen Dank, {name}. Sie erhalten gleich eine Bestätigung per E-Mail und innerhalb von 24 Stunden eine persönliche Rückmeldung zu Ihrem Termin am {date}.",
+      "whatsapp": "Schneller geht es per WhatsApp",
+      "backHome": "Zurück zur Startseite"
+    },
+    "error": {
+      "title": "Das hat leider nicht geklappt.",
+      "text": "Bitte versuchen Sie es erneut oder schreiben Sie uns direkt per WhatsApp oder E-Mail.",
+      "retry": "Erneut versuchen"
+    },
+    "aside": {
+      "title": "Lieber direkt sprechen?",
+      "text": "Für kurzfristige Termine und offene Fragen ist WhatsApp der schnellste Weg.",
+      "responseTime": "Antwortzeit in der Regel unter 24 Stunden."
+    }
+  },
+  "gallery": {
+    "hero": {
+      "eyebrow": "Galerie",
+      "title": "Bilder & Bewegtbild",
+      "subtitle": "Aftermovies, Reels und Fotos von Hochzeiten und Events."
+    },
+    "filterAll": "Alle",
+    "filterPhoto": "Fotos",
+    "filterVideo": "Videos",
+    "empty": "Hier entsteht gerade die Galerie."
+  },
+  "epk": {
+    "hero": {
+      "eyebrow": "Press Kit",
+      "title": "EPK & Partner",
+      "subtitle": "Material für Locations, Planerinnen, Agenturen und Presse — direkt zum Download."
+    },
+    "bioShort": "Kurzbiografie",
+    "bioLong": "Langfassung",
+    "bio": {
+      "short": "Veysel Durmuş ist seit über 12 Jahren DJ, Musiker und Moderator für deutsch-türkische, türkische und multikulturelle Hochzeiten und Events. Über 200 Feiern hat er begleitet, live an Saz und Gitarre gespielt und dreisprachig moderiert: Deutsch, Türkisch, Englisch.",
+      "long": [
+        "Veysel Durmuş spielt Saz und Gitarre seit seiner Kindheit — Musik war nie nur Hobby, sondern von Anfang an Ausdrucksmittel. Heute bringt er dieses Gespür für Klang und Timing als DJ, Live-Musiker und Moderator auf deutsch-türkische, türkische und multikulturelle Hochzeiten und Events, seit über 12 Jahren und bei mehr als 200 begleiteten Feiern.",
+        "Hauptberuflich arbeitet er als Informatiker — die Präzision und Planungsdisziplin aus diesem Beruf überträgt er direkt auf jedes Event: durchdachter Ablauf, saubere Technik, keine Überraschungen.",
+        "Privat ist er Marathonläufer und Triathlet. Nicht selten läuft er am Morgen einer Hochzeit noch 10 Kilometer, um abends mit voller Energie auf der Tanzfläche zu stehen. Nach der Hochzeitssaison zieht es ihn zum Auftanken in die Berge, zum Camping in den Alpen.",
+        "Seine eigenen Worte bringen es auf den Punkt: „Mein Ziel ist nicht nur Musik abzuspielen. Mein Ziel ist es, Emotionen zu schaffen.“ Und: „Nur wer selbst voller Energie ist, kann diese Energie auch an andere weitergeben.“"
+      ]
+    },
+    "stats": {
+      "years": "{years}+ Jahre Erfahrung als DJ & Musiker",
+      "events": "{events}+ begleitete Hochzeiten & Events",
+      "languages": "Moderation auf Deutsch, Türkisch & Englisch"
+    },
+    "downloads": "Downloads",
+    "downloadPress": "Pressefotos (ZIP)",
+    "downloadRider": "Technical Rider (PDF)",
+    "downloadEpk": "Komplettes EPK (PDF)",
+    "downloadPending": "In Vorbereitung",
+    "partnersTitle": "Locations & Partner",
+    "pressTitle": "Presse & Erwähnungen",
+    "contactTitle": "Booking-Kontakt"
+  },
+  "city": {
+    "eyebrow": "Hochzeits-DJ vor Ort",
+    "hero": {
+      "title": "Hochzeits-DJ in {city}",
+      "ctaNote": "Unverbindliche Anfrage – Antwort innerhalb von 24 Stunden."
+    },
+    "meta": {
+      "title": "Hochzeits-DJ {city} — DJ, Musiker & Moderator | VEYSL",
+      "description": "Premium Hochzeits-DJ in {city}: DJ, Musiker und mehrsprachiger Moderator für deutsch-türkische Hochzeiten. Jetzt Termin anfragen."
+    },
+    "travel": {
+      "eyebrow": "Anfahrt & Transparenz",
+      "title": "Anfahrt nach {city}"
+    },
+    "distance": {
+      "homeBase": "Wohn- und Arbeitsort von Veysel — keine Anfahrt, keine Anfahrtskosten.",
+      "included": "Anfahrt nach {city} ist inklusive (ca. {km} km ab Stuttgart).",
+      "notIncluded": "Anfahrt nach {city} liegt außerhalb der Inklusiv-Strecke (ca. {km} km) und wird im Angebot einzeln ausgewiesen.",
+      "population": "rund {count} Einwohner"
+    },
+    "offer": {
+      "eyebrow": "Leistungen vor Ort",
+      "title": "Was Sie in {city} bekommen",
+      "orchestraLabel": "DJ & Live-Orchester mit Bläsern"
+    },
+    "bicultural": {
+      "eyebrow": "Zwei Kulturen, ein Abend",
+      "title": "Die deutsch-türkische Stärke – auch in {city}",
+      "languagesTitle": "Moderationssprachen"
+    },
+    "venues": {
+      "eyebrow": "Locations",
+      "title": "Bekannte Hochzeitslocations in {city}",
+      "note": "Hinweis: Keine dieser Locations ist ein offizieller Partner – es handelt sich um bekannte Orte in der Stadt, die zur Orientierung dienen.",
+      "empty": "Diese Liste wird für {city} sorgfältig recherchiert, statt sie mit unbestätigten Namen zu füllen. Erzählen Sie uns gern von Ihrer Wunsch-Location – das Setup wird darauf abgestimmt."
+    },
+    "venueKind": {
+      "saal": "Saal",
+      "schloss": "Schloss",
+      "weingut": "Weingut",
+      "hotel": "Hotel",
+      "location": "Location"
+    },
+    "trust": {
+      "eyebrow": "Worauf Sie sich verlassen können",
+      "title": "Auch in {city} gilt derselbe Standard"
+    },
+    "faq": {
+      "eyebrow": "Häufige Fragen",
+      "title": "Fragen zu Hochzeiten in {city}"
+    },
+    "nearby": {
+      "eyebrow": "In der Umgebung",
+      "title": "Auch gebucht rund um {city}",
+      "servicesTitle": "Mehr auf VEYSL"
+    },
+    "cta": {
+      "eyebrow": "Nächster Schritt",
+      "title": "Ist Ihr Termin in {city} noch frei?",
+      "subtitle": "Prüfen Sie in unter zwei Minuten die Verfügbarkeit für {city} und erhalten Sie ein unverbindliches Angebot.",
+      "button": "Termin für {city} anfragen"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Kontakt",
+      "title": "Sprechen wir über Ihren Tag",
+      "subtitle": "Am schnellsten per WhatsApp. Für ausführliche Anfragen nutzen Sie gern das Anfrageformular."
+    },
+    "whatsappText": "Antwort meist innerhalb weniger Stunden",
+    "emailText": "Für ausführliche Anfragen und Unterlagen",
+    "phoneText": "Mo – Fr, 10 – 18 Uhr",
+    "areaTitle": "Einzugsgebiet",
+    "areaText": "Regelmäßig gebucht in {areas} — und überall dort, wo gefeiert wird.",
+    "formCta": "Zum Anfrageformular",
+    "formSectionEyebrow": "Nachricht schreiben",
+    "socialTitle": "Folgen",
+    "instagramCta": "Instagram folgen",
+    "youtubeCta": "YouTube abonnieren"
+  },
+  "contactForm": {
+    "title": "Eine andere Frage?",
+    "subtitle": "Für Locations, Planerinnen, Presse oder alles, was noch keine Terminanfrage ist — kurz schreiben, wir melden uns persönlich.",
+    "fields": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon (optional)",
+      "subject": "Worum geht es?",
+      "company": "Firma / Location (optional)",
+      "companyPlaceholder": "z. B. Weingut Schloss …",
+      "preferredContact": "Bevorzugter Kontaktweg (optional)",
+      "eventDate": "Datum, falls bekannt (optional)",
+      "eventDatePlaceholder": "TT.MM.JJJJ",
+      "message": "Ihre Nachricht",
+      "messagePlaceholder": "Erzählen Sie uns kurz, worum es geht …",
+      "consent": "Ich habe die {privacyLink} gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung dieser Nachricht einverstanden.",
+      "privacyLinkText": "Datenschutzerklärung"
+    },
+    "subjects": {
+      "general": "Allgemeine Frage",
+      "booking": "Frage zu einer Buchung",
+      "technical": "Technik / Verleih",
+      "partnership": "Location- / Planer-Partnerschaft",
+      "press": "Presse",
+      "other": "Sonstiges"
+    },
+    "preferredContactOptions": {
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "whatsapp": "WhatsApp"
+    },
+    "success": {
+      "title": "Nachricht ist angekommen.",
+      "text": "Vielen Dank, {name}. Wir melden uns so schnell wie möglich persönlich bei Ihnen."
+    }
+  },
+  "whatsappFlow": {
+    "title": "Kurz vorab, dann direkt zu WhatsApp",
+    "skipAll": "Direkt schreiben",
+    "skip": "Überspringen",
+    "close": "Schließen",
+    "continueToWhatsapp": "Auf WhatsApp weiter",
+    "privacyNote": "Ihre Angaben werden zur Bearbeitung Ihrer Anfrage gespeichert. <privacyLink>Datenschutzerklärung</privacyLink>",
+    "messageIntro": "Hallo VEYSL, ich interessiere mich für einen DJ.",
+    "messageLabels": {
+      "eventType": "Anlass",
+      "date": "Datum",
+      "city": "Ort",
+      "guests": "Gäste",
+      "service": "Leistung"
+    },
+    "steps": {
+      "eventType": {
+        "question": "Anlass"
+      },
+      "date": {
+        "question": "Datum"
+      },
+      "city": {
+        "question": "Ort (optional)",
+        "placeholder": "z. B. Stuttgart"
+      },
+      "guests": {
+        "question": "Ungefähre Gästezahl",
+        "options": {
+          "under80": "bis 80",
+          "from80to150": "80–150",
+          "from150to250": "150–250",
+          "over250": "250+"
+        }
+      },
+      "service": {
+        "question": "Gewünschte Leistung (optional)",
+        "options": {
+          "dj": "DJ",
+          "djOrchestra": "DJ & Orkestra",
+          "hosting": "+ Moderation",
+          "technik": "+ Technik"
+        }
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Hochzeits-DJ, Musiker & Moderator — Stuttgart",
+    "navTitle": "Navigation",
+    "legalTitle": "Rechtliches",
+    "contactTitle": "Kontakt",
+    "followTitle": "Folgen",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "rights": "Alle Rechte vorbehalten.",
+    "builtBy": "Design & Umsetzung",
+    "viewOnMaps": "Auf Google Maps ansehen"
+  },
+  "theme": {
+    "toggle": "Design umschalten",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System"
+  },
+  "consent": {
+    "title": "Datenschutz-Einstellungen",
+    "text": "Wir verwenden nur technisch notwendige Cookies. Optionale Statistik hilft uns, die Seite zu verbessern — Ihre Entscheidung, jederzeit widerrufbar.",
+    "acceptAll": "Alle akzeptieren",
+    "essentialOnly": "Nur notwendige",
+    "settings": "Einstellungen",
+    "privacyLink": "Datenschutzerklärung"
+  },
+  "notFound": {
+    "title": "Diese Seite gibt es nicht.",
+    "text": "Der Link ist vermutlich veraltet. Von hier finden Sie zurück.",
+    "cta": "Zur Startseite"
+  },
+  "legal": {
+    "draftNotice": "Entwurf — dieser Inhalt basiert auf den aktuell verfügbaren Angaben und muss vor Veröffentlichung von einer Anwältin oder einem Anwalt geprüft werden.",
+    "missingValue": "TODO(kunde): wird noch ergänzt",
+    "imprint": {
+      "heading": "Impressum",
+      "intro": "Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz).",
+      "providerTitle": "Diensteanbieter",
+      "nameLabel": "Firmierung",
+      "ownerLabel": "Inhaber",
+      "addressLabel": "Anschrift",
+      "contactTitle": "Kontakt",
+      "phoneLabel": "Telefon",
+      "emailLabel": "E-Mail",
+      "websiteLabel": "Website",
+      "activityTitle": "Tätigkeitsbereich",
+      "vatTitle": "Umsatzsteuer-Identifikationsnummer",
+      "vatText": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:",
+      "responsibleTitle": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+      "disputeTitle": "EU-Streitschlichtung",
+      "disputeText": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/. Unsere E-Mail-Adresse finden Sie oben unter „Kontakt“.",
+      "consumerDisputeTitle": "Verbraucherstreitbeilegung (VSBG)",
+      "consumerDisputeText": "Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle im Sinne des Verbraucherstreitbeilegungsgesetzes teilzunehmen.",
+      "sections": [
+        {
+          "id": "liability-content",
+          "title": "Haftung für Inhalte",
+          "paragraphs": [
+            "Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich (§ 5 DDG). Nach Art. 4 bis 6 der Verordnung (EU) 2022/2065 (Digital Services Act) sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder Umstände zu erforschen, die auf eine rechtswidrige Tätigkeit hinweisen.",
+            "Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden entsprechender Rechtsverletzungen werden diese Inhalte umgehend entfernt."
+          ]
+        },
+        {
+          "id": "liability-links",
+          "title": "Haftung für Links",
+          "paragraphs": [
+            "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.",
+            "Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden derartige Links umgehend entfernt."
+          ]
+        },
+        {
+          "id": "copyright",
+          "title": "Urheberrecht",
+          "paragraphs": [
+            "Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Erstellers.",
+            "Fotos und Videos auf dieser Website stammen, soweit nicht anders gekennzeichnet, vom Seitenbetreiber oder werden mit ausdrücklicher Zustimmung der Urheber genutzt. Sollten Sie dennoch auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis; entsprechende Inhalte werden umgehend entfernt."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "heading": "Datenschutzerklärung",
+      "updated": "Stand: TODO(kunde) — Datum der letzten Aktualisierung ergänzen",
+      "intro": "Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Erklärung informiert darüber, welche Daten auf dieser Website verarbeitet werden, zu welchem Zweck und auf welcher Rechtsgrundlage.",
+      "sections": [
+        {
+          "id": "controller",
+          "title": "Verantwortlicher",
+          "paragraphs": [
+            "Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist der im Impressum dieser Website genannte Diensteanbieter."
+          ]
+        },
+        {
+          "id": "rights-overview",
+          "title": "Ihre Rechte im Überblick",
+          "paragraphs": [
+            "Sie haben jederzeit das Recht auf Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Verarbeitung. Ihnen steht außerdem ein Recht auf Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit, Widerspruch gegen die Verarbeitung sowie Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft zu.",
+            "Zur Wahrnehmung dieser Rechte können Sie sich jederzeit über die im Impressum genannten Kontaktdaten an uns wenden. Ihnen steht zudem ein Beschwerderecht bei der zuständigen Datenschutz-Aufsichtsbehörde zu."
+          ]
+        },
+        {
+          "id": "hosting",
+          "title": "Hosting",
+          "paragraphs": [
+            "Diese Website wird bei einem externen Dienstleister gehostet (TODO(kunde): Name, Anschrift und Sitz des Hosting-Anbieters ergänzen). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters verarbeitet.",
+            "Der Einsatz des Hosters erfolgt zum Zwecke der sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO). Mit dem Hoster besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO (TODO(kunde) bestätigen)."
+          ]
+        },
+        {
+          "id": "server-logs",
+          "title": "Server-Log-Dateien",
+          "paragraphs": [
+            "Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse.",
+            "Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO zur technisch fehlerfreien Darstellung und Optimierung der Website sowie zur Gewährleistung der Systemsicherheit. Die Daten werden gelöscht, sobald sie für den Zweck ihrer Erhebung nicht mehr erforderlich sind (TODO(kunde): konkrete Speicherdauer ergänzen)."
+          ]
+        },
+        {
+          "id": "enquiry-form",
+          "title": "Anfrageformular",
+          "paragraphs": [
+            "Wenn Sie uns über das Anfrageformular kontaktieren, erheben wir die von Ihnen dort angegebenen Daten (u. a. Datum und Art der Feier, Ort, Gästezahl, Name, E-Mail-Adresse, Telefonnummer und Ihre Nachricht) zur Bearbeitung Ihrer Anfrage und für den Fall von Anschlussfragen.",
+            "Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern die Anfrage der Anbahnung eines Vertrags dient, sowie auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an einer effektiven Bearbeitung von Anfragen.",
+            "Die Daten aus dem Anfrageformular werden gelöscht, sobald die Anfrage abschließend bearbeitet ist und sich kein Vertrag ergibt, spätestens jedoch nach TODO(kunde): Frist ergänzen. Kommt ein Vertrag zustande, gelten die gesetzlichen Aufbewahrungsfristen nach Handels- und Steuerrecht (insbesondere §§ 147 AO, 257 HGB)."
+          ]
+        },
+        {
+          "id": "whatsapp",
+          "title": "Kontaktaufnahme per WhatsApp",
+          "paragraphs": [
+            "Für die Kontaktaufnahme bieten wir WhatsApp als optionalen Kommunikationskanal an. Bei Nutzung von WhatsApp werden Ihre Nachrichten und die dabei anfallenden Metadaten über die Infrastruktur von WhatsApp Ireland Limited bzw. der Meta-Unternehmensgruppe verarbeitet, wobei eine Datenübermittlung in Drittländer, insbesondere die USA, nicht ausgeschlossen werden kann.",
+            "Die Nutzung erfolgt auf Grundlage Ihrer freiwilligen Kontaktaufnahme (Art. 6 Abs. 1 lit. a bzw. lit. b DSGVO). TODO(kunde) / anwaltlich prüfen: Details zur eingesetzten WhatsApp-Variante (privat oder Business-API) und zu etwaigen zusätzlichen Auftragsverarbeitern ergänzen."
+          ]
+        },
+        {
+          "id": "analytics",
+          "title": "Analyse & Statistik",
+          "paragraphs": [
+            "Aktuell setzen wir kein Analyse- oder Tracking-Werkzeug ein. Über die Cookie-Einstellungen dieser Website kann optional eine Statistikfunktion aktiviert werden; diese bleibt so lange inaktiv, bis Sie ihr ausdrücklich zustimmen.",
+            "Sollte künftig ein Statistik-Dienst eingesetzt werden, wird diese Erklärung vor Aktivierung um Name, Zweck, Rechtsgrundlage und Speicherdauer des jeweiligen Dienstes ergänzt (TODO(kunde))."
+          ]
+        },
+        {
+          "id": "cookies",
+          "title": "Cookies & Einwilligung",
+          "paragraphs": [
+            "Diese Website verwendet ausschließlich technisch notwendige Cookies, zum Beispiel zur Speicherung Ihrer Spracheinstellung, Ihres Design-Modus (hell/dunkel) und Ihrer Cookie-Auswahl. Diese sind zum Betrieb der Website erforderlich und werden auf Grundlage von § 25 Abs. 2 TTDSG bzw. Art. 6 Abs. 1 lit. f DSGVO gesetzt.",
+            "Ihre Auswahl zu optionalen Cookies können Sie jederzeit über die Cookie-Einstellungen ändern oder widerrufen."
+          ]
+        },
+        {
+          "id": "embeds",
+          "title": "Eingebettete Inhalte Dritter",
+          "paragraphs": [
+            "Musik-Sets und Videos auf dieser Website werden über eine Klick-zum-Laden-Vorschau eingebunden: Inhalte von Diensten wie Spotify, YouTube, SoundCloud oder Mixcloud werden erst nach einem aktiven Klick geladen. Erst dann stellt Ihr Browser eine direkte Verbindung zum jeweiligen Anbieter her, wodurch dieser Ihre IP-Adresse und weitere Daten gemäß seiner eigenen Datenschutzerklärung verarbeiten kann.",
+            "Weitere Informationen: Spotify (https://www.spotify.com/de/legal/privacy-policy/), YouTube / Google (https://policies.google.com/privacy), SoundCloud (https://soundcloud.com/pages/privacy), Mixcloud (https://www.mixcloud.com/privacy/).",
+            "Schriftarten werden lokal über next/font eingebunden und beim Seitenaufruf nicht von Google-Servern nachgeladen; es findet dabei keine Datenübertragung an Google statt."
+          ]
+        },
+        {
+          "id": "security",
+          "title": "Datensicherheit",
+          "paragraphs": [
+            "Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-/TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie am Schloss-Symbol Ihres Browsers und daran, dass die Adresszeile von „http://“ auf „https://“ wechselt."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Änderungen dieser Erklärung",
+          "paragraphs": [
+            "Wir passen diese Datenschutzerklärung an, sobald sich die Datenverarbeitung oder die Rechtslage ändert. Es gilt jeweils die aktuell auf dieser Seite abrufbare Fassung."
+          ]
+        }
+      ]
+    }
+  },
+  "social": {
+    "grid": {
+      "eyebrow": "Social",
+      "title": "Neuestes von Instagram & YouTube",
+      "lead": "Ein aktueller Ausschnitt aus Hochzeiten und Events — kuratiert von @dj_veys und dem YouTube-Kanal.",
+      "playLabel": "Video abspielen",
+      "altFallback": {
+        "instagram": "Beitrag von VEYSL auf Instagram",
+        "youtube": "Video von VEYSL auf YouTube"
+      },
+      "typeLabel": {
+        "image": "Foto",
+        "video": "Video",
+        "carousel": "Galerie",
+        "reel": "Reel"
+      },
+      "openOn": {
+        "instagram": "Beitrag auf Instagram öffnen",
+        "youtube": "Video auf YouTube öffnen"
+      },
+      "empty": {
+        "title": "Der Live-Feed ist gleich da.",
+        "text": "Neue Beiträge erscheinen hier automatisch. Bis dahin lohnt sich ein Blick direkt auf Instagram.",
+        "cta": "Instagram folgen"
+      }
+    },
+    "instagramStrip": {
+      "eyebrow": "Instagram",
+      "title": "@dj_veys",
+      "followerLabel": "Follower",
+      "followerCaption": "Folgen Sie für tägliche Einblicke von Hochzeiten und Events.",
+      "cta": "Auf Instagram folgen",
+      "empty": "Neue Beiträge folgen in Kürze. Schon jetzt auf Instagram dabei sein."
+    },
+    "youtubeStrip": {
+      "eyebrow": "YouTube",
+      "title": "Neueste Videos",
+      "cta": "Kanal abonnieren",
+      "empty": "Neue Videos folgen in Kürze. Schon jetzt abonnieren."
+    }
+  },
+  "regions": {
+    "eyebrow": "Destination Wedding Europa",
+    "hub": {
+      "meta": {
+        "title": "Hochzeits-DJ für Destination Weddings in Europa | VEYSL",
+        "description": "Deutsch-türkischer Hochzeits-DJ für Destination Weddings in Europa: Österreich, Schweiz, Niederlande, Belgien, Frankreich. Live moderiert auf Deutsch, Türkisch und Englisch."
+      },
+      "hero": {
+        "title": "Hochzeits-DJ für Destination Weddings in Europa",
+        "subtitle": "Deutsch-türkisch, mehrsprachig moderiert und mit transparent kalkulierter Anreise – buchbar über Baden-Württemberg hinaus, ohne Kompromiss beim Standard aus Stuttgart."
+      },
+      "intent": {
+        "eyebrow": "Häufig gesucht",
+        "title": "Auch ohne Städtenamen: die richtigen Antworten",
+        "items": [
+          {
+            "q": "Gibt es einen türkischen Hochzeits-DJ, der deutschlandweit bucht?",
+            "a": "Ja. VEYSL ist in Stuttgart und Baden-Württemberg zu Hause und deutschlandweit buchbar – von München bis Hamburg. Anfahrt und Technik werden für jeden Ort einzeln im Angebot kalkuliert; die Moderation bleibt überall dieselbe: Deutsch, Türkisch, Englisch."
+          },
+          {
+            "q": "Kann ich einen Hochzeits-DJ für eine Destination Wedding im Ausland buchen?",
+            "a": "Ja. Fünf Länder sind ausführlich vorbereitet – Österreich, Schweiz, Niederlande, Belgien, Frankreich – mit eigener Anfahrts-Logik und eigenen technischen Besonderheiten pro Land. Weitere europäische Länder sind ebenfalls buchbar, mit individuell kalkulierter Anreise."
+          },
+          {
+            "q": "Gibt es einen DJ für eine türkische Hochzeit im Ausland?",
+            "a": "Ja, das ist eine der Kernstärken: deutsch-türkische, rein türkische und multikulturelle Hochzeiten außerhalb Deutschlands, mit Halay, Live-Orchester-Elementen und dreisprachiger Moderation – derselbe Standard wie in Stuttgart, nur mit einer im Angebot separat ausgewiesenen Anfahrt."
+          },
+          {
+            "q": "Wie weit reisen Sie für Hochzeiten?",
+            "a": "Innerhalb des Kernradius um Stuttgart ist die Anfahrt meist inklusive; deutschlandweit und europaweit kommen regelmäßig Anfragen — und buchbar sind wir dort ebenso. Die Distanz entscheidet über Vorlaufzeit und Kosten, nicht über die Bereitschaft."
+          }
+        ]
+      },
+      "countries": {
+        "eyebrow": "Fünf Länder im Detail",
+        "title": "Ausführlich aufbereitet, kein Textbaustein",
+        "subtitle": "Jedes Land mit eigener Anfahrts-Logik, eigenen technischen Besonderheiten und eigenem Diaspora-Bezug – bewusst keine Stadt-Seiten, siehe FAQ unten."
+      },
+      "more": {
+        "eyebrow": "Über die fünf Länder hinaus",
+        "title": "Weitere Länder europaweit buchbar",
+        "text": "Für die folgenden Länder gibt es noch keine eigene Seite – buchbar sind sie trotzdem, mit derselben Sorgfalt. Anfahrt, Übernachtung und Technik werden im individuellen Angebot ausgewiesen. Bei Zielen außerhalb der EU-Zollunion (z. B. Norwegen, wie auch bei der Schweiz) kommt für die Technik ein zusätzlicher Zollschritt per ATA-Carnet hinzu – auch das wird im Angebot berücksichtigt.",
+        "cta": "Für {country} anfragen"
+      },
+      "languages": {
+        "eyebrow": "Ehrlich gesagt",
+        "title": "Welche Sprachen wirklich live moderiert werden",
+        "text": "Live moderiert wird auf Deutsch, Türkisch und Englisch – in jedem der genannten Länder, unabhängig von der jeweiligen Landessprache. Diese Website gibt es in mehreren Sprachen, damit möglichst viele Paare lesen und anfragen können; das ist etwas anderes als die Moderationssprache am Hochzeitsabend selbst."
+      },
+      "faq": {
+        "eyebrow": "Häufige Fragen",
+        "title": "Fragen zu Destination Weddings",
+        "items": [
+          {
+            "q": "Warum gibt es keine eigenen Seiten für einzelne europäische Städte?",
+            "a": "Weil lokale Google-Ergebnisse Nähe und ein Google-Unternehmensprofil vor Ort voraussetzen – beides hat ein Stuttgarter Anbieter in Oslo oder Amsterdam nicht. Länderseiten mit echtem, unterschiedlichem Inhalt sind ehrlicher und funktionieren tatsächlich; Dutzende gleichlautende Stadt-Seiten wären genau das, was Googles Spam-Richtlinien als Doorway-Pages einstufen."
+          },
+          {
+            "q": "Wie weit im Voraus sollte ich für eine Hochzeit im Ausland anfragen?",
+            "a": "Möglichst früh – Reise- und Übernachtungsplanung brauchen mehr Vorlauf als eine Feier in Stuttgart. Eine erste unverbindliche Anfrage ist aber jederzeit möglich, auch Monate im Voraus."
+          },
+          {
+            "q": "Wie wird die Anfahrt ins Ausland berechnet?",
+            "a": "Immer einzeln und transparent im individuellen Angebot: Fahrtstrecke bzw. Flug für Technik-Leichtgepäck, Übernachtung und, bei Zielen außerhalb der EU-Zollunion (z. B. Schweiz, Norwegen), ein zusätzlicher Zollschritt für die Technik per ATA-Carnet."
+          },
+          {
+            "q": "Spielen Sie auch in Ländern, die hier nicht aufgeführt sind?",
+            "a": "Ja. Die fünf vorgestellten Länder sind am ausführlichsten vorbereitet, weitere europäische Ziele sind grundsätzlich ebenfalls buchbar – mit individuell kalkulierter Anreise."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Nächster Schritt",
+        "title": "Ihre Hochzeit im Ausland – lassen Sie uns sprechen",
+        "subtitle": "Land, Datum und ungefähre Gästezahl reichen für eine erste unverbindliche Einschätzung.",
+        "button": "Destination Wedding anfragen"
+      }
+    },
+    "country": {
+      "meta": {
+        "title": "Hochzeits-DJ {country} — Destination Wedding | VEYSL",
+        "description": "Hochzeits-DJ buchbar in {country}: deutsch-türkisch, mehrsprachig moderiert auf Deutsch, Türkisch und Englisch. Anfahrt und Technik transparent kalkuliert."
+      },
+      "eyebrow": "Destination Wedding",
+      "hero": {
+        "title": "Hochzeits-DJ für {country}",
+        "ctaNote": "Unverbindliche Anfrage – Antwort innerhalb von 24 Stunden."
+      },
+      "availability": {
+        "verifiedTitle": "Bereits gespielt",
+        "verifiedText": "VEYSL hat bereits in {city} gespielt – bislang der einzige nachweisliche Auftritt außerhalb Deutschlands.",
+        "availableTitle": "Buchbar in {country}",
+        "availableText": "Noch kein eigenes Referenz-Event in {country} – aber jederzeit anfragbar, mit derselben Sorgfalt wie jede andere Buchung."
+      },
+      "logistics": {
+        "eyebrow": "Anfahrt & Transparenz",
+        "title": "Anreise nach {country}"
+      },
+      "distance": {
+        "label": "rund {km} km ab Stuttgart (Luftlinie, {city})"
+      },
+      "whatChanges": {
+        "eyebrow": "Was sich im Ausland ändert",
+        "title": "Technik, Strom und Auflagen in {country}"
+      },
+      "diaspora": {
+        "eyebrow": "Zwei Kulturen, ein Abend",
+        "title": "Die deutsch-türkische Stärke – auch in {country}"
+      },
+      "languages": {
+        "eyebrow": "Ehrlich gesagt",
+        "title": "Moderationssprachen für {country}"
+      },
+      "faq": {
+        "eyebrow": "Häufige Fragen",
+        "title": "Fragen zu Hochzeiten in {country}"
+      },
+      "nearby": {
+        "eyebrow": "Auch europaweit buchbar",
+        "title": "Weitere Länder im Überblick",
+        "hubCta": "Alle Länder auf einen Blick"
+      },
+      "cta": {
+        "eyebrow": "Nächster Schritt",
+        "title": "Ihre Hochzeit in {country} – lassen Sie uns sprechen",
+        "subtitle": "Prüfen Sie unverbindlich Termin und Rahmen für {country}.",
+        "button": "Für {country} anfragen"
+      }
+    }
+  },
+  "cro": {
+    "responseTimeBadge": "Antwort in der Regel innerhalb von 24 Stunden.",
+    "seasonScarcity": "Bereits {count} Samstage in {year} vergeben — fragen Sie früh an.",
+    "trust": {
+      "followers": "{count} Follower",
+      "years": "{count}+ Jahre Erfahrung",
+      "events": "{count}+ Events begleitet",
+      "languages": "{count} Sprachen live moderiert"
+    },
+    "saveForLater": {
+      "title": "Noch nicht ganz sicher?",
+      "text": "Kein Problem — melden Sie sich unverbindlich, dann besprechen wir alles, sobald es bei Ihnen passt.",
+      "whatsappCta": "Auf WhatsApp merken",
+      "mailCta": "Per E-Mail merken",
+      "whatsappPrefill": "Hallo, ich interessiere mich für einen Termin bei VEYSL, bin aber noch nicht sicher. Können wir das unverbindlich besprechen?",
+      "whatsappPrefillWithDate": "Hallo, ich interessiere mich für den {date} bei VEYSL, bin aber noch nicht sicher. Können wir das unverbindlich besprechen?",
+      "mailSubject": "Unverbindliche Anfrage – Terminvormerkung"
+    }
+  },
+  "media": {
+    "comingSoon": "Foto folgt",
+    "placeholderAriaLabel": "Bildplatz – noch kein Foto hinterlegt"
+  },
+  "blog": {
+    "meta": {
+      "title": "Ratgeber: Hochzeits-DJ, Musik & Planung | VEYSL",
+      "description": "{count} ausführliche Guides zu Hochzeits-DJ, Musik, Technik, Kosten und deutsch-türkischen Hochzeiten — von VEYSL, DJ & Orkestra aus Stuttgart."
+    },
+    "index": {
+      "eyebrow": "Ratgeber",
+      "title": "Ratgeber für Ihre Hochzeit",
+      "subtitle": "{count} ausführliche Guides zu Planung, Musik, Technik und deutsch-türkischen Hochzeiten — geschrieben aus über 12 Jahren Praxis.",
+      "updated": "Zuletzt aktualisiert am {date}",
+      "meta": {
+        "emptyDescription": "Der Ratgeber von VEYSL zu Hochzeits-DJ, Musik und Planung — diese Sprache folgt in Kürze."
+      },
+      "empty": {
+        "title": "Der Ratgeber folgt in dieser Sprache in Kürze.",
+        "body": "Unsere ausführlichen Guides gibt es aktuell auf Deutsch, Türkisch und Englisch. Bis zur Übersetzung beantworten wir Ihre Fragen gerne direkt.",
+        "questionsCta": "Häufige Fragen ansehen",
+        "requestCta": "Unverbindlich anfragen"
+      }
+    },
+    "categories": {
+      "planung": "Planung",
+      "kosten": "Kosten",
+      "musik": "Musik",
+      "tuerkische-hochzeit": "Türkische Hochzeit",
+      "technik": "Technik",
+      "recht": "Recht",
+      "international": "International",
+      "real-wedding": "Echte Hochzeit"
+    },
+    "post": {
+      "backToOverview": "Zurück zum Ratgeber",
+      "byAuthor": "Von {author}",
+      "publishedOn": "Veröffentlicht am {date}",
+      "updatedOn": "Aktualisiert am {date}",
+      "readingTime": "{minutes} Min. Lesezeit",
+      "furtherReadingTitle": "Weiterführende Links",
+      "relatedAnswersTitle": "Passende Antworten",
+      "relatedCitiesTitle": "Auch in Ihrer Nähe",
+      "relatedPostsTitle": "Das könnte Sie auch interessieren",
+      "cta": {
+        "eyebrow": "Weiterlesen reicht nicht?",
+        "title": "Lassen Sie uns über Ihren Termin sprechen",
+        "subtitle": "Prüfen Sie unverbindlich, ob Ihr Wunschdatum noch frei ist — Antwort innerhalb von 24 Stunden."
+      }
+    }
+  }
+}
