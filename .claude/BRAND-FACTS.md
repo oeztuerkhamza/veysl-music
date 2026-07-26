@@ -127,7 +127,11 @@ rather than generic DJ boilerplate.
 ## Contact (verified)
 
 - Phone / WhatsApp: **+49 176 64844815**
-- Email: **veyseldurmus92@gmail.com** (TODO: migrate to `booking@veysl.de`)
+- Email: **info@veysl.de** — the public business address, used in `site.contact.email`,
+  the Impressum and the Google Business Profile. Runs on the self-hosted mailserver
+  (docs/MAIL-SELFHOSTED.md). Automated sends use `no-reply@veysl.de` instead, on
+  purpose: a send-only address whose reputation cannot damage the personal mailbox.
+  The old private Gmail is no longer referenced anywhere in the app.
 - Instagram: `@veystunesofficial` · YouTube: `@veystunesofficial`
 - Google Maps profile: linked in `site.social.googleMaps`
 

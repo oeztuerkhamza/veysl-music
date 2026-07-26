@@ -120,8 +120,9 @@ Diese Bereiche sind bewusst leer und zeigen einen gestalteten Leerzustand.
 
 ## 🟢 9. Konten und Zugänge
 
-- [ ] E-Mail auf `booking@veysl.de` umstellen (aktuell eine private Gmail-Adresse —
-      wirkt bei Premium-Anfragen unprofessionell)
+- [x] E-Mail auf `info@veysl.de` umstellen — im Code erledigt. Die private
+      Gmail-Adresse steht nirgends mehr in der Anwendung. Das Postfach selbst
+      läuft über den eigenen Mailserver, siehe docs/MAIL-SELFHOSTED.md.
 - [ ] Zugang Google Search Console und Google Business Profile
 - [ ] Entscheidung Hosting: Vercel oder Cloudflare Pages
 - [ ] E-Mail-Versand für Anfragen (z. B. Resend) — die Anfragen laufen sonst nur ins Log

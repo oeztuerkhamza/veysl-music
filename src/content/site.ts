@@ -114,7 +114,12 @@ export const site = {
   },
 
   contact: {
-    email: 'veyseldurmus92@gmail.com', // TODO(kunde): auf booking@veysl.de umstellen
+    // Geschäftsadresse für Kundenkontakt, Impressum und Google Business Profile.
+    // Postfach läuft auf dem selbst gehosteten Mailserver — siehe
+    // docs/MAIL-SELFHOSTED.md. Der automatische Versand nutzt bewusst eine
+    // andere Adresse (no-reply@), damit deren Reputation die persönliche
+    // Korrespondenz nicht beschädigen kann.
+    email: 'info@veysl.de',
     phone: '+49 176 64844815',
     phoneHref: 'tel:+4917664844815',
     /** Nur Ziffern inkl. Ländercode — für wa.me-Links. */

@@ -1,0 +1,116 @@
+# Eigener Mailserver für veysl.de — siehe docs/MAIL-SELFHOSTED.md.
+#
+# Getrennt von der Haupt-docker-compose.yml, damit ein Deploy der Website
+# (deploy/deploy.sh recreated den app-Container) das Postfach nicht mit
+# anfasst. Start:
+#   docker compose -f deploy/mail/docker-compose.mail.yml up -d
+#
+# Bewusst NICHT Mailcow: das verlangt realistisch ~6 GB RAM, dieser VPS hat 4
+# und betreibt zusätzlich die Website.
+
+name: veysl-mail
+
+services:
+  mailserver:
+    image: ghcr.io/docker-mailserver/docker-mailserver:15.0
+    container_name: mailserver
+    # Muss mit dem PTR-Eintrag der Server-IP übereinstimmen — das ist der
+    # Name, mit dem sich Postfix bei fremden Servern meldet (HELO). Stimmt er
+    # nicht mit dem rDNS, landet die Mail im Spam. Siehe MAIL-SELFHOSTED.md.
+    hostname: mail.veysl.de
+    restart: unless-stopped
+    ports:
+      - '25:25' # Server-zu-Server-Zustellung. Ausgehend muss netcup 25 freischalten
+      - '143:143' # IMAP STARTTLS
+      - '587:587' # Einlieferung durch eigene Clients (authentifiziert)
+      - '993:993' # IMAPS
+    volumes:
+      - ./docker-data/dms/mail-data/:/var/mail/
+      - ./docker-data/dms/mail-state/:/var/mail-state/
+      - ./docker-data/dms/mail-logs/:/var/log/mail/
+      - ./docker-data/dms/config/:/tmp/docker-mailserver/
+      # Zertifikat aus der bestehenden certbot-Instanz mitbenutzen; erweitert
+      # via CERTBOT_DOMAINS in deploy/setup-ssl.sh.
+      - certbot-conf:/etc/letsencrypt:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      # Pflichtangabe nach RFC 2142 und Zieladresse der Alias-Weiterleitungen.
+      POSTMASTER_ADDRESS: info@veysl.de
+      SSL_TYPE: letsencrypt
+      # Rspamd übernimmt Spamfilter UND DKIM-Signierung; OpenDKIM wird dann
+      # nicht zusätzlich gebraucht.
+      ENABLE_RSPAMD: 1
+      ENABLE_OPENDKIM: 0
+      ENABLE_OPENDMARC: 0
+      # Amavis und SpamAssassin sind mit Rspamd redundant.
+      ENABLE_AMAVIS: 0
+      ENABLE_SPAMASSASSIN: 0
+      # ClamAV bleibt aus: es belegt allein ~1 GB RAM und dieser Server hat 4
+      # GB, die er mit der Website teilt. Rspamd filtert weiterhin Spam; für
+      # Virenscan wäre ein eigener Mail-VPS die richtige Antwort.
+      ENABLE_CLAMAV: 0
+      ENABLE_FAIL2BAN: 1
+      # Kein offenes Relay: Einlieferung nur authentifiziert über 587/993.
+      PERMIT_DOCKER: none
+      ONE_DIR: 1
+      # Zustellfehler früh sichtbar machen — eine still abgelehnte
+      # Anfragebestätigung ist eine verlorene Buchung.
+      LOG_LEVEL: info
+    # fail2ban muss iptables-Regeln setzen können.
+    cap_add:
+      - NET_ADMIN
+    stop_grace_period: 1m
+
+  roundcube:
+    image: roundcube/roundcubemail:1.6.x-apache
+    container_name: roundcube
+    restart: unless-stopped
+    depends_on:
+      - mailserver
+    environment:
+      # Über den Containernamen statt über mail.veysl.de: der Weg bleibt
+      # intern, unabhängig von DNS und öffentlicher Erreichbarkeit.
+      ROUNDCUBEMAIL_DEFAULT_HOST: tls://mailserver
+      ROUNDCUBEMAIL_DEFAULT_PORT: 143
+      ROUNDCUBEMAIL_SMTP_SERVER: tls://mailserver
+      ROUNDCUBEMAIL_SMTP_PORT: 587
+      # SQLite reicht für ein Ein-Personen-Postfach; hier liegen nur
+      # Roundcubes eigene Daten (Adressbuch, Einstellungen), nicht die Mails.
+      ROUNDCUBEMAIL_DB_TYPE: sqlite
+      ROUNDCUBEMAIL_SKIN: elastic
+      ROUNDCUBEMAIL_UPLOAD_MAX_FILESIZE: 25M
+    volumes:
+      - roundcube-db:/var/roundcube/db
+      - roundcube-config:/var/roundcube/config
+    # Kein Port nach außen: nginx terminiert TLS und proxyt
+    # https://mail.veysl.de hierher. Siehe nginx/ und docs/MAIL-SELFHOSTED.md.
+    expose:
+      - '80'
+    networks:
+      - default
+      - web
+
+volumes:
+  roundcube-db:
+  roundcube-config:
+  # Von der Haupt-Compose-Datei angelegt — hier nur mitbenutzt (read-only),
+  # damit beide Stacks dasselbe Let's-Encrypt-Zertifikat verwenden.
+  #
+  # Der echte Name hängt vom Compose-Projektnamen ab: docker-compose.yml setzt
+  # kein `name:`, also leitet Compose ihn vom Verzeichnis ab — bei
+  # /opt/veysl/app ergibt das `app_certbot-conf`. Vor dem ersten Start prüfen
+  # und bei Abweichung überschreiben:
+  #   docker volume ls | grep certbot
+  #   CERTBOT_VOLUME=<name> docker compose -f deploy/mail/... up -d
+  certbot-conf:
+    external: true
+    name: ${CERTBOT_VOLUME:-app_certbot-conf}
+
+networks:
+  # Gemeinsames Netz mit nginx aus der Haupt-Compose-Datei, damit der Proxy
+  # den Roundcube-Container erreicht. Dort heißt das Netz `veysl`, also mit
+  # Projektpräfix `app_veysl`. Gleiche Prüfung wie beim Volume oben:
+  #   docker network ls | grep veysl
+  web:
+    external: true
+    name: ${WEB_NETWORK:-app_veysl}
