@@ -941,10 +941,30 @@ export interface SiteSetting {
      */
     whatsapp?: string | null;
   };
+  /**
+   * Vollständige Anschrift nach § 5 DDG. Straße UND Postleitzahl sind zwingend — nur der Ort genügt nicht und ist abmahnfähig. Solange beide fehlen, zeigt die Impressum-Seite an dieser Stelle sichtbar einen Platzhalter statt einer erfundenen Adresse.
+   */
   address?: {
     street?: string | null;
     postalCode?: string | null;
     city?: string | null;
+  };
+  /**
+   * Pflichtangaben für den deutschen Rechtsraum. Diese Felder werden ausschließlich hier gepflegt — kein Code-Deploy nötig. Nichts erfinden: leer gelassene Felder erscheinen auf der Impressum-Seite als sichtbarer Platzhalter, und das ist einer falschen Angabe deutlich vorzuziehen.
+   */
+  legal?: {
+    /**
+     * Nach § 27a UStG anzugeben, sofern vorhanden. Wer die Kleinunternehmerregelung nutzt, lässt das Feld leer und setzt stattdessen den Haken unten.
+     */
+    vatId?: string | null;
+    /**
+     * Setzen, wenn keine Umsatzsteuer ausgewiesen wird. Die Impressum-Seite formuliert daraus den Hinweis. Entweder dieses Häkchen oder eine USt-IdNr. muss gesetzt sein — beides leer ist rechtlich unvollständig.
+     */
+    smallBusinessExempt?: boolean | null;
+    /**
+     * Versicherer und räumlicher Geltungsbereich. Für DJ-/Veranstaltungsdienstleistungen üblich und von vielen Locations verlangt.
+     */
+    professionalInsurance?: string | null;
   };
   social?: {
     instagram?: string | null;
@@ -1020,6 +1040,13 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         street?: T;
         postalCode?: T;
         city?: T;
+      };
+  legal?:
+    | T
+    | {
+        vatId?: T;
+        smallBusinessExempt?: T;
+        professionalInsurance?: T;
       };
   social?:
     | T

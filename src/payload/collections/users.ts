@@ -18,7 +18,20 @@ export const Users: CollectionConfig = {
     description: 'Zugänge für das VEYSL-Adminpanel. In der Regel reicht ein einziger Account.',
   },
   auth: {
-    tokenExpiration: 60 * 60 * 8, // 8h session
+    /**
+     * 30 Tage. Bewusst lang: der Betreiber pflegt Inhalte sporadisch von
+     * seinem eigenen Rechner, und eine Sitzung, die nach acht Stunden abläuft,
+     * bedeutet praktisch bei jedem Besuch ein neues Login. Angemeldet bleiben
+     * bis zum ausdrücklichen Logout ist hier das gewünschte Verhalten.
+     *
+     * Der Schutz liegt entsprechend nicht auf der Sitzungsdauer, sondern auf
+     * dem Login selbst (`maxLoginAttempts`/`lockTime` unten) und auf dem
+     * Cookie: httpOnly (von Payload gesetzt), `Secure` in Produktion, also
+     * nur über HTTPS, und `SameSite=Lax`. Wer physischen Zugriff auf einen
+     * angemeldeten Rechner hat, kommt damit ins Panel — das ist der Preis
+     * dieser Entscheidung und der Grund, das Gerät selbst zu sperren.
+     */
+    tokenExpiration: 60 * 60 * 24 * 30,
     maxLoginAttempts: 5,
     lockTime: 10 * 60 * 1000, // 10 min lockout after 5 failed attempts
     verify: false, // no SMTP transport wired up yet (see BOOKING_TRANSPORT) — email verification would dead-end

@@ -128,13 +128,43 @@ export default async function ImpressumPage({ params }: PageProps) {
               </div>
             </Reveal>
 
+            {/*
+              Drei Zustände, gepflegt im Adminpanel (site-settings →
+              „Rechtliche Angaben"): USt-IdNr. vorhanden, oder
+              Kleinunternehmerregelung nach § 19 UStG, oder — solange beides
+              fehlt — ein sichtbarer Platzhalter. Bewusst kein stiller
+              Fallback: eine fehlende Pflichtangabe soll auffallen, statt so
+              auszusehen, als wäre sie erledigt.
+            */}
             <Reveal>
               <div>
                 <h2 className="font-display text-2xl text-ink">{t('vatTitle')}</h2>
-                <p className="mt-3 text-ink-muted">{t('vatText')}</p>
-                <p className="mt-1">{site.vatId ? site.vatId : <MissingValue text={tLegal('missingValue')} />}</p>
+                {site.vatId ? (
+                  <>
+                    <p className="mt-3 text-ink-muted">{t('vatText')}</p>
+                    <p className="mt-1">{site.vatId}</p>
+                  </>
+                ) : site.smallBusinessExempt ? (
+                  <p className="mt-3 leading-relaxed text-ink-muted">{t('smallBusinessText')}</p>
+                ) : (
+                  <>
+                    <p className="mt-3 text-ink-muted">{t('vatText')}</p>
+                    <p className="mt-1">
+                      <MissingValue text={tLegal('missingValue')} />
+                    </p>
+                  </>
+                )}
               </div>
             </Reveal>
+
+            {site.professionalInsurance ? (
+              <Reveal>
+                <div>
+                  <h2 className="font-display text-2xl text-ink">{t('insuranceTitle')}</h2>
+                  <p className="mt-3 leading-relaxed text-ink-muted">{site.professionalInsurance}</p>
+                </div>
+              </Reveal>
+            ) : null}
 
             <Reveal>
               <div>

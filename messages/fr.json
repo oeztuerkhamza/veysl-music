@@ -928,7 +928,9 @@
             "Sauf mention contraire, les photos et les vidéos de ce site proviennent de l’exploitant du site ou sont utilisées avec l’accord exprès de leurs auteurs. Si vous constatiez malgré tout une violation du droit d’auteur, merci de nous en informer ; les contenus concernés seront retirés sans délai."
           ]
         }
-      ]
+      ],
+      "smallBusinessText": "En tant que petite entreprise au sens du § 19 al. 1 de la loi allemande sur la TVA (UStG), aucune taxe sur la valeur ajoutée n'est facturée.",
+      "insuranceTitle": "Assurance responsabilité civile professionnelle"
     },
     "privacy": {
       "heading": "Politique de confidentialité",

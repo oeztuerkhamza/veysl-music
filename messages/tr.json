@@ -928,7 +928,9 @@
             "Bu internet sitesindeki fotoğraf ve videolar, aksi belirtilmedikçe sayfa işletmecisine aittir veya eser sahiplerinin açık izniyle kullanılmaktadır. Buna rağmen bir telif hakkı ihlali fark ederseniz, bize bildirmenizi rica ederiz; ilgili içerikler derhâl kaldırılır."
           ]
         }
-      ]
+      ],
+      "smallBusinessText": "§ 19 Abs. 1 UStG kapsamında küçük işletme statüsünde olunduğu için katma değer vergisi hesaplanmamaktadır.",
+      "insuranceTitle": "Mesleki sorumluluk sigortası"
     },
     "privacy": {
       "heading": "Gizlilik Politikası",

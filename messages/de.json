@@ -928,7 +928,9 @@
             "Fotos und Videos auf dieser Website stammen, soweit nicht anders gekennzeichnet, vom Seitenbetreiber oder werden mit ausdrücklicher Zustimmung der Urheber genutzt. Sollten Sie dennoch auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis; entsprechende Inhalte werden umgehend entfernt."
           ]
         }
-      ]
+      ],
+      "smallBusinessText": "Als Kleinunternehmer im Sinne von § 19 Abs. 1 UStG wird keine Umsatzsteuer berechnet.",
+      "insuranceTitle": "Berufshaftpflichtversicherung"
     },
     "privacy": {
       "heading": "Datenschutzerklärung",

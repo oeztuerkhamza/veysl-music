@@ -132,8 +132,17 @@ export const site = {
     city: 'Stuttgart-Obertürkheim',
   },
 
-  /** USt-IdNr. war im alten Impressum nicht ausgefüllt. */
+  /**
+   * Rechtliche Pflichtangaben. Alle drei sind ab jetzt im Adminpanel pflegbar
+   * (site-settings → „Rechtliche Angaben"), damit der Betreiber sie ohne
+   * Deploy nachtragen kann. Die Werte hier sind nur der Fallback, solange im
+   * CMS nichts steht — und sie bleiben absichtlich leer: eine erfundene
+   * USt-IdNr. oder Anschrift wäre schlimmer als ein sichtbarer Platzhalter.
+   */
   vatId: '', // TODO(kunde)
+  /** § 19 UStG — Alternative zur USt-IdNr., nicht zusätzlich dazu. */
+  smallBusinessExempt: false, // TODO(kunde)
+  professionalInsurance: '', // TODO(kunde)
 
   social: {
     /** Hauptkanal — mit Abstand stärkster Social Proof des Projekts. */

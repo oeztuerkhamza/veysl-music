@@ -928,7 +928,9 @@
             "Unless otherwise noted, photos and videos on this website originate from the site operator or are used with the express consent of their creators. If you nevertheless become aware of a copyright infringement, please notify us; we will remove such content immediately."
           ]
         }
-      ]
+      ],
+      "smallBusinessText": "As a small business within the meaning of Section 19 (1) of the German VAT Act (UStG), no value added tax is charged.",
+      "insuranceTitle": "Professional liability insurance"
     },
     "privacy": {
       "heading": "Privacy Policy",

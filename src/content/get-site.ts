@@ -52,6 +52,9 @@ export interface ResolvedSite {
   contact: { email: string; phone: string; phoneHref: string; whatsapp: string };
   address: { street: string; postalCode: string; city: string };
   vatId: string;
+  /** § 19 UStG. Entweder das oder `vatId` — die Impressum-Seite verlangt genau eines von beiden. */
+  smallBusinessExempt: boolean;
+  professionalInsurance: string;
   social: {
     instagram: string;
     instagramHandle: string;
@@ -75,6 +78,7 @@ export interface ResolvedSite {
 interface SiteSettingsDoc {
   contact?: { email?: null | string; phone?: null | string; phoneHref?: null | string; whatsapp?: null | string };
   address?: { street?: null | string; postalCode?: null | string; city?: null | string };
+  legal?: { vatId?: null | string; smallBusinessExempt?: boolean | null; professionalInsurance?: null | string };
   social?: Record<string, null | string | undefined>;
   serviceAreas?: (null | string)[] | null;
   stats?: { yearsExperience?: null | number; eventsCompleted?: null | number; instagramFollowers?: null | number; hostingLanguages?: (null | string)[] | null };
@@ -141,6 +145,15 @@ function pickNumber(value: unknown, fallback: number): number {
   return typeof value === 'number' && Number.isFinite(value) ? value : fallback;
 }
 
+/**
+ * Anders als bei Strings ist `false` hier ein *gültiger* Wert, kein „leer":
+ * ein abgewähltes Häkchen im Adminpanel muss den statischen Fallback
+ * überschreiben können. Deshalb wird nur `undefined`/`null` durchgelassen.
+ */
+function pickBoolean(value: unknown, fallback: boolean): boolean {
+  return typeof value === 'boolean' ? value : fallback;
+}
+
 function pickStringArray(value: unknown, fallback: string[]): string[] {
   if (!Array.isArray(value)) return fallback;
   const cleaned = value.filter((v): v is string => typeof v === 'string' && v.trim() !== '');
@@ -190,6 +203,7 @@ export async function getSite(): Promise<ResolvedSite> {
   const stats = overrides.stats ?? {};
   const season = overrides.season ?? {};
   const reviews = overrides.reviews ?? {};
+  const legal = overrides.legal ?? {};
 
   const mergedRating = pickNumber(reviews.rating, base.reviews.rating);
   const mergedCount = pickNumber(reviews.count, base.reviews.count);
@@ -208,6 +222,11 @@ export async function getSite(): Promise<ResolvedSite> {
       postalCode: pickString(address.postalCode, base.address.postalCode),
       city: pickString(address.city, base.address.city),
     },
+    // Rechtliche Pflichtangaben — im Adminpanel pflegbar, damit der Betreiber
+    // Anschrift, USt-IdNr. und Versicherung ohne Deploy nachtragen kann.
+    vatId: pickString(legal.vatId, base.vatId),
+    smallBusinessExempt: pickBoolean(legal.smallBusinessExempt, base.smallBusinessExempt),
+    professionalInsurance: pickString(legal.professionalInsurance, base.professionalInsurance),
     social: {
       instagram: pickString(social.instagram, base.social.instagram),
       instagramHandle: pickString(social.instagramHandle, base.social.instagramHandle),

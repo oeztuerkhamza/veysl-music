@@ -928,7 +928,9 @@
             "Las fotos y los vídeos de este sitio web proceden, salvo indicación en contrario, del operador de la página o se utilizan con el consentimiento expreso de sus autores. Si aun así detecta una vulneración de derechos de autor, le rogamos que nos lo comunique; los contenidos correspondientes se retirarán de inmediato."
           ]
         }
-      ]
+      ],
+      "smallBusinessText": "Como pequeño empresario en el sentido del § 19 apdo. 1 de la Ley alemana del IVA (UStG), no se factura el impuesto sobre el valor añadido.",
+      "insuranceTitle": "Seguro de responsabilidad civil profesional"
     },
     "privacy": {
       "heading": "Política de privacidad",

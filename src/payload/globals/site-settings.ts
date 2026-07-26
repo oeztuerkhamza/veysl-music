@@ -110,10 +110,53 @@ export const SiteSettings: GlobalConfig = {
     {
       name: 'address',
       type: 'group',
+      label: 'Anschrift (Impressum — Pflichtangabe)',
+      admin: {
+        description:
+          'Vollständige Anschrift nach § 5 DDG. Straße UND Postleitzahl sind zwingend — nur der Ort genügt nicht und ist abmahnfähig. Solange beide fehlen, zeigt die Impressum-Seite an dieser Stelle sichtbar einen Platzhalter statt einer erfundenen Adresse.',
+      },
       fields: [
-        { name: 'street', type: 'text' },
-        { name: 'postalCode', type: 'text' },
-        { name: 'city', type: 'text' },
+        { name: 'street', type: 'text', label: 'Straße und Hausnummer', admin: { placeholder: 'Musterstraße 12' } },
+        { name: 'postalCode', type: 'text', label: 'Postleitzahl', admin: { placeholder: '70329' } },
+        { name: 'city', type: 'text', label: 'Ort' },
+      ],
+    },
+    {
+      name: 'legal',
+      type: 'group',
+      label: 'Rechtliche Angaben (Impressum)',
+      admin: {
+        description:
+          'Pflichtangaben für den deutschen Rechtsraum. Diese Felder werden ausschließlich hier gepflegt — kein Code-Deploy nötig. Nichts erfinden: leer gelassene Felder erscheinen auf der Impressum-Seite als sichtbarer Platzhalter, und das ist einer falschen Angabe deutlich vorzuziehen.',
+      },
+      fields: [
+        {
+          name: 'vatId',
+          type: 'text',
+          label: 'Umsatzsteuer-IdNr.',
+          admin: {
+            placeholder: 'DE123456789',
+            description: 'Nach § 27a UStG anzugeben, sofern vorhanden. Wer die Kleinunternehmerregelung nutzt, lässt das Feld leer und setzt stattdessen den Haken unten.',
+          },
+        },
+        {
+          name: 'smallBusinessExempt',
+          type: 'checkbox',
+          label: 'Kleinunternehmer nach § 19 UStG',
+          admin: {
+            description:
+              'Setzen, wenn keine Umsatzsteuer ausgewiesen wird. Die Impressum-Seite formuliert daraus den Hinweis. Entweder dieses Häkchen oder eine USt-IdNr. muss gesetzt sein — beides leer ist rechtlich unvollständig.',
+          },
+        },
+        {
+          name: 'professionalInsurance',
+          type: 'text',
+          label: 'Berufs-/Betriebshaftpflichtversicherung',
+          admin: {
+            placeholder: 'Musterversicherung AG, Musterstadt — Geltungsbereich: Deutschland',
+            description: 'Versicherer und räumlicher Geltungsbereich. Für DJ-/Veranstaltungsdienstleistungen üblich und von vielen Locations verlangt.',
+          },
+        },
       ],
     },
     {
