@@ -101,12 +101,16 @@ export interface OgImage {
 }
 
 /**
- * Default share image. The file does not exist yet — see the SEO agent report
- * for the exact asset spec. Referencing the conventional path now means pages
- * don't need to change once the client/designer delivers it.
+ * Standard-Share-Bild. Erzeugt von `scripts/generate-og-image.mjs` — dort
+ * steht auch, warum es eine statische Datei ist und keine Laufzeit-Generierung
+ * über `next/og` (die scheitert hier reproduzierbar an sharp/libvips).
+ *
+ * Vorher zeigte das hier auf `/og-image.jpg` — eine Datei, die es nie gab.
+ * Jede geteilte URL lieferte damit eine kaputte Vorschau, in allen sieben
+ * Sprachen.
  */
 const DEFAULT_OG_IMAGE: OgImage = {
-  url: '/og-image.jpg',
+  url: '/og-image.png',
   width: 1200,
   height: 630,
   alt: `${site.name} — ${site.tagline.de}`,
