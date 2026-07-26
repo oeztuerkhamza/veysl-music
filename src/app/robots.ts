@@ -25,8 +25,42 @@ const AI_CRAWLERS = [
   'Applebot-Extended', // Governs Apple Intelligence use of Applebot-crawled content
 ];
 
+/** Die einzige Domain, die indexiert werden darf. */
+const CANONICAL_HOST = 'veysl.de';
+
 export default function robots(): MetadataRoute.Robots {
   const base = siteBaseUrl();
+
+  /**
+   * Jede andere Herkunft als die Produktionsdomain wird komplett gesperrt.
+   *
+   * Grund: eine Gratis-Vorschau (Vercel, Netlify, …) ist eine vollständige
+   * Kopie dieser Website. Wird sie indexiert, konkurriert sie später mit
+   * veysl.de um dieselben Keywords — und das ausgerechnet in einem Projekt,
+   * dessen größtes SEO-Risiko ohnehin ein Domainumzug ist (CHECKLIST.md A.4).
+   * Eine versehentlich indexierte Vorschau wieder aus dem Index zu bekommen
+   * kostet Wochen; sie gar nicht erst hineinzulassen kostet diese Zeilen.
+   *
+   * Greift automatisch: die Vorschau setzt NEXT_PUBLIC_SITE_URL auf ihre
+   * eigene URL (oder gar nicht), niemals auf veysl.de.
+   */
+  // Bewusst direkt aus der Umgebung statt über siteBaseUrl(): dessen Fallback
+  // ist site.url, also veysl.de. Eine Vorschau, bei der NEXT_PUBLIC_SITE_URL
+  // schlicht vergessen wurde, gälte damit als kanonisch und wäre indexierbar —
+  // und genau das Vergessen ist der wahrscheinlichste Fehler. Fehlt die
+  // Variable, wird deshalb gesperrt: die sichere Richtung.
+  let isCanonical = false;
+  try {
+    const configured = process.env.NEXT_PUBLIC_SITE_URL;
+    isCanonical = !!configured && new URL(configured).hostname.replace(/^www\./, '') === CANONICAL_HOST;
+  } catch {
+    isCanonical = false;
+  }
+
+  if (!isCanonical) {
+    return { rules: [{ userAgent: '*', disallow: '/' }] };
+  }
+
   return {
     rules: [
       { userAgent: '*', allow: '/', disallow: '/api/' },
