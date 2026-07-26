@@ -36,14 +36,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint (advisory — not a merge gate yet)
-        # 30 pre-existing errors as of this workflow's introduction (mostly
-        # react-hooks/set-state-in-effect and a couple of no-explicit-any) —
-        # application code this pipeline doesn't own fixing. Runs so it's
-        # visible in every PR without blocking the pipeline that actually
-        # matters (the build below). Flip to a hard gate once the app team
-        # has cleared the backlog.
-        run: npm run lint || true
+      - name: Lint
+        # War bis zum Aufräumen der 30 Alt-Fehler beratend (`|| true`). Die
+        # sind erledigt — 0 Fehler —, also gilt hier jetzt ein echtes Tor:
+        # sonst wandert derselbe Rückstand innerhalb weniger Wochen zurück.
+        #
+        # `--max-warnings` bleibt bewusst offen: eine einzige informative
+        # Warnung ist übrig (react-hooks/incompatible-library für
+        # react-hook-form, das der React Compiler nicht analysieren kann) und
+        # die verschwindet nur mit einem Bibliothekswechsel. Ein Tor, das man
+        # nicht erfüllen kann, wird ohnehin wieder abgeschaltet.
+        run: npm run lint
 
       - name: Production build
         # No secrets needed here — verified locally that `next build`
