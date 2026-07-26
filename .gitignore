@@ -51,3 +51,6 @@ next-env.d.ts
 /veysl-cms.db
 /veysl-cms.db-*
 /media
+
+# Dev-server-Logdatei — Laufzeitartefakt, kein Quellcode.
+dev.log
