@@ -210,6 +210,42 @@ this account can create further admin users from `/admin` afterwards.
 
 ---
 
+## Where credentials live
+
+Two different places, and the split is deliberate — putting a runtime secret
+into GitHub would actively make things worse, so this is worth reading before
+adding anything.
+
+**GitHub Actions secrets** — credentials the *pipeline* needs, and only those:
+
+| Secret | Used by |
+|---|---|
+| `DEPLOY_SSH_HOST` | the `deploy` job in `.github/workflows/deploy.yml` |
+| `DEPLOY_SSH_USER` | same |
+| `DEPLOY_SSH_KEY` | same — private key matching the deploy user's `authorized_keys` |
+
+Set them with `gh secret set DEPLOY_SSH_KEY < key` or via repo Settings →
+Secrets and variables → Actions. **Only the repository owner can do this**;
+values must never be pasted into a chat, a commit, or a doc.
+
+**The server's `/opt/veysl/app/.env`** — everything the *application* needs at
+runtime: `PAYLOAD_SECRET`, `DATABASE_URI`, `SMTP_PASS`, `RESEND_API_KEY`,
+`INSTAGRAM_*`. These do **not** belong in GitHub secrets, for three reasons:
+
+1. The app reads them live when the container starts (see "Build-time vs.
+   runtime" below). Changing one needs a restart, not a rebuild — and that
+   property disappears the moment the pipeline owns the values.
+2. Routing them through GitHub means the pipeline has to write secrets onto
+   the server on every deploy, which widens the blast radius of a compromised
+   workflow to include the database key and mail credentials.
+3. `PAYLOAD_SECRET` is generated **on the server** on purpose
+   (`openssl rand -hex 32`) so it never exists anywhere else — not on a
+   laptop, not in a CI log.
+
+Rule of thumb: if the *pipeline* needs it to reach the server, GitHub secret.
+If the *running app* needs it, server `.env`. Nothing goes in the repo either
+way — `.gitignore` covers `.env*` except the committed template.
+
 ## Environment variables
 
 All documented in `env.production.example` with inline comments; summary:
