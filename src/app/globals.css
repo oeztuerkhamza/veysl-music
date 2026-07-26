@@ -17,10 +17,16 @@
   --color-surface-2: #17171b;
   --color-ink: #f6f3ed;
   --color-ink-muted: #a6a19a;
-  --color-ink-faint: #6e6a64;
+  /* Von #6e6a64 aufgehellt: der alte Wert lag bei 3,72:1 auf --color-bg und
+     verfehlte damit die 4,5:1 aus WCAG 2.2 AA (1.4.3). Das Token wird 52-mal
+     verwendet, ausschließlich auf text-xs/-sm/-base — also durchweg
+     Fließtextgrößen, für die es keine Ausnahme für „großen Text" gibt.
+     Jetzt 4,95:1. */
+  --color-ink-faint: #827e77;
   --color-line: #232329;
 
-  /* Brand accent — identical in both themes. */
+  /* Brand accent. Im Dunkeln unverändert (10,02:1 auf --color-bg); für das
+     helle Theme wird --color-gold weiter unten überschrieben, siehe dort. */
   --color-gold: #d6b36a;
   --color-gold-soft: #e8ce96;
   --color-gold-deep: #a8853f;
@@ -75,7 +81,9 @@
     --color-surface-2: #17171b;
     --color-ink: #f6f3ed;
     --color-ink-muted: #a6a19a;
-    --color-ink-faint: #6e6a64;
+    /* Muss mit dem @theme-Wert oben übereinstimmen — dies ist die Klasse,
+       die next-themes tatsächlich setzt, also gewinnt sie im Zweifel. */
+    --color-ink-faint: #827e77;
     --color-line: #232329;
   }
 
@@ -86,8 +94,17 @@
     --color-surface-2: #f2eee7;
     --color-ink: #14131a;
     --color-ink-muted: #5e5850;
-    --color-ink-faint: #8b857c;
+    /* War #8b857c = 3,45:1 auf dem hellen Hintergrund — zu wenig für
+       Fließtext. Jetzt 4,62:1. */
+    --color-ink-faint: #767068;
     --color-line: #e3ddd2;
+    /* Das Champagner-Gold des dunklen Themes erreicht auf hellem Grund nur
+       1,88:1 und ist als Textfarbe damit praktisch unlesbar — bei 124
+       `text-gold`-Verwendungen kein Randfall. Selbst --color-gold-deep
+       (#a8853f) kommt nur auf 3,25:1. Dieser Ton bleibt erkennbar Gold und
+       erreicht 4,86:1. Nur im hellen Theme überschrieben; im dunklen bleibt
+       die Markenfarbe unangetastet. */
+    --color-gold: #86692f;
   }
 
   /* Pre-hydration fallback: honour the system preference for the brief
@@ -100,8 +117,12 @@
       --color-surface-2: #f2eee7;
       --color-ink: #14131a;
       --color-ink-muted: #5e5850;
-      --color-ink-faint: #8b857c;
+      /* Muss mit dem .light-Block oben übereinstimmen — sonst wäre der
+         Kontrast ausgerechnet in dem Moment zu niedrig, in dem die Seite
+         zuerst sichtbar wird. */
+      --color-ink-faint: #767068;
       --color-line: #e3ddd2;
+      --color-gold: #86692f;
     }
   }
 
