@@ -21,7 +21,14 @@ import type { AnalyticsProvider, EventProps } from './types';
 let coreProviders: AnalyticsProvider[] = [];
 let gatedProviders: AnalyticsProvider[] = [];
 let bootstrapped = false;
-let unsubscribeConsent: (() => void) | null = null;
+/**
+ * Kein Gegenstück zum Abonnement unten, und das ist Absicht: `initAnalytics()`
+ * läuft durch das `bootstrapped`-Flag genau einmal pro Seitenladen, und die
+ * Zustimmung kann sich danach jederzeit ändern. Das Abonnement soll also so
+ * lange leben wie das Modul. Früher lag hier ein `unsubscribeConsent`, das nie
+ * aufgerufen wurde — eine Variable, die eine Aufräumpflicht suggeriert, die es
+ * nicht gibt.
+ */
 let currentLocale = 'de';
 let currentPath = '/';
 
@@ -54,7 +61,7 @@ export function initAnalytics(): void {
     gatedProviders.forEach((provider) => provider.init());
   }
 
-  unsubscribeConsent = onConsentChange((value) => {
+  onConsentChange((value) => {
     if (value === 'granted') {
       if (gatedProviders.length === 0) gatedProviders = buildGatedProviders();
       gatedProviders.forEach((provider) => {
@@ -106,7 +113,9 @@ export function track(event: string, props?: EventProps): void {
   const payload: EventProps = { locale: currentLocale, ...props };
 
   if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line no-console -- intentional dev-only visibility into what's being tracked
+    // Absichtliche Sichtbarkeit im Dev-Modus, damit man sieht, was getrackt
+    // wird. (Die Regel `no-console` ist in dieser Config nicht aktiv, ein
+    // eslint-disable wäre hier also toter Code.)
     console.debug(`[analytics] ${event}`, payload);
   }
 

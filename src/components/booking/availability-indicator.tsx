@@ -18,44 +18,50 @@ export function AvailabilityIndicator({ onAnnounce }: { onAnnounce: (message: st
   const t = useTranslations('booking.availability');
   const { control } = useFormContext<EnquiryFormInput>();
   const eventDate = useWatch({ control, name: 'eventDate' });
-  const [status, setStatus] = useState<IndicatorStatus>('idle');
+
+  // 'idle'/'past' are pure functions of the date itself — derived during render
+  // instead of stored in state, so there is nothing to reset when the date changes.
+  const dateIsEmpty = !eventDate || !isValidIsoDate(eventDate);
+  const dateIsPast = !dateIsEmpty && !isFutureIsoDate(eventDate);
+
+  const [checkResult, setCheckResult] = useState<{ date: string; status: AvailabilityStatus } | null>(null);
   const abortRef = useRef<AbortController | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const status: IndicatorStatus = dateIsEmpty
+    ? 'idle'
+    : dateIsPast
+      ? 'past'
+      : checkResult && checkResult.date === eventDate
+        ? checkResult.status
+        : 'checking';
 
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     abortRef.current?.abort();
 
-    if (!eventDate || !isValidIsoDate(eventDate)) {
-      setStatus('idle');
-      return;
-    }
+    if (dateIsEmpty || dateIsPast) return;
 
-    if (!isFutureIsoDate(eventDate)) {
-      setStatus('past');
-      return;
-    }
-
-    setStatus('checking');
+    const dateToCheck = eventDate;
     debounceRef.current = setTimeout(() => {
       const controller = new AbortController();
       abortRef.current = controller;
 
-      fetch(`/api/availability?date=${eventDate}`, { signal: controller.signal })
+      fetch(`/api/availability?date=${dateToCheck}`, { signal: controller.signal })
         .then((res) => res.json())
         .then((data: { status?: AvailabilityStatus }) => {
-          setStatus(data.status ?? 'unknown');
+          setCheckResult({ date: dateToCheck, status: data.status ?? 'unknown' });
         })
         .catch((err: unknown) => {
           if (err instanceof DOMException && err.name === 'AbortError') return;
-          setStatus('unknown');
+          setCheckResult({ date: dateToCheck, status: 'unknown' });
         });
     }, 450);
 
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
-  }, [eventDate]);
+  }, [eventDate, dateIsEmpty, dateIsPast]);
 
   useEffect(() => {
     if (status === 'idle' || status === 'checking') return;

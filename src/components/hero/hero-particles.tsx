@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -8,15 +8,15 @@ const PARTICLE_COUNT = 260;
 
 /**
  * Reads a design token straight off the live cascade instead of hardcoding a hex
- * value here — keeps the scene in sync with the token and honours theme changes.
+ * value here — keeps the scene in sync with the token. Read lazily via useState's
+ * initializer, not an effect: this component is only ever mounted client-side
+ * (dynamically imported with `ssr: false`), so `document` is already available
+ * on first render — no extra render pass needed.
  */
 function useColorToken(token: string): string | null {
-  const [value, setValue] = useState<string | null>(null);
-
-  useEffect(() => {
-    const resolved = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
-    setValue(resolved || null);
-  }, [token]);
+  const [value] = useState<string | null>(
+    () => getComputedStyle(document.documentElement).getPropertyValue(token).trim() || null,
+  );
 
   return value;
 }
@@ -24,7 +24,9 @@ function useColorToken(token: string): string | null {
 function GoldDrift({ color }: { color: string }) {
   const pointsRef = useRef<THREE.Points>(null);
 
-  const positions = useMemo(() => {
+  // Lazy useState initializer, not useMemo: useMemo isn't guaranteed to run
+  // only once, which would reroll the random layout on a re-render.
+  const [positions] = useState<Float32Array>(() => {
     const arr = new Float32Array(PARTICLE_COUNT * 3);
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       arr[i * 3] = (Math.random() - 0.5) * 12;
@@ -32,7 +34,7 @@ function GoldDrift({ color }: { color: string }) {
       arr[i * 3 + 2] = (Math.random() - 0.5) * 6;
     }
     return arr;
-  }, []);
+  });
 
   useFrame((state) => {
     if (!pointsRef.current) return;

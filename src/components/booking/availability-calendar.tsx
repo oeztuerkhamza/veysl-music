@@ -94,14 +94,15 @@ export function AvailabilityCalendar({ value, onSelect, onAnnounce }: Availabili
     isValidIsoDate(eventDate) && eventDate >= todayIso ? eventDate : todayIso
   );
   const [monthData, setMonthData] = useState<MonthData | null>(null);
-  const [loading, setLoading] = useState(false);
+  // Derived, not state: the month is "loading" exactly until `monthData` describes
+  // `visibleMonth` (the fetch below always settles it, on both success and failure).
+  const loading = !monthData || monthData.month !== visibleMonth;
 
   const cellRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
   const pendingFocusRef = useRef(false);
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
     fetch(`/api/availability/calendar?month=${visibleMonth}`)
       .then((res) => res.json())
       .then((data: MonthResponse) => {
@@ -110,24 +111,23 @@ export function AvailabilityCalendar({ value, onSelect, onAnnounce }: Availabili
       })
       .catch(() => {
         if (!cancelled) setMonthData({ month: visibleMonth, hasData: false, blockedDates: new Set() });
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
       });
     return () => {
       cancelled = true;
     };
   }, [visibleMonth]);
 
-  // Keep the visible month in sync if the visitor types a date directly into the native input.
-  useEffect(() => {
+  // Keep the visible month in sync if the visitor types a date directly into the native
+  // input. Adjusted during render (not in an effect) so month + focus land in the same
+  // pass — see "Adjusting state when a prop changes" in the React docs.
+  const [prevEventDate, setPrevEventDate] = useState(eventDate);
+  if (eventDate !== prevEventDate) {
+    setPrevEventDate(eventDate);
     if (isValidIsoDate(eventDate) && eventDate >= todayIso && monthOf(eventDate) !== visibleMonth) {
       setVisibleMonth(monthOf(eventDate));
       setFocusedIso(eventDate);
     }
-    // Only react to eventDate changes — visibleMonth is driven independently by calendar navigation.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [eventDate]);
+  }
 
   useEffect(() => {
     if (!pendingFocusRef.current) return;

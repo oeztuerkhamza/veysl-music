@@ -1,6 +1,14 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, type ElementType, type ReactNode } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  type ComponentType,
+  type ElementType,
+  type ReactNode,
+  type Ref,
+} from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -61,9 +69,14 @@ export function Reveal({ children, delay = 0, y = 24, as: Component = 'div', cla
   }, [delay, y, repeat]);
 
   // `Component` is typed as the broad `ElementType`, which makes JSX prop
-  // resolution collapse to `never` for a polymorphic `as` tag. Casting only
-  // the tag (not the props) to `any` here is the standard escape hatch.
-  const Tag = Component as any;
+  // resolution collapse to `never` for a polymorphic `as` tag. Narrowing the
+  // tag to the shape it's actually rendered with (ref/className/children)
+  // keeps the cast honest without reaching for `any`.
+  const Tag = Component as ComponentType<{
+    ref?: Ref<HTMLElement>;
+    className?: string;
+    children?: ReactNode;
+  }>;
 
   return (
     <Tag ref={ref} className={className}>

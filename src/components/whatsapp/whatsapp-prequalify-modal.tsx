@@ -63,28 +63,36 @@ export function WhatsappPrequalifyModal({ open, onClose, whatsappNumber, source 
 
   const [answers, setAnswers] = useState<WhatsappLeadAnswers>({});
   const [step, setStep] = useState(0);
-  const [dateStatus, setDateStatus] = useState<AvailabilityStatus | null>(null);
+  const [fetchedDateStatus, setFetchedDateStatus] = useState<{ date: string; status: AvailabilityStatus } | null>(null);
   const [liveMessage, setLiveMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
   const dialogRef = useRef<HTMLDivElement | null>(null);
-  const restoredRef = useRef(false);
 
-  // Restore persisted answers once, on first open.
-  useEffect(() => {
-    if (!open || restoredRef.current) return;
-    restoredRef.current = true;
-    try {
-      const raw = sessionStorage.getItem(WHATSAPP_FLOW_STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as WhatsappLeadAnswers;
-        setAnswers(parsed);
-        setStep(firstUnansweredStep(parsed));
+  // Tracks the previous `open` value (state, not a ref — safe to set during
+  // render) so the restore below can detect a false→true transition.
+  const [prevOpen, setPrevOpen] = useState(open);
+  const [hasRestored, setHasRestored] = useState(false);
+
+  // Restore persisted answers once, on first open — adjusted during render (not in
+  // an effect) so the restored step commits in the same pass instead of flashing
+  // the first, unanswered step. See "Adjusting state when a prop changes" in the React docs.
+  if (open !== prevOpen) {
+    setPrevOpen(open);
+    if (open && !hasRestored) {
+      setHasRestored(true);
+      try {
+        const raw = sessionStorage.getItem(WHATSAPP_FLOW_STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw) as WhatsappLeadAnswers;
+          setAnswers(parsed);
+          setStep(firstUnansweredStep(parsed));
+        }
+      } catch {
+        // ignore — sessionStorage unavailable (private browsing, quota)
       }
-    } catch {
-      // ignore — sessionStorage unavailable (private browsing, quota)
     }
-  }, [open]);
+  }
 
   // Persist on every change.
   useEffect(() => {
@@ -108,24 +116,26 @@ export function WhatsappPrequalifyModal({ open, onClose, whatsappNumber, source 
   }, [open]);
 
   // Honest availability status once a date is picked (mirrors AvailabilityIndicator).
+  // The "no date yet" case is derived below, at render time — nothing to fetch there.
   useEffect(() => {
-    if (!answers.eventDate) {
-      setDateStatus(null);
-      return;
-    }
+    if (!answers.eventDate) return;
+    const dateToCheck = answers.eventDate;
     let cancelled = false;
-    fetch(`/api/availability?date=${answers.eventDate}`)
+    fetch(`/api/availability?date=${dateToCheck}`)
       .then((res) => res.json())
       .then((data: { status?: AvailabilityStatus }) => {
-        if (!cancelled) setDateStatus(data.status ?? 'unknown');
+        if (!cancelled) setFetchedDateStatus({ date: dateToCheck, status: data.status ?? 'unknown' });
       })
       .catch(() => {
-        if (!cancelled) setDateStatus('unknown');
+        if (!cancelled) setFetchedDateStatus({ date: dateToCheck, status: 'unknown' });
       });
     return () => {
       cancelled = true;
     };
   }, [answers.eventDate]);
+
+  const dateStatus: AvailabilityStatus | null =
+    answers.eventDate && fetchedDateStatus && fetchedDateStatus.date === answers.eventDate ? fetchedDateStatus.status : null;
 
   const updateAnswer = useCallback(<K extends keyof WhatsappLeadAnswers>(key: K, value: WhatsappLeadAnswers[K]) => {
     setAnswers((prev) => ({ ...prev, [key]: value }));

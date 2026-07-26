@@ -1,4 +1,4 @@
-import type { AnalyticsProvider, EventProps } from '../types';
+import type { AnalyticsProvider } from '../types';
 
 declare global {
   interface Window {

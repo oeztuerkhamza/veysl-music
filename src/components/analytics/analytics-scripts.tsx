@@ -25,7 +25,6 @@ export function AnalyticsScripts() {
 
   // Runs once — initAnalytics() itself is idempotent, but there's no reason
   // to call it more than once from here.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     initAnalytics();
   }, []);

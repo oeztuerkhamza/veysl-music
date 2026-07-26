@@ -16,6 +16,9 @@ type JsonLdValue = Record<string, unknown>;
  */
 export function JsonLd({ data }: { data: JsonLdValue | JsonLdValue[] }): ReactElement {
   const json = JSON.stringify(data).replace(/</g, '\\u003c');
-  // eslint-disable-next-line react/no-danger -- JSON-LD has no other supported render path.
+  // JSON-LD hat keinen anderen unterstützten Renderpfad; das `<` oben ist
+  // escaped, damit kein `</script>` im Datenobjekt den Block schließen kann.
+  // (`react/no-danger` ist in dieser Config nicht aktiv — ein eslint-disable
+  // wäre hier toter Code.)
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />;
 }

@@ -15,7 +15,7 @@
  */
 
 import type { Locale } from '@/i18n/routing';
-import type { BlogCategory, BlogLocale, BlogLocaleContent, BlogPost, BlogPostStatus, BlogPostType } from './types';
+import type { BlogCategory, BlogLocale, BlogLocaleContent, BlogPost } from './types';
 import { BLOG_LOCALES } from './types';
 
 import { hochzeitsDjChecklistePost } from './hochzeits-dj-checkliste';

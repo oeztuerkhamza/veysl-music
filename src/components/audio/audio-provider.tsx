@@ -62,7 +62,18 @@ const MUTED_STORAGE_KEY = 'veysl:audio:muted';
 export function AudioProvider({ children }: { children: ReactNode }) {
   const t = useTranslations('music.moments');
 
-  const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
+  // Holds the actual mutable <audio> instance; React's state copy below is only
+  // a "ready" signal for context consumers and must never be written to directly.
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Created eagerly as lazy initial state (not inside an effect) so it exists
+  // from the first client render without an extra setState-triggered re-render.
+  const [audioElement] = useState<HTMLAudioElement | null>(() => {
+    if (typeof window === 'undefined') return null;
+    const audio = new Audio();
+    audio.preload = 'none';
+    return audio;
+  });
   const [queue, setQueue] = useState<Mix[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -93,11 +104,13 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     [queue, currentIndex]
   );
 
-  // Create the ONE HTMLAudioElement for the whole app session. This effect runs
-  // once at the root (see AudioDock) and survives client-side route changes.
+  // Wires up the ONE HTMLAudioElement's listeners for the whole app session.
+  // The element itself is created above (lazy state); this effect runs once
+  // at the root (see AudioDock) and survives client-side route changes.
   useEffect(() => {
-    const audio = new Audio();
-    audio.preload = 'none';
+    const audio = audioElement;
+    if (!audio) return;
+    audioRef.current = audio;
 
     const onTimeUpdate = () => setPosition(audio.currentTime);
     const onLoadedMetadata = () => setDuration(Number.isFinite(audio.duration) ? audio.duration : 0);
@@ -123,8 +136,6 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     audio.addEventListener('error', onError);
     audio.addEventListener('ended', onEnded);
 
-    setAudioElement(audio);
-
     return () => {
       audio.removeEventListener('timeupdate', onTimeUpdate);
       audio.removeEventListener('loadedmetadata', onLoadedMetadata);
@@ -136,8 +147,9 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       audio.removeEventListener('ended', onEnded);
       audio.pause();
       audio.removeAttribute('src');
+      audioRef.current = null;
     };
-  }, []);
+  }, [audioElement]);
 
   // Restore persisted volume/mute after mount (SSR-safe: defaults match the
   // server-rendered state, this only adjusts client-side after hydration).
@@ -148,6 +160,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       const storedMuted = window.localStorage.getItem(MUTED_STORAGE_KEY);
       if (storedVolume !== null) {
         const parsed = Number(storedVolume);
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- must stay post-hydration: localStorage isn't available during SSR, so reading it in render/initial state would desync the client's first paint from the server-rendered markup.
         if (Number.isFinite(parsed)) setVolumeState(Math.min(1, Math.max(0, parsed)));
       }
       if (storedMuted !== null) setMuted(storedMuted === 'true');
@@ -175,14 +188,15 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   }, [muted]);
 
   useEffect(() => {
-    if (!audioElement) return;
-    audioElement.volume = volume;
-    audioElement.muted = muted;
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = volume;
+    audio.muted = muted;
   }, [audioElement, volume, muted]);
 
   const play = useCallback(
     (mix: Mix, newQueue?: Mix[]) => {
-      const audio = audioElement;
+      const audio = audioRef.current;
       if (!audio) return;
 
       let q = queueRef.current;
@@ -230,7 +244,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       }
       audio.play().catch(() => setStatus('error'));
     },
-    [audioElement]
+    []
   );
 
   const toggle = useCallback(() => {
@@ -257,14 +271,14 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const next = useCallback(() => stepTo(1), [stepTo]);
 
   const previous = useCallback(() => {
-    const audio = audioElement;
+    const audio = audioRef.current;
     if (audio && audio.currentTime > 3) {
       audio.currentTime = 0;
       setPosition(0);
       return;
     }
     stepTo(-1);
-  }, [audioElement, stepTo]);
+  }, [stepTo]);
 
   useEffect(() => {
     nextRef.current = next;
@@ -272,33 +286,33 @@ export function AudioProvider({ children }: { children: ReactNode }) {
 
   const seek = useCallback(
     (seconds: number) => {
-      const audio = audioElement;
+      const audio = audioRef.current;
       if (!audio || !Number.isFinite(seconds)) return;
       const max = audio.duration || duration || seconds;
       const clamped = Math.min(Math.max(seconds, 0), max);
       audio.currentTime = clamped;
       setPosition(clamped);
     },
-    [audioElement, duration]
+    [duration]
   );
 
   const setVolume = useCallback(
     (value: number) => {
       const clamped = Math.min(1, Math.max(0, value));
       setVolumeState(clamped);
-      if (audioElement) audioElement.volume = clamped;
+      if (audioRef.current) audioRef.current.volume = clamped;
       if (clamped > 0 && muted) setMuted(false);
     },
-    [audioElement, muted]
+    [muted]
   );
 
   const toggleMute = useCallback(() => {
     setMuted((m) => {
       const next = !m;
-      if (audioElement) audioElement.muted = next;
+      if (audioRef.current) audioRef.current.muted = next;
       return next;
     });
-  }, [audioElement]);
+  }, []);
 
   const close = useCallback(() => {
     const audio = audioElement;

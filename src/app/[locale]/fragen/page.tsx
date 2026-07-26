@@ -80,7 +80,8 @@ export default async function FragenPage({ params }: FragenPageProps) {
 
   return (
     <>
-      {/* eslint-disable-next-line react/no-danger -- JSON-LD has no other supported render path */}
+      {/* JSON-LD hat keinen anderen unterstützten Renderpfad. (`react/no-danger`
+          ist in dieser Config nicht aktiv — ein eslint-disable wäre toter Code.) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
 
       <PageHero
@@ -163,6 +164,14 @@ export default async function FragenPage({ params }: FragenPageProps) {
       <Container>
         <p className="pb-16 text-center text-xs text-ink-faint">
           {t('jsonFeedNote')}{' '}
+          {/*
+            Bewusst ein <a> und kein <Link>: /api/faq ist ein Route Handler,
+            der JSON zurückgibt, keine Seite. Client-seitige Navigation dorthin
+            würde der Router als Seitenwechsel behandeln und scheitern — der
+            Link soll die Datei ausliefern. Die Regel erkennt nur den internen
+            Pfad und kann Handler nicht von Seiten unterscheiden.
+          */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/api/faq" className="underline underline-offset-4 hover:text-ink-muted">
             {t('jsonFeedLink')}
           </a>

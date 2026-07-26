@@ -108,7 +108,6 @@ export function AutoTrack() {
   // Delegated click / focus / toggle capture — registered once for the
   // whole app lifetime; reads the current pathname via the ref above so
   // route changes don't churn the listeners.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     function handleClickCapture(event: MouseEvent) {
       const target = event.target;

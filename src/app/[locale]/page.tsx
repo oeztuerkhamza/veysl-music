@@ -47,7 +47,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
-      {/* eslint-disable-next-line react/no-danger -- JSON-LD has no other supported render path */}
+      {/* JSON-LD hat keinen anderen unterstützten Renderpfad. (`react/no-danger` ist in dieser Config nicht aktiv.) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
 
       <Hero />

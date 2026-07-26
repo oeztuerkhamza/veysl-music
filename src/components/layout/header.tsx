@@ -34,6 +34,23 @@ export function Header() {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const openButtonRef = useRef<HTMLButtonElement>(null);
 
+  // Close the overlay on route/locale changes (e.g. a link inside it
+  // navigated), and reset the staggered-reveal flag the instant it closes.
+  // Adjusted directly during render — not in an effect — per the "Adjusting
+  // some state when a prop changes" pattern (react.dev/learn/you-might-not-need-an-effect):
+  // it's synchronous, so there's no extra painted frame with stale state,
+  // and it doesn't call setState from inside an effect body.
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setMobileOpen(false);
+  }
+  const [prevMobileOpen, setPrevMobileOpen] = useState(mobileOpen);
+  if (mobileOpen !== prevMobileOpen) {
+    setPrevMobileOpen(mobileOpen);
+    if (!mobileOpen) setEntered(false);
+  }
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 48);
     onScroll();
@@ -41,19 +58,12 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close the overlay on route/locale changes (e.g. a link inside it navigated).
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   // Two-state open: mount immediately (inert, invisible), then flip `entered`
   // on the next frame so the CSS transition actually has something to
-  // transition from — this is what drives the staggered link reveal.
+  // transition from — this is what drives the staggered link reveal. (The
+  // immediate reset to `false` on close happens above, during render.)
   useEffect(() => {
-    if (!mobileOpen) {
-      setEntered(false);
-      return;
-    }
+    if (!mobileOpen) return;
     const raf = requestAnimationFrame(() => setEntered(true));
     return () => cancelAnimationFrame(raf);
   }, [mobileOpen]);
@@ -64,6 +74,16 @@ export function Header() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     closeButtonRef.current?.focus();
+
+    /**
+     * Auslöser hier festhalten und nicht erst im Cleanup aus dem Ref lesen:
+     * zum Aufräumzeitpunkt kann `current` schon auf einen anderen Knoten
+     * zeigen, und dann landet der Fokus nach dem Schließen irgendwo statt auf
+     * dem Menü-Button. Der Button bleibt über die ganze Lebensdauer des
+     * Overlays gemountet, also ist die festgehaltene Referenz genau die
+     * richtige.
+     */
+    const trigger = openButtonRef.current;
 
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
@@ -88,7 +108,7 @@ export function Header() {
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', onKeyDown);
-      openButtonRef.current?.focus();
+      trigger?.focus();
     };
   }, [mobileOpen]);
 
