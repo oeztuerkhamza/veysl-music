@@ -66,9 +66,18 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
 /**
  * Overridable so preview/staging deployments don't emit canonicals pointing at
  * prod. Shared by sitemap.ts / robots.ts / manifest.ts for one source of truth.
+ *
+ * The emptiness check is not defensive padding — it is the difference between
+ * a working build and a broken one. `??` only falls back on null/undefined,
+ * but a Docker `ARG` that is declared and left unset arrives as the empty
+ * string, so the fallback never fired and `absoluteUrl()` called
+ * `new URL('/ablauf', '')`. That throws `ERR_INVALID_URL` during
+ * prerendering and aborts the entire production build, with an error that
+ * names a page and looks nothing like a missing environment variable.
  */
 export function siteBaseUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  return configured ? configured : site.url;
 }
 
 /**

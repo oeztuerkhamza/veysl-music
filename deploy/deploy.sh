@@ -71,9 +71,31 @@ log "4/6 — Database migrations"
 # Runs against the `builder` stage (full node_modules incl. the payload CLI),
 # NOT the trimmed `output: standalone` runtime image — Next's file tracing
 # does not preserve node_modules/.bin, so the CLI isn't reliably runnable
-# from the `runner` stage. Reuses layer cache from the app build above, so
-# this is cheap, not a second full install.
-docker build --target builder -t veysl-app:build-tools . >/dev/null
+# from the `runner` stage.
+#
+# The --build-arg list is what makes this cheap instead of a second full
+# build, and it is not optional. `docker compose build` above interpolates
+# these from .env; a bare `docker build` knows nothing about .env, so without
+# them the ARG values differ from the compose build, the layer cache misses,
+# and `RUN npm run build` re-runs from scratch — this time with
+# NEXT_PUBLIC_SITE_URL empty. Prerendering then dies on the first page that
+# builds an absolute URL:
+#
+#   TypeError: Invalid URL   input: '/ablauf'   base: ''
+#
+# which reads like an application bug and is really a missing build arg.
+# Keep this list in sync with docker-compose.yml's `build.args`.
+set -a
+# shellcheck disable=SC1091
+. ./.env
+set +a
+docker build --target builder -t veysl-app:build-tools \
+  --build-arg NEXT_PUBLIC_SITE_URL="${NEXT_PUBLIC_SITE_URL:-}" \
+  --build-arg NEXT_PUBLIC_PLAUSIBLE_DOMAIN="${NEXT_PUBLIC_PLAUSIBLE_DOMAIN:-}" \
+  --build-arg NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL="${NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL:-}" \
+  --build-arg NEXT_PUBLIC_GA4_MEASUREMENT_ID="${NEXT_PUBLIC_GA4_MEASUREMENT_ID:-}" \
+  --build-arg NEXT_PUBLIC_CLARITY_PROJECT_ID="${NEXT_PUBLIC_CLARITY_PROJECT_ID:-}" \
+  . >/dev/null
 
 set +e
 docker run --rm \
