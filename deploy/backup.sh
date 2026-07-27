@@ -89,14 +89,41 @@ case "$cmd" in
     [ -f "$db_backup" ] || die "DB backup not found: $db_backup"
     [ -f "$media_backup" ] || die "Media backup not found: $media_backup"
 
-    echo "This will OVERWRITE the live database and media volumes with:"
+    # Restoring into the volumes the running app actually uses is the
+    # destructive case and needs the app stopped. Restoring into scratch
+    # volumes — which is how you rehearse a restore without an outage — is
+    # not destructive and must not touch production. Without this
+    # distinction the only way to test the restore path was to take the
+    # site down, so in practice nobody tests it, and the first real
+    # execution of this code is during an actual incident.
+    is_live_restore=0
+    if [ "$DB_VOLUME" = "veysl-data" ] || [ "$MEDIA_VOLUME" = "veysl-media" ]; then
+      is_live_restore=1
+    fi
+
+    if [ "$is_live_restore" -eq 1 ]; then
+      echo "This will OVERWRITE the LIVE database and media volumes with:"
+    else
+      echo "Restoring into scratch volumes (${DB_VOLUME} / ${MEDIA_VOLUME}) — the live site is untouched:"
+    fi
     echo "  DB:    $db_backup"
     echo "  Media: $media_backup"
-    read -r -p "Type 'yes' to continue: " confirm
-    [ "$confirm" = "yes" ] || die "Aborted."
 
-    log "Stopping app"
-    docker compose stop app || true
+    # `BACKUP_ASSUME_YES=1` exists so the restore can be rehearsed from a
+    # script or a cron-driven drill. It is deliberately an environment
+    # variable rather than a flag: it should be an explicit, visible choice
+    # at the call site, not something that slips into a copy-pasted command.
+    if [ "${BACKUP_ASSUME_YES:-0}" = "1" ]; then
+      echo "  BACKUP_ASSUME_YES=1 — proceeding without prompting."
+    else
+      read -r -p "Type 'yes' to continue: " confirm
+      [ "$confirm" = "yes" ] || die "Aborted."
+    fi
+
+    if [ "$is_live_restore" -eq 1 ]; then
+      log "Stopping app"
+      docker compose stop app || true
+    fi
 
     log "Restoring database"
     db_abs="$(cd "$(dirname "$db_backup")" && pwd)/$(basename "$db_backup")"
@@ -125,10 +152,17 @@ case "$cmd" in
         tar xzf \"/restore/$(basename "$media_abs")\" -C /data
       "
 
-    log "Starting app"
-    docker compose up -d app
-
-    log "Restore complete. Verify: log into /admin and spot-check a few enquiries/media items."
+    if [ "$is_live_restore" -eq 1 ]; then
+      log "Starting app"
+      docker compose up -d app
+      log "Restore complete. Verify: log into /admin and spot-check a few enquiries/media items."
+    else
+      log "Restore into scratch volumes complete — the live app was never stopped."
+      echo "  Inspect with:"
+      echo "    docker run --rm -v ${DB_VOLUME}:/data ${TOOL_IMAGE} sh -c 'apk add -q sqlite && sqlite3 /data/${DB_FILENAME} \".tables\"'"
+      echo "  Then remove the scratch volumes:"
+      echo "    docker volume rm ${DB_VOLUME} ${MEDIA_VOLUME}"
+    fi
     ;;
 
   *)
