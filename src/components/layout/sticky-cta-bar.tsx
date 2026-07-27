@@ -46,7 +46,10 @@ export function StickyCtaBar() {
       style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
       <div className="flex h-16 items-center gap-2 px-3">
-        <Button href="/anfrage" variant="gold" size="md" className="flex-[2]">
+        {/* Clay, not gold: the primary conversion has exactly one colour across
+            the site (hero, header, sticky bar), so it is recognisable as "the
+            booking button" rather than as another accent. */}
+        <Button href="/anfrage" variant="clay" size="md" className="flex-[2]">
           {t('cta.short')}
         </Button>
         <Button

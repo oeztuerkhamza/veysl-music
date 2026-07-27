@@ -52,7 +52,7 @@ export function SocialPostCard({ post, labels, locale, className }: SocialPostCa
         ) : (
           <span
             aria-hidden="true"
-            className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(ellipse_at_50%_30%,var(--color-gold-deep)_0%,var(--color-surface-2)_65%,var(--color-surface)_100%)]"
+            className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(ellipse_at_50%_30%,var(--color-glow)_0%,var(--color-surface-2)_65%,var(--color-surface)_100%)]"
           >
             <PlatformIcon className="h-8 w-8 text-ink-faint" />
           </span>

@@ -4,35 +4,57 @@
  * VEYSL design tokens — Tailwind v4 CSS-first theme.
  * Token names match `.claude/CONTRACT.md` §4 exactly. Never hardcode a hex
  * value in a component; consume these via Tailwind utilities (bg-bg,
- * text-ink-muted, border-line, text-gold, font-display, rounded-lg, ...).
+ * text-ink-muted, border-line, text-gold, text-clay, font-display, ...).
  *
- * Colour values declared here are the dark palette (dark is the project
- * default). `.dark` / `.light` blocks below (in @layer base) override the
- * same custom properties per active theme — see next-themes wiring in
- * `src/app/[locale]/layout.tsx`.
+ * Design language: warm editorial. Light (ivory paper) is the default theme —
+ * it is the language the wedding market actually speaks, and it is what carries
+ * warmth without photography. The dark palette is a warm near-black (never a
+ * neutral one) and is used both as the opt-in theme and, via `.band-night`,
+ * as deliberate dark interludes for the night/dancefloor sections.
+ *
+ * The palette itself (`--day-*` / `--night-*`) is defined once in @layer base
+ * below; `@theme` and the `.light` / `.dark` blocks only map it — see the
+ * next-themes wiring in `src/app/[locale]/layout.tsx`.
+ *
+ * Every foreground/background pair below is verified against WCAG 2.2 AA
+ * (4.5:1 for body text). Ratios are noted per token; re-check before changing
+ * any of them — two real 1.4.3 failures have already shipped from eyeballing.
  */
 @theme {
-  --color-bg: #08080a;
-  --color-surface: #101013;
-  --color-surface-2: #17171b;
-  --color-ink: #f6f3ed;
-  --color-ink-muted: #a6a19a;
-  /* Von #6e6a64 aufgehellt: der alte Wert lag bei 3,72:1 auf --color-bg und
-     verfehlte damit die 4,5:1 aus WCAG 2.2 AA (1.4.3). Das Token wird 52-mal
-     verwendet, ausschließlich auf text-xs/-sm/-base — also durchweg
-     Fließtextgrößen, für die es keine Ausnahme für „großen Text" gibt.
-     Jetzt 4,95:1. */
-  --color-ink-faint: #827e77;
-  --color-line: #232329;
+  /**
+   * These map the raw `--day-*` values defined in @layer base below. The hexes
+   * live in exactly one place; this block only names them for Tailwind, and the
+   * `.light` / `.dark` blocks only re-map them per theme. The previous palette
+   * repeated every value across four blocks and shipped two WCAG failures from
+   * exactly that drift.
+   *
+   * Accent naming, which was the other trap: `-soft` means *hover*, not
+   * "lighter", and `-deep` means *pressed*, not "darker". Both steps always run
+   * AWAY from the background — darker in the light theme, lighter in the dark
+   * one. That is what keeps the ~20 `hover:text-gold-soft` call sites above
+   * 4.5:1 in both themes.
+   */
+  --color-bg: var(--day-bg);
+  --color-surface: var(--day-surface);
+  --color-surface-2: var(--day-surface-2);
+  --color-ink: var(--day-ink);
+  --color-ink-muted: var(--day-ink-muted);
+  --color-ink-faint: var(--day-ink-faint);
+  --color-line: var(--day-line);
 
-  /* Brand accent. Im Dunkeln unverändert (10,02:1 auf --color-bg); für das
-     helle Theme wird --color-gold weiter unten überschrieben, siehe dort. */
-  --color-gold: #d6b36a;
-  --color-gold-soft: #e8ce96;
-  --color-gold-deep: #a8853f;
+  --color-gold: var(--day-gold);
+  --color-gold-soft: var(--day-gold-soft);
+  --color-gold-deep: var(--day-gold-deep);
 
-  --color-success: #4e9e7a;
-  --color-danger: #c9564b;
+  --color-clay: var(--day-clay);
+  --color-clay-soft: var(--day-clay-soft);
+  --color-clay-deep: var(--day-clay-deep);
+
+  /* Dekoratives Licht, nie Text — siehe --day-glow. */
+  --color-glow: var(--day-glow);
+
+  --color-success: #3d7d60;
+  --color-danger: #b0433a;
 
   --radius-sm: 0.375rem;
   --radius-md: 0.75rem;
@@ -41,8 +63,10 @@
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 10px rgba(0, 0, 0, 0.18);
-  --shadow-lift: 0 16px 40px -12px rgba(0, 0, 0, 0.55), 0 6px 16px -4px rgba(0, 0, 0, 0.3);
+  /* Warme, weiche Schatten — ein neutral-schwarzer Schatten auf Elfenbein
+     sieht sofort nach Bootstrap aus. */
+  --shadow-soft: 0 1px 2px rgba(56, 38, 22, 0.06), 0 2px 10px rgba(56, 38, 22, 0.05);
+  --shadow-lift: 0 20px 44px -16px rgba(56, 38, 22, 0.18), 0 6px 16px -6px rgba(56, 38, 22, 0.1);
 }
 
 /**
@@ -57,72 +81,160 @@
 }
 
 @layer base {
+  /**
+   * Raw palette values live here exactly once, as `--day-*` / `--night-*`.
+   * Every theme block below only *maps* them onto the `--color-*` tokens, so
+   * there is no second place where a hex can drift out of sync — the previous
+   * palette repeated its values across four blocks and had already shipped two
+   * WCAG failures from exactly that drift.
+   *
+   * Contrast ratios are stated on the day/night definitions; the mapping
+   * blocks stay free of magic numbers.
+   */
   :root {
-    color-scheme: dark;
+    color-scheme: light;
     /* Total rendered height of <StickyCtaBar> (4rem content row + safe-area
        inset). GlobalPlayer (audio) reads this to stack above it on mobile —
        keep in sync with the row height in components/layout/sticky-cta-bar.tsx. */
     --mobile-cta-height: calc(4rem + env(safe-area-inset-bottom, 0px));
-    /* Not a @theme token on purpose (CONTRACT §4 lists the exact token set).
-       Gold (#D6B36A) is identical in both themes and only clears WCAG AA
-       against a dark foreground — the theme's `ink` token flips to near-white
-       in dark mode, which fails contrast on gold. Anything sitting on a gold
-       surface (Button variant="gold", .text-on-gold) uses this fixed value
-       instead, in both themes. */
-    --gold-ink: #14131a;
+
+    /* — Tag: warmes Elfenbeinpapier — */
+    --day-bg: #fbf7f0;
+    --day-surface: #ffffff;
+    --day-surface-2: #f3ece1;
+    --day-ink: #221e1a; /* 15,50:1 auf bg */
+    --day-ink-muted: #5a5148; /* 7,27:1 */
+    --day-ink-faint: #736a5f; /* 4,97:1 · 4,52:1 auf surface-2 */
+    --day-line: #e4dacb;
+    /* Beide Akzente sind gegen die DUNKELSTE helle Fläche geprüft, nicht nur
+       gegen --day-bg: das ist --day-surface-2 (#f3ece1), auf dem die
+       „raised"-Sektionen liegen. Ein gegen bg gewählter Ton fällt dort durch —
+       genau so entstanden die zwei gefundenen 1.4.3-Fehler (Gold #86692f kam
+       auf surface-2 nur auf 4,39:1, Terrakotta #a9542f auf 4,48:1). */
+    --day-gold: #7a5f27; /* 5,63:1 bg · 5,12:1 surface-2 · 4,53:1 auf 10% Ton */
+    --day-gold-soft: #6b5325; /* Hover — 6,81:1 bg · 6,19:1 surface-2 */
+    --day-gold-deep: #55411c; /* Gedrückt — 9,11:1 */
+    --day-clay: #9f4c29; /* 5,55:1 bg · 5,06:1 surface-2 */
+    --day-clay-soft: #8a4224; /* Hover — 6,82:1 bg · 6,20:1 surface-2 */
+    --day-clay-deep: #6f3319; /* Gedrückt — 9,09:1 */
+    /* Auf hellem Gold/Terrakotta liegt Elfenbein: 5,63:1 bzw. 5,55:1. */
+    --day-on-accent: #fbf7f0;
+    /* Rein dekoratives Licht (Kerzenschein-Verläufe hinter Platzhaltern, Hero,
+       Showreel). Nie für Text — deshalb ohne Kontrastauflage. Muss ein eigener
+       Token sein: die Verläufe benutzten vorher --color-gold-deep, was im
+       hellen Theme ein dunkler Fleck auf Elfenbein wäre statt eines Scheins. */
+    --day-glow: #edd0ad;
+
+    /* — Nacht: warmes Schwarz, nie neutral — */
+    --night-bg: #12100d;
+    --night-surface: #1a1712;
+    --night-surface-2: #221e18;
+    --night-ink: #f7f2e9; /* 17,03:1 auf bg */
+    --night-ink-muted: #b0a697; /* 7,91:1 */
+    --night-ink-faint: #8c8274; /* 5,03:1 · 4,73:1 auf surface */
+    --night-line: #2c2721;
+    --night-gold: #d6b36a; /* 9,51:1 */
+    --night-gold-soft: #e8ce96; /* Hover */
+    --night-gold-deep: #a8853f; /* Gedrückt */
+    --night-clay: #d98a5f; /* 7,01:1 */
+    --night-clay-soft: #e8a880; /* Hover */
+    /* Gedrückt bleibt hier hell: #b4653f käme auf dem Akzent-Vordergrund nur
+       auf 4,15:1, dieser Ton auf 5,32:1. */
+    --night-clay-deep: #c47a52;
+    /* Auf hellem Gold/Terrakotta liegt Fast-Schwarz: 9,24:1 bzw. 6,60:1. */
+    --night-on-accent: #16130f;
+    /* Nachts ist das Licht das Gold selbst — Bühnenlicht auf dunklem Grund. */
+    --night-glow: #a8853f;
+
+    /* Not @theme tokens on purpose (CONTRACT §4 lists the exact token set).
+       Foreground for anything sitting ON an accent surface. These DO flip per
+       theme, because the accents themselves flip lightness: the light theme
+       uses a dark gold/clay and needs ivory text, the dark theme a light
+       gold/clay and needs near-black. One fixed value fails one of the two. */
+    --gold-ink: var(--day-on-accent);
+    --clay-ink: var(--day-on-accent);
   }
 
-  /* Dark theme — mirrors the @theme defaults above, applied once next-themes
-     commits the "dark" class (it always sets an explicit class, never none). */
-  .dark {
-    color-scheme: dark;
-    --color-bg: #08080a;
-    --color-surface: #101013;
-    --color-surface-2: #17171b;
-    --color-ink: #f6f3ed;
-    --color-ink-muted: #a6a19a;
-    /* Muss mit dem @theme-Wert oben übereinstimmen — dies ist die Klasse,
-       die next-themes tatsächlich setzt, also gewinnt sie im Zweifel. */
-    --color-ink-faint: #827e77;
-    --color-line: #232329;
-  }
-
+  /* Light theme — mirrors the @theme defaults above, applied once next-themes
+     commits the "light" class (it always sets an explicit class, never none). */
   .light {
     color-scheme: light;
-    --color-bg: #faf8f4;
-    --color-surface: #ffffff;
-    --color-surface-2: #f2eee7;
-    --color-ink: #14131a;
-    --color-ink-muted: #5e5850;
-    /* War #8b857c = 3,45:1 auf dem hellen Hintergrund — zu wenig für
-       Fließtext. Jetzt 4,62:1. */
-    --color-ink-faint: #767068;
-    --color-line: #e3ddd2;
-    /* Das Champagner-Gold des dunklen Themes erreicht auf hellem Grund nur
-       1,88:1 und ist als Textfarbe damit praktisch unlesbar — bei 124
-       `text-gold`-Verwendungen kein Randfall. Selbst --color-gold-deep
-       (#a8853f) kommt nur auf 3,25:1. Dieser Ton bleibt erkennbar Gold und
-       erreicht 4,86:1. Nur im hellen Theme überschrieben; im dunklen bleibt
-       die Markenfarbe unangetastet. */
-    --color-gold: #86692f;
+    --color-bg: var(--day-bg);
+    --color-surface: var(--day-surface);
+    --color-surface-2: var(--day-surface-2);
+    --color-ink: var(--day-ink);
+    --color-ink-muted: var(--day-ink-muted);
+    --color-ink-faint: var(--day-ink-faint);
+    --color-line: var(--day-line);
+    --color-gold: var(--day-gold);
+    --color-gold-soft: var(--day-gold-soft);
+    --color-gold-deep: var(--day-gold-deep);
+    --color-clay: var(--day-clay);
+    --color-clay-soft: var(--day-clay-soft);
+    --color-clay-deep: var(--day-clay-deep);
+    --color-glow: var(--day-glow);
+    --gold-ink: var(--day-on-accent);
+    --clay-ink: var(--day-on-accent);
   }
 
-  /* Pre-hydration fallback: honour the system preference for the brief
-     window before next-themes' blocking script commits .dark/.light. */
-  @media (prefers-color-scheme: light) {
+  /**
+   * Dark theme and `.band-night` are the same surface by construction: both map
+   * the identical `--night-*` values. `.band-night` is a deliberate dark
+   * interlude inside an otherwise light page — the dancefloor, the after-hours
+   * set, the closing call to action. Because it re-declares the tokens on its
+   * own subtree, every token-driven child (text-ink, border-line, bg-surface,
+   * text-gold …) adapts with no per-component `dark:` variants.
+   */
+  .dark,
+  .band-night {
+    color-scheme: dark;
+    --color-bg: var(--night-bg);
+    --color-surface: var(--night-surface);
+    --color-surface-2: var(--night-surface-2);
+    --color-ink: var(--night-ink);
+    --color-ink-muted: var(--night-ink-muted);
+    --color-ink-faint: var(--night-ink-faint);
+    --color-line: var(--night-line);
+    --color-gold: var(--night-gold);
+    --color-gold-soft: var(--night-gold-soft);
+    --color-gold-deep: var(--night-gold-deep);
+    --color-clay: var(--night-clay);
+    --color-clay-soft: var(--night-clay-soft);
+    --color-clay-deep: var(--night-clay-deep);
+    --color-glow: var(--night-glow);
+    --gold-ink: var(--night-on-accent);
+    --clay-ink: var(--night-on-accent);
+  }
+
+  /* A night band paints its own surface; in the dark theme <body> already
+     carries it. Scoped to the band alone so it does not double-paint. */
+  .band-night {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+  }
+
+  /* Pre-hydration fallback: honour the system preference for the brief window
+     before next-themes' blocking script commits .dark/.light. Light is the
+     default, so only the dark preference needs overriding here. */
+  @media (prefers-color-scheme: dark) {
     :root:not(.dark):not(.light) {
-      color-scheme: light;
-      --color-bg: #faf8f4;
-      --color-surface: #ffffff;
-      --color-surface-2: #f2eee7;
-      --color-ink: #14131a;
-      --color-ink-muted: #5e5850;
-      /* Muss mit dem .light-Block oben übereinstimmen — sonst wäre der
-         Kontrast ausgerechnet in dem Moment zu niedrig, in dem die Seite
-         zuerst sichtbar wird. */
-      --color-ink-faint: #767068;
-      --color-line: #e3ddd2;
-      --color-gold: #86692f;
+      color-scheme: dark;
+      --color-bg: var(--night-bg);
+      --color-surface: var(--night-surface);
+      --color-surface-2: var(--night-surface-2);
+      --color-ink: var(--night-ink);
+      --color-ink-muted: var(--night-ink-muted);
+      --color-ink-faint: var(--night-ink-faint);
+      --color-line: var(--night-line);
+      --color-gold: var(--night-gold);
+      --color-gold-soft: var(--night-gold-soft);
+      --color-gold-deep: var(--night-gold-deep);
+      --color-clay: var(--night-clay);
+      --color-clay-soft: var(--night-clay-soft);
+      --color-clay-deep: var(--night-clay-deep);
+      --color-glow: var(--night-glow);
+      --gold-ink: var(--night-on-accent);
+      --clay-ink: var(--night-on-accent);
     }
   }
 
@@ -197,10 +309,14 @@
     isolation: isolate;
   }
 
-  /* Accessible foreground for content sitting on the gold accent — see the
-     --gold-ink note on :root above. Used by Button's `gold` variant. */
+  /* Accessible foregrounds for content sitting on an accent surface — see the
+     --gold-ink / --clay-ink note on :root above. Used by Button's variants. */
   .text-on-gold {
     color: var(--gold-ink);
+  }
+
+  .text-on-clay {
+    color: var(--clay-ink);
   }
 
   .grain::before {
@@ -214,25 +330,94 @@
     background-repeat: repeat;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+
+  /**
+   * Paper tooth for the light theme. `.grain` uses `overlay` blending, which is
+   * tuned for dark surfaces and turns muddy on ivory; this uses `multiply` at a
+   * far lower opacity so the noise reads as fibre in the paper rather than as
+   * dirt on the screen. Applied once on <body>, not per section.
+   */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-repeat: repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  }
+
+  /* Auf dunklem Grund kehrt sich das um: multiply würde das Korn unsichtbar
+     machen, screen legt es als Lichtstaub darüber. */
+  .dark body::before {
+    mix-blend-mode: screen;
+    opacity: 0.03;
+  }
+
+  /* Gleiche Umkehrung für das Vor-Hydrations-Fenster ohne gesetzte Klasse. */
+  @media (prefers-color-scheme: dark) {
+    :root:not(.dark):not(.light) body::before {
+      mix-blend-mode: screen;
+      opacity: 0.03;
+    }
+  }
 }
 
-/* Fluid display type helpers (Cormorant), for hero/section/subsection headings. */
+/**
+ * Fluid display type (Cormorant). The scale is deliberately steep — editorial
+ * layouts get their character from the *ratio* between the biggest and the
+ * smallest type on the page, not from decoration. Body copy stays quiet so the
+ * headings can carry the drama.
+ */
 @utility text-display-1 {
   font-family: var(--font-display), ui-serif, Georgia, serif;
-  font-size: clamp(2.75rem, 1.9rem + 4vw, 6rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-size: clamp(3rem, 2rem + 5.2vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: -0.022em;
 }
 
 @utility text-display-2 {
   font-family: var(--font-display), ui-serif, Georgia, serif;
-  font-size: clamp(2.25rem, 1.85rem + 2vw, 3.75rem);
-  line-height: 1.1;
-  letter-spacing: -0.005em;
+  font-size: clamp(2.25rem, 1.7rem + 2.6vw, 4.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
 }
 
 @utility text-display-3 {
   font-family: var(--font-display), ui-serif, Georgia, serif;
   font-size: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
   line-height: 1.2;
+  letter-spacing: -0.005em;
+}
+
+/**
+ * Warm accent phrase — Cormorant italic, one notch of extra size. Used to lift
+ * a single clause inside a heading ("an den sich *alle* erinnern"). This is the
+ * project's substitute for a script/handwriting font: it carries the same
+ * hand-made warmth without a second font request or the wedding-clipart risk.
+ */
+/* Not named `text-accent-italic`: Tailwind silently emits nothing for that
+   name — it collides with the built-in `accent-*` (accent-color) namespace
+   under the `text-` prefix. `accent-phrase` sits outside every built-in
+   namespace and is generated reliably. */
+@utility accent-phrase {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-clay);
+}
+
+/**
+ * Editorial small caps label. Wider tracking than the body sans and set in the
+ * serif, so section labels read as typography rather than as UI chrome.
+ */
+@utility text-label {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  line-height: 1;
 }

@@ -3,16 +3,21 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
-const HeroParticles = dynamic(() => import('./hero-particles').then((m) => m.HeroParticles), {
+const ParticleDriftCanvas = dynamic(() => import('./particle-drift-canvas').then((m) => m.ParticleDriftCanvas), {
   ssr: false,
 });
 
 /**
- * Gates the WebGL particle layer behind every perf/a11y check the contract demands.
- * Renders nothing (falls back to the CSS gradient + optional aftermovie underneath)
- * whenever any check fails — the hero must look finished with zero JS regardless.
+ * Gates the WebGL particle layer behind every perf/a11y check the contract
+ * demands. Renders nothing whenever any check fails — the section underneath
+ * must look finished with zero JS regardless.
+ *
+ * Belongs on dark ground only. The canvas draws with additive blending, which
+ * adds light: over the ivory page it produces nothing visible at all, so on the
+ * old light hero it was pure bundle and GPU cost. Mount it inside a
+ * `<Section tone="night">`, where it reads as haze in a stage light.
  */
-export function HeroScene() {
+export function ParticleDrift() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -46,7 +51,7 @@ export function HeroScene() {
 
   return (
     <div className="absolute inset-0" aria-hidden="true">
-      <HeroParticles />
+      <ParticleDriftCanvas />
     </div>
   );
 }

@@ -21,6 +21,16 @@ const NAV_ITEMS = [
   { href: '/kontakt', key: 'contact' },
 ] as const;
 
+/**
+ * The bar itself carries five links, not eight. Eight items at 1024 px forced
+ * the whole navigation — language switcher included — behind a single low
+ * contrast icon, which read as "the menu is gone". Five fit comfortably; the
+ * full set always lives one click away in the overlay, which now opens at
+ * every width rather than being a mobile fallback.
+ */
+const PRIMARY_KEYS = new Set(['services', 'packages', 'weddings', 'music', 'contact']);
+const PRIMARY_ITEMS = NAV_ITEMS.filter((item) => PRIMARY_KEYS.has(item.key));
+
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
@@ -117,11 +127,11 @@ export function Header() {
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500 ease-out-expo',
         scrolled || mobileOpen
-          ? 'border-b border-line bg-bg/90 backdrop-blur-md'
+          ? 'border-b border-line bg-bg/85 backdrop-blur-md'
           : 'border-b border-transparent bg-transparent'
       )}
     >
-      <div className="mx-auto flex h-20 w-full max-w-[90rem] items-center justify-between px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto flex h-20 w-full max-w-[90rem] items-center justify-between gap-4 px-6 sm:px-8 lg:px-12">
         <Link
           href="/"
           className="font-display text-2xl font-medium tracking-[0.08em] text-ink"
@@ -130,8 +140,8 @@ export function Header() {
           {site.name}
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label={t('menu')}>
-          {NAV_ITEMS.map((item) => (
+        <nav className="hidden items-center gap-7 lg:flex" aria-label={t('menu')}>
+          {PRIMARY_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -142,25 +152,31 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="flex items-center gap-1 sm:gap-2">
+          {/* Never collapsed into the overlay: on a seven-language site the
+              language control is a primary affordance, and a visitor who
+              cannot find it in the bar assumes it does not exist. */}
           <LanguageSwitcher />
           <ThemeToggle />
-          <Button href="/anfrage" variant="gold" size="md">
+
+          <Button href="/anfrage" variant="clay" size="md" className="hidden sm:inline-flex">
             {t('booking')}
           </Button>
-        </div>
 
-        <button
-          ref={openButtonRef}
-          type="button"
-          onClick={() => setMobileOpen(true)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink lg:hidden"
-          aria-label={t('menu')}
-          aria-haspopup="dialog"
-          aria-expanded={mobileOpen}
-        >
-          <Menu className="h-6 w-6" aria-hidden="true" />
-        </button>
+          {/* Bordered, not bare: over the hero the old icon-only button had no
+              visible affordance at all. */}
+          <button
+            ref={openButtonRef}
+            type="button"
+            onClick={() => setMobileOpen(true)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors duration-300 hover:border-clay hover:text-clay"
+            aria-label={t('menu')}
+            aria-haspopup="dialog"
+            aria-expanded={mobileOpen}
+          >
+            <Menu className="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
       </div>
 
       {/* Always mounted (not conditionally removed): `inert` keeps it out of
@@ -174,45 +190,49 @@ export function Header() {
         aria-label={t('menu')}
         inert={!mobileOpen}
         className={cn(
-          'fixed inset-0 z-50 flex h-dvh flex-col bg-bg transition-opacity duration-300 ease-out-expo lg:hidden',
+          'fixed inset-0 z-50 flex h-dvh flex-col bg-bg transition-opacity duration-300 ease-out-expo',
           mobileOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
       >
-        <div className="flex h-20 items-center justify-between px-6 sm:px-8">
+        <div className="mx-auto flex h-20 w-full max-w-[90rem] items-center justify-between px-6 sm:px-8 lg:px-12">
           <span className="font-display text-2xl font-medium tracking-[0.08em] text-ink">{site.name}</span>
           <button
             ref={closeButtonRef}
             type="button"
             onClick={() => setMobileOpen(false)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors duration-300 hover:border-clay hover:text-clay"
             aria-label={t('close')}
           >
-            <X className="h-6 w-6" aria-hidden="true" />
+            <X className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
 
-        <nav className="flex flex-1 flex-col justify-center gap-2 px-6 sm:px-8" aria-label={t('menu')}>
+        <nav
+          className="mx-auto flex w-full max-w-[90rem] flex-1 flex-col justify-center gap-1 px-6 sm:px-8 lg:px-12"
+          aria-label={t('menu')}
+        >
           {NAV_ITEMS.map((item, index) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                'font-display text-3xl font-medium text-ink transition-all duration-500 ease-out-expo',
+                'group flex items-baseline gap-5 py-1 transition-all duration-500 ease-out-expo',
                 entered ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
               )}
-              style={{ transitionDelay: entered ? `${index * 60}ms` : '0ms' }}
+              style={{ transitionDelay: entered ? `${index * 55}ms` : '0ms' }}
             >
-              {t(item.key)}
+              <span className="text-label w-6 shrink-0 text-ink-faint tabular-nums">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span className="text-display-3 font-medium text-ink transition-colors duration-300 group-hover:text-clay sm:text-display-2">
+                {t(item.key)}
+              </span>
             </Link>
           ))}
         </nav>
 
-        <div className="flex flex-col gap-4 px-6 pb-10 sm:px-8">
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher />
-            <ThemeToggle />
-          </div>
-          <Button href="/anfrage" variant="gold" size="lg" className="w-full">
+        <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-4 px-6 pb-10 sm:px-8 lg:px-12">
+          <Button href="/anfrage" variant="clay" size="lg" className="w-full sm:w-auto sm:self-start">
             {t('booking')}
           </Button>
         </div>

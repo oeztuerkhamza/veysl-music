@@ -98,7 +98,12 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-dvh flex-col bg-bg font-sans text-ink antialiased">
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {/* `enableSystem={false}` ist eine Markenentscheidung, kein Versehen:
+              das warme Elfenbein IST die Gestaltung. Mit Systemerkennung
+              bekämen alle Besucherinnen und Besucher mit dunkel gestelltem
+              Telefon — also die Mehrheit — die Seite nie so zu sehen, wie sie
+              gemeint ist. Der Umschalter bleibt; wer dunkel will, wählt es. */}
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             <a href="#main" className="skip-link">
               {t('skipToContent')}
             </a>

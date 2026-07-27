@@ -65,9 +65,9 @@ function GoldDrift({ color }: { color: string }) {
 /**
  * Slow, elegant gold-particle drift over near-black — a cheap stand-in for
  * volumetric haze. Dynamically imported with `ssr: false` and gated entirely by
- * `<HeroScene>` (reduced motion, low-power devices, first-paint deferral).
+ * `<ParticleDrift>` (reduced motion, low-power devices, first-paint deferral).
  */
-export function HeroParticles() {
+export function ParticleDriftCanvas() {
   const gold = useColorToken('--color-gold');
   const bg = useColorToken('--color-bg');
 

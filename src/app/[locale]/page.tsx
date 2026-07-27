@@ -7,7 +7,6 @@ import { localBusinessSchema, websiteSchema } from '@/lib/schema';
 import { Hero } from '@/components/hero/hero';
 import { Intro } from '@/components/home/intro';
 import { TrustStrip } from '@/components/home/trust-strip';
-import { StatsBand } from '@/components/home/stats-band';
 import { ServicesPreview } from '@/components/home/services-preview';
 import { Showreel } from '@/components/home/showreel';
 import { PackagesPreview } from '@/components/home/packages-preview';
@@ -50,10 +49,12 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* JSON-LD hat keinen anderen unterstützten Renderpfad. (`react/no-danger` ist in dieser Config nicht aktiv.) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
 
+      {/* <StatsBand> used to sit here. Its three figures (12+ / 200+ / DE·TR·EN)
+          are now the hero's marginalia column, where they do the same job
+          above the fold instead of repeating it 1.400 px further down. */}
       <Hero />
       <Intro />
       <TrustStrip />
-      <StatsBand />
       <ServicesPreview />
       <Showreel />
       <PackagesPreview />

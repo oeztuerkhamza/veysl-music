@@ -1,20 +1,19 @@
 import { getTranslations } from 'next-intl/server';
-import { MessagesSquare, AudioLines, FileSignature, Languages } from 'lucide-react';
 import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
-import { Card } from '@/components/ui/card';
 import { Reveal } from '@/components/motion/reveal';
-
-const ICONS = {
-  planning: MessagesSquare,
-  tech: AudioLines,
-  contract: FileSignature,
-  multilingual: Languages,
-} as const;
 
 const KEYS = ['planning', 'tech', 'contract', 'multilingual'] as const;
 
 /**
+ * Two-column editorial list, not a four-card grid.
+ *
+ * The icon cards this replaces were the strongest "generated template" signal
+ * on the page: four equal boxes, four lucide glyphs, four identical paragraphs.
+ * The same four promises now read as a numbered list with hairline rules, and
+ * the heading holds the left column and stays put while the list scrolls past
+ * it — that stillness against movement is what makes the block feel edited.
+ *
  * `home.trust` has no eyebrow key (unlike the other preview sections), so this
  * hand-rolls its own heading instead of going through `<SectionHeading>`.
  */
@@ -24,21 +23,28 @@ export async function TrustStrip() {
   return (
     <Section id="vertrauen">
       <Container>
-        <h2 className="max-w-2xl font-display text-3xl text-ink sm:text-4xl">{t('title')}</h2>
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <h2 className="text-display-2 font-medium text-ink lg:sticky lg:top-32">{t('title')}</h2>
+          </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {KEYS.map((key) => {
-            const Icon = ICONS[key];
-            return (
-              <Reveal key={key}>
-                <Card className="h-full p-6">
-                  <Icon className="h-6 w-6 text-gold" aria-hidden="true" />
-                  <h3 className="mt-4 font-display text-xl text-ink">{t(`items.${key}.title`)}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">{t(`items.${key}.text`)}</p>
-                </Card>
+          <ul className="lg:col-span-8">
+            {KEYS.map((key, index) => (
+              <Reveal key={key} as="li" y={18} className="block border-t border-line last:border-b">
+                <div className="grid gap-x-8 gap-y-3 py-8 sm:grid-cols-[auto_1fr] sm:py-10">
+                  <span className="text-label pt-2 text-clay tabular-nums" aria-hidden="true">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3 className="text-display-3 text-ink">{t(`items.${key}.title`)}</h3>
+                    <p className="mt-3 max-w-xl leading-relaxed text-ink-muted">
+                      {t(`items.${key}.text`)}
+                    </p>
+                  </div>
+                </div>
               </Reveal>
-            );
-          })}
+            ))}
+          </ul>
         </div>
       </Container>
     </Section>

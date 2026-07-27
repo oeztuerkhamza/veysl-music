@@ -38,7 +38,7 @@ export function ShowreelFacade({ playLabel, embedUrl }: ShowreelFacadeProps) {
     <button
       type="button"
       onClick={() => setLoaded(true)}
-      className="group relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-line bg-[radial-gradient(ellipse_at_50%_40%,var(--color-gold-deep)_0%,var(--color-surface-2)_60%,var(--color-surface)_100%)]"
+      className="group relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-line bg-[radial-gradient(ellipse_at_50%_40%,var(--color-glow)_0%,var(--color-surface-2)_60%,var(--color-surface)_100%)]"
       aria-label={playLabel}
     >
       <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gold text-bg shadow-lift transition-transform group-hover:scale-105 motion-reduce:transition-none">

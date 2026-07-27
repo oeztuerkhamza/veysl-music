@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'reac
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'gold';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'gold' | 'clay';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface BaseProps {
@@ -30,11 +30,15 @@ const base =
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: 'bg-ink text-bg hover:bg-ink/90 active:bg-ink/80',
-  secondary: 'border border-line bg-transparent text-ink hover:border-gold hover:text-gold',
+  secondary: 'border border-line bg-transparent text-ink hover:border-clay hover:text-clay',
   ghost: 'bg-transparent text-ink-muted hover:bg-surface-2 hover:text-ink',
-  // Gold sits on a fixed dark ink, never the theme's `ink` token: on gold
-  // (#D6B36A) a light-mode `ink` (near-white) fails contrast badly (~1.8:1).
+  // Gold and clay both sit on a fixed foreground, never the theme's `ink`
+  // token: on champagne gold (#D6B36A) a dark-theme `ink` (near-white) fails
+  // contrast badly (~1.8:1). See --gold-ink / --clay-ink in globals.css.
   gold: 'bg-gold text-on-gold hover:bg-gold-soft active:bg-gold-deep',
+  // The primary conversion button. Terracotta reads warmer and more human
+  // than gold, and it is the one colour on the page that means "act".
+  clay: 'bg-clay text-on-clay hover:bg-clay-deep active:bg-clay-deep',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

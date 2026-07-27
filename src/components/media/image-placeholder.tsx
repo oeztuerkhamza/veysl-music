@@ -56,8 +56,8 @@ export async function ImagePlaceholder({ aspect, icon: Icon = Camera, caption, s
         className={cn(
           'pointer-events-none absolute inset-0 opacity-40',
           isWide
-            ? 'bg-[radial-gradient(ellipse_at_50%_120%,var(--color-gold-deep),transparent_60%)]'
-            : 'bg-[radial-gradient(circle_at_50%_20%,var(--color-gold-deep),transparent_65%)]'
+            ? 'bg-[radial-gradient(ellipse_at_50%_120%,var(--color-glow),transparent_60%)]'
+            : 'bg-[radial-gradient(circle_at_50%_20%,var(--color-glow),transparent_65%)]'
         )}
       />
 
