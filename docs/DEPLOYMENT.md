@@ -5,8 +5,20 @@ certbot), SQLite on a persistent volume. No separate database container —
 see "Why SQLite" below for the reasoning.
 
 Every command below uses placeholders (`<SERVER_IP>`, `<SSH_USER>`, …). Fill
-in your own values when running them; never write real ones into any file in
-this repo.
+in your own values when running them.
+
+For this deployment they are:
+
+| Placeholder | Value |
+|---|---|
+| `<SERVER_IP>` | `159.195.216.142` (netcup VPS, Debian 13, OpenSSH 10.0p2 — verified over SSH) |
+| `<SSH_USER>` | `deploy`, created by `deploy/server-setup.sh`. Only the initial provisioning run uses `root` |
+
+The IP and the login name are written here on purpose: they are not secrets,
+they are already public in DNS, and leaving them as placeholders is what led
+to an SSH config pointing at a wrong address for days. **Secrets stay out** —
+no keys, no passwords, no API tokens in this repo, ever. Those live in the
+server's `.env` and in GitHub Actions secrets; see "Where credentials live".
 
 ---
 
@@ -144,10 +156,10 @@ handling for the migration — see `docs/DNS-RECORDS.md`.
 
 | Host | Type | Value | When |
 |---|---|---|---|
-| `veysl.de` | A (+ AAAA if the VPS has IPv6) | `<SERVER_IP>` | Before first deploy |
-| `www.veysl.de` | A (+ AAAA) | `<SERVER_IP>` | Before first deploy |
-| `veystunesofficial.de` | A (+ AAAA) | `<SERVER_IP>` | At the domain-migration step — see below, **not** day one |
-| `www.veystunesofficial.de` | A (+ AAAA) | `<SERVER_IP>` | Same as above |
+| `veysl.de` | A (+ AAAA if the VPS has IPv6) | `159.195.216.142` | ✅ set |
+| `www.veysl.de` | A (+ AAAA) | `159.195.216.142` | ✅ set |
+| `veystunesofficial.de` | A (+ AAAA) | `159.195.216.142` | At the domain-migration step — see below, **not** day one |
+| `www.veystunesofficial.de` | A (+ AAAA) | `159.195.216.142` | Same as above |
 
 Mail DNS (MX/SPF/DKIM/DMARC) is a separate concern, hosted externally
 (Mailbox.org) — see `docs/MAIL-SETUP.md`. Nothing in this deploy pipeline
@@ -413,32 +425,34 @@ falls through to `/` as a last resort rather than 404ing.
   self-hosted/custom servers with middleware, not app-specific — but it
   only shows up in exactly the runtime mode Docker uses, so it's easy to
   miss if you only ever tested with `next start`/`next dev`.
-- **`answers.capabilities.traditional-turkish` missing translation key** —
-  every locale's `messages/*.json` (including `de`) is missing this key
-  under the `answers.capabilities` namespace (`site.capabilities` in
-  `src/content/site.ts` has 7 entries; the message files only have 6).
-  Doesn't fail the build (next-intl logs and degrades), but the `/fragen`
-  page's capability list is rendering wrong/incomplete in every locale right
-  now. Fix is a one-line addition to each `messages/*.json` — not a
-  deployment-config issue, flagged for whoever owns i18n content.
-- **`src/app/[locale]/fragen/metadata.ts`'s `FRAGEN_SLUG` map is missing
-  `nl`** — this one **does** fail `next build` outright (`Property 'nl' is
-  missing...`), so it blocks the entire pipeline until fixed. The file's own
-  comment says it's a temporary duplicate of `routing.pathnames['/fragen']`
-  "until the orchestrator adds the real entry" — but `routing.ts` already
-  has the real entry (all 7 locales, `nl: '/veelgestelde-vragen'`), so this
-  file is just stale. Confirmed fix (verified locally, not applied — outside
-  this pipeline's file-ownership; see `.claude/CONTRACT.md`): add
-  `nl: '/veelgestelde-vragen'` to the `FRAGEN_SLUG` map, or better, delete
-  the map entirely and switch to `absoluteUrl('/fragen', locale)` per that
-  file's own comment.
-- **`BOOKING_TRANSPORT=console` is the only implemented transport** — every
-  booking enquiry currently just gets logged to stdout; no email is actually
-  sent to the owner or the customer. This is fine for local dev, **not** for
-  production (also: it logs personal data — name/email/phone — into
-  container logs). `ResendTransport` needs to be implemented in
-  `src/app/api/anfrage/_lib/transport.ts` before going live with real
-  traffic — see docs/MAIL-SETUP.md.
+- **RESOLVED — `answers.capabilities.traditional-turkish`**: the key is now
+  present in all seven `messages/*.json` files (verified: 7 entries per
+  locale, matching `site.capabilities`). The `/fragen` capability list
+  renders complete.
+- **RESOLVED — `src/app/[locale]/fragen/metadata.ts`**: the stale
+  `FRAGEN_SLUG` map is gone; the file now goes through
+  `absoluteUrl('/fragen', locale)`, exactly as its own comment recommended.
+  `next build` and `tsc --noEmit` pass, and the CI `build-and-verify` job is
+  green — this no longer blocks the pipeline.
+- **RESOLVED — real mail transports**: `src/app/api/anfrage/_lib/transport.ts`
+  now implements **both** `resend` (REST, via `fetch`) and `smtp` (nodemailer).
+  For this deployment the answer is `smtp`: mail is self-hosted on the same
+  box (`docs/MAIL-SELFHOSTED.md`), and a local Postfix speaks SMTP, not REST.
+  Both throw on construction if their credentials are missing, so a
+  misconfigured transport fails at startup rather than silently on the first
+  real lead. `console` remains the default and must never be used in
+  production — it writes personal data to the container log.
+- **The server cannot `git fetch` this repo yet** — `oeztuerkhamza/veysl-music`
+  is **private**, and the `deploy` job in `.github/workflows/deploy.yml` works
+  by SSHing to the box and running `git fetch --tags && git checkout <tag>`
+  there. That needs credentials *on the server*, which nothing in this repo
+  currently provides. Fix before enabling the deploy job: generate a key pair
+  on the box as the `deploy` user, add the public half to the repo under
+  **Settings → Deploy keys** (read-only is enough), and clone via
+  `git@github.com:oeztuerkhamza/veysl-music.git` rather than the HTTPS URL.
+  A GitHub Actions token is *not* an option here — it never reaches the
+  server, since the checkout in CI and the `git fetch` on the box are two
+  different machines.
 - **No Content-Security-Policy** — deliberately not shipped. This site loads
   its own WebGL hero, GSAP, wavesurfer.js, Payload's Lexical rich-text admin
   editor, and Spotify/SoundCloud/YouTube embed facades; a guessed CSP is
@@ -471,9 +485,16 @@ falls through to `/` as a last resort rather than 404ing.
       in `/admin` → Enquiries** — still the single most important pre-launch
       test (verified locally against a fresh DB — see "CMS migrations" above
       — but a real box can still differ), and cheap insurance either way
-- [ ] `BOOKING_TRANSPORT` is not `console` (once a real transport exists —
-      until then, launching means enquiries are captured in `/admin` but no
-      email notification goes out; know that going in)
+- [ ] `BOOKING_TRANSPORT=smtp` with all four `SMTP_*` vars set, and the mail
+      stack actually running — with `console`, enquiries are captured in
+      `/admin` but no notification goes out *and* personal data lands in the
+      container log
+- [ ] Deploy key added to the repo (Settings → Deploy keys) and the clone on
+      the box uses the SSH remote — otherwise the deploy job's `git fetch`
+      fails against this private repo
+- [ ] GitHub Environment `production` created **with required reviewers** —
+      without it, `environment: production` in the workflow is just a label
+      and the "manual gate" does not actually gate anything
 - [ ] `deploy/backup.sh` run at least once, and its `restore` path tested
       (see "Restoring a backup" above)
 - [ ] Legal blockers from `CHECKLIST.md`'s "🔴 LAUNCH BLOKERLERİ" table

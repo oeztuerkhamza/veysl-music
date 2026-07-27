@@ -14,8 +14,11 @@ Sıralama **etkiye göre**, aciliyete göre değil. Almanca müşteri versiyonu 
 | 1 | Impressum: **tam sokak adresi + posta kodu** | İşletme | Almanya'da § 5 DDG zorunlu. Eksikse **abmahn** (ihtarname + masraf) riski. Eski Impressum'da sadece "Obertürkheim" yazıyordu, yetmez. |
 | 2 | **USt-IdNr.** veya Kleinunternehmer (§ 19 UStG) beyanı | İşletme | Aynı yasal zorunluluk |
 | 3 | Datenschutzerklärung **hukuki kontrolü** | İşletme | Şu an taslak. Avukat ya da güvenilir jeneratör onayı şart. |
-| 4 | Payload'ın istemci paketine sızması (`node:fs` hatası) | Yazılım | Sayfaların çoğu şu an 500 veriyor |
-| 5 | Dil dosyalarının senkronu (tr/ku/fr/es 134 anahtar geride) | Yazılım | Eksik anahtar = çalışma anında 500 |
+| ~~4~~ | ~~Payload'ın istemci paketine sızması~~ | Yazılım | ✅ **Çözüldü** — `server-only` sınırı kondu, sayfalar 200 dönüyor |
+| ~~5~~ | ~~Dil dosyalarının senkronu~~ | Yazılım | ✅ **Çözüldü** — 7 dilin hepsi 791 anahtarda eşit, doğrulandı |
+
+**Kalan üç bloker de işletme tarafında.** Yazılım tarafındaki iki bloker
+kapandı; site teknik olarak yayına hazır, yasal olarak değil.
 
 ---
 
@@ -53,9 +56,13 @@ Sıralama **etkiye göre**, aciliyete göre değil. Almanca müşteri versiyonu 
 
 ## A.3 Yayın öncesi — teknik
 
-- [ ] **Postgres'e geç.** SQLite yerel geliştirme için; Vercel gibi ortamlarda dosya sistemi kalıcı değil, her deploy'da veri silinir
-- [ ] Rate limiter'ı Upstash/KV'ye taşı (şu an bellekte, çok örnekli ortamda çalışmaz)
-- [ ] `ResendTransport` yaz — şu an sadece konsola log basıyor, **gerçek mail gitmiyor**
+- [x] ~~Postgres'e geç~~ — **gerekmiyor.** Vercel değil, kendi VPS'imizde kalıcı
+      volume üzerinde SQLite çalışıyor; gerekçe `docs/DEPLOYMENT.md` → "Why SQLite"
+- [ ] Rate limiter'ı Upstash/KV'ye taşı — **tek container olduğu sürece gerekmiyor.**
+      Yalnızca `app` birden fazla replikaya çıkarılırsa şart olur
+- [x] ~~`ResendTransport` yaz~~ — **bitti.** Hem `resend` (REST) hem `smtp`
+      (nodemailer) uygulandı. Bu kurulumda `smtp` kullanılacak, çünkü mail
+      aynı sunucuda self-hosted
 - [ ] `.env` üretim değerleri: `JWT`/Payload secret, DB, Resend, Plausible
 - [ ] `next build` üretim derlemesi + Lighthouse ölçümü (hedef 90+)
 - [ ] Core Web Vitals doğrula: LCP ≤ 2,5 sn · INP ≤ 200 ms · CLS ≤ 0,1

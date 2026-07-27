@@ -9,39 +9,31 @@ Launch** — siehe die Warnung dort.
 
 ---
 
-## Ist-Zustand der Zone (geprüft 25. Juli 2026)
+## Ist-Zustand der Zone (geprüft 27. Juli 2026)
 
-Öffentlich abgefragt über einen Resolver — das ist der Stand, auf dem alles
-Weitere aufbaut.
+Öffentlich über 1.1.1.1 abgefragt — das ist der Stand, auf dem alles Weitere
+aufbaut.
 
 | Prüfung | Ergebnis |
 |---|---|
 | Nameserver `veysl.de` | ✅ netcup (`netcup.firstns.cc` + 4 weitere) — die Zone liegt am richtigen Ort |
-| `veysl.de` A | ⚠️ vorhanden: `46.38.243.234` — **netcups Parking-IP**, nicht der VPS. Siehe unten |
-| `www.veysl.de` | ❌ `NXDOMAIN` — fehlt komplett |
-| `veysl.de` AAAA | ❌ nicht gesetzt |
-| MX | ❌ keine — Mail für `@veysl.de` wird derzeit nicht angenommen |
-| SPF (TXT `@`) | ❌ nicht gesetzt |
-| DKIM | ❌ nicht gesetzt |
-| `_dmarc` | ❌ `NXDOMAIN` |
-| Beobachtete TTL | 30 min – 4 h — für die Migration brauchbar, siehe TTL-Abschnitt |
+| `veysl.de` A | ✅ `159.195.216.142` — zeigt auf den VPS (die frühere Parking-IP `46.38.243.234` ist ersetzt) |
+| `www.veysl.de` A | ✅ `159.195.216.142` |
+| `mail.veysl.de` A | ✅ `159.195.216.142` |
+| AAAA (alle Hosts) | ➖ **entfällt dauerhaft** — der VPS hat kein globales IPv6, auf dem Server geprüft (`ip -6 addr show scope global` liefert nichts). Keine AAAA-Records anlegen |
+| MX | ❌ keine — **korrekt für den jetzigen Stand**, siehe Phase 2 |
+| SPF / DKIM / DMARC | ❌ nicht gesetzt — gehören zu Phase 2 |
+| CAA | ✅ `0 issue "letsencrypt.org"` — auf dem Server verifiziert (`dig +short veysl.de CAA`) |
 
-> ### ⚠️ `46.38.243.234` ist netcups Parking-IP — nicht der Server
+> ### Die Server-IP ist `159.195.216.142`
 >
-> Bestätigt: `http://veysl.de` liefert `200` mit netcups Parkseite
-> („Diese Domain wurde geparkt"), und deren Fußzeile sagt es wörtlich —
-> *„Diese Domain ist zur Zeit keinem Server oder Webhosting zugewiesen."*
-> `https://` läuft in einen Timeout, weil auf der Parking-IP kein 443 lauscht.
+> Abgelesen im netcup **SCP** (Server Control Panel) — ein *anderes* Panel als
+> das CCP, in dem die Domains und diese DNS-Zone liegen. Genau daran scheitert
+> die Zuordnung üblicherweise: VPS und Domain sind bei netcup getrennte
+> Produkte, und ein neu registrierter Domainname zeigt bis zur manuellen
+> Änderung auf die Parkseite.
 >
-> Die Domain zeigt also aktuell auf einen Platzhalter, nicht auf einen VPS.
-> **Diese Adresse nicht übernehmen.** Die echte IP steht im netcup **SCP**
-> (Server Control Panel) — das ist ein *anderes* Panel als das CCP, in dem die
-> Domains und diese DNS-Zone liegen. Genau daran scheitert die Zuordnung
-> üblicherweise: VPS und Domain sind bei netcup getrennte Produkte, und ein neu
-> registrierter Domainname zeigt bis zur manuellen Änderung auf die Parkseite.
->
-> Reihenfolge: IP im SCP ablesen → A/AAAA im CCP auf diese IP ändern →
-> `deploy/server-setup.sh` → `deploy/setup-ssl.sh` (erst dann gibt es 443).
+> Bestätigt per SSH: Port 22 offen, Debian 13 (OpenSSH 10.0p2).
 
 ### Alte Domain — Zustand korrekt
 
@@ -58,10 +50,9 @@ verschieden sind. Ohne sie lässt sich die Zone nicht vollständig füllen:
 
 | Platzhalter | Woher |
 |---|---|
-| `<SERVER_IPV4>` | netcup VPS — Server Control Panel (SCP), Übersicht |
+| ~~`<SERVER_IPV4>`~~ | ✅ ermittelt: `159.195.216.142` |
 | `<SERVER_IPV6>` | ebenda, falls der VPS IPv6 hat (netcup vergibt normalerweise ein `/64`). Falls nein: AAAA-Zeilen weglassen |
-| `<MAILBOX_DKIM>` | Mailbox.org Einstellungen → Domain → DKIM. Der lange `p=…`-Wert |
-| `<RESEND_DKIM>` | Resend Dashboard → Domains → veysl.de hinzufügen. Resend generiert die Records selbst |
+| `<KEY>` (DKIM) | Wird vom docker-mailserver-Container erzeugt — `docs/MAIL-SELFHOSTED.md`, Schritt 3. Nicht raten, nicht von einer anderen Domain kopieren |
 
 > Bei DKIM **nie einen Wert raten oder aus einer anderen Domain kopieren.** Es
 > ist ein öffentlicher Schlüssel zu einem privaten Schlüssel, der beim Anbieter
@@ -76,90 +67,89 @@ Ohne diese Records kann `deploy/setup-ssl.sh` kein Zertifikat holen: certbot
 validiert über HTTP-01, das heißt Let's Encrypt muss die Domain bereits auf
 dem Server auflösen können.
 
-| Host | Typ | Priorität | Ziel | Status |
-|---|---|---|---|---|
-| `@` | A | — | `<SERVER_IPV4>` | ⚠️ steht auf `46.38.243.234` — gegen SCP prüfen |
-| `www` | A | — | `<SERVER_IPV4>` | ❌ fehlt, muss angelegt werden |
-| `@` | AAAA | — | `<SERVER_IPV6>` | ❌ fehlt (entfällt ohne IPv6) |
-| `www` | AAAA | — | `<SERVER_IPV6>` | ❌ fehlt (entfällt ohne IPv6) |
-
-Diese vier sind die **einzigen** Einträge, deren Wert noch von außen kommen
-muss (netcup SCP). Alles in Phase 2 unten ist bis auf die zwei DKIM-Schlüssel
-fertig und wörtlich übernehmbar.
+| Host | Typ | Ziel | Status |
+|---|---|---|---|
+| `@` | A | `159.195.216.142` | ✅ gesetzt |
+| `www` | A | `159.195.216.142` | ✅ gesetzt |
+| `mail` | A | `159.195.216.142` | ✅ gesetzt (Mailhost, siehe Phase 2) |
+| `@` | CAA | `0 issue "letsencrypt.org"` | ✅ gesetzt |
+| — | AAAA | — | ➖ entfällt: der VPS hat kein IPv6 |
 
 `www` zeigt bewusst auf dieselbe IP und wird **serverseitig** von nginx auf die
 Apex-Domain weitergeleitet — kein CNAME, kein DNS-Redirect. Grund: die
 Weiterleitung soll ein `301` mit korrektem TLS sein, und das kann DNS nicht
 leisten.
 
-## Phase 2 — Mail (unabhängig, jederzeit)
+**Kein AAAA — geklärt, nicht vergessen.** Auf dem Server geprüft: `eth0` hat
+ausschließlich `159.195.216.142/22`, kein globales IPv6. Damit entfallen alle
+AAAA-Zeilen in diesem Dokument. Sollte netcup später ein `/64` zuweisen, gilt:
+AAAA nur zusammen mit funktionierender IPv6-Zustellung anlegen — ein AAAA ohne
+das ist schlechter als keins, weil IPv6-fähige Clients ihn zuerst versuchen und
+in einen Timeout laufen, bevor sie auf IPv4 zurückfallen. Für `mail` gilt das
+doppelt: dort braucht es zusätzlich einen IPv6-PTR.
+
+## Phase 2 — Mail (selbst gehostet)
+
+> **Diese Phase beschreibt den selbst gehosteten Mailserver.** Das ist die
+> getroffene Entscheidung des Betreibers; die Umsetzung steht in
+> `docs/MAIL-SELFHOSTED.md`. Eine frühere Fassung dieses Dokuments listete
+> hier die MX-Records von Mailbox.org — **die gelten nicht mehr.** MX und SPF
+> schließen einander aus: beide Varianten gleichzeitig einzutragen bricht die
+> Zustellung, statt sie abzusichern. `docs/MAIL-SETUP.md` beschreibt weiterhin
+> die Anbieter-Variante und ist nur relevant, falls diese Entscheidung einmal
+> zurückgenommen wird.
 
 Nichts an der Deploy-Pipeline berührt Mail-DNS. Die Website funktioniert ohne
-diese Records — aber das Anfrageformular schickt dann Bestätigungen, die im
-Spam landen. Details und Begründung: `docs/MAIL-SETUP.md`.
+diese Records — aber das Anfrageformular verschickt dann keine
+Benachrichtigungen (`BOOKING_TRANSPORT=smtp` braucht den laufenden Mailstack).
 
-**Derzeit existiert keiner dieser Einträge** (siehe Ist-Zustand oben): Mail an
-`@veysl.de` wird momentan überhaupt nicht angenommen. Bis auf die beiden
-DKIM-Schlüssel sind alle Werte unten endgültig — die MX-Hostnamen sind
-öffentlich, SPF/DMARC/CAA vollständig durch die Anbieterwahl bestimmt.
+### Zwei Voraussetzungen, die nicht im DNS stehen
 
-### Postannahme (Mailbox.org)
+| Wo | Was | Warum |
+|---|---|---|
+| netcup **Support-Ticket** | Ausgehenden **Port 25** freischalten lassen | netcup blockt ihn standardmäßig. Ohne Freischaltung liefert der Server keine einzige Mail aus. 587 ist kein Ersatz — das ist die Einlieferung durch eigene Clients, 25 die Zustellung von Server zu Server |
+| netcup **SCP** → Netzwerk → rDNS | `159.195.216.142` → `mail.veysl.de` | Wichtigster Einzelfaktor für Zustellbarkeit. Fehlt der PTR, landen Mails bei Gmail/GMX/Web.de verlässlich im Spam |
+
+**Das Port-25-Ticket zuerst stellen.** Die Antwort kann Tage dauern und wird
+bei neuen Kunden gelegentlich abgelehnt — alles andere wäre dann umsonst
+aufgebaut.
+
+### Records — erst eintragen, wenn der Mailstack läuft
+
+Ein MX auf einen Host ohne laufenden Mailserver bedeutet: **jeder, der
+schreibt, bekommt einen Bounce.** Vorher nur den A-Record aus Phase 1 setzen.
 
 | Host | Typ | Priorität | Ziel |
 |---|---|---|---|
-| `@` | MX | 10 | `mxext1.mailbox.org.` |
-| `@` | MX | 10 | `mxext2.mailbox.org.` |
-| `@` | MX | 20 | `mxext3.mailbox.org.` |
+| `@` | MX | 10 | `mail.veysl.de.` |
+| `@` | TXT | — | `v=spf1 a:mail.veysl.de -all` |
+| `mail._domainkey` | TXT | — | `v=DKIM1; k=rsa; p=<KEY>` |
+| `_dmarc` | TXT | — | `v=DMARC1; p=none; rua=mailto:info@veysl.de; pct=100` |
+| `_mta-sts` | TXT | — | `v=STSv1; id=2026072601` |
+| `_smtp._tls` | TXT | — | `v=TLSRPTv1; rua=mailto:info@veysl.de` |
+| `mta-sts` | CNAME | — | `veysl.de.` |
 
-### SPF — genau ein Record für die ganze Domain
+**Genau ein SPF-Record pro Domain.** Zwei sind kein doppelter Schutz — die
+Auswertung bricht mit `permerror` ab und beide Versender fallen durch. Kommt
+später zusätzlich Resend dazu, gehört es in dieselbe Zeile:
+`v=spf1 a:mail.veysl.de include:_spf.resend.com -all`.
 
-| Host | Typ | Ziel |
-|---|---|---|
-| `@` | TXT | `v=spf1 include:spf.mailbox.org include:_spf.resend.com -all` |
+**`<KEY>` niemals raten.** Den DKIM-Schlüssel erzeugt der
+docker-mailserver-Container; der öffentliche Teil wird von dort abgelesen
+(`docs/MAIL-SELFHOSTED.md`, Schritt 3). Ein falscher DKIM-Eintrag ist
+schlechter als gar keiner, weil die Signaturprüfung dann aktiv fehlschlägt
+statt zu fehlen.
 
-**Zwei SPF-Records sind ein Fehler, kein doppelter Schutz** — die Auswertung
-bricht dann mit `permerror` ab und beide Versender fallen durch. Beide gehören
-in diese eine Zeile. `-all` (hard fail) ist bei einer neuen Domain richtig.
-
-### DKIM — je ein Selector pro Versender
-
-| Host | Typ | Ziel |
-|---|---|---|
-| `mail._domainkey` | TXT | `v=DKIM1; k=rsa; p=<MAILBOX_DKIM>` |
-| `resend._domainkey` | TXT | `v=DKIM1; k=rsa; p=<RESEND_DKIM>` |
-
-Resend zeigt im Dashboard die exakten Records an, die es erwartet — inklusive
-möglicher zusätzlicher Einträge für den Return-Path. **Das Dashboard ist die
-Quelle der Wahrheit**, nicht diese Tabelle: übernimm, was dort steht.
-
-### DMARC — gestaffelt einführen
-
-| Host | Typ | Ziel |
-|---|---|---|
-| `_dmarc` | TXT | `v=DMARC1; p=none; rua=mailto:info@veysl.de; pct=100` |
-
-Start mit `p=none`. Nach zwei bis vier Wochen ohne Auffälligkeiten in den
-Reports auf `p=quarantine`, später `p=reject`. **Direkt auf `p=reject` zu gehen
-blockiert die eigene Post**, solange DKIM/SPF noch nicht sauber sind.
-
-### Optional — CAA
-
-| Host | Typ | Ziel |
-|---|---|---|
-| `@` | CAA | `0 issue "letsencrypt.org"` |
-
-Legt fest, dass nur Let's Encrypt Zertifikate für die Domain ausstellen darf —
-das ist genau das, was `deploy/setup-ssl.sh` per certbot benutzt. Kein Pflicht-
-Record, aber er schließt eine ganze Klasse von Fehlausstellungen aus.
-
----
+**DMARC startet mit `p=none`.** Nach zwei bis vier Wochen ohne Auffälligkeiten
+in den Reports auf `p=quarantine`, später `p=reject`. Direkt auf `p=reject` zu
+gehen blockiert die eigene Post, solange SPF/DKIM noch nicht sauber sind.
 
 ## Phase 3 — Alte Domain (⚠️ NICHT am Launch-Tag)
 
 | Host (Zone `veystunesofficial.de`) | Typ | Ziel |
 |---|---|---|
-| `@` | A | `<SERVER_IPV4>` |
-| `www` | A | `<SERVER_IPV4>` |
+| `@` | A | `159.195.216.142` |
+| `www` | A | `159.195.216.142` |
 | `@` | AAAA | `<SERVER_IPV6>` |
 | `www` | AAAA | `<SERVER_IPV6>` |
 

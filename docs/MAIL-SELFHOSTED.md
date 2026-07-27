@@ -82,10 +82,13 @@ dieser einen Adresse, nicht die persönliche Korrespondenz.
 
 ## DNS-Einträge — die vollständige Liste gegen Spam
 
-Alle in Cloudflare (siehe `docs/DNS-RECORDS.md`). **Für `mail.veysl.de` muss
-der Proxy zwingend aus sein — „DNS only", graue Wolke.** Cloudflare proxyt
-kein SMTP; mit oranger Wolke zeigt der A-Eintrag auf Cloudflare-IPs und
-Mailzustellung bricht komplett.
+Alle in der netcup-DNS-Zone, Panel **CCP** → Domains → veysl.de → DNS-Einträge
+(siehe `docs/DNS-RECORDS.md`). Die Zone liegt auf netcups eigenen Nameservern
+(`netcup.firstns.cc` + 4 weitere) — **es ist kein Cloudflare im Spiel.** Eine
+frühere Fassung dieses Abschnitts sprach von Cloudflare und der „grauen Wolke";
+das traf nie auf dieses Setup zu und ist hier gegenstandslos. (Sollte die Zone
+später doch zu Cloudflare wandern, gilt dort: Proxy für `mail` zwingend aus,
+denn Cloudflare proxyt kein SMTP.)
 
 | # | Typ | Name | Wert | Warum |
 |---|---|---|---|---|
