@@ -102,13 +102,30 @@ ENV NODE_ENV=production \
 RUN mkdir -p /app/data /app/media && chown -R node:node /app/data /app/media
 
 # Standalone output: a self-contained server.js + the exact node_modules
-# subset Next traced as actually required (confirmed locally: includes
-# `sharp`, `payload`, `@payloadcms/*` — nothing SQLite-adapter-specific leaks
-# into the client bundle). `.next/static` and `public/` are NOT included by
-# `output: standalone` and must be copied in manually per Next.js docs.
+# subset Next traced as actually required. `.next/static` and `public/` are
+# NOT included by `output: standalone` and must be copied in manually per
+# Next.js docs.
 COPY --from=builder --chown=node:node /app/.next/standalone ./
 COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 COPY --from=builder --chown=node:node /app/public ./public
+
+# sharp, in full, over whatever the tracer produced.
+#
+# Next's file tracing follows `require`/`import` graphs. sharp loads its
+# native binding at runtime, and that binding in turn dlopen()s libvips from a
+# SEPARATE package (`@img/sharp-libvips-linuxmusl-x64`) that appears nowhere
+# in the import graph. The tracer therefore shipped `@img/sharp-linuxmusl-x64`
+# and left its libvips behind, and the container failed at runtime with
+#
+#   ERR_DLOPEN_FAILED: Error loading shared library libvips-cpp.so.8.18.3
+#
+# The public pages survive that — they never touch sharp — so the failure
+# surfaced only on /admin, as a 500 with a healthy container and a green
+# healthcheck. Copying the whole `@img` scope plus `sharp` is a few MB and
+# removes the entire class of problem, rather than naming the one .so that
+# happened to be missing on this architecture.
+COPY --from=builder --chown=node:node /app/node_modules/sharp ./node_modules/sharp
+COPY --from=builder --chown=node:node /app/node_modules/@img ./node_modules/@img
 
 USER node
 

@@ -67,7 +67,15 @@ for d in $CERTBOT_DOMAINS; do
   domain_args+=(-d "$d")
 done
 
-docker compose run --rm certbot certonly \
+# `--entrypoint certbot` is load-bearing, not tidiness. The compose service
+# defines an entrypoint of `sh -c "…while :; do certbot renew…; sleep 12h…"` —
+# the *renewal* loop. Without overriding it, the args below are passed to that
+# `sh -c` script as positional parameters, which it never reads: the container
+# dutifully starts the renewal loop and sleeps for twelve hours while this
+# script waits for a certificate request that was never made. It looks exactly
+# like a hung network call. (The `already_issued` probe above overrides the
+# entrypoint for the same reason.)
+docker compose run --rm --entrypoint certbot certbot certonly \
   --webroot -w /var/www/certbot \
   --non-interactive --agree-tos --expand \
   --email "$CERTBOT_EMAIL" \
@@ -76,5 +84,15 @@ docker compose run --rm certbot certonly \
 log "Switching nginx back to the real (TLS) config"
 docker compose up -d --force-recreate nginx
 
+# The renewal loop is a long-running service and has to be actually running,
+# not merely defined. `setup-ssl.sh` only ever brought up `app` and `nginx`,
+# so on a box provisioned solely through this script the certificate would
+# quietly expire after 90 days and every page would start failing TLS — the
+# kind of outage that arrives at 3am on a date nobody wrote down.
+log "Starting the certbot renewal service"
+docker compose up -d certbot
+
 log "Done — https://${PRIMARY_DOMAIN} should now serve over TLS."
+echo "Renewal: verify once with"
+echo "  docker compose run --rm --entrypoint certbot certbot renew --dry-run"
 echo "Verify: curl -I https://${PRIMARY_DOMAIN}/  (expect HTTP/2 200 — see docs/DEPLOYMENT.md 'Known issues' if you see a redirect loop instead)"
