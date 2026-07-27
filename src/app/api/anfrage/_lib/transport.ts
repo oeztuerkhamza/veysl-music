@@ -11,6 +11,7 @@
  * separate higher-level interfaces/templates, since an enquiry and a
  * contact message genuinely have a different shape and different triage.
  */
+import { createTransport, type Transporter } from 'nodemailer';
 import type { Locale } from '@/i18n/routing';
 import type { EnquiryOutput } from '@/lib/booking';
 import type { ContactMessageOutput } from '@/lib/contact';
@@ -137,13 +138,82 @@ class ResendMailSender implements MailSender {
   }
 }
 
+/**
+ * SMTP über nodemailer — der Weg für den selbst gehosteten Mailserver aus
+ * `docs/MAIL-SELFHOSTED.md`. Ohne diesen Transport gäbe es dort überhaupt
+ * keinen Versandweg: Resend ist ein externer Anbieter, und das eigene
+ * Postfach ist per SMTP erreichbar, nicht per REST.
+ *
+ * Anders als bei Resend wird hier eine Bibliothek benutzt statt `fetch`
+ * (CONTRACT §2 verlangt Zurückhaltung bei Abhängigkeiten). Begründung: Resend
+ * ist genau ein POST, SMTP dagegen ist ein zustandsbehaftetes Protokoll mit
+ * STARTTLS-Aushandlung, AUTH-Mechanismen, Dot-Stuffing und MIME-/UTF-8-
+ * Kodierung. Das von Hand zu schreiben, wäre auf dem geschäftskritischsten
+ * Pfad der Seite die falsche Sparsamkeit.
+ *
+ * Der Transporter wird pro Instanz einmal gebaut; nodemailer hält den Pool
+ * selbst offen. Wirft bei jedem Fehlschlag — dieselbe Bedingung, auf die sich
+ * `EnquiryTransport.notifyOwner` verlässt.
+ */
+class SmtpMailSender implements MailSender {
+  private readonly transporter: Transporter;
+  private readonly from: string;
+
+  constructor() {
+    const host = process.env.SMTP_HOST;
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+    const from = process.env.SMTP_FROM_EMAIL;
+    // Früh und deutlich scheitern, exakt wie bei Resend: ein Transport ohne
+    // Zugangsdaten würde sonst erst beim ersten echten Lead auffallen.
+    if (!host) throw new Error('BOOKING_TRANSPORT=smtp, aber SMTP_HOST ist nicht gesetzt (siehe .env.example)');
+    if (!user) throw new Error('BOOKING_TRANSPORT=smtp, aber SMTP_USER ist nicht gesetzt (siehe .env.example)');
+    if (!pass) throw new Error('BOOKING_TRANSPORT=smtp, aber SMTP_PASS ist nicht gesetzt (siehe .env.example)');
+    if (!from) throw new Error('BOOKING_TRANSPORT=smtp, aber SMTP_FROM_EMAIL ist nicht gesetzt (siehe .env.example)');
+
+    const port = Number(process.env.SMTP_PORT ?? 587);
+    if (!Number.isInteger(port) || port <= 0 || port > 65535) {
+      throw new Error(`SMTP_PORT ist kein gültiger Port: ${process.env.SMTP_PORT}`);
+    }
+
+    this.from = from;
+    this.transporter = createTransport({
+      host,
+      port,
+      // Nur 465 ist "implicit TLS". Auf 587 startet die Verbindung im Klartext
+      // und wird per STARTTLS hochgestuft — `secure: true` auf 587 zu setzen
+      // lässt den Handshake hängen, bis das Zeitlimit greift.
+      secure: port === 465,
+      // Auf 587 ist unverschlüsselter Versand keine akzeptable Rückfallebene:
+      // hier gehen Klarnamen, Telefonnummern und Hochzeitsdaten über die
+      // Leitung. Lieber scheitern als im Klartext ausliefern.
+      requireTLS: port !== 465,
+      auth: { user, pass },
+      connectionTimeout: SEND_TIMEOUT_MS,
+      greetingTimeout: SEND_TIMEOUT_MS,
+      socketTimeout: SEND_TIMEOUT_MS,
+    });
+  }
+
+  async send(message: MailMessage): Promise<void> {
+    await this.transporter.sendMail({
+      from: this.from,
+      to: message.to,
+      subject: message.subject,
+      text: message.text,
+      ...(message.replyTo ? { replyTo: message.replyTo } : {}),
+    });
+  }
+}
+
 /** Selects the underlying mail sender via `BOOKING_TRANSPORT` (defaults to the console stand-in). Shared by both `EnquiryTransport` and `ContactTransport`. */
 function getMailSender(): MailSender {
   const kind = process.env.BOOKING_TRANSPORT ?? 'console';
   switch (kind) {
     case 'resend':
       return new ResendMailSender();
-    // Future: case 'smtp': return new SmtpMailSender();
+    case 'smtp':
+      return new SmtpMailSender();
     case 'console':
     default:
       return new ConsoleMailSender();
