@@ -80,12 +80,30 @@ const dirname = path.dirname(filename);
  *      alias at build time, unrelated to the CLI's runtime file search.
  *
  * --- Regenerating migrations after a schema change --------------------------
- *   PAYLOAD_CONFIG_PATH=payload.config.mts DATABASE_URI="file:./scratch.db" \
- *     npx payload migrate:create <name>
- * against a throwaway empty SQLite file (not the real dev DB — this
- * generates a full CREATE-from-empty migration reflecting the config, so a
- * dirty starting DB produces a wrong diff), then delete the scratch file and
- * commit the new file under `src/migrations/`.
+ *   DATABASE_URI="file:./scratch.db" npm run payload:migrate:create -- <name>
+ *
+ * Use the npm script, **not** `npx payload migrate:create` directly. There is
+ * a genuine conflict between running migrations and generating them, and the
+ * script is what holds both ends:
+ *
+ *   - `src/migrations/package.json` (`{"type":"module"}`) must exist, or Node
+ *     resolves the migration `.ts` files as CommonJS, `src/migrations/index.ts`
+ *     gets namespaces without their `up`/`down` bindings, and `payload
+ *     migrate` fails with `migration.up is not a function` — aborting every
+ *     deploy at the migration step.
+ *   - `migrate:create` reads every `*.json` in that directory as a schema
+ *     snapshot, `package.json` included, and refuses to generate anything
+ *     because it does not validate as one.
+ *
+ * The marker must be present to run and absent to generate. Removing it fixes
+ * generation and breaks deploys; restoring it fixes deploys and breaks
+ * generation — both have already happened here. `scripts/payload-migrate-
+ * create.mjs` moves it aside for the generate step and restores it in a
+ * `finally`, so an interrupted run cannot leave deploys broken.
+ *
+ * Run it against a throwaway empty SQLite file (not the real dev DB — a dirty
+ * starting DB produces a wrong diff), then delete the scratch file and commit
+ * the new file under `src/migrations/`.
  */
 export default buildConfig({
   serverURL: process.env.PAYLOAD_SERVER_URL || 'http://localhost:3000',
