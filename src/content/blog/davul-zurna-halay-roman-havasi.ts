@@ -349,6 +349,7 @@ export const davulZurnaPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'davul-zurna-halay-roman-havasi',
       title: 'Davul-zurna, halay ve Roman havası — ne zaman ne çalınır',
       excerpt:
         'Davul-zurna, halay ve Roman havası sık sık karıştırılır, ama bir enstrüman ikilisini, bir dansı ve bir müzik tarzını ifade eder. Bu rehber farkları açıklıyor ve hangi unsurun akışta ne zaman anlamlı olduğunu gösteriyor.',
@@ -360,6 +361,7 @@ export const davulZurnaPost: BlogPost = {
       },
     },
     en: {
+      slug: 'turkish-wedding-music-davul-zurna-halay',
       title: 'Davul-zurna, halay and Roman Havası — what gets played when',
       excerpt:
         'Davul-zurna, halay and Roman Havası are often mixed up, but they refer to an instrument pair, a dance and a musical style. This guide explains the differences and shows when each fits into the running order.',

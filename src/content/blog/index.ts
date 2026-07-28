@@ -79,6 +79,35 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
 }
 
+/**
+ * The URL slug for this post in this locale — the per-locale override if one
+ * is written, otherwise the canonical slug.
+ *
+ * Every place that builds an article URL must go through this. Reading
+ * `post.slug` directly is what produced `/tr/rehber/<german-slug>` before the
+ * overrides existed, and it is the one mistake that silently still "works":
+ * the page renders, it just renders on the wrong URL, in the wrong language,
+ * competing with its own German original.
+ */
+export function getPostSlug(post: BlogPost, locale: Locale): string {
+  return post.translations[locale as BlogLocale]?.slug ?? post.slug;
+}
+
+/**
+ * Resolves a post from a URL slug **in the context of one locale**.
+ *
+ * Deliberately strict: a locale only matches its own slug. Accepting the
+ * canonical German slug on `/tr/rehber/...` as well would make every Turkish
+ * article reachable at two URLs with identical content — the duplicate-content
+ * problem this whole change exists to remove, reintroduced through the back
+ * door. Anything else 404s, which is correct: those URLs have never been
+ * published (the site is pre-launch, see CHECKLIST.md), so nothing is being
+ * broken and no redirect is owed.
+ */
+export function getPostBySlugForLocale(slug: string, locale: Locale): BlogPost | undefined {
+  return blogPosts.find((post) => getPostSlug(post, locale) === slug);
+}
+
 export function getPostById(id: string): BlogPost | undefined {
   return blogPosts.find((post) => post.id === id);
 }

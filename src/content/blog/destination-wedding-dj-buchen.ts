@@ -327,6 +327,7 @@ export const destinationPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'yurt-disinda-dugun-dj',
       title: 'Destination wedding: yurt dışına bir DJ rezerve etmek',
       excerpt:
         'Bir destination wedding\'de birçok çift, kendi istek listesini ve her iki dil dünyasını zaten bilen bir DJ için bilinçli olarak yerinde bir DJ\'i tercih etmiyor. Bu rehber temel lojistik soruları ve gerçekçi bir zaman çerçevesi gösteriyor.',
@@ -338,6 +339,7 @@ export const destinationPost: BlogPost = {
       },
     },
     en: {
+      slug: 'destination-wedding-dj-booking',
       title: 'Destination wedding: booking a DJ abroad',
       excerpt:
         'For a destination wedding, many couples deliberately choose against a local DJ, opting instead for one who already knows their wishlist and both language worlds. This guide covers the basic logistics and a realistic timeframe.',

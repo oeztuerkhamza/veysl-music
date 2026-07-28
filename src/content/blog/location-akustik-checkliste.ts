@@ -334,6 +334,7 @@ export const akustikPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'mekan-akustigi-kontrol-listesi',
       title: 'Mekân akustiği: keşifte nelere dikkat edilmeli',
       excerpt:
         'Akustik, akşamın sesini herhangi bir teknik ekipmandan çok daha fazla belirler — ve mekân keşiflerinde neredeyse hiç aktif olarak kontrol edilmez. Bu rehber bir kontrol listesi, basit alkış testini ve boş bir mekânın neden yanıltıcı ses verdiğini gösteriyor.',
@@ -345,6 +346,7 @@ export const akustikPost: BlogPost = {
       },
     },
     en: {
+      slug: 'venue-acoustics-checklist',
       title: 'Venue acoustics: what to check during a viewing',
       excerpt:
         'Acoustics shape the sound of the evening far more than any equipment alone — and are almost never actively checked during venue viewings. This guide offers a checklist, the simple clap test, and why an empty room sounds misleading.',

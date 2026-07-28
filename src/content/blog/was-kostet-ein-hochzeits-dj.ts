@@ -346,6 +346,7 @@ export const wasKostetEinHochzeitsDjPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'dugun-dj-fiyatlari',
       title: 'Baden-Württemberg\'de bir düğün DJ\'i ne kadara mal olur?',
       excerpt:
         '"Bir düğün DJ\'i ne kadara mal olur" sorusunun tek bir ciddi cevabı yok — ama somut fiyat etkenleri ve kabaca bir pazar aralığı var. Bu yazı ikisini de DJ Veys\'in kendi fiyatlarını uydurmadan açıklıyor: onlar gerçek rakamlar gelene kadar "talep üzerine" kalıyor.',
@@ -357,6 +358,7 @@ export const wasKostetEinHochzeitsDjPost: BlogPost = {
       },
     },
     en: {
+      slug: 'wedding-dj-cost',
       title: 'How much does a wedding DJ cost in Baden-Württemberg?',
       excerpt:
         'There is no single honest number for "how much does a wedding DJ cost" — but there are real price drivers and a rough market range. This article explains both without inventing DJ Veys\'s own pricing: that stays "on request" until real figures exist.',

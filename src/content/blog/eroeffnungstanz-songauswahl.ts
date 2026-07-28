@@ -354,6 +354,7 @@ export const eroeffnungstanzPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'acilis-dansi-sarki-secimi',
       title: 'Açılış dansı: doğru şarkı seçimi',
       excerpt:
         'Açılış dansı, davetlilerin en uzun süre hatırladığı andır — şarkı seçimi, versiyon, süre ve partiye geçiş anın etkisini belirler. Bu rehber, saz ya da gitarla canlı müzik dahil, seçimin gerçek bir zaman payıyla nasıl yapılacağını gösteriyor.',
@@ -365,6 +366,7 @@ export const eroeffnungstanzPost: BlogPost = {
       },
     },
     en: {
+      slug: 'first-dance-song-choice',
       title: 'The first dance: choosing the right song',
       excerpt:
         'The first dance is the moment guests remember longest — song choice, version, length and the transition into the party all decide how it lands. This guide shows how to plan it with real lead time, including live music on saz or guitar.',

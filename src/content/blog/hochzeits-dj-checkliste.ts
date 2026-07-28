@@ -296,6 +296,7 @@ export const hochzeitsDjChecklistePost: BlogPost = {
       },
     },
     tr: {
+      slug: 'dugun-dj-kontrol-listesi',
       title: 'Doğru düğün DJ\'ini nasıl bulurum? Kontrol listesi',
       excerpt:
         'İyi bir düğün DJ\'i, en güzel Instagram videosundan değil, doğrulanabilir kriterlerden anlaşılır: kanıtlanabilir deneyim, kişisel bir ön görüşme, kendi ekipmanı, yazılı sözleşme ve gerçekten uygulanan bir istenmeyenler listesi. Bu liste seçimi karşılaştırılabilir hale getiriyor.',
@@ -307,6 +308,7 @@ export const hochzeitsDjChecklistePost: BlogPost = {
       },
     },
     en: {
+      slug: 'wedding-dj-checklist',
       title: 'How to find the right wedding DJ: the checklist',
       excerpt:
         'A good wedding DJ can be recognised by checkable criteria, not the nicest Instagram reel: verifiable experience, a personal planning call, owned equipment, a written contract and a no-go list that actually gets honoured. This checklist makes candidates comparable.',

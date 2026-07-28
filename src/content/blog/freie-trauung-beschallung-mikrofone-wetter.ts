@@ -345,6 +345,7 @@ export const freieTrauungPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'acik-hava-toreni-ses-mikrofon',
       title: 'Açık hava töreni: ses sistemi, mikrofonlar, hava durumu',
       excerpt:
         'Açık havada bir tören, teknik olarak göründüğünden çoğu zaman daha zorludur: priz yokluğu, rüzgar, birden fazla konuşmacı. Bu rehber, elektrik, mikrofon düzeni ve bir yağmur planı için uygulanabilir çözümler gösteriyor.',
@@ -356,6 +357,7 @@ export const freieTrauungPost: BlogPost = {
       },
     },
     en: {
+      slug: 'outdoor-ceremony-sound-microphones',
       title: 'Outdoor ceremony: sound, microphones, weather',
       excerpt:
         'An outdoor ceremony is often more technically demanding than it looks: no power socket, wind, multiple speakers. This guide shows practical solutions for power, microphone setup and a rain plan.',

@@ -9,7 +9,13 @@ import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
 import { Eyebrow } from '@/components/ui/eyebrow';
 import { Reveal } from '@/components/motion/reveal';
-import { getPublishedGuides, getPostBySlug, resolveBlogLocale, getReadyLocalesForPost } from '@/content/blog';
+import {
+  getPublishedGuides,
+  getPostBySlugForLocale,
+  getPostSlug,
+  resolveBlogLocale,
+  getReadyLocalesForPost,
+} from '@/content/blog';
 import { buildRatgeberPostMetadata, ratgeberIndexUrl, ratgeberPostUrl } from '@/components/blog/blog-seo';
 import { buildPostJsonLd } from '@/components/blog/blog-json-ld';
 import { PostCover } from '@/components/blog/post-cover';
@@ -23,20 +29,34 @@ interface PageProps {
   params: Promise<{ locale: Locale; slug: string }>;
 }
 
-/** Published guides × the locales each one actually has content for — never a locale that would 404 (see `.claude/CONTRACT.md`'s ownership brief and `getReadyLocalesForPost`). */
+/**
+ * Published guides × the locales each one actually has content for — never a
+ * locale that would 404 (see `.claude/CONTRACT.md`'s ownership brief and
+ * `getReadyLocalesForPost`). The slug is resolved per locale, so this emits
+ * `de/hochzeits-dj-checkliste`, `tr/dugun-dj-kontrol-listesi` and
+ * `en/wedding-dj-checklist` rather than the same German slug three times.
+ */
 export function generateStaticParams() {
-  return getPublishedGuides().flatMap((post) => getReadyLocalesForPost(post).map((locale) => ({ locale, slug: post.slug })));
+  return getPublishedGuides().flatMap((post) =>
+    getReadyLocalesForPost(post).map((locale) => ({ locale, slug: getPostSlug(post, locale) })),
+  );
 }
 
-function loadPost(slug: string) {
-  const post = getPostBySlug(slug);
+/**
+ * Looks the post up **within the requested locale**, so a slug only resolves
+ * in the language it belongs to: `/en/guide/wedding-dj-checklist` renders,
+ * `/en/guide/hochzeits-dj-checkliste` 404s. Accepting both would serve one
+ * article at two URLs — see `getPostBySlugForLocale()`.
+ */
+function loadPost(slug: string, locale: Locale) {
+  const post = getPostBySlugForLocale(slug, locale);
   if (!post || post.type !== 'guide' || post.status !== 'published') return null;
   return post;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = loadPost(slug);
+  const post = loadPost(slug, locale);
   if (!post) return {};
   const content = resolveBlogLocale(post, locale);
   if (!content) return {};
@@ -46,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function RatgeberPostPage({ params }: PageProps) {
   const { locale, slug } = await params;
-  const post = loadPost(slug);
+  const post = loadPost(slug, locale);
   if (!post) notFound();
   const content = resolveBlogLocale(post, locale);
   if (!content) notFound();
@@ -56,7 +76,7 @@ export default async function RatgeberPostPage({ params }: PageProps) {
   const t = await getTranslations('blog');
   const tCategory = await getTranslations('blog.categories');
 
-  const pageUrl = ratgeberPostUrl(locale, post.slug);
+  const pageUrl = ratgeberPostUrl(locale, post);
   const indexUrl = ratgeberIndexUrl(locale);
   const homeUrl = absoluteUrl('/', locale);
   const jsonLd = buildPostJsonLd({ post, content, locale, pageUrl, indexUrl, indexLabel: t('index.eyebrow'), homeUrl });

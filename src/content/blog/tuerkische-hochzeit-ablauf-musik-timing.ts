@@ -353,6 +353,7 @@ export const tuerkischeHochzeitPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'turk-dugunu-akis-muzik-zamanlama',
       title: 'Almanya\'da Türk düğünü: akış, müzik ve zamanlama',
       excerpt:
         'Almanya\'da bir Türk ya da Alman-Türk düğünü, nadiren Alman standart akışını takip eder: daha yoğun bir tören, daha uzun bir dans programı, kına gecesi ve yüzük töreni gibi kendine has ritüeller. Bu rehber tipik çerçeveyi ve örnek bir zaman planını gösteriyor.',
@@ -364,6 +365,7 @@ export const tuerkischeHochzeitPost: BlogPost = {
       },
     },
     en: {
+      slug: 'turkish-wedding-running-order-music',
       title: 'Turkish wedding in Germany: running order, music and timing',
       excerpt:
         'A Turkish or German-Turkish wedding in Germany rarely follows the standard German running order: a denser ceremony, a longer dance programme, and its own rituals like kına gecesi and the ring ceremony. This guide explains the typical framework and an example timeline.',

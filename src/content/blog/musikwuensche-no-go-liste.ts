@@ -343,6 +343,7 @@ export const musikwuenschePost: BlogPost = {
       },
     },
     tr: {
+      slug: 'muzik-istekleri-no-go-listesi',
       title: 'Müzik istekleri ve istenmeyenler listesi: pratik rehber',
       excerpt:
         'İyi bir müzik planlaması tek değil iki liste gerektirir: istek listesi VE somut bir istenmeyenler listesi. Bu rehber, ikisinin nasıl yapılandırılmış şekilde oluşturulacağını ve akşam gelen anlık davetli isteklerinin nasıl yönetileceğini gösteriyor.',
@@ -354,6 +355,7 @@ export const musikwuenschePost: BlogPost = {
       },
     },
     en: {
+      slug: 'music-requests-no-go-list',
       title: 'Music requests and the no-go list: a practical guide',
       excerpt:
         'Good music planning needs two lists, not one: the wishlist AND a specific no-go list. This guide shows how to build both in a structured way, and how spontaneous guest requests get handled on the night.',

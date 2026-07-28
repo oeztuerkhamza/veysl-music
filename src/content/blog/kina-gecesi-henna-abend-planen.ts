@@ -344,6 +344,7 @@ export const kinaGecesiPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'kina-gecesi-planlama',
       title: 'Kına gecesi planlamak: pratik rehber',
       excerpt:
         'Kına gecesinin kendine has bir ritmi vardır: sakin bir ritüel, ardından partiye ani bir atmosfer değişimi. Bu rehber klasik akışı, bir planlama kontrol listesini ve en sık yapılan zamanlama hatalarını gösteriyor.',
@@ -355,6 +356,7 @@ export const kinaGecesiPost: BlogPost = {
       },
     },
     en: {
+      slug: 'kina-gecesi-henna-night-guide',
       title: 'Planning a kına gecesi (henna night): the practical guide',
       excerpt:
         'The kına gecesi has its own rhythm: a calm ritual, then an abrupt mood shift into the party. This guide covers the classic running order, a planning checklist, and the most common timing mistakes.',

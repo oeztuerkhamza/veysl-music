@@ -335,6 +335,7 @@ export const timelinePost: BlogPost = {
       },
     },
     tr: {
+      slug: 'dugun-zaman-cizelgesi-ornek-akis',
       title: 'Düğün zaman çizelgesi: gerçekçi bir örnek akış',
       excerpt:
         'Sağlam bir düğün zaman çizelgesi, dakikası dakikasına planlamadan değil, bilinçli zaman paylarından oluşur. Bu rehber, 13:00\'ten 02:00\'a örnek bir zaman çizelgesi, en sık yapılan üç zamanlama hatası ve Türk düğünlerinde akışın nasıl kaydığını gösteriyor.',
@@ -346,6 +347,7 @@ export const timelinePost: BlogPost = {
       },
     },
     en: {
+      slug: 'wedding-timeline-example',
       title: 'The wedding timeline: a realistic example running order',
       excerpt:
         'A reliable wedding timeline lives on deliberate buffers, not minute-by-minute planning. This guide shows an example timeline from 1pm to 2am, the three most common timing mistakes, and how the running order shifts for Turkish weddings.',

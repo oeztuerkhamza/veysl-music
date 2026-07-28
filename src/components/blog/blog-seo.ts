@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/i18n/navigation';
-import { type Locale } from '@/i18n/routing';
+import { defaultLocale, type Locale } from '@/i18n/routing';
 import { buildMetadata, siteBaseUrl } from '@/lib/seo';
 import { site } from '@/content/site';
-import { BLOG_LOCALES, type BlogLocaleContent, type BlogPost } from '@/content/blog';
+import { BLOG_LOCALES, getPostSlug, type BlogLocaleContent, type BlogPost } from '@/content/blog';
 
 /**
  * Metadata plumbing for `/ratgeber` and `/ratgeber/[slug]`, built on top of
@@ -23,8 +23,12 @@ export function ratgeberIndexUrl(locale: Locale): string {
   return new URL(getPathname({ href: '/ratgeber', locale }), siteBaseUrl()).toString();
 }
 
-export function ratgeberPostUrl(locale: Locale, slug: string): string {
-  const path = getPathname({ href: { pathname: '/ratgeber/[slug]', params: { slug } }, locale });
+/** Absolute URL of one article in one locale. `post` (not a raw slug) so the per-locale slug is always resolved via `getPostSlug()`. */
+export function ratgeberPostUrl(locale: Locale, post: BlogPost): string {
+  const path = getPathname({
+    href: { pathname: '/ratgeber/[slug]', params: { slug: getPostSlug(post, locale) } },
+    locale,
+  });
   return new URL(path, siteBaseUrl()).toString();
 }
 
@@ -44,13 +48,28 @@ export async function buildRatgeberIndexMetadata(locale: Locale, postCount: numb
   const hasArticles = postCount > 0;
   const availableLocales = Array.from(new Set<Locale>([...BLOG_LOCALES, locale]));
 
-  const base = await buildMetadata({
+  const rawBase = await buildMetadata({
     locale,
     pathname: '/ratgeber',
     values: { count: postCount },
     availableLocales,
     noIndex: !hasArticles,
   });
+
+  // RSS discovery. `<link rel="alternate" type="application/rss+xml">` on the
+  // index is how readers, newsletter tools and several answer-engine
+  // ingestion pipelines find a feed at all — an unadvertised feed is a feed
+  // nobody subscribes to. The route lives at `/feed.xml` (see its own file for
+  // why it cannot sit under the localized `/ratgeber` path) and takes the
+  // locale as a query parameter for anything but German.
+  const feedHref = `/feed.xml${locale === defaultLocale ? '' : `?locale=${locale}`}`;
+  const base: Metadata = {
+    ...rawBase,
+    alternates: {
+      ...rawBase.alternates,
+      types: { 'application/rss+xml': [{ url: feedHref, title: `${site.name} — Ratgeber` }] },
+    },
+  };
 
   if (hasArticles) return base;
 
@@ -85,7 +104,14 @@ export async function buildRatgeberPostMetadata(
   const base = await buildMetadata({
     locale,
     pathname: '/ratgeber/[slug]',
-    params: { slug: post.slug },
+    params: { slug: getPostSlug(post, locale) },
+    // Each language's alternate has to point at that language's own slug —
+    // `/en/guide/wedding-dj-checklist`, not the German slug under an English
+    // prefix. Built for every locale this post exists in, so hreflang, the
+    // canonical and the sitemap all agree.
+    paramsByLocale: Object.fromEntries(
+      availableLocales.map((l) => [l, { slug: getPostSlug(post, l) }]),
+    ) as Partial<Record<Locale, { slug: string }>>,
     availableLocales,
   });
 
@@ -94,7 +120,14 @@ export async function buildRatgeberPostMetadata(
 
   return {
     ...base,
-    title,
+    // `absolute`, for the same reason `buildMetadata()` uses it: every
+    // `seo.metaTitle` in the corpus already ends in "| DJ Veys", and a plain
+    // string here would run it through the layout's `%s | DJ Veys` template
+    // again — putting the brand in twice on all 45 article URLs, which is
+    // exactly the bug that was fixed everywhere else. Overriding `title` on a
+    // spread of `base` silently discards base's `{ absolute }` wrapper, so the
+    // fix has to be repeated at every override site, and this is the only one.
+    title: { absolute: title },
     description,
     openGraph: {
       ...base.openGraph,

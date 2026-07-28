@@ -320,6 +320,7 @@ export const laermschutzPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'gurultu-yonetmeligi-baden-wuerttemberg',
       title: 'Baden-Württemberg\'de gürültü koruması ve kapanış saatleri',
       excerpt:
         'Baden-Württemberg, gerçek yasal kapanış saati (normalde 03:00-06:00, cuma/cumartesi geceleri 05:00-06:00) uygulayan iki eyaletten biridir — düğünler için bu, Ordnungsamt\'a yapılan bir başvuruyla uyarlanabilir. Bu yazı kamuya açık kaynaklardan genel bir yönlendirmedir, hukuki danışmanlık değildir.',
@@ -331,6 +332,7 @@ export const laermschutzPost: BlogPost = {
       },
     },
     en: {
+      slug: 'noise-rules-baden-wuerttemberg',
       title: 'Noise protection and closing times in Baden-Württemberg',
       excerpt:
         'Baden-Württemberg is one of two German states with a real statutory closing time (normally 3–6am, 5–6am on nights before Sat/Sun) — for weddings, it can be adjusted via an application to the local regulatory office. This article is orientation from public sources, not legal advice.',

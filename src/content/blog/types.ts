@@ -6,15 +6,20 @@
  * 1. **CMS-ready.** `id` and `slug` are stable and locale-independent so a future
  *    headless CMS (Sanity, per CONTRACT.md) can import each post as one document with
  *    per-locale translation fields, without renaming keys. Nothing here is JSX.
- * 2. **One slug per post, not one per locale.** Every other route in this project uses
- *    localized slugs (`/pakete` → `/packages` → `/paketler`, see `src/i18n/routing.ts`),
- *    because those are fixed navigation pages maintained by hand. A 15-post blog with a
- *    translation backlog (ku/fr/es still pending, see `docs/BLOG-PLAN.md`) is a
- *    different shape of content: the same slug across `de`/`tr`/`en` keeps one canonical
- *    URL per article family and is what CMS platforms do by default for a "translated
- *    document" pattern. Whoever wires up `/ratgeber/[slug]` later can still localize the
- *    slug per-locale by extending `BlogLocaleContent` with an optional `slug` override —
- *    nothing here forecloses that, it just isn't needed yet.
+ * 2. **One canonical slug per post, with per-locale overrides.** `BlogPost.slug` stays
+ *    stable and locale-independent so a future headless CMS still sees one document per
+ *    article; `BlogLocaleContent.slug` overrides the URL for a given language.
+ *
+ *    This started out deliberately unlocalized, on the reasoning that a blog with a
+ *    translation backlog is a different shape of content from the hand-maintained
+ *    navigation pages in `src/i18n/routing.ts`. In practice that left every Turkish and
+ *    English article on a German URL — `/tr/rehber/was-kostet-ein-hochzeits-dj` — which
+ *    is the one place in the whole site where the URL contradicted the language of the
+ *    page, and it cost exactly the long-tail keyword the article was written to win.
+ *    The extension point this comment already described is now taken: resolve slugs with
+ *    `getPostSlug(post, locale)` and look posts up with `getPostBySlugForLocale()`.
+ *    A locale with no override simply falls back to `slug`, so ku/fr/es stay unaffected
+ *    until someone translates them.
  * 3. **No hardcoded hrefs inside body prose.** Internal links live in the structured
  *    `links` / `relatedAnswers` / `relatedCities` / `relatedPosts` arrays, exactly like
  *    `src/content/answers.ts` already does with its own `links?: StaticPathname[]`. The
@@ -80,6 +85,25 @@ export interface BlogSeo {
 }
 
 export interface BlogLocaleContent {
+  /**
+   * Locale-specific URL slug. Omit to reuse the post's canonical `slug`.
+   *
+   * This is the override point that point 2 in the file header always
+   * anticipated, now actually used: `/tr/rehber/dugun-dj-kontrol-listesi`
+   * instead of a Turkish page sitting on a German slug. Resolve it through
+   * `getPostSlug(post, locale)` — never read this field directly, or the
+   * fallback to `post.slug` (which is what `de` relies on, and what any
+   * future locale gets before someone writes a slug for it) is lost.
+   *
+   * Rules for adding one, so the cluster stays consistent:
+   * - ASCII only. Turkish slugs drop the diacritics (`gürültü` → `gurultu`);
+   *   a percent-encoded URL is unreadable in a SERP and in a shared link.
+   * - Carry that language's primary keyword, do not transliterate the German
+   *   slug. `was-kostet-ein-hochzeits-dj` becomes `dugun-dj-fiyatlari`,
+   *   not `dugun-dj-ne-kadar-tutar` — the first is what people search.
+   * - Never change one after launch without a redirect: the slug IS the URL.
+   */
+  slug?: string;
   /** The page's single H1. */
   title: string;
   /**

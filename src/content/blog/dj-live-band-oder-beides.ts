@@ -287,6 +287,7 @@ export const djLiveBandPost: BlogPost = {
       },
     },
     tr: {
+      slug: 'dj-mi-canli-grup-mu',
       title: 'DJ mi, canlı grup mu, yoksa ikisi birden mi?',
       excerpt:
         '"DJ mi, canlı grup mu" yanlış bir ya-ya da sorusudur — iki uç arasında, müzikal esnekliği gerçek canlı sesle birleştiren, DJ seti ve belirli anlarda canlı müziğin bir kombinasyonu var. Bu rehber, hangi seçeneğin gerçekten ne zaman uygun olduğunu gösteriyor.',
@@ -298,6 +299,7 @@ export const djLiveBandPost: BlogPost = {
       },
     },
     en: {
+      slug: 'dj-live-band-or-both',
       title: 'DJ, live band, or both? A decision guide',
       excerpt:
         '"DJ or live band" is the wrong either/or question — between the two extremes sits a combination of a DJ set and selective live music that blends musical flexibility with genuine live sound. This guide shows when each option genuinely fits.',

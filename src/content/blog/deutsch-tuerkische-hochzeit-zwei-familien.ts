@@ -330,6 +330,7 @@ export const deutschTuerkischePost: BlogPost = {
       },
     },
     tr: {
+      slug: 'alman-turk-dugunu-iki-aile',
       title: 'Alman-Türk düğünü: iki aile, tek akşam',
       excerpt:
         'Alman-Türk düğünlerinde asıl zorluk nadiren sadece müziktir, genellikle akış ve tempo konusundaki farklı beklentilerdir. Bu rehber, beklentilerin tipik olarak nerede ayrıştığını ve her iki taraf için de başarılı bir akşamın nasıl olacağını gösteriyor.',
@@ -341,6 +342,7 @@ export const deutschTuerkischePost: BlogPost = {
       },
     },
     en: {
+      slug: 'german-turkish-wedding-two-families',
       title: 'German-Turkish wedding: two families, one evening',
       excerpt:
         'At German-Turkish weddings, the real challenge is rarely the music alone — it\'s differing expectations around running order and pace. This guide shows where expectations typically diverge and how to build an evening that works for both sides.',

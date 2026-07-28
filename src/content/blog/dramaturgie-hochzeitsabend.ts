@@ -317,6 +317,7 @@ export const dramaturgiePost: BlogPost = {
       },
     },
     tr: {
+      slug: 'dugun-aksami-dramaturjisi',
       title: 'Kokteylden zirveye: bir düğün akşamının dramaturjisi',
       excerpt:
         'İyi bir düğün akşamı, düz bir müzik bombardımanı değil, bilinçli iniş ve çıkışları olan bir eğridir. Bu rehber, bir akşamın dört aşamasını ve zirvenin bilinçli olarak nasıl inşa edildiğini anlatıyor.',
@@ -328,6 +329,7 @@ export const dramaturgiePost: BlogPost = {
       },
     },
     en: {
+      slug: 'wedding-evening-dramaturgy',
       title: 'From champagne reception to peak time: the dramaturgy of a wedding evening',
       excerpt:
         'A good wedding evening is a curve of deliberate highs and lows, not a flat wall of constant music. This guide explains the four phases of an evening and how peak time gets built deliberately.',
