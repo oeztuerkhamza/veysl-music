@@ -285,11 +285,24 @@ This is the step that unblocks code, so do it deliberately.
 4. Read the **real** review count and rating off the profile and enter them in
    `site.reviews.count` / `site.reviews.rating`.
 
-Step 4 flips `site.reviews.isPublishable` to true, which turns on the review
-badge and `AggregateRating` schema site-wide — the single most consequential
-unblock in the whole SEO plan. Until then `aggregateRatingSchema()` returns
-`null` on purpose: publishing a 5.0 rating with a `0` review count is fabricated
-review data and a manual-action risk.
+Step 4 turns on the **visible** review section: the real rating, the real
+count, and the review text itself, fetched live through the Places API
+(`src/lib/reviews/google-places.ts`) and shown with Google attribution.
+
+It does **not** turn on `AggregateRating` schema, and that is deliberate.
+Google's review-snippet guidelines require ratings to be sourced directly from
+your own users and explicitly forbid aggregating reviews from another platform
+— copying Google's own aggregate back onto your site as your `aggregateRating`
+is one of the documented ways to earn a manual action. `aggregateRatingSchema()`
+therefore stays gated, and the star rich snippet remains reserved for
+first-party testimonials collected through this site's own form.
+
+So the two things are separate, and mixing them up is the mistake to avoid:
+
+| | Source | What it powers |
+|---|---|---|
+| Google reviews | Places API, live | Visible review section with attribution and a link to Google |
+| Own testimonials | Couples, via this site | `AggregateRating` schema → star rich snippet |
 
 **How to ask:** one client at a time, right after the event, with the direct
 link. Never a batch blast — review spikes trip Google's abuse detection. Never
@@ -331,8 +344,9 @@ Data that only the GBP owner can supply, and what each item unblocks:
 
 | Data | Goes into | Unblocks |
 |---|---|---|
-| Real review count | `site.reviews.count` | review badge + `AggregateRating` schema site-wide |
-| Place ID (`ChIJ…`) | `site.reviews.googlePlaceId` | stable review link, Maps embed by Place ID |
+| Place ID (`ChIJ…`) | `site.reviews.googlePlaceId` | the whole live review section, the "write a review" link, Maps embed by Place ID |
+| Places API key | `GOOGLE_PLACES_API_KEY` (server env) | live rating, count and review text — see `src/lib/reviews/google-places.ts` |
+| Real review count | `site.reviews.count` | static fallback only, for when the API is unavailable. **Not** `AggregateRating` — see step 12 |
 | Street + postal code | `site.address` (or admin panel) | complete Impressum, `streetAddress` in `PostalAddress` schema |
 | Reachable hours | — | `openingHoursSpecification` in `localBusinessSchema()` (not yet modelled) |
 | Lat/long of the service area centre | — | `geo` + `hasMap` in `localBusinessSchema()` (not yet modelled) |
