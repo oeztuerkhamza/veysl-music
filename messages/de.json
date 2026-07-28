@@ -6,6 +6,9 @@
     "weddings": "Echte Hochzeiten",
     "music": "Musik",
     "process": "Ablauf & FAQ",
+    "questions": "Fragen & Antworten",
+    "guide": "Ratgeber",
+    "europe": "DJ in Europa",
     "gallery": "Galerie",
     "epk": "EPK",
     "contact": "Kontakt",
@@ -626,7 +629,8 @@
       "consent": "Ohne Ihre Einwilligung können wir die Anfrage nicht bearbeiten",
       "min": "Etwas zu kurz",
       "max": "Das ist etwas zu lang",
-      "guests": "Bitte eine Zahl zwischen 1 und 5000 angeben"
+      "guests": "Bitte eine Zahl zwischen 1 und 5000 angeben",
+      "stepIncomplete": "Bitte ergänzen Sie die markierten Felder, um fortzufahren."
     },
     "success": {
       "title": "Anfrage ist angekommen.",
@@ -880,6 +884,12 @@
     "title": "Diese Seite gibt es nicht.",
     "text": "Der Link ist vermutlich veraltet. Von hier finden Sie zurück.",
     "cta": "Zur Startseite"
+  },
+  "errorPage": {
+    "title": "Da ist etwas schiefgelaufen.",
+    "text": "Der Fehler liegt bei uns, nicht bei Ihnen. Versuchen Sie es noch einmal — oder schreiben Sie uns direkt.",
+    "retry": "Erneut versuchen",
+    "home": "Zur Startseite"
   },
   "legal": {
     "draftNotice": "Entwurf — dieser Inhalt basiert auf den aktuell verfügbaren Angaben und muss vor Veröffentlichung von einer Anwältin oder einem Anwalt geprüft werden.",

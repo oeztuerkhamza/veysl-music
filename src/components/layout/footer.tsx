@@ -8,12 +8,23 @@ import { InstagramIcon, WhatsAppIcon, YouTubeIcon, type SocialIconProps } from '
 import { getSite } from '@/content/get-site';
 import { localized } from '@/lib/utils';
 
+/**
+ * Mirrors the header's overlay list plus `/hochzeits-dj-europa`, which the
+ * header deliberately does not carry (it is a reach page, not a primary
+ * journey) but which otherwise had no inbound link outside its own country
+ * pages — a closed loop no crawler and no reader could enter. The answer hub
+ * and the guide index were in the same position; see the note on `NAV_ITEMS`
+ * in header.tsx for why that mattered.
+ */
 const NAV_LINKS = [
   { href: '/hochzeit-events', key: 'services' },
   { href: '/pakete', key: 'packages' },
   { href: '/echte-hochzeiten', key: 'weddings' },
   { href: '/musik', key: 'music' },
   { href: '/ablauf', key: 'process' },
+  { href: '/fragen', key: 'questions' },
+  { href: '/ratgeber', key: 'guide' },
+  { href: '/hochzeits-dj-europa', key: 'europe' },
   { href: '/galerie', key: 'gallery' },
   { href: '/epk', key: 'epk' },
   { href: '/kontakt', key: 'contact' },

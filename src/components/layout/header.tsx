@@ -10,23 +10,40 @@ import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from './language-switcher';
 import { ThemeToggle } from './theme-toggle';
 
+/**
+ * `/fragen` and `/ratgeber` are here because they were previously reachable
+ * from nowhere. The answer hub (40 Q&As, the site's highest sitemap priority
+ * after the home page) and the entire 15-article guide cluster had no inbound
+ * link from the header, the footer, the home page or any content page — the
+ * only references anywhere were a back-link inside a blog article and two
+ * pills rendered on blog articles themselves. That left ~67 of 179 URLs
+ * discoverable through the sitemap alone, which gets them crawled but passes
+ * them no link signal at all, and gives a reader no path in.
+ *
+ * The overlay is always mounted (see the `inert` note further down), so every
+ * entry here is a real anchor in the served HTML of every page, not markup
+ * that only appears after a click.
+ */
 const NAV_ITEMS = [
   { href: '/hochzeit-events', key: 'services' },
   { href: '/pakete', key: 'packages' },
   { href: '/echte-hochzeiten', key: 'weddings' },
   { href: '/musik', key: 'music' },
   { href: '/ablauf', key: 'process' },
+  { href: '/fragen', key: 'questions' },
+  { href: '/ratgeber', key: 'guide' },
   { href: '/galerie', key: 'gallery' },
   { href: '/epk', key: 'epk' },
   { href: '/kontakt', key: 'contact' },
 ] as const;
 
 /**
- * The bar itself carries five links, not eight. Eight items at 1024 px forced
- * the whole navigation — language switcher included — behind a single low
- * contrast icon, which read as "the menu is gone". Five fit comfortably; the
- * full set always lives one click away in the overlay, which now opens at
- * every width rather than being a mobile fallback.
+ * The bar itself carries five links, not the full set. Eight items at 1024 px
+ * already forced the whole navigation — language switcher included — behind a
+ * single low contrast icon, which read as "the menu is gone", and the list has
+ * since grown to ten. Five fit comfortably; the full set always lives one
+ * click away in the overlay, which now opens at every width rather than being
+ * a mobile fallback.
  */
 const PRIMARY_KEYS = new Set(['services', 'packages', 'weddings', 'music', 'contact']);
 const PRIMARY_ITEMS = NAV_ITEMS.filter((item) => PRIMARY_KEYS.has(item.key));
@@ -214,7 +231,9 @@ export function Header() {
             with no way to reach it. `m-auto` on the inner list centres it when
             there is room and gets out of the way when there is not, which
             `justify-center` alone cannot do: that clips the overflow at the
-            top instead of letting it scroll. */}
+            top instead of letting it scroll. This matters more now that the
+            list is ten items: on a short phone it genuinely scrolls, which is
+            the intended behaviour, not a regression. */}
         <nav
           className="mx-auto flex w-full min-h-0 max-w-[90rem] flex-1 flex-col overflow-y-auto px-6 sm:px-8 lg:px-12"
           aria-label={t('menu')}

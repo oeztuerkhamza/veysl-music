@@ -6,6 +6,9 @@
     "weddings": "Bodas reales",
     "music": "Música",
     "process": "Proceso y FAQ",
+    "questions": "Preguntas y respuestas",
+    "guide": "Guía",
+    "europe": "DJ en Europa",
     "gallery": "Galería",
     "epk": "EPK",
     "contact": "Contacto",
@@ -626,7 +629,8 @@
       "consent": "Sin su consentimiento no podemos tramitar la solicitud",
       "min": "Se ha quedado un poco corto",
       "max": "Es un poco demasiado largo",
-      "guests": "Debe ser un número entre 1 y 5000"
+      "guests": "Debe ser un número entre 1 y 5000",
+      "stepIncomplete": "Complete los campos marcados para continuar."
     },
     "success": {
       "title": "Su solicitud ha llegado.",
@@ -880,6 +884,12 @@
     "title": "Esta página no existe.",
     "text": "Es probable que el enlace esté obsoleto. Desde aquí pueden volver.",
     "cta": "Ir al inicio"
+  },
+  "errorPage": {
+    "title": "Algo ha salido mal.",
+    "text": "El fallo es nuestro, no suyo. Inténtelo de nuevo — o escríbanos directamente.",
+    "retry": "Intentar de nuevo",
+    "home": "Volver al inicio"
   },
   "legal": {
     "draftNotice": "Borrador: este contenido se basa en la información disponible actualmente y debe ser revisado por un abogado o una abogada antes de su publicación.",

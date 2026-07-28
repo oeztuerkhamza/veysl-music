@@ -6,6 +6,9 @@
     "weddings": "Gerçek Düğünler",
     "music": "Müzik",
     "process": "Süreç & SSS",
+    "questions": "Sorular & Yanıtlar",
+    "guide": "Rehber",
+    "europe": "Avrupa'da DJ",
     "gallery": "Galeri",
     "epk": "EPK",
     "contact": "İletişim",
@@ -626,7 +629,8 @@
       "consent": "Onayınız olmadan talebi işleme alamayız",
       "min": "Biraz kısa kaldı",
       "max": "Bu biraz fazla uzun",
-      "guests": "Lütfen 1 ile 5000 arasında bir sayı girin"
+      "guests": "Lütfen 1 ile 5000 arasında bir sayı girin",
+      "stepIncomplete": "Devam etmek için işaretli alanları doldurun."
     },
     "success": {
       "title": "Talebiniz bize ulaştı.",
@@ -880,6 +884,12 @@
     "title": "Böyle bir sayfa yok.",
     "text": "Bağlantı büyük ihtimalle güncelliğini yitirmiş. Buradan geri dönebilirsiniz.",
     "cta": "Ana sayfaya dönün"
+  },
+  "errorPage": {
+    "title": "Bir şeyler ters gitti.",
+    "text": "Hata sizde değil, bizde. Tekrar deneyin — ya da doğrudan bize yazın.",
+    "retry": "Tekrar dene",
+    "home": "Ana sayfaya dön"
   },
   "legal": {
     "draftNotice": "Taslak — bu içerik hâlihazırda mevcut bilgilere dayanmaktadır ve yayımlanmadan önce bir avukat tarafından kontrol edilmelidir.",

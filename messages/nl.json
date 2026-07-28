@@ -6,6 +6,9 @@
     "weddings": "Echte bruiloften",
     "music": "Muziek",
     "process": "Werkwijze & FAQ",
+    "questions": "Vragen & antwoorden",
+    "guide": "Gids",
+    "europe": "DJ in Europa",
     "gallery": "Galerij",
     "epk": "EPK",
     "contact": "Contact",
@@ -626,7 +629,8 @@
       "consent": "Zonder uw toestemming kunnen wij de aanvraag niet behandelen",
       "min": "Iets te kort",
       "max": "Dat is iets te lang",
-      "guests": "Vul een getal tussen 1 en 5000 in"
+      "guests": "Vul een getal tussen 1 en 5000 in",
+      "stepIncomplete": "Vul de gemarkeerde velden in om verder te gaan."
     },
     "success": {
       "title": "Uw aanvraag is binnen.",
@@ -880,6 +884,12 @@
     "title": "Deze pagina bestaat niet.",
     "text": "De link is waarschijnlijk verouderd. Vanaf hier vindt u de weg terug.",
     "cta": "Naar de startpagina"
+  },
+  "errorPage": {
+    "title": "Er is iets misgegaan.",
+    "text": "De fout ligt bij ons, niet bij u. Probeer het opnieuw — of schrijf ons direct.",
+    "retry": "Opnieuw proberen",
+    "home": "Naar de homepage"
   },
   "legal": {
     "draftNotice": "Concept — deze inhoud is gebaseerd op de nu beschikbare gegevens en moet vóór publicatie door een advocaat worden gecontroleerd.",

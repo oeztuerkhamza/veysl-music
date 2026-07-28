@@ -6,6 +6,9 @@
     "weddings": "Dawetên Rastîn",
     "music": "Muzîk",
     "process": "Pêvajo & Pirs",
+    "questions": "Pirs & Bersiv",
+    "guide": "Rêbername",
+    "europe": "DJ li Ewropayê",
     "gallery": "Galerî",
     "epk": "EPK",
     "contact": "Têkilî",
@@ -626,7 +629,8 @@
       "consent": "Bêyî razîbûna we em nikarin daxwazê pêvajo bikin",
       "min": "Hinekî kin e",
       "max": "Ev hinekî zêde dirêj e",
-      "guests": "Ji kerema xwe hejmareke di navbera 1 û 5000 de binivîsin"
+      "guests": "Ji kerema xwe hejmareke di navbera 1 û 5000 de binivîsin",
+      "stepIncomplete": "Ji bo berdewamkirinê, ji kerema xwe qadên nîşankirî tije bikin."
     },
     "success": {
       "title": "Daxwaza we gihîşt me.",
@@ -880,6 +884,12 @@
     "title": "Ev rûpel tune.",
     "text": "Girêdan belkî kevn bûye. Ji vir hûn dikarin vegerin.",
     "cta": "Biçin rûpela sereke"
+  },
+  "errorPage": {
+    "title": "Tiştek çewt çû.",
+    "text": "Xeletî ne li ba we ye, li ba me ye. Ji kerema xwe dîsa biceribînin — an rasterast ji me re binivîsin.",
+    "retry": "Dîsa biceribîne",
+    "home": "Biçe rûpela sereke"
   },
   "legal": {
     "draftNotice": "Reşnivîs — ev naverok li ser agahiyên heyî hatiye avakirin û divê beriya weşandinê ji aliyê parêzerekê an parêzerekî ve were kontrolkirin.",

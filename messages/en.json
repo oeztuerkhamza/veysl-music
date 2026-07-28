@@ -6,6 +6,9 @@
     "weddings": "Real Weddings",
     "music": "Music",
     "process": "How It Works",
+    "questions": "Questions & Answers",
+    "guide": "Guide",
+    "europe": "DJ in Europe",
     "gallery": "Gallery",
     "epk": "EPK",
     "contact": "Contact",
@@ -626,7 +629,8 @@
       "consent": "We cannot process the enquiry without your consent",
       "min": "A little too short",
       "max": "That's a bit too long",
-      "guests": "Please enter a number between 1 and 5000"
+      "guests": "Please enter a number between 1 and 5000",
+      "stepIncomplete": "Please complete the highlighted fields to continue."
     },
     "success": {
       "title": "Your enquiry has arrived.",
@@ -880,6 +884,12 @@
     "title": "This page doesn't exist.",
     "text": "The link is probably out of date. Here's the way back.",
     "cta": "Back to the homepage"
+  },
+  "errorPage": {
+    "title": "Something went wrong.",
+    "text": "That one is on us, not on you. Try again — or just write to us directly.",
+    "retry": "Try again",
+    "home": "Back to home"
   },
   "legal": {
     "draftNotice": "Draft — this content is based on currently available information and must be reviewed by a lawyer before publication.",

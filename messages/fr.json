@@ -6,6 +6,9 @@
     "weddings": "Vrais mariages",
     "music": "Musique",
     "process": "Déroulé & FAQ",
+    "questions": "Questions & réponses",
+    "guide": "Conseils",
+    "europe": "DJ en Europe",
     "gallery": "Galerie",
     "epk": "EPK",
     "contact": "Contact",
@@ -626,7 +629,8 @@
       "consent": "Sans votre consentement, nous ne pouvons pas traiter la demande",
       "min": "Un peu trop court",
       "max": "C’est un peu trop long",
-      "guests": "Merci d’indiquer un nombre entre 1 et 5000"
+      "guests": "Merci d’indiquer un nombre entre 1 et 5000",
+      "stepIncomplete": "Veuillez compléter les champs signalés pour continuer."
     },
     "success": {
       "title": "Votre demande est bien arrivée.",
@@ -880,6 +884,12 @@
     "title": "Cette page n’existe pas.",
     "text": "Le lien est probablement obsolète. Voici le chemin du retour.",
     "cta": "Retour à l’accueil"
+  },
+  "errorPage": {
+    "title": "Une erreur est survenue.",
+    "text": "L'erreur vient de nous, pas de vous. Réessayez — ou écrivez-nous directement.",
+    "retry": "Réessayer",
+    "home": "Retour à l'accueil"
   },
   "legal": {
     "draftNotice": "Brouillon — ce contenu repose sur les informations actuellement disponibles et doit être vérifié par un avocat avant publication.",
