@@ -12,6 +12,8 @@ import { Reveal } from '@/components/motion/reveal';
 import { PageHero } from '@/components/pages/page-hero';
 import { EpkDownloads } from '@/components/pages/epk-downloads';
 import { FinalCta } from '@/components/pages/final-cta';
+import { buildEpkJsonLd } from '@/components/pages/page-json-ld';
+import { JsonLd } from '@/lib/json-ld';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -28,10 +30,14 @@ export default async function EpkPage({ params }: PageProps) {
   const t = await getTranslations('epk');
   const tCta = await getTranslations('cta');
 
+  const tRoot = await getTranslations();
+
   const bioLong = t.raw('bio.long') as string[];
 
   return (
     <>
+      <JsonLd data={buildEpkJsonLd({ locale, homeLabel: tRoot('nav.home'), pageLabel: tRoot('nav.epk') })} />
+
       <PageHero
         eyebrow={t('hero.eyebrow')}
         title={t('hero.title')}

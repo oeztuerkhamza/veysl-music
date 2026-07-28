@@ -9,6 +9,8 @@ import { PageHero } from '@/components/pages/page-hero';
 import { MusicExplorer } from '@/components/pages/music-explorer';
 import { StreamingLinks } from '@/components/pages/streaming-links';
 import { FinalCta } from '@/components/pages/final-cta';
+import { buildMusicJsonLd } from '@/components/pages/page-json-ld';
+import { JsonLd } from '@/lib/json-ld';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -23,9 +25,12 @@ export default async function MusikPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('music');
+  const tRoot = await getTranslations();
 
   return (
     <>
+      <JsonLd data={buildMusicJsonLd({ locale, homeLabel: tRoot('nav.home'), pageLabel: tRoot('nav.music') })} />
+
       <PageHero
         eyebrow={t('hero.eyebrow')}
         title={t('hero.title')}

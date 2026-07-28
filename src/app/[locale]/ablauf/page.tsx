@@ -10,6 +10,8 @@ import { PageHero } from '@/components/pages/page-hero';
 import { ProcessSteps } from '@/components/pages/process-steps';
 import { FaqAccordion } from '@/components/pages/faq-accordion';
 import { FinalCta } from '@/components/pages/final-cta';
+import { buildProcessJsonLd } from '@/components/pages/page-json-ld';
+import { JsonLd } from '@/lib/json-ld';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -26,6 +28,9 @@ export default async function AblaufPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('process');
+  // Root-level translator for the breadcrumb labels, so this page reuses the
+  // nav strings instead of introducing a second wording for the same routes.
+  const tRoot = await getTranslations();
 
   const steps = STEP_KEYS.map((key, index) => ({
     index: index + 1,
@@ -44,6 +49,15 @@ export default async function AblaufPage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd
+        data={buildProcessJsonLd({
+          locale,
+          homeLabel: tRoot('nav.home'),
+          pageLabel: tRoot('nav.process'),
+          faqItems: faqItems.map(({ q, a }) => ({ q, a })),
+        })}
+      />
+
       <PageHero eyebrow={t('hero.eyebrow')} title={t('hero.title')} subtitle={t('hero.subtitle')} />
 
       <Section>
