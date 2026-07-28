@@ -85,16 +85,26 @@ log "4/6 — Database migrations"
 #
 # which reads like an application bug and is really a missing build arg.
 # Keep this list in sync with docker-compose.yml's `build.args`.
-set -a
-# shellcheck disable=SC1091
-. ./.env
-set +a
+# Read values OUT of .env rather than sourcing it. `. ./.env` executes the
+# file as a shell script, which works right up until a value contains a shell
+# metacharacter — and one always eventually does. Here it was
+#
+#   SMTP_FROM_EMAIL=DJ Veys <no-reply@dj-veys.de>
+#
+# where `<` is a redirection operator, so bash died with "syntax error near
+# unexpected token `newline'" and took the whole deploy with it. A password
+# containing `$`, `` ` `` or `&` would do the same, and sourcing would also
+# execute anything an attacker got into that file. sed extracts exactly one
+# named value and executes nothing.
+env_value() {
+  sed -n "s/^$1=//p" .env | head -n 1
+}
 docker build --target builder -t veysl-app:build-tools \
-  --build-arg NEXT_PUBLIC_SITE_URL="${NEXT_PUBLIC_SITE_URL:-}" \
-  --build-arg NEXT_PUBLIC_PLAUSIBLE_DOMAIN="${NEXT_PUBLIC_PLAUSIBLE_DOMAIN:-}" \
-  --build-arg NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL="${NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL:-}" \
-  --build-arg NEXT_PUBLIC_GA4_MEASUREMENT_ID="${NEXT_PUBLIC_GA4_MEASUREMENT_ID:-}" \
-  --build-arg NEXT_PUBLIC_CLARITY_PROJECT_ID="${NEXT_PUBLIC_CLARITY_PROJECT_ID:-}" \
+  --build-arg NEXT_PUBLIC_SITE_URL="$(env_value NEXT_PUBLIC_SITE_URL)" \
+  --build-arg NEXT_PUBLIC_PLAUSIBLE_DOMAIN="$(env_value NEXT_PUBLIC_PLAUSIBLE_DOMAIN)" \
+  --build-arg NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL="$(env_value NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL)" \
+  --build-arg NEXT_PUBLIC_GA4_MEASUREMENT_ID="$(env_value NEXT_PUBLIC_GA4_MEASUREMENT_ID)" \
+  --build-arg NEXT_PUBLIC_CLARITY_PROJECT_ID="$(env_value NEXT_PUBLIC_CLARITY_PROJECT_ID)" \
   . >/dev/null
 
 set +e
