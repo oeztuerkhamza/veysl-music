@@ -57,16 +57,30 @@ export async function PackagesPreview() {
                     ))}
                   </ul>
 
-                  <p className="mt-8 font-display text-xl text-ink">{tCommon('onRequest')}</p>
+                  {/* `mt-auto` pins price and CTA to the bottom of the card.
+                      Without it they sat wherever the feature list happened to
+                      end — measured on the live page, the price line landed at
+                      three different heights across the three cards, a 166 px
+                      spread. A pricing table people are meant to compare has to
+                      line its rows up; otherwise the eye has to hunt for the
+                      number in each column. */}
+                  <div className="mt-auto pt-8">
+                    <p className="font-display text-xl text-ink">{tCommon('onRequest')}</p>
 
-                  <Button
-                    href="/pakete"
-                    variant={isSignature ? 'gold' : 'secondary'}
-                    size="md"
-                    className="mt-6"
-                  >
-                    {tCommon('readMore')}
-                  </Button>
+                    <Button
+                      href="/pakete"
+                      // Clay, not gold: this is the conversion action, and the
+                      // whole site uses exactly one colour for that. Filled
+                      // gold on ivory also reads muddy — in the light theme
+                      // gold is a dark olive, chosen for text contrast rather
+                      // than for covering a large area.
+                      variant={isSignature ? 'clay' : 'secondary'}
+                      size="md"
+                      className="mt-6 w-full"
+                    >
+                      {tCommon('readMore')}
+                    </Button>
+                  </div>
                 </Card>
               </Reveal>
             );

@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   // Added for production deployment (deploy/, Dockerfile); the only
   // application-source change made as part of that work.
   output: 'standalone',
+  // No `X-Powered-By: Next.js` on every response. It tells an attacker which
+  // framework and therefore which CVE list to work through, and buys nothing.
+  poweredByHeader: false,
   images: {
     // AVIF zuerst — siehe Projektplan A.9.1 "Ultra Performance"
     formats: ['image/avif', 'image/webp'],

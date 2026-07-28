@@ -24,8 +24,19 @@ export async function TrustStrip() {
     <Section id="vertrauen">
       <Container>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* `hyphens-auto` + `break-words` are load-bearing, not defensive.
+              This heading sits in a 4-of-12 column at display size, and the
+              translations contain single unbreakable words far longer than
+              German's: Turkish "Güvenebileceğiniz" is 17 characters and
+              overflowed the column straight across the list beside it. The
+              `lang` attribute is set per locale on <html>, so `hyphens: auto`
+              breaks each language by its own rules; `break-words` is the
+              backstop for locales the browser has no hyphenation dictionary
+              for. */}
           <div className="lg:col-span-4">
-            <h2 className="text-display-2 font-medium text-ink lg:sticky lg:top-32">{t('title')}</h2>
+            <h2 className="text-display-2 hyphens-auto break-words font-medium text-ink lg:sticky lg:top-32">
+              {t('title')}
+            </h2>
           </div>
 
           <ul className="lg:col-span-8">

@@ -125,7 +125,7 @@ export async function Footer() {
       <div className="border-t border-line">
         <Container className="py-6 text-xs text-ink-faint">
           <p>
-            © {year} {site.legalName} · {t('footer.rights')}
+            © {year} {site.name} · {t('footer.rights')}
           </p>
         </Container>
       </div>

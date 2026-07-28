@@ -207,28 +207,40 @@ export function Header() {
           </button>
         </div>
 
+        {/* `min-h-0` + `overflow-y-auto` are what stop the list being clipped.
+            A flex child defaults to `min-height: auto`, so it refuses to
+            shrink below its content and simply overflows the dialog — with
+            eight items at display size on a phone, the last one was cut off
+            with no way to reach it. `m-auto` on the inner list centres it when
+            there is room and gets out of the way when there is not, which
+            `justify-center` alone cannot do: that clips the overflow at the
+            top instead of letting it scroll. */}
         <nav
-          className="mx-auto flex w-full max-w-[90rem] flex-1 flex-col justify-center gap-1 px-6 sm:px-8 lg:px-12"
+          className="mx-auto flex w-full min-h-0 max-w-[90rem] flex-1 flex-col overflow-y-auto px-6 sm:px-8 lg:px-12"
           aria-label={t('menu')}
         >
-          {NAV_ITEMS.map((item, index) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                'group flex items-baseline gap-5 py-1 transition-all duration-500 ease-out-expo',
-                entered ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
-              )}
-              style={{ transitionDelay: entered ? `${index * 55}ms` : '0ms' }}
-            >
-              <span className="text-label w-6 shrink-0 text-ink-faint tabular-nums">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <span className="text-display-3 font-medium text-ink transition-colors duration-300 group-hover:text-clay sm:text-display-2">
-                {t(item.key)}
-              </span>
-            </Link>
-          ))}
+          <div className="m-auto flex w-full flex-col gap-1 py-4">
+            {NAV_ITEMS.map((item, index) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  'group flex items-baseline gap-5 py-1 transition-all duration-500 ease-out-expo',
+                  entered ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
+                )}
+                style={{ transitionDelay: entered ? `${index * 55}ms` : '0ms' }}
+              >
+                <span className="text-label w-6 shrink-0 text-ink-faint tabular-nums">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                {/* One notch smaller than before. Eight items have to fit a
+                    short phone viewport; display-2 made that impossible. */}
+                <span className="font-display text-2xl font-medium text-ink transition-colors duration-300 group-hover:text-clay sm:text-3xl lg:text-4xl">
+                  {t(item.key)}
+                </span>
+              </Link>
+            ))}
+          </div>
         </nav>
 
         <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-4 px-6 pb-10 sm:px-8 lg:px-12">

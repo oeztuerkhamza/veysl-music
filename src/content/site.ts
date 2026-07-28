@@ -14,11 +14,19 @@ export const site = {
   name: 'DJ Veys',
 
   /**
-   * Firmierung fürs Impressum. Pflichtangabe nach § 5 DDG — die eingetragene
-   * Bezeichnung muss dort stehen, unabhängig von der Wortmarke.
-   * ⚠️ Nicht als Marke verwenden, nirgends im Marketing-Text.
+   * Eingetragene Firmierung fürs Impressum — `null`, weil keine existiert.
+   *
+   * § 5 DDG verlangt den Namen des Anbieters. Bei einem Einzelunternehmen
+   * ohne Handelsregistereintrag ist das der **bürgerliche Name der Person**,
+   * nicht eine Fantasiebezeichnung: `owner` unten erfüllt die Pflicht, und
+   * „VeysTunesOfficial" hier zu führen wäre die Angabe einer Firmierung, die
+   * es so nicht gibt.
+   *
+   * ⚠️ Sollte doch ein Handelsregister- oder Gewerbeeintrag auf einen
+   * abweichenden Namen laufen, MUSS dieser hier eingetragen werden — dann ist
+   * er die Pflichtangabe und `owner` allein genügt nicht.
    */
-  legalName: 'VeysTunesOfficial',
+  legalName: null as string | null,
   owner: 'Veysel Durmuş',
 
   /**

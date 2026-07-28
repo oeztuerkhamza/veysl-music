@@ -9,7 +9,7 @@ import { absoluteAssetUrl, absoluteUrl } from './seo';
  * to this `.ts` module, so the component can't live here).
  *
  * DJ Veys is the one and only brand name in any human-visible output on this
- * site. `site.previousNames` ("DJ Veys", "VeysTunesOfficial") is machine-
+ * site. `site.previousNames` ("VeysTunesOfficial") is machine-
  * readable continuity data ONLY — it feeds `alternateName`/`sameAs` here so
  * existing followers, Google reviews and search associations carry over to
  * the new domain, and nowhere else. Never print it as prose.
@@ -219,7 +219,7 @@ export interface LocalBusinessSchema {
   name: string;
   /** `site.previousNames` — continuity signal only, never printed as visible copy. */
   alternateName: string[];
-  legalName?: string;
+  legalName?: string | null;
   description: string;
   url: string;
   telephone?: string;
@@ -249,7 +249,7 @@ export function localBusinessSchema(locale: Locale = defaultLocale): LocalBusine
     '@id': entityId(BUSINESS_ID_FRAGMENT),
     name: site.name,
     alternateName: [...site.previousNames],
-    legalName: site.legalName,
+    legalName: site.legalName ?? undefined,
     description: entityDescription(locale),
     url: absoluteUrl('/', locale),
     telephone: telephoneE164(),
@@ -350,7 +350,7 @@ export interface OrganizationSchema {
   '@id': string;
   name: string;
   alternateName: string[];
-  legalName?: string;
+  legalName?: string | null;
   url: string;
   logo?: string;
   sameAs?: string[];
@@ -370,7 +370,7 @@ export function organizationSchema(locale: Locale = defaultLocale): Organization
     '@id': entityId(BUSINESS_ID_FRAGMENT),
     name: site.name,
     alternateName: [...site.previousNames],
-    legalName: site.legalName,
+    legalName: site.legalName ?? undefined,
     url: absoluteUrl('/', locale),
     // TODO(kunde): point at a real brand logo once delivered — see SEO agent report.
     logo: absoluteAssetUrl('/logo.png'),

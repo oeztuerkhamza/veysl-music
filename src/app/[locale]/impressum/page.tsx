@@ -60,10 +60,18 @@ export default async function ImpressumPage({ params }: PageProps) {
                 <div>
                   <h2 className="font-display text-2xl text-ink">{t('providerTitle')}</h2>
                   <dl className="mt-4 flex flex-col gap-3 text-ink-muted">
-                    <div>
-                      <dt className="text-xs uppercase tracking-[0.15em] text-ink-faint">{t('nameLabel')}</dt>
-                      <dd className="text-ink">{site.legalName}</dd>
-                    </div>
+                    {/* Only rendered when a registered trade name actually
+                        exists. Without one, § 5 DDG's required name is the
+                        owner's own, shown in the next row — printing a brand
+                        here would state a company that is not registered. */}
+                    {site.legalName ? (
+                      <div>
+                        <dt className="text-xs uppercase tracking-[0.15em] text-ink-faint">
+                          {t('nameLabel')}
+                        </dt>
+                        <dd className="text-ink">{site.legalName}</dd>
+                      </div>
+                    ) : null}
                     <div>
                       <dt className="text-xs uppercase tracking-[0.15em] text-ink-faint">{t('ownerLabel')}</dt>
                       <dd className="text-ink">{site.owner}</dd>

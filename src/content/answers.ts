@@ -15,7 +15,7 @@
  * against; it is not relaxed anywhere below.
  *
  * Brand note: there is exactly one visible brand, `site.name` ("DJ Veys").
- * `site.previousNames` ("DJ Veys", "VeysTunesOfficial") is technical-only
+ * `site.previousNames` ("VeysTunesOfficial") is technical-only
  * (schema `alternateName`, redirects) and must never appear in `q`/`a` text
  * here — see the corrected brand guidance in the project brief.
  *

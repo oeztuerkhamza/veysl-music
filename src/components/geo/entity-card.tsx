@@ -15,7 +15,7 @@ interface EntityCardProps {
  *
  * Only `site.name` ("DJ Veys") appears here — per the client's explicit
  * correction, this project has exactly one visible brand. `site.previousNames`
- * ("DJ Veys", "VeysTunesOfficial") is technical-continuity data only
+ * ("VeysTunesOfficial") is technical-continuity data only
  * (schema `alternateName`, redirects) and must never surface in this prose.
  */
 export async function EntityCard({ className }: EntityCardProps) {

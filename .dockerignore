@@ -56,3 +56,11 @@ nginx
 .cache
 coverage
 *.tsbuildinfo
+
+# Database and media backups. deploy/backup.sh writes SQLite dumps of the live
+# enquiry data here — real names, emails, phone numbers and free-text messages,
+# up to RETENTION_DAYS of them. Without this entry `COPY . .` sweeps every one
+# of those into the builder layer of both veysl-app:latest and the
+# veysl-app:build-tools image the deploy leaves on the host, so any `docker
+# save` or registry push exports customer PII.
+backups

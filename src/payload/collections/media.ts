@@ -31,7 +31,13 @@ export const Media: CollectionConfig = {
       { name: 'hero', width: 2400, height: 1350, position: 'centre' },
     ],
     formatOptions: { format: 'webp', options: { quality: 82 } },
-    mimeTypes: ['image/*'],
+    // Explicit raster allowlist, not 'image/*'. That wildcard admits
+    // image/svg+xml, which Payload serves same-origin from
+    // /api/media/file/<name> with no CSP in front of it. Payload does screen
+    // SVGs, but with a regex denylist that misses entity-encoded payloads.
+    // Nothing here uploads SVG — every imageSize below is raster — so the
+    // whole class goes away for the cost of naming four types.
+    mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/avif'],
   },
   fields: [
     {

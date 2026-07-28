@@ -54,3 +54,7 @@ next-env.d.ts
 
 # Dev-server-Logdatei — Laufzeitartefakt, kein Quellcode.
 dev.log
+
+# Backups — same reason as in .dockerignore: these are SQLite dumps of real
+# customer enquiries. A single `git add -A` on the server would commit them.
+/backups

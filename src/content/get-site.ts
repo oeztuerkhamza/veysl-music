@@ -36,7 +36,7 @@ export interface OpeningHoursEntry {
 
 export interface ResolvedSite {
   name: string;
-  legalName: string;
+  legalName: string | null;
   owner: string;
   previousNames: readonly string[];
   domain: string;

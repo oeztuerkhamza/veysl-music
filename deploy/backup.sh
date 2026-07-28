@@ -13,7 +13,7 @@
 #   deploy/backup.sh list                     # list available backups
 #
 # Cron (as the deploy user, `crontab -e`) — see docs/DEPLOYMENT.md:
-#   0 3 * * * /opt/veysl/app/deploy/backup.sh >> /opt/veysl/app/backups/backup.log 2>&1
+#   0 3 * * * /opt/veysl/app/deploy/backup.sh >> /opt/veysl/backups/backup.log 2>&1
 #
 # IMPORTANT — the DB backup uses SQLite's own `.backup` command, not a raw
 # file copy. A raw `cp`/`tar` of a live SQLite file can grab it mid-write and
@@ -24,7 +24,13 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-BACKUP_DIR="${BACKUP_DIR:-$(pwd)/backups}"
+# Deliberately OUTSIDE the git checkout and the Docker build context. These
+# files are SQLite dumps of live enquiry data — names, emails, phone numbers,
+# free-text messages. Defaulting them to `$(pwd)/backups` put them inside the
+# repo, where `COPY . .` swept them into the image and `git add -A` would have
+# committed them. `deploy/server-setup.sh` already creates this directory as
+# the deploy user with mode 750.
+BACKUP_DIR="${BACKUP_DIR:-/opt/veysl/backups}"
 RETENTION_DAYS="${RETENTION_DAYS:-14}"
 DB_VOLUME="${DB_VOLUME:-veysl-data}"
 MEDIA_VOLUME="${MEDIA_VOLUME:-veysl-media}"
