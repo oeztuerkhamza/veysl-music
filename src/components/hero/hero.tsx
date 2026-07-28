@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/container';
 import { Reveal } from '@/components/motion/reveal';
 import { site } from '@/content/site';
 import { HeroAftermovie } from './hero-aftermovie';
+import { HeroBackdrop } from './hero-backdrop';
 import { ScrollCue } from './scroll-cue';
 
 /**
@@ -38,6 +39,8 @@ export async function Hero() {
 
   return (
     <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-bg">
+      {/* Nothing until a photo is assigned to `home.hero.background` — see HeroBackdrop. */}
+      <HeroBackdrop />
       {/* Candle glow — warm light pooling in from the upper right, so the
           composition has a light source instead of a flat gradient wash. */}
       <div
