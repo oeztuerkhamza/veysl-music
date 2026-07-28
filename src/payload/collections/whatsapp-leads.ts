@@ -17,7 +17,10 @@ import { validateIsoDate } from '../utils/iso-date';
  */
 export const WhatsappLeads: CollectionConfig = {
   slug: 'whatsapp-leads',
-  labels: { singular: 'WhatsApp-Lead', plural: 'WhatsApp-Leads' },
+  labels: {
+    singular: { de: 'WhatsApp-Lead', tr: 'WhatsApp Talebi' },
+    plural: { de: 'WhatsApp-Leads', tr: 'WhatsApp Talepleri' },
+  },
   defaultSort: '-createdAt',
   admin: {
     useAsTitle: 'eventDate',

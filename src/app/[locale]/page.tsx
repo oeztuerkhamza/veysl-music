@@ -4,6 +4,7 @@ import type { Locale } from '@/i18n/routing';
 import { site } from '@/content/site';
 import { buildMetadata } from '@/lib/seo';
 import { localBusinessSchema, websiteSchema } from '@/lib/schema';
+import { firstPartyAggregate, getPublishedTestimonials } from '@/lib/testimonials';
 import { Hero } from '@/components/hero/hero';
 import { Intro } from '@/components/home/intro';
 import { TrustStrip } from '@/components/home/trust-strip';
@@ -12,6 +13,7 @@ import { Showreel } from '@/components/home/showreel';
 import { PackagesPreview } from '@/components/home/packages-preview';
 import { MusicPreview } from '@/components/home/music-preview';
 import { Testimonials, type Testimonial } from '@/components/home/testimonials';
+import { GoogleReviews } from '@/components/home/google-reviews';
 import { ProcessPreview } from '@/components/home/process-preview';
 import { ServiceAreas } from '@/components/home/service-areas';
 import { FinalCta } from '@/components/home/final-cta';
@@ -29,9 +31,22 @@ export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // TODO: swap in `import { testimonials } from '@/content/testimonials'` once the
-  // pages agent ships that module — until then, ship nothing rather than fake quotes.
-  const testimonials: Testimonial[] = [];
+  // Real, operator-approved quotes from the Payload `testimonials` collection.
+  // Until now this was a hardcoded empty array, so anything entered in the
+  // admin never reached the page. Empty stays a valid state — the section
+  // renders nothing rather than inventing quotes.
+  const published = await getPublishedTestimonials();
+  const testimonials: Testimonial[] = published.map((t) => ({
+    quote: t.quote,
+    author: t.authorName,
+    venue: t.venue ?? '',
+    date: t.eventDate ?? '',
+  }));
+
+  // The only ratings allowed to become `aggregateRating` — see the note on
+  // that builder. `null` until at least three testimonials carry a rating,
+  // which is also the state today.
+  const firstPartyRating = firstPartyAggregate(published);
 
   // Entity graph for AI/GEO citations: the site itself + the bookable business/act.
   // NOTE: this should be `<JsonLd data={jsonLd} />` from `@/lib/schema.tsx`, but that
@@ -39,7 +54,7 @@ export default async function HomePage({ params }: HomePageProps) {
   // resolves only to the `.ts` builders, making the `.tsx` component unreachable
   // without an explicit extension (unsupported without `allowImportingTsExtensions`).
   // Inlined here until the SEO agent renames one of the two files.
-  const jsonLd = JSON.stringify([websiteSchema(locale), localBusinessSchema(locale)]).replace(
+  const jsonLd = JSON.stringify([websiteSchema(locale), localBusinessSchema(locale, firstPartyRating)]).replace(
     /</g,
     '\\u003c',
   );
@@ -60,6 +75,8 @@ export default async function HomePage({ params }: HomePageProps) {
       <PackagesPreview />
       <MusicPreview />
       <Testimonials testimonials={testimonials} />
+      {/* Renders nothing until GOOGLE_PLACES_API_KEY is set on the server. */}
+      <GoogleReviews locale={locale} />
       <ProcessPreview />
       <ServiceAreas />
       <FinalCta />

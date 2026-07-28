@@ -23,7 +23,10 @@ const readPublishedOrAdmin: Access = ({ req }) => {
  */
 export const BlogPosts: CollectionConfig = {
   slug: 'blog-posts',
-  labels: { singular: 'Blogartikel', plural: 'Blogartikel' },
+  labels: {
+    singular: { de: 'Blogartikel', tr: 'Blog Yazısı' },
+    plural: { de: 'Blogartikel', tr: 'Blog Yazıları' },
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'status', 'publishedAt', 'updatedAt'],

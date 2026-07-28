@@ -11,7 +11,10 @@ import { isAdmin } from '../access/is-admin';
  */
 export const Users: CollectionConfig = {
   slug: 'users',
-  labels: { singular: 'Benutzer', plural: 'Benutzer' },
+  labels: {
+    singular: { de: 'Benutzer', tr: 'Kullanıcı' },
+    plural: { de: 'Benutzer', tr: 'Kullanıcılar' },
+  },
   admin: {
     useAsTitle: 'email',
     defaultColumns: ['email', 'name', 'updatedAt'],

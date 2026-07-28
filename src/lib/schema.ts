@@ -191,8 +191,8 @@ export interface AggregateRatingSchema {
 }
 
 /**
- * Returns `null` until this site has FIRST-PARTY ratings of its own, and it
- * deliberately does not look at `site.reviews`.
+ * Builds an `AggregateRating` from FIRST-PARTY ratings only — the caller must
+ * pass them in, and this function deliberately cannot reach `site.reviews`.
  *
  * `site.reviews` holds the Google profile's aggregate (5.0 from 31 reviews).
  * That is real, and it may be shown on the page with attribution and a link —
@@ -205,18 +205,20 @@ export interface AggregateRatingSchema {
  * split out, and this function reading `site.reviews.isPublishable` was
  * exactly how that line got crossed once already.
  *
- * The first-party source is `src/content/testimonials.ts`, which is
- * intentionally empty: no released quotes exist yet, and none are invented.
- * Those entries also carry no per-review rating today, so there is nothing
- * honest to aggregate — hence `null`, not a computed zero.
- *
- * To switch this on later: give `Testimonial` a `rating` field, collect the
- * ratings through this site's own form, and aggregate them here. Nothing else
- * in the graph needs to change — `localBusinessSchema()` already spreads the
- * result only when it is non-null.
+ * Taking the numbers as an argument is the guard: there is no longer any path
+ * from the Google profile into this object, and a caller has to go and fetch
+ * published testimonials to produce one. `firstPartyAggregate()` in
+ * `@/lib/testimonials` is that source, and it returns `null` until at least
+ * three testimonials carry a rating.
  */
-export function aggregateRatingSchema(): AggregateRatingSchema | null {
-  return null;
+export function aggregateRatingSchema(firstParty: { rating: number; count: number } | null): AggregateRatingSchema | null {
+  if (!firstParty || firstParty.count <= 0 || firstParty.rating <= 0) return null;
+  return {
+    '@type': 'AggregateRating',
+    ratingValue: firstParty.rating,
+    reviewCount: firstParty.count,
+    itemReviewed: { '@type': 'LocalBusiness', '@id': entityId(BUSINESS_ID_FRAGMENT), name: site.name },
+  };
 }
 
 export interface LocalBusinessSchema {
@@ -249,9 +251,18 @@ export interface LocalBusinessSchema {
  * package pricing is public yet, and an invented range would be worse than no
  * range at all.
  */
-export function localBusinessSchema(locale: Locale = defaultLocale): LocalBusinessSchema {
+export function localBusinessSchema(
+  locale: Locale = defaultLocale,
+  /**
+   * First-party rating aggregate, if the caller has one. Optional on purpose:
+   * most pages have no reason to load testimonials, and a page that omits it
+   * simply carries no `aggregateRating` — which is the correct, safe default.
+   * Only the home page passes it today (see `firstPartyAggregate()`).
+   */
+  firstPartyRating: { rating: number; count: number } | null = null,
+): LocalBusinessSchema {
   const sameAs = businessSameAs();
-  const rating = aggregateRatingSchema();
+  const rating = aggregateRatingSchema(firstPartyRating);
   return {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'MusicGroup'],

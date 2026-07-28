@@ -19,7 +19,10 @@ const readPublishedOrAdmin: Access = ({ req }) => {
  */
 export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
-  labels: { singular: 'Kundenstimme', plural: 'Kundenstimmen' },
+  labels: {
+    singular: { de: 'Kundenstimme', tr: 'Müşteri Yorumu' },
+    plural: { de: 'Kundenstimmen', tr: 'Müşteri Yorumları' },
+  },
   admin: {
     useAsTitle: 'authorName',
     defaultColumns: ['authorName', 'eventDate', 'rating', 'status'],

@@ -11,7 +11,10 @@ import { isAdmin } from '../access/is-admin';
  */
 export const Media: CollectionConfig = {
   slug: 'media',
-  labels: { singular: 'Medium', plural: 'Medien' },
+  labels: {
+    singular: { de: 'Medium', tr: 'Medya' },
+    plural: { de: 'Medien', tr: 'Medya' },
+  },
   admin: {
     useAsTitle: 'alt',
     defaultColumns: ['filename', 'alt', 'updatedAt'],

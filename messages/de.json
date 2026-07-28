@@ -163,6 +163,17 @@
       "subtitle": "Echte Rückmeldungen von echten Hochzeiten.",
       "ratingLabel": "{rating} ★ aus {count} Google-Bewertungen"
     },
+    "googleReviews": {
+      "eyebrow": "Google-Bewertungen",
+      "title": "Was Paare bei Google schreiben",
+      "subtitle": "{rating} von 5 Sternen aus {count} Bewertungen auf Google.",
+      "readAllOnGoogle": "Alle {count} Bewertungen auf Google lesen",
+      "ratingAria": "{rating} von 5 Sternen",
+      "ratingOnly": "Bewertung ohne Text.",
+      "sourceGoogle": "via Google",
+      "writeOwnPrompt": "Sie haben mit uns gefeiert?",
+      "writeOwnCta": "Bewertung auf Google schreiben"
+    },
     "process": {
       "eyebrow": "Ablauf",
       "title": "In vier Schritten zum Abend Ihres Lebens",

@@ -17,7 +17,10 @@ import { isAdmin } from '../access/is-admin';
  */
 export const CuratedPosts: CollectionConfig = {
   slug: 'curated-posts',
-  labels: { singular: 'Kuratierter Social-Beitrag', plural: 'Kuratierte Social-Beiträge' },
+  labels: {
+    singular: { de: 'Kuratierter Social-Beitrag', tr: 'Seçilmiş Sosyal Medya Gönderisi' },
+    plural: { de: 'Kuratierte Social-Beiträge', tr: 'Seçilmiş Sosyal Medya Gönderileri' },
+  },
   admin: {
     useAsTitle: 'permalink',
     defaultColumns: ['platform', 'placement', 'status', 'featured', 'sortOrder', 'updatedAt'],

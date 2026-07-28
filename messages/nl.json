@@ -163,6 +163,17 @@
       "subtitle": "Echte reacties van echte bruiloften.",
       "ratingLabel": "{rating} ★ uit {count} Google-recensies"
     },
+    "googleReviews": {
+      "eyebrow": "Google-recensies",
+      "title": "Wat stellen op Google schrijven",
+      "subtitle": "{rating} van de 5 sterren uit {count} recensies op Google.",
+      "readAllOnGoogle": "Alle {count} recensies op Google lezen",
+      "ratingAria": "{rating} van de 5 sterren",
+      "ratingOnly": "Beoordeling zonder tekst.",
+      "sourceGoogle": "via Google",
+      "writeOwnPrompt": "Heeft u met ons gevierd?",
+      "writeOwnCta": "Schrijf een recensie op Google"
+    },
     "process": {
       "eyebrow": "Werkwijze",
       "title": "In vier stappen naar de avond van uw leven",

@@ -163,6 +163,17 @@
       "subtitle": "Comentarios reales de bodas reales.",
       "ratingLabel": "{rating} ★ de {count} reseñas en Google"
     },
+    "googleReviews": {
+      "eyebrow": "Reseñas de Google",
+      "title": "Lo que escriben las parejas en Google",
+      "subtitle": "{rating} de 5 estrellas a partir de {count} reseñas en Google.",
+      "readAllOnGoogle": "Leer las {count} reseñas en Google",
+      "ratingAria": "{rating} de 5 estrellas",
+      "ratingOnly": "Valoración sin texto.",
+      "sourceGoogle": "a través de Google",
+      "writeOwnPrompt": "¿Ha celebrado con nosotros?",
+      "writeOwnCta": "Escribir una reseña en Google"
+    },
     "process": {
       "eyebrow": "Proceso",
       "title": "Cuatro pasos hasta la noche de su vida",

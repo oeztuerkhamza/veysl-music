@@ -23,7 +23,10 @@ import { validateIsoDate, validateOptionalTime } from '../utils/iso-date';
  */
 export const Enquiries: CollectionConfig = {
   slug: 'enquiries',
-  labels: { singular: 'Anfrage', plural: 'Anfragen' },
+  labels: {
+    singular: { de: 'Anfrage', tr: 'Talep' },
+    plural: { de: 'Anfragen', tr: 'Talepler' },
+  },
   defaultSort: '-createdAt',
   admin: {
     useAsTitle: 'eventDate',

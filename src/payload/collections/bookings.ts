@@ -18,7 +18,10 @@ import { validateIsoDate } from '../utils/iso-date';
  */
 export const Bookings: CollectionConfig = {
   slug: 'bookings',
-  labels: { singular: 'Buchung', plural: 'Buchungen' },
+  labels: {
+    singular: { de: 'Buchung', tr: 'Rezervasyon' },
+    plural: { de: 'Buchungen', tr: 'Rezervasyonlar' },
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['date', 'title', 'eventType', 'status'],

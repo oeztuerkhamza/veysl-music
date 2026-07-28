@@ -163,6 +163,17 @@
       "subtitle": "De vrais retours, après de vrais mariages.",
       "ratingLabel": "{rating} ★ sur {count} avis Google"
     },
+    "googleReviews": {
+      "eyebrow": "Avis Google",
+      "title": "Ce que les couples écrivent sur Google",
+      "subtitle": "{rating} sur 5 étoiles à partir de {count} avis sur Google.",
+      "readAllOnGoogle": "Lire les {count} avis sur Google",
+      "ratingAria": "{rating} sur 5 étoiles",
+      "ratingOnly": "Note sans commentaire.",
+      "sourceGoogle": "via Google",
+      "writeOwnPrompt": "Vous avez fêté avec nous ?",
+      "writeOwnCta": "Laisser un avis sur Google"
+    },
     "process": {
       "eyebrow": "Déroulé",
       "title": "Quatre étapes vers la soirée de votre vie",

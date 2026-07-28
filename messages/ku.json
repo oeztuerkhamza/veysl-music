@@ -163,6 +163,17 @@
       "subtitle": "Bersivên rastîn ji dawetên rastîn.",
       "ratingLabel": "{rating} ★ ji {count} nirxandinên Google"
     },
+    "googleReviews": {
+      "eyebrow": "Nirxandinên Google",
+      "title": "Cot li Google çi dinivîsin",
+      "subtitle": "{rating} ji 5 stêrkan, ji {count} nirxandinan li Google.",
+      "readAllOnGoogle": "Hemû {count} nirxandinan li Google bixwînin",
+      "ratingAria": "{rating} ji 5 stêrkan",
+      "ratingOnly": "Nirxandin bê nivîs.",
+      "sourceGoogle": "bi rêya Google",
+      "writeOwnPrompt": "We bi me re pîroz kir?",
+      "writeOwnCta": "Li Google nirxandinekê binivîsin"
+    },
     "process": {
       "eyebrow": "Pêvajo",
       "title": "Bi çar gavan ber bi şeva jiyana we ve",

@@ -4,6 +4,7 @@ import { sqliteAdapter } from '@payloadcms/db-sqlite';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
 import { de } from 'payload/i18n/de';
+import { tr } from 'payload/i18n/tr';
 import sharp from 'sharp';
 
 import { BlockedDates } from './src/payload/collections/blocked-dates';
@@ -115,23 +116,37 @@ export default buildConfig({
       titleSuffix: '— DJ Veys Admin',
     },
   },
-  // Admin-UI-Sprache. Ohne diesen Block nimmt Payload *alle* mitgelieferten
-  // Sprachen als `supportedLanguages` und `en` als `fallbackLanguage`, und
-  // wählt dann pro Request: Cookie `payload-lng` → `Accept-Language` →
-  // Fallback (siehe `payload/dist/utilities/getRequestLanguage.js`). Ein
-  // Browser mit englischem `Accept-Language` bekam dadurch eine englische
-  // Oberfläche ("Create New", "No Results.") mit deutschen Collection-Labels
-  // darin ("Create new Medium") — jedes Label, jede `admin.description` und
-  // jede Feldbeschriftung in `src/payload/**` ist fest auf Deutsch getextet.
-  // Nur `de` als unterstützte Sprache zu führen macht das Panel eindeutig
-  // deutsch, unabhängig von Browser-Sprache und Altbestand-Cookie (ein
-  // vorhandenes `payload-lng=en` steht nicht mehr in den Keys und fällt
-  // automatisch auf `de` zurück). Soll das Panel wieder mehrsprachig werden:
-  // `en` o. ä. hier ergänzen (`import { en } from 'payload/i18n/en'`) —
-  // `fallbackLanguage` muss ein Key aus `supportedLanguages` bleiben, sonst
-  // ersetzt Payload ihn kommentarlos durch den ersten Key.
+  /**
+   * Admin-UI-Sprachen: Deutsch und Türkisch, Deutsch als Rückfallebene.
+   *
+   * Ohne diesen Block nimmt Payload *alle* mitgelieferten Sprachen und `en`
+   * als `fallbackLanguage`, und wählt dann pro Request: Cookie `payload-lng`
+   * → `Accept-Language` → Fallback (siehe
+   * `payload/dist/utilities/getRequestLanguage.js`). Ein Browser mit
+   * englischem `Accept-Language` bekam dadurch eine englische Oberfläche
+   * ("Create New", "No Results.") mit deutschen Labels darin
+   * ("Create new Medium").
+   *
+   * Die Liste hier ist deshalb bewusst kurz — aber sie ist eine
+   * Betreiberentscheidung, keine technische: der Betreiber arbeitet auf
+   * Deutsch und Türkisch, also stehen genau diese beiden im Umschalter unter
+   * „Payload-Einstellungen → Sprache". Wer eine weitere braucht, ergänzt sie
+   * hier (`import { en } from 'payload/i18n/en'`) und übersetzt die Labels in
+   * `src/payload/**` mit.
+   *
+   * `fallbackLanguage` muss ein Key aus `supportedLanguages` bleiben, sonst
+   * ersetzt Payload ihn kommentarlos durch den ersten Key. Ein Altbestands-
+   * Cookie mit einer nicht mehr geführten Sprache fällt automatisch hierauf
+   * zurück — die Umstellung ist also selbstheilend.
+   *
+   * Damit „türkisch" nicht nur die Rahmen-Oberfläche meint, sind die
+   * Collection-Labels und Beschreibungen in `src/payload/**` als
+   * `{ de, tr }`-Objekte getextet (Payloads `StaticLabel` erlaubt
+   * `Record<string, string>`); sonst stünden türkische Menüs um deutsche
+   * Einträge herum.
+   */
   i18n: {
-    supportedLanguages: { de },
+    supportedLanguages: { de, tr },
     fallbackLanguage: 'de',
   },
   editor: lexicalEditor(),

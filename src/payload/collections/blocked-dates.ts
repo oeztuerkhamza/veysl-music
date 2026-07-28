@@ -20,7 +20,10 @@ import { validateIsoDate } from '../utils/iso-date';
  */
 export const BlockedDates: CollectionConfig = {
   slug: 'blocked-dates',
-  labels: { singular: 'Blockierter Tag', plural: 'Blockierte Tage' },
+  labels: {
+    singular: { de: 'Blockierter Tag', tr: 'Kapalı Gün' },
+    plural: { de: 'Blockierte Tage', tr: 'Kapalı Günler' },
+  },
   admin: {
     useAsTitle: 'date',
     defaultColumns: ['date', 'source', 'reason'],

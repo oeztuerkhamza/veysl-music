@@ -67,7 +67,10 @@ const STATIC_SLOTS: StaticSlotEntry[] = [
  */
 export const SiteImageSlots: CollectionConfig = {
   slug: 'site-images',
-  labels: { singular: 'Bild-Slot', plural: 'Bild-Slots' },
+  labels: {
+    singular: { de: 'Bild-Slot', tr: 'Görsel Alanı' },
+    plural: { de: 'Bild-Slots', tr: 'Görsel Alanları' },
+  },
   defaultSort: 'priority',
   admin: {
     useAsTitle: 'key',

@@ -66,7 +66,7 @@ function validateOptionalTime(value: unknown): true | string {
  */
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
-  label: 'Website-Einstellungen',
+  label: { de: 'Website-Einstellungen', tr: 'Web Sitesi Ayarları' },
   admin: {
     description:
       'Kontakt, Adresse, Social Links, Kennzahlen und Sprechstunden der Website. Leer gelassene Felder behalten den bisherigen Standardwert aus dem Code (site.ts) — ein Tippfehler blockiert also nie den ganzen Kontaktweg.',
@@ -221,7 +221,10 @@ export const SiteSettings: GlobalConfig = {
     {
       name: 'openingHours',
       type: 'array',
-      labels: { singular: 'Sprechstunde', plural: 'Sprechstunden' },
+      labels: {
+        singular: { de: 'Sprechstunde', tr: 'Çalışma Saati' },
+        plural: { de: 'Sprechstunden', tr: 'Çalışma Saatleri' },
+      },
       admin: { description: 'Wann Veysel erreichbar ist. Für "nach Vereinbarung" o.ä. das Feld "Hinweis" nutzen statt Zeiten.' },
       fields: [
         {

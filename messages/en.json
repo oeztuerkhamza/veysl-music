@@ -163,6 +163,17 @@
       "subtitle": "Real feedback from real weddings.",
       "ratingLabel": "{rating} ★ from {count} Google reviews"
     },
+    "googleReviews": {
+      "eyebrow": "Google reviews",
+      "title": "What couples write on Google",
+      "subtitle": "{rating} out of 5 stars from {count} reviews on Google.",
+      "readAllOnGoogle": "Read all {count} reviews on Google",
+      "ratingAria": "{rating} out of 5 stars",
+      "ratingOnly": "Rating without text.",
+      "sourceGoogle": "via Google",
+      "writeOwnPrompt": "Celebrated with us?",
+      "writeOwnCta": "Write a review on Google"
+    },
     "process": {
       "eyebrow": "Process",
       "title": "Four steps to the night of your life",

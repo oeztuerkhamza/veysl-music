@@ -15,7 +15,10 @@ import { validateIsoDate } from '../utils/iso-date';
  */
 export const ContactMessages: CollectionConfig = {
   slug: 'contact-messages',
-  labels: { singular: 'Kontaktnachricht', plural: 'Kontaktnachrichten' },
+  labels: {
+    singular: { de: 'Kontaktnachricht', tr: 'İletişim Mesajı' },
+    plural: { de: 'Kontaktnachrichten', tr: 'İletişim Mesajları' },
+  },
   defaultSort: '-createdAt',
   admin: {
     useAsTitle: 'subject',

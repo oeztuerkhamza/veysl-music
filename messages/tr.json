@@ -163,6 +163,17 @@
       "subtitle": "Gerçek düğünlerden gerçek geri bildirimler.",
       "ratingLabel": "{count} Google değerlendirmesine göre {rating} ★"
     },
+    "googleReviews": {
+      "eyebrow": "Google Yorumları",
+      "title": "Çiftler Google’da ne yazıyor",
+      "subtitle": "Google’da {count} değerlendirme üzerinden 5 üzerinden {rating}.",
+      "readAllOnGoogle": "{count} yorumun tamamını Google’da okuyun",
+      "ratingAria": "5 üzerinden {rating} yıldız",
+      "ratingOnly": "Metinsiz değerlendirme.",
+      "sourceGoogle": "Google üzerinden",
+      "writeOwnPrompt": "Bizimle kutladınız mı?",
+      "writeOwnCta": "Google’da yorum yazın"
+    },
     "process": {
       "eyebrow": "Süreç",
       "title": "Dört adımda hayatınızın gecesi",
