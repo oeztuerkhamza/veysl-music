@@ -15,26 +15,33 @@ interface RouteSeoConfig {
 }
 
 /**
- * Every plain static route from `routing.pathnames` gets an explicit
- * priority/changeFrequency here. Typed as
- * `Record<Exclude<StaticPathname, '/hochzeits-dj-europa' | '/ratgeber'>, …>`
+ * Every plain static route from `routing.pathnames` that is available in all
+ * seven locales AND indexable gets an explicit priority/changeFrequency here.
+ * Typed as `Record<Exclude<StaticPathname, …the ones handled separately…>, …>`
  * so a new route added to routing.ts fails to compile here until it's
- * classified — the sitemap can't silently miss it. Legal pages are
- * deliberately low priority/low frequency.
+ * classified — the sitemap can't silently miss it.
  *
- * Two exclusions, both on purpose:
+ * Five routes are excluded, all on purpose:
  * - `/hochzeits-dj-europa` (the Europe reach hub): NOT available in all seven
  *   locales, unlike every other entry here — see `HUB_ROUTE_CONFIG` and
  *   `loadRegionsData()` below.
- * - `/ratgeber` (blog index): verified live (curled 2026-07-25) that
- *   `src/app/[locale]/ratgeber/` does not exist yet — only the content module
- *   (`src/content/blog/`) has landed. Emitting it now would reintroduce
- *   exactly the "sitemap lists URLs that 404" bug this file was already fixed
- *   for once. See `BLOG_ROUTES_LIVE` below — flip that one flag once the page
- *   routes ship and both this index and the article cluster switch on
- *   together.
+ * - `/ratgeber` (blog index): real content in `BLOG_LOCALES` (de/tr/en) only;
+ *   the other four locales render an empty shell that `buildRatgeberIndexMetadata()`
+ *   marks `noindex`. Emitted per-locale below, not here.
+ * - `/fragen` (GEO answer hub): same shape — the corpus is authored in de/tr/en
+ *   and falls back to German elsewhere, so `buildFragenMetadata()` marks the
+ *   other four `noindex`. Emitted per-locale below, not here.
+ * - `/impressum` + `/datenschutz`: both pages set `noIndex: true` in their own
+ *   `generateMetadata`. A sitemap entry is a request to index; pairing it with
+ *   a `noindex` page is a direct contradiction that Search Console reports as
+ *   "Submitted URL marked 'noindex'". They stay crawlable and footer-linked —
+ *   they just no longer ask to be indexed. If either ever drops its `noIndex`
+ *   flag, add it back to the map below and the type stops complaining.
  */
-const staticRoutes: Record<Exclude<StaticPathname, '/hochzeits-dj-europa' | '/ratgeber'>, RouteSeoConfig> = {
+const staticRoutes: Record<
+  Exclude<StaticPathname, '/hochzeits-dj-europa' | '/ratgeber' | '/fragen' | '/impressum' | '/datenschutz'>,
+  RouteSeoConfig
+> = {
   '/': { changeFrequency: 'weekly', priority: 1 },
   '/hochzeit-events': { changeFrequency: 'monthly', priority: 0.8 },
   '/pakete': { changeFrequency: 'monthly', priority: 0.9 },
@@ -43,14 +50,15 @@ const staticRoutes: Record<Exclude<StaticPathname, '/hochzeits-dj-europa' | '/ra
   '/ablauf': { changeFrequency: 'monthly', priority: 0.7 },
   '/anfrage': { changeFrequency: 'monthly', priority: 0.9 },
   '/galerie': { changeFrequency: 'monthly', priority: 0.6 },
-  // GEO answer hub — ~40 Q&As, FAQPage-marked, deliberately the most citable,
-  // most content-dense page on the site. Weekly since it's expected to grow.
-  '/fragen': { changeFrequency: 'weekly', priority: 0.9 },
   '/epk': { changeFrequency: 'monthly', priority: 0.4 },
   '/kontakt': { changeFrequency: 'yearly', priority: 0.5 },
-  '/impressum': { changeFrequency: 'yearly', priority: 0.1 },
-  '/datenschutz': { changeFrequency: 'yearly', priority: 0.1 },
 };
+
+/**
+ * GEO answer hub — 40 Q&As, FAQPage-marked, deliberately the most citable,
+ * most content-dense page on the site. Weekly since it's expected to grow.
+ */
+const ANSWERS_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'weekly', priority: 0.9 };
 
 /**
  * `/ratgeber` and `/ratgeber/[slug]` are fully wired below (loader, config,
@@ -83,10 +91,50 @@ const REGION_COUNTRY_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly'
 const BLOG_ARTICLE_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly', priority: 0.6 };
 
 interface LocalizedEntry {
+  /** Canonical slug — used for every locale unless `slugByLocale` overrides it. */
   slug: string;
+  /**
+   * Per-locale slug, for clusters whose URL differs by language (blog
+   * articles). Cities and countries share one slug across all locales and
+   * leave this unset.
+   */
+  slugByLocale?: Partial<Record<Locale, string>>;
   /** Locales this specific entry actually has real, translated content for — never a blanket fallback to all seven. */
   locales: readonly Locale[];
+  /** ISO date of the last substantive content edit, when the content module tracks one. See the `lastmod` policy below. */
+  lastModified?: string;
 }
+
+/** Resolves one entry's slug for one locale — the shared rule for every cluster below. */
+function slugFor(entry: LocalizedEntry, locale: Locale): string {
+  return entry.slugByLocale?.[locale] ?? entry.slug;
+}
+
+/**
+ * ── `lastmod` policy ────────────────────────────────────────────────────────
+ *
+ * Only routes whose content module records a real edit date get a
+ * `lastModified`. Everything else omits the field.
+ *
+ * This file used to stamp `new Date()` — the build timestamp — onto all 179
+ * URLs, which told Google that every page on the site changed at every
+ * deploy, including legal pages nobody had touched in months. Google's
+ * documented behaviour is to ignore `lastmod` wholesale once it judges the
+ * values unreliable, so the field was not merely useless, it was actively
+ * spending the site's credibility on a signal it then lost. Their guidance for
+ * exactly this case is to leave the field out rather than guess.
+ *
+ * Who has a real date today:
+ * - blog articles → `post.updatedAt` (per article, the most precise signal here)
+ * - blog index    → `latestBlogUpdate()` — newest article edit in the corpus
+ * - `/fragen`     → `latestAnswerUpdate()` — newest edit in the answer corpus
+ *
+ * Who does not, and therefore gets no `lastmod`: the plain static pages,
+ * the city cluster (`src/content/cities.ts` tracks no dates) and the Europe
+ * cluster (`src/content/regions.ts` likewise). If either content module grows
+ * an `updatedAt`, wire it through `LocalizedEntry.lastModified` above and it
+ * flows into the output with no other change.
+ */
 
 /**
  * `src/content/cities.ts` (owned by the city-pages agent) is the single
@@ -152,13 +200,61 @@ async function loadRegionsData(): Promise<RegionsData> {
  */
 async function loadPublishedBlogPosts(): Promise<LocalizedEntry[]> {
   try {
-    const { getPublishedGuides, getReadyLocalesForPost } = await import('@/content/blog');
-    return getPublishedGuides().map((post) => ({
-      slug: post.slug,
-      locales: getReadyLocalesForPost(post),
-    }));
+    const { getPublishedGuides, getReadyLocalesForPost, getPostSlug } = await import('@/content/blog');
+    return getPublishedGuides().map((post) => {
+      const locales = getReadyLocalesForPost(post);
+      return {
+        slug: post.slug,
+        // Articles are the only cluster with per-language slugs — resolved
+        // through the same `getPostSlug()` the routes and hreflang use, so the
+        // sitemap cannot drift into listing URLs that no longer exist.
+        slugByLocale: Object.fromEntries(locales.map((l) => [l, getPostSlug(post, l)])),
+        locales,
+        // The one place on this site with a genuine per-URL edit date.
+        lastModified: post.updatedAt,
+      };
+    });
   } catch {
     return [];
+  }
+}
+
+/**
+ * The blog INDEX's own locale set — `BLOG_LOCALES` (de/tr/en). Distinct from
+ * the per-article sets above: `/ratgeber` renders in all seven locales because
+ * `routing.pathnames` registers a slug for each, but the four without articles
+ * render `<BlogEmptyState>` and `buildRatgeberIndexMetadata()` marks them
+ * `noindex`. Listing those four here (which this file used to do, looping over
+ * every locale) put four `noindex` URLs into the sitemap — exactly the
+ * contradiction the comment in `src/components/blog/blog-seo.ts` warned about
+ * while this file did the opposite. Same guard as the loaders above.
+ */
+async function loadBlogIndexLocales(): Promise<{ locales: readonly Locale[]; lastModified?: string }> {
+  try {
+    const { BLOG_LOCALES, latestBlogUpdate } = await import('@/content/blog');
+    // An index page changes when its newest entry changes — that is a real
+    // signal, unlike the build timestamp this used to carry.
+    return { locales: BLOG_LOCALES, lastModified: latestBlogUpdate() };
+  } catch {
+    return { locales: [] };
+  }
+}
+
+/**
+ * The GEO hub's own locale set — the locales the answer corpus is actually
+ * authored in (de/tr/en today), computed from the data by
+ * `getReadyLocalesForAnswers()`. `/fragen` renders in all seven locales and
+ * stays linked from the nav everywhere, but ku/nl/fr/es serve the German
+ * original via `resolveAnswerText()`'s fallback, so `buildFragenMetadata()`
+ * marks them `noindex` and drops them from hreflang. Reading the same function
+ * here is what keeps the sitemap from contradicting the page.
+ */
+async function loadAnswersLocales(): Promise<{ locales: readonly Locale[]; lastModified?: string }> {
+  try {
+    const { getReadyLocalesForAnswers, latestAnswerUpdate } = await import('@/content/answers');
+    return { locales: getReadyLocalesForAnswers(), lastModified: latestAnswerUpdate() };
+  } catch {
+    return { locales: [] };
   }
 }
 
@@ -170,20 +266,34 @@ function buildLanguages(urlFor: (locale: Locale) => string, forLocales: readonly
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const lastModified = new Date();
   const entries: MetadataRoute.Sitemap = [];
 
-  // Plain static routes — every configured locale.
+  // Plain static routes — every configured locale. No `lastModified`: none of
+  // these pages has a tracked edit date, see the `lastmod` policy above.
   for (const [pathname, config] of Object.entries(staticRoutes) as Array<
-    [Exclude<StaticPathname, '/hochzeits-dj-europa' | '/ratgeber'>, RouteSeoConfig]
+    [keyof typeof staticRoutes, RouteSeoConfig]
   >) {
     const languages = buildLanguages((locale) => absoluteUrl(pathname, locale), locales);
     for (const locale of locales) {
       entries.push({
         url: absoluteUrl(pathname, locale),
-        lastModified,
         changeFrequency: config.changeFrequency,
         priority: config.priority,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // GEO answer hub — only the locales the corpus is really written in.
+  const answers = await loadAnswersLocales();
+  if (answers.locales.length > 0) {
+    const languages = buildLanguages((locale) => absoluteUrl('/fragen', locale), answers.locales);
+    for (const locale of answers.locales) {
+      entries.push({
+        url: absoluteUrl('/fragen', locale),
+        ...(answers.lastModified && { lastModified: answers.lastModified }),
+        changeFrequency: ANSWERS_ROUTE_CONFIG.changeFrequency,
+        priority: ANSWERS_ROUTE_CONFIG.priority,
         alternates: { languages },
       });
     }
@@ -197,7 +307,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of city.locales) {
       entries.push({
         url: absoluteUrl(CITY_PATHNAME, locale, { stadt: city.slug }),
-        lastModified,
         changeFrequency: CITY_ROUTE_CONFIG.changeFrequency,
         priority: CITY_ROUTE_CONFIG.priority,
         alternates: { languages },
@@ -212,7 +321,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of regionsData.hubLocales) {
       entries.push({
         url: absoluteUrl(REGION_HUB_PATHNAME, locale),
-        lastModified,
         changeFrequency: HUB_ROUTE_CONFIG.changeFrequency,
         priority: HUB_ROUTE_CONFIG.priority,
         alternates: { languages },
@@ -228,7 +336,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of region.locales) {
       entries.push({
         url: absoluteUrl(REGION_COUNTRY_PATHNAME, locale, { land: region.slug }),
-        lastModified,
         changeFrequency: REGION_COUNTRY_ROUTE_CONFIG.changeFrequency,
         priority: REGION_COUNTRY_ROUTE_CONFIG.priority,
         alternates: { languages },
@@ -238,15 +345,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Ratgeber/Blog index + articles — withheld until the page routes exist, see `BLOG_ROUTES_LIVE`.
   if (BLOG_ROUTES_LIVE) {
-    const blogIndexLanguages = buildLanguages((locale) => absoluteUrl('/ratgeber', locale), locales);
-    for (const locale of locales) {
-      entries.push({
-        url: absoluteUrl('/ratgeber', locale),
-        lastModified,
-        changeFrequency: BLOG_INDEX_ROUTE_CONFIG.changeFrequency,
-        priority: BLOG_INDEX_ROUTE_CONFIG.priority,
-        alternates: { languages: blogIndexLanguages },
-      });
+    const blogIndex = await loadBlogIndexLocales();
+    if (blogIndex.locales.length > 0) {
+      const blogIndexLanguages = buildLanguages((locale) => absoluteUrl('/ratgeber', locale), blogIndex.locales);
+      for (const locale of blogIndex.locales) {
+        entries.push({
+          url: absoluteUrl('/ratgeber', locale),
+          ...(blogIndex.lastModified && { lastModified: blogIndex.lastModified }),
+          changeFrequency: BLOG_INDEX_ROUTE_CONFIG.changeFrequency,
+          priority: BLOG_INDEX_ROUTE_CONFIG.priority,
+          alternates: { languages: blogIndexLanguages },
+        });
+      }
     }
 
     // 15 published guides, template recaps excluded (see `loadPublishedBlogPosts()`).
@@ -254,13 +364,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const post of posts) {
       if (post.locales.length === 0) continue;
       const languages = buildLanguages(
-        (locale) => absoluteUrl(BLOG_ARTICLE_PATHNAME, locale, { slug: post.slug }),
+        (locale) => absoluteUrl(BLOG_ARTICLE_PATHNAME, locale, { slug: slugFor(post, locale) }),
         post.locales,
       );
       for (const locale of post.locales) {
         entries.push({
-          url: absoluteUrl(BLOG_ARTICLE_PATHNAME, locale, { slug: post.slug }),
-          lastModified,
+          url: absoluteUrl(BLOG_ARTICLE_PATHNAME, locale, { slug: slugFor(post, locale) }),
+          ...(post.lastModified && { lastModified: post.lastModified }),
           changeFrequency: BLOG_ARTICLE_ROUTE_CONFIG.changeFrequency,
           priority: BLOG_ARTICLE_ROUTE_CONFIG.priority,
           alternates: { languages },

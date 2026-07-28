@@ -26,7 +26,7 @@
  * full topic map and the cross-reference shown on the /fragen page.
  */
 
-import type { Locale } from '@/i18n/routing';
+import { locales, type Locale } from '@/i18n/routing';
 import type { StaticPathname } from '@/lib/seo';
 
 export const ANSWER_CATEGORIES = [
@@ -819,6 +819,36 @@ export const answers: Answer[] = [
 /** Resolves an entry's localized text for `locale`, falling back to German (always present). */
 export function resolveAnswerText(text: LocalizedAnswerText, locale: Locale): string {
   return (text as Partial<Record<Locale, string>>)[locale] ?? text.de;
+}
+
+/**
+ * The locales this corpus is genuinely authored in — a locale counts only if
+ * EVERY entry has both its question and its answer written in it. Today that
+ * is `de`/`tr`/`en` (40 entries each); `ku`/`nl`/`fr`/`es` have zero and are
+ * served the German original through `resolveAnswerText()` above.
+ *
+ * That fallback is the right behaviour for a visitor — a real German answer
+ * beats a machine-translated one — but it must never be dressed up as a
+ * translation for a crawler. Before this existed, `/fragen` claimed hreflang
+ * for all seven locales and the sitemap listed all seven as indexable, so
+ * `/nl/veelgestelde-vragen` shipped a Dutch shell around 40 German answers
+ * and asserted it was the Dutch version of the page.
+ *
+ * Computed from the data rather than hardcoded, so the moment someone
+ * translates the corpus into a further locale, hreflang, the sitemap and the
+ * `noindex` gate all switch on together without another edit. This mirrors
+ * `getReadyLocalesForCity()` (src/content/cities.ts) and
+ * `getReadyLocalesForPost()` (src/content/blog/index.ts) — the same rule the
+ * city, blog and region clusters already follow.
+ */
+export function getReadyLocalesForAnswers(): Locale[] {
+  const hasFullCoverage = (locale: Locale): boolean =>
+    answers.every((answer) => {
+      const q = (answer.q as Partial<Record<Locale, string>>)[locale];
+      const a = (answer.a as Partial<Record<Locale, string>>)[locale];
+      return Boolean(q?.trim()) && Boolean(a?.trim());
+    });
+  return locales.filter(hasFullCoverage);
 }
 
 export function getAnswersByCategory(category: AnswerCategory): Answer[] {
