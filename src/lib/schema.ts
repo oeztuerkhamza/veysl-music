@@ -191,25 +191,32 @@ export interface AggregateRatingSchema {
 }
 
 /**
- * MUST return `null` unless `site.reviews.isPublishable` is true.
+ * Returns `null` until this site has FIRST-PARTY ratings of its own, and it
+ * deliberately does not look at `site.reviews`.
  *
- * The Google profile currently shows a verified 5.0 rating, but the review
- * COUNT is not verified (`site.reviews.count` is a `0` placeholder pending the
- * client). Emitting a rating without a real, matching review count is exactly
- * the kind of fabricated review data that risks a Google manual action — this
- * gate must stay strict even though the rating itself is known to be real.
+ * `site.reviews` holds the Google profile's aggregate (5.0 from 31 reviews).
+ * That is real, and it may be shown on the page with attribution and a link —
+ * but it must never be emitted as this site's `aggregateRating`. Google's
+ * review-snippet guidelines require a marked-up rating to come from the site's
+ * own users and explicitly forbid carrying over another platform's
+ * aggregation; replaying Google's own average back at Google is a documented
+ * route to a manual action, which for this business would put the 5.0 and the
+ * whole review history at risk. docs/GOOGLE-BUSINESS-PROFILE.md §12 spells the
+ * split out, and this function reading `site.reviews.isPublishable` was
+ * exactly how that line got crossed once already.
+ *
+ * The first-party source is `src/content/testimonials.ts`, which is
+ * intentionally empty: no released quotes exist yet, and none are invented.
+ * Those entries also carry no per-review rating today, so there is nothing
+ * honest to aggregate — hence `null`, not a computed zero.
+ *
+ * To switch this on later: give `Testimonial` a `rating` field, collect the
+ * ratings through this site's own form, and aggregate them here. Nothing else
+ * in the graph needs to change — `localBusinessSchema()` already spreads the
+ * result only when it is non-null.
  */
 export function aggregateRatingSchema(): AggregateRatingSchema | null {
-  if (!site.reviews.isPublishable) return null;
-  return {
-    '@type': 'AggregateRating',
-    ratingValue: site.reviews.rating,
-    reviewCount: site.reviews.count,
-    // The Google profile these reviews live on is under a previous name (see
-    // `site.previousNames`) — cross-reference the same business entity by @id
-    // rather than duplicating a name here.
-    itemReviewed: { '@type': 'LocalBusiness', '@id': entityId(BUSINESS_ID_FRAGMENT), name: site.name },
-  };
+  return null;
 }
 
 export interface LocalBusinessSchema {

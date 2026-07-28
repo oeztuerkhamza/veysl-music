@@ -141,9 +141,19 @@ export const site = {
     whatsapp: '4917664844815',
   },
 
+  /**
+   * Ladungsfähige Anschrift — Pflichtangabe nach § 5 DDG, vom Betreiber
+   * bestätigt und identisch mit der Adresse im Google-Unternehmensprofil.
+   * Diese Deckungsgleichheit ist kein Zufall, sondern der Punkt: Google
+   * gleicht NAP-Daten (Name, Adresse, Telefon) zwischen Website, Impressum
+   * und Profil ab, und Abweichungen kosten lokale Sichtbarkeit.
+   *
+   * Füllt gleichzeitig `streetAddress`/`postalCode` in `businessAddress()`
+   * (src/lib/schema.ts), die bis hierher leer bleiben mussten.
+   */
   address: {
-    street: '', // TODO(kunde): vollständige Anschrift fürs Impressum (Pflichtangabe in DE)
-    postalCode: '', // TODO(kunde)
+    street: 'Asangstraße 98',
+    postalCode: '70329',
     city: 'Stuttgart-Obertürkheim',
   },
 
@@ -216,18 +226,33 @@ export const site = {
   ],
 
   /**
-   * Social Proof. Beide Werte sind jetzt am öffentlichen Google-Profil
-   * abgelesen (Knowledge Panel zu `kgmid=/g/11xp06nh71`, Stand Juli 2026):
-   * „5,0 · 31 Rezensionen". Damit ist `isPublishable` erstmals true, und
-   * Badge wie AggregateRating-Schema werden gerendert.
+   * Das Google-Unternehmensprofil — **ausschließlich zur sichtbaren Anzeige
+   * mit Quellenangabe**, niemals als strukturierte Bewertung dieser Website.
    *
-   * Die Regel dahinter bleibt unverändert streng: **niemals eine Zahl
-   * eintragen, die nicht am Profil steht.** Eine Bewertung ohne passende,
-   * echte Anzahl auszuzeichnen ist genau die erfundene Review-Angabe, die
-   * eine manuelle Google-Maßnahme auslöst. Ändert sich die Anzahl, wird sie
-   * hier nachgezogen — oder besser: sobald `GOOGLE_PLACES_API_KEY` auf dem
-   * Server gesetzt ist, liefert `src/lib/reviews/google-places.ts` sie
-   * täglich live und diese Zahl ist nur noch der Fallback.
+   * Beide Werte sind am öffentlichen Profil abgelesen (Knowledge Panel zu
+   * `kgmid=/g/11xp06nh71`, Stand Juli 2026): „5,0 · 31 Rezensionen".
+   * `isPublishable` schaltet damit den sichtbaren Badge und den
+   * Rezensionsabschnitt frei — und sonst nichts.
+   *
+   * ⚠️ Diese Zahlen dürfen NICHT in `aggregateRatingSchema()` landen.
+   * Googles Review-Snippet-Richtlinien verlangen, dass eine ausgezeichnete
+   * Bewertung von den eigenen Nutzern der Seite stammt, und untersagen
+   * ausdrücklich, die Aggregation einer anderen Plattform zu übernehmen —
+   * Googles eigenen Schnitt als eigenes `aggregateRating` zurückzuspielen
+   * ist ein dokumentierter Weg in eine manuelle Maßnahme. Genau das ist hier
+   * schon einmal passiert und wurde zurückgebaut; die Trennung steht
+   * ausführlich in docs/GOOGLE-BUSINESS-PROFILE.md §12.
+   *
+   *   Google-Bewertungen  → sichtbarer Abschnitt, mit Attribution und Link
+   *   Eigene Stimmen      → `aggregateRating`-Schema, Stern-Rich-Snippet
+   *
+   * Die zweite Zeile ist noch leer: `src/content/testimonials.ts` enthält
+   * bewusst keine Einträge, solange keine freigegebenen Zitate vorliegen.
+   *
+   * Die Regel für die Zahlen selbst bleibt streng: **niemals eine Zahl
+   * eintragen, die nicht am Profil steht.** Sobald `GOOGLE_PLACES_API_KEY`
+   * auf dem Server gesetzt ist, liefert `src/lib/reviews/google-places.ts`
+   * beide täglich live und diese Werte sind nur noch der Fallback.
    */
   reviews: {
     /**
