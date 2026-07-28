@@ -36,6 +36,8 @@ export function EnquiryForm() {
   const [submitted, setSubmitted] = useState<{ firstName: string; eventDate: string } | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const restoredRef = useRef(false);
+  /** Set by `goToStep` so the effect below only moves focus for user-initiated step changes, never on mount or on sessionStorage restore. */
+  const pendingHeadingFocusRef = useRef(false);
 
   const form = useForm<EnquiryFormInput>({
     resolver: zodResolver(enquirySchema),
@@ -43,7 +45,7 @@ export function EnquiryForm() {
     mode: 'onBlur',
   });
 
-  const { handleSubmit, trigger, reset, watch, formState } = form;
+  const { handleSubmit, trigger, reset, watch, setFocus, formState } = form;
 
   // Reload-safe: restore an in-progress answer set so visitors don't lose the funnel.
   useEffect(() => {
@@ -72,9 +74,28 @@ export function EnquiryForm() {
     return () => subscription.unsubscribe();
   }, [watch, step]);
 
-  const focusHeading = useCallback(() => {
-    requestAnimationFrame(() => headingRef.current?.focus());
-  }, []);
+  /**
+   * Moves focus to the new step's heading after React has committed it.
+   *
+   * This used to be a `requestAnimationFrame` fired from inside `goToStep`,
+   * which never actually worked: at that point `headingRef` still pointed at
+   * the outgoing step's heading, and focusing an element that is about to be
+   * unmounted drops focus to `<body>`. Verified in the browser — every "next"
+   * and every "back" reset the active element to BODY, so a keyboard user was
+   * thrown to the top of the document and had to tab all the way back down on
+   * each of the three steps. The live region still announced the change, so it
+   * was audible but unreachable.
+   *
+   * An effect keyed to `step` runs after the commit, when the ref holds the
+   * heading that is actually on screen. `pendingHeadingFocusRef` keeps it to
+   * deliberate navigation: without it this would also steal focus on first
+   * paint and when a half-filled form is restored from sessionStorage.
+   */
+  useEffect(() => {
+    if (!pendingHeadingFocusRef.current) return;
+    pendingHeadingFocusRef.current = false;
+    headingRef.current?.focus();
+  }, [step]);
 
   const announceStep = useCallback(
     (targetStep: number) => {
@@ -86,19 +107,42 @@ export function EnquiryForm() {
 
   const goToStep = useCallback(
     (targetStep: number) => {
+      pendingHeadingFocusRef.current = true;
       setStep(targetStep);
       announceStep(targetStep);
-      focusHeading();
     },
-    [announceStep, focusHeading]
+    [announceStep]
   );
 
   const handleNext = useCallback(async () => {
     const fields = Array.from(stepFieldGroups[step - 1]) as (keyof EnquiryFormInput)[];
     const valid = await trigger(fields);
-    if (!valid) return;
+    if (!valid) {
+      // Move focus to the first field that failed, and say why.
+      //
+      // `trigger()` — unlike `handleSubmit()` — never moves focus, so before
+      // this the button click simply did nothing observable to anyone not
+      // watching the fields: the errors appeared, correctly wired up with
+      // `aria-invalid` and `aria-describedby`, but focus stayed on whatever
+      // was last touched and nothing was announced. A keyboard or screen
+      // reader user pressed "next", heard silence, and had to go hunting —
+      // on the one form the whole site exists to get filled in.
+      //
+      // Reuses the live region the successful path already uses, so the
+      // announcement arrives the same way a step change does.
+      // `form.getFieldState()` and not the destructured `formState.errors`:
+      // that object is captured at render time, so reading it here — after an
+      // `await` — can see the state from before validation ran and find no
+      // error at all.
+      const firstInvalid = fields.find((field) => form.getFieldState(field).invalid);
+      if (firstInvalid) {
+        setLiveMessage(t('validation.stepIncomplete'));
+        setFocus(firstInvalid, { shouldSelect: true });
+      }
+      return;
+    }
     if (step < TOTAL_STEPS) goToStep(step + 1);
-  }, [goToStep, step, trigger]);
+  }, [form, goToStep, setFocus, step, t, trigger]);
 
   const handleBack = useCallback(() => {
     if (step > 1) goToStep(step - 1);
