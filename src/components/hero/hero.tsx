@@ -101,14 +101,20 @@ export async function Hero() {
               it becomes a horizontal rail rather than disappearing. */}
           <Reveal delay={0.4} y={24} className="lg:col-span-4 lg:self-end">
             <dl className="flex gap-8 border-t border-line pt-6 sm:gap-12 lg:flex-col lg:gap-7 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              {/* `dt` before `dd` in the DOM, reversed visually with
+                  flex-col-reverse. HTML requires the term to precede its
+                  definition; emitting the number first would have screen
+                  readers announce the definition before the term it belongs
+                  to. The visual order — figure large, label beneath — is a
+                  layout concern and belongs in CSS, not in the markup. */}
               {facts.map((fact) => (
-                <div key={fact.label}>
-                  <dd className="font-display text-3xl font-medium leading-none text-gold sm:text-4xl">
-                    {fact.value}
-                  </dd>
+                <div key={fact.label} className="flex flex-col-reverse">
                   <dt className="text-label mt-2.5 max-w-[18ch] leading-[1.5] text-ink-faint">
                     {fact.label}
                   </dt>
+                  <dd className="font-display text-3xl font-medium leading-none text-gold sm:text-4xl">
+                    {fact.value}
+                  </dd>
                 </div>
               ))}
             </dl>

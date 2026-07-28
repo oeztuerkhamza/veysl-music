@@ -131,7 +131,13 @@ export function WaveformPlayer({ mix, queue, className }: WaveformPlayerProps) {
           disabled && 'cursor-not-allowed opacity-40 hover:bg-transparent hover:text-gold'
         )}
       >
-        {isCurrent && isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+        {/* aria-hidden: the button already carries a descriptive aria-label,
+            and without this some screen readers announce the icon as well. */}
+        {isCurrent && isPlaying ? (
+          <Pause className="h-5 w-5" aria-hidden="true" />
+        ) : (
+          <Play className="h-5 w-5" aria-hidden="true" />
+        )}
       </button>
 
       {/* Fixed height reserved up front — real waveform fades in over the

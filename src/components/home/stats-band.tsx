@@ -31,12 +31,14 @@ export async function StatsBand() {
       <Container>
         <Reveal>
           <dl className="grid gap-8 text-center sm:grid-cols-3">
+            {/* `dt` before `dd`, reversed visually — HTML requires the term to
+                precede its definition. See the same note in hero.tsx. */}
             {STAT_KEYS.map((key) => (
-              <div key={key} className="flex flex-col items-center">
-                <dd className="font-display text-4xl text-gold sm:text-5xl">{values[key]}</dd>
+              <div key={key} className="flex flex-col-reverse items-center">
                 <dt className="mt-2 text-sm uppercase tracking-[0.1em] text-ink-muted">
                   {labels[key]}
                 </dt>
+                <dd className="font-display text-4xl text-gold sm:text-5xl">{values[key]}</dd>
               </div>
             ))}
           </dl>
