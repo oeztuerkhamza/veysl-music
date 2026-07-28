@@ -61,10 +61,28 @@ export default function robots(): MetadataRoute.Robots {
     return { rules: [{ userAgent: '*', disallow: '/' }] };
   }
 
+  /**
+   * `/api/faq` muss ausdrücklich VOR der `/api/`-Sperre stehen.
+   *
+   * `public/llms.txt` bewirbt genau diese URL als „maschinenlesbaren
+   * Fragenkatalog … für den direkten Import durch KI-Systeme", und `/fragen`
+   * verlinkt sie sichtbar. Mit `Disallow: /api/` als einziger Regel war der
+   * Endpunkt für dieselben Crawler gesperrt, die ihn laut llms.txt abrufen
+   * sollen — die Seite lud also zu etwas ein, das robots.txt verbot.
+   *
+   * Die Reihenfolge im Array ist nicht kosmetisch: Google und die
+   * KI-Crawler werten bei gleicher Spezifität die zuerst passende Regel,
+   * und der REP-Standard gibt der längeren, spezifischeren Regel ohnehin
+   * Vorrang — `Allow: /api/faq` schlägt damit `Disallow: /api/`.
+   * Alles andere unter `/api/` (Formular-Endpunkte, GraphQL, Payload)
+   * bleibt gesperrt.
+   */
+  const apiRule = { allow: ['/', '/api/faq'], disallow: '/api/' };
+
   return {
     rules: [
-      { userAgent: '*', allow: '/', disallow: '/api/' },
-      ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: '/', disallow: '/api/' })),
+      { userAgent: '*', ...apiRule },
+      ...AI_CRAWLERS.map((userAgent) => ({ userAgent, ...apiRule })),
     ],
     sitemap: `${base}/sitemap.xml`,
     host: base,

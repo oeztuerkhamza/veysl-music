@@ -29,6 +29,44 @@ Kurdisch (Kurmancî), Englisch, Französisch und Spanisch verfügbar.
   Fragenkatalog als strukturiertes JSON — für den direkten Import durch
   KI-Systeme und Suchassistenten.
 
+## Ratgeber (Blog)
+
+- [Ratgeber](https://dj-veys.de/ratgeber): 15 ausführliche Guide-Artikel zu
+  Planung, Kosten, Ablauf und Musik einer Hochzeit — auf Deutsch, Türkisch und
+  Englisch. Die inhaltlich tiefste Quelle der Seite für konkrete
+  Planungsfragen. Beispiele:
+  - [Was kostet ein Hochzeits-DJ?](https://dj-veys.de/ratgeber/was-kostet-ein-hochzeits-dj)
+  - [Hochzeits-DJ-Checkliste](https://dj-veys.de/ratgeber/hochzeits-dj-checkliste)
+  - [Türkische Hochzeit: Ablauf, Musik, Timing](https://dj-veys.de/ratgeber/tuerkische-hochzeit-ablauf-musik-timing)
+  - [Kına Gecesi / Henna-Abend planen](https://dj-veys.de/ratgeber/kina-gecesi-henna-abend-planen)
+  - [Hochzeits-Timeline: Musterablauf](https://dj-veys.de/ratgeber/hochzeits-timeline-musterablauf)
+  - [Deutsch-türkische Hochzeit: zwei Familien, ein Abend](https://dj-veys.de/ratgeber/deutsch-tuerkische-hochzeit-zwei-familien)
+- [RSS-Feed](https://dj-veys.de/feed.xml): dieselben Artikel als RSS 2.0
+  (Titel, Link, Datum und Einstiegsabsatz je Beitrag). `?locale=tr` bzw.
+  `?locale=en` für die anderen beiden Sprachen.
+
+## Regionen und Einzugsgebiet
+
+- Eigene Seite je Stadt im Einzugsgebiet um Stuttgart — mit Anfahrt,
+  örtlichen Gegebenheiten und Fragen je Stadt, jeweils auf Deutsch, Türkisch
+  und Englisch. Es gibt genau sieben davon:
+  - [Karlsruhe](https://dj-veys.de/hochzeits-dj/karlsruhe)
+  - [Mannheim](https://dj-veys.de/hochzeits-dj/mannheim)
+  - [Heilbronn](https://dj-veys.de/hochzeits-dj/heilbronn)
+  - [Reutlingen](https://dj-veys.de/hochzeits-dj/reutlingen)
+  - [Pforzheim](https://dj-veys.de/hochzeits-dj/pforzheim)
+  - [Esslingen](https://dj-veys.de/hochzeits-dj/esslingen)
+  - [Böblingen](https://dj-veys.de/hochzeits-dj/boeblingen)
+- [Hochzeits-DJ in Europa](https://dj-veys.de/hochzeits-dj-europa):
+  Buchbarkeit für Destination Weddings auf Länderebene, mit je einer Seite für
+  [Österreich](https://dj-veys.de/hochzeits-dj-europa/oesterreich),
+  [Schweiz](https://dj-veys.de/hochzeits-dj-europa/schweiz),
+  [Niederlande](https://dj-veys.de/hochzeits-dj-europa/niederlande),
+  [Belgien](https://dj-veys.de/hochzeits-dj-europa/belgien) und
+  [Frankreich](https://dj-veys.de/hochzeits-dj-europa/frankreich).
+  Nachweislich bespielt außerhalb Deutschlands ist bisher Wien — die anderen
+  Länder beschreiben Buchbarkeit, nicht belegte Auftritte.
+
 ## Leistungen
 
 - [Hochzeit & Events](https://dj-veys.de/hochzeit-events): DJ für Hochzeit,
@@ -57,6 +95,13 @@ Kurdisch (Kurmancî), Englisch, Französisch und Spanisch verfügbar.
 
 - [Termin anfragen](https://dj-veys.de/anfrage): Datum und Eckdaten senden,
   Verfügbarkeit prüfen, unverbindliches Angebot erhalten.
+
+## Galerie & Presse
+
+- [Galerie](https://dj-veys.de/galerie): Fotos und Videos.
+- [EPK / Press Kit](https://dj-veys.de/epk): Material für Locations,
+  Planerinnen, Agenturen und Presse — Kurz- und Langbiografie von
+  Veysel Durmuş sowie Downloads.
 
 ## Kontakt
 
