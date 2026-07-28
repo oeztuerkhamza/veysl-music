@@ -107,11 +107,23 @@ docker build --target builder -t veysl-app:build-tools \
   --build-arg NEXT_PUBLIC_CLARITY_PROJECT_ID="$(env_value NEXT_PUBLIC_CLARITY_PROJECT_ID)" \
   . >/dev/null
 
+# The volume is read off the running container rather than hardcoded. Compose
+# prefixes volume names with the project directory, so the volume declared as
+# `veysl-data` exists as `app_veysl-data` — and `docker run -v veysl-data:…`
+# does not fail on the mismatch, it silently creates an empty volume. This
+# step was therefore migrating a phantom database on every deploy and
+# reporting success. The site still worked, because payload.config.mts runs
+# `prodMigrations` at boot against the real one; all this step actually
+# provided was false confidence.
+data_volume="$(docker inspect veysl-app --format '{{range .Mounts}}{{if eq .Destination "/app/data"}}{{.Name}}{{end}}{{end}}' 2>/dev/null)"
+[ -n "$data_volume" ] || die "Could not resolve the app's data volume from the running container."
+docker volume inspect "$data_volume" >/dev/null 2>&1 || die "Resolved data volume '$data_volume' does not exist."
+
 set +e
 docker run --rm \
   --env-file .env \
   -e PAYLOAD_CONFIG_PATH=payload.config.mts \
-  -v veysl-data:/app/data \
+  -v "$data_volume":/app/data \
   -w /app \
   veysl-app:build-tools \
   sh -c 'if [ -d src/migrations ]; then npx payload migrate; else echo "src/migrations/ not found — nothing to run (unexpected; it is committed to this repo)."; fi'

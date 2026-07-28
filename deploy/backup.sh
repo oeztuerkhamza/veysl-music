@@ -32,15 +32,45 @@ cd "$(dirname "$0")/.."
 # the deploy user with mode 750.
 BACKUP_DIR="${BACKUP_DIR:-/opt/veysl/backups}"
 RETENTION_DAYS="${RETENTION_DAYS:-14}"
-DB_VOLUME="${DB_VOLUME:-veysl-data}"
-MEDIA_VOLUME="${MEDIA_VOLUME:-veysl-media}"
 DB_FILENAME="${DB_FILENAME:-veysl-cms.db}"
+
+# Volume names are resolved from the RUNNING CONTAINER, not hardcoded.
+#
+# Compose prefixes volume names with the project name — under /opt/veysl/app
+# the volume declared as `veysl-data` actually exists as `app_veysl-data`.
+# These scripts previously hardcoded the unprefixed names, and Docker
+# *silently creates* a named volume that does not exist rather than failing.
+# So every backup ran against an empty volume Docker had just invented, wrote
+# a 0-row database, and reported success. A restore drill against it passed
+# too, because it faithfully restored nothing. That is the worst possible
+# failure mode for a backup: it looks like it works right up until the day it
+# has to.
+#
+# Asking the running container removes the guesswork entirely — whatever it
+# has mounted at /app/data is by definition the database being written to.
+resolve_mount() {
+  docker inspect "$1" \
+    --format "{{range .Mounts}}{{if eq .Destination \"$2\"}}{{.Name}}{{end}}{{end}}" 2>/dev/null
+}
+
+DB_VOLUME="${DB_VOLUME:-$(resolve_mount veysl-app /app/data)}"
+MEDIA_VOLUME="${MEDIA_VOLUME:-$(resolve_mount veysl-app /app/media)}"
 # Small, always-available base image; sqlite/tar are installed on the fly in
 # the throwaway container rather than requiring a custom prebuilt image.
 TOOL_IMAGE="alpine:3.20"
 
 log() { printf '\n\033[1;32m==> %s\033[0m\n' "$1"; }
 die() { printf '\033[1;31mxx %s\033[0m\n' "$1" >&2; exit 1; }
+
+# Refuse to run against a volume that does not already exist. Without this,
+# `docker run -v <name>:/data` conjures an empty one and every downstream step
+# succeeds against nothing — which is exactly how the empty backups happened.
+require_volume() {
+  [ -n "$1" ] || die "Could not resolve the $2 volume. Is the veysl-app container running? Override with $3=<name>."
+  docker volume inspect "$1" >/dev/null 2>&1 || die "Volume '$1' does not exist. Refusing to create an empty one — check '$3'."
+}
+require_volume "$DB_VOLUME" "database" DB_VOLUME
+require_volume "$MEDIA_VOLUME" "media" MEDIA_VOLUME
 
 mkdir -p "$BACKUP_DIR/db" "$BACKUP_DIR/media"
 
@@ -102,8 +132,14 @@ case "$cmd" in
     # distinction the only way to test the restore path was to take the
     # site down, so in practice nobody tests it, and the first real
     # execution of this code is during an actual incident.
+    # "Live" means: the volume the running app has mounted. Comparing against
+    # a hardcoded name was wrong for the same reason the defaults above were —
+    # it never matched the prefixed name, so a real restore would have been
+    # treated as a harmless drill and skipped stopping the app, corrupting the
+    # database it was restoring into.
     is_live_restore=0
-    if [ "$DB_VOLUME" = "veysl-data" ] || [ "$MEDIA_VOLUME" = "veysl-media" ]; then
+    if [ "$DB_VOLUME" = "$(resolve_mount veysl-app /app/data)" ] ||
+       [ "$MEDIA_VOLUME" = "$(resolve_mount veysl-app /app/media)" ]; then
       is_live_restore=1
     fi
 
