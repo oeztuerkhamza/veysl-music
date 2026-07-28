@@ -174,22 +174,41 @@ export async function buildMetadata<P extends StaticPathname>(options: BuildMeta
  * with `params: { land: region.slug }` and `values: { country: region.name }`.
  */
 export async function buildMetadata<P extends DynamicPathname>(
-  options: BuildMetadataBase<P> & { params: RouteParamsMap[P] },
+  options: BuildMetadataBase<P> & {
+    params: RouteParamsMap[P];
+    /**
+     * Per-locale route params, for clusters whose slug differs by language.
+     *
+     * Without this, hreflang substituted ONE set of params into every locale's
+     * URL — correct for cities and countries (`karlsruhe` is `karlsruhe` in
+     * all seven) but wrong for blog articles once they gained localized slugs:
+     * the Turkish alternate would have pointed at
+     * `/tr/rehber/<german-slug>`, a URL that no longer exists. Any locale
+     * missing from this map falls back to `params`, so existing callers keep
+     * their previous behaviour exactly.
+     */
+    paramsByLocale?: Partial<Record<Locale, RouteParamsMap[P]>>;
+  },
 ): Promise<Metadata>;
 export async function buildMetadata(
-  options: BuildMetadataBase<AppPathname> & { params?: Record<string, string> },
+  options: BuildMetadataBase<AppPathname> & {
+    params?: Record<string, string>;
+    paramsByLocale?: Partial<Record<Locale, Record<string, string>>>;
+  },
 ): Promise<Metadata> {
-  const { locale, pathname, values, noIndex = false, image, params, availableLocales = locales } = options;
+  const { locale, pathname, values, noIndex = false, image, params, paramsByLocale, availableLocales = locales } = options;
 
   const namespace = messageNamespaceByPathname[pathname];
   const t = await getTranslations({ locale, namespace });
   const title = t('title', values);
   const description = t('description', values);
 
-  const urlFor = (forLocale: Locale): string =>
-    params
-      ? absoluteUrl(pathname as DynamicPathname, forLocale, params as RouteParamsMap[DynamicPathname])
+  const urlFor = (forLocale: Locale): string => {
+    const localeParams = paramsByLocale?.[forLocale] ?? params;
+    return localeParams
+      ? absoluteUrl(pathname as DynamicPathname, forLocale, localeParams as RouteParamsMap[DynamicPathname])
       : absoluteUrl(pathname as StaticPathname, forLocale);
+  };
 
   const canonical = urlFor(locale);
 
@@ -205,7 +224,19 @@ export async function buildMetadata(
   const alternateLocale = hreflangLocales.filter((l) => l !== locale).map((l) => ogLocales[l]);
 
   return {
-    title,
+    // `absolute`, not a bare string: the root layout
+    // (src/app/[locale]/layout.tsx) declares `title.template = '%s | DJ Veys'`,
+    // and EVERY title in messages/*.json already ends in the brand
+    // ("Pakete & Preise — Hochzeits-DJ | DJ Veys"). A plain string therefore
+    // went through the template and shipped `… | DJ Veys | DJ Veys` on 14 of
+    // 15 route families in all seven locales — only the home page escaped it.
+    // Google truncates the title around 580px, so the duplicate ate the
+    // keyword tail of every SERP entry. Fixing it here rather than stripping
+    // the brand from 119 message strings keeps the brand in the translators'
+    // hands, where the separator style (— vs |) is a per-language decision.
+    // The layout's `template`/`default` still cover any route that does not
+    // come through this builder.
+    title: { absolute: title },
     description,
     alternates: {
       canonical,
@@ -235,7 +266,14 @@ export async function buildMetadata(
       images: [ogImageUrl],
     },
     robots: noIndex
-      ? { index: false, follow: false }
+      ? // `follow: true`, not `nofollow`. These pages are excluded from the
+        // index, not from the site: the legal pages sit in every footer and
+        // the empty-shell locales of `/ratgeber` and `/fragen` link straight
+        // back into the real de/tr/en content. `nofollow` told crawlers to
+        // drop every one of those links, which throws away discovery paths
+        // and link equity for no benefit — `noindex` alone already keeps the
+        // page itself out of results, which is the whole intent.
+        { index: false, follow: true }
       : {
           index: true,
           follow: true,
