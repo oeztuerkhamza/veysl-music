@@ -273,6 +273,25 @@ export const site = {
     rating: 5.0,
     count: 31,
     profileUrl: 'https://maps.app.goo.gl/YCLDDHtrZfQEbhd48',
+    /**
+     * Der Kurzlink, den Google dem Inhaber im Unternehmensprofil selbst
+     * ausgibt („Rezensionen anfordern"). Überschreibt die aus der Place ID
+     * abgeleitete Variante in `writeReviewUrl()`.
+     *
+     * Beide landen im selben Dialog — dieser hier löst nachweislich auf
+     * `search.google.com/local/writereview?placeid=ChIJqW8NRI0tU6gROWl2dblWNbg`
+     * auf, was nebenbei die abgeleitete Place ID unabhängig bestätigt hat.
+     * Zwei Gründe trotzdem für diesen:
+     *
+     * 1. Er ist kurz genug, um ihn einem Paar per WhatsApp zu schicken, ohne
+     *    dass die Nachricht nach einem Tracking-Link aussieht — und genau so
+     *    wird er eingesetzt (docs/GOOGLE-BUSINESS-PROFILE.md: eine Anfrage
+     *    pro Paar, direkt nach der Feier, nie als Rundmail).
+     * 2. Google hängt beim Auflösen `laa=nmx-review-solicitation-ia2` an,
+     *    kennzeichnet die Rezension also als vom Inhaber angefragt. Das ist
+     *    der legitime, dokumentierte Weg, um Rezensionen zu bitten.
+     */
+    writeReviewUrl: 'https://g.page/r/CTlpdnW5VjW4EBM/review',
     get isPublishable() {
       return this.count > 0 && this.rating > 0;
     },

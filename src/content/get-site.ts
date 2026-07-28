@@ -70,7 +70,15 @@ export interface ResolvedSite {
   capabilities: Site['capabilities'];
   partnersUnconfirmed: readonly string[];
   /** `isPublishable` is recomputed from the *merged* rating/count, never copied verbatim — see the guardrail in the global's admin description. */
-  reviews: { googlePlaceId: string; rating: number; count: number; profileUrl: string; isPublishable: boolean };
+  reviews: {
+    googlePlaceId: string;
+    rating: number;
+    count: number;
+    profileUrl: string;
+    /** Owner's short review link — see the note in site.ts. Not CMS-editable; carried through so both paths agree. */
+    writeReviewUrl: string;
+    isPublishable: boolean;
+  };
   season: { year: number };
   openingHours: OpeningHoursEntry[];
 }
@@ -250,6 +258,10 @@ export async function getSite(): Promise<ResolvedSite> {
       rating: mergedRating,
       count: mergedCount,
       profileUrl: pickString(reviews.profileUrl, base.reviews.profileUrl),
+      // Always the static value: there is no CMS field for it, and rebuilding
+      // this object field-by-field silently dropped it before — leaving the
+      // CMS-resolved site with `undefined` where the static one had a link.
+      writeReviewUrl: base.reviews.writeReviewUrl,
       isPublishable: mergedCount > 0 && mergedRating > 0,
     },
     openingHours: mapOpeningHours(overrides.openingHours),

@@ -67,11 +67,20 @@ interface RawPlaceResponse {
 }
 
 /**
- * Google's own review-writing dialog for a place. Built from the Place ID
- * rather than hand-assembled elsewhere, so there is one definition of the link
+ * Google's own review-writing dialog for a place — one definition of the link
  * we ask couples to follow after a wedding.
+ *
+ * Prefers the short `g.page/r/…/review` link Google hands the owner inside the
+ * Business Profile (`site.reviews.writeReviewUrl`), and derives the canonical
+ * `search.google.com/local/writereview` form from the Place ID only when that
+ * is not configured. Both open the same dialog — verified by following the
+ * short link, which resolves to exactly this URL for this Place ID — but the
+ * owner's one is short enough to send a couple over WhatsApp and is tagged by
+ * Google as an owner-solicited review.
  */
 export function writeReviewUrl(placeId: string): string {
+  const configured = site.reviews.writeReviewUrl?.trim();
+  if (configured) return configured;
   return `https://search.google.com/local/writereview?placeid=${encodeURIComponent(placeId)}`;
 }
 
