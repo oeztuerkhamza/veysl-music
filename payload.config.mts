@@ -23,7 +23,7 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 /**
- * Admin panel + CMS for veysl.de. See the top of the repo's `.env.example`
+ * Admin panel + CMS for dj-veys.de. See the top of the repo's `.env.example`
  * for the env vars this reads, and the final report for the full
  * architecture rationale (Payload 3 vs. a hand-rolled admin) and
  * compatibility evidence with Next.js 16 / React 19.2.
@@ -111,7 +111,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     meta: {
-      titleSuffix: '— VEYSL Admin',
+      titleSuffix: '— DJ Veys Admin',
     },
   },
   editor: lexicalEditor(),

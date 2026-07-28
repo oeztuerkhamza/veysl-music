@@ -58,7 +58,7 @@ jobs:
         # the real values are supplied at Docker build time on the server
         # via .env, see Dockerfile / docs/DEPLOYMENT.md.
         env:
-          NEXT_PUBLIC_SITE_URL: https://veysl.de
+          NEXT_PUBLIC_SITE_URL: https://dj-veys.de
           NEXT_TELEMETRY_DISABLED: '1'
         run: npm run build
 

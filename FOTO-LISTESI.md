@@ -1,6 +1,6 @@
-# VEYSL.DE — Fotoğraf Çekim Listesi
+# DJ-VEYS.DE — Fotoğraf Çekim Listesi
 
-**Kime:** Veysel · **Ne için:** veysl.de web sitesi
+**Kime:** Veysel · **Ne için:** dj-veys.de web sitesi
 **Nasıl kullanılır:** Bu listeyi doğrudan fotoğrafçıya ver, ya da kendin bir düğünde çektir.
 
 Sitenin tasarımı fotoğrafsız da düzgün görünecek şekilde kuruldu — boş yerler kırık resim değil, tasarlanmış boşluk olarak duruyor. Ama **düğün pazarında talebi getiren şey fotoğraf.** Çift üç DJ sitesini iki dakikada karşılaştırıyor.
