@@ -1,4 +1,4 @@
-# VEYSL.DE — Shared Build Contract
+# DJ Veys.DE — Shared Build Contract
 
 **Read this file before writing any code.** Every agent working on this repo shares this
 contract. Do not invent your own tokens, primitives, or conventions.
@@ -7,7 +7,7 @@ contract. Do not invent your own tokens, primitives, or conventions.
 
 ## 1. Project
 
-**VEYSL** — premium wedding & event DJ, Germany. Domain `veysl.de`.
+**DJ Veys** — premium wedding & event DJ, Germany. Domain `dj-veys.de`.
 Repo: `D:\projects\veysl-music` (Windows, PowerShell).
 
 **The site is a lead-generation machine, not a portfolio.** Every page must serve

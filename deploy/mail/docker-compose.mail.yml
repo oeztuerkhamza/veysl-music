@@ -1,4 +1,4 @@
-# Eigener Mailserver für veysl.de — siehe docs/MAIL-SELFHOSTED.md.
+# Eigener Mailserver für dj-veys.de — siehe docs/MAIL-SELFHOSTED.md.
 #
 # Getrennt von der Haupt-docker-compose.yml, damit ein Deploy der Website
 # (deploy/deploy.sh recreated den app-Container) das Postfach nicht mit
@@ -17,7 +17,7 @@ services:
     # Muss mit dem PTR-Eintrag der Server-IP übereinstimmen — das ist der
     # Name, mit dem sich Postfix bei fremden Servern meldet (HELO). Stimmt er
     # nicht mit dem rDNS, landet die Mail im Spam. Siehe MAIL-SELFHOSTED.md.
-    hostname: mail.veysl.de
+    hostname: mail.dj-veys.de
     restart: unless-stopped
     ports:
       - '25:25' # Server-zu-Server-Zustellung. Ausgehend muss netcup 25 freischalten
@@ -35,7 +35,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       # Pflichtangabe nach RFC 2142 und Zieladresse der Alias-Weiterleitungen.
-      POSTMASTER_ADDRESS: info@veysl.de
+      POSTMASTER_ADDRESS: info@dj-veys.de
       SSL_TYPE: letsencrypt
       # Rspamd übernimmt Spamfilter UND DKIM-Signierung; OpenDKIM wird dann
       # nicht zusätzlich gebraucht.
@@ -68,7 +68,7 @@ services:
     depends_on:
       - mailserver
     environment:
-      # Über den Containernamen statt über mail.veysl.de: der Weg bleibt
+      # Über den Containernamen statt über mail.dj-veys.de: der Weg bleibt
       # intern, unabhängig von DNS und öffentlicher Erreichbarkeit.
       ROUNDCUBEMAIL_DEFAULT_HOST: tls://mailserver
       ROUNDCUBEMAIL_DEFAULT_PORT: 143
@@ -83,7 +83,7 @@ services:
       - roundcube-db:/var/roundcube/db
       - roundcube-config:/var/roundcube/config
     # Kein Port nach außen: nginx terminiert TLS und proxyt
-    # https://mail.veysl.de hierher. Siehe nginx/ und docs/MAIL-SELFHOSTED.md.
+    # https://mail.dj-veys.de hierher. Siehe nginx/ und docs/MAIL-SELFHOSTED.md.
     expose:
       - '80'
     networks:

@@ -1,11 +1,11 @@
-# VEYSL — GEO (Generative Engine Optimization) Strategy
+# DJ Veys — GEO (Generative Engine Optimization) Strategy
 
 **Scope:** this document covers only what the GEO agent built — `src/content/answers.ts`,
 `src/app/[locale]/fragen/**`, `src/components/geo/**` and `src/app/api/faq/route.ts`. It
 assumes `docs/SEO-COMPETITIVE-ANALYSIS.md`, `docs/SEO-KEYWORD-MAP.md` and
 `docs/SEO-ACTION-PLAN.md` (owned by the SEO agent) as background — read those for the
 classic-SEO/technical layer this sits on top of. This doc is honest, in the same spirit
-as `SEO-ACTION-PLAN.md`'s opening: code can make VEYSL *quotable*; it cannot manufacture
+as `SEO-ACTION-PLAN.md`'s opening: code can make DJ Veys *quotable*; it cannot manufacture
 the off-page signals that ultimately decide whether an answer engine trusts what it finds.
 
 ---
@@ -14,7 +14,7 @@ the off-page signals that ultimately decide whether an answer engine trusts what
 
 Not "rank on page 1". The goal is: when someone asks ChatGPT, Perplexity, Gemini, Copilot
 or a Google AI Overview *"who is the best wedding DJ in Stuttgart"* / *"Stuttgart'ta en
-iyi düğün DJ'i"* / *"türkischer Hochzeits-DJ Stuttgart"*, **veysl.de is one of the 2–7
+iyi düğün DJ'i"* / *"türkischer Hochzeits-DJ Stuttgart"*, **dj-veys.de is one of the 2–7
 sources the answer cites** — ideally with a direct quote or paraphrase from `/fragen`.
 
 That is a different optimization target than classic SEO:
@@ -48,7 +48,7 @@ That is a different optimization target than classic SEO:
    recency bias in what gets surfaced, on top of whatever recency signal the crawler
    itself infers from `lastmod`/HTTP headers.
 5. **Clear entity definition compounds everything else.** A model can only attribute a
-   fact to "VEYSL" correctly if it can resolve, in one unambiguous sentence, who/what/
+   fact to "DJ Veys" correctly if it can resolve, in one unambiguous sentence, who/what/
    where/which-languages. `EntityCard` exists specifically to be that sentence, repeated
    verbatim wherever it's needed (currently `/fragen`; any other page can render it too).
 
@@ -149,19 +149,19 @@ Being blunt, in the same register as `SEO-ACTION-PLAN.md`:
   Bewertungen (96% 5★)" (`docs/SEO-COMPETITIVE-ANALYSIS.md` §2), that gap stays a gap —
   no amount of on-page content closes it.
 - **It cannot manufacture tenure or backlinks.** DJ Serkan's ~20+ year claim and
-  `hochzeit.click`'s multi-year domain history are real off-page signals. VEYSL's 12+
+  `hochzeit.click`'s multi-year domain history are real off-page signals. DJ Veys's 12+
   years and 200+ events are genuinely strong and now clearly stated — but they don't
   erase a competitor's longer track record in whatever training data or web index an
   answer engine draws on.
-- **It cannot get VEYSL mentioned on third-party sites.** The single highest-leverage
-  thing outside this codebase is **other sites talking about VEYSL** — venue pages,
+- **It cannot get DJ Veys mentioned on third-party sites.** The single highest-leverage
+  thing outside this codebase is **other sites talking about DJ Veys** — venue pages,
   wedding-planner "our vendors" pages, guest blog posts, press. Answer engines weight
   corroborating mentions across independent domains far more than anything on the site's
   own domain, no matter how well structured. This is a client/outreach task, not a code
   task, and it is not started.
 - **It cannot fix an unclear brand.** This is why the entity-definition work in
   `EntityCard`/`answers.entity` matters as much as it does, and also why it deliberately
-  states only `site.name` ("VEYSL") — per the client's explicit correction, there is one
+  states only `site.name` ("DJ Veys") — per the client's explicit correction, there is one
   brand here, and asserting a second identity ("also known as…") would have made this
   *worse* for entity resolution, not better, by giving a crawler two names to reconcile
   with no external corroboration for either.
@@ -176,7 +176,7 @@ There is no dashboard for "did an AI cite us" — it has to be checked directly:
 
 1. **Manual query log.** Once a month, run the queries in §4 (and a few new ones as they
    come up) against ChatGPT, Perplexity, Gemini, Copilot and Google AI Overviews (signed
-   out and in a few locales/regions if possible), and log: was VEYSL mentioned, was it
+   out and in a few locales/regions if possible), and log: was DJ Veys mentioned, was it
    cited/linked, was the exact wording traceable to a specific answer in `answers.ts`.
    This is manual and imperfect, but it's the only ground truth available without paid
    tooling.

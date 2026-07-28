@@ -1,4 +1,4 @@
-# VEYSL — Verified Brand Facts
+# DJ Veys — Verified Brand Facts
 
 **Source:** the client's existing site `veystunesofficial.de` (Impressum + Über-uns),
 retrieved July 2026. These facts are **verified and safe to publish**. Anything not in
@@ -15,12 +15,12 @@ is the narrative context.
 |---|---|
 | Person | **Veysel Durmuş** |
 | Established brand | **VeysTunesOfficial** (Google reviews, Instagram, YouTube run under this name) |
-| New domain | **veysl.de** — short wordmark **VEYSL** |
+| New domain | **dj-veys.de** — short wordmark **DJ Veys** |
 | Base | **Stuttgart-Obertürkheim**, Baden-Württemberg |
 | Reach | Stuttgart · Baden-Württemberg · deutschlandweit · Europa |
 | Old site | WordPress on IONOS — being replaced by this project |
 
-⚠️ The wordmark question (VEYSL vs. keeping VeysTunes) is still with the client. Use
+⚠️ The wordmark question (DJ Veys vs. keeping VeysTunes) is still with the client. Use
 `site.name` for the wordmark and `site.brandLegacy` wherever continuity matters
 (Impressum, Google-review references, `sameAs` schema). Never hardcode either string.
 
@@ -58,7 +58,7 @@ His own bio, verbatim:
 
 What this changes:
 
-1. **The brand people actually know is "DJ Veys"**, not VeysTunesOfficial and not VEYSL.
+1. **The brand people actually know is "DJ Veys"**, not VeysTunesOfficial and not DJ Veys.
    63K followers is the recognition anchor. Brand search volume will be "dj veys".
 2. **He is "DJ & Orkestra" — not a solo DJ.** His posts show horns (trumpet/saxophone),
    i.e. a live band, alongside the DJ set. Combined with "ALLES AUS einer Hand" on his
@@ -74,12 +74,12 @@ What this changes:
 **Event count — RESOLVED by the client: use 200+.** The old website's "100+" is outdated.
 `site.stats.eventsCompleted` is now `200`. Read it from there, never hardcode it.
 
-**Wordmark — RESOLVED by the client: `VEYSL`, and VEYSL only.**
+**Wordmark — RESOLVED by the client: `DJ Veys`, and DJ Veys only.**
 
 There is **one brand name on this site**. Do not hedge, do not dual-brand, do not write
-"VEYSL (ehemals VeysTunesOfficial)" or "VEYSL — DJ Veys" anywhere in visible copy.
+"DJ Veys (ehemals VeysTunesOfficial)" or "DJ Veys — DJ Veys" anywhere in visible copy.
 
-- `site.name` = **VEYSL** — the only name in the header, footer, titles, body copy, alt text
+- `site.name` = **DJ Veys** — the only name in the header, footer, titles, body copy, alt text
 - `site.legalName` = **VeysTunesOfficial** — Impressum only. This is a legal requirement
   under § 5 DDG (the registered business name must appear there), not a brand statement.
   It appears on the Impressum page and nowhere else.
@@ -127,9 +127,9 @@ rather than generic DJ boilerplate.
 ## Contact (verified)
 
 - Phone / WhatsApp: **+49 176 64844815**
-- Email: **info@veysl.de** — the public business address, used in `site.contact.email`,
+- Email: **info@dj-veys.de** — the public business address, used in `site.contact.email`,
   the Impressum and the Google Business Profile. Runs on the self-hosted mailserver
-  (docs/MAIL-SELFHOSTED.md). Automated sends use `no-reply@veysl.de` instead, on
+  (docs/MAIL-SELFHOSTED.md). Automated sends use `no-reply@dj-veys.de` instead, on
   purpose: a send-only address whose reputation cannot damage the personal mailbox.
   The old private Gmail is no longer referenced anywhere in the app.
 - Instagram: `@veystunesofficial` · YouTube: `@veystunesofficial`

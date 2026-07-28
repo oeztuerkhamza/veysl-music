@@ -3,12 +3,12 @@ import { site } from '@/content/site';
 import { absoluteAssetUrl, absoluteUrl } from './seo';
 
 /**
- * JSON-LD builders for veysl.de. Every function returns a plain, typed object —
+ * JSON-LD builders for dj-veys.de. Every function returns a plain, typed object —
  * no `any` anywhere in this file. Pages render the result with `<JsonLd data={x} />`
  * imported from `@/lib/json-ld` (a separate file — `@/lib/schema` only resolves
  * to this `.ts` module, so the component can't live here).
  *
- * VEYSL is the one and only brand name in any human-visible output on this
+ * DJ Veys is the one and only brand name in any human-visible output on this
  * site. `site.previousNames` ("DJ Veys", "VeysTunesOfficial") is machine-
  * readable continuity data ONLY — it feeds `alternateName`/`sameAs` here so
  * existing followers, Google reviews and search associations carry over to
@@ -17,7 +17,7 @@ import { absoluteAssetUrl, absoluteUrl } from './seo';
  * Entity model (three cross-linked but distinct things, sharing one canonical
  * business @id so search engines/AI treat them as the same real-world entity):
  * - `organizationSchema()` / `localBusinessSchema()` — the bookable business
- *   "VEYSL", `@id` = `#business`.
+ *   "DJ Veys", `@id` = `#business`.
  * - `musicGroupSchema()` — the performing act — DJ + live orchestra (horns),
  *   not a solo DJ — `@id` = `#act`, `member` → person.
  * - `personSchema()` — Veysel Durmuş, the human behind the brand, `@id` = `#person`.
@@ -324,7 +324,7 @@ export interface PersonSchema {
 }
 
 /**
- * Veysel Durmuş — the confirmed real person behind the VEYSL brand. Use on
+ * Veysel Durmuş — the confirmed real person behind the DJ Veys brand. Use on
  * /epk (about/press-kit) where the human story (IT specialist by day,
  * musician since childhood, endurance athlete) is the differentiator.
  */

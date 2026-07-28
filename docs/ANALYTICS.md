@@ -1,4 +1,4 @@
-# VEYSL — Analytics
+# DJ Veys — Analytics
 
 Owned by the CRO/analytics agent. Covers `src/lib/analytics/**` and
 `src/components/analytics/**`. See `docs/CRO-AUDIT.md` for the conversion

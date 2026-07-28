@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# veysl.de — deploy/update the running stack. Idempotent, safe to re-run;
+# dj-veys.de — deploy/update the running stack. Idempotent, safe to re-run;
 # run this for every deploy after the very first one (which additionally
 # needs deploy/setup-ssl.sh — see docs/DEPLOYMENT.md).
 #
@@ -118,11 +118,11 @@ log "5/6 — Recreating containers"
 docker compose up -d app
 
 primary_cert="$(docker compose run --rm --entrypoint sh certbot -c \
-  '[ -f /etc/letsencrypt/live/veysl.de/fullchain.pem ] && echo yes || echo no' 2>/dev/null || echo no)"
+  '[ -f /etc/letsencrypt/live/dj-veys.de/fullchain.pem ] && echo yes || echo no' 2>/dev/null || echo no)"
 if [ "$primary_cert" = "yes" ]; then
   docker compose up -d nginx certbot
 else
-  warn "No TLS certificate yet for veysl.de — leaving nginx/certbot stopped."
+  warn "No TLS certificate yet for dj-veys.de — leaving nginx/certbot stopped."
   warn "Run 'CERTBOT_EMAIL=<you> deploy/setup-ssl.sh' once DNS points here, then re-run this script."
 fi
 

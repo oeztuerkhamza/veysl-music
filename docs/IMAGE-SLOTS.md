@@ -1,4 +1,4 @@
-# Bild-Fahrplan für veysl.de
+# Bild-Fahrplan für dj-veys.de
 
 Diese Liste beantwortet eine einzige Frage: **welches Foto muss wohin, und in
 welcher Reihenfolge?** Sie ist die menschenlesbare Fassung von
@@ -69,7 +69,7 @@ etwas veröffentlicht werden darf.
    einfachsten ist eine kurze, schriftliche Einwilligungsklausel, die beim
    Vertragsabschluss/der Buchung mit unterschrieben wird — z. B. „Ich bin
    damit einverstanden, dass im Rahmen dieser Veranstaltung entstandene
-   Foto-/Videoaufnahmen für Website, Social Media und Marketing von VEYSL
+   Foto-/Videoaufnahmen für Website, Social Media und Marketing von DJ Veys
    verwendet werden dürfen." Ohne diese Zeile darf im Zweifel kein Foto
    dieser Feier verwendet werden, selbst wenn es objektiv gut aussieht.
 3. **Minderjährige auf Fotos:** gesonderte Einwilligung der

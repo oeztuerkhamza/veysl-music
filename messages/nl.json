@@ -42,51 +42,51 @@
   },
   "meta": {
     "home": {
-      "title": "Bruiloft-DJ {city} — premium DJ & livemuziek | VEYSL",
+      "title": "Bruiloft-DJ {city} — premium DJ & livemuziek | DJ Veys",
       "description": "Premium bruiloft- en event-DJ in {city} en omgeving. Persoonlijk voorgesprek, eigen geluid en licht, een volle dansvloer. Vraag uw datum aan."
     },
     "services": {
-      "title": "Bruiloft & events — diensten | VEYSL DJ",
+      "title": "Bruiloft & events — diensten | DJ Veys",
       "description": "DJ voor bruiloft, verloving, henna, after-party en bedrijfsfeesten. Wat er bij elke dienst inbegrepen is — transparant uitgelegd."
     },
     "packages": {
-      "title": "Pakketten & prijzen — bruiloft-DJ | VEYSL",
+      "title": "Pakketten & prijzen — bruiloft-DJ | DJ Veys",
       "description": "Drie duidelijke pakketten voor bruiloft en feest: uren, techniek en extra's in één oogopslag. Persoonlijke offerte binnen 24 uur."
     },
     "weddings": {
-      "title": "Echte bruiloften — referenties & locaties | VEYSL",
+      "title": "Echte bruiloften — referenties & locaties | DJ Veys",
       "description": "Echte bruiloften, echte dansvloeren: referentieclips, reacties van paren en weddingplanners en onze partnerlocaties."
     },
     "music": {
-      "title": "Muziek & sets — bruiloft-DJ mixen | VEYSL",
+      "title": "Muziek & sets — bruiloft-DJ mixen | DJ Veys",
       "description": "Bruiloft- en eventsets om te beluisteren: van receptie via diner tot peaktime. Duits, Turks, internationaal."
     },
     "process": {
-      "title": "Werkwijze & veelgestelde vragen | VEYSL DJ",
+      "title": "Werkwijze & veelgestelde vragen | DJ Veys",
       "description": "Van het eerste gesprek tot het laatste nummer: de werkwijze in vier stappen en antwoord op de meestgestelde vragen over een DJ-boeking."
     },
     "booking": {
-      "title": "Datum controleren & offerte aanvragen | VEYSL DJ",
+      "title": "Datum controleren & offerte aanvragen | DJ Veys",
       "description": "Datum invullen, beschikbaarheid controleren, vrijblijvende offerte ontvangen — antwoord binnen 24 uur."
     },
     "gallery": {
-      "title": "Galerij & video's — bruiloft-DJ | VEYSL",
+      "title": "Galerij & video's — bruiloft-DJ | DJ Veys",
       "description": "Foto's, aftermovies en reels van bruiloften en events."
     },
     "epk": {
-      "title": "EPK & partners — presskit | VEYSL",
+      "title": "EPK & partners — presskit | DJ Veys",
       "description": "Biografie, persfoto's, technical rider en partnerlocaties om te downloaden."
     },
     "contact": {
-      "title": "Contact — VEYSL DJ",
+      "title": "Contact — DJ Veys",
       "description": "Direct via WhatsApp, telefoon of e-mail. U hoort binnen 24 uur van ons."
     },
     "imprint": {
-      "title": "Impressum | VEYSL",
+      "title": "Impressum | DJ Veys",
       "description": "Impressum — de wettelijk verplichte aanbiedersgegevens volgens § 5 DDG (Duitsland)."
     },
     "privacy": {
-      "title": "Privacy | VEYSL",
+      "title": "Privacy | DJ Veys",
       "description": "Informatie over de verwerking van persoonsgegevens volgens de AVG."
     }
   },
@@ -477,10 +477,10 @@
       "title": "Alle antwoorden in één overzicht",
       "subtitle": "{count} uitgebreide antwoorden over boeking, prijzen, draaiboek, muziek, techniek, contract en Turkse bruiloften — direct te lezen, zonder klikken of uitklappen."
     },
-    "entity": "VEYSL is de bruiloft-DJ-, livemuziek- en presentatieservice van {owner} uit {city} in Duitsland. Al meer dan {years} jaar begeleidt hij bruiloften en events in Baden-Württemberg, heel Duitsland en heel Europa, presenteert live in het Duits, Turks en Engels en is gespecialiseerd in Duits-Turkse, Turkse en multiculturele bruiloften. Inmiddels heeft hij {events}+ feesten begeleid — als DJ, als livemuzikant op saz en gitaar en met een liveband inclusief blazers.",
+    "entity": "DJ Veys is de bruiloft-DJ-, livemuziek- en presentatieservice van {owner} uit {city} in Duitsland. Al meer dan {years} jaar begeleidt hij bruiloften en events in Baden-Württemberg, heel Duitsland en heel Europa, presenteert live in het Duits, Turks en Engels en is gespecialiseerd in Duits-Turkse, Turkse en multiculturele bruiloften. Inmiddels heeft hij {events}+ feesten begeleid — als DJ, als livemuzikant op saz en gitaar en met een liveband inclusief blazers.",
     "meta": {
-      "title": "Vragen & antwoorden — bruiloft-DJ Stuttgart | VEYSL",
-      "description": "{count} uitgebreide antwoorden over boeking, prijzen, draaiboek, muziek, techniek en Turkse bruiloften met VEYSL — direct te lezen, zonder omwegen."
+      "title": "Vragen & antwoorden — bruiloft-DJ Stuttgart | DJ Veys",
+      "description": "{count} uitgebreide antwoorden over boeking, prijzen, draaiboek, muziek, techniek en Turkse bruiloften met DJ Veys — direct te lezen, zonder omwegen."
     },
     "updated": "Laatst bijgewerkt: {date}",
     "seeAlso": "Tien andere, kortere vragen over het verloop van de dag beantwoorden wij op de pagina",
@@ -694,7 +694,7 @@
       "ctaNote": "Vrijblijvende aanvraag – antwoord binnen 24 uur."
     },
     "meta": {
-      "title": "Bruiloft-DJ {city} — muzikant & presentator | VEYSL",
+      "title": "Bruiloft-DJ {city} — muzikant & presentator | DJ Veys",
       "description": "Premium bruiloft-DJ in {city}: DJ, muzikant en presentator in het Duits, Turks en Engels. Voor Duits-Turkse en internationale bruiloften."
     },
     "travel": {
@@ -741,7 +741,7 @@
     "nearby": {
       "eyebrow": "In de omgeving",
       "title": "Ook geboekt rond {city}",
-      "servicesTitle": "Meer op VEYSL"
+      "servicesTitle": "Meer op DJ Veys"
     },
     "cta": {
       "eyebrow": "Volgende stap",
@@ -811,7 +811,7 @@
     "close": "Sluiten",
     "continueToWhatsapp": "Verder op WhatsApp",
     "privacyNote": "Uw antwoorden worden opgeslagen om uw aanvraag te behandelen. <privacyLink>Privacyverklaring</privacyLink>",
-    "messageIntro": "Hallo VEYSL, ik ben op zoek naar een DJ.",
+    "messageIntro": "Hallo DJ Veys, ik ben op zoek naar een DJ.",
     "messageLabels": {
       "eventType": "Gelegenheid",
       "date": "Datum",
@@ -1034,8 +1034,8 @@
       "lead": "Een actuele selectie uit bruiloften en events — samengesteld door @dj_veys en het YouTube-kanaal.",
       "playLabel": "Video afspelen",
       "altFallback": {
-        "instagram": "Bericht van VEYSL op Instagram",
-        "youtube": "Video van VEYSL op YouTube"
+        "instagram": "Bericht van DJ Veys op Instagram",
+        "youtube": "Video van DJ Veys op YouTube"
       },
       "typeLabel": {
         "image": "Foto",
@@ -1072,7 +1072,7 @@
     "eyebrow": "Destination wedding Europa",
     "hub": {
       "meta": {
-        "title": "Bruiloft-DJ voor destination weddings in Europa | VEYSL",
+        "title": "Bruiloft-DJ voor destination weddings in Europa | DJ Veys",
         "description": "Duits-Turkse bruiloft-DJ voor destination weddings in Europa: Oostenrijk, Zwitserland, Nederland, België, Frankrijk. Presentatie in Duits, Turks, Engels."
       },
       "hero": {
@@ -1085,7 +1085,7 @@
         "items": [
           {
             "q": "Is er een Turkse bruiloft-DJ die in heel Duitsland boekbaar is?",
-            "a": "Ja. VEYSL heeft zijn basis in Stuttgart en Baden-Württemberg en is in heel Duitsland boekbaar – van München tot Hamburg. Reiskosten en techniek worden voor elke plaats apart in de offerte gecalculeerd; de presentatie blijft overal dezelfde: Duits, Turks, Engels."
+            "a": "Ja. DJ Veys heeft zijn basis in Stuttgart en Baden-Württemberg en is in heel Duitsland boekbaar – van München tot Hamburg. Reiskosten en techniek worden voor elke plaats apart in de offerte gecalculeerd; de presentatie blijft overal dezelfde: Duits, Turks, Engels."
           },
           {
             "q": "Kan ik een bruiloft-DJ boeken voor een destination wedding in het buitenland?",
@@ -1148,7 +1148,7 @@
     },
     "country": {
       "meta": {
-        "title": "Bruiloft-DJ {country} — destination wedding | VEYSL",
+        "title": "Bruiloft-DJ {country} — destination wedding | DJ Veys",
         "description": "Bruiloft-DJ boekbaar in {country}: Duits-Turks, gepresenteerd in het Duits, Turks en Engels. Reis en techniek transparant gecalculeerd."
       },
       "eyebrow": "Destination wedding",
@@ -1158,7 +1158,7 @@
       },
       "availability": {
         "verifiedTitle": "Al gedraaid",
-        "verifiedText": "VEYSL heeft al in {city} gedraaid – tot nu toe het enige aantoonbare optreden buiten Duitsland.",
+        "verifiedText": "DJ Veys heeft al in {city} gedraaid – tot nu toe het enige aantoonbare optreden buiten Duitsland.",
         "availableTitle": "Boekbaar in {country}",
         "availableText": "Nog geen eigen referentie-event in {country} – maar altijd aan te vragen, met dezelfde zorgvuldigheid als elke andere boeking."
       },
@@ -1212,8 +1212,8 @@
       "text": "Geen probleem — meld u vrijblijvend, dan bespreken we alles zodra het u uitkomt.",
       "whatsappCta": "Bewaren via WhatsApp",
       "mailCta": "Bewaren per e-mail",
-      "whatsappPrefill": "Hallo, ik heb interesse in een boeking bij VEYSL, maar ben nog niet zeker. Kunnen we dat vrijblijvend bespreken?",
-      "whatsappPrefillWithDate": "Hallo, ik heb interesse in {date} bij VEYSL, maar ben nog niet zeker. Kunnen we dat vrijblijvend bespreken?",
+      "whatsappPrefill": "Hallo, ik heb interesse in een boeking bij DJ Veys, maar ben nog niet zeker. Kunnen we dat vrijblijvend bespreken?",
+      "whatsappPrefillWithDate": "Hallo, ik heb interesse in {date} bij DJ Veys, maar ben nog niet zeker. Kunnen we dat vrijblijvend bespreken?",
       "mailSubject": "Vrijblijvende aanvraag – datum voorlopig noteren"
     }
   },
@@ -1223,8 +1223,8 @@
   },
   "blog": {
     "meta": {
-      "title": "Gids: bruiloft-DJ, muziek & planning | VEYSL",
-      "description": "{count} uitgebreide gidsen over bruiloft-DJ, muziek, techniek, kosten en Duits-Turkse bruiloften — van VEYSL, DJ & Orkestra uit Stuttgart."
+      "title": "Gids: bruiloft-DJ, muziek & planning | DJ Veys",
+      "description": "{count} uitgebreide gidsen over bruiloft-DJ, muziek, techniek, kosten en Duits-Turkse bruiloften — van DJ Veys, DJ & Orkestra uit Stuttgart."
     },
     "index": {
       "eyebrow": "Gids",
@@ -1232,7 +1232,7 @@
       "subtitle": "{count} uitgebreide gidsen over planning, muziek, techniek en Duits-Turkse bruiloften — geschreven vanuit ruim 12 jaar praktijk.",
       "updated": "Laatst bijgewerkt op {date}",
       "meta": {
-        "emptyDescription": "De gids van VEYSL over bruiloft-DJ, muziek en planning — binnenkort ook in het Nederlands."
+        "emptyDescription": "De gids van DJ Veys over bruiloft-DJ, muziek en planning — binnenkort ook in het Nederlands."
       },
       "empty": {
         "title": "De gids verschijnt binnenkort in het Nederlands.",

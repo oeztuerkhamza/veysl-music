@@ -1,4 +1,4 @@
-# Deployment runbook — veysl.de
+# Deployment runbook — dj-veys.de
 
 Single netcup VPS, Debian 13 (trixie) minimal, Docker Compose (app + nginx +
 certbot), SQLite on a persistent volume. No separate database container —
@@ -144,7 +144,7 @@ under `src/migrations/`.
 ## Prerequisites
 
 - A netcup VPS, Debian 13 (trixie) minimal, root access.
-- The `veysl.de` domain, DNS access to it (and to `veystunesofficial.de` for
+- The `dj-veys.de` domain, DNS access to it (and to `veystunesofficial.de` for
   the migration step).
 - This repo cloned or otherwise synced onto the box.
 
@@ -156,8 +156,8 @@ handling for the migration — see `docs/DNS-RECORDS.md`.
 
 | Host | Type | Value | When |
 |---|---|---|---|
-| `veysl.de` | A (+ AAAA if the VPS has IPv6) | `159.195.216.142` | ✅ set |
-| `www.veysl.de` | A (+ AAAA) | `159.195.216.142` | ✅ set |
+| `dj-veys.de` | A (+ AAAA if the VPS has IPv6) | `159.195.216.142` | ✅ set |
+| `www.dj-veys.de` | A (+ AAAA) | `159.195.216.142` | ✅ set |
 | `veystunesofficial.de` | A (+ AAAA) | `159.195.216.142` | At the domain-migration step — see below, **not** day one |
 | `www.veystunesofficial.de` | A (+ AAAA) | `159.195.216.142` | Same as above |
 
@@ -165,7 +165,7 @@ Mail DNS (MX/SPF/DKIM/DMARC) is a separate concern, hosted externally
 (Mailbox.org) — see `docs/MAIL-SETUP.md`. Nothing in this deploy pipeline
 touches mail DNS.
 
-**Do not repoint `veystunesofficial.de` on day one.** Launch `veysl.de`
+**Do not repoint `veystunesofficial.de` on day one.** Launch `dj-veys.de`
 first, verify it's healthy and indexed, *then* do the domain migration as
 its own deliberate step (see "Domain migration" below) — CHECKLIST.md (A.4)
 flags this as the single highest technical/SEO risk in the project, and
@@ -196,8 +196,8 @@ openssl rand -hex 32
 # <...> placeholder — see the comments inside env.production.example.
 nano .env   # or your editor of choice
 
-# 4. DNS: point veysl.de + www.veysl.de at this box now (see table above),
-#    and wait for it to propagate (`dig veysl.de` from your own machine).
+# 4. DNS: point dj-veys.de + www.dj-veys.de at this box now (see table above),
+#    and wait for it to propagate (`dig dj-veys.de` from your own machine).
 
 # 5. First TLS certificate (one-time)
 CERTBOT_EMAIL=<owner-email> deploy/setup-ssl.sh
@@ -214,7 +214,7 @@ if the health check fails.
 ### Creating the first Payload admin user
 
 Payload's `Users` collection has no seeded account. The **first** visit to
-`https://veysl.de/admin` after migrations have run (step 4/6 above)
+`https://dj-veys.de/admin` after migrations have run (step 4/6 above)
 automatically shows a "Create your first admin user" form instead of a login
 form — this is standard Payload behavior, not something this
 pipeline sets up separately. Use a real email + a strong, unique password;
@@ -266,8 +266,8 @@ All documented in `env.production.example` with inline comments; summary:
 |---|---|---|
 | `PAYLOAD_SECRET` | Yes | ≥32 bytes, generated on the server, never committed |
 | `DATABASE_URI` | Yes | `file:/app/data/veysl-cms.db` — must match the volume mount |
-| `PAYLOAD_SERVER_URL` | Yes | `https://veysl.de` |
-| `NEXT_PUBLIC_SITE_URL` | Yes | `https://veysl.de` — also a Docker **build** arg, see below |
+| `PAYLOAD_SERVER_URL` | Yes | `https://dj-veys.de` |
+| `NEXT_PUBLIC_SITE_URL` | Yes | `https://dj-veys.de` — also a Docker **build** arg, see below |
 | `BOOKING_TRANSPORT` / `BOOKING_NOTIFY_EMAIL` | Yes | See "Known issues" — `console` is dev-only |
 | `RESEND_*` / `SMTP_*` | Once a real transport is implemented | See docs/MAIL-SETUP.md |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` etc. | Optional | Analytics — see docs/ANALYTICS.md |
@@ -351,7 +351,7 @@ This stops the app, overwrites the `veysl-data`/`veysl-media` volumes with
 the chosen backup (after an explicit `yes` confirmation prompt), and starts
 the app back up. After it finishes:
 
-1. Load `https://veysl.de/admin`, log in, and confirm the enquiries/media
+1. Load `https://dj-veys.de/admin`, log in, and confirm the enquiries/media
    you expect to see are actually there.
 2. Open a few blog/gallery pages that reference uploaded media and confirm
    images load (proves the media volume round-tripped correctly, not just
@@ -366,14 +366,14 @@ ever run one.
 
 ---
 
-## Domain migration (`veystunesofficial.de` -> `veysl.de`)
+## Domain migration (`veystunesofficial.de` -> `dj-veys.de`)
 
 The highest technical/SEO risk in this project (CHECKLIST.md A.4). Sequence:
 
 1. **Do not cancel the old domain.** Keep the registration active
    indefinitely — it's still carrying the redirect and whatever residual
    direct traffic/backlinks point at it.
-2. Launch `veysl.de` first (steps above), verify it's healthy, and let it
+2. Launch `dj-veys.de` first (steps above), verify it's healthy, and let it
    settle for a few days.
 3. Point `veystunesofficial.de` + `www.veystunesofficial.de` DNS at
    `<SERVER_IP>` (see DNS table above).
@@ -381,19 +381,19 @@ The highest technical/SEO risk in this project (CHECKLIST.md A.4). Sequence:
    updates the existing cert in place):
    ```bash
    CERTBOT_EMAIL=<owner-email> \
-   CERTBOT_DOMAINS="veysl.de www.veysl.de veystunesofficial.de www.veystunesofficial.de" \
+   CERTBOT_DOMAINS="dj-veys.de www.dj-veys.de veystunesofficial.de www.veystunesofficial.de" \
    deploy/setup-ssl.sh
    ```
 5. Verify the redirect: `curl -I https://veystunesofficial.de/kontakt/` should
-   return `301` with `Location: https://veysl.de/kontakt`. Check every path
+   return `301` with `Location: https://dj-veys.de/kontakt`. Check every path
    in `deploy/redirects-legacy.conf` the same way.
-6. **Google Search Console**: verify `veysl.de` as a new property, then run
+6. **Google Search Console**: verify `dj-veys.de` as a new property, then run
    the **Change of Address** tool from the *old* verified property, pointing
    it at the new one. This is a distinct step from the 301s — it tells
    Google directly rather than waiting for re-crawling to figure it out.
-7. Submit the new sitemap (`https://veysl.de/sitemap.xml`) in Search
+7. Submit the new sitemap (`https://dj-veys.de/sitemap.xml`) in Search
    Console and watch the coverage report over the following weeks.
-8. Update the site address on Google Business Profile to `veysl.de` —
+8. Update the site address on Google Business Profile to `dj-veys.de` —
    **do not create a new GBP listing**; edit the existing one so the
    current 5.0★ profile carries over (CHECKLIST.md A.4/B.2).
 9. Update the link in the Instagram bio (currently pointing at the old
@@ -478,7 +478,7 @@ falls through to `/` as a last resort rather than 404ing.
 ## Go-live checklist
 
 - [ ] `.env` fully filled in, `PAYLOAD_SECRET` freshly generated on the server
-- [ ] `deploy/setup-ssl.sh` run, `https://veysl.de` serves valid TLS
+- [ ] `deploy/setup-ssl.sh` run, `https://dj-veys.de` serves valid TLS
 - [ ] First admin user created at `/admin` (needs migrations to have run —
       step 4/6 of `deploy/deploy.sh`, see "CMS migrations" above)
 - [ ] **Submit a real test enquiry through `/anfrage` and confirm it appears
@@ -505,8 +505,8 @@ falls through to `/` as a last resort rather than 404ing.
 - [ ] Domain migration steps above completed in order, including the
       **Search Console Change of Address tool** — not just the 301s
 - [ ] Google Business Profile site link updated (existing profile, not a new one)
-- [ ] Instagram bio link updated to `veysl.de`
-- [ ] Uptime monitoring pointed at `https://veysl.de/` (external, e.g.
+- [ ] Instagram bio link updated to `dj-veys.de`
+- [ ] Uptime monitoring pointed at `https://dj-veys.de/` (external, e.g.
       UptimeRobot/Better Uptime — nothing in this repo provides this)
 
 ---

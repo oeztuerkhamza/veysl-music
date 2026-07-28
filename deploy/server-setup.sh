@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# veysl.de — first-run VPS bootstrap. Debian 13 (trixie), minimal.
+# dj-veys.de — first-run VPS bootstrap. Debian 13 (trixie), minimal.
 #
 # Run ONCE, as root, over SSH on a fresh box:
 #   ssh root@<SERVER_IP> 'bash -s' < deploy/server-setup.sh

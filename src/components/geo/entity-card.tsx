@@ -13,7 +13,7 @@ interface EntityCardProps {
  * `answers.entity` message (see `messages/de.json`/`en.json`) so the exact
  * wording is translator-editable without touching this component.
  *
- * Only `site.name` ("VEYSL") appears here — per the client's explicit
+ * Only `site.name` ("DJ Veys") appears here — per the client's explicit
  * correction, this project has exactly one visible brand. `site.previousNames`
  * ("DJ Veys", "VeysTunesOfficial") is technical-continuity data only
  * (schema `alternateName`, redirects) and must never surface in this prose.

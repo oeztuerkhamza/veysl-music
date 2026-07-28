@@ -1,6 +1,6 @@
-# VEYSL — Europe-Wide Reach Strategy (`/hochzeits-dj-europa`)
+# DJ Veys — Europe-Wide Reach Strategy (`/hochzeits-dj-europa`)
 
-Extends VEYSL's search footprint from "Stuttgart region" to Germany-wide and Europe-wide
+Extends DJ Veys's search footprint from "Stuttgart region" to Germany-wide and Europe-wide
 **without touching the local SEO that already works.** Read this alongside
 `docs/SEO-COMPETITIVE-ANALYSIS.md`, `docs/SEO-KEYWORD-MAP.md`, `docs/SEO-CITY-STRATEGY.md`
 and `docs/SEO-ACTION-PLAN.md` — this doc assumes their findings and does not repeat the
@@ -12,7 +12,7 @@ Stuttgart-region argument.
 
 A Stuttgart-based business cannot rank in Oslo's or Amsterdam's Google local pack. Local
 (map-pack) results are driven by proximity signals and a verified Google Business Profile
-**in that area** — VEYSL has neither for any country outside Germany, Vienna's confirmed
+**in that area** — DJ Veys has neither for any country outside Germany, Vienna's confirmed
 booking notwithstanding (a single event does not create local relevance). Mass-producing
 `Hochzeits-DJ <city>` pages across Europe — the exact pattern `docs/SEO-COMPETITIVE-ANALYSIS.md`
 §2 already found done badly by `tuerkischerdj.com` (one long, unstructured list of ~35
@@ -21,7 +21,7 @@ Google's spam policies: pages built to rank for similar searches that funnel use
 destination, with no genuine per-page value. The penalty for that pattern is **domain-wide**,
 not page-by-page — it would put the genuinely winnable `/hochzeits-dj/[stadt]` cluster
 (Stuttgart + Baden-Württemberg, `docs/SEO-CITY-STRATEGY.md`) at risk for a payoff (foreign
-city rankings VEYSL cannot realistically achieve) that was never going to materialize.
+city rankings DJ Veys cannot realistically achieve) that was never going to materialize.
 
 Six pages — five countries plus one hub — each earning its existence with real, specific,
 non-templated content, is the opposite bet: it cannot win a local-pack query, but it can
@@ -156,7 +156,7 @@ cluster:
   proximity to answer them.
 - Be genuinely useful and conversion-ready for a couple who has *already decided* to book a
   Stuttgart-based DJ for a wedding abroad (a real, if smaller, segment: cross-border
-  German-Turkish/Kurdish/French families is exactly VEYSL's stated core audience).
+  German-Turkish/Kurdish/French families is exactly DJ Veys's stated core audience).
 - Get cited by AI answer engines for exactly the intent queries in §3.1, via the same
   `AnswerBlock` pattern already proven on `/fragen`.
 
@@ -185,7 +185,7 @@ reflected in the shipped code, not just noted here.
    touring musician are materially harder than any EU destination — equipment crossing the
    border generally needs an ATA Carnet, and performer work-permit rules are a separate
    question from EU freedom of movement entirely. Advertising UK availability without those
-   logistics settled would set an expectation VEYSL can't cleanly meet, and the enquiry
+   logistics settled would set an expectation DJ Veys can't cleanly meet, and the enquiry
    would likely die at the quote stage. No UK page was ever built; `RegionMoreCountries`
    reads `site.europeCountries` live, so the removal required zero code change on this
    agent's side.

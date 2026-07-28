@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# veysl.de — one-time TLS certificate bootstrap.
+# dj-veys.de — one-time TLS certificate bootstrap.
 #
 # Why this exists as a separate step from deploy.sh: nginx.conf's `server {
 # listen 443 ssl; }` blocks reference a certificate file that doesn't exist
@@ -14,22 +14,22 @@
 # Run once, from the app directory on the server, as the deploy user:
 #   CERTBOT_EMAIL=<owner-email> deploy/setup-ssl.sh
 #
-# By default this only requests a cert for veysl.de + www.veysl.de — DNS for
+# By default this only requests a cert for dj-veys.de + www.dj-veys.de — DNS for
 # the legacy domain (veystunesofficial.de) may not be repointed at this VPS
 # yet at initial launch, and certbot fails the ENTIRE request if any -d
 # domain doesn't resolve here. Once that DNS is ready (see docs/DEPLOYMENT.md
 # "Domain migration"), re-run with the legacy domains added — `--expand`
 # updates the existing certificate in place, no downtime:
 #   CERTBOT_EMAIL=<owner-email> \
-#   CERTBOT_DOMAINS="veysl.de www.veysl.de veystunesofficial.de www.veystunesofficial.de" \
+#   CERTBOT_DOMAINS="dj-veys.de www.dj-veys.de veystunesofficial.de www.veystunesofficial.de" \
 #   deploy/setup-ssl.sh
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 : "${CERTBOT_EMAIL:?Set CERTBOT_EMAIL, e.g. CERTBOT_EMAIL=you@example.com deploy/setup-ssl.sh}"
-CERTBOT_DOMAINS="${CERTBOT_DOMAINS:-veysl.de www.veysl.de}"
-PRIMARY_DOMAIN="veysl.de"
+CERTBOT_DOMAINS="${CERTBOT_DOMAINS:-dj-veys.de www.dj-veys.de}"
+PRIMARY_DOMAIN="dj-veys.de"
 
 log() { printf '\n\033[1;32m==> %s\033[0m\n' "$1"; }
 

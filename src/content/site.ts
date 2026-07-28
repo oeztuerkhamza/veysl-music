@@ -11,7 +11,7 @@ export const site = {
    * DIE Marke. Einzige Wortmarke des Projekts — vom Kunden festgelegt.
    * Überall sichtbar: Header, Footer, Seitentitel, Copy, Social.
    */
-  name: 'VEYSL',
+  name: 'DJ Veys',
 
   /**
    * Firmierung fürs Impressum. Pflichtangabe nach § 5 DDG — die eingetragene
@@ -26,11 +26,18 @@ export const site = {
    * schema.org alternateName/sameAs, 301-Weiterleitungen und die
    * Search-Console-Adressänderung. So finden bestehende Follower und
    * Bewertungen die neue Domain.
-   * ⚠️ Erscheinen NICHT in sichtbarer Copy. Die Marke heißt VEYSL.
+   * ⚠️ Erscheinen NICHT in sichtbarer Copy. Die Marke heißt DJ Veys.
+   *
+   * Enthält bewusst **kein** „VEYSL": dieser Name war zwischenzeitlich als
+   * Marke vorgesehen, ist aber nie öffentlich geworden — veysl.de stand bis
+   * zuletzt auf der Parkseite, es gibt keinen Follower, keine Bewertung und
+   * keinen Link, der ihn kennt. Ihn als alternateName auszuspielen würde
+   * Suchmaschinen einen Namen als Synonym anbieten, unter dem die Marke
+   * nirgends existiert.
    */
-  previousNames: ['DJ Veys', 'VeysTunesOfficial'] as const,
-  domain: 'veysl.de',
-  url: 'https://veysl.de',
+  previousNames: ['VeysTunesOfficial'] as const,
+  domain: 'dj-veys.de',
+  url: 'https://dj-veys.de',
   /** Alte Domain — für 301-Weiterleitungen und sameAs-Signale. */
   legacyUrl: 'https://www.veystunesofficial.de',
 
@@ -119,7 +126,7 @@ export const site = {
     // docs/MAIL-SELFHOSTED.md. Der automatische Versand nutzt bewusst eine
     // andere Adresse (no-reply@), damit deren Reputation die persönliche
     // Korrespondenz nicht beschädigen kann.
-    email: 'info@veysl.de',
+    email: 'info@dj-veys.de',
     phone: '+49 176 64844815',
     phoneHref: 'tel:+4917664844815',
     /** Nur Ziffern inkl. Ländercode — für wa.me-Links. */

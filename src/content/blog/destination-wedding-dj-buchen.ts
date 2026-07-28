@@ -111,7 +111,7 @@ Ein DJ für eine Destination Wedding zu buchen ist kein Sonderfall, der sich nic
 planen lässt — er braucht nur mehr Vorlauf und eine klare Aufschlüsselung von Anfahrt,
 Übernachtung und Technik. Der Vorteil eines mitreisenden Anbieters, der die eigene
 Wunschliste und beide Sprachwelten bereits kennt, wiegt für viele Paare den zusätzlichen
-Organisationsaufwand auf. VEYSL ist neben Baden-Württemberg auch international buchbar —
+Organisationsaufwand auf. DJ Veys ist neben Baden-Württemberg auch international buchbar —
 dokumentiert unter anderem durch Auftritte in Wien — und klärt Logistik und Kosten
 transparent im individuellen Angebot. Der erste Schritt dafür ist eine unverbindliche
 Anfrage.
@@ -204,7 +204,7 @@ bir yerde keşfedilmesini önler.
 
 Bir destination wedding için DJ rezervasyonu, planlanamaz özel bir durum değildir —
 sadece daha fazla zaman payı ve ulaşım, konaklama ve ekipmanın net bir dökümünü
-gerektirir. VEYSL, Baden-Württemberg dışında uluslararası olarak da rezerve
+gerektirir. DJ Veys, Baden-Württemberg dışında uluslararası olarak da rezerve
 edilebiliyor — Viyana'daki performanslarla belgelenmiş — ve lojistik ile maliyetleri
 bireysel teklifte şeffaf şekilde açıklıyor.
 `.trim();
@@ -296,7 +296,7 @@ destination, where a quick fix is much harder to arrange than at home.
 
 Booking a DJ for a destination wedding isn't an unplannable special case — it just
 needs more lead time and a clear breakdown of travel, accommodation and equipment.
-VEYSL is also bookable internationally alongside Baden-Württemberg — documented among
+DJ Veys is also bookable internationally alongside Baden-Württemberg — documented among
 other things by appearances in Vienna — and lays out logistics and cost transparently
 in the individual quote.
 `.trim();
@@ -321,7 +321,7 @@ export const destinationPost: BlogPost = {
         'Bei einer Destination Wedding entscheiden sich viele Paare bewusst gegen einen DJ vor Ort — für einen, der die eigene Wunschliste und beide Sprachwelten schon kennt. Dieser Guide zeigt die logistischen Grundfragen und einen realistischen Zeitrahmen.',
       body: destinationDe,
       seo: {
-        metaTitle: 'Destination Wedding: DJ ins Ausland buchen | VEYSL',
+        metaTitle: 'Destination Wedding: DJ ins Ausland buchen | DJ Veys',
         metaDescription:
           'Wie bucht man einen DJ für eine Destination Wedding im Ausland? Logistik, Technik vor Ort oder mitgebracht, Kosten und ein realistischer Zeitplan.',
       },
@@ -332,7 +332,7 @@ export const destinationPost: BlogPost = {
         'Bir destination wedding\'de birçok çift, kendi istek listesini ve her iki dil dünyasını zaten bilen bir DJ için bilinçli olarak yerinde bir DJ\'i tercih etmiyor. Bu rehber temel lojistik soruları ve gerçekçi bir zaman çerçevesi gösteriyor.',
       body: destinationTr,
       seo: {
-        metaTitle: 'Destination Wedding: Yurt Dışına DJ Rezervasyonu | VEYSL',
+        metaTitle: 'Destination Wedding: Yurt Dışına DJ Rezervasyonu | DJ Veys',
         metaDescription:
           'Yurt dışındaki bir destination wedding için DJ nasıl rezerve edilir? Lojistik, yerinde ya da götürülen ekipman, maliyetler ve gerçekçi bir zaman planı.',
       },
@@ -343,7 +343,7 @@ export const destinationPost: BlogPost = {
         'For a destination wedding, many couples deliberately choose against a local DJ, opting instead for one who already knows their wishlist and both language worlds. This guide covers the basic logistics and a realistic timeframe.',
       body: destinationEn,
       seo: {
-        metaTitle: 'Destination Wedding: Booking a DJ Abroad | VEYSL',
+        metaTitle: 'Destination Wedding: Booking a DJ Abroad | DJ Veys',
         metaDescription:
           'How do you book a DJ for a destination wedding abroad? Logistics, equipment on site or brought along, cost, and a realistic timeframe.',
       },

@@ -5,7 +5,7 @@
  *
  * WHY THIS FILE EXISTS AND WHY IT IS SEPARATE FROM `testimonials.ts`:
  *
- * The client asked for 15 testimonials on the site. VEYSL has **zero verified,
+ * The client asked for 15 testimonials on the site. DJ Veys has **zero verified,
  * permission-granted customer testimonials today** — see `.claude/BRAND-FACTS.md`
  * ("client testimonials and names... still unknown — do NOT invent"). Publishing
  * invented quotes attributed to invented couples would be a fabricated/fake-review

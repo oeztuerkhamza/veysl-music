@@ -328,7 +328,7 @@ export const akustikPost: BlogPost = {
         'Akustik entscheidet mehr über den Klang des Abends als jede Technik allein — und wird bei Locationbesichtigungen fast nie aktiv geprüft. Dieser Guide zeigt eine Checkliste, den einfachen Klatsch-Test und warum ein leerer Raum irreführend klingt.',
       body: akustikDe,
       seo: {
-        metaTitle: 'Location-Akustik: Checkliste zur Besichtigung | VEYSL',
+        metaTitle: 'Location-Akustik: Checkliste zur Besichtigung | DJ Veys',
         metaDescription:
           'Worauf sollte man bei der Akustik einer Hochzeitslocation achten? Checkliste, der Klatsch-Test und warum leere Räume irreführend klingen.',
       },
@@ -339,7 +339,7 @@ export const akustikPost: BlogPost = {
         'Akustik, akşamın sesini herhangi bir teknik ekipmandan çok daha fazla belirler — ve mekân keşiflerinde neredeyse hiç aktif olarak kontrol edilmez. Bu rehber bir kontrol listesi, basit alkış testini ve boş bir mekânın neden yanıltıcı ses verdiğini gösteriyor.',
       body: akustikTr,
       seo: {
-        metaTitle: 'Mekân Akustiği: Keşif Kontrol Listesi | VEYSL',
+        metaTitle: 'Mekân Akustiği: Keşif Kontrol Listesi | DJ Veys',
         metaDescription:
           'Bir düğün mekânının akustiğinde nelere dikkat edilmeli? Kontrol listesi, alkış testi ve boş mekânların neden yanıltıcı ses verdiği.',
       },
@@ -350,7 +350,7 @@ export const akustikPost: BlogPost = {
         'Acoustics shape the sound of the evening far more than any equipment alone — and are almost never actively checked during venue viewings. This guide offers a checklist, the simple clap test, and why an empty room sounds misleading.',
       body: akustikEn,
       seo: {
-        metaTitle: 'Venue Acoustics: A Viewing Checklist | VEYSL',
+        metaTitle: 'Venue Acoustics: A Viewing Checklist | DJ Veys',
         metaDescription:
           'What should you check about a wedding venue\'s acoustics? A checklist, the clap test, and why empty rooms sound misleading.',
       },

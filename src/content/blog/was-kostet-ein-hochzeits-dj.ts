@@ -5,14 +5,14 @@ import type { BlogPost } from './types';
  * Deliberately informational/market-overview, NOT transactional — `/pakete` (meta key
  * `packages`) already owns the transactional "hochzeits-dj preise stuttgart" keyword
  * per docs/SEO-KEYWORD-MAP.md. This post explains the market and cost drivers in general
- * terms and points to `/pakete` + `/anfrage` for VEYSL's own (request-based) figures —
+ * terms and points to `/pakete` + `/anfrage` for DJ Veys's own (request-based) figures —
  * see docs/BLOG-PLAN.md "cannibalization notes" for why this split is intentional.
  *
  * The only concrete € figures in this post are explicitly attributed to "mehrere
  * bundesweite Hochzeitsportale" (a live web search across several independent German
  * wedding/DJ cost pages, July 2026 — ranges seen: ~900–3.000 €, ~1.500–3.000 €,
  * ~1.500–4.000 €, and ~800–1.600 € for an "erfahrener DJ"). None of it is presented as
- * VEYSL's own pricing — `.claude/BRAND-FACTS.md` and `packages.ts` both mandate
+ * DJ Veys's own pricing — `.claude/BRAND-FACTS.md` and `packages.ts` both mandate
  * "Preis auf Anfrage" until the client supplies real figures.
  */
 export const wasKostetDe = `
@@ -31,7 +31,7 @@ Mehrere bundesweite Hochzeitsportale und DJ-Anbieter nennen unabhängig voneinan
 ähnliche Spannen für einen Hochzeits-DJ in Deutschland: grob zwischen 900 und 3.000 Euro
 pro Abend, mit Ausreißern bis etwa 4.000 Euro im gehobenen Segment, und mit niedrigeren
 Beträgen ab rund 800 Euro für kürzere oder einfachere Buchungen. Diese Spannen sind
-**allgemeine Marktbeobachtungen aus öffentlich zugänglichen Quellen, keine VEYSL-Preise**
+**allgemeine Marktbeobachtungen aus öffentlich zugänglichen Quellen, keine DJ Veys-Preise**
 — seine eigenen Pakete werden individuell nach Spielzeit, Gästezahl und Technikbedarf
 kalkuliert und erst nach dem Planungsgespräch als schriftliches Angebot ausgewiesen.
 
@@ -114,7 +114,7 @@ weil der tatsächliche Aufwand ein anderer ist. Wer zwei Angebote vergleicht, so
 deshalb immer fragen, ob beide von einem vergleichbaren Umfang ausgehen, bevor die
 reinen Endsummen gegenübergestellt werden.
 
-## Wie VEYSL das handhabt
+## Wie DJ Veys das handhabt
 
 Statt einer pauschalen Zahl gibt es auf der Paketübersicht drei Stufen mit klar
 definiertem Rahmen — Spielzeit, maximale Gästezahl und Technikumfang je Paket. Die
@@ -148,7 +148,7 @@ Almanya genelindeki birçok düğün portalı ve DJ sağlayıcısı, birbirinden
 benzer aralıklar veriyor: bir akşam için kabaca 900 ile 3.000 Euro arasında, üst
 segmentte 4.000 Euro'ya kadar çıkan istisnalarla, daha kısa ya da basit rezervasyonlar
 için 800 Euro civarından başlayan tutarlarla. Bu aralıklar **genel pazar
-gözlemleridir, VEYSL'in fiyatları değildir** — kendi paketleri çalma süresi, misafir
+gözlemleridir, DJ Veys'in fiyatları değildir** — kendi paketleri çalma süresi, misafir
 sayısı ve teknik ihtiyaca göre bireysel hesaplanır ve ancak planlama görüşmesinden sonra
 yazılı bir teklif olarak sunulur.
 
@@ -209,7 +209,7 @@ gerçek iş yükü farklı olduğu için. İki teklifi karşılaştıranlar, sad
 yan yana koymadan önce her ikisinin de karşılaştırılabilir bir kapsamdan yola çıkıp
 çıkmadığını sormalı.
 
-## VEYSL bunu nasıl ele alıyor
+## DJ Veys bunu nasıl ele alıyor
 
 Sabit bir rakam yerine paket sayfasında net tanımlanmış üç kademe bulunur — her paket
 için çalma süresi, azami misafir sayısı ve teknik kapsam. Somut rakam, planlama
@@ -240,7 +240,7 @@ Several nationwide German wedding portals and DJ providers independently cite si
 ranges for a wedding DJ in Germany: roughly 900 to 3,000 euros per evening, with
 outliers up to around 4,000 euros at the premium end, and lower amounts from around 800
 euros for shorter or simpler bookings. These ranges are **general market observations,
-not VEYSL's own pricing** — his packages are calculated individually based on playing
+not DJ Veys's own pricing** — his packages are calculated individually based on playing
 time, guest count and technical needs, and only turn into a written quote after the
 planning call.
 
@@ -303,7 +303,7 @@ expensive", but because the actual workload is different. Anyone comparing two q
 should always ask whether both assume a comparable scope before comparing the final
 totals directly.
 
-## How VEYSL handles this
+## How DJ Veys handles this
 
 Instead of one flat figure, the packages page lays out three clearly defined tiers —
 playing time, maximum guest count and technical scope per package. The concrete number
@@ -337,10 +337,10 @@ export const wasKostetEinHochzeitsDjPost: BlogPost = {
     de: {
       title: 'Was kostet ein Hochzeits-DJ in Baden-Württemberg?',
       excerpt:
-        'Eine seriöse Einheitszahl für "was kostet ein Hochzeits-DJ" gibt es nicht — wohl aber nachvollziehbare Preistreiber und eine grobe Marktorientierung. Dieser Artikel erklärt beides, ohne VEYSLs eigene Preise zu erfinden: Die bleiben "Preis auf Anfrage", bis echte Zahlen vorliegen.',
+        'Eine seriöse Einheitszahl für "was kostet ein Hochzeits-DJ" gibt es nicht — wohl aber nachvollziehbare Preistreiber und eine grobe Marktorientierung. Dieser Artikel erklärt beides, ohne DJ Veys’ eigene Preise zu erfinden: Die bleiben "Preis auf Anfrage", bis echte Zahlen vorliegen.',
       body: wasKostetDe,
       seo: {
-        metaTitle: 'Was kostet ein Hochzeits-DJ? Marktüberblick | VEYSL',
+        metaTitle: 'Was kostet ein Hochzeits-DJ? Marktüberblick | DJ Veys',
         metaDescription:
           'Was kostet ein Hochzeits-DJ wirklich? Preistreiber, Marktspannen aus mehreren Quellen und eine Checkliste zum Angebotsvergleich, unabhängig eingeordnet.',
       },
@@ -348,10 +348,10 @@ export const wasKostetEinHochzeitsDjPost: BlogPost = {
     tr: {
       title: 'Baden-Württemberg\'de bir düğün DJ\'i ne kadara mal olur?',
       excerpt:
-        '"Bir düğün DJ\'i ne kadara mal olur" sorusunun tek bir ciddi cevabı yok — ama somut fiyat etkenleri ve kabaca bir pazar aralığı var. Bu yazı ikisini de VEYSL\'in kendi fiyatlarını uydurmadan açıklıyor: onlar gerçek rakamlar gelene kadar "talep üzerine" kalıyor.',
+        '"Bir düğün DJ\'i ne kadara mal olur" sorusunun tek bir ciddi cevabı yok — ama somut fiyat etkenleri ve kabaca bir pazar aralığı var. Bu yazı ikisini de DJ Veys\'in kendi fiyatlarını uydurmadan açıklıyor: onlar gerçek rakamlar gelene kadar "talep üzerine" kalıyor.',
       body: wasKostetTr,
       seo: {
-        metaTitle: 'Düğün DJ\'i Fiyatları: Pazar Genel Bakışı | VEYSL',
+        metaTitle: 'Düğün DJ\'i Fiyatları: Pazar Genel Bakışı | DJ Veys',
         metaDescription:
           'Bir düğün DJ\'i gerçekte ne kadara mal olur? Fiyatı belirleyen etkenler, birden fazla kaynaktan pazar aralıkları ve teklif karşılaştırma kontrol listesi.',
       },
@@ -359,10 +359,10 @@ export const wasKostetEinHochzeitsDjPost: BlogPost = {
     en: {
       title: 'How much does a wedding DJ cost in Baden-Württemberg?',
       excerpt:
-        'There is no single honest number for "how much does a wedding DJ cost" — but there are real price drivers and a rough market range. This article explains both without inventing VEYSL\'s own pricing: that stays "on request" until real figures exist.',
+        'There is no single honest number for "how much does a wedding DJ cost" — but there are real price drivers and a rough market range. This article explains both without inventing DJ Veys\'s own pricing: that stays "on request" until real figures exist.',
       body: wasKostetEn,
       seo: {
-        metaTitle: 'Wedding DJ Cost: An Honest Market Overview | VEYSL',
+        metaTitle: 'Wedding DJ Cost: An Honest Market Overview | DJ Veys',
         metaDescription:
           'What does a wedding DJ actually cost? Price drivers, market ranges from multiple sources, and a checklist for comparing quotes fairly.',
       },

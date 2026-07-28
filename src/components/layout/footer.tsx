@@ -121,7 +121,7 @@ export async function Footer() {
 
       {/* site.previousNames is intentionally not rendered here: it exists only
           for schema.org alternateName/sameAs and redirects, not visible copy
-          (the brand is VEYSL, full stop — see the note in content/site.ts). */}
+          (the brand is DJ Veys, full stop — see the note in content/site.ts). */}
       <div className="border-t border-line">
         <Container className="py-6 text-xs text-ink-faint">
           <p>

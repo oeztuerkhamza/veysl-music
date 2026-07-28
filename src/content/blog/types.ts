@@ -55,7 +55,7 @@ export type BlogCategory =
 
 /**
  * `guide` = evergreen advice content (the 15 articles in Part 1).
- * `recap` = a real-event write-up. VEYSL has zero verified real-wedding details right
+ * `recap` = a real-event write-up. DJ Veys has zero verified real-wedding details right
  * now (see `.claude/BRAND-FACTS.md` — no couple names, venues or dates are confirmed),
  * so every `recap` currently ships as `status: 'template'`: real structure and prompts,
  * blanks left for the owner to fill in once he has a couple's written permission.

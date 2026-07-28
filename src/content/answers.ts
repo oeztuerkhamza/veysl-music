@@ -14,7 +14,7 @@
  * figure. See the "Hard rules" section of the brief this file was built
  * against; it is not relaxed anywhere below.
  *
- * Brand note: there is exactly one visible brand, `site.name` ("VEYSL").
+ * Brand note: there is exactly one visible brand, `site.name` ("DJ Veys").
  * `site.previousNames` ("DJ Veys", "VeysTunesOfficial") is technical-only
  * (schema `alternateName`, redirects) and must never appear in `q`/`a` text
  * here — see the corrected brand guidance in the project brief.
@@ -88,14 +88,14 @@ export const answers: Answer[] = [
     id: 'who-is-veysl',
     category: 'buchung',
     q: {
-      de: 'Wer ist VEYSL und was macht ihn zum Hochzeits-DJ in Stuttgart?',
-      en: 'Who is VEYSL and what makes him a wedding DJ in Stuttgart?',
-      tr: 'VEYSL kimdir ve onu Stuttgart’ta düğün DJ’i yapan nedir?',
+      de: 'Wer ist DJ Veys und was macht ihn zum Hochzeits-DJ in Stuttgart?',
+      en: 'Who is DJ Veys and what makes him a wedding DJ in Stuttgart?',
+      tr: 'DJ Veys kimdir ve onu Stuttgart’ta düğün DJ’i yapan nedir?',
     },
     a: {
-      de: 'VEYSL ist der Hochzeits-DJ-, Live-Musik- und Moderationsservice von Veysel Durmuş mit Sitz in Stuttgart-Obertürkheim. Seit über 12 Jahren begleitet er Hochzeiten und Events in Baden-Württemberg, deutschlandweit und europaweit, moderiert live auf Deutsch, Türkisch und Englisch und hat sich auf deutsch-türkische, türkische und multikulturelle Hochzeiten spezialisiert. Über 200 Feiern hat er bereits begleitet.',
-      en: 'VEYSL is the wedding-DJ, live-music and hosting service of Veysel Durmuş, based in Stuttgart-Obertürkheim, Germany. For over 12 years he has accompanied weddings and events across Baden-Württemberg, Germany and Europe, hosting live in German, Turkish and English, with a focus on German-Turkish, Turkish and multicultural weddings. He has played over 200 celebrations so far.',
-      tr: 'VEYSL, Veysel Durmuş’un Stuttgart-Obertürkheim merkezli düğün DJ’liği, canlı müzik ve sunuculuk hizmetidir. 12 yılı aşkın süredir Baden-Württemberg, Almanya geneli ve Avrupa’da düğün ve etkinliklere eşlik ediyor; Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve özellikle Alman-Türk, Türk ve çok kültürlü düğünlerde uzmanlaşmış durumda. Bugüne kadar 200’den fazla organizasyona imza attı.',
+      de: 'DJ Veys ist der Hochzeits-DJ-, Live-Musik- und Moderationsservice von Veysel Durmuş mit Sitz in Stuttgart-Obertürkheim. Seit über 12 Jahren begleitet er Hochzeiten und Events in Baden-Württemberg, deutschlandweit und europaweit, moderiert live auf Deutsch, Türkisch und Englisch und hat sich auf deutsch-türkische, türkische und multikulturelle Hochzeiten spezialisiert. Über 200 Feiern hat er bereits begleitet.',
+      en: 'DJ Veys is the wedding-DJ, live-music and hosting service of Veysel Durmuş, based in Stuttgart-Obertürkheim, Germany. For over 12 years he has accompanied weddings and events across Baden-Württemberg, Germany and Europe, hosting live in German, Turkish and English, with a focus on German-Turkish, Turkish and multicultural weddings. He has played over 200 celebrations so far.',
+      tr: 'DJ Veys, Veysel Durmuş’un Stuttgart-Obertürkheim merkezli düğün DJ’liği, canlı müzik ve sunuculuk hizmetidir. 12 yılı aşkın süredir Baden-Württemberg, Almanya geneli ve Avrupa’da düğün ve etkinliklere eşlik ediyor; Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve özellikle Alman-Türk, Türk ve çok kültürlü düğünlerde uzmanlaşmış durumda. Bugüne kadar 200’den fazla organizasyona imza attı.',
     },
     facts: [
       '12+ Jahre Erfahrung',
@@ -111,9 +111,9 @@ export const answers: Answer[] = [
     id: 'trust-proof',
     category: 'buchung',
     q: {
-      de: 'Woran erkenne ich, dass VEYSL wirklich erfahren ist?',
-      en: 'How can I tell that VEYSL is genuinely experienced?',
-      tr: 'VEYSL’in gerçekten deneyimli olduğunu neye bakarak anlarım?',
+      de: 'Woran erkenne ich, dass DJ Veys wirklich erfahren ist?',
+      en: 'How can I tell that DJ Veys is genuinely experienced?',
+      tr: 'DJ Veys’in gerçekten deneyimli olduğunu neye bakarak anlarım?',
     },
     a: {
       de: 'Am direktesten an drei überprüfbaren Zahlen: über 12 Jahre Erfahrung als DJ und Musiker, mehr als 200 begleitete Hochzeiten und Events sowie über 63.000 Follower auf Instagram, wo regelmäßig Ausschnitte echter Feiern zu sehen sind. Dazu kommt eigene, professionelle Ton- und Lichttechnik statt zusammengekaufter Leihgeräte.',

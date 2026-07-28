@@ -51,7 +51,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${
 
   <!-- Wortmarke, gesperrt gesetzt wie im Header der Website -->
   <text x="80" y="132" font-family="Georgia, 'Times New Roman', serif"
-        font-size="46" letter-spacing="14" fill="${INK}">VEYSL</text>
+        font-size="46" letter-spacing="14" fill="${INK}">DJ Veys</text>
   <rect x="80" y="158" width="72" height="2" fill="${GOLD}"/>
 
   <!-- Claim -->
@@ -66,7 +66,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${
   <text x="80" y="552" font-family="Helvetica, Arial, sans-serif"
         font-size="26" letter-spacing="2" fill="${INK_MUTED}">Hochzeits-DJ · Live-Musik · Moderation</text>
   <text x="1120" y="552" text-anchor="end" font-family="Helvetica, Arial, sans-serif"
-        font-size="26" letter-spacing="2" fill="${GOLD}">veysl.de</text>
+        font-size="26" letter-spacing="2" fill="${GOLD}">dj-veys.de</text>
 </svg>`;
 
 const png = await sharp(Buffer.from(svg)).png({ compressionLevel: 9 }).toBuffer();

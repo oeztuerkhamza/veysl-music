@@ -1,4 +1,4 @@
-# VEYSL — CRO Audit
+# DJ Veys — CRO Audit
 
 Owned by the CRO/analytics agent. Read `docs/ANALYTICS.md` first — several
 items below depend on the event taxonomy and `data-cta` contract defined

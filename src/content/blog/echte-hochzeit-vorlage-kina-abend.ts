@@ -254,7 +254,7 @@ export const echteHochzeitKinaAbendPost: BlogPost = {
         '[VORLAGE — nicht veröffentlichen, bis alle {{TOKENS}} durch echte, freigegebene Angaben ersetzt sind] Eine Kına Gecesi: Einzug, Henna-Ritual, Live-Musik und der Übergang zur Party.',
       body: kinaAbendBodyDe,
       seo: {
-        metaTitle: '[VORLAGE] Echte Kına Gecesi in {{CITY}} | VEYSL',
+        metaTitle: '[VORLAGE] Echte Kına Gecesi in {{CITY}} | DJ Veys',
         metaDescription: '[VORLAGE — vor Veröffentlichung mit echten Daten füllen] Echte Kına Gecesi, Ritual und Live-Musik.',
       },
     },
@@ -264,7 +264,7 @@ export const echteHochzeitKinaAbendPost: BlogPost = {
         '[ŞABLON — tüm {{TOKEN}}\'lar gerçek, izin verilmiş bilgilerle değiştirilmeden yayınlamayın] Bir kına gecesi: giriş, kına ritüeli, canlı müzik ve partiye geçiş.',
       body: kinaAbendBodyTr,
       seo: {
-        metaTitle: '[ŞABLON] {{CITY}}\'de Gerçek Kına Gecesi | VEYSL',
+        metaTitle: '[ŞABLON] {{CITY}}\'de Gerçek Kına Gecesi | DJ Veys',
         metaDescription: '[ŞABLON — yayınlamadan önce gerçek verilerle doldurun] Gerçek kına gecesi, ritüel ve canlı müzik.',
       },
     },
@@ -274,7 +274,7 @@ export const echteHochzeitKinaAbendPost: BlogPost = {
         '[TEMPLATE — do not publish until every {{TOKEN}} is replaced with real, approved details] A kına gecesi: entrance, henna ritual, live music and the transition into the party.',
       body: kinaAbendBodyEn,
       seo: {
-        metaTitle: '[TEMPLATE] Real Kına Gecesi in {{CITY}} | VEYSL',
+        metaTitle: '[TEMPLATE] Real Kına Gecesi in {{CITY}} | DJ Veys',
         metaDescription: '[TEMPLATE — fill with real data before publishing] A real kına gecesi, ritual and live music.',
       },
     },

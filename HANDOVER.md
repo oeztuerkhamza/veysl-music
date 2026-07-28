@@ -1,4 +1,4 @@
-# VEYSL.DE — Was noch vom Kunden gebraucht wird
+# DJ Veys.DE — Was noch vom Kunden gebraucht wird
 
 Stand: Juli 2026. Diese Liste ist nach **Wirkung auf Buchungsanfragen** sortiert,
 nicht nach Aufwand. Die Website ist technisch so gebaut, dass sie auch ohne diese
@@ -52,7 +52,7 @@ primär daraus. Kein technischer Kniff ersetzt Bewertungen.
 - [ ] Google Business Profile vervollständigen: Kategorie, Einzugsgebiet,
       Leistungen, Fotos, regelmäßige Beiträge
 
-## 🔴 3. Domain-Umzug veystunesofficial.de → veysl.de
+## 🔴 3. Domain-Umzug veystunesofficial.de → dj-veys.de
 
 **Warum:** Falsch gemacht, verliert die alte Domain ihre Sichtbarkeit und die neue
 gewinnt keine. Das ist das größte technische Risiko des Projekts.
@@ -60,7 +60,7 @@ gewinnt keine. Das ist das größte technische Risiko des Projekts.
 - [ ] Alte Domain **behalten**, nicht kündigen
 - [ ] 301-Weiterleitungen Seite für Seite (nicht alles auf die Startseite)
 - [ ] Google Search Console: Adressänderung durchführen
-- [ ] Google Business Profile: Website-URL auf veysl.de umstellen
+- [ ] Google Business Profile: Website-URL auf dj-veys.de umstellen
 - [ ] Social-Media-Profile auf die neue Domain umstellen
 
 ## 🟡 4. Preise und Pakete
@@ -120,7 +120,7 @@ Diese Bereiche sind bewusst leer und zeigen einen gestalteten Leerzustand.
 
 ## 🟢 9. Konten und Zugänge
 
-- [x] E-Mail auf `info@veysl.de` umstellen — im Code erledigt. Die private
+- [x] E-Mail auf `info@dj-veys.de` umstellen — im Code erledigt. Die private
       Gmail-Adresse steht nirgends mehr in der Anwendung. Das Postfach selbst
       läuft über den eigenen Mailserver, siehe docs/MAIL-SELFHOSTED.md.
 - [ ] Zugang Google Search Console und Google Business Profile
@@ -131,7 +131,7 @@ Diese Bereiche sind bewusst leer und zeigen einen gestalteten Leerzustand.
 
 ## Markenname — entschieden
 
-Die Marke heißt **VEYSL**. Ein Name, überall: Header, Footer, Seitentitel, Texte.
+Die Marke heißt **DJ Veys**. Ein Name, überall: Header, Footer, Seitentitel, Texte.
 Kein Doppelbranding, kein „ehemals …" im sichtbaren Text.
 
 **VeysTunesOfficial** steht ausschließlich im **Impressum**, weil § 5 DDG die
@@ -146,13 +146,13 @@ die Bewertungen die neue Domain. Für Besucher ist davon nichts sichtbar.
 
 ### Daraus folgt eine Aufgabe für den Kunden
 
-Damit sich der Name VEYSL durchsetzt, muss er dort auftauchen, wo die Reichweite
+Damit sich der Name DJ Veys durchsetzt, muss er dort auftauchen, wo die Reichweite
 schon ist:
 
-- [ ] Instagram-Bio `@dj_veys`: Link auf **veysl.de** setzen (aktuell zeigt er auf
-      die alte Domain) und VEYSL im Profiltext nennen
-- [ ] YouTube-Kanalinfo und Google Business Profile auf veysl.de umstellen
-- [ ] Bei den nächsten Events VEYSL sichtbar machen (DJ-Pult, Story-Overlays,
+- [ ] Instagram-Bio `@dj_veys`: Link auf **dj-veys.de** setzen (aktuell zeigt er auf
+      die alte Domain) und DJ Veys im Profiltext nennen
+- [ ] YouTube-Kanalinfo und Google Business Profile auf dj-veys.de umstellen
+- [ ] Bei den nächsten Events DJ Veys sichtbar machen (DJ-Pult, Story-Overlays,
       Aftermovie-Branding)
 
 Das ist der schnellste Weg, aus 63.000 Followern Markenbekanntheit für den neuen

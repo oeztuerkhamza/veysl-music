@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { site } from '@/content/site';
 
 /**
- * PWA manifest for veysl.de. Colors match the dark/gold palette from
+ * PWA manifest for dj-veys.de. Colors match the dark/gold palette from
  * globals.css (`--color-bg` / `--color-gold`) — kept as literal hex here since
  * the manifest is served as static JSON and can't consume CSS custom
  * properties.

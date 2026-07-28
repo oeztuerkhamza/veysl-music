@@ -94,7 +94,7 @@ export async function cacheRemoteImage(sourceUrl: string | null | undefined): Pr
       response = await fetch(sourceUrl, {
         signal: controller.signal,
         // A UA header avoids some CDNs (incl. Instagram's) serving a 403 to bare fetches.
-        headers: { 'user-agent': 'Mozilla/5.0 (compatible; VEYSLBot/1.0; +https://veysl.de)' },
+        headers: { 'user-agent': 'Mozilla/5.0 (compatible; DJVeysBot/1.0; +https://dj-veys.de)' },
       });
     } finally {
       clearTimeout(timeout);

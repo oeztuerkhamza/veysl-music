@@ -1,10 +1,10 @@
-# VEYSL — SEO Action Plan
+# DJ Veys — SEO Action Plan
 
 Sequenced, ruthless, and honest about what code can and can't do. Read
 `docs/SEO-COMPETITIVE-ANALYSIS.md`, `docs/SEO-KEYWORD-MAP.md` and
 `docs/SEO-CITY-STRATEGY.md` first — this doc assumes their findings.
 
-**The headline honesty check, up front:** on-page and technical SEO can make VEYSL
+**The headline honesty check, up front:** on-page and technical SEO can make DJ Veys
 *findable and convincing* once someone searches. It cannot manufacture the ~30 Google
 reviews a top Turkish-niche competitor appears to have, the 25 years of brand
 recognition "DJ Serkan" has built since 2000, or the backlinks a 2023-founded portal
@@ -154,7 +154,7 @@ No amount of code ships a review or a backlink.
 
 ### 2. Directory and citation listings
 Per `docs/SEO-COMPETITIVE-ANALYSIS.md` §4, these directories currently own real SERP
-real estate for the exact queries VEYSL wants — getting listed inside them is a
+real estate for the exact queries DJ Veys wants — getting listed inside them is a
 citation/backlink play, not a ranking fight:
 - [hochzeit.click](https://hochzeit.click/de/hochzeits-djs/stuttgart/) — fast-rising,
   founded 2023, worth a free/low-cost profile now while it's still climbing.
@@ -175,7 +175,7 @@ citation/backlink play, not a ranking fight:
 ### 3. Venue and planner backlinks — real, named targets from this research
 Every venue named in `docs/SEO-CITY-STRATEGY.md` is a legitimate outreach target: get
 listed on a venue's "recommended vendors/Dienstleister" page (common practice for German
-Hochzeitslocations) in exchange for a link back to veysl.de. Concrete starting list:
+Hochzeitslocations) in exchange for a link back to dj-veys.de. Concrete starting list:
 - **"Dügün Salonu Mannheim"** (Skalitzer Str. 130, Mannheim) — a Turkish-specific venue
   is the single best-fit partner found in this entire research pass; a
   DJ-recommends/venue-recommends reciprocal relationship here is worth more than a
@@ -201,13 +201,13 @@ Confirmed, real, upcoming events in the target market:
 
 ### 5. Why this section is the actual answer to "outrank everyone in 200 km"
 Re-stating the honest read from the competitive analysis: the technical/content work in
-(a) and (b) makes VEYSL *competitive* once found. It's sections (c)'s reviews,
-citations, and venue relationships that make VEYSL *found* against a competitor with 25
+(a) and (b) makes DJ Veys *competitive* once found. It's sections (c)'s reviews,
+citations, and venue relationships that make DJ Veys *found* against a competitor with 25
 years and 30 reviews. Treat (a) and (b) as the floor, not the ceiling.
 
 ---
 
-## (d) Migration plan — `veystunesofficial.de` → `veysl.de`
+## (d) Migration plan — `veystunesofficial.de` → `dj-veys.de`
 
 ### What's actually on the old domain (checked directly)
 The old site's sitemap (`https://www.veystunesofficial.de/wp-sitemap-posts-page-1.xml`)
@@ -244,9 +244,9 @@ or the hosting layer, owned by the orchestrator per `CONTRACT.md`'s file-ownersh
 Per Google's own current guidance (checked July 2026 — Google published a revision to
 its site-move documentation on 17 June 2026 specifically clarifying this point):
 
-1. Verify **both** domains in GSC: `veystunesofficial.de` and `veysl.de` — and, per
+1. Verify **both** domains in GSC: `veystunesofficial.de` and `dj-veys.de` — and, per
    Google's updated guidance, **all variants** (`www.veystunesofficial.de`,
-   `veystunesofficial.de` non-www, and the equivalent `veysl.de` variants), even the ones
+   `veystunesofficial.de` non-www, and the equivalent `dj-veys.de` variants), even the ones
    not actively serving traffic.
 2. Ship all 301 redirects live **before** running the Change of Address tool.
 3. Run the **Change of Address tool** (Search Console → old-domain property → Settings →
@@ -261,9 +261,9 @@ its site-move documentation on 17 June 2026 specifically clarifying this point):
 ### Preserving the 5.0★ Google profile through the move
 This is the good news in this whole migration: **the Google review rating and count
 live on the Google Business Profile / Place ID, not on the website.** Moving
-`veystunesofficial.de` → `veysl.de` does not, by itself, touch the reviews at all — as
+`veystunesofficial.de` → `dj-veys.de` does not, by itself, touch the reviews at all — as
 long as:
-- The GBP's **website field** is updated to `veysl.de` (not left pointing at the dead
+- The GBP's **website field** is updated to `dj-veys.de` (not left pointing at the dead
   domain), and
 - The GBP's **name field stays consistent** (per `CONTRACT.md`, `site.brandLegacy` =
   "VeysTunesOfficial" is explicitly preserved for exactly this reason — schema `sameAs`
@@ -276,7 +276,7 @@ the domain move itself.
 ### Timeline and ranking risk — the honest version
 Google's own guidance (and general SEO consensus) is that a domain migration typically
 causes some ranking fluctuation for **2–4 weeks, sometimes longer**, while Google
-re-crawls and re-associates signals with the new domain. **In VEYSL's specific case this
+re-crawls and re-associates signals with the new domain. **In DJ Veys's specific case this
 risk is unusually low**, for a reason the research in this project surfaced directly:
 searching for the client's own existing brand terms during this competitive analysis did
 not surface `veystunesofficial.de` ranking prominently for any generic wedding-DJ query —

@@ -311,7 +311,7 @@ export const dramaturgiePost: BlogPost = {
         'Ein guter Hochzeitsabend ist eine Kurve aus bewussten Höhen und Tälern, kein gleichmäßiger Dauerbeschuss aus Musik. Dieser Guide erklärt die vier Phasen eines Abends und wie die Peaktime bewusst aufgebaut wird.',
       body: dramaturgieDe,
       seo: {
-        metaTitle: 'Dramaturgie des Hochzeitsabends erklärt | VEYSL',
+        metaTitle: 'Dramaturgie des Hochzeitsabends erklärt | DJ Veys',
         metaDescription:
           'Sektempfang, Dinner, Peaktime: Wie die musikalische Dramaturgie eines Hochzeitsabends bewusst aufgebaut wird, mit Phasen-Tabelle und typischen Fehlern.',
       },
@@ -322,7 +322,7 @@ export const dramaturgiePost: BlogPost = {
         'İyi bir düğün akşamı, düz bir müzik bombardımanı değil, bilinçli iniş ve çıkışları olan bir eğridir. Bu rehber, bir akşamın dört aşamasını ve zirvenin bilinçli olarak nasıl inşa edildiğini anlatıyor.',
       body: dramaturgieTr,
       seo: {
-        metaTitle: 'Düğün Akşamının Dramaturjisi | VEYSL',
+        metaTitle: 'Düğün Akşamının Dramaturjisi | DJ Veys',
         metaDescription:
           'Kokteyl, yemek, zirve: bir düğün akşamının müzikal dramaturjisi nasıl bilinçli inşa edilir? Aşama tablosu ve tipik hatalarla birlikte.',
       },
@@ -333,7 +333,7 @@ export const dramaturgiePost: BlogPost = {
         'A good wedding evening is a curve of deliberate highs and lows, not a flat wall of constant music. This guide explains the four phases of an evening and how peak time gets built deliberately.',
       body: dramaturgieEn,
       seo: {
-        metaTitle: 'The Dramaturgy of a Wedding Evening | VEYSL',
+        metaTitle: 'The Dramaturgy of a Wedding Evening | DJ Veys',
         metaDescription:
           'Champagne reception, dinner, peak time: how the musical dramaturgy of a wedding evening is deliberately built, with a phase table and common mistakes.',
       },

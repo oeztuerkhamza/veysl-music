@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-# veysl.de — Next.js 16 (App Router) + Payload CMS 3, multi-stage build.
+# dj-veys.de — Next.js 16 (App Router) + Payload CMS 3, multi-stage build.
 #
 # Produces a minimal runtime image using Next's `output: 'standalone'` trace
 # (see next.config.ts) — the final stage ships only the files Next
@@ -8,8 +8,8 @@
 #
 # Build (from repo root):
 #   docker build \
-#     --build-arg NEXT_PUBLIC_SITE_URL=https://veysl.de \
-#     --build-arg NEXT_PUBLIC_PLAUSIBLE_DOMAIN=veysl.de \
+#     --build-arg NEXT_PUBLIC_SITE_URL=https://dj-veys.de \
+#     --build-arg NEXT_PUBLIC_PLAUSIBLE_DOMAIN=dj-veys.de \
 #     -t veysl-app:latest .
 # (docker-compose.yml passes these automatically from .env — see docs/DEPLOYMENT.md)
 #

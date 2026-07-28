@@ -1,6 +1,6 @@
 /**
  * Image slot registry — the exhaustive, typed inventory of every place a real
- * photograph belongs on veysl.de, plus the exact shot the client needs to
+ * photograph belongs on dj-veys.de, plus the exact shot the client needs to
  * commission for it.
  *
  * WHY THIS FILE EXISTS: per `.claude/BRAND-FACTS.md` → "Media", the client has
@@ -345,11 +345,11 @@ export const imageSlots: ImageSlot[] = [
     page: 'Global — Social-Share-Bild (OG)',
     label: 'Standard-Vorschaubild (Google/Social)',
     purpose:
-      'Teilbild für Google- und Social-Media-Vorschauen, 1200×630 px (hier am nächsten am Seitenverhältnis 16:9 abgebildet). Bis echtes Bildmaterial vorliegt, ist ein rein typografisches Motiv (Wortmarke VEYSL auf dunklem Gold-Grund, Cormorant-Garamond-Type) dem Versuch vorzuziehen, ein noch unpassendes Foto zu erzwingen. Wird in src/lib/seo.ts (DEFAULT_OG_IMAGE, SEO-Agent) referenziert, nicht direkt über diese Registry ausgespielt.',
+      'Teilbild für Google- und Social-Media-Vorschauen, 1200×630 px (hier am nächsten am Seitenverhältnis 16:9 abgebildet). Bis echtes Bildmaterial vorliegt, ist ein rein typografisches Motiv (Wortmarke DJ Veys auf dunklem Gold-Grund, Cormorant-Garamond-Type) dem Versuch vorzuziehen, ein noch unpassendes Foto zu erzwingen. Wird in src/lib/seo.ts (DEFAULT_OG_IMAGE, SEO-Agent) referenziert, nicht direkt über diese Registry ausgespielt.',
     aspect: '16/9',
     priority: 3,
     fallbackSrc: null,
-    altHint: `„${'VEYSL'} — Hochzeits-DJ, Musiker & Moderator“ oder das im Foto tatsächlich abgebildete Motiv, falls ein echtes Foto verwendet wird.`,
+    altHint: `„${'DJ Veys'} — Hochzeits-DJ, Musiker & Moderator“ oder das im Foto tatsächlich abgebildete Motiv, falls ein echtes Foto verwendet wird.`,
   },
 ];
 

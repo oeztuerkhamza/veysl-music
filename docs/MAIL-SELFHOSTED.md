@@ -1,6 +1,6 @@
-# Eigener Mailserver für veysl.de (Postfix / Dovecot / Roundcube)
+# Eigener Mailserver für dj-veys.de (Postfix / Dovecot / Roundcube)
 
-Selbst gehostetes Postfach `info@veysl.de` mit Roundcube als Weboberfläche,
+Selbst gehostetes Postfach `info@dj-veys.de` mit Roundcube als Weboberfläche,
 plus die vollständige Konfiguration für Zustellbarkeit — damit ausgehende Mails
 nicht im Spam landen.
 
@@ -29,7 +29,7 @@ Zeit in die Installation geht.
 
 ### 2. rDNS / PTR-Eintrag
 
-Der PTR-Eintrag der Server-IP muss auf `mail.veysl.de` zeigen — einzustellen im
+Der PTR-Eintrag der Server-IP muss auf `mail.dj-veys.de` zeigen — einzustellen im
 netcup **SCP** (Server → Netzwerk → rDNS). Das ist der wichtigste einzelne
 Faktor für Zustellbarkeit: Empfänger prüfen, ob der Name, mit dem sich der
 Server meldet, zur IP passt. Fehlt der PTR oder passt er nicht, landen Mails
@@ -38,8 +38,8 @@ bei Gmail, GMX und Web.de verlässlich im Spam oder werden ganz abgewiesen.
 Es muss in **beide** Richtungen stimmen (Forward-confirmed reverse DNS):
 
 ```
-mail.veysl.de.        A     <SERVER_IPV4>
-<SERVER_IPV4>         PTR   mail.veysl.de.
+mail.dj-veys.de.        A     <SERVER_IPV4>
+<SERVER_IPV4>         PTR   mail.dj-veys.de.
 ```
 
 ### 3. Arbeitsspeicher
@@ -61,18 +61,18 @@ Website reißt nicht das Postfach mit.
 | Komponente | Rolle |
 |---|---|
 | **docker-mailserver** | Postfix (SMTP), Dovecot (IMAP), Rspamd (Spamfilter), OpenDKIM, Fail2ban — ein Container, konfiguriert über Dateien |
-| **Roundcube** | Weboberfläche, erreichbar unter `https://mail.veysl.de` |
+| **Roundcube** | Weboberfläche, erreichbar unter `https://mail.dj-veys.de` |
 | **nginx** | Reverse Proxy für Roundcube, bestehende Instanz aus `docker-compose.yml` |
-| **certbot** | TLS für `mail.veysl.de` — dieselbe Instanz, nur eine weitere Domain |
+| **certbot** | TLS für `mail.dj-veys.de` — dieselbe Instanz, nur eine weitere Domain |
 
 Postfächer:
 
 | Adresse | Zweck |
 |---|---|
-| `info@veysl.de` | Echtes Postfach. Impressum, Google Business Profile, Kundenkontakt |
-| `no-reply@veysl.de` | Nur Versand — die automatische Anfragebestätigung |
-| `postmaster@veysl.de` | Alias auf `info@` — **Pflicht** nach RFC 2142 |
-| `abuse@veysl.de` | Alias auf `info@` — Pflicht, und Empfänger prüfen es teils |
+| `info@dj-veys.de` | Echtes Postfach. Impressum, Google Business Profile, Kundenkontakt |
+| `no-reply@dj-veys.de` | Nur Versand — die automatische Anfragebestätigung |
+| `postmaster@dj-veys.de` | Alias auf `info@` — **Pflicht** nach RFC 2142 |
+| `abuse@dj-veys.de` | Alias auf `info@` — Pflicht, und Empfänger prüfen es teils |
 
 Die Trennung von `info@` und `no-reply@` ist Absicht: wird der automatische
 Versand einmal als Massenmail eingestuft, beschädigt das nur die Reputation
@@ -82,7 +82,7 @@ dieser einen Adresse, nicht die persönliche Korrespondenz.
 
 ## DNS-Einträge — die vollständige Liste gegen Spam
 
-Alle in der netcup-DNS-Zone, Panel **CCP** → Domains → veysl.de → DNS-Einträge
+Alle in der netcup-DNS-Zone, Panel **CCP** → Domains → dj-veys.de → DNS-Einträge
 (siehe `docs/DNS-RECORDS.md`). Die Zone liegt auf netcups eigenen Nameservern
 (`netcup.firstns.cc` + 4 weitere) — **es ist kein Cloudflare im Spiel.** Eine
 frühere Fassung dieses Abschnitts sprach von Cloudflare und der „grauen Wolke";
@@ -94,27 +94,27 @@ denn Cloudflare proxyt kein SMTP.)
 |---|---|---|---|---|
 | 1 | A | `mail` | `<SERVER_IPV4>` | Der Mailhost. Proxy **aus** |
 | 2 | AAAA | `mail` | `<SERVER_IPV6>` | Nur setzen, wenn IPv6 wirklich sendet — ein AAAA ohne passenden PTR ist schlimmer als keins |
-| 3 | MX | `@` | `mail.veysl.de` (Prio 10) | Wohin Post für `@veysl.de` geht |
-| 4 | TXT | `@` | `v=spf1 a:mail.veysl.de -all` | Nur dieser Host darf senden. `-all` = hard fail |
+| 3 | MX | `@` | `mail.dj-veys.de` (Prio 10) | Wohin Post für `@dj-veys.de` geht |
+| 4 | TXT | `@` | `v=spf1 a:mail.dj-veys.de -all` | Nur dieser Host darf senden. `-all` = hard fail |
 | 5 | TXT | `mail._domainkey` | `v=DKIM1; k=rsa; p=<KEY>` | Signatur. Key erzeugt der Container (unten) |
-| 6 | TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:info@veysl.de; pct=100` | Berichte einsammeln, **erst später verschärfen** |
+| 6 | TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:info@dj-veys.de; pct=100` | Berichte einsammeln, **erst später verschärfen** |
 | 7 | TXT | `_mta-sts` | `v=STSv1; id=2026072601` | Erzwingt TLS für eingehende Mail |
-| 8 | TXT | `_smtp._tls` | `v=TLSRPTv1; rua=mailto:info@veysl.de` | Berichte über fehlgeschlagene TLS-Verbindungen |
-| 9 | CNAME | `mta-sts` | `veysl.de` | Hostet die MTA-STS-Policy (siehe unten) |
+| 8 | TXT | `_smtp._tls` | `v=TLSRPTv1; rua=mailto:info@dj-veys.de` | Berichte über fehlgeschlagene TLS-Verbindungen |
+| 9 | CNAME | `mta-sts` | `dj-veys.de` | Hostet die MTA-STS-Policy (siehe unten) |
 | 10 | CAA | `@` | `0 issue "letsencrypt.org"` | Nur Let's Encrypt darf Zertifikate ausstellen |
 
 Nur **ein** SPF-Eintrag pro Domain. Wird zusätzlich Resend genutzt, gehört es
-in dieselbe Zeile: `v=spf1 a:mail.veysl.de include:_spf.resend.com -all`.
+in dieselbe Zeile: `v=spf1 a:mail.dj-veys.de include:_spf.resend.com -all`.
 
 ### MTA-STS-Policy als Datei
 
 Punkt 7 und 9 brauchen eine erreichbare Policy-Datei unter
-`https://mta-sts.veysl.de/.well-known/mta-sts.txt`:
+`https://mta-sts.dj-veys.de/.well-known/mta-sts.txt`:
 
 ```
 version: STSv1
 mode: enforce
-mx: mail.veysl.de
+mx: mail.dj-veys.de
 max_age: 604800
 ```
 
@@ -123,10 +123,10 @@ lehnen fremde Server die Zustellung ab, wenn das Zertifikat mal nicht passt.
 
 ### DANE / TLSA — optional
 
-Bringt zusätzliches Vertrauen, verlangt aber **DNSSEC auf der Zone**. Da die
-Zone gerade zu Cloudflare wandert (DNSSEC muss bei netcup dafür erst aus,
-siehe `docs/DNS-RECORDS.md`), ist das ein Schritt für später — nicht für den
-ersten Aufbau.
+Bringt zusätzliches Vertrauen, verlangt aber **DNSSEC auf der Zone**. Die Zone
+liegt bei netcup und wandert nirgendwohin — eine frühere Fassung sprach hier
+von einem Umzug zu Cloudflare, den es nie gab. DNSSEC ist bei netcup im CCP
+aktivierbar; das ist ein Schritt für später, nicht für den ersten Aufbau.
 
 ---
 
@@ -144,10 +144,10 @@ docker compose -f deploy/mail/docker-compose.mail.yml up -d
 ### 2. Postfächer anlegen
 
 ```bash
-docker exec -it mailserver setup email add info@veysl.de
-docker exec -it mailserver setup email add no-reply@veysl.de
-docker exec -it mailserver setup alias add postmaster@veysl.de info@veysl.de
-docker exec -it mailserver setup alias add abuse@veysl.de info@veysl.de
+docker exec -it mailserver setup email add info@dj-veys.de
+docker exec -it mailserver setup email add no-reply@dj-veys.de
+docker exec -it mailserver setup alias add postmaster@dj-veys.de info@dj-veys.de
+docker exec -it mailserver setup alias add abuse@dj-veys.de info@dj-veys.de
 ```
 
 Passwörter werden interaktiv abgefragt — lange, zufällige nehmen und in den
@@ -156,7 +156,7 @@ Passwortmanager, **nicht** in `.env` oder ins Repo.
 ### 3. DKIM-Schlüssel erzeugen
 
 ```bash
-docker exec -it mailserver setup config dkim keysize 2048 domain veysl.de
+docker exec -it mailserver setup config dkim keysize 2048 domain dj-veys.de
 ```
 
 Der Befehl gibt aus, wohin er den öffentlichen Teil geschrieben hat — der Pfad
@@ -172,8 +172,8 @@ Der private Schlüssel bleibt auf dem Server und muss ins Backup
 ### 4. TLS-Zertifikat erweitern
 
 ```bash
-CERTBOT_EMAIL=info@veysl.de \
-CERTBOT_DOMAINS="veysl.de www.veysl.de mail.veysl.de mta-sts.veysl.de" \
+CERTBOT_EMAIL=info@dj-veys.de \
+CERTBOT_DOMAINS="dj-veys.de www.dj-veys.de mail.dj-veys.de mta-sts.dj-veys.de" \
 deploy/setup-ssl.sh
 ```
 
@@ -185,12 +185,12 @@ In `/opt/veysl/app/.env`:
 
 ```
 BOOKING_TRANSPORT=smtp
-SMTP_HOST=mail.veysl.de
+SMTP_HOST=mail.dj-veys.de
 SMTP_PORT=587
-SMTP_USER=no-reply@veysl.de
+SMTP_USER=no-reply@dj-veys.de
 SMTP_PASS=<Passwort aus Schritt 2>
-SMTP_FROM_EMAIL=VEYSL <no-reply@veysl.de>
-BOOKING_NOTIFY_EMAIL=info@veysl.de
+SMTP_FROM_EMAIL=DJ Veys <no-reply@dj-veys.de>
+BOOKING_NOTIFY_EMAIL=info@dj-veys.de
 ```
 
 **Wichtig:** `SmtpMailSender` ist im Code noch nicht implementiert — aktuell
@@ -208,13 +208,13 @@ zu landen.
 
 - [ ] Ausgehender Port 25 durch netcup freigeschaltet und getestet:
       `nc -zv gmail-smtp-in.l.google.com 25`
-- [ ] PTR zeigt auf `mail.veysl.de`: `dig -x <SERVER_IPV4> +short`
-- [ ] Vorwärtsauflösung passt: `dig +short mail.veysl.de` ergibt dieselbe IP
+- [ ] PTR zeigt auf `mail.dj-veys.de`: `dig -x <SERVER_IPV4> +short`
+- [ ] Vorwärtsauflösung passt: `dig +short mail.dj-veys.de` ergibt dieselbe IP
 - [ ] Postfix meldet sich mit dem richtigen Namen: `postconf myhostname`
-      ergibt `mail.veysl.de`
+      ergibt `mail.dj-veys.de`
 - [ ] SPF, DKIM, DMARC aufgelöst:
-      `dig +short veysl.de TXT` · `dig +short mail._domainkey.veysl.de TXT` ·
-      `dig +short _dmarc.veysl.de TXT`
+      `dig +short dj-veys.de TXT` · `dig +short mail._domainkey.dj-veys.de TXT` ·
+      `dig +short _dmarc.dj-veys.de TXT`
 - [ ] **Kein offenes Relay** — von außen prüfen, sonst wird die IP innerhalb
       von Tagen auf Blocklisten stehen
 - [ ] Testmail an Gmail **und** GMX/Web.de — deutsche Paare nutzen beides
@@ -224,7 +224,7 @@ zu landen.
 - [ ] [Google Postmaster Tools](https://postmaster.google.com) und
       [Microsoft SNDS](https://sendersupport.olc.protection.outlook.com/snds/)
       registrieren — ohne die siehst du deine eigene Reputation nicht
-- [ ] Roundcube erreichbar unter `https://mail.veysl.de`, Login mit `info@`
+- [ ] Roundcube erreichbar unter `https://mail.dj-veys.de`, Login mit `info@`
 
 ### Warmlaufen lassen
 
@@ -253,4 +253,4 @@ gehen blockiert die eigene Post**, solange SPF/DKIM noch nicht sauber sind.
 - **Monitoring**: Zustellfehler landen in Postfix' Logs. Ohne Blick darauf
   merkt niemand, wenn Mails abgelehnt werden — die Anfrage ist dann still
   verloren, und genau das sollte der eigene Server verhindern.
-- **DANE/TLSA** nach dem DNSSEC-Umzug zu Cloudflare.
+- **DANE/TLSA**, sobald DNSSEC für die Zone im netcup-CCP aktiviert ist.

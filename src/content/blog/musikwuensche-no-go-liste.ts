@@ -118,7 +118,7 @@ kümmern, weil die Leitplanken bereits stehen.
 Eine durchdachte Wunsch- und No-Go-Liste ist eines der wirkungsvollsten, aber am
 wenigsten aufwendigen Instrumente der gesamten Hochzeitsplanung. Sie kostet ein bis zwei
 Stunden gemeinsame Vorbereitung und erspart am Hochzeitsabend jede Unsicherheit über die
-Musikrichtung. Bei VEYSL ist eine individuelle Musikwunschliste inklusive expliziter
+Musikrichtung. Bei DJ Veys ist eine individuelle Musikwunschliste inklusive expliziter
 No-Go-Liste fester Bestandteil jeder Buchung und wird im Planungsgespräch gemeinsam
 erstellt — Details dazu finden sich auf der Musik-Seite.
 `.trim();
@@ -216,7 +216,7 @@ güncel olduğundan emin olmak için.
 ## Sonuç
 
 İyi düşünülmüş bir istek ve istenmeyenler listesi, tüm düğün planlamasının en etkili
-ama en az zaman alan araçlarından biridir. VEYSL'de kişisel bir müzik istek listesi,
+ama en az zaman alan araçlarından biridir. DJ Veys'de kişisel bir müzik istek listesi,
 açık bir istenmeyenler listesiyle birlikte her rezervasyonun sabit bir parçasıdır ve
 planlama görüşmesinde birlikte oluşturulur.
 `.trim();
@@ -312,7 +312,7 @@ together once more, makes sense — not to reinvent it, but to confirm it's stil
 ## Conclusion
 
 A well-thought-out wishlist and no-go list is one of the most effective, least
-time-consuming tools in wedding planning. With VEYSL, a personal music wishlist
+time-consuming tools in wedding planning. With DJ Veys, a personal music wishlist
 including an explicit no-go list is a standard part of every booking, built together
 during the planning call.
 `.trim();
@@ -337,7 +337,7 @@ export const musikwuenschePost: BlogPost = {
         'Eine gute Musikplanung braucht zwei Listen, nicht eine: die Wunschliste UND eine konkrete No-Go-Liste. Dieser Guide zeigt, wie beide strukturiert entstehen und wie spontane Gästewünsche am Abend selbst gehandhabt werden.',
       body: musikwuenscheDe,
       seo: {
-        metaTitle: 'Musikwünsche & No-Go-Liste erstellen | VEYSL',
+        metaTitle: 'Musikwünsche & No-Go-Liste erstellen | DJ Veys',
         metaDescription:
           'Wie erstellt man eine Musikwunschliste und eine No-Go-Liste für die Hochzeit? Struktur nach Momenten, konkrete Beispiele, Umgang mit Gästewünschen.',
       },
@@ -348,7 +348,7 @@ export const musikwuenschePost: BlogPost = {
         'İyi bir müzik planlaması tek değil iki liste gerektirir: istek listesi VE somut bir istenmeyenler listesi. Bu rehber, ikisinin nasıl yapılandırılmış şekilde oluşturulacağını ve akşam gelen anlık davetli isteklerinin nasıl yönetileceğini gösteriyor.',
       body: musikwuenscheTr,
       seo: {
-        metaTitle: 'Müzik İstekleri & İstenmeyenler Listesi | VEYSL',
+        metaTitle: 'Müzik İstekleri & İstenmeyenler Listesi | DJ Veys',
         metaDescription:
           'Düğün için bir müzik istek listesi ve istenmeyenler listesi nasıl hazırlanır? Anlara göre yapı, somut örnekler, davetli isteklerine yaklaşım.',
       },
@@ -359,7 +359,7 @@ export const musikwuenschePost: BlogPost = {
         'Good music planning needs two lists, not one: the wishlist AND a specific no-go list. This guide shows how to build both in a structured way, and how spontaneous guest requests get handled on the night.',
       body: musikwuenscheEn,
       seo: {
-        metaTitle: 'Music Wishlist & No-Go List: How-To | VEYSL',
+        metaTitle: 'Music Wishlist & No-Go List: How-To | DJ Veys',
         metaDescription:
           'How do you build a music wishlist and a no-go list for your wedding? Structured by moment, with concrete examples and how guest requests are handled.',
       },

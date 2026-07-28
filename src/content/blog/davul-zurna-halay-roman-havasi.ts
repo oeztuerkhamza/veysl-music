@@ -343,7 +343,7 @@ export const davulZurnaPost: BlogPost = {
         'Davul-Zurna, Halay und Roman Havası werden oft durcheinandergeworfen, meinen aber ein Instrumentenpaar, einen Tanz und einen Musikstil. Dieser Guide erklärt die Unterschiede und zeigt, wann welches Element im Ablauf sinnvoll ist.',
       body: davulZurnaDe,
       seo: {
-        metaTitle: 'Davul-Zurna, Halay & Roman Havası erklärt | VEYSL',
+        metaTitle: 'Davul-Zurna, Halay & Roman Havası erklärt | DJ Veys',
         metaDescription:
           'Was ist der Unterschied zwischen Davul-Zurna, Halay und Roman Havası? Erklärung der drei Begriffe und wann sie im Hochzeitsablauf eingesetzt werden.',
       },
@@ -354,7 +354,7 @@ export const davulZurnaPost: BlogPost = {
         'Davul-zurna, halay ve Roman havası sık sık karıştırılır, ama bir enstrüman ikilisini, bir dansı ve bir müzik tarzını ifade eder. Bu rehber farkları açıklıyor ve hangi unsurun akışta ne zaman anlamlı olduğunu gösteriyor.',
       body: davulZurnaTr,
       seo: {
-        metaTitle: 'Davul-Zurna, Halay & Roman Havası | VEYSL',
+        metaTitle: 'Davul-Zurna, Halay & Roman Havası | DJ Veys',
         metaDescription:
           'Davul-zurna, halay ve Roman havası arasındaki fark nedir? Üç kavramın açıklaması ve düğün akışında ne zaman kullanıldıkları.',
       },
@@ -365,7 +365,7 @@ export const davulZurnaPost: BlogPost = {
         'Davul-zurna, halay and Roman Havası are often mixed up, but they refer to an instrument pair, a dance and a musical style. This guide explains the differences and shows when each fits into the running order.',
       body: davulZurnaEn,
       seo: {
-        metaTitle: 'Davul-Zurna, Halay & Roman Havası Explained | VEYSL',
+        metaTitle: 'Davul-Zurna, Halay & Roman Havası Explained | DJ Veys',
         metaDescription:
           "What's the difference between davul-zurna, halay and Roman Havası? An explanation of all three and when they fit into a wedding's running order.",
       },

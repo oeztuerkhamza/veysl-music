@@ -1,4 +1,4 @@
-# VEYSL — Programmatic City Page Strategy (`/hochzeits-dj/[stadt]`)
+# DJ Veys — Programmatic City Page Strategy (`/hochzeits-dj/[stadt]`)
 
 Route already exists in the routing map: `src/i18n/routing.ts` defines
 `/hochzeits-dj/[stadt]` (EN: `/wedding-dj/[stadt]`, TR: `/dugun-dj/[stadt]`), and content

@@ -42,51 +42,51 @@
   },
   "meta": {
     "home": {
-      "title": "Düğün DJ'i {city} — Premium Düğün & Etkinlik DJ'i | VEYSL",
+      "title": "Düğün DJ'i {city} — Premium Düğün & Etkinlik DJ'i | DJ Veys",
       "description": "{city} ve çevresinde premium düğün ve etkinlik DJ'i. Kişisel ön görüşme, kendi ses ve ışık sistemi, dolup taşan bir pist. Tarihinizi hemen sorgulayın."
     },
     "services": {
-      "title": "Düğün & Etkinlik — Hizmetler | VEYSL DJ",
+      "title": "Düğün & Etkinlik — Hizmetler | DJ Veys",
       "description": "Düğün, nişan, kına gecesi, after-party ve kurumsal etkinlik DJ'i. Her hizmete tam olarak neler dahil, şeffafça anlatıldı."
     },
     "packages": {
-      "title": "Paketler & Fiyatlar — Düğün DJ'i | VEYSL",
+      "title": "Paketler & Fiyatlar — Düğün DJ'i | DJ Veys",
       "description": "Düğün ve etkinlik için üç net paket: kapsam, saat, teknik donanım ve ekstralar tek bakışta. Size özel teklif 24 saat içinde."
     },
     "weddings": {
-      "title": "Gerçek Düğünler — Referanslar & Mekânlar | VEYSL",
+      "title": "Gerçek Düğünler — Referanslar & Mekânlar | DJ Veys",
       "description": "Gerçek düğünler, gerçek pistler: referans klipleri, çiftlerin ve organizatörlerin yorumları ve partner mekânlarımız."
     },
     "music": {
-      "title": "Müzik & Setler — Düğün DJ Mixleri | VEYSL",
+      "title": "Müzik & Setler — Düğün DJ Mixleri | DJ Veys",
       "description": "Dinlemeye açık düğün ve etkinlik setleri: kokteylden yemeğe, yemekten peaktime'a. Türkçe, Almanca ve uluslararası."
     },
     "process": {
-      "title": "Süreç & Sık Sorulan Sorular — Düğün DJ'i | VEYSL",
+      "title": "Süreç & Sık Sorulan Sorular — Düğün DJ'i | DJ Veys",
       "description": "İlk mesajdan son şarkıya: dört adımda süreç ve DJ rezervasyonu hakkında en sık sorulan soruların yanıtları."
     },
     "booking": {
-      "title": "Tarih Sorgulayın & Teklif Alın | VEYSL DJ",
+      "title": "Tarih Sorgulayın & Teklif Alın | DJ Veys",
       "description": "Tarihinizi girin, müsaitliği görün, bağlayıcı olmayan teklifinizi alın — 24 saat içinde yanıt."
     },
     "gallery": {
-      "title": "Galeri & Videolar — Düğün DJ'i | VEYSL",
+      "title": "Galeri & Videolar — Düğün DJ'i | DJ Veys",
       "description": "Düğün ve etkinliklerden fotoğraflar, aftermovie'ler ve reels'ler."
     },
     "epk": {
-      "title": "EPK & Partnerler — Press Kit | VEYSL",
+      "title": "EPK & Partnerler — Press Kit | DJ Veys",
       "description": "Biyografi, basın fotoğrafları, technical rider ve partner mekânlar — indirmeye hazır."
     },
     "contact": {
-      "title": "İletişim — VEYSL DJ",
+      "title": "İletişim — DJ Veys",
       "description": "WhatsApp, telefon veya e-posta ile doğrudan ulaşın. 24 saat içinde size dönüyoruz."
     },
     "imprint": {
-      "title": "Impressum | VEYSL",
+      "title": "Impressum | DJ Veys",
       "description": "§ 5 DDG uyarınca yasal bilgiler."
     },
     "privacy": {
-      "title": "Gizlilik Politikası | VEYSL",
+      "title": "Gizlilik Politikası | DJ Veys",
       "description": "DSGVO kapsamında kişisel verilerin işlenmesine ilişkin bilgiler."
     }
   },
@@ -477,10 +477,10 @@
       "title": "Tüm yanıtlar tek bakışta",
       "subtitle": "Rezervasyon, fiyatlar, süreç, müzik, teknik donanım, hukuk ve Türk düğünleri hakkında {count} ayrıntılı yanıt — tıklamadan, açıp kapatmadan doğrudan okunur."
     },
-    "entity": "VEYSL, {owner} tarafından {city} merkezli olarak yürütülen düğün DJ'i, canlı müzik ve sunuculuk hizmetidir. {years} yılı aşkın süredir Baden-Württemberg'de, Almanya genelinde ve Avrupa'da düğün ve etkinliklere eşlik ediyor; Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve Alman-Türk, Türk ve çok kültürlü düğünlerde uzmanlaştı. Bugüne kadar {events}+ kutlamaya eşlik etti — DJ olarak, sazda ve gitarda canlı müzisyen olarak ve nefesli sazları da olan canlı bir orkestrayla.",
+    "entity": "DJ Veys, {owner} tarafından {city} merkezli olarak yürütülen düğün DJ'i, canlı müzik ve sunuculuk hizmetidir. {years} yılı aşkın süredir Baden-Württemberg'de, Almanya genelinde ve Avrupa'da düğün ve etkinliklere eşlik ediyor; Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve Alman-Türk, Türk ve çok kültürlü düğünlerde uzmanlaştı. Bugüne kadar {events}+ kutlamaya eşlik etti — DJ olarak, sazda ve gitarda canlı müzisyen olarak ve nefesli sazları da olan canlı bir orkestrayla.",
     "meta": {
-      "title": "Sorular & Yanıtlar — Düğün DJ'i Stuttgart | VEYSL",
-      "description": "VEYSL ile rezervasyon, fiyatlar, süreç, müzik, teknik donanım ve Türk düğünleri hakkında {count} ayrıntılı yanıt — dolambaçsız, doğrudan okunur."
+      "title": "Sorular & Yanıtlar — Düğün DJ'i Stuttgart | DJ Veys",
+      "description": "DJ Veys ile rezervasyon, fiyatlar, süreç, müzik, teknik donanım ve Türk düğünleri hakkında {count} ayrıntılı yanıt — dolambaçsız, doğrudan okunur."
     },
     "updated": "Son güncelleme: {date}",
     "seeAlso": "Süreçle ilgili on kısa soruyu daha şu sayfada yanıtlıyoruz:",
@@ -694,7 +694,7 @@
       "ctaNote": "Bağlayıcı olmayan talep – 24 saat içinde yanıt."
     },
     "meta": {
-      "title": "Düğün DJ'i {city} — DJ, müzisyen & sunucu | VEYSL",
+      "title": "Düğün DJ'i {city} — DJ, müzisyen & sunucu | DJ Veys",
       "description": "{city} ve çevresinde premium düğün DJ'i: Alman-Türk düğünleri için DJ, müzisyen ve çok dilli sunucu. Hemen tarih sorgulayın."
     },
     "travel": {
@@ -741,7 +741,7 @@
     "nearby": {
       "eyebrow": "Çevrede",
       "title": "{city} çevresinde de çalıyoruz",
-      "servicesTitle": "VEYSL'de daha fazlası"
+      "servicesTitle": "DJ Veys'de daha fazlası"
     },
     "cta": {
       "eyebrow": "Sonraki adım",
@@ -811,7 +811,7 @@
     "close": "Kapat",
     "continueToWhatsapp": "WhatsApp'tan devam edin",
     "privacyNote": "Verdiğiniz bilgiler, talebinizin işlenmesi amacıyla saklanır. <privacyLink>Gizlilik Politikası</privacyLink>",
-    "messageIntro": "Merhaba VEYSL, bir DJ ile ilgileniyorum.",
+    "messageIntro": "Merhaba DJ Veys, bir DJ ile ilgileniyorum.",
     "messageLabels": {
       "eventType": "Kutlama",
       "date": "Tarih",
@@ -1034,8 +1034,8 @@
       "lead": "Düğün ve etkinliklerden güncel bir kesit — @dj_veys hesabından ve YouTube kanalından derlendi.",
       "playLabel": "Videoyu oynatın",
       "altFallback": {
-        "instagram": "VEYSL'in Instagram'daki gönderisi",
-        "youtube": "VEYSL'in YouTube'daki videosu"
+        "instagram": "DJ Veys'in Instagram'daki gönderisi",
+        "youtube": "DJ Veys'in YouTube'daki videosu"
       },
       "typeLabel": {
         "image": "Fotoğraf",
@@ -1072,7 +1072,7 @@
     "eyebrow": "Avrupa'da Destination Wedding",
     "hub": {
       "meta": {
-        "title": "Avrupa'da destination wedding için düğün DJ'i | VEYSL",
+        "title": "Avrupa'da destination wedding için düğün DJ'i | DJ Veys",
         "description": "Avrupa'da destination wedding için Alman-Türk düğün DJ'i: Avusturya, İsviçre, Hollanda, Belçika, Fransa. Almanca, Türkçe ve İngilizce canlı sunum."
       },
       "hero": {
@@ -1085,7 +1085,7 @@
         "items": [
           {
             "q": "Almanya genelinde çalışan bir Türk düğün DJ'i var mı?",
-            "a": "Evet. VEYSL'in merkezi Stuttgart ve Baden-Württemberg'dir; München'den Hamburg'a Almanya genelinde rezerve edilebilir. Ulaşım ve teknik, her yer için teklifte ayrı ayrı hesaplanır; sunum her yerde aynıdır: Almanca, Türkçe, İngilizce."
+            "a": "Evet. DJ Veys'in merkezi Stuttgart ve Baden-Württemberg'dir; München'den Hamburg'a Almanya genelinde rezerve edilebilir. Ulaşım ve teknik, her yer için teklifte ayrı ayrı hesaplanır; sunum her yerde aynıdır: Almanca, Türkçe, İngilizce."
           },
           {
             "q": "Yurt dışındaki bir destination wedding için düğün DJ'i rezerve edebilir miyim?",
@@ -1148,7 +1148,7 @@
     },
     "country": {
       "meta": {
-        "title": "Düğün DJ'i {country} — Destination Wedding | VEYSL",
+        "title": "Düğün DJ'i {country} — Destination Wedding | DJ Veys",
         "description": "{country} için düğün DJ'i rezerve edilebilir: Alman-Türk, Almanca, Türkçe ve İngilizce çok dilli sunum. Ulaşım ve teknik şeffaf şekilde hesaplanır."
       },
       "eyebrow": "Destination Wedding",
@@ -1158,7 +1158,7 @@
       },
       "availability": {
         "verifiedTitle": "Daha önce çaldık",
-        "verifiedText": "VEYSL daha önce {city} şehrinde çaldı – bugüne kadar Almanya dışındaki tek belgelenebilir sahne.",
+        "verifiedText": "DJ Veys daha önce {city} şehrinde çaldı – bugüne kadar Almanya dışındaki tek belgelenebilir sahne.",
         "availableTitle": "{country} için rezerve edilebilir",
         "availableText": "{country} için henüz kendi referans etkinliğimiz yok – ama her zaman talep edebilirsiniz; diğer her rezervasyonla aynı özenle ele alınır."
       },
@@ -1212,8 +1212,8 @@
       "text": "Sorun değil — bağlayıcı olmadan yazın, size uygun olduğunda her şeyi konuşuruz.",
       "whatsappCta": "WhatsApp'tan not bırakın",
       "mailCta": "E-posta ile not bırakın",
-      "whatsappPrefill": "Merhaba, VEYSL'de bir tarihle ilgileniyorum ama henüz emin değilim. Bunu bağlayıcı olmadan konuşabilir miyiz?",
-      "whatsappPrefillWithDate": "Merhaba, VEYSL'de {date} tarihiyle ilgileniyorum ama henüz emin değilim. Bunu bağlayıcı olmadan konuşabilir miyiz?",
+      "whatsappPrefill": "Merhaba, DJ Veys'de bir tarihle ilgileniyorum ama henüz emin değilim. Bunu bağlayıcı olmadan konuşabilir miyiz?",
+      "whatsappPrefillWithDate": "Merhaba, DJ Veys'de {date} tarihiyle ilgileniyorum ama henüz emin değilim. Bunu bağlayıcı olmadan konuşabilir miyiz?",
       "mailSubject": "Bağlayıcı olmayan talep – tarih ön kaydı"
     }
   },
@@ -1223,8 +1223,8 @@
   },
   "blog": {
     "meta": {
-      "title": "Rehber: Düğün DJ'i, müzik & planlama | VEYSL",
-      "description": "Düğün DJ'i, müzik, teknik, maliyet ve Alman-Türk düğünleri üzerine {count} ayrıntılı rehber — Stuttgart'tan VEYSL, DJ & Orkestra."
+      "title": "Rehber: Düğün DJ'i, müzik & planlama | DJ Veys",
+      "description": "Düğün DJ'i, müzik, teknik, maliyet ve Alman-Türk düğünleri üzerine {count} ayrıntılı rehber — Stuttgart'tan DJ Veys, DJ & Orkestra."
     },
     "index": {
       "eyebrow": "Rehber",
@@ -1232,7 +1232,7 @@
       "subtitle": "Planlama, müzik, teknik ve Alman-Türk düğünleri üzerine {count} ayrıntılı rehber — 12 yılı aşkın sahne deneyiminden yazıldı.",
       "updated": "Son güncelleme: {date}",
       "meta": {
-        "emptyDescription": "VEYSL'in düğün DJ'i, müzik ve planlama rehberi — bu dilde çok yakında."
+        "emptyDescription": "DJ Veys'in düğün DJ'i, müzik ve planlama rehberi — bu dilde çok yakında."
       },
       "empty": {
         "title": "Rehber bu dilde çok yakında yayında.",

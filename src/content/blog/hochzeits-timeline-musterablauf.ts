@@ -329,7 +329,7 @@ export const timelinePost: BlogPost = {
         'Eine belastbare Hochzeits-Timeline lebt von bewussten Zeitpuffern, nicht von minutengenauer Planung. Dieser Guide zeigt eine Beispiel-Timeline von 13 bis 2 Uhr, die drei häufigsten Timing-Fehler und wie sich der Ablauf bei türkischen Hochzeiten verschiebt.',
       body: timelineDe,
       seo: {
-        metaTitle: 'Hochzeits-Timeline: Musterablauf & Zeitplan | VEYSL',
+        metaTitle: 'Hochzeits-Timeline: Musterablauf & Zeitplan | DJ Veys',
         metaDescription:
           'Wie sieht ein realistischer Zeitplan für den Hochzeitstag aus? Beispiel-Timeline, die häufigsten Timing-Fehler und Puffer-Empfehlungen.',
       },
@@ -340,7 +340,7 @@ export const timelinePost: BlogPost = {
         'Sağlam bir düğün zaman çizelgesi, dakikası dakikasına planlamadan değil, bilinçli zaman paylarından oluşur. Bu rehber, 13:00\'ten 02:00\'a örnek bir zaman çizelgesi, en sık yapılan üç zamanlama hatası ve Türk düğünlerinde akışın nasıl kaydığını gösteriyor.',
       body: timelineTr,
       seo: {
-        metaTitle: 'Düğün Zaman Çizelgesi: Örnek Akış | VEYSL',
+        metaTitle: 'Düğün Zaman Çizelgesi: Örnek Akış | DJ Veys',
         metaDescription:
           'Düğün günü için gerçekçi bir zaman planı nasıl olmalı? Örnek zaman çizelgesi, en sık yapılan zamanlama hataları ve zaman payı önerileri.',
       },
@@ -351,7 +351,7 @@ export const timelinePost: BlogPost = {
         'A reliable wedding timeline lives on deliberate buffers, not minute-by-minute planning. This guide shows an example timeline from 1pm to 2am, the three most common timing mistakes, and how the running order shifts for Turkish weddings.',
       body: timelineEn,
       seo: {
-        metaTitle: 'Wedding Timeline: A Realistic Example | VEYSL',
+        metaTitle: 'Wedding Timeline: A Realistic Example | DJ Veys',
         metaDescription:
           'What does a realistic timeline for the wedding day look like? An example timeline, the most common timing mistakes, and buffer recommendations.',
       },

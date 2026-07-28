@@ -11,7 +11,7 @@ import type { BlogPost } from './types';
  * moving toward a notification-based procedure) come from a live web search across
  * multiple independent sources in July 2026 (IHK Stuttgart, IHK Ulm, Stadt Heilbronn,
  * Stadt Mannheim, landesrecht-bw.de, gaststaettenunterrichtung-bw.de) — not invented,
- * not VEYSL's own legal opinion. The article explicitly disclaims that it is not legal
+ * not DJ Veys's own legal opinion. The article explicitly disclaims that it is not legal
  * advice and recommends confirming specifics with the venue and the local Ordnungsamt.
  */
 export const laermschutzDe = `
@@ -314,7 +314,7 @@ export const laermschutzPost: BlogPost = {
         'Baden-Württemberg ist eines von zwei Bundesländern mit echter gesetzlicher Sperrzeit (regulär 3–6 Uhr, Vorabend Sa/So 5–6 Uhr) — für Hochzeiten lässt sie sich per Sperrzeitverkürzung beim Ordnungsamt anpassen. Dieser Artikel ist Orientierung aus öffentlichen Quellen, keine Rechtsberatung.',
       body: laermschutzDe,
       seo: {
-        metaTitle: 'Sperrzeit & Lärmschutz Hochzeit Baden-Württemberg | VEYSL',
+        metaTitle: 'Sperrzeit & Lärmschutz Hochzeit Baden-Württemberg | DJ Veys',
         metaDescription:
           'Wie lange darf bei einer Hochzeit in Baden-Württemberg gefeiert werden? Sperrzeit, Sperrzeitverkürzung und Lärmschutz einfach erklärt, keine Rechtsberatung.',
       },
@@ -325,7 +325,7 @@ export const laermschutzPost: BlogPost = {
         'Baden-Württemberg, gerçek yasal kapanış saati (normalde 03:00-06:00, cuma/cumartesi geceleri 05:00-06:00) uygulayan iki eyaletten biridir — düğünler için bu, Ordnungsamt\'a yapılan bir başvuruyla uyarlanabilir. Bu yazı kamuya açık kaynaklardan genel bir yönlendirmedir, hukuki danışmanlık değildir.',
       body: laermschutzTr,
       seo: {
-        metaTitle: 'Baden-Württemberg Düğün Kapanış Saati Rehberi | VEYSL',
+        metaTitle: 'Baden-Württemberg Düğün Kapanış Saati Rehberi | DJ Veys',
         metaDescription:
           'Baden-Württemberg\'de bir düğünde ne kadar geç saate kadar kutlama yapılabilir? Kapanış saati, uzatma başvurusu ve gürültü koruması, hukuki tavsiye değil.',
       },
@@ -336,7 +336,7 @@ export const laermschutzPost: BlogPost = {
         'Baden-Württemberg is one of two German states with a real statutory closing time (normally 3–6am, 5–6am on nights before Sat/Sun) — for weddings, it can be adjusted via an application to the local regulatory office. This article is orientation from public sources, not legal advice.',
       body: laermschutzEn,
       seo: {
-        metaTitle: 'Wedding Closing Times in Baden-Württemberg | VEYSL',
+        metaTitle: 'Wedding Closing Times in Baden-Württemberg | DJ Veys',
         metaDescription:
           'How late can a wedding celebration run in Baden-Württemberg? Closing times, extension applications and noise protection explained — not legal advice.',
       },

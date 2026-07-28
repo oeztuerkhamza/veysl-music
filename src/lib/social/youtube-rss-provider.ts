@@ -36,7 +36,7 @@ async function resolveChannelId(): Promise<string | null> {
 
   try {
     const res = await fetch(site.social.youtube, {
-      headers: { 'user-agent': 'Mozilla/5.0 (compatible; VEYSLBot/1.0; +https://veysl.de)' },
+      headers: { 'user-agent': 'Mozilla/5.0 (compatible; DJVeysBot/1.0; +https://dj-veys.de)' },
       next: { revalidate: HANDLE_REVALIDATE_SECONDS },
     });
     if (!res.ok) return null;

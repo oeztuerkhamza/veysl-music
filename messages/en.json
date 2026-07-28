@@ -42,51 +42,51 @@
   },
   "meta": {
     "home": {
-      "title": "Wedding DJ {city} — Premium Wedding & Event DJ | VEYSL",
+      "title": "Wedding DJ {city} — Premium Wedding & Event DJ | DJ Veys",
       "description": "Premium wedding and event DJ in {city} and beyond. Personal planning call, own sound and lighting rig, a dance floor that stays full. Check your date."
     },
     "services": {
-      "title": "Weddings & Events — Services | VEYSL DJ",
+      "title": "Weddings & Events — Services | DJ Veys",
       "description": "DJ for weddings, engagements, henna nights, after-parties and corporate events. Exactly what each service includes."
     },
     "packages": {
-      "title": "Packages & Pricing — Wedding DJ | VEYSL",
+      "title": "Packages & Pricing — Wedding DJ | DJ Veys",
       "description": "Three clear wedding and event packages: hours, technical setup and extras at a glance. Individual quote within 24 hours."
     },
     "weddings": {
-      "title": "Real Weddings — References & Venues | VEYSL",
+      "title": "Real Weddings — References & Venues | DJ Veys",
       "description": "Real weddings, real dance floors: reference clips, words from couples and planners, and our partner venues."
     },
     "music": {
-      "title": "Music & Sets — Wedding DJ Mixes | VEYSL",
+      "title": "Music & Sets — Wedding DJ Mixes | DJ Veys",
       "description": "Wedding and event sets to listen to: from reception through dinner to peak time. German, Turkish, international."
     },
     "process": {
-      "title": "How It Works & FAQ — Wedding DJ | VEYSL",
+      "title": "How It Works & FAQ — Wedding DJ | DJ Veys",
       "description": "From first message to the last song: the process in four steps and answers to the most common booking questions."
     },
     "booking": {
-      "title": "Check your date & request a quote | VEYSL DJ",
+      "title": "Check your date & request a quote | DJ Veys",
       "description": "Enter your date, check availability, receive a no-obligation quote — reply within 24 hours."
     },
     "gallery": {
-      "title": "Gallery & Videos — Wedding DJ | VEYSL",
+      "title": "Gallery & Videos — Wedding DJ | DJ Veys",
       "description": "Photos, aftermovies and reels from weddings and events."
     },
     "epk": {
-      "title": "EPK & Partners — Press Kit | VEYSL",
+      "title": "EPK & Partners — Press Kit | DJ Veys",
       "description": "Biography, press photos, technical rider and partner venues to download."
     },
     "contact": {
-      "title": "Contact — VEYSL DJ",
+      "title": "Contact — DJ Veys",
       "description": "Reach us on WhatsApp, by phone or email. We reply within 24 hours."
     },
     "imprint": {
-      "title": "Imprint | VEYSL",
+      "title": "Imprint | DJ Veys",
       "description": "Legal information according to § 5 DDG."
     },
     "privacy": {
-      "title": "Privacy | VEYSL",
+      "title": "Privacy | DJ Veys",
       "description": "How personal data is processed under the GDPR."
     }
   },
@@ -477,10 +477,10 @@
       "title": "Every answer at a glance",
       "subtitle": "{count} in-depth answers on booking, pricing, the day itself, music, technical setup, contracts and Turkish weddings — readable instantly, no clicks or accordions required."
     },
-    "entity": "VEYSL is the wedding-DJ, live-music and hosting service of {owner}, based in {city}, Germany. For over {years} years he has accompanied weddings and events across Baden-Württemberg, Germany and Europe, hosting live in German, Turkish and English, with a focus on German-Turkish, Turkish and multicultural weddings. He has played over {events}+ celebrations so far — as a DJ, a live musician on saz and guitar, and with a live band including horns.",
+    "entity": "DJ Veys is the wedding-DJ, live-music and hosting service of {owner}, based in {city}, Germany. For over {years} years he has accompanied weddings and events across Baden-Württemberg, Germany and Europe, hosting live in German, Turkish and English, with a focus on German-Turkish, Turkish and multicultural weddings. He has played over {events}+ celebrations so far — as a DJ, a live musician on saz and guitar, and with a live band including horns.",
     "meta": {
-      "title": "Questions & Answers — Wedding DJ Stuttgart | VEYSL",
-      "description": "{count} in-depth answers on booking, pricing, the wedding day, music, technical setup and Turkish weddings with VEYSL — read directly, no detours."
+      "title": "Questions & Answers — Wedding DJ Stuttgart | DJ Veys",
+      "description": "{count} in-depth answers on booking, pricing, the wedding day, music, technical setup and Turkish weddings with DJ Veys — read directly, no detours."
     },
     "updated": "Last updated: {date}",
     "seeAlso": "Ten shorter, additional questions about the day itself are answered on the",
@@ -694,7 +694,7 @@
       "ctaNote": "No-obligation enquiry – reply within 24 hours."
     },
     "meta": {
-      "title": "Wedding DJ {city} — DJ, Musician & Host | VEYSL",
+      "title": "Wedding DJ {city} — DJ, Musician & Host | DJ Veys",
       "description": "Premium wedding DJ in {city}: DJ, musician and multilingual host for German-Turkish and international weddings. Check your date now."
     },
     "travel": {
@@ -741,7 +741,7 @@
     "nearby": {
       "eyebrow": "Nearby",
       "title": "Also booked around {city}",
-      "servicesTitle": "More on VEYSL"
+      "servicesTitle": "More on DJ Veys"
     },
     "cta": {
       "eyebrow": "Next step",
@@ -811,7 +811,7 @@
     "close": "Close",
     "continueToWhatsapp": "Continue on WhatsApp",
     "privacyNote": "Your answers are stored to process your enquiry. <privacyLink>Privacy policy</privacyLink>",
-    "messageIntro": "Hi VEYSL, I'm interested in a DJ.",
+    "messageIntro": "Hi DJ Veys, I'm interested in a DJ.",
     "messageLabels": {
       "eventType": "Occasion",
       "date": "Date",
@@ -1034,8 +1034,8 @@
       "lead": "A current selection from weddings and events — curated from @dj_veys and the YouTube channel.",
       "playLabel": "Play video",
       "altFallback": {
-        "instagram": "Post by VEYSL on Instagram",
-        "youtube": "Video by VEYSL on YouTube"
+        "instagram": "Post by DJ Veys on Instagram",
+        "youtube": "Video by DJ Veys on YouTube"
       },
       "typeLabel": {
         "image": "Photo",
@@ -1072,7 +1072,7 @@
     "eyebrow": "Destination Wedding Europe",
     "hub": {
       "meta": {
-        "title": "Wedding DJ for Destination Weddings in Europe | VEYSL",
+        "title": "Wedding DJ for Destination Weddings in Europe | DJ Veys",
         "description": "German-Turkish wedding DJ for destination weddings in Europe: Austria, Switzerland, the Netherlands, Belgium, France. Live hosting in German, Turkish and English."
       },
       "hero": {
@@ -1085,7 +1085,7 @@
         "items": [
           {
             "q": "Is there a Turkish wedding DJ who books Germany-wide?",
-            "a": "Yes. VEYSL is based in Stuttgart and Baden-Württemberg and books Germany-wide — from Munich to Hamburg. Travel and equipment are calculated individually per location in the quote; hosting stays the same everywhere: German, Turkish, English."
+            "a": "Yes. DJ Veys is based in Stuttgart and Baden-Württemberg and books Germany-wide — from Munich to Hamburg. Travel and equipment are calculated individually per location in the quote; hosting stays the same everywhere: German, Turkish, English."
           },
           {
             "q": "Can I book a wedding DJ for a destination wedding abroad?",
@@ -1148,7 +1148,7 @@
     },
     "country": {
       "meta": {
-        "title": "Wedding DJ {country} — Destination Wedding | VEYSL",
+        "title": "Wedding DJ {country} — Destination Wedding | DJ Veys",
         "description": "Wedding DJ bookable in {country}: German-Turkish, hosted in German, Turkish and English. Travel and equipment calculated transparently."
       },
       "eyebrow": "Destination Wedding",
@@ -1158,7 +1158,7 @@
       },
       "availability": {
         "verifiedTitle": "Already played",
-        "verifiedText": "VEYSL has already played in {city} — so far the only verifiable booking outside Germany.",
+        "verifiedText": "DJ Veys has already played in {city} — so far the only verifiable booking outside Germany.",
         "availableTitle": "Bookable in {country}",
         "availableText": "No dedicated reference event in {country} yet — but enquiries are welcome any time, handled with the same care as any other booking."
       },
@@ -1212,8 +1212,8 @@
       "text": "No problem — get in touch with no obligation, and we'll pick this up whenever suits you.",
       "whatsappCta": "Save on WhatsApp",
       "mailCta": "Save by email",
-      "whatsappPrefill": "Hi, I'm interested in booking VEYSL but not quite ready yet. Could we chat with no obligation?",
-      "whatsappPrefillWithDate": "Hi, I'm interested in booking VEYSL for {date} but not quite ready yet. Could we chat with no obligation?",
+      "whatsappPrefill": "Hi, I'm interested in booking DJ Veys but not quite ready yet. Could we chat with no obligation?",
+      "whatsappPrefillWithDate": "Hi, I'm interested in booking DJ Veys for {date} but not quite ready yet. Could we chat with no obligation?",
       "mailSubject": "No-obligation enquiry – save my date"
     }
   },
@@ -1223,8 +1223,8 @@
   },
   "blog": {
     "meta": {
-      "title": "Wedding Guide: DJ, Music & Planning | VEYSL",
-      "description": "{count} in-depth guides on wedding DJs, music, technology, cost and German-Turkish weddings — from VEYSL, DJ & Orkestra based in Stuttgart."
+      "title": "Wedding Guide: DJ, Music & Planning | DJ Veys",
+      "description": "{count} in-depth guides on wedding DJs, music, technology, cost and German-Turkish weddings — from DJ Veys, DJ & Orkestra based in Stuttgart."
     },
     "index": {
       "eyebrow": "Guide",
@@ -1232,7 +1232,7 @@
       "subtitle": "{count} in-depth guides on planning, music, technology and German-Turkish weddings — written from over 12 years of hands-on experience.",
       "updated": "Last updated on {date}",
       "meta": {
-        "emptyDescription": "VEYSL's guide to wedding DJs, music and planning — this language is coming soon."
+        "emptyDescription": "DJ Veys's guide to wedding DJs, music and planning — this language is coming soon."
       },
       "empty": {
         "title": "The guide is coming soon in this language.",

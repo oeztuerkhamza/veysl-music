@@ -42,51 +42,51 @@
   },
   "meta": {
     "home": {
-      "title": "DJ'ê dawetê {city} — DJ'ê premium ji bo dawet & şahiyan | VEYSL",
+      "title": "DJ'ê dawetê {city} — DJ'ê premium ji bo dawet & şahiyan | DJ Veys",
       "description": "Li bajarê {city} û derdorê DJ'ê premium yê dawet û şahiyan. Hevpeyvîna kesane ya berê, sîstema deng û ronahiyê ya xwe, meydaneke govendê ya tijî. Dîroka xwe niha bipirsin."
     },
     "services": {
-      "title": "Dawet & Şahî — Xizmet | VEYSL DJ",
+      "title": "Dawet & Şahî — Xizmet | DJ Veys",
       "description": "DJ ji bo dawet, nîşan, şeva henê, after-party û şahiyên şîrketan. Di her xizmetê de çi heye — bi zelalî hatiye ravekirin."
     },
     "packages": {
-      "title": "Paket & Biha — DJ'ê dawetê | VEYSL",
+      "title": "Paket & Biha — DJ'ê dawetê | DJ Veys",
       "description": "Sê paketên zelal ji bo dawet û şahiyan: berfirehî, saet, teknîk û ekstra bi carekê. Teklîfa taybet di nav 24 saetan de."
     },
     "weddings": {
-      "title": "Dawetên Rastîn — Referans & Mekan | VEYSL",
+      "title": "Dawetên Rastîn — Referans & Mekan | DJ Veys",
       "description": "Dawetên rastîn, meydanên govendê yên rastîn: klîpên referansê, gotinên cot û organîzatoran û mekanên me yên hevkar."
     },
     "music": {
-      "title": "Muzîk & Set — Mîksên DJ'ê dawetê | VEYSL",
+      "title": "Muzîk & Set — Mîksên DJ'ê dawetê | DJ Veys",
       "description": "Setên dawet û şahiyan ji bo guhdarîkirinê: ji pêşwaziyê ber bi şîvê û peaktime ve. Almanî, tirkî, navneteweyî."
     },
     "process": {
-      "title": "Pêvajo & Pirsên pir têne kirin — DJ'ê dawetê | VEYSL",
+      "title": "Pêvajo & Pirsên pir têne kirin — DJ'ê dawetê | DJ Veys",
       "description": "Ji hevpeyvîna yekem heta stranê dawî: pêvajo di çar gavan de û bersivên pirsên herî zêde derbarê rezervasyona DJ'î de."
     },
     "booking": {
-      "title": "Dîrokê bipirsin & teklîfê bixwazin | VEYSL DJ",
+      "title": "Dîrokê bipirsin & teklîfê bixwazin | DJ Veys",
       "description": "Dîrokê binivîsin, valahiyê kontrol bikin, teklîfa bê mecbûrîyet bistînin — bersiv di nav 24 saetan de."
     },
     "gallery": {
-      "title": "Galerî & Vîdyo — DJ'ê dawetê | VEYSL",
+      "title": "Galerî & Vîdyo — DJ'ê dawetê | DJ Veys",
       "description": "Wêne, aftermovie û reelsên ji dawet û şahiyan."
     },
     "epk": {
-      "title": "EPK & Hevkar — Press Kit | VEYSL",
+      "title": "EPK & Hevkar — Press Kit | DJ Veys",
       "description": "Jînenîgarî, wêneyên çapemeniyê, technical rider û mekanên hevkar ji bo daxistinê."
     },
     "contact": {
-      "title": "Têkilî — VEYSL DJ",
+      "title": "Têkilî — DJ Veys",
       "description": "Rasterast bi WhatsApp, telefon an E-mailê. Em di nav 24 saetan de bersivê didin."
     },
     "imprint": {
-      "title": "Impressum | VEYSL",
+      "title": "Impressum | DJ Veys",
       "description": "Agahî li gorî § 5 DDG."
     },
     "privacy": {
-      "title": "Parastina Daneyan | VEYSL",
+      "title": "Parastina Daneyan | DJ Veys",
       "description": "Agahî derbarê pêvajokirina daneyên kesane li gorî DSGVO."
     }
   },
@@ -477,10 +477,10 @@
       "title": "Hemû bersiv bi carekê",
       "subtitle": "{count} bersivên berfireh derbarê rezervasyon, biha, pêvajo, muzîk, teknîk, hiqûq û dawetên tirkî de — tavilê têne xwendin, bêyî tikandin an vekirin."
     },
-    "entity": "VEYSL xizmeta DJ'ê dawetê, muzîka zindî û pêşkêşiyê ya {owner} e, ku navenda wê li {city} ye. Ji {years} salan zêdetir e ku ew dawet û şahiyan li seranserê Baden-Württemberg, li tevahiya Almanyayê û Ewropayê bi rê ve dibe, bi Almanî, Tirkî û Îngilîzî zindî pêşkêş dike û li ser dawetên alman-tirk, tirkî û pirçandî pispor e. Heta niha ji {events}+ şahiyan zêdetir bi rê ve biriye — wek DJ, wek muzîkjenê zindî yê saz û gîtarê û bi komeke zindî ya bi borîzanan re.",
+    "entity": "DJ Veys xizmeta DJ'ê dawetê, muzîka zindî û pêşkêşiyê ya {owner} e, ku navenda wê li {city} ye. Ji {years} salan zêdetir e ku ew dawet û şahiyan li seranserê Baden-Württemberg, li tevahiya Almanyayê û Ewropayê bi rê ve dibe, bi Almanî, Tirkî û Îngilîzî zindî pêşkêş dike û li ser dawetên alman-tirk, tirkî û pirçandî pispor e. Heta niha ji {events}+ şahiyan zêdetir bi rê ve biriye — wek DJ, wek muzîkjenê zindî yê saz û gîtarê û bi komeke zindî ya bi borîzanan re.",
     "meta": {
-      "title": "Pirs & Bersiv — DJ'ê dawetê Stuttgart | VEYSL",
-      "description": "{count} bersivên berfireh derbarê rezervasyon, biha, pêvajo, muzîk, teknîk û dawetên tirkî de bi VEYSL re — rasterast têne xwendin, bê dorhêl."
+      "title": "Pirs & Bersiv — DJ'ê dawetê Stuttgart | DJ Veys",
+      "description": "{count} bersivên berfireh derbarê rezervasyon, biha, pêvajo, muzîk, teknîk û dawetên tirkî de bi DJ Veys re — rasterast têne xwendin, bê dorhêl."
     },
     "updated": "Cara dawî hatiye nûkirin: {date}",
     "seeAlso": "Deh pirsên din ên kurttir derbarê pêvajoyê de li vê rûpelê tên bersivandin:",
@@ -694,7 +694,7 @@
       "ctaNote": "Daxwaza bê mecbûrîyet – bersiv di nav 24 saetan de."
     },
     "meta": {
-      "title": "DJ'ê dawetê {city} — DJ, muzîkjen & pêşkêşvan | VEYSL",
+      "title": "DJ'ê dawetê {city} — DJ, muzîkjen & pêşkêşvan | DJ Veys",
       "description": "DJ'ê dawetê yê premium li {city}: DJ, muzîkjen û pêşkêşvan bi Almanî, Tirkî û Îngilîzî ji bo dawetên alman-tirk. Niha dîrokê bipirsin."
     },
     "travel": {
@@ -741,7 +741,7 @@
     "nearby": {
       "eyebrow": "Li derdorê",
       "title": "Li derdora {city} jî tê rezervekirin",
-      "servicesTitle": "Bêtir li ser VEYSL"
+      "servicesTitle": "Bêtir li ser DJ Veys"
     },
     "cta": {
       "eyebrow": "Gava pêş",
@@ -811,7 +811,7 @@
     "close": "Bigirin",
     "continueToWhatsapp": "Bi WhatsAppê bidomînin",
     "privacyNote": "Agahiyên we ji bo pêvajokirina daxwaza we têne tomarkirin. <privacyLink>Beyannameya Parastina Daneyan</privacyLink>",
-    "messageIntro": "Silav VEYSL, ez li DJ'ekî digerim.",
+    "messageIntro": "Silav DJ Veys, ez li DJ'ekî digerim.",
     "messageLabels": {
       "eventType": "Şahî",
       "date": "Dîrok",
@@ -1034,8 +1034,8 @@
       "lead": "Perçeyeke rojane ji dawet û şahiyan — ji @dj_veys û kanala YouTubeyê hatiye hilbijartin.",
       "playLabel": "Vîdeoyê lê bidin",
       "altFallback": {
-        "instagram": "Şandiya VEYSL li ser Instagramê",
-        "youtube": "Vîdeoya VEYSL li ser YouTubeyê"
+        "instagram": "Şandiya DJ Veys li ser Instagramê",
+        "youtube": "Vîdeoya DJ Veys li ser YouTubeyê"
       },
       "typeLabel": {
         "image": "Wêne",
@@ -1072,7 +1072,7 @@
     "eyebrow": "Dawetên derveyî welat – Ewropa",
     "hub": {
       "meta": {
-        "title": "DJ'ê dawetê ji bo dawetên derveyî welat li Ewropayê | VEYSL",
+        "title": "DJ'ê dawetê ji bo dawetên derveyî welat li Ewropayê | DJ Veys",
         "description": "DJ'ê dawetê yê alman-tirk ji bo dawetên derveyî welat li Ewropayê: Awistirya, Swîsre, Holenda, Belçîka, Fransa. Pêşkêşiya zindî bi Almanî, Tirkî û Îngilîzî."
       },
       "hero": {
@@ -1085,7 +1085,7 @@
         "items": [
           {
             "q": "DJ'ekî dawetê yê tirk heye ku li tevahiya Almanyayê tê rezervekirin?",
-            "a": "Erê. Navenda VEYSL li Stuttgart û Baden-Württembergê ye û li tevahiya Almanyayê tê rezervekirin – ji Münchenê heta Hamburgê. Rêwîtî û teknîk ji bo her cihî bi serê xwe di teklîfê de tên hesibandin; pêşkêşî li her derê heman e: Almanî, Tirkî, Îngilîzî."
+            "a": "Erê. Navenda DJ Veys li Stuttgart û Baden-Württembergê ye û li tevahiya Almanyayê tê rezervekirin – ji Münchenê heta Hamburgê. Rêwîtî û teknîk ji bo her cihî bi serê xwe di teklîfê de tên hesibandin; pêşkêşî li her derê heman e: Almanî, Tirkî, Îngilîzî."
           },
           {
             "q": "Ez dikarim ji bo daweteke derveyî welat DJ'ekî dawetê rezerve bikim?",
@@ -1148,7 +1148,7 @@
     },
     "country": {
       "meta": {
-        "title": "DJ'ê dawetê {country} — Dawet li derveyî welat | VEYSL",
+        "title": "DJ'ê dawetê {country} — Dawet li derveyî welat | DJ Veys",
         "description": "DJ'ê dawetê ji bo {country} tê rezervekirin: alman-tirk, pêşkêşiya zindî bi Almanî, Tirkî û Îngilîzî. Rêwîtî û teknîk bi zelalî tên hesibandin."
       },
       "eyebrow": "Dawet li derveyî welat",
@@ -1158,7 +1158,7 @@
       },
       "availability": {
         "verifiedTitle": "Berê lê daye",
-        "verifiedText": "VEYSL berê li {city} lê daye – heta niha tenê lêxistina belgekirî ya li derveyî Almanyayê.",
+        "verifiedText": "DJ Veys berê li {city} lê daye – heta niha tenê lêxistina belgekirî ya li derveyî Almanyayê.",
         "availableTitle": "Li {country} tê rezervekirin",
         "availableText": "Li {country} hê bûyereke referansê ya taybet tune – lê her dem dikare were pirsîn, bi heman baldariya her rezervasyoneke din."
       },
@@ -1212,8 +1212,8 @@
       "text": "Ne pirsgirêk e — bê mecbûrîyet ji me re binivîsin, em ê her tiştî gava ku ji bo we guncav be biaxivin.",
       "whatsappCta": "Bi WhatsAppê nîşe bikin",
       "mailCta": "Bi E-mailê nîşe bikin",
-      "whatsappPrefill": "Silav, ez ji bo dîrokekê li VEYSL eleqedar im, lê hê ne piştrast im. Em dikarin vê bê mecbûrîyet biaxivin?",
-      "whatsappPrefillWithDate": "Silav, ez ji bo {date} li VEYSL eleqedar im, lê hê ne piştrast im. Em dikarin vê bê mecbûrîyet biaxivin?",
+      "whatsappPrefill": "Silav, ez ji bo dîrokekê li DJ Veys eleqedar im, lê hê ne piştrast im. Em dikarin vê bê mecbûrîyet biaxivin?",
+      "whatsappPrefillWithDate": "Silav, ez ji bo {date} li DJ Veys eleqedar im, lê hê ne piştrast im. Em dikarin vê bê mecbûrîyet biaxivin?",
       "mailSubject": "Daxwaza bê mecbûrîyet – nîşandana dîrokê"
     }
   },
@@ -1223,8 +1223,8 @@
   },
   "blog": {
     "meta": {
-      "title": "Rêbername: DJ'ê dawetê, muzîk & plansazî | VEYSL",
-      "description": "{count} rêbernameyên berfireh derbarê DJ'ê dawetê, muzîk, teknîk, lêçûn û dawetên alman-tirk de — ji VEYSL, DJ & Orkestra ji Stuttgartê."
+      "title": "Rêbername: DJ'ê dawetê, muzîk & plansazî | DJ Veys",
+      "description": "{count} rêbernameyên berfireh derbarê DJ'ê dawetê, muzîk, teknîk, lêçûn û dawetên alman-tirk de — ji DJ Veys, DJ & Orkestra ji Stuttgartê."
     },
     "index": {
       "eyebrow": "Rêbername",
@@ -1232,7 +1232,7 @@
       "subtitle": "{count} rêbernameyên berfireh derbarê plansazî, muzîk, teknîk û dawetên alman-tirk de — ji zêdetirî 12 salan tecrûbeya pratîkê hatine nivîsîn.",
       "updated": "Cara dawî hat nûkirin: {date}",
       "meta": {
-        "emptyDescription": "Rêbernameya VEYSL derbarê DJ'ê dawetê, muzîk û plansaziyê de — bi vî zimanî di demeke nêz de."
+        "emptyDescription": "Rêbernameya DJ Veys derbarê DJ'ê dawetê, muzîk û plansaziyê de — bi vî zimanî di demeke nêz de."
       },
       "empty": {
         "title": "Rêbername di demeke nêz de bi vî zimanî tê.",

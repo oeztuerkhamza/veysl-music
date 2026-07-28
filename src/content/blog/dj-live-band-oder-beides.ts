@@ -103,7 +103,7 @@ mit besonderem Gewicht.
 
 "DJ oder Live-Band" ist die falsche Frage, wenn man sie als reines Entweder-Oder
 versteht. Die eigentlich relevante Frage lautet: Welche Momente des Abends profitieren
-von echter Live-Musik, und wo ist die Flexibilität eines DJ-Sets wichtiger? Bei VEYSL
+von echter Live-Musik, und wo ist die Flexibilität eines DJ-Sets wichtiger? Bei DJ Veys
 sind beide Bausteine ohnehin aus einer Hand — DJ-Set, Live-Musik auf Saz und Gitarre
 sowie bei größeren Feiern die Live-Orchester-Option mit Bläsern werden gemeinsam im
 Planungsgespräch auf die eigene Feier zugeschnitten. Details dazu finden sich auf der
@@ -179,7 +179,7 @@ karşılar.
 
 "DJ mi, canlı grup mu" sorusu, sadece bir ya-ya da olarak anlaşılırsa yanlış bir
 sorudur. Asıl önemli soru şu: akşamın hangi anları gerçek canlı müzikten fayda görür,
-nerede bir DJ setinin esnekliği daha önemli? VEYSL'de her iki bileşen zaten tek elden
+nerede bir DJ setinin esnekliği daha önemli? DJ Veys'de her iki bileşen zaten tek elden
 geliyor — DJ seti, saz ve gitarda canlı müzik ve büyük etkinliklerde nefesli çalgılı
 canlı orkestra seçeneği, planlama görüşmesinde düğününüze göre birlikte şekillendirilir.
 `.trim();
@@ -255,7 +255,7 @@ final.
 
 "DJ or live band" is the wrong question if read as a strict either/or. The real
 question is: which moments of the evening benefit from genuine live music, and where
-does a DJ set's flexibility matter more? With VEYSL, both building blocks already come
+does a DJ set's flexibility matter more? With DJ Veys, both building blocks already come
 from one source — the DJ set, live music on saz and guitar, and, for larger events, the
 live-orchestra option with horns are shaped together for your wedding during the
 planning call.
@@ -281,7 +281,7 @@ export const djLiveBandPost: BlogPost = {
         '"DJ oder Live-Band" ist eine falsche Entweder-Oder-Frage — zwischen beiden Extremen liegt eine Kombination aus DJ-Set und punktueller Live-Musik, die musikalische Flexibilität und echten Live-Klang verbindet. Dieser Guide zeigt, wann welche Option wirklich passt.',
       body: djLiveBandDe,
       seo: {
-        metaTitle: 'DJ, Live-Band oder beides? Entscheidungshilfe | VEYSL',
+        metaTitle: 'DJ, Live-Band oder beides? Entscheidungshilfe | DJ Veys',
         metaDescription:
           'DJ oder Live-Band zur Hochzeit — oder beides? Vergleichstabelle, die Kombi-Option "DJ & Orkestra" und wann welche Lösung wirklich passt.',
       },
@@ -292,7 +292,7 @@ export const djLiveBandPost: BlogPost = {
         '"DJ mi, canlı grup mu" yanlış bir ya-ya da sorusudur — iki uç arasında, müzikal esnekliği gerçek canlı sesle birleştiren, DJ seti ve belirli anlarda canlı müziğin bir kombinasyonu var. Bu rehber, hangi seçeneğin gerçekten ne zaman uygun olduğunu gösteriyor.',
       body: djLiveBandTr,
       seo: {
-        metaTitle: 'DJ mi, Canlı Grup mu? Karar Rehberi | VEYSL',
+        metaTitle: 'DJ mi, Canlı Grup mu? Karar Rehberi | DJ Veys',
         metaDescription:
           'Düğünde DJ mi canlı grup mu, yoksa ikisi birden mi? Karşılaştırma tablosu, "DJ & Orkestra" kombinasyonu ve hangi çözümün ne zaman uygun olduğu.',
       },
@@ -303,7 +303,7 @@ export const djLiveBandPost: BlogPost = {
         '"DJ or live band" is the wrong either/or question — between the two extremes sits a combination of a DJ set and selective live music that blends musical flexibility with genuine live sound. This guide shows when each option genuinely fits.',
       body: djLiveBandEn,
       seo: {
-        metaTitle: 'DJ, Live Band, or Both? A Decision Guide | VEYSL',
+        metaTitle: 'DJ, Live Band, or Both? A Decision Guide | DJ Veys',
         metaDescription:
           'DJ or live band for your wedding — or both? A comparison table, the "DJ & Orkestra" combination, and when each solution genuinely fits.',
       },

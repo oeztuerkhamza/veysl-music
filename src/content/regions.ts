@@ -213,9 +213,9 @@ export const allRegionEntries: Region[] = [
     turkishDiaspora: true,
     kurdishDiaspora: false,
     intro: {
-      de: 'Wien ist der einzige Ort außerhalb Deutschlands, an dem VEYSL bereits nachweislich gespielt hat – zu sehen im Instagram-Highlight „Viyana“. Österreich ist damit kein theoretisches „wir kommen überallhin“, sondern ein belegter Auftritt, der zeigt, dass Anreise, Technik-Transport und ein voller Abend im Ausland zuverlässig funktionieren.',
-      en: "Vienna is the only place outside Germany where VEYSL has a confirmed, verifiable booking — visible in the Instagram highlight 'Viyana'. Austria isn't a theoretical 'we travel anywhere' claim; it's proof that travel, equipment transport and a full night abroad already work in practice.",
-      tr: "Viyana, VEYSL'in Almanya dışında kanıtlanmış şekilde çaldığı tek yer — Instagram'daki 'Viyana' öne çıkanında görülebilir. Avusturya bu yüzden teorik bir 'her yere geliriz' vaadi değil; ulaşımın, ekipman taşımasının ve yurt dışında dolu bir gecenin gerçekten işlediğinin kanıtı.",
+      de: 'Wien ist der einzige Ort außerhalb Deutschlands, an dem DJ Veys bereits nachweislich gespielt hat – zu sehen im Instagram-Highlight „Viyana“. Österreich ist damit kein theoretisches „wir kommen überallhin“, sondern ein belegter Auftritt, der zeigt, dass Anreise, Technik-Transport und ein voller Abend im Ausland zuverlässig funktionieren.',
+      en: "Vienna is the only place outside Germany where DJ Veys has a confirmed, verifiable booking — visible in the Instagram highlight 'Viyana'. Austria isn't a theoretical 'we travel anywhere' claim; it's proof that travel, equipment transport and a full night abroad already work in practice.",
+      tr: "Viyana, DJ Veys'in Almanya dışında kanıtlanmış şekilde çaldığı tek yer — Instagram'daki 'Viyana' öne çıkanında görülebilir. Avusturya bu yüzden teorik bir 'her yere geliriz' vaadi değil; ulaşımın, ekipman taşımasının ve yurt dışında dolu bir gecenin gerçekten işlediğinin kanıtı.",
     },
     logistics: {
       de: 'Die Luftlinie Stuttgart–Wien liegt bei rund 500 Kilometern. Anders als bei den Städten im Kernradius ist die Anfahrt hier grundsätzlich nicht inklusive: Fahrtstrecke, gegebenenfalls ein Flug für Technik-Leichtgepäck und mindestens eine Übernachtung werden im individuellen Angebot einzeln und nachvollziehbar ausgewiesen – exakt so, wie es bereits für Ziele außerhalb des 50-km-Radius gehandhabt wird, nur mit größeren Posten.',

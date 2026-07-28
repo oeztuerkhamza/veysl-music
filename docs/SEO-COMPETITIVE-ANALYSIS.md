@@ -1,4 +1,4 @@
-# VEYSL — Competitive SEO Analysis (Stuttgart + ~200 km radius)
+# DJ Veys — Competitive SEO Analysis (Stuttgart + ~200 km radius)
 
 **Method:** live Google-style web searches (via search API, July 2026) for the queries
 listed in the brief, plus direct fetches of the most-recurring competitor domains to
@@ -27,7 +27,7 @@ brand, no Google/Amazon-scale player. It's a mix of three tiers:
 
 **Nobody in tier 1 or 2 currently owns the Turkish/multicultural angle for Stuttgart
 specifically at scale** except the "Serkan" cluster and DJ Cagatay/DJ Chatay — see §2.
-That is VEYSL's opening.
+That is DJ Veys's opening.
 
 ---
 
@@ -36,7 +36,7 @@ That is VEYSL's opening.
 Queries: `türkischer dj stuttgart`, `türk düğün dj almanya`, `düğün dj stuttgart`,
 `davul zurna dj stuttgart`, `kına gecesi dj stuttgart`, `nişan dj stuttgart`.
 
-This is where VEYSL's actual competitive set lives. It is smaller than the general
+This is where DJ Veys's actual competitive set lives. It is smaller than the general
 market but more entrenched per competitor.
 
 | Domain | Positioning | Reach claimed | Reviews found | Pricing | Languages | Tech/platform | Weakness |
@@ -46,12 +46,12 @@ market but more entrenched per competitor.
 | [dj-cagatay.de](https://www.dj-cagatay.de/) (`dj-chatay.de` 301-redirects here) | Turkish & German-Turkish weddings, Kına, Nişan, Stuttgart only | Stuttgart-only, no city network | None found | Not published | German only (no TR/EN switcher found despite Turkish clientele) | **Wix** | Single-city, single-language site on a template builder — genuinely narrow. This is a beatable, direct peer. |
 | [djalemserdar.de](https://djalemserdar.de/) | "Turkish, Kurdish, German-Turkish and multicultural weddings" | Nationwide + international, no city pages | None displayed | Quote-only | German primary, Turkish hosting mentioned | WordPress + Divi | Broad "internationally bookable" positioning with venue-partner references but no local landing pages — same city-page gap as the others. |
 | [djorhan.de](https://www.djorhan.de/) (DJ Orhan Sentürk) | German-Turkish wedding DJ, Düğün/Nişan/Kına | 20+ years claimed | Not confirmed | Not confirmed | German/Turkish | Not confirmed | Long-standing brand name, thin site depth observed in search snippets. |
-| [grupfantazi.com](https://www.grupfantazi.com/) | Turkish wedding **band** (live) that also offers DJ services | Germany + Switzerland | Not confirmed | Not confirmed | Turkish/German | Not confirmed | Competes more with VEYSL's live-music angle (saz/guitar) than pure DJ — different value prop, watch not copy. |
+| [grupfantazi.com](https://www.grupfantazi.com/) | Turkish wedding **band** (live) that also offers DJ services | Germany + Switzerland | Not confirmed | Not confirmed | Turkish/German | Not confirmed | Competes more with DJ Veys's live-music angle (saz/guitar) than pure DJ — different value prop, watch not copy. |
 | [tuerkische-hochzeits-djs.de](https://www.tuerkische-hochzeits-djs.de/), [event-hochzeits-dj.de](https://www.event-hochzeits-dj.de/tuerkische-hochzeit-tuerkischer-dj-dugun-dueguen/), [firstclass-dj.de](https://www.firstclass-dj.de/dj-buchen-fuer-tuerkische-hochzeit/) | Niche directories/agencies specifically for Turkish weddings | Nationwide, Frankfurt-leaning | Varies | Some tiered | German | Directory-style | Nationwide directories, not Stuttgart-specific — they rank for the generic term but not for `stuttgart`-qualified long-tail. |
-| [almanyadavulzurnaekibi.com](https://almanyadavulzurnaekibi.com/bolgeler/stuttgart) | Davul-zurna (traditional drum/horn) booking network with a **dedicated Stuttgart regional page** | Germany-wide network with per-city pages (proof the format works in this niche) | Not confirmed | Not confirmed | Turkish | Not confirmed | Narrow to davul-zurna, not full DJ/moderation/live-music — doesn't compete on VEYSL's full positioning, but does compete for the `davul zurna dj stuttgart` query specifically. |
+| [almanyadavulzurnaekibi.com](https://almanyadavulzurnaekibi.com/bolgeler/stuttgart) | Davul-zurna (traditional drum/horn) booking network with a **dedicated Stuttgart regional page** | Germany-wide network with per-city pages (proof the format works in this niche) | Not confirmed | Not confirmed | Turkish | Not confirmed | Narrow to davul-zurna, not full DJ/moderation/live-music — doesn't compete on DJ Veys's full positioning, but does compete for the `davul zurna dj stuttgart` query specifically. |
 
 **Reading this table honestly:** DJ Serkan / Serkan Erkılınç (whichever of the two
-domains is the "real" one) is the single most dangerous competitor for VEYSL's exact
+domains is the "real" one) is the single most dangerous competitor for DJ Veys's exact
 niche — same three-market position (Turkish + German + multicultural), similar
 20-plus-year tenure claim, and an apparent 5.0-star review base. **If the client's own
 review count turns out to be materially lower, that is the single biggest gap to close,
@@ -101,15 +101,15 @@ query like `hochzeits dj stuttgart`.
 |---|---|---|---|---|
 | [hochzeit.click](https://hochzeit.click/de/hochzeits-djs/stuttgart/) | Nationwide (DE/AT/CH), run by "TWO.HEARTS Media Group", **founded 2023** | 8+ DJs on the Stuttgart page alone, reviews shown per listing (one provider at 15 reviews) | WordPress-based, custom post types | Fast-rising newcomer — worth watching. A 2023-founded portal already ranking page-1 for a competitive city query means the format (curated directory + reviews + free-to-list) is working faster than organic peer sites can catch up. |
 | [eventpeppers.com](https://www.eventpeppers.com/de/browse/djs/hochzeits-dj/ort/deutschland/baden-wuerttemberg/stuttgart) | Nationwide marketplace | **40 wedding DJs listed for Stuttgart within a 150 km radius**, review counts from 2–86 per profile, 3-tier pricing bands, ~3,000+ words of category/FAQ content | Rich, consistent profile layout (implies structured data) | The single thickest, most review-dense page found in this whole analysis. This is the one directory page that would be genuinely hard to outrank for the bare head term. |
-| [hochzeitsportal-stuttgart.de](https://www.hochzeitsportal-stuttgart.de/musik-saenger-dj-band/hochzeits-dj) + sister sites (`heiraten-in-heilbronn.de`, `heiraten-in-tuebingen-reutlingen.de`, `heiraten-in-ludwigsburg.de`, `hochzeitsportal-freiburg.de`, `hochzeitsportal-bodensee.de`, `hochzeitsportal-karlsruhe.de`) | **Regional portal network, one subdomain-style site per city/region** | ~12 DJ profiles for Stuttgart, no star ratings shown, no pricing | Not confirmed | This is a template network (same "DJ-Service finden" layout, same nav pattern across cities) — it's an aggregator, not a genuine local voice. It ranks on regional relevance + directory breadth, not authority. Getting VEYSL **listed inside** these portals (a citation/backlink play, not a ranking fight) is more valuable than trying to outrank the portal itself. |
-| [eventzone.de](https://eventzone.de/hochzeits-dj/baden-wuerttemberg) | Nationwide marketplace | 16 DJs shown for BW | **Full JSON-LD**: `PerformingGroup`, `MusicGroup`, `AggregateRating`, `PriceSpecification`, location data | The most technically sophisticated schema implementation found in this research. VEYSL's own schema (owned by the `seo` agent, `src/lib/schema.ts`) should match or exceed this depth once real review data exists. |
+| [hochzeitsportal-stuttgart.de](https://www.hochzeitsportal-stuttgart.de/musik-saenger-dj-band/hochzeits-dj) + sister sites (`heiraten-in-heilbronn.de`, `heiraten-in-tuebingen-reutlingen.de`, `heiraten-in-ludwigsburg.de`, `hochzeitsportal-freiburg.de`, `hochzeitsportal-bodensee.de`, `hochzeitsportal-karlsruhe.de`) | **Regional portal network, one subdomain-style site per city/region** | ~12 DJ profiles for Stuttgart, no star ratings shown, no pricing | Not confirmed | This is a template network (same "DJ-Service finden" layout, same nav pattern across cities) — it's an aggregator, not a genuine local voice. It ranks on regional relevance + directory breadth, not authority. Getting DJ Veys **listed inside** these portals (a citation/backlink play, not a ranking fight) is more valuable than trying to outrank the portal itself. |
+| [eventzone.de](https://eventzone.de/hochzeits-dj/baden-wuerttemberg) | Nationwide marketplace | 16 DJs shown for BW | **Full JSON-LD**: `PerformingGroup`, `MusicGroup`, `AggregateRating`, `PriceSpecification`, location data | The most technically sophisticated schema implementation found in this research. DJ Veys's own schema (owned by the `seo` agent, `src/lib/schema.ts`) should match or exceed this depth once real review data exists. |
 | [weddyplace.com](https://www.weddyplace.com/de/hochzeits-dj/stuttgart/), [evely.com](https://www.evely.com/dj-stuttgart.html), [hochzeitsportal24.de](https://www.hochzeitsportal24.de/branchenbuch/djs/dj-stuttgart-stuttgart/) | Nationwide portals | Price-comparison framing (`ab 199€`, `600–1200€` ranges) | Not confirmed | Same category as above — treat as citation targets, not ranking targets. |
 
-**The honest takeaway for directories:** VEYSL will not outrank eventpeppers.com or
+**The honest takeaway for directories:** DJ Veys will not outrank eventpeppers.com or
 hochzeit.click for the bare 3-word head term `hochzeits dj stuttgart` in year one purely
 through on-page work. The realistic play is (a) **get listed on the ones that matter**
 (hochzeit.click, eventpeppers, hochzeitsportal-stuttgart.de, hochzeitsportal24.de) so
-VEYSL shows up *inside* their results too, and (b) **win the long-tail and
+DJ Veys shows up *inside* their results too, and (b) **win the long-tail and
 Turkish-language queries where no directory has deep enough per-query content** — see
 §5 and `docs/SEO-KEYWORD-MAP.md`.
 
@@ -124,7 +124,7 @@ Cross-referencing every search run for this analysis:
    unstructured list of ~35 cities on one page (Serkan), or a nationwide directory with
    no Stuttgart specificity (tuerkische-hochzeits-djs.de, firstclass-dj.de). **Nobody
    combines: dedicated city pages + true DE/TR/EN trilingual site + the
-   DJ-and-musician-and-Moderator three-in-one positioning.** VEYSL is structurally
+   DJ-and-musician-and-Moderator three-in-one positioning.** DJ Veys is structurally
    positioned to be first at that specific intersection.
 2. **Genuine per-city pages in the client's own confirmed service area** (Esslingen,
    Ludwigsburg, Böblingen, Heilbronn, Reutlingen, Pforzheim, Karlsruhe — see
@@ -161,7 +161,7 @@ Cross-referencing every search run for this analysis:
    (Stuttgart-adjacent: Esslingen, Ludwigsburg, Böblingen, Heilbronn, Reutlingen,
    Pforzheim, Karlsruhe) — this is the one tactical move proven to work by
    lakeloveevents.com and djmartinmeyer.de in this exact region, and it's currently
-   uncontested in VEYSL's Turkish/trilingual niche. Each page needs real unique content
+   uncontested in DJ Veys's Turkish/trilingual niche. Each page needs real unique content
    (venue names, local character) — not a template with the city swapped; see
    `docs/SEO-CITY-STRATEGY.md` for the doorway-page guardrails.
 3. **Own the Turkish-language long-tail Google isn't yet well served for.** `düğün dj
@@ -172,7 +172,7 @@ Cross-referencing every search run for this analysis:
 4. **Get listed inside the directories that already win the head term**, rather than
    fighting them for it: hochzeit.click, eventpeppers.com, hochzeitsportal-stuttgart.de,
    hochzeitsportal24.de, weddyplace.com. Free or low-cost profile listings, ideally with
-   a link back to veysl.de — citation value plus occasional direct leads.
+   a link back to dj-veys.de — citation value plus occasional direct leads.
 5. **Use the "DJ + Musiker + Moderator" three-in-one positioning as a wedge.** Every
    competitor profiled here is DJ-only, or DJ+singer (Rafael Marco, Grupfantazi), or
    DJ+band. **Nobody found in this research combines DJ, live saz/guitar performance,

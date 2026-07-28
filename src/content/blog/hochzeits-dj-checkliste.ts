@@ -5,7 +5,7 @@ import type { BlogPost } from './types';
  * Intent: informational, top-of-funnel — read before a couple has narrowed down candidates.
  * Deliberately does NOT duplicate `/fragen` → 'who-is-veysl' / 'trust-proof' / 'personal-meeting'
  * (short, self-contained Q&A passages); this post is the longer-form "how to evaluate anyone",
- * generalized advice with VEYSL's own verified facts used only as worked examples.
+ * generalized advice with DJ Veys's own verified facts used only as worked examples.
  */
 export const hochzeitsDjChecklisteDe = `
 ## Warum die DJ-Auswahl mehr Zeit verdient, als sie meist bekommt
@@ -40,7 +40,7 @@ auf DJ-Websites. Fragen Sie nach konkreten Zahlen: Seit wie vielen Jahren, wie v
 Hochzeiten und Events insgesamt, und wo lässt sich das nachvollziehen? Ein aktiver
 Instagram- oder YouTube-Kanal mit regelmäßigen Ausschnitten echter Feiern ist dabei
 oft aussagekräftiger als eine Kundenstimme auf der eigenen Website, weil er sich nicht
-nachträglich kuratieren lässt. VEYSL etwa gibt hierzu bewusst konkrete, überprüfbare
+nachträglich kuratieren lässt. DJ Veys etwa gibt hierzu bewusst konkrete, überprüfbare
 Zahlen an: über 12 Jahre Erfahrung, mehr als 200 begleitete Hochzeiten und Events sowie
 ein aktiv gepflegtes Instagram-Profil mit regelmäßigen Ausschnitten realer Auftritte.
 
@@ -107,7 +107,7 @@ in den Vertrag auf, statt auszuweichen oder es als unwahrscheinlich abzutun.
 Die beste Entscheidung entsteht aus einem Vergleich entlang klarer Kriterien, nicht aus
 dem Gefühl "der hat ein schönes Video". Nehmen Sie sich für zwei bis drei Kandidaten
 jeweils ein Vorgespräch — der Unterschied wird meist schon in den ersten zehn Minuten
-spürbar. Wer die eigene Checkliste gegen VEYSL prüfen möchte, findet auf der
+spürbar. Wer die eigene Checkliste gegen DJ Veys prüfen möchte, findet auf der
 Paketübersicht den technischen und zeitlichen Rahmen und kann darüber hinaus offene
 Fragen jederzeit unverbindlich anfragen.
 `.trim();
@@ -138,7 +138,7 @@ karşılaştırabilmek için somut kriterler sunar.
 ## Deneyim: doğrulanabilir olmalı
 
 "Uzun yıllardır" ifadesi en çok kullanılan ama en az kanıtlanabilir cümledir. Somut
-rakamlar isteyin: kaç yıl, kaç etkinlik, nerede doğrulanabilir? VEYSL örneğin bu konuda
+rakamlar isteyin: kaç yıl, kaç etkinlik, nerede doğrulanabilir? DJ Veys örneğin bu konuda
 kontrol edilebilir rakamlar veriyor: 12 yılı aşkın deneyim, 200'den fazla düğün ve
 etkinlik, düzenli olarak gerçek performans görüntüleri paylaşılan aktif bir Instagram
 profili.
@@ -185,7 +185,7 @@ dışlayan bir sunum, müzik ne kadar iyi olursa olsun atmosferi zedeler.
 
 En iyi karar, "videosu güzeldi" hissinden değil, net kriterler üzerinden yapılan bir
 karşılaştırmadan doğar. İki ya da üç aday için ayrı ayrı ön görüşme yapın — fark
-genellikle ilk on dakikada belli olur. Kendi listenizi VEYSL ile karşılaştırmak
+genellikle ilk on dakikada belli olur. Kendi listenizi DJ Veys ile karşılaştırmak
 isterseniz paket sayfasında kapsam ve süre net şekilde yer alıyor, açık kalan sorular
 için de her zaman ücretsiz bir talep gönderebilirsiniz.
 `.trim();
@@ -217,7 +217,7 @@ actually compare providers instead of going on gut feeling alone.
 
 "Many years of experience" is the most-used and least-provable line on any DJ website.
 Ask for concrete numbers: how many years, how many events, and where can it be checked?
-VEYSL, for example, states checkable figures deliberately: over 12 years of experience,
+DJ Veys, for example, states checkable figures deliberately: over 12 years of experience,
 more than 200 weddings and events, and an actively maintained Instagram profile with
 regular clips from real performances.
 
@@ -264,7 +264,7 @@ excludes a whole guest group costs real atmosphere, however good the music is.
 
 The best decision comes from comparing candidates against clear criteria, not from "the
 video looked nice". Book a planning call with two or three candidates — the difference
-is usually obvious within the first ten minutes. To check your own list against VEYSL,
+is usually obvious within the first ten minutes. To check your own list against DJ Veys,
 the packages page lays out scope and timing clearly, and any open question can be sent
 through the enquiry form at no cost.
 `.trim();
@@ -290,9 +290,9 @@ export const hochzeitsDjChecklistePost: BlogPost = {
         'Ein guter Hochzeits-DJ lässt sich an nachprüfbaren Kriterien erkennen, nicht am schönsten Instagram-Reel: belegbare Erfahrung, ein persönliches Vorgespräch, eigene Technik, ein schriftlicher Vertrag und eine ernst gemeinte No-Go-Liste. Diese Checkliste macht die Auswahl vergleichbar, statt sie zur Wette zu machen.',
       body: hochzeitsDjChecklisteDe,
       seo: {
-        metaTitle: 'Hochzeits-DJ finden: die Checkliste | VEYSL',
+        metaTitle: 'Hochzeits-DJ finden: die Checkliste | DJ Veys',
         metaDescription:
-          'Woran erkennt man einen guten Hochzeits-DJ? 7 Kriterien, eine Vergleichstabelle und rote Flaggen für die Auswahl — plus, wie VEYSL selbst abschneidet.',
+          'Woran erkennt man einen guten Hochzeits-DJ? 7 Kriterien, eine Vergleichstabelle und rote Flaggen für die Auswahl — plus, wie DJ Veys selbst abschneidet.',
       },
     },
     tr: {
@@ -301,9 +301,9 @@ export const hochzeitsDjChecklistePost: BlogPost = {
         'İyi bir düğün DJ\'i, en güzel Instagram videosundan değil, doğrulanabilir kriterlerden anlaşılır: kanıtlanabilir deneyim, kişisel bir ön görüşme, kendi ekipmanı, yazılı sözleşme ve gerçekten uygulanan bir istenmeyenler listesi. Bu liste seçimi karşılaştırılabilir hale getiriyor.',
       body: hochzeitsDjChecklisteTr,
       seo: {
-        metaTitle: 'Düğün DJ\'i Bulma Rehberi: Kontrol Listesi | VEYSL',
+        metaTitle: 'Düğün DJ\'i Bulma Rehberi: Kontrol Listesi | DJ Veys',
         metaDescription:
-          'İyi bir düğün DJ\'i neye bakılarak seçilir? 7 kriter, karşılaştırma tablosu ve dikkat edilmesi gereken uyarı işaretleri — VEYSL örneğiyle.',
+          'İyi bir düğün DJ\'i neye bakılarak seçilir? 7 kriter, karşılaştırma tablosu ve dikkat edilmesi gereken uyarı işaretleri — DJ Veys örneğiyle.',
       },
     },
     en: {
@@ -312,9 +312,9 @@ export const hochzeitsDjChecklistePost: BlogPost = {
         'A good wedding DJ can be recognised by checkable criteria, not the nicest Instagram reel: verifiable experience, a personal planning call, owned equipment, a written contract and a no-go list that actually gets honoured. This checklist makes candidates comparable.',
       body: hochzeitsDjChecklisteEn,
       seo: {
-        metaTitle: 'How to Find a Wedding DJ: The Checklist | VEYSL',
+        metaTitle: 'How to Find a Wedding DJ: The Checklist | DJ Veys',
         metaDescription:
-          'What separates a good wedding DJ from a risky one? 7 criteria, a comparison table and red flags to watch for — with VEYSL as a worked example.',
+          'What separates a good wedding DJ from a risky one? 7 criteria, a comparison table and red flags to watch for — with DJ Veys as a worked example.',
       },
     },
   },

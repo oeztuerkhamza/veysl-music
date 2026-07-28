@@ -42,51 +42,51 @@
   },
   "meta": {
     "home": {
-      "title": "DJ para bodas en {city} — DJ premium | VEYSL",
+      "title": "DJ para bodas en {city} — DJ premium | DJ Veys",
       "description": "DJ premium para bodas y eventos en {city} y alrededores. Reunión de planificación, equipo de sonido y luces propio, pista llena. Consulten su fecha."
     },
     "services": {
-      "title": "DJ para bodas y eventos — Servicios | VEYSL",
+      "title": "DJ para bodas y eventos — Servicios | DJ Veys",
       "description": "DJ para bodas, pedidas de mano, noche de henna, after-party y eventos de empresa. Qué incluye exactamente cada servicio, sin letra pequeña."
     },
     "packages": {
-      "title": "Paquetes y precios de DJ para bodas | VEYSL",
+      "title": "Paquetes y precios de DJ para bodas | DJ Veys",
       "description": "Tres paquetes claros para boda y evento: horas, sonido, luces y extras de un vistazo. Presupuesto personalizado en 24 horas."
     },
     "weddings": {
-      "title": "Bodas reales — Referencias y fincas | VEYSL",
+      "title": "Bodas reales — Referencias y fincas | DJ Veys",
       "description": "Bodas reales, pistas llenas de verdad: clips de referencia, opiniones de parejas y wedding planners, y nuestras fincas colaboradoras."
     },
     "music": {
-      "title": "Música y sets — Mixes de DJ de bodas | VEYSL",
+      "title": "Música y sets — Mixes de DJ de bodas | DJ Veys",
       "description": "Sets de boda y evento para escuchar: del cóctel de bienvenida al banquete y la peaktime. En alemán, turco e internacional."
     },
     "process": {
-      "title": "Cómo trabajamos y FAQ — DJ de bodas | VEYSL",
+      "title": "Cómo trabajamos y FAQ — DJ de bodas | DJ Veys",
       "description": "Del primer mensaje a la última canción: el proceso en cuatro pasos y las dudas más frecuentes al contratar un DJ para su boda."
     },
     "booking": {
-      "title": "Consultar fecha y pedir presupuesto | VEYSL DJ",
+      "title": "Consultar fecha y pedir presupuesto | DJ Veys",
       "description": "Indiquen su fecha, comprueben la disponibilidad y reciban un presupuesto sin compromiso: respuesta en 24 horas."
     },
     "gallery": {
-      "title": "Galería y vídeos — DJ para bodas | VEYSL",
+      "title": "Galería y vídeos — DJ para bodas | DJ Veys",
       "description": "Fotos, aftermovies y reels de bodas y eventos."
     },
     "epk": {
-      "title": "EPK y colaboradores — Press kit | VEYSL",
+      "title": "EPK y colaboradores — Press kit | DJ Veys",
       "description": "Biografía, fotos de prensa, rider técnico y fincas colaboradoras para descargar."
     },
     "contact": {
-      "title": "Contacto — VEYSL DJ",
+      "title": "Contacto — DJ Veys",
       "description": "Por WhatsApp, teléfono o correo electrónico. Respondemos en menos de 24 horas."
     },
     "imprint": {
-      "title": "Impressum | VEYSL",
+      "title": "Impressum | DJ Veys",
       "description": "Información legal según el § 5 de la DDG alemana."
     },
     "privacy": {
-      "title": "Privacidad | VEYSL",
+      "title": "Privacidad | DJ Veys",
       "description": "Información sobre el tratamiento de datos personales conforme al RGPD."
     }
   },
@@ -477,10 +477,10 @@
       "title": "Todas las respuestas de un vistazo",
       "subtitle": "{count} respuestas detalladas sobre reserva, precios, el día de la boda, música, técnica, contrato y bodas turcas: se leen al instante, sin clics ni desplegables."
     },
-    "entity": "VEYSL es el servicio de DJ de bodas, música en directo y presentación de {owner}, con sede en {city} (Alemania). Desde hace más de {years} años acompaña bodas y eventos en Baden-Württemberg, en toda Alemania y en Europa, presenta en directo en alemán, turco e inglés y está especializado en bodas germano-turcas, turcas y multiculturales. Suma ya {events}+ celebraciones: como DJ, como músico en directo al saz y la guitarra y con una banda en directo con sección de viento.",
+    "entity": "DJ Veys es el servicio de DJ de bodas, música en directo y presentación de {owner}, con sede en {city} (Alemania). Desde hace más de {years} años acompaña bodas y eventos en Baden-Württemberg, en toda Alemania y en Europa, presenta en directo en alemán, turco e inglés y está especializado en bodas germano-turcas, turcas y multiculturales. Suma ya {events}+ celebraciones: como DJ, como músico en directo al saz y la guitarra y con una banda en directo con sección de viento.",
     "meta": {
-      "title": "Preguntas y respuestas — DJ de bodas Stuttgart | VEYSL",
-      "description": "{count} respuestas detalladas sobre reserva, precios, el día de la boda, música, técnica y bodas turcas con VEYSL: para leer directamente, sin rodeos."
+      "title": "Preguntas y respuestas — DJ de bodas Stuttgart | DJ Veys",
+      "description": "{count} respuestas detalladas sobre reserva, precios, el día de la boda, música, técnica y bodas turcas con DJ Veys: para leer directamente, sin rodeos."
     },
     "updated": "Última actualización: {date}",
     "seeAlso": "Otras diez preguntas más breves sobre el desarrollo del día se responden en la página",
@@ -694,7 +694,7 @@
       "ctaNote": "Solicitud sin compromiso: respuesta en 24 horas."
     },
     "meta": {
-      "title": "DJ para bodas en {city} — músico y presentador | VEYSL",
+      "title": "DJ para bodas en {city} — músico y presentador | DJ Veys",
       "description": "DJ premium para bodas en {city}: DJ, músico y presentador en alemán, turco e inglés para bodas germano-turcas y biculturales. Consulten su fecha."
     },
     "travel": {
@@ -741,7 +741,7 @@
     "nearby": {
       "eyebrow": "En los alrededores",
       "title": "También contratado en los alrededores de {city}",
-      "servicesTitle": "Más en VEYSL"
+      "servicesTitle": "Más en DJ Veys"
     },
     "cta": {
       "eyebrow": "Siguiente paso",
@@ -811,7 +811,7 @@
     "close": "Cerrar",
     "continueToWhatsapp": "Seguir en WhatsApp",
     "privacyNote": "Sus respuestas se guardan para gestionar su solicitud. <privacyLink>Política de privacidad</privacyLink>",
-    "messageIntro": "Hola VEYSL, estoy buscando un DJ.",
+    "messageIntro": "Hola DJ Veys, estoy buscando un DJ.",
     "messageLabels": {
       "eventType": "Ocasión",
       "date": "Fecha",
@@ -1034,8 +1034,8 @@
       "lead": "Una selección actual de bodas y eventos, del perfil @dj_veys y del canal de YouTube.",
       "playLabel": "Reproducir vídeo",
       "altFallback": {
-        "instagram": "Publicación de VEYSL en Instagram",
-        "youtube": "Vídeo de VEYSL en YouTube"
+        "instagram": "Publicación de DJ Veys en Instagram",
+        "youtube": "Vídeo de DJ Veys en YouTube"
       },
       "typeLabel": {
         "image": "Foto",
@@ -1072,7 +1072,7 @@
     "eyebrow": "Destination wedding en Europa",
     "hub": {
       "meta": {
-        "title": "DJ de bodas para destination weddings en Europa | VEYSL",
+        "title": "DJ de bodas para destination weddings en Europa | DJ Veys",
         "description": "DJ de bodas germano-turco para destination weddings en Europa: Austria, Suiza, Países Bajos, Bélgica y Francia. Presentación en alemán, turco e inglés."
       },
       "hero": {
@@ -1085,7 +1085,7 @@
         "items": [
           {
             "q": "¿Hay algún DJ de bodas turco que trabaje en toda Alemania?",
-            "a": "Sí. VEYSL tiene su base en Stuttgart y Baden-Württemberg y es contratable en toda Alemania, de München a Hamburg. El desplazamiento y la técnica se calculan por separado para cada lugar en el presupuesto; la presentación es la misma en todas partes: alemán, turco e inglés."
+            "a": "Sí. DJ Veys tiene su base en Stuttgart y Baden-Württemberg y es contratable en toda Alemania, de München a Hamburg. El desplazamiento y la técnica se calculan por separado para cada lugar en el presupuesto; la presentación es la misma en todas partes: alemán, turco e inglés."
           },
           {
             "q": "¿Puedo contratar un DJ de bodas para una destination wedding en el extranjero?",
@@ -1097,7 +1097,7 @@
           },
           {
             "q": "¿Hasta dónde se desplazan para una boda?",
-            "a": "Dentro del radio cercano a Stuttgart el desplazamiento suele estar incluido; más allá, VEYSL es contratable en toda Alemania y en toda Europa, y llegan solicitudes con regularidad. La distancia determina la antelación y el coste, no la disposición a viajar."
+            "a": "Dentro del radio cercano a Stuttgart el desplazamiento suele estar incluido; más allá, DJ Veys es contratable en toda Alemania y en toda Europa, y llegan solicitudes con regularidad. La distancia determina la antelación y el coste, no la disposición a viajar."
           }
         ]
       },
@@ -1148,7 +1148,7 @@
     },
     "country": {
       "meta": {
-        "title": "DJ de bodas en {country} — destination wedding | VEYSL",
+        "title": "DJ de bodas en {country} — destination wedding | DJ Veys",
         "description": "DJ de bodas contratable en {country}: germano-turco, presentación en alemán, turco e inglés. Desplazamiento y técnica calculados con transparencia."
       },
       "eyebrow": "Destination wedding",
@@ -1158,7 +1158,7 @@
       },
       "availability": {
         "verifiedTitle": "Ya ha actuado allí",
-        "verifiedText": "VEYSL ya ha actuado en {city}: hasta ahora, la única actuación documentada fuera de Alemania.",
+        "verifiedText": "DJ Veys ya ha actuado en {city}: hasta ahora, la única actuación documentada fuera de Alemania.",
         "availableTitle": "Contratable en {country}",
         "availableText": "Todavía no hay un evento de referencia propio en {country}, pero se puede solicitar en cualquier momento y con el mismo cuidado que cualquier otra contratación."
       },
@@ -1212,8 +1212,8 @@
       "text": "No hay problema: escríbannos sin compromiso y lo hablamos cuando a ustedes les venga bien.",
       "whatsappCta": "Guardar por WhatsApp",
       "mailCta": "Guardar por correo",
-      "whatsappPrefill": "Hola, me interesa una fecha con VEYSL, pero todavía no lo tengo decidido. ¿Podemos hablarlo sin compromiso?",
-      "whatsappPrefillWithDate": "Hola, me interesa el {date} con VEYSL, pero todavía no lo tengo decidido. ¿Podemos hablarlo sin compromiso?",
+      "whatsappPrefill": "Hola, me interesa una fecha con DJ Veys, pero todavía no lo tengo decidido. ¿Podemos hablarlo sin compromiso?",
+      "whatsappPrefillWithDate": "Hola, me interesa el {date} con DJ Veys, pero todavía no lo tengo decidido. ¿Podemos hablarlo sin compromiso?",
       "mailSubject": "Solicitud sin compromiso: reserva provisional de fecha"
     }
   },
@@ -1223,8 +1223,8 @@
   },
   "blog": {
     "meta": {
-      "title": "Guía de bodas: DJ, música y organización | VEYSL",
-      "description": "{count} guías detalladas sobre DJ de bodas, música, técnica, costes y bodas germano-turcas, de VEYSL, DJ y orquesta con base en Stuttgart."
+      "title": "Guía de bodas: DJ, música y organización | DJ Veys",
+      "description": "{count} guías detalladas sobre DJ de bodas, música, técnica, costes y bodas germano-turcas, de DJ Veys, DJ y orquesta con base en Stuttgart."
     },
     "index": {
       "eyebrow": "Guía",
@@ -1232,7 +1232,7 @@
       "subtitle": "{count} guías detalladas sobre organización, música, técnica y bodas germano-turcas, escritas a partir de más de 12 años de práctica.",
       "updated": "Última actualización: {date}",
       "meta": {
-        "emptyDescription": "La guía de VEYSL sobre DJ de bodas, música y organización: la versión en español llega pronto."
+        "emptyDescription": "La guía de DJ Veys sobre DJ de bodas, música y organización: la versión en español llega pronto."
       },
       "empty": {
         "title": "La guía llegará pronto en español.",

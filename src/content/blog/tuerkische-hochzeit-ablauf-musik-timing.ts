@@ -347,7 +347,7 @@ export const tuerkischeHochzeitPost: BlogPost = {
         'Eine türkische oder deutsch-türkische Hochzeit in Deutschland folgt selten dem deutschen Standardablauf: dichtere Zeremonie, längeres Tanzprogramm, eigene Rituale wie Kına Gecesi und Ringzeremonie. Dieser Guide zeigt den typischen Rahmen und eine Beispiel-Timeline.',
       body: tuerkischeHochzeitDe,
       seo: {
-        metaTitle: 'Türkische Hochzeit in Deutschland: Ablauf & Musik | VEYSL',
+        metaTitle: 'Türkische Hochzeit in Deutschland: Ablauf & Musik | DJ Veys',
         metaDescription:
           'Wie läuft eine türkische Hochzeit in Deutschland ab? Nişan, Kına Gecesi, Zeremonie, Musik und Timing im Überblick, mit Beispiel-Zeitplan.',
       },
@@ -358,7 +358,7 @@ export const tuerkischeHochzeitPost: BlogPost = {
         'Almanya\'da bir Türk ya da Alman-Türk düğünü, nadiren Alman standart akışını takip eder: daha yoğun bir tören, daha uzun bir dans programı, kına gecesi ve yüzük töreni gibi kendine has ritüeller. Bu rehber tipik çerçeveyi ve örnek bir zaman planını gösteriyor.',
       body: tuerkischeHochzeitTr,
       seo: {
-        metaTitle: 'Almanya\'da Türk Düğünü: Akış & Müzik | VEYSL',
+        metaTitle: 'Almanya\'da Türk Düğünü: Akış & Müzik | DJ Veys',
         metaDescription:
           'Almanya\'da bir Türk düğünü nasıl işler? Nişan, kına gecesi, tören, müzik ve zamanlama; örnek bir zaman çizelgesiyle birlikte.',
       },
@@ -369,7 +369,7 @@ export const tuerkischeHochzeitPost: BlogPost = {
         'A Turkish or German-Turkish wedding in Germany rarely follows the standard German running order: a denser ceremony, a longer dance programme, and its own rituals like kına gecesi and the ring ceremony. This guide explains the typical framework and an example timeline.',
       body: tuerkischeHochzeitEn,
       seo: {
-        metaTitle: 'Turkish Wedding in Germany: Running Order | VEYSL',
+        metaTitle: 'Turkish Wedding in Germany: Running Order | DJ Veys',
         metaDescription:
           'How does a Turkish wedding in Germany actually run? Nişan, kına gecesi, ceremony, music and timing explained, with an example timeline.',
       },

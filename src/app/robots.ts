@@ -26,7 +26,7 @@ const AI_CRAWLERS = [
 ];
 
 /** Die einzige Domain, die indexiert werden darf. */
-const CANONICAL_HOST = 'veysl.de';
+const CANONICAL_HOST = 'dj-veys.de';
 
 export default function robots(): MetadataRoute.Robots {
   const base = siteBaseUrl();
@@ -36,16 +36,16 @@ export default function robots(): MetadataRoute.Robots {
    *
    * Grund: eine Gratis-Vorschau (Vercel, Netlify, …) ist eine vollständige
    * Kopie dieser Website. Wird sie indexiert, konkurriert sie später mit
-   * veysl.de um dieselben Keywords — und das ausgerechnet in einem Projekt,
+   * dj-veys.de um dieselben Keywords — und das ausgerechnet in einem Projekt,
    * dessen größtes SEO-Risiko ohnehin ein Domainumzug ist (CHECKLIST.md A.4).
    * Eine versehentlich indexierte Vorschau wieder aus dem Index zu bekommen
    * kostet Wochen; sie gar nicht erst hineinzulassen kostet diese Zeilen.
    *
    * Greift automatisch: die Vorschau setzt NEXT_PUBLIC_SITE_URL auf ihre
-   * eigene URL (oder gar nicht), niemals auf veysl.de.
+   * eigene URL (oder gar nicht), niemals auf dj-veys.de.
    */
   // Bewusst direkt aus der Umgebung statt über siteBaseUrl(): dessen Fallback
-  // ist site.url, also veysl.de. Eine Vorschau, bei der NEXT_PUBLIC_SITE_URL
+  // ist site.url, also dj-veys.de. Eine Vorschau, bei der NEXT_PUBLIC_SITE_URL
   // schlicht vergessen wurde, gälte damit als kanonisch und wäre indexierbar —
   // und genau das Vergessen ist der wahrscheinlichste Fehler. Fehlt die
   // Variable, wird deshalb gesperrt: die sichere Richtung.

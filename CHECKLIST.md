@@ -1,4 +1,4 @@
-# VEYSL.DE — Yapılacaklar Listesi
+# DJ Veys.DE — Yapılacaklar Listesi
 
 **Son güncelleme:** Temmuz 2026
 İki bölüm: **A) Yazılım tarafı** (senin/geliştiricinin işi) — **B) İşletme tarafı** (Veysel'in işi).
@@ -74,7 +74,7 @@ kapandı; site teknik olarak yayına hazır, yasal olarak değil.
 ## A.4 Domain göçü — **en yüksek teknik risk**
 
 - [ ] Eski domaini **iptal etme**, elinde tut
-- [ ] `veystunesofficial.de` → `veysl.de` **sayfa sayfa 301** (hepsini ana sayfaya atma)
+- [ ] `veystunesofficial.de` → `dj-veys.de` **sayfa sayfa 301** (hepsini ana sayfaya atma)
 - [ ] Search Console: yeni domaini doğrula → **Adres değişikliği** aracını çalıştır
 - [ ] `www` → apex yönlendirmesi
 - [ ] Sitemap gönder, indeksleme takibi
@@ -121,10 +121,10 @@ Rakip analizinde bulundu: benzer DJ'lerde **12–86 yorum** var. En tehlikeli ra
 
 ## B.3 🔴 Instagram — 63.000 kişi bekliyor
 
-- [ ] **Bio'daki linki `veysl.de` yap** — şu an eski domaini gösteriyor. **5 dakikalık iş, en hızlı trafik kaynağın.**
-- [ ] Profil metnine VEYSL adını ekle
+- [ ] **Bio'daki linki `dj-veys.de` yap** — şu an eski domaini gösteriyor. **5 dakikalık iş, en hızlı trafik kaynağın.**
+- [ ] Profil metnine DJ Veys adını ekle
 - [ ] YouTube kanal bilgisi ve GBP'yi de yeni domaine çevir
-- [ ] Sonraki etkinliklerde VEYSL'i görünür kıl (DJ masası, story, aftermovie brandingi)
+- [ ] Sonraki etkinliklerde DJ Veys'i görünür kıl (DJ masası, story, aftermovie brandingi)
 
 ## B.4 🟡 Fiyat ve paketler
 
@@ -147,8 +147,8 @@ Bu bölümler bilerek **boş** ve tasarlanmış boş durum gösteriyor. **Hiçbi
 
 Ayrıntı: [docs/MAIL-SETUP.md](docs/MAIL-SETUP.md)
 
-- [ ] `info@veysl.de` postası (öneri: Mailbox.org, Alman sağlayıcı)
-- [ ] `no-reply@veysl.de` gönderimi (öneri: Resend)
+- [ ] `info@dj-veys.de` postası (öneri: Mailbox.org, Alman sağlayıcı)
+- [ ] `no-reply@dj-veys.de` gönderimi (öneri: Resend)
 - [ ] **MX + SPF + DKIM + DMARC** kayıtları — biri eksikse onay mailleri spam'e düşer
 - [ ] DMARC'ı `p=none` ile başlat, 2-4 hafta sonra sıkılaştır. **Doğrudan `p=reject` yaparsan kendi postanı bloklarsın.**
 - [ ] Özel gmail adresinden çık — premium talepte kurumsal olmayan adres güven kaybettirir

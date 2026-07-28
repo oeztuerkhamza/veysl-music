@@ -348,7 +348,7 @@ export const eroeffnungstanzPost: BlogPost = {
         'Der Eröffnungstanz ist der Moment, den Gäste am längsten erinnern — Songwahl, Version, Länge und der Übergang zur Party entscheiden über die Wirkung. Dieser Guide zeigt, wie die Auswahl mit echtem Vorlauf gelingt, auch mit Live-Musik auf Saz oder Gitarre.',
       body: eroeffnungstanzDe,
       seo: {
-        metaTitle: 'Eröffnungstanz: Songauswahl & Timing | VEYSL',
+        metaTitle: 'Eröffnungstanz: Songauswahl & Timing | DJ Veys',
         metaDescription:
           'Welcher Song passt zum Eröffnungstanz? Version, Länge, Übergang zur Party und Live-Musik auf Saz oder Gitarre — der praktische Guide.',
       },
@@ -359,7 +359,7 @@ export const eroeffnungstanzPost: BlogPost = {
         'Açılış dansı, davetlilerin en uzun süre hatırladığı andır — şarkı seçimi, versiyon, süre ve partiye geçiş anın etkisini belirler. Bu rehber, saz ya da gitarla canlı müzik dahil, seçimin gerçek bir zaman payıyla nasıl yapılacağını gösteriyor.',
       body: eroeffnungstanzTr,
       seo: {
-        metaTitle: 'Açılış Dansı: Şarkı Seçimi & Zamanlama | VEYSL',
+        metaTitle: 'Açılış Dansı: Şarkı Seçimi & Zamanlama | DJ Veys',
         metaDescription:
           'Açılış dansına hangi şarkı yakışır? Versiyon, süre, partiye geçiş ve saz ya da gitarla canlı müzik — pratik rehber.',
       },
@@ -370,7 +370,7 @@ export const eroeffnungstanzPost: BlogPost = {
         'The first dance is the moment guests remember longest — song choice, version, length and the transition into the party all decide how it lands. This guide shows how to plan it with real lead time, including live music on saz or guitar.',
       body: eroeffnungstanzEn,
       seo: {
-        metaTitle: 'First Dance: Song Choice & Timing | VEYSL',
+        metaTitle: 'First Dance: Song Choice & Timing | DJ Veys',
         metaDescription:
           'Which song suits a first dance? Version, length, the transition into the party and live music on saz or guitar — a practical guide.',
       },

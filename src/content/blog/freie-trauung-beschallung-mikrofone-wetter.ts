@@ -339,7 +339,7 @@ export const freieTrauungPost: BlogPost = {
         'Eine freie Trauung im Freien ist technisch oft anspruchsvoller als sie aussieht: fehlende Steckdose, Wind, mehrere Sprecher. Dieser Guide zeigt praktikable Lösungen für Stromversorgung, Mikrofontechnik und einen Regenplan.',
       body: freieTrauungDe,
       seo: {
-        metaTitle: 'Freie Trauung: Beschallung & Mikrofone | VEYSL',
+        metaTitle: 'Freie Trauung: Beschallung & Mikrofone | DJ Veys',
         metaDescription:
           'Wie wird eine freie Trauung im Freien technisch sauber beschallt? Stromversorgung ohne Steckdose, Mikrofonanzahl, Windschutz und Regenplan.',
       },
@@ -350,7 +350,7 @@ export const freieTrauungPost: BlogPost = {
         'Açık havada bir tören, teknik olarak göründüğünden çoğu zaman daha zorludur: priz yokluğu, rüzgar, birden fazla konuşmacı. Bu rehber, elektrik, mikrofon düzeni ve bir yağmur planı için uygulanabilir çözümler gösteriyor.',
       body: freieTrauungTr,
       seo: {
-        metaTitle: 'Açık Hava Töreni: Ses Sistemi & Mikrofon | VEYSL',
+        metaTitle: 'Açık Hava Töreni: Ses Sistemi & Mikrofon | DJ Veys',
         metaDescription:
           'Açık havada bir tören teknik olarak nasıl sorunsuz seslendirilir? Prizsiz elektrik, mikrofon sayısı, rüzgar koruması ve yağmur planı.',
       },
@@ -361,7 +361,7 @@ export const freieTrauungPost: BlogPost = {
         'An outdoor ceremony is often more technically demanding than it looks: no power socket, wind, multiple speakers. This guide shows practical solutions for power, microphone setup and a rain plan.',
       body: freieTrauungEn,
       seo: {
-        metaTitle: 'Outdoor Ceremony: Sound & Microphones | VEYSL',
+        metaTitle: 'Outdoor Ceremony: Sound & Microphones | DJ Veys',
         metaDescription:
           'How do you get clean sound for an outdoor ceremony? Power without a socket, microphone setup, wind protection and a rain plan.',
       },

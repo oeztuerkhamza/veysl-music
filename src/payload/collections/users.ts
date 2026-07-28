@@ -15,7 +15,7 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
     defaultColumns: ['email', 'name', 'updatedAt'],
-    description: 'Zugänge für das VEYSL-Adminpanel. In der Regel reicht ein einziger Account.',
+    description: 'Zugänge für das DJ Veys-Adminpanel. In der Regel reicht ein einziger Account.',
   },
   auth: {
     /**

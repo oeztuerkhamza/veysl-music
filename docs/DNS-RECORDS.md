@@ -1,4 +1,4 @@
-# DNS-Einträge für veysl.de
+# DNS-Einträge für dj-veys.de
 
 Vollständiger Satz DNS-Records für den Betrieb der Website (netcup VPS,
 `docs/DEPLOYMENT.md`) und den Mailversand (`docs/MAIL-SETUP.md`).
@@ -16,14 +16,14 @@ aufbaut.
 
 | Prüfung | Ergebnis |
 |---|---|
-| Nameserver `veysl.de` | ✅ netcup (`netcup.firstns.cc` + 4 weitere) — die Zone liegt am richtigen Ort |
-| `veysl.de` A | ✅ `159.195.216.142` — zeigt auf den VPS (die frühere Parking-IP `46.38.243.234` ist ersetzt) |
-| `www.veysl.de` A | ✅ `159.195.216.142` |
-| `mail.veysl.de` A | ✅ `159.195.216.142` |
+| Nameserver `dj-veys.de` | ✅ netcup (`netcup.firstns.cc` + 4 weitere) — die Zone liegt am richtigen Ort |
+| `dj-veys.de` A | ✅ `159.195.216.142` — zeigt auf den VPS (die frühere Parking-IP `46.38.243.234` ist ersetzt) |
+| `www.dj-veys.de` A | ✅ `159.195.216.142` |
+| `mail.dj-veys.de` A | ✅ `159.195.216.142` |
 | AAAA (alle Hosts) | ➖ **entfällt dauerhaft** — der VPS hat kein globales IPv6, auf dem Server geprüft (`ip -6 addr show scope global` liefert nichts). Keine AAAA-Records anlegen |
 | MX | ❌ keine — **korrekt für den jetzigen Stand**, siehe Phase 2 |
 | SPF / DKIM / DMARC | ❌ nicht gesetzt — gehören zu Phase 2 |
-| CAA | ✅ `0 issue "letsencrypt.org"` — auf dem Server verifiziert (`dig +short veysl.de CAA`) |
+| CAA | ✅ `0 issue "letsencrypt.org"` — auf dem Server verifiziert (`dig +short dj-veys.de CAA`) |
 
 > ### Die Server-IP ist `159.195.216.142`
 >
@@ -108,7 +108,7 @@ Benachrichtigungen (`BOOKING_TRANSPORT=smtp` braucht den laufenden Mailstack).
 | Wo | Was | Warum |
 |---|---|---|
 | netcup **Support-Ticket** | Ausgehenden **Port 25** freischalten lassen | netcup blockt ihn standardmäßig. Ohne Freischaltung liefert der Server keine einzige Mail aus. 587 ist kein Ersatz — das ist die Einlieferung durch eigene Clients, 25 die Zustellung von Server zu Server |
-| netcup **SCP** → Netzwerk → rDNS | `159.195.216.142` → `mail.veysl.de` | Wichtigster Einzelfaktor für Zustellbarkeit. Fehlt der PTR, landen Mails bei Gmail/GMX/Web.de verlässlich im Spam |
+| netcup **SCP** → Netzwerk → rDNS | `159.195.216.142` → `mail.dj-veys.de` | Wichtigster Einzelfaktor für Zustellbarkeit. Fehlt der PTR, landen Mails bei Gmail/GMX/Web.de verlässlich im Spam |
 
 **Das Port-25-Ticket zuerst stellen.** Die Antwort kann Tage dauern und wird
 bei neuen Kunden gelegentlich abgelehnt — alles andere wäre dann umsonst
@@ -121,18 +121,18 @@ schreibt, bekommt einen Bounce.** Vorher nur den A-Record aus Phase 1 setzen.
 
 | Host | Typ | Priorität | Ziel |
 |---|---|---|---|
-| `@` | MX | 10 | `mail.veysl.de.` |
-| `@` | TXT | — | `v=spf1 a:mail.veysl.de -all` |
+| `@` | MX | 10 | `mail.dj-veys.de.` |
+| `@` | TXT | — | `v=spf1 a:mail.dj-veys.de -all` |
 | `mail._domainkey` | TXT | — | `v=DKIM1; k=rsa; p=<KEY>` |
-| `_dmarc` | TXT | — | `v=DMARC1; p=none; rua=mailto:info@veysl.de; pct=100` |
+| `_dmarc` | TXT | — | `v=DMARC1; p=none; rua=mailto:info@dj-veys.de; pct=100` |
 | `_mta-sts` | TXT | — | `v=STSv1; id=2026072601` |
-| `_smtp._tls` | TXT | — | `v=TLSRPTv1; rua=mailto:info@veysl.de` |
-| `mta-sts` | CNAME | — | `veysl.de.` |
+| `_smtp._tls` | TXT | — | `v=TLSRPTv1; rua=mailto:info@dj-veys.de` |
+| `mta-sts` | CNAME | — | `dj-veys.de.` |
 
 **Genau ein SPF-Record pro Domain.** Zwei sind kein doppelter Schutz — die
 Auswertung bricht mit `permerror` ab und beide Versender fallen durch. Kommt
 später zusätzlich Resend dazu, gehört es in dieselbe Zeile:
-`v=spf1 a:mail.veysl.de include:_spf.resend.com -all`.
+`v=spf1 a:mail.dj-veys.de include:_spf.resend.com -all`.
 
 **`<KEY>` niemals raten.** Den DKIM-Schlüssel erzeugt der
 docker-mailserver-Container; der öffentliche Teil wird von dort abgelesen
@@ -153,7 +153,7 @@ gehen blockiert die eigene Post, solange SPF/DKIM noch nicht sauber sind.
 | `@` | AAAA | `<SERVER_IPV6>` |
 | `www` | AAAA | `<SERVER_IPV6>` |
 
-**Diese vier Records erst setzen, wenn `veysl.de` live, gesund und einige Tage
+**Diese vier Records erst setzen, wenn `dj-veys.de` live, gesund und einige Tage
 stabil ist.** Es ist das höchste technische Risiko im Projekt (CHECKLIST.md
 A.4): die alte Domain trägt aktuell die Sichtbarkeit, die Google-Bewertungen
 und den Instagram-Link. Beide Domains gleichzeitig umzustellen macht es
@@ -164,7 +164,7 @@ alte Domain einen TLS-Fehler statt der Weiterleitung:
 
 ```bash
 CERTBOT_EMAIL=<owner-email> \
-CERTBOT_DOMAINS="veysl.de www.veysl.de veystunesofficial.de www.veystunesofficial.de" \
+CERTBOT_DOMAINS="dj-veys.de www.dj-veys.de veystunesofficial.de www.veystunesofficial.de" \
 deploy/setup-ssl.sh
 ```
 
@@ -186,7 +186,7 @@ Tarif erlaubt, zeigt das Panel selbst.
 
 Im netcup **CCP** (Customer Control Panel) → *Domains* → Zone bearbeiten. Die
 Spalten dort heißen Host / Typ / Priorität / Ziel, passend zu den Tabellen
-oben; die Apex-Domain wird als `@` eingetragen, nie als `veysl.de`.
+oben; die Apex-Domain wird als `@` eingetragen, nie als `dj-veys.de`.
 
 netcup hat auch eine DNS-API. Für eine **einmalige** Zoneneinrichtung von
 knapp einem Dutzend Records ist das Panel der ruhigere Weg: kein API-Key im
@@ -197,12 +197,12 @@ nicht der Fall.
 ## Danach prüfen
 
 ```bash
-dig +short veysl.de A
-dig +short www.veysl.de A
-dig +short veysl.de MX
-dig +short veysl.de TXT
-dig +short _dmarc.veysl.de TXT
-dig +short resend._domainkey.veysl.de TXT
+dig +short dj-veys.de A
+dig +short www.dj-veys.de A
+dig +short dj-veys.de MX
+dig +short dj-veys.de TXT
+dig +short _dmarc.dj-veys.de TXT
+dig +short resend._domainkey.dj-veys.de TXT
 ```
 
 Erst wenn A/AAAA korrekt auflösen, `deploy/setup-ssl.sh` starten — ein

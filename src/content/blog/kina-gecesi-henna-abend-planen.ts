@@ -338,7 +338,7 @@ export const kinaGecesiPost: BlogPost = {
         'Die Kına Gecesi hat einen eigenen Rhythmus: ruhiges Ritual, dann abrupter Stimmungswechsel in die Party. Dieser Guide zeigt den klassischen Ablauf, eine Planungs-Checkliste und die häufigsten Timing-Fehler.',
       body: kinaGecesiDe,
       seo: {
-        metaTitle: 'Kına Gecesi planen: Ablauf & Checkliste | VEYSL',
+        metaTitle: 'Kına Gecesi planen: Ablauf & Checkliste | DJ Veys',
         metaDescription:
           'Wie plant man eine Kına Gecesi (Henna-Abend)? Klassischer Ablauf, Checkliste für Musik und Timing sowie die häufigsten Planungsfehler.',
       },
@@ -349,7 +349,7 @@ export const kinaGecesiPost: BlogPost = {
         'Kına gecesinin kendine has bir ritmi vardır: sakin bir ritüel, ardından partiye ani bir atmosfer değişimi. Bu rehber klasik akışı, bir planlama kontrol listesini ve en sık yapılan zamanlama hatalarını gösteriyor.',
       body: kinaGecesiTr,
       seo: {
-        metaTitle: 'Kına Gecesi Planlama: Akış & Kontrol Listesi | VEYSL',
+        metaTitle: 'Kına Gecesi Planlama: Akış & Kontrol Listesi | DJ Veys',
         metaDescription:
           'Bir kına gecesi nasıl planlanır? Klasik akış, müzik ve zamanlama için kontrol listesi ve en sık yapılan planlama hataları.',
       },
@@ -360,7 +360,7 @@ export const kinaGecesiPost: BlogPost = {
         'The kına gecesi has its own rhythm: a calm ritual, then an abrupt mood shift into the party. This guide covers the classic running order, a planning checklist, and the most common timing mistakes.',
       body: kinaGecesiEn,
       seo: {
-        metaTitle: 'Planning a Kına Gecesi: Order & Checklist | VEYSL',
+        metaTitle: 'Planning a Kına Gecesi: Order & Checklist | DJ Veys',
         metaDescription:
           'How do you plan a kına gecesi (henna night)? Classic running order, a checklist for music and timing, and the most common planning mistakes.',
       },

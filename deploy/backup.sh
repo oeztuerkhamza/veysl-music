@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# veysl.de — backup and restore for the two things that matter: the Payload
+# dj-veys.de — backup and restore for the two things that matter: the Payload
 # SQLite database (real customer enquiries live here) and the `media/`
 # uploads volume. Self-contained — runs disposable alpine containers against
 # the named Docker volumes directly, so it needs nothing installed on the

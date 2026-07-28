@@ -324,7 +324,7 @@ export const deutschTuerkischePost: BlogPost = {
         'Bei deutsch-türkischen Hochzeiten liegt die eigentliche Herausforderung selten bei der Musik allein, sondern bei unterschiedlichen Erwartungen an Ablauf und Tempo. Dieser Guide zeigt, wo die Erwartungen typischerweise auseinandergehen und wie ein Abend für beide Seiten gelingt.',
       body: deutschTuerkischeDe,
       seo: {
-        metaTitle: 'Deutsch-türkische Hochzeit planen | VEYSL',
+        metaTitle: 'Deutsch-türkische Hochzeit planen | DJ Veys',
         metaDescription:
           'Wie gelingt eine deutsch-türkische Hochzeit für beide Familien? Typische Erwartungsunterschiede, drei Prinzipien und die Rolle der Moderation.',
       },
@@ -335,7 +335,7 @@ export const deutschTuerkischePost: BlogPost = {
         'Alman-Türk düğünlerinde asıl zorluk nadiren sadece müziktir, genellikle akış ve tempo konusundaki farklı beklentilerdir. Bu rehber, beklentilerin tipik olarak nerede ayrıştığını ve her iki taraf için de başarılı bir akşamın nasıl olacağını gösteriyor.',
       body: deutschTuerkischeTr,
       seo: {
-        metaTitle: 'Alman-Türk Düğünü Planlama Rehberi | VEYSL',
+        metaTitle: 'Alman-Türk Düğünü Planlama Rehberi | DJ Veys',
         metaDescription:
           'Alman-Türk bir düğün her iki aile için nasıl başarılı olur? Tipik beklenti farkları, üç ilke ve sunumun rolü.',
       },
@@ -346,7 +346,7 @@ export const deutschTuerkischePost: BlogPost = {
         'At German-Turkish weddings, the real challenge is rarely the music alone — it\'s differing expectations around running order and pace. This guide shows where expectations typically diverge and how to build an evening that works for both sides.',
       body: deutschTuerkischeEn,
       seo: {
-        metaTitle: 'Planning a German-Turkish Wedding | VEYSL',
+        metaTitle: 'Planning a German-Turkish Wedding | DJ Veys',
         metaDescription:
           'How does a German-Turkish wedding work for both families? Typical expectation gaps, three guiding principles, and the role of hosting.',
       },

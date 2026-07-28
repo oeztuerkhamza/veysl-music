@@ -1,4 +1,4 @@
-# VEYSL — Blog Editorial Plan (`src/content/blog/`)
+# DJ Veys — Blog Editorial Plan (`src/content/blog/`)
 
 **Scope:** this document covers the content built in this pass — 15 evergreen guide
 articles + 2 real-wedding recap templates in `src/content/blog/`, and the demo
@@ -85,14 +85,14 @@ different queries).
 
 `/pakete` (meta key `packages` in `docs/SEO-KEYWORD-MAP.md`) already targets
 `hochzeits-dj preise stuttgart` — **transactional** intent, aimed at someone comparing
-VEYSL's own three package tiers. The blog post targets `was kostet ein hochzeits-dj` —
-**informational** intent, aimed at someone who hasn't found VEYSL yet and is researching
+DJ Veys's own three package tiers. The blog post targets `was kostet ein hochzeits-dj` —
+**informational** intent, aimed at someone who hasn't found DJ Veys yet and is researching
 the market in general. This is a standard, defensible content pattern (a "how much does
 X cost" educational post feeding a transactional pricing page), not cannibalization,
 provided the two pages stay genuinely different in depth and framing — which they do:
 the blog post cites only externally-sourced market ranges (see the file header comment
 in `was-kostet-ein-hochzeits-dj.ts` for the exact search basis) and explicitly never
-states a VEYSL price, while `/pakete` is where his own "Preis auf Anfrage" packages
+states a DJ Veys price, while `/pakete` is where his own "Preis auf Anfrage" packages
 live. The blog post's internal link to `/pakete` is the funnel between the two.
 
 ---
@@ -136,7 +136,7 @@ modules already reflect this schedule, starting shortly after this content pass:
 
 | Wave | Date | Posts | Why this grouping |
 |---|---|---|---|
-| 1 | 2026-08-04 | `hochzeits-dj-checkliste`, `was-kostet-ein-hochzeits-dj` | Highest-intent, top-of-funnel pair — get these live first since they're the most likely entry point for someone who hasn't decided on VEYSL yet |
+| 1 | 2026-08-04 | `hochzeits-dj-checkliste`, `was-kostet-ein-hochzeits-dj` | Highest-intent, top-of-funnel pair — get these live first since they're the most likely entry point for someone who hasn't decided on DJ Veys yet |
 | 2 | 2026-08-11 | `tuerkische-hochzeit-ablauf-musik-timing`, `kina-gecesi-henna-abend-planen` | Core differentiator content — per `docs/SEO-COMPETITIVE-ANALYSIS.md` §5, nobody in the Stuttgart SERP runs a genuine trilingual site with this depth on Turkish wedding content |
 | 3 | 2026-08-18 | `eroeffnungstanz-songauswahl`, `dj-live-band-oder-beides` | Music-decision content, feeds `/musik` |
 | 4 | 2026-08-25 | `musikwuensche-no-go-liste`, `dramaturgie-hochzeitsabend` | Planning-stage content, feeds `/ablauf` |
@@ -299,7 +299,7 @@ AI answer engines than simply not having that locale yet.
 4. **Real testimonials** — see §7. Both `testimonials.ts` (live) and
    `testimonials-seed.ts` (demo-only, must never go live) depend on this.
 5. **Confirmation that `was-kostet-ein-hochzeits-dj`'s market-range framing is
-   acceptable** — it deliberately never states VEYSL's own price (per
+   acceptable** — it deliberately never states DJ Veys's own price (per
    `.claude/BRAND-FACTS.md`), which is correct per the brief, but the client should see
    how the page frames the *absence* of his own pricing before it goes live, since it's a
    visible editorial choice, not just a technical default.

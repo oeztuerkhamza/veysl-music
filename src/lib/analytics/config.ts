@@ -8,7 +8,7 @@
  */
 
 export interface AnalyticsConfig {
-  /** Bare domain Plausible was configured with, e.g. `"veysl.de"`. Unset = Plausible (and therefore all core, cookieless tracking) is off. */
+  /** Bare domain Plausible was configured with, e.g. `"dj-veys.de"`. Unset = Plausible (and therefore all core, cookieless tracking) is off. */
   plausibleDomain?: string;
   /** Override for a self-hosted Plausible instance. Defaults to Plausible Cloud's script. */
   plausibleScriptUrl: string;

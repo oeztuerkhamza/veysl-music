@@ -42,51 +42,51 @@
   },
   "meta": {
     "home": {
-      "title": "Hochzeits-DJ {city} — Premium DJ für Hochzeit & Event | VEYSL",
+      "title": "Hochzeits-DJ {city} — Premium DJ für Hochzeit & Event | DJ Veys",
       "description": "Premium Hochzeits- und Event-DJ in {city} und Umgebung. Persönliches Vorgespräch, eigene Ton- und Lichtanlage, volle Tanzfläche. Termin jetzt prüfen."
     },
     "services": {
-      "title": "Hochzeit & Events — Leistungen | VEYSL DJ",
+      "title": "Hochzeit & Events — Leistungen | DJ Veys",
       "description": "DJ für Hochzeit, Verlobung, Henna, After-Party und Firmenevents. Was in jeder Leistung enthalten ist — transparent erklärt."
     },
     "packages": {
-      "title": "Pakete & Preise — Hochzeits-DJ | VEYSL",
+      "title": "Pakete & Preise — Hochzeits-DJ | DJ Veys",
       "description": "Drei klare Pakete für Hochzeit und Event: Umfang, Stunden, Technik und Extras auf einen Blick. Individuelles Angebot in 24 Stunden."
     },
     "weddings": {
-      "title": "Echte Hochzeiten — Referenzen & Locations | VEYSL",
+      "title": "Echte Hochzeiten — Referenzen & Locations | DJ Veys",
       "description": "Echte Hochzeiten, echte Tanzflächen: Referenzclips, Stimmen von Paaren und Planern sowie unsere Partner-Locations."
     },
     "music": {
-      "title": "Musik & Sets — Hochzeits-DJ Mixe | VEYSL",
+      "title": "Musik & Sets — Hochzeits-DJ Mixe | DJ Veys",
       "description": "Hochzeits- und Event-Sets zum Reinhören: von Sektempfang über Dinner bis zur Peaktime. Deutsch, türkisch, international."
     },
     "process": {
-      "title": "Ablauf & häufige Fragen — Hochzeits-DJ | VEYSL",
+      "title": "Ablauf & häufige Fragen — Hochzeits-DJ | DJ Veys",
       "description": "Vom ersten Gespräch bis zum letzten Song: der Ablauf in vier Schritten und Antworten auf die häufigsten Fragen zur DJ-Buchung."
     },
     "booking": {
-      "title": "Termin prüfen & Angebot anfragen | VEYSL DJ",
+      "title": "Termin prüfen & Angebot anfragen | DJ Veys",
       "description": "Datum eingeben, Verfügbarkeit prüfen, unverbindliches Angebot erhalten — Antwort innerhalb von 24 Stunden."
     },
     "gallery": {
-      "title": "Galerie & Videos — Hochzeits-DJ | VEYSL",
+      "title": "Galerie & Videos — Hochzeits-DJ | DJ Veys",
       "description": "Fotos, Aftermovies und Reels von Hochzeiten und Events."
     },
     "epk": {
-      "title": "EPK & Partner — Presskit | VEYSL",
+      "title": "EPK & Partner — Presskit | DJ Veys",
       "description": "Biografie, Pressefotos, Technical Rider und Partner-Locations zum Download."
     },
     "contact": {
-      "title": "Kontakt — VEYSL DJ",
+      "title": "Kontakt — DJ Veys",
       "description": "Direkt per WhatsApp, Telefon oder E-Mail. Wir melden uns innerhalb von 24 Stunden."
     },
     "imprint": {
-      "title": "Impressum | VEYSL",
+      "title": "Impressum | DJ Veys",
       "description": "Angaben gemäß § 5 DDG."
     },
     "privacy": {
-      "title": "Datenschutz | VEYSL",
+      "title": "Datenschutz | DJ Veys",
       "description": "Informationen zur Verarbeitung personenbezogener Daten nach DSGVO."
     }
   },
@@ -477,10 +477,10 @@
       "title": "Alle Antworten auf einen Blick",
       "subtitle": "{count} ausführliche Antworten zu Buchung, Preisen, Ablauf, Musik, Technik, Recht und türkischen Hochzeiten — sofort lesbar, ohne Klicks oder Aufklappen."
     },
-    "entity": "VEYSL ist der Hochzeits-DJ-, Live-Musik- und Moderationsservice von {owner} mit Sitz in {city}. Seit über {years} Jahren begleitet er Hochzeiten und Events in Baden-Württemberg, deutschlandweit und europaweit, moderiert live auf Deutsch, Türkisch und Englisch und hat sich auf deutsch-türkische, türkische und multikulturelle Hochzeiten spezialisiert. Über {events}+ Feiern hat er bereits begleitet — als DJ, Live-Musiker an Saz und Gitarre und mit einer Live-Band inklusive Bläsern.",
+    "entity": "DJ Veys ist der Hochzeits-DJ-, Live-Musik- und Moderationsservice von {owner} mit Sitz in {city}. Seit über {years} Jahren begleitet er Hochzeiten und Events in Baden-Württemberg, deutschlandweit und europaweit, moderiert live auf Deutsch, Türkisch und Englisch und hat sich auf deutsch-türkische, türkische und multikulturelle Hochzeiten spezialisiert. Über {events}+ Feiern hat er bereits begleitet — als DJ, Live-Musiker an Saz und Gitarre und mit einer Live-Band inklusive Bläsern.",
     "meta": {
-      "title": "Fragen & Antworten — Hochzeits-DJ Stuttgart | VEYSL",
-      "description": "{count} ausführliche Antworten zu Buchung, Preisen, Ablauf, Musik, Technik und türkischen Hochzeiten mit VEYSL — direkt lesbar, ohne Umwege."
+      "title": "Fragen & Antworten — Hochzeits-DJ Stuttgart | DJ Veys",
+      "description": "{count} ausführliche Antworten zu Buchung, Preisen, Ablauf, Musik, Technik und türkischen Hochzeiten mit DJ Veys — direkt lesbar, ohne Umwege."
     },
     "updated": "Zuletzt aktualisiert: {date}",
     "seeAlso": "Zehn weitere, kürzere Fragen rund um den Ablauf beantworten wir auf der Seite",
@@ -694,7 +694,7 @@
       "ctaNote": "Unverbindliche Anfrage – Antwort innerhalb von 24 Stunden."
     },
     "meta": {
-      "title": "Hochzeits-DJ {city} — DJ, Musiker & Moderator | VEYSL",
+      "title": "Hochzeits-DJ {city} — DJ, Musiker & Moderator | DJ Veys",
       "description": "Premium Hochzeits-DJ in {city}: DJ, Musiker und mehrsprachiger Moderator für deutsch-türkische Hochzeiten. Jetzt Termin anfragen."
     },
     "travel": {
@@ -741,7 +741,7 @@
     "nearby": {
       "eyebrow": "In der Umgebung",
       "title": "Auch gebucht rund um {city}",
-      "servicesTitle": "Mehr auf VEYSL"
+      "servicesTitle": "Mehr auf DJ Veys"
     },
     "cta": {
       "eyebrow": "Nächster Schritt",
@@ -811,7 +811,7 @@
     "close": "Schließen",
     "continueToWhatsapp": "Auf WhatsApp weiter",
     "privacyNote": "Ihre Angaben werden zur Bearbeitung Ihrer Anfrage gespeichert. <privacyLink>Datenschutzerklärung</privacyLink>",
-    "messageIntro": "Hallo VEYSL, ich interessiere mich für einen DJ.",
+    "messageIntro": "Hallo DJ Veys, ich interessiere mich für einen DJ.",
     "messageLabels": {
       "eventType": "Anlass",
       "date": "Datum",
@@ -1034,8 +1034,8 @@
       "lead": "Ein aktueller Ausschnitt aus Hochzeiten und Events — kuratiert von @dj_veys und dem YouTube-Kanal.",
       "playLabel": "Video abspielen",
       "altFallback": {
-        "instagram": "Beitrag von VEYSL auf Instagram",
-        "youtube": "Video von VEYSL auf YouTube"
+        "instagram": "Beitrag von DJ Veys auf Instagram",
+        "youtube": "Video von DJ Veys auf YouTube"
       },
       "typeLabel": {
         "image": "Foto",
@@ -1072,7 +1072,7 @@
     "eyebrow": "Destination Wedding Europa",
     "hub": {
       "meta": {
-        "title": "Hochzeits-DJ für Destination Weddings in Europa | VEYSL",
+        "title": "Hochzeits-DJ für Destination Weddings in Europa | DJ Veys",
         "description": "Deutsch-türkischer Hochzeits-DJ für Destination Weddings in Europa: Österreich, Schweiz, Niederlande, Belgien, Frankreich. Live moderiert auf Deutsch, Türkisch und Englisch."
       },
       "hero": {
@@ -1085,7 +1085,7 @@
         "items": [
           {
             "q": "Gibt es einen türkischen Hochzeits-DJ, der deutschlandweit bucht?",
-            "a": "Ja. VEYSL ist in Stuttgart und Baden-Württemberg zu Hause und deutschlandweit buchbar – von München bis Hamburg. Anfahrt und Technik werden für jeden Ort einzeln im Angebot kalkuliert; die Moderation bleibt überall dieselbe: Deutsch, Türkisch, Englisch."
+            "a": "Ja. DJ Veys ist in Stuttgart und Baden-Württemberg zu Hause und deutschlandweit buchbar – von München bis Hamburg. Anfahrt und Technik werden für jeden Ort einzeln im Angebot kalkuliert; die Moderation bleibt überall dieselbe: Deutsch, Türkisch, Englisch."
           },
           {
             "q": "Kann ich einen Hochzeits-DJ für eine Destination Wedding im Ausland buchen?",
@@ -1148,7 +1148,7 @@
     },
     "country": {
       "meta": {
-        "title": "Hochzeits-DJ {country} — Destination Wedding | VEYSL",
+        "title": "Hochzeits-DJ {country} — Destination Wedding | DJ Veys",
         "description": "Hochzeits-DJ buchbar in {country}: deutsch-türkisch, mehrsprachig moderiert auf Deutsch, Türkisch und Englisch. Anfahrt und Technik transparent kalkuliert."
       },
       "eyebrow": "Destination Wedding",
@@ -1158,7 +1158,7 @@
       },
       "availability": {
         "verifiedTitle": "Bereits gespielt",
-        "verifiedText": "VEYSL hat bereits in {city} gespielt – bislang der einzige nachweisliche Auftritt außerhalb Deutschlands.",
+        "verifiedText": "DJ Veys hat bereits in {city} gespielt – bislang der einzige nachweisliche Auftritt außerhalb Deutschlands.",
         "availableTitle": "Buchbar in {country}",
         "availableText": "Noch kein eigenes Referenz-Event in {country} – aber jederzeit anfragbar, mit derselben Sorgfalt wie jede andere Buchung."
       },
@@ -1212,8 +1212,8 @@
       "text": "Kein Problem — melden Sie sich unverbindlich, dann besprechen wir alles, sobald es bei Ihnen passt.",
       "whatsappCta": "Auf WhatsApp merken",
       "mailCta": "Per E-Mail merken",
-      "whatsappPrefill": "Hallo, ich interessiere mich für einen Termin bei VEYSL, bin aber noch nicht sicher. Können wir das unverbindlich besprechen?",
-      "whatsappPrefillWithDate": "Hallo, ich interessiere mich für den {date} bei VEYSL, bin aber noch nicht sicher. Können wir das unverbindlich besprechen?",
+      "whatsappPrefill": "Hallo, ich interessiere mich für einen Termin bei DJ Veys, bin aber noch nicht sicher. Können wir das unverbindlich besprechen?",
+      "whatsappPrefillWithDate": "Hallo, ich interessiere mich für den {date} bei DJ Veys, bin aber noch nicht sicher. Können wir das unverbindlich besprechen?",
       "mailSubject": "Unverbindliche Anfrage – Terminvormerkung"
     }
   },
@@ -1223,8 +1223,8 @@
   },
   "blog": {
     "meta": {
-      "title": "Ratgeber: Hochzeits-DJ, Musik & Planung | VEYSL",
-      "description": "{count} ausführliche Guides zu Hochzeits-DJ, Musik, Technik, Kosten und deutsch-türkischen Hochzeiten — von VEYSL, DJ & Orkestra aus Stuttgart."
+      "title": "Ratgeber: Hochzeits-DJ, Musik & Planung | DJ Veys",
+      "description": "{count} ausführliche Guides zu Hochzeits-DJ, Musik, Technik, Kosten und deutsch-türkischen Hochzeiten — von DJ Veys, DJ & Orkestra aus Stuttgart."
     },
     "index": {
       "eyebrow": "Ratgeber",
@@ -1232,7 +1232,7 @@
       "subtitle": "{count} ausführliche Guides zu Planung, Musik, Technik und deutsch-türkischen Hochzeiten — geschrieben aus über 12 Jahren Praxis.",
       "updated": "Zuletzt aktualisiert am {date}",
       "meta": {
-        "emptyDescription": "Der Ratgeber von VEYSL zu Hochzeits-DJ, Musik und Planung — diese Sprache folgt in Kürze."
+        "emptyDescription": "Der Ratgeber von DJ Veys zu Hochzeits-DJ, Musik und Planung — diese Sprache folgt in Kürze."
       },
       "empty": {
         "title": "Der Ratgeber folgt in dieser Sprache in Kürze.",

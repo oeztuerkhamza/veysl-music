@@ -1,7 +1,7 @@
 import type { BlogPost, BlogTemplateField } from './types';
 
 /**
- * RECAP TEMPLATE — `type: 'recap'`, `status: 'template'`. Not a real event. VEYSL has
+ * RECAP TEMPLATE — `type: 'recap'`, `status: 'template'`. Not a real event. DJ Veys has
  * zero verified real-wedding details today (no couple names, venue, date — see
  * `.claude/BRAND-FACTS.md`), so this ships as a fill-in-the-blank skeleton, not a
  * finished post. Two placeholder conventions are used in `body` below, and both must
@@ -267,7 +267,7 @@ export const echteHochzeitGrosseFeierPost: BlogPost = {
         '[VORLAGE — nicht veröffentlichen, bis alle {{TOKENS}} durch echte, freigegebene Angaben ersetzt sind] Eine große Hochzeit mit DJ & Orkestra: Ablauf, musikalischer Höhepunkt und die Stimme des Brautpaars.',
       body: grosseFeierBodyDe,
       seo: {
-        metaTitle: '[VORLAGE] Echte Hochzeit in {{CITY}} | VEYSL',
+        metaTitle: '[VORLAGE] Echte Hochzeit in {{CITY}} | DJ Veys',
         metaDescription: '[VORLAGE — vor Veröffentlichung mit echten Daten füllen] Echte Hochzeit mit DJ & Orkestra, Ablauf und Höhepunkte.',
       },
     },
@@ -277,7 +277,7 @@ export const echteHochzeitGrosseFeierPost: BlogPost = {
         '[ŞABLON — tüm {{TOKEN}}\'lar gerçek, izin verilmiş bilgilerle değiştirilmeden yayınlamayın] DJ & Orkestra ile büyük bir düğün: akış, müzikal zirve ve çiftin sözü.',
       body: grosseFeierBodyTr,
       seo: {
-        metaTitle: '[ŞABLON] {{CITY}}\'de Gerçek Düğün | VEYSL',
+        metaTitle: '[ŞABLON] {{CITY}}\'de Gerçek Düğün | DJ Veys',
         metaDescription: '[ŞABLON — yayınlamadan önce gerçek verilerle doldurun] DJ & Orkestra ile gerçek düğün, akış ve zirve anları.',
       },
     },
@@ -287,7 +287,7 @@ export const echteHochzeitGrosseFeierPost: BlogPost = {
         '[TEMPLATE — do not publish until every {{TOKEN}} is replaced with real, approved details] A larger wedding with DJ & Orkestra: running order, musical highlight and the couple in their own words.',
       body: grosseFeierBodyEn,
       seo: {
-        metaTitle: '[TEMPLATE] Real Wedding in {{CITY}} | VEYSL',
+        metaTitle: '[TEMPLATE] Real Wedding in {{CITY}} | DJ Veys',
         metaDescription: '[TEMPLATE — fill with real data before publishing] A real wedding with DJ & Orkestra, running order and highlights.',
       },
     },
