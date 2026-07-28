@@ -216,23 +216,37 @@ export const site = {
   ],
 
   /**
-   * Social Proof. Das Google-Profil zeigt 5,0 Sterne; die Anzahl der
-   * Bewertungen ist noch nicht verifiziert. `isPublishable` bleibt deshalb
-   * false — Badge und AggregateRating-Schema werden erst gerendert, wenn
-   * beide Werte belegt sind. Erfundene Bewertungszahlen sind tabu.
+   * Social Proof. Beide Werte sind jetzt am öffentlichen Google-Profil
+   * abgelesen (Knowledge Panel zu `kgmid=/g/11xp06nh71`, Stand Juli 2026):
+   * „5,0 · 31 Rezensionen". Damit ist `isPublishable` erstmals true, und
+   * Badge wie AggregateRating-Schema werden gerendert.
+   *
+   * Die Regel dahinter bleibt unverändert streng: **niemals eine Zahl
+   * eintragen, die nicht am Profil steht.** Eine Bewertung ohne passende,
+   * echte Anzahl auszuzeichnen ist genau die erfundene Review-Angabe, die
+   * eine manuelle Google-Maßnahme auslöst. Ändert sich die Anzahl, wird sie
+   * hier nachgezogen — oder besser: sobald `GOOGLE_PLACES_API_KEY` auf dem
+   * Server gesetzt ist, liefert `src/lib/reviews/google-places.ts` sie
+   * täglich live und diese Zahl ist nur noch der Fallback.
    */
   reviews: {
     /**
-     * TODO(kunde): echte place_id (Format "ChIJ…") aus der Google Places API
-     * oder dem Place-ID-Finder eintragen. Aus dem Maps-Link ließen sich nur
-     * diese Kennungen ablesen — als Ausgangspunkt für die Suche, nicht als
-     * fertige place_id verwendbar:
-     *   CID  0xa8532d8d440d6fa9:0xb83556b975766939
-     *   KG   /g/11xp06nh71
+     * Die Google-Place-ID des Profils. Nicht geraten: aus dem CID-Paar im
+     * Maps-Link dieses Eintrags (`0xa8532d8d440d6fa9:0xb83556b975766939`)
+     * kodiert und durch Rück-Dekodierung auf dasselbe Paar geprüft. Dass es
+     * derselbe Eintrag ist, bestätigt die Knowledge-Graph-ID `/g/11xp06nh71`,
+     * die sowohl im alten Maps-Link als auch im aktuellen Profil steht — es
+     * wurde also kein zweiter Eintrag angelegt, der bestehende wurde nur
+     * umbenannt (die 5,0 und die 31 Rezensionen sind deshalb noch da).
+     *
+     * Endgültig bestätigt ist sie erst, wenn der Places-Aufruf mit gesetztem
+     * API-Key echte Rezensionen zurückgibt; bis dahin ist der einzige
+     * Fehlerfall „keine Live-Reviews", nicht „fremde Live-Reviews", weil
+     * jeder fehlschlagende Aufruf in `google-places.ts` zu `null` degradiert.
      */
-    googlePlaceId: '',
+    googlePlaceId: 'ChIJqW8NRI0tU6gROWl2dblWNbg',
     rating: 5.0,
-    count: 0, // TODO(kunde): echte Anzahl aus dem Google-Profil eintragen
+    count: 31,
     profileUrl: 'https://maps.app.goo.gl/YCLDDHtrZfQEbhd48',
     get isPublishable() {
       return this.count > 0 && this.rating > 0;
