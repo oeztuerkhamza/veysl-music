@@ -98,17 +98,17 @@ export const SiteImageSlots: CollectionConfig = {
   },
   fields: [
     {
-      name: 'slotKey',
+      name: 'slotKey', label: { de: 'Bereich der Website', tr: 'Web sitesi alanı' },
       type: 'select',
       required: true,
       options: STATIC_SLOTS.map((slot) => ({
         label: `${slot.label}${slot.dynamic ? ' (braucht ID unten)' : ''}`,
         value: slot.key,
       })),
-      admin: { description: 'Welcher Bereich der Website. Die genaue Bildvorgabe steht in docs/IMAGE-SLOTS.md.' },
+      admin: { description: { de: 'Welcher Bereich der Website. Die genaue Bildvorgabe steht in docs/IMAGE-SLOTS.md.', tr: 'Web sitesinin hangi alanı. Görselin tam gereksinimleri docs/IMAGE-SLOTS.md içinde.' } },
     },
     {
-      name: 'dynamicId',
+      name: 'dynamicId', label: { de: 'Zusatz-ID', tr: 'Ek kimlik' },
       type: 'text',
       admin: {
         description:
@@ -116,26 +116,26 @@ export const SiteImageSlots: CollectionConfig = {
       },
     },
     {
-      name: 'key',
+      name: 'key', label: { de: 'Technischer Schlüssel', tr: 'Teknik anahtar' },
       type: 'text',
       unique: true,
       index: true,
       admin: {
         readOnly: true,
-        description: 'Automatisch aus Slot + ID zusammengesetzt — der exakte Schlüssel, den die Website abfragt.',
+        description: { de: 'Automatisch aus Slot + ID zusammengesetzt — der exakte Schlüssel, den die Website abfragt.', tr: 'Alan + kimlikten otomatik oluşur — web sitesinin sorguladığı tam anahtar.' },
       },
     },
     {
-      name: 'priority',
+      name: 'priority', label: { de: 'Priorität', tr: 'Öncelik' },
       type: 'number',
-      admin: { readOnly: true, description: '1 = größte Wirkung, zuerst fotografieren (aus dem Slot abgeleitet).' },
+      admin: { readOnly: true, description: { de: '1 = größte Wirkung, zuerst fotografieren (aus dem Slot abgeleitet).', tr: '1 = en yüksek etki, önce çekilmeli (alandan türetilir).' } },
     },
     {
-      name: 'image',
+      name: 'image', label: { de: 'Bild', tr: 'Görsel' },
       type: 'upload',
       relationTo: 'media',
       required: true,
-      admin: { description: 'Alt-Text ist beim Hochladen in der Medien-Sammlung Pflicht.' },
+      admin: { description: { de: 'Alt-Text ist beim Hochladen in der Medien-Sammlung Pflicht.', tr: 'Alt metin, Medya koleksiyonuna yüklerken zorunludur.' } },
     },
   ],
 };

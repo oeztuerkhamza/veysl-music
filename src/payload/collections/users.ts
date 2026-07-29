@@ -18,7 +18,7 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
     defaultColumns: ['email', 'name', 'updatedAt'],
-    description: 'Zugänge für das DJ Veys-Adminpanel. In der Regel reicht ein einziger Account.',
+    description: { de: 'Zugänge für das DJ Veys-Adminpanel. In der Regel reicht ein einziger Account.', tr: 'DJ Veys yönetim paneli erişimleri. Genellikle tek hesap yeterlidir.' },
   },
   auth: {
     /**
@@ -51,9 +51,9 @@ export const Users: CollectionConfig = {
   },
   fields: [
     {
-      name: 'name',
+      name: 'name', label: { de: 'Anzeigename', tr: 'Görünen ad' },
       type: 'text',
-      admin: { description: 'Anzeigename im Adminpanel (optional).' },
+      admin: { description: { de: 'Anzeigename im Adminpanel (optional).', tr: 'Yönetim panelinde görünen ad (isteğe bağlı).' } },
     },
   ],
 };

@@ -26,7 +26,7 @@ export const Testimonials: CollectionConfig = {
   admin: {
     useAsTitle: 'authorName',
     defaultColumns: ['authorName', 'eventDate', 'rating', 'status'],
-    description: 'Kundenstimmen für die Website. Nur "Veröffentlicht" ist öffentlich sichtbar.',
+    description: { de: 'Kundenstimmen für die Website. Nur "Veröffentlicht" ist öffentlich sichtbar.', tr: 'Web sitesi için müşteri yorumları. Yalnızca "Yayında" olanlar herkese görünür.' },
   },
   access: {
     read: readPublishedOrAdmin,
@@ -35,39 +35,56 @@ export const Testimonials: CollectionConfig = {
     delete: isAdmin,
   },
   fields: [
-    { name: 'authorName', type: 'text', required: true },
+    { name: 'authorName', type: 'text', required: true, label: { de: 'Name', tr: 'Ad' } },
     {
       name: 'eventDate',
       type: 'date',
-      admin: { date: { pickerAppearance: 'dayOnly' }, description: 'Datum der Feier (optional).' },
+      label: { de: 'Datum der Feier', tr: 'Etkinlik tarihi' },
+      admin: {
+        date: { pickerAppearance: 'dayOnly' },
+        description: { de: 'Datum der Feier (optional).', tr: 'Etkinliğin tarihi (isteğe bağlı).' },
+      },
     },
-    { name: 'venue', type: 'text' },
+    { name: 'venue', type: 'text', label: { de: 'Location', tr: 'Mekân' } },
     {
       name: 'quote',
       type: 'textarea',
       required: true,
       localized: true,
+      label: { de: 'Zitat', tr: 'Yorum metni' },
     },
     {
       name: 'rating',
       type: 'number',
       min: 1,
       max: 5,
-      admin: { description: '1–5 Sterne, falls bekannt.' },
+      label: { de: 'Bewertung', tr: 'Puan' },
+      admin: {
+        // Not decoration: this is the ONLY rating that may feed schema.org
+        // `aggregateRating` (src/lib/testimonials.ts). Filling it in is what
+        // eventually puts stars next to the site in Google's results —
+        // Google's own reviews are barred from doing that.
+        description: {
+          de: '1–5 Sterne, falls bekannt. Ab drei bewerteten Stimmen erscheint die Sterne-Auszeichnung in Google.',
+          tr: '1–5 yıldız, biliniyorsa. Puanlı üç yorumdan itibaren Google’da yıldız işaretlemesi görünür.',
+        },
+      },
     },
     {
       name: 'coverImage',
       type: 'upload',
       relationTo: 'media',
+      label: { de: 'Bild', tr: 'Görsel' },
     },
     {
       name: 'status',
       type: 'select',
       required: true,
       defaultValue: 'draft',
+      label: { de: 'Status', tr: 'Durum' },
       options: [
-        { label: 'Entwurf', value: 'draft' },
-        { label: 'Veröffentlicht', value: 'published' },
+        { label: { de: 'Entwurf', tr: 'Taslak' }, value: 'draft' },
+        { label: { de: 'Veröffentlicht', tr: 'Yayında' }, value: 'published' },
       ],
     },
   ],

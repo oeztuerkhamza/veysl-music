@@ -18,7 +18,7 @@ export const Media: CollectionConfig = {
   admin: {
     useAsTitle: 'alt',
     defaultColumns: ['filename', 'alt', 'updatedAt'],
-    description: 'Bild-Uploads für Blog, Testimonials und die austauschbaren Bild-Slots der Website (SiteImages).',
+    description: { de: 'Bild-Uploads für Blog, Testimonials und die austauschbaren Bild-Slots der Website (SiteImages).', tr: 'Blog, müşteri yorumları ve web sitesinin değiştirilebilir görsel alanları (SiteImages) için görsel yüklemeleri.' },
   },
   access: {
     read: () => true,
@@ -44,17 +44,17 @@ export const Media: CollectionConfig = {
   },
   fields: [
     {
-      name: 'alt',
+      name: 'alt', label: { de: 'Alt-Text', tr: 'Alt metin' },
       type: 'text',
       required: true,
       localized: true,
-      admin: { description: 'Pflichtfeld — Alt-Text für Barrierefreiheit und SEO. Pro Sprache pflegbar.' },
+      admin: { description: { de: 'Pflichtfeld — Alt-Text für Barrierefreiheit und SEO. Pro Sprache pflegbar.', tr: 'Zorunlu alan — erişilebilirlik ve SEO için alt metin. Her dil için ayrı girilebilir.' } },
     },
     {
-      name: 'caption',
+      name: 'caption', label: { de: 'Bildunterschrift', tr: 'Görsel açıklaması' },
       type: 'text',
       localized: true,
-      admin: { description: 'Optionale Bildunterschrift (z. B. für Blog/Testimonials).' },
+      admin: { description: { de: 'Optionale Bildunterschrift (z. B. für Blog/Testimonials).', tr: 'İsteğe bağlı görsel açıklaması (örn. blog/yorumlar için).' } },
     },
   ],
 };

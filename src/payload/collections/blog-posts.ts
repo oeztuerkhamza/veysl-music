@@ -30,7 +30,7 @@ export const BlogPosts: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'status', 'publishedAt', 'updatedAt'],
-    description: 'Artikel für /ratgeber ("Guide"). Nur "Veröffentlicht" ist öffentlich sichtbar.',
+    description: { de: 'Artikel für /ratgeber ("Guide"). Nur "Veröffentlicht" ist öffentlich sichtbar.', tr: '/ratgeber ("Rehber") için yazılar. Yalnızca "Yayında" olanlar herkese görünür.' },
   },
   access: {
     read: readPublishedOrAdmin,
@@ -41,13 +41,13 @@ export const BlogPosts: CollectionConfig = {
   versions: { drafts: false }, // status field below already models draft/published explicitly
   fields: [
     {
-      name: 'title',
+      name: 'title', label: { de: 'Titel', tr: 'Başlık' },
       type: 'text',
       required: true,
       localized: true,
     },
     {
-      name: 'slug',
+      name: 'slug', label: { de: 'URL-Segment', tr: 'URL parçası' },
       type: 'text',
       required: true,
       localized: true,
@@ -59,43 +59,43 @@ export const BlogPosts: CollectionConfig = {
         }
         return true;
       },
-      admin: { description: 'URL-Segment, pro Sprache eigen — z. B. "hochzeits-dj-checkliste" / "wedding-dj-checklist".' },
+      admin: { description: { de: 'URL-Segment, pro Sprache eigen — z. B. "hochzeits-dj-checkliste" / "wedding-dj-checklist".', tr: 'URL parçası, her dil için ayrı — örn. "dugun-dj-kontrol-listesi" / "wedding-dj-checklist".' } },
     },
     {
-      name: 'excerpt',
+      name: 'excerpt', label: { de: 'Kurzfassung', tr: 'Özet' },
       type: 'textarea',
       localized: true,
-      admin: { description: 'Kurzfassung für Teaser-Karten und Meta-Description.' },
+      admin: { description: { de: 'Kurzfassung für Teaser-Karten und Meta-Description.', tr: 'Kart önizlemeleri ve meta açıklaması için kısa özet.' } },
     },
     {
-      name: 'body',
+      name: 'body', label: { de: 'Inhalt', tr: 'İçerik' },
       type: 'richText',
       localized: true,
     },
     {
-      name: 'coverImage',
+      name: 'coverImage', label: { de: 'Titelbild', tr: 'Kapak görseli' },
       type: 'upload',
       relationTo: 'media',
     },
     {
-      name: 'tags',
+      name: 'tags', label: { de: 'Schlagwörter', tr: 'Etiketler' },
       type: 'text',
       hasMany: true,
       localized: true,
     },
     {
-      name: 'publishedAt',
+      name: 'publishedAt', label: { de: 'Anzeigedatum', tr: 'Yayın tarihi' },
       type: 'date',
-      admin: { date: { pickerAppearance: 'dayOnly' }, description: 'Anzeigedatum — kann in die Zukunft gelegt werden.' },
+      admin: { date: { pickerAppearance: 'dayOnly' }, description: { de: 'Anzeigedatum — kann in die Zukunft gelegt werden.', tr: 'Gösterilen tarih — ileri bir tarihe konabilir.' } },
     },
     {
-      name: 'status',
+      name: 'status', label: { de: 'Status', tr: 'Durum' },
       type: 'select',
       required: true,
       defaultValue: 'draft',
       options: [
-        { label: 'Entwurf', value: 'draft' },
-        { label: 'Veröffentlicht', value: 'published' },
+        { label: { de: 'Entwurf', tr: 'Taslak' }, value: 'draft' },
+        { label: { de: 'Veröffentlicht', tr: 'Yayında' }, value: 'published' },
       ],
     },
   ],

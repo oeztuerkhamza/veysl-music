@@ -2,13 +2,13 @@ import type { GlobalConfig } from 'payload';
 import { isAdmin } from '../access/is-admin';
 
 const weekdayOptions = [
-  { label: 'Montag', value: 'mon' },
-  { label: 'Dienstag', value: 'tue' },
-  { label: 'Mittwoch', value: 'wed' },
-  { label: 'Donnerstag', value: 'thu' },
-  { label: 'Freitag', value: 'fri' },
-  { label: 'Samstag', value: 'sat' },
-  { label: 'Sonntag', value: 'sun' },
+  { label: { de: 'Montag', tr: 'Pazartesi' }, value: 'mon' },
+  { label: { de: 'Dienstag', tr: 'Salı' }, value: 'tue' },
+  { label: { de: 'Mittwoch', tr: 'Çarşamba' }, value: 'wed' },
+  { label: { de: 'Donnerstag', tr: 'Perşembe' }, value: 'thu' },
+  { label: { de: 'Freitag', tr: 'Cuma' }, value: 'fri' },
+  { label: { de: 'Samstag', tr: 'Cumartesi' }, value: 'sat' },
+  { label: { de: 'Sonntag', tr: 'Pazar' }, value: 'sun' },
 ];
 
 function validateUrl(value: unknown): true | string {
@@ -92,39 +92,39 @@ export const SiteSettings: GlobalConfig = {
       name: 'contact',
       type: 'group',
       fields: [
-        { name: 'email', type: 'email', admin: { description: 'Überschreibt site.contact.email.' } },
-        { name: 'phone', type: 'text', validate: validatePhoneDisplay, admin: { description: 'Anzeigeformat, z. B. "+49 176 64844815".' } },
+        { name: 'email', label: { de: 'E-Mail', tr: 'E-posta' }, type: 'email', admin: { description: { de: 'Überschreibt site.contact.email.', tr: 'site.contact.email değerini geçersiz kılar.' } } },
+        { name: 'phone', label: { de: 'Telefon', tr: 'Telefon' }, type: 'text', validate: validatePhoneDisplay, admin: { description: { de: 'Anzeigeformat, z. B. "+49 176 64844815".', tr: 'Gösterim biçimi, örn. "+49 176 64844815".' } } },
         {
-          name: 'phoneHref',
+          name: 'phoneHref', label: { de: 'tel:-Link', tr: 'tel: bağlantısı' },
           type: 'text',
-          admin: { description: 'tel:-Link. Wird aus "phone" abgeleitet, wenn leer — kann aber überschrieben werden.' },
+          admin: { description: { de: 'tel:-Link. Wird aus "phone" abgeleitet, wenn leer — kann aber überschrieben werden.', tr: 'tel: bağlantısı. Boşsa "phone" alanından türetilir — istenirse elle girilebilir.' } },
         },
         {
-          name: 'whatsapp',
+          name: 'whatsapp', label: { de: 'WhatsApp-Nummer', tr: 'WhatsApp numarası' },
           type: 'text',
           validate: validateWhatsappDigits,
-          admin: { description: 'Nur Ziffern inkl. Ländercode für wa.me-Links, z. B. "4917664844815".' },
+          admin: { description: { de: 'Nur Ziffern inkl. Ländercode für wa.me-Links, z. B. "4917664844815".', tr: 'wa.me bağlantıları için ülke kodu dahil yalnızca rakamlar, örn. "4917664844815".' } },
         },
       ],
     },
     {
       name: 'address',
       type: 'group',
-      label: 'Anschrift (Impressum — Pflichtangabe)',
+      label: { de: 'Anschrift (Impressum — Pflichtangabe)', tr: 'Adres (Impressum — zorunlu)' },
       admin: {
         description:
           'Vollständige Anschrift nach § 5 DDG. Straße UND Postleitzahl sind zwingend — nur der Ort genügt nicht und ist abmahnfähig. Solange beide fehlen, zeigt die Impressum-Seite an dieser Stelle sichtbar einen Platzhalter statt einer erfundenen Adresse.',
       },
       fields: [
-        { name: 'street', type: 'text', label: 'Straße und Hausnummer', admin: { placeholder: 'Musterstraße 12' } },
-        { name: 'postalCode', type: 'text', label: 'Postleitzahl', admin: { placeholder: '70329' } },
-        { name: 'city', type: 'text', label: 'Ort' },
+        { name: 'street', label: { de: 'Straße und Hausnummer', tr: 'Sokak ve numara' }, type: 'text', admin: { placeholder: 'Musterstraße 12' } },
+        { name: 'postalCode', label: { de: 'Postleitzahl', tr: 'Posta kodu' }, type: 'text', admin: { placeholder: '70329' } },
+        { name: 'city', label: { de: 'Ort', tr: 'Şehir' }, type: 'text' },
       ],
     },
     {
       name: 'legal',
       type: 'group',
-      label: 'Rechtliche Angaben (Impressum)',
+      label: { de: 'Rechtliche Angaben (Impressum)', tr: 'Yasal bilgiler (Impressum)' },
       admin: {
         description:
           'Pflichtangaben für den deutschen Rechtsraum. Diese Felder werden ausschließlich hier gepflegt — kein Code-Deploy nötig. Nichts erfinden: leer gelassene Felder erscheinen auf der Impressum-Seite als sichtbarer Platzhalter, und das ist einer falschen Angabe deutlich vorzuziehen.',
@@ -133,16 +133,19 @@ export const SiteSettings: GlobalConfig = {
         {
           name: 'vatId',
           type: 'text',
-          label: 'Umsatzsteuer-IdNr.',
+          label: { de: 'Umsatzsteuer-IdNr.', tr: 'KDV kimlik numarası' },
           admin: {
             placeholder: 'DE123456789',
-            description: 'Nach § 27a UStG anzugeben, sofern vorhanden. Wer die Kleinunternehmerregelung nutzt, lässt das Feld leer und setzt stattdessen den Haken unten.',
+            description: {
+              de: 'Nach § 27a UStG anzugeben, sofern vorhanden. Wer die Kleinunternehmerregelung nutzt, lässt das Feld leer und setzt stattdessen den Haken unten.',
+              tr: '§ 27a UStG uyarınca, varsa girilmelidir. Küçük işletme düzenlemesinden yararlananlar bu alanı boş bırakıp aşağıdaki kutuyu işaretler.',
+            },
           },
         },
         {
           name: 'smallBusinessExempt',
           type: 'checkbox',
-          label: 'Kleinunternehmer nach § 19 UStG',
+          label: { de: 'Kleinunternehmer nach § 19 UStG', tr: 'Küçük işletme beyanı (§ 19 UStG)' },
           admin: {
             description:
               'Setzen, wenn keine Umsatzsteuer ausgewiesen wird. Die Impressum-Seite formuliert daraus den Hinweis. Entweder dieses Häkchen oder eine USt-IdNr. muss gesetzt sein — beides leer ist rechtlich unvollständig.',
@@ -151,10 +154,13 @@ export const SiteSettings: GlobalConfig = {
         {
           name: 'professionalInsurance',
           type: 'text',
-          label: 'Berufs-/Betriebshaftpflichtversicherung',
+          label: { de: 'Berufs-/Betriebshaftpflichtversicherung', tr: 'Mesleki / işletme sorumluluk sigortası' },
           admin: {
             placeholder: 'Musterversicherung AG, Musterstadt — Geltungsbereich: Deutschland',
-            description: 'Versicherer und räumlicher Geltungsbereich. Für DJ-/Veranstaltungsdienstleistungen üblich und von vielen Locations verlangt.',
+            description: {
+              de: 'Versicherer und räumlicher Geltungsbereich. Für DJ-/Veranstaltungsdienstleistungen üblich und von vielen Locations verlangt.',
+              tr: 'Sigorta şirketi ve geçerlilik alanı. DJ / etkinlik hizmetlerinde olağandır ve birçok mekân tarafından istenir.',
+            },
           },
         },
       ],
@@ -175,26 +181,26 @@ export const SiteSettings: GlobalConfig = {
       ],
     },
     {
-      name: 'serviceAreas',
+      name: 'serviceAreas', label: { de: 'Einzugsgebiet', tr: 'Hizmet bölgesi' },
       type: 'text',
       hasMany: true,
-      admin: { description: 'Regelmäßig bespielte Städte, z. B. "Stuttgart". Überschreibt die komplette Liste, wenn nicht leer.' },
+      admin: { description: { de: 'Regelmäßig bespielte Städte, z. B. "Stuttgart". Überschreibt die komplette Liste, wenn nicht leer.', tr: 'Düzenli çalışılan şehirler, örn. "Stuttgart". Boş değilse listenin tamamını geçersiz kılar.' } },
     },
     {
       name: 'stats',
       type: 'group',
       fields: [
-        { name: 'yearsExperience', type: 'number', min: 0 },
-        { name: 'eventsCompleted', type: 'number', min: 0 },
-        { name: 'instagramFollowers', type: 'number', min: 0 },
+        { name: 'yearsExperience', label: { de: 'Jahre Erfahrung', tr: 'Deneyim yılı' }, type: 'number', min: 0 },
+        { name: 'eventsCompleted', label: { de: 'Begleitete Events', tr: 'Tamamlanan etkinlik' }, type: 'number', min: 0 },
+        { name: 'instagramFollowers', label: { de: 'Instagram-Follower', tr: 'Instagram takipçisi' }, type: 'number', min: 0 },
         {
-          name: 'hostingLanguages',
+          name: 'hostingLanguages', label: { de: 'Moderationssprachen', tr: 'Sunum dilleri' },
           type: 'select',
           hasMany: true,
           options: [
-            { label: 'Deutsch', value: 'de' },
-            { label: 'Türkisch', value: 'tr' },
-            { label: 'Englisch', value: 'en' },
+            { label: { de: 'Deutsch', tr: 'Almanca' }, value: 'de' },
+            { label: { de: 'Türkisch', tr: 'Türkçe' }, value: 'tr' },
+            { label: { de: 'Englisch', tr: 'İngilizce' }, value: 'en' },
           ],
         },
       ],
@@ -202,7 +208,7 @@ export const SiteSettings: GlobalConfig = {
     {
       name: 'season',
       type: 'group',
-      fields: [{ name: 'year', type: 'number', admin: { description: 'Aktuelle Buchungssaison, z. B. 2026.' } }],
+      fields: [{ name: 'year', type: 'number', admin: { description: { de: 'Aktuelle Buchungssaison, z. B. 2026.', tr: 'Güncel rezervasyon sezonu, örn. 2026.' } } }],
     },
     {
       name: 'reviews',
@@ -225,7 +231,7 @@ export const SiteSettings: GlobalConfig = {
         singular: { de: 'Sprechstunde', tr: 'Çalışma Saati' },
         plural: { de: 'Sprechstunden', tr: 'Çalışma Saatleri' },
       },
-      admin: { description: 'Wann Veysel erreichbar ist. Für "nach Vereinbarung" o.ä. das Feld "Hinweis" nutzen statt Zeiten.' },
+      admin: { description: { de: 'Wann Veysel erreichbar ist. Für "nach Vereinbarung" o.ä. das Feld "Hinweis" nutzen statt Zeiten.', tr: 'Veysel’in ulaşılabilir olduğu saatler. "Randevu ile" gibi durumlarda saat yerine "Not" alanını kullanın.' } },
       fields: [
         {
           type: 'row',
@@ -240,7 +246,7 @@ export const SiteSettings: GlobalConfig = {
           name: 'note',
           type: 'text',
           localized: true,
-          admin: { description: 'Optional, z. B. "Termine nach Vereinbarung".' },
+          admin: { description: { de: 'Optional, z. B. "Termine nach Vereinbarung".', tr: 'İsteğe bağlı, örn. "Randevu ile görüşme".' } },
         },
       ],
     },

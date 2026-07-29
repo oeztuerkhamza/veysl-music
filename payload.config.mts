@@ -164,8 +164,30 @@ export default buildConfig({
     Testimonials,
   ],
   globals: [SiteSettings],
+  /**
+   * Inhaltssprachen — die sieben Sprachen der Website (src/i18n/routing.ts).
+   *
+   * Mit benannten Locales statt bloßer Codes. Vorher stand im Sprachumschalter
+   * des Adminpanels wörtlich `de`, `en`, `tr`, `ku`, `nl`, `fr`, `es` — wer
+   * einen Text auf Kurmancî pflegen wollte, musste wissen, dass das `ku` ist,
+   * und `nl` von `de` auseinanderhalten. Die Labels sind selbst zweisprachig
+   * (`Record<string, string>`, aufgelöst über die Admin-UI-Sprache), also
+   * heißt Türkisch im deutschen Panel „Türkisch" und im türkischen „Türkçe".
+   *
+   * Reihenfolge wie in `src/i18n/routing.ts`: Deutsch als Hauptmarkt zuerst,
+   * dann Türkisch als bestätigte Kernzielgruppe, dann der Rest. Der
+   * Umschalter zeigt sie in genau dieser Reihenfolge.
+   */
   localization: {
-    locales: ['de', 'en', 'tr', 'ku', 'nl', 'fr', 'es'],
+    locales: [
+      { code: 'de', label: { de: 'Deutsch', tr: 'Almanca' } },
+      { code: 'tr', label: { de: 'Türkisch', tr: 'Türkçe' } },
+      { code: 'ku', label: { de: 'Kurdisch (Kurmancî)', tr: 'Kürtçe (Kurmancî)' } },
+      { code: 'en', label: { de: 'Englisch', tr: 'İngilizce' } },
+      { code: 'nl', label: { de: 'Niederländisch', tr: 'Felemenkçe' } },
+      { code: 'fr', label: { de: 'Französisch', tr: 'Fransızca' } },
+      { code: 'es', label: { de: 'Spanisch', tr: 'İspanyolca' } },
+    ],
     defaultLocale: 'de',
     fallback: true,
   },

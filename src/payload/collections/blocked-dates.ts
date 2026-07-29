@@ -38,27 +38,27 @@ export const BlockedDates: CollectionConfig = {
   },
   fields: [
     {
-      name: 'date',
+      name: 'date', label: { de: 'Datum', tr: 'Tarih' },
       type: 'text',
       required: true,
       unique: true,
       index: true,
       validate: validateIsoDate,
-      admin: { description: 'Format JJJJ-MM-TT, z. B. 2026-08-14. Ein Eintrag pro Kalendertag.' },
+      admin: { description: { de: 'Format JJJJ-MM-TT, z. B. 2026-08-14. Ein Eintrag pro Kalendertag.', tr: 'Biçim YYYY-AA-GG, örn. 2026-08-14. Takvim günü başına bir kayıt.' } },
     },
     {
-      name: 'reason',
+      name: 'reason', label: { de: 'Grund (intern)', tr: 'Sebep (dahili)' },
       type: 'text',
-      admin: { description: 'Nur intern sichtbar (z. B. Kundenname/Notiz) — erscheint nie auf der Website.' },
+      admin: { description: { de: 'Nur intern sichtbar (z. B. Kundenname/Notiz) — erscheint nie auf der Website.', tr: 'Yalnızca dahili (örn. müşteri adı/not) — web sitesinde asla görünmez.' } },
     },
     {
-      name: 'source',
+      name: 'source', label: { de: 'Herkunft', tr: 'Kaynak' },
       type: 'select',
       required: true,
       defaultValue: 'manual',
       options: [
-        { label: 'Manuell geblockt', value: 'manual' },
-        { label: 'Aus einer Buchung', value: 'booking' },
+        { label: { de: 'Manuell geblockt', tr: 'Elle kapatıldı' }, value: 'manual' },
+        { label: { de: 'Aus einer Buchung', tr: 'Rezervasyondan' }, value: 'booking' },
       ],
       admin: {
         description:
@@ -66,12 +66,12 @@ export const BlockedDates: CollectionConfig = {
       },
     },
     {
-      name: 'booking',
+      name: 'booking', label: { de: 'Buchung', tr: 'Rezervasyon' },
       type: 'relationship',
       relationTo: 'bookings',
       admin: {
         condition: (data) => data?.source === 'booking',
-        description: 'Verknüpfte Buchung.',
+        description: { de: 'Verknüpfte Buchung.', tr: 'Bağlı rezervasyon.' },
       },
     },
   ],
