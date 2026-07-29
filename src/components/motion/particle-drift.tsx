@@ -23,9 +23,20 @@ export function ParticleDrift() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
-    const lowCoreCount = (navigator.hardwareConcurrency ?? 8) <= 4;
-    if (coarsePointer && lowCoreCount) return;
+    // Touch devices never load this — and that is the whole point of the
+    // check, not a fallback for weak ones.
+    //
+    // The gate used to be `coarsePointer && lowCoreCount`, which in practice
+    // excluded almost nothing: a current phone reports eight cores, so it
+    // passed the AND and pulled three.js down anyway. That is ~864 KB
+    // unminified (~250 KB over the wire) plus WebGL setup and a render loop,
+    // on the device class where the budget is tightest, for a decorative haze
+    // behind one section — the single largest download on the site, spent on
+    // something nobody would report missing.
+    //
+    // Desktop keeps it: there the bytes are cheap, the section has room to
+    // breathe, and the effect is the one it was designed for.
+    if (window.matchMedia('(pointer: coarse)').matches) return;
 
     let idleHandle: number | undefined;
     let timeoutHandle: number | undefined;
