@@ -366,7 +366,67 @@ ever run one.
 
 ---
 
-## Domain migration (`veystunesofficial.de` -> `dj-veys.de`)
+## Domain migration (`veystunesofficial.de` -> `dj-veys.de`) — ⛔ VOID
+
+**The owner cancelled the `veystunesofficial.de` registration in July 2026. The
+redirect-based migration below can no longer be executed and is kept only as a
+record of what was planned.** Read this header, then skip to "What replaces it".
+
+What that removes, permanently:
+
+- **The 301 redirects.** They are served by *our* nginx, which only ever sees
+  the old domain's traffic if that domain's DNS points here. No registration,
+  no DNS, no traffic, no redirect. `deploy/redirects-legacy.conf` and the
+  legacy `server {}` block in `nginx/nginx.conf` are now inert — they are left
+  in place because they are harmless (they only ever redirect *to* this site)
+  and because deleting them would erase the map of old→new paths, but nothing
+  will ever match them.
+- **The TLS certificate expansion** (old step 4). Actively dangerous now, not
+  just useless: certbot fails the *entire* request if any one `-d` domain
+  doesn't validate, so adding the legacy domain would break issuance/renewal
+  for `dj-veys.de` itself. `deploy/setup-ssl.sh` carries the same warning.
+- **Search Console's Change of Address** (old step 6). It requires the old
+  property to be verified *and* serving 301s to the new one. Both are now
+  impossible; there is no partial version of this step to salvage.
+- **Whatever residual link equity the old domain held.** Honestly assessed:
+  little. `docs/SEO-ACTION-PLAN.md` §(d) found the old site never ranked for
+  generic wedding-DJ queries, and by 2026-07-29 it was already serving `503` on
+  its homepage and `404` on all five other paths, with its sitemap down to a
+  single URL. The loss is real but small — this was a thin site, not an
+  established one.
+
+**If you want to undo this, check now, not later.** German registrars normally
+process a cancellation at the end of the current contract term rather than
+immediately, and the cancellation can usually be withdrawn during that window —
+the domain often still resolves throughout. If it is withdrawn, everything
+below becomes executable again exactly as written. Once the term ends the name
+drops and can be re-registered by anyone, at which point it is gone for good.
+
+### What replaces it
+
+Only one path to the old audience remains, and it is entirely off-page. These
+were steps 8–9 of a ten-step plan; they are now the whole plan, which makes
+them considerably more urgent than their old position implies:
+
+1. **Instagram bio link → `dj-veys.de`.** Previously "5 minutes, your fastest
+   traffic source" (CHECKLIST.md B.3). It is now also the *only* route by which
+   the 63K-follower audience reaches the new site, and the link currently there
+   is about to start failing.
+2. **Google Business Profile website field → `dj-veys.de`.** Edit the existing
+   listing; **do not create a new one**, or the 5.0★/31-review history splits
+   across two profiles (CHECKLIST.md A.4/B.2).
+3. **YouTube channel link**, and any directory or portal listing that predates
+   this project (`docs/SEO-ACTION-PLAN.md` §(c)(2) lists the ones found).
+4. **Submit `https://dj-veys.de/sitemap.xml`** in Search Console for the new
+   property and watch coverage. This one is unchanged — it never depended on
+   the old domain.
+
+Nothing on this list is a code change. All four are account edits by the owner.
+
+---
+
+<details>
+<summary>The original plan, kept for the record (no longer executable)</summary>
 
 The highest technical/SEO risk in this project (CHECKLIST.md A.4). Sequence:
 
@@ -411,17 +471,12 @@ The highest technical/SEO risk in this project (CHECKLIST.md A.4). Sequence:
    CERTBOT_DOMAINS="dj-veys.de www.dj-veys.de veystunesofficial.de www.veystunesofficial.de" \
    deploy/setup-ssl.sh
    ```
-5. Verify the redirects — every path, both host forms, in one go:
-   ```bash
-   deploy/verify-legacy-redirects.sh
-   ```
-   Exits `0` only if all of them pass. It checks each path in
-   `deploy/redirects-legacy.conf` against its promised target, plus three
-   things a spot-check by hand reliably misses: that unmapped paths reach the
-   catch-all instead of 404ing, that query strings survive the hop (UTM
-   attribution from any old-domain link depends on it), and that the legacy
-   zone's AAAA records are gone. Run it before step 6 — telling Search Console
-   about a move whose redirects are half-broken is worse than not telling it.
+5. Verify every redirect path, on both host forms, before step 6 — telling
+   Search Console about a move whose redirects are half-broken is worse than
+   not telling it. (A script, `deploy/verify-legacy-redirects.sh`, was written
+   for this and then removed along with the rest of the migration: it asserted
+   a set of 301s that can no longer exist. `git log` has it if the migration is
+   ever revived.)
 6. **Google Search Console**: verify `dj-veys.de` as a new property, then run
    the **Change of Address** tool from the *old* verified property, pointing
    it at the new one. This is a distinct step from the 301s — it tells
@@ -444,6 +499,8 @@ build time (`/`, `/ueber-uns/`, `/kontakt/`, `/blog-hochzeitstipps/`,
 `/impressum/`, `/datenschutzerklaerung/`) to their nearest real equivalent on
 the new site — never a blanket redirect to the homepage. Anything not listed
 falls through to `/` as a last resort rather than 404ing.
+
+</details>
 
 ---
 

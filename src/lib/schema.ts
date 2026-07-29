@@ -37,14 +37,26 @@ function nonEmptyStrings(values: Array<string | undefined | null>): string[] {
 }
 
 /**
- * `sameAs` for the business/act entities: legacy domain + BOTH Instagram
- * accounts (the current `@dj_veys` — 63K followers, the actual recognition
- * anchor — and the legacy `@veystunesofficial`, which still carries the
- * Google review history) + YouTube + the Google Maps profile.
+ * `sameAs` for the business/act entities: BOTH Instagram accounts (the current
+ * `@dj_veys` — 63K followers, the actual recognition anchor — and the legacy
+ * `@veystunesofficial`, which still carries the Google review history) +
+ * YouTube + the Google Maps profile.
+ *
+ * The old *domain* used to lead this list and deliberately no longer does.
+ * `veystunesofficial.de` has been cancelled as a registration (July 2026), and
+ * `sameAs` is not a link — it is an identity claim: "this business is also that
+ * URL." Once the registration lapses the name drops and can be re-registered by
+ * anyone, which is routine for expiring `.de` domains. Leaving it here would
+ * hand whoever picks it up a machine-readable statement, on every page of this
+ * site, that their domain is this business. A dead link would merely be
+ * useless; this would be worse than useless.
+ *
+ * The two `veystunesofficial` entries that remain are the YouTube and Instagram
+ * *accounts*. They are unaffected — the owner still controls them, and the
+ * Instagram one is the review-history anchor. Only the domain is gone.
  */
 function businessSameAs(): string[] {
   return nonEmptyStrings([
-    site.legacyUrl,
     site.social.instagram,
     site.social.instagramLegacy,
     site.social.youtube,

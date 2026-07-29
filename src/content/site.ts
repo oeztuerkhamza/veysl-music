@@ -46,8 +46,22 @@ export const site = {
   previousNames: ['VeysTunesOfficial'] as const,
   domain: 'dj-veys.de',
   url: 'https://dj-veys.de',
-  /** Alte Domain — für 301-Weiterleitungen und sameAs-Signale. */
-  legacyUrl: 'https://www.veystunesofficial.de',
+  /*
+   * `legacyUrl: 'https://www.veystunesofficial.de'` stand hier und ist im Juli
+   * 2026 entfallen: Die alte Domain wurde als Registrierung gekündigt. Damit
+   * sind beide Zwecke des Feldes weg — die 301-Weiterleitung kann nicht mehr
+   * greifen (siehe docs/DEPLOYMENT.md → "Domain migration"), und als
+   * `sameAs`-Signal wäre der Eintrag nach dem Auslaufen sogar schädlich, weil
+   * die Domain dann von Dritten neu registriert werden kann
+   * (Begründung ausführlich in src/lib/schema.ts → `businessSameAs`).
+   *
+   * Bewusst als Kommentar dokumentiert statt spurlos gelöscht: Das Feld taucht
+   * in docs/ und in der Migrationsplanung auf, und "warum fehlt das?" ist sonst
+   * eine Frage, die sich nur über die Git-History beantworten lässt.
+   *
+   * Die Marke selbst bleibt bestehen — `previousNames` unten sowie die
+   * YouTube-/Instagram-Konten `@veystunesofficial` sind davon nicht berührt.
+   */
 
   /** Alle sechs Locales — siehe routing.ts. Kein Fallback nötig. */
   tagline: {

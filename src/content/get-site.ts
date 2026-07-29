@@ -41,7 +41,6 @@ export interface ResolvedSite {
   previousNames: readonly string[];
   domain: string;
   url: string;
-  legacyUrl: string;
   tagline: Site['tagline'];
   city: string;
   district: string;

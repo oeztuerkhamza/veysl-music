@@ -144,7 +144,19 @@ statt zu fehlen.
 in den Reports auf `p=quarantine`, später `p=reject`. Direkt auf `p=reject` zu
 gehen blockiert die eigene Post, solange SPF/DKIM noch nicht sauber sind.
 
-## Phase 3 — Alte Domain (⚠️ NICHT am Launch-Tag)
+## Phase 3 — Alte Domain ⛔ ENTFÄLLT
+
+**Die Registrierung von `veystunesofficial.de` wurde im Juli 2026 gekündigt.**
+Damit gibt es keine Zone mehr, in der diese Records gesetzt werden könnten, und
+die 301-Weiterleitung — der einzige Zweck dieser Phase — kann nicht mehr
+greifen. Die Tabelle bleibt als Beleg dessen stehen, was geplant war; sie ist
+nicht mehr auszuführen. Vollständige Einordnung samt dem, was stattdessen zu
+tun ist (Instagram-Bio, Google Business Profile): `docs/DEPLOYMENT.md` →
+"Domain migration".
+
+**Wird die Kündigung noch innerhalb der Vertragslaufzeit zurückgenommen**, gilt
+diese Tabelle unverändert weiter — dann bitte auch den AAAA-Hinweis darunter
+beachten, der beim ersten Anlauf falsch stand.
 
 | Host (Zone `veystunesofficial.de`) | Typ | Aktion | Ziel |
 |---|---|---|---|

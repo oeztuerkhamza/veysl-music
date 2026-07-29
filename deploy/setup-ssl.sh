@@ -14,15 +14,18 @@
 # Run once, from the app directory on the server, as the deploy user:
 #   CERTBOT_EMAIL=<owner-email> deploy/setup-ssl.sh
 #
-# By default this only requests a cert for dj-veys.de + www.dj-veys.de — DNS for
-# the legacy domain (veystunesofficial.de) may not be repointed at this VPS
-# yet at initial launch, and certbot fails the ENTIRE request if any -d
-# domain doesn't resolve here. Once that DNS is ready (see docs/DEPLOYMENT.md
-# "Domain migration"), re-run with the legacy domains added — `--expand`
-# updates the existing certificate in place, no downtime:
-#   CERTBOT_EMAIL=<owner-email> \
-#   CERTBOT_DOMAINS="dj-veys.de www.dj-veys.de veystunesofficial.de www.veystunesofficial.de" \
-#   deploy/setup-ssl.sh
+# This requests a cert for dj-veys.de + www.dj-veys.de. That is the full list —
+# there is no second, later run to add anything to it.
+#
+# DO NOT add veystunesofficial.de to CERTBOT_DOMAINS. Earlier revisions of this
+# header told you to do exactly that once the legacy domain's DNS was
+# repointed; that instruction is void. The old domain's registration was
+# cancelled in July 2026, so it will never resolve to this VPS (see
+# docs/DEPLOYMENT.md → "Domain migration"). Certbot fails the ENTIRE request if
+# any single -d domain doesn't validate, so following the old instruction would
+# not merely skip the legacy domain — it would fail to renew or issue the
+# certificate for dj-veys.de itself, and each failed attempt counts against
+# Let's Encrypt's rate limit.
 
 set -euo pipefail
 cd "$(dirname "$0")/.."

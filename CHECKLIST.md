@@ -71,14 +71,30 @@ kapandı; site teknik olarak yayına hazır, yasal olarak değil.
 - [ ] Uptime izleme + hata takibi (Sentry vb.)
 - [ ] `og-image.jpg` (1200×630), `logo.png`, PWA ikonları (192/512 + maskable)
 
-## A.4 Domain göçü — **en yüksek teknik risk**
+## A.4 Domain göçü — ⛔ **konusuz kaldı**
 
-- [ ] Eski domaini **iptal etme**, elinde tut
-- [ ] `veystunesofficial.de` → `dj-veys.de` **sayfa sayfa 301** (hepsini ana sayfaya atma)
-- [ ] Search Console: yeni domaini doğrula → **Adres değişikliği** aracını çalıştır
-- [ ] `www` → apex yönlendirmesi
-- [ ] Sitemap gönder, indeksleme takibi
-- [ ] Google Business Profile'daki site adresini güncelle — **yeni kayıt açma**, mevcut 5,0 ★ profili taşı
+**Eski domain (`veystunesofficial.de`) Temmuz 2026'da iptal edildi.** Göçün
+tamamı 301 yönlendirmesine dayanıyordu, o da domain elde olmadan mümkün değil.
+
+- [x] ~~`www` → apex yönlendirmesi~~ — **çalışıyor**, `dj-veys.de` tarafında doğrulandı
+- ~~Eski domaini iptal etme, elinde tut~~ — ⛔ iptal edildi
+- ~~Sayfa sayfa 301~~ — ⛔ uygulanamaz. `deploy/redirects-legacy.conf` ve
+  nginx'teki legacy bloğu yerinde ama artık hiç eşleşmeyecek
+- ~~Search Console **Adres değişikliği**~~ — ⛔ eski property'nin doğrulanmış
+  olmasını *ve* 301 veriyor olmasını şart koşar; ikisi de yok
+- [ ] Sitemap gönder, indeksleme takibi — **geçerliliğini koruyor**, eski domainle ilgisi yoktu
+- [ ] Google Business Profile'daki site adresini güncelle — **yeni kayıt açma**,
+      mevcut 5,0 ★ / 31 yorumlu profili düzenle
+- [ ] **Instagram bio linki** (B.3) — artık 63.000 kişilik kitlenin siteye
+      ulaşabildiği **tek** yol, çünkü eski domain üzerinden geçiş kalmadı
+
+Kayıp dürüst değerlendirmesi: küçük. Eski site zaten genel sorgularda
+sıralanmıyordu ve iptalden önce ana sayfası 503, diğer tüm yolları 404
+veriyordu. Ayrıntı: `docs/DEPLOYMENT.md` → "Domain migration".
+
+> **Geri alınabilir mi:** Alman registrar'larda kündigung genelde dönem
+> sonunda işler ve o tarihe kadar geri çekilebilir. Geri çekilirse yukarıdaki
+> plan aynen uygulanabilir hale gelir. Karar vereceksen şimdi ver.
 
 ## A.5 Yayın sonrası
 
