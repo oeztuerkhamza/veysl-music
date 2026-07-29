@@ -127,6 +127,27 @@ COPY --from=builder --chown=node:node /app/public ./public
 COPY --from=builder --chown=node:node /app/node_modules/sharp ./node_modules/sharp
 COPY --from=builder --chown=node:node /app/node_modules/@img ./node_modules/@img
 
+# The operational scripts, plus the one dependency they need that the standalone
+# output does not leave importable.
+#
+# `scripts/mail-test.mjs` is the tool that tells a mail problem apart from the
+# outside: wrong password (SMTP 535/EAUTH) vs. unreachable host vs. accepted-
+# but-never-delivered. It is worthless on a laptop — the mailserver, the
+# credentials and the blocked-or-not port 25 all live on this box — so it has
+# to be *in the image*, and it wasn't: the runtime stage copies only the
+# standalone bundle, `.next/static` and `public/`, and `docker exec ... node
+# scripts/mail-test.mjs` failed with MODULE_NOT_FOUND on the script itself.
+#
+# nodemailer needs its own line for a subtler reason. Next bundles it *into* a
+# server chunk (verified: `SMTPTransport` appears in
+# .next/standalone/.next/server/chunks/), so the application's SMTP transport
+# works without this copy — but a bundled-in copy is not an importable package,
+# and a standalone script doing `import 'nodemailer'` resolves against
+# /app/node_modules, where it is absent. It has zero dependencies, so this is a
+# self-contained few hundred KB.
+COPY --from=builder --chown=node:node /app/node_modules/nodemailer ./node_modules/nodemailer
+COPY --from=builder --chown=node:node /app/scripts ./scripts
+
 USER node
 
 EXPOSE 3000
