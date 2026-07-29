@@ -38,7 +38,21 @@ export function WhatsAppFab() {
       onClick={() => openWhatsappModal('fab')}
       aria-label={t('whatsappFab')}
       className={cn(
-        'fixed right-4 z-50 flex size-14 items-center justify-center rounded-full',
+        // Ab `lg` sichtbar, darunter nie.
+        //
+        // Unterhalb von `lg` rendert die <StickyCtaBar> bereits einen
+        // WhatsApp-Button, also standen auf jedem Telefon zwei davon
+        // übereinander — der runde grüne hier schwebte zusätzlich über dem
+        // Inhalt und verdeckte auf der Paketseite die Häkchenliste. Zwei
+        // Einstiege in denselben Kanal, zehn Zentimeter voneinander entfernt,
+        // sind kein doppelter Anreiz, sondern eine Frage danach, welcher der
+        // richtige ist.
+        //
+        // Ab `lg` gibt es die Leiste nicht (`lg:hidden` dort), und dann ist
+        // dieser Knopf der einzige direkte WhatsApp-Weg — deshalb bleibt er
+        // dort bestehen.
+        'hidden lg:flex',
+        'fixed right-4 z-50 size-14 items-center justify-center rounded-full',
         'bg-[#25D366] text-white shadow-lift transition-transform duration-300 ease-out-expo',
         'hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
         'motion-reduce:transition-none motion-reduce:hover:scale-100',

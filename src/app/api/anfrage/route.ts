@@ -88,13 +88,31 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false, error: 'server_error' }, { status: 500 });
     }
 
-    // The owner notification is the point of this endpoint — a lead that
-    // never reaches the DJ is a lost booking, so its failure is fatal.
+    // The owner notification used to be fatal — a 502 and "Das hat leider
+    // nicht geklappt." in the visitor's face — on the reasoning that a lead
+    // which never reaches the DJ is a lost booking.
+    //
+    // That reasoning skips the line above it: the enquiry is already in the
+    // database at this point. The lead is not lost, it is sitting in
+    // /admin under Anfragen with status `new`. What the old behaviour lost
+    // was the *couple*: someone who filled in a three-step form, was told it
+    // failed, and now either submits again — creating a duplicate of a row
+    // that saved fine — or goes to a competitor. A mail outage on our side
+    // became a conversion failure on theirs.
+    //
+    // So: persistence is what decides the response. A failed notification is
+    // logged at error level (it is a real incident, and the mail setup needs
+    // fixing) but the visitor is told the truth, which is that their enquiry
+    // arrived.
+    let ownerNotified = true;
     try {
       await transport.notifyOwner(ctx);
     } catch (err) {
-      console.error('[anfrage] owner notification failed', err instanceof Error ? err.message : err);
-      return NextResponse.json({ ok: false, error: 'delivery_failed' }, { status: 502 });
+      ownerNotified = false;
+      console.error(
+        '[anfrage] owner notification failed — enquiry IS saved, check /admin → Anfragen',
+        err instanceof Error ? err.message : err,
+      );
     }
 
     // The customer auto-reply is a nice-to-have; don't fail the request over it.
@@ -104,7 +122,11 @@ export async function POST(request: NextRequest) {
       console.warn('[anfrage] customer auto-reply failed', err instanceof Error ? err.message : err);
     }
 
-    return NextResponse.json({ ok: true }, { status: 200 });
+    // `ownerNotified` is reported, not acted on by the client: the funnel
+    // shows its success state either way. It exists so the failure is visible
+    // to anyone curling the endpoint or reading an access log, instead of a
+    // silent 200 that hides a broken mail server.
+    return NextResponse.json({ ok: true, ownerNotified }, { status: 200 });
   } catch (err) {
     console.error('[anfrage] unexpected error', err instanceof Error ? err.message : err);
     return NextResponse.json({ ok: false, error: 'server_error' }, { status: 500 });
