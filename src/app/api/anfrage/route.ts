@@ -14,7 +14,7 @@ import { enquirySchema, HONEYPOT_FIELD, type EnquiryOutput } from '@/lib/booking
 import { getPayloadClient } from '@/lib/payload';
 import { getClientIp, isRateLimited } from '../_lib/rate-limit';
 import { scoreEnquiry } from './_lib/lead-score';
-import { getEnquiryTransport } from './_lib/transport';
+import { getEnquiryTransport, type EnquiryTransport } from './_lib/transport';
 
 export const dynamic = 'force-dynamic';
 
@@ -63,7 +63,14 @@ export async function POST(request: NextRequest) {
 
     const typedEnquiry = enquiry as EnquiryOutput;
     const score = await scoreEnquiry(typedEnquiry);
-    const transport = getEnquiryTransport();
+    // NB: the transport is deliberately NOT built here. `getEnquiryTransport()`
+    // constructs a `MailSender`, and both real senders throw from their
+    // constructor when a credential is missing or malformed (a blank
+    // `SMTP_PORT` is enough — `Number('')` is 0). Built at this point, that
+    // throw would land in the outer catch below, return a 500, and take the
+    // enquiry down with it *before* the database write further down had run:
+    // one typo in `.env` and every submission is destroyed rather than
+    // merely un-notified. It is built after persisting instead — see there.
     const ctx = {
       enquiry: typedEnquiry,
       score,
@@ -105,28 +112,65 @@ export async function POST(request: NextRequest) {
     // fixing) but the visitor is told the truth, which is that their enquiry
     // arrived.
     let ownerNotified = true;
+    let customerNotified = true;
+
+    // Constructing the transport is itself a step that can throw (see the note
+    // where `ctx` is built). Now that the enquiry is safely persisted, that
+    // throw costs the two notifications and nothing else.
+    let transport: EnquiryTransport | undefined;
     try {
-      await transport.notifyOwner(ctx);
+      transport = getEnquiryTransport();
     } catch (err) {
       ownerNotified = false;
+      customerNotified = false;
       console.error(
-        '[anfrage] owner notification failed — enquiry IS saved, check /admin → Anfragen',
+        '[anfrage] mail transport unavailable (check BOOKING_TRANSPORT and its credentials) — enquiry IS saved, check /admin → Anfragen',
         err instanceof Error ? err.message : err,
       );
     }
 
-    // The customer auto-reply is a nice-to-have; don't fail the request over it.
-    try {
-      await transport.sendCustomerAutoReply(ctx);
-    } catch (err) {
-      console.warn('[anfrage] customer auto-reply failed', err instanceof Error ? err.message : err);
+    if (transport) {
+      try {
+        await transport.notifyOwner(ctx);
+      } catch (err) {
+        ownerNotified = false;
+        console.error(
+          '[anfrage] owner notification failed — enquiry IS saved, check /admin → Anfragen',
+          err instanceof Error ? err.message : err,
+        );
+      }
     }
 
-    // `ownerNotified` is reported, not acted on by the client: the funnel
-    // shows its success state either way. It exists so the failure is visible
-    // to anyone curling the endpoint or reading an access log, instead of a
+    // The customer auto-reply is a nice-to-have; don't fail the request over it.
+    //
+    // It is, however, the piece that goes *outward* — the owner notification
+    // goes to BOOKING_NOTIFY_EMAIL, which on the self-hosted setup is a
+    // mailbox on the very same Postfix and is delivered locally, while this
+    // one has to reach gmail.com/gmx.de/web.de over the open internet. So
+    // "the enquiry reached me but the couple never got their confirmation" is
+    // the expected shape of a half-broken mail server, not an odd edge case,
+    // and it needs to be as visible as the owner side. Logging the recipient
+    // *domain* (never the address — that is personal data) is what makes a
+    // pattern like "every external domain fails, dj-veys.de succeeds"
+    // readable straight from the logs.
+    if (transport) {
+      try {
+        await transport.sendCustomerAutoReply(ctx);
+      } catch (err) {
+        customerNotified = false;
+        const domain = enquiry.email.split('@')[1] ?? '(unparsable)';
+        console.error(
+          `[anfrage] customer auto-reply failed — recipient domain=${domain}`,
+          err instanceof Error ? err.message : err,
+        );
+      }
+    }
+
+    // Both flags are reported, not acted on by the client: the funnel shows
+    // its success state either way. They exist so a failure is visible to
+    // anyone curling the endpoint or reading an access log, instead of a
     // silent 200 that hides a broken mail server.
-    return NextResponse.json({ ok: true, ownerNotified }, { status: 200 });
+    return NextResponse.json({ ok: true, ownerNotified, customerNotified }, { status: 200 });
   } catch (err) {
     console.error('[anfrage] unexpected error', err instanceof Error ? err.message : err);
     return NextResponse.json({ ok: false, error: 'server_error' }, { status: 500 });

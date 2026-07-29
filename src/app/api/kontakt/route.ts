@@ -17,7 +17,7 @@ import { locales } from '@/i18n/routing';
 import { CONTACT_HONEYPOT_FIELD, contactMessageSchema, type ContactMessageOutput } from '@/lib/contact';
 import { getPayloadClient } from '@/lib/payload';
 import { getClientIp, isRateLimited } from '../_lib/rate-limit';
-import { getContactTransport } from '../anfrage/_lib/transport';
+import { getContactTransport, type ContactTransport } from '../anfrage/_lib/transport';
 
 export const dynamic = 'force-dynamic';
 
@@ -82,23 +82,56 @@ export async function POST(request: NextRequest) {
     }
 
     const ctx = { message: typedMessage, locale, submittedAt };
-    const transport = getContactTransport();
 
     // Owner notification + sender confirmation are both best-effort from here on.
+    //
+    // Including the *construction* of the transport, which is a step that can
+    // throw in its own right: both real senders validate their credentials in
+    // their constructor and throw when one is missing or malformed. Left
+    // outside a try (as it was), that throw reached the outer catch and turned
+    // an already-saved message into a 500 — the visitor is told it failed and
+    // writes again, while the original sits in /admin. Persist-first, promised
+    // in this file's header, only holds if everything after the write is
+    // caught.
+    let ownerNotified = true;
+    let senderConfirmed = true;
+
+    let transport: ContactTransport | undefined;
     try {
-      const site = await getSite();
-      await transport.notifyOwner(ctx, site.contact.email);
+      transport = getContactTransport();
     } catch (err) {
-      console.error('[kontakt] owner notification failed', err instanceof Error ? err.message : err);
+      ownerNotified = false;
+      senderConfirmed = false;
+      console.error(
+        '[kontakt] mail transport unavailable (check BOOKING_TRANSPORT and its credentials) — message IS saved, check /admin',
+        err instanceof Error ? err.message : err,
+      );
     }
 
-    try {
-      await transport.sendConfirmation(ctx);
-    } catch (err) {
-      console.warn('[kontakt] sender confirmation failed', err instanceof Error ? err.message : err);
+    if (transport) {
+      try {
+        const site = await getSite();
+        await transport.notifyOwner(ctx, site.contact.email);
+      } catch (err) {
+        ownerNotified = false;
+        console.error('[kontakt] owner notification failed — message IS saved, check /admin', err instanceof Error ? err.message : err);
+      }
+
+      try {
+        await transport.sendConfirmation(ctx);
+      } catch (err) {
+        senderConfirmed = false;
+        // Recipient *domain* only — the address itself is personal data. A run
+        // of failures that all share an external domain is the signature of a
+        // mailserver that delivers locally but not to the outside world.
+        const domain = typedMessage.email.split('@')[1] ?? '(unparsable)';
+        console.error(`[kontakt] sender confirmation failed — recipient domain=${domain}`, err instanceof Error ? err.message : err);
+      }
     }
 
-    return NextResponse.json({ ok: true }, { status: 200 });
+    // Reported for the same reason as on /anfrage: without these, a broken
+    // mail server is indistinguishable from a healthy one at the API boundary.
+    return NextResponse.json({ ok: true, ownerNotified, senderConfirmed }, { status: 200 });
   } catch (err) {
     console.error('[kontakt] unexpected error', err instanceof Error ? err.message : err);
     return NextResponse.json({ ok: false, error: 'server_error' }, { status: 500 });

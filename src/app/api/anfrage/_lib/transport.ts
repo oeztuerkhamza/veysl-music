@@ -192,6 +192,17 @@ class SmtpMailSender implements MailSender {
       connectionTimeout: SEND_TIMEOUT_MS,
       greetingTimeout: SEND_TIMEOUT_MS,
       socketTimeout: SEND_TIMEOUT_MS,
+      // Ohne das bleibt die Namensauflösung bei nodemailers Standard von 30 s
+      // und läuft *vor* `connectionTimeout` — das Zeitlimit oben würde also
+      // erst greifen, nachdem schon 30 s vergangen sind, und der Handler
+      // hinge dreimal so lange wie beabsichtigt.
+      dnsTimeout: SEND_TIMEOUT_MS,
+      // Der Kommentar oben verspricht einen offenen Pool; ohne dieses Flag
+      // baut nodemailer für jede einzelne Mail eine neue Verbindung samt
+      // TLS-Handshake und AUTH auf. Zwei Mails pro Anfrage (Betreiber +
+      // Bestätigung) sind damit zwei komplette Anmeldungen statt einer.
+      pool: true,
+      maxConnections: 3,
     });
   }
 
@@ -206,22 +217,48 @@ class SmtpMailSender implements MailSender {
   }
 }
 
+/**
+ * Über den ganzen Prozess hinweg genau eine Instanz — sonst ist der
+ * Verbindungspool aus `SmtpMailSender` wirkungslos: Jede Anfrage baute ihren
+ * eigenen Transporter samt eigenem Pool, benutzte ihn für zwei Mails und warf
+ * ihn weg.
+ *
+ * Bewusst nur im Erfolgsfall zwischengespeichert. Ein fehlgeschlagener
+ * Konstruktor (fehlende Zugangsdaten) wird nicht festgehalten, damit die
+ * Fehlermeldung bei jedem Versuch erneut im Log steht, statt einmal
+ * aufzutauchen und dann zu verschwinden.
+ */
+let cachedSender: MailSender | undefined;
+
 /** Selects the underlying mail sender via `BOOKING_TRANSPORT` (defaults to the console stand-in). Shared by both `EnquiryTransport` and `ContactTransport`. */
 function getMailSender(): MailSender {
+  if (cachedSender) return cachedSender;
+
   const kind = process.env.BOOKING_TRANSPORT ?? 'console';
-  switch (kind) {
-    case 'resend':
-      return new ResendMailSender();
-    case 'smtp':
-      return new SmtpMailSender();
-    case 'console':
-    default:
-      return new ConsoleMailSender();
-  }
+  const sender: MailSender =
+    kind === 'resend' ? new ResendMailSender() : kind === 'smtp' ? new SmtpMailSender() : new ConsoleMailSender();
+
+  cachedSender = sender;
+  return sender;
 }
 
+/**
+ * Wirft, wenn `BOOKING_NOTIFY_EMAIL` fehlt, statt einen Platzhalter
+ * zurückzugeben. Vorher stand hier der Text
+ * `'(BOOKING_NOTIFY_EMAIL not set — see .env.example)'` — der wurde als
+ * Empfängeradresse an den Versand durchgereicht. Bei `console` fiel das nicht
+ * auf, bei Resend/SMTP wird eine solche Adresse abgewiesen, und übrig blieb
+ * eine Fehlermeldung über ungültige Syntax, die nicht verrät, dass schlicht
+ * eine Variable fehlt.
+ *
+ * Werfen ist hier gefahrlos: beide Routen fangen den Fehlschlag des
+ * Versands ab, nachdem die Anfrage gespeichert wurde, und melden ihn als
+ * `ownerNotified: false`.
+ */
 function ownerRecipient(): string {
-  return process.env.BOOKING_NOTIFY_EMAIL ?? '(BOOKING_NOTIFY_EMAIL not set — see .env.example)';
+  const recipient = process.env.BOOKING_NOTIFY_EMAIL;
+  if (!recipient) throw new Error('BOOKING_NOTIFY_EMAIL ist nicht gesetzt — die Benachrichtigung hat keinen Empfänger (siehe .env.example)');
+  return recipient;
 }
 
 /**

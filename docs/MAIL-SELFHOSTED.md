@@ -193,11 +193,32 @@ SMTP_FROM_EMAIL=DJ Veys <no-reply@dj-veys.de>
 BOOKING_NOTIFY_EMAIL=info@dj-veys.de
 ```
 
-**Wichtig:** `SmtpMailSender` ist im Code noch nicht implementiert — aktuell
-existieren `console` und `resend` (siehe
-`src/app/api/anfrage/_lib/transport.ts`). Der Platz dafür ist vorbereitet, die
-Klasse muss noch geschrieben werden. Bis dahin läuft der Versand über Resend
-oder gar nicht.
+`SmtpMailSender` in `src/app/api/anfrage/_lib/transport.ts` ist implementiert;
+`BOOKING_TRANSPORT=smtp` wählt ihn aus. (Eine frühere Fassung dieses Abschnitts
+behauptete das Gegenteil — sie stammte aus der Zeit vor der Implementierung und
+hat den Aufbau hier unnötig aufgehalten.)
+
+### 6. Den Versandweg prüfen, bevor der erste Kunde ihn prüft
+
+```bash
+docker exec -it veysl-app node scripts/mail-test.mjs --verify-only
+docker exec -it veysl-app node scripts/mail-test.mjs --to <eigene-gmail-adresse>
+```
+
+Schritt 1 trennt "Passwort falsch" (SMTP 535/EAUTH) sauber von "Server nicht
+erreichbar" ab. Schritt 2 schickt eine echte Mail an eine **externe** Adresse —
+und genau das ist der Weg, den die Bestätigung an das Paar nimmt und den die
+Benachrichtigung an `info@dj-veys.de` **nicht** nimmt, weil sie lokal
+zugestellt wird.
+
+**Meldet das Skript „angenommen", kommt die Mail aber nie an**, hängt sie in der
+Queue. Dann ist ausgehend Port 25 gesperrt (Voraussetzung 1 ganz oben):
+
+```bash
+docker exec mailserver postqueue -p                          # nicht leer = hängt
+docker exec mailserver nc -zv gmail-smtp-in.l.google.com 25  # Timeout = gesperrt
+docker exec mailserver tail -n 200 /var/log/mail.log
+```
 
 ---
 
@@ -243,9 +264,10 @@ gehen blockiert die eigene Post**, solange SPF/DKIM noch nicht sauber sind.
 
 ## Offene Punkte
 
-- **`SmtpMailSender` implementieren** in
-  `src/app/api/anfrage/_lib/transport.ts` — die Auswahl über
-  `BOOKING_TRANSPORT=smtp` existiert noch nicht, nur `console` und `resend`.
+- **ERLEDIGT — `SmtpMailSender`**: implementiert in
+  `src/app/api/anfrage/_lib/transport.ts`, auswählbar über
+  `BOOKING_TRANSPORT=smtp`. Geprüft wird der Weg mit
+  `node scripts/mail-test.mjs` (siehe Installationsschritt 6).
 - **`deploy/backup.sh` erweitern**: Postfächer (`docker-data/dms/mail-data`)
   und vor allem die **DKIM-Schlüssel** gehören ins Backup. Ein verlorener
   privater DKIM-Schlüssel bedeutet, dass jede bereits signierte Mail nicht mehr

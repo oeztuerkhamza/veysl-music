@@ -89,9 +89,14 @@ die eigene Post.
    ```
    BOOKING_TRANSPORT=resend
    RESEND_API_KEY=re_...
+   RESEND_FROM_EMAIL="DJ Veys <no-reply@dj-veys.de>"
    BOOKING_NOTIFY_EMAIL=info@dj-veys.de
-   BOOKING_FROM_EMAIL="DJ Veys <no-reply@dj-veys.de>"
    ```
+   Die Absenderadresse heißt `RESEND_FROM_EMAIL` — genau so liest sie
+   `ResendMailSender` (`src/app/api/anfrage/_lib/transport.ts`). Hier stand
+   früher `BOOKING_FROM_EMAIL`; diesen Namen liest keine Zeile im Projekt, und
+   wer den Block wörtlich übernahm, bekam einen Transport, der bei jeder
+   Anfrage schon beim Konstruieren scheiterte.
 3. ~~`ResendTransport` implementieren~~ — **erledigt**. `ResendMailSender` in
    `src/app/api/anfrage/_lib/transport.ts` spricht die REST-API direkt an
    (kein SDK) und wird über `BOOKING_TRANSPORT=resend` aktiviert. Fehlen
