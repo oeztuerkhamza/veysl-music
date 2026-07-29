@@ -146,14 +146,29 @@ gehen blockiert die eigene Post, solange SPF/DKIM noch nicht sauber sind.
 
 ## Phase 3 — Alte Domain (⚠️ NICHT am Launch-Tag)
 
-| Host (Zone `veystunesofficial.de`) | Typ | Ziel |
-|---|---|---|
-| `@` | A | `159.195.216.142` |
-| `www` | A | `159.195.216.142` |
-| `@` | AAAA | `<SERVER_IPV6>` |
-| `www` | AAAA | `<SERVER_IPV6>` |
+| Host (Zone `veystunesofficial.de`) | Typ | Aktion | Ziel |
+|---|---|---|---|
+| `@` | A | ändern (aktuell `217.160.0.63`, IONOS) | `159.195.216.142` |
+| `www` | A | ändern (aktuell `212.227.172.254`, IONOS) | `159.195.216.142` |
+| `@` | AAAA | **löschen** (aktuell `2001:8d8:100f:f000::200`, IONOS) | — |
+| `www` | AAAA | **löschen** (aktuell `2001:8d8:105:1:0:1:0:5`, IONOS) | — |
+| `@`/`www` | MX | **unangetastet lassen** (`mx00`/`mx01.ionos.de`) | — |
 
-**Diese vier Records erst setzen, wenn `dj-veys.de` live, gesund und einige Tage
+**Die AAAA-Records müssen weg, nicht umgezogen.** Die alte Zone hat — anders als
+`dj-veys.de` — noch AAAA-Einträge auf IONOS, und der VPS hat kein globales IPv6
+(oben in diesem Dokument geklärt, auf dem Server geprüft). Bleiben sie stehen,
+versuchen IPv6-fähige Clients sie *zuerst* und landen weiter auf dem alten,
+inzwischen fehlerhaften IONOS-Host — sie sehen die 301 also nie. Googlebot
+crawlt über IPv6, womit genau der Teil des Traffics, für den die Migration
+gemacht wird, an ihr vorbeiliefe. Ein A-Record allein rettet das nicht: die
+Auflösung ist pro Record, nicht pro Zone.
+
+**MX nicht anfassen.** A/AAAA und MX sind unabhängig — die Umstellung der
+Web-Records berührt die Mailzustellung an `@veystunesofficial.de` nicht,
+solange die MX-Zeilen stehen bleiben. Die Zone also bearbeiten, nicht löschen
+und neu anlegen.
+
+**Diese Records erst setzen, wenn `dj-veys.de` live, gesund und einige Tage
 stabil ist.** Es ist das höchste technische Risiko im Projekt (CHECKLIST.md
 A.4): die alte Domain trägt aktuell die Sichtbarkeit, die Google-Bewertungen
 und den Instagram-Link. Beide Domains gleichzeitig umzustellen macht es
@@ -174,9 +189,12 @@ Business Profile, Instagram-Bio) steht in `docs/DEPLOYMENT.md` →
 
 ### TTL vor der Migration senken
 
-Die Standard-TTL ist typischerweise `86400` (24 h). Ein bis zwei Tage *vor*
-Phase 3 auf `300` senken, damit eine Fehlkonfiguration in Minuten statt in
-einem Tag korrigierbar ist. Nach der erfolgreichen Umstellung wieder erhöhen.
+Die alte Zone läuft aktuell mit einer Default-TTL von `14400` (4 h, gemessen
+über `nslookup -debug` gegen `8.8.8.8`) — nicht die oft angenommenen 24 h, aber
+lang genug, dass ein Tippfehler einen halben Tag stehen bliebe. Ein bis zwei
+Tage *vor* Phase 3 auf `300` senken, damit eine Fehlkonfiguration in Minuten
+statt in Stunden korrigierbar ist. Nach der erfolgreichen Umstellung wieder
+erhöhen.
 In netcups CCP ist die TTL je Zone einstellbar — welche Granularität dein
 Tarif erlaubt, zeigt das Panel selbst.
 

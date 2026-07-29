@@ -6,7 +6,6 @@ import { buildMetadata } from '@/lib/seo';
 import { getSite } from '@/content/get-site';
 import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
-import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { Reveal } from '@/components/motion/reveal';
 import { PageHero } from '@/components/pages/page-hero';
@@ -82,13 +81,14 @@ export default async function KontaktPage({ params }: PageProps) {
               </a>
             </Reveal>
           </div>
-        </Container>
-      </Section>
 
-      <Section>
-        <Container>
+          {/* Folgen-Links sitzen im selben Abschnitt wie die drei Kontaktkarten,
+              nicht mehr in einem eigenen <Section>. Sie sind derselbe Gedanke —
+              „so erreichen Sie uns" — und als eigener Abschnitt beanspruchten
+              zwei Pillen die volle Abschnitts-Höhe von über 300 px, ohne
+              Überschrift, direkt neben dem Block, zu dem sie gehören. */}
           <Reveal>
-            <div className="flex flex-col gap-3">
+            <div className="mt-10 flex flex-col gap-3 border-t border-line pt-8">
               <p className="text-xs uppercase tracking-[0.2em] text-gold">{t('socialTitle')}</p>
               <div className="flex flex-wrap gap-3">
                 {site.social.instagram ? (
@@ -130,17 +130,15 @@ export default async function KontaktPage({ params }: PageProps) {
         </Container>
       </Section>
 
-      <Section>
-        <Container>
-          <Reveal>
-            <div className="flex justify-start">
-              <Button href="/anfrage" variant="gold" size="lg">
-                {t('formCta')}
-              </Button>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
+      {/*
+        Hier stand ein eigener Abschnitt, der nichts enthielt als einen
+        einzelnen Button nach /anfrage — über 300 px Höhe, ohne Überschrift,
+        und inhaltlich dasselbe Ziel wie das <FinalCta compact /> am Seitenende,
+        gut 900 px weiter unten. Zwei Aufrufe zur selben Handlung auf einer
+        Seite schwächen beide; der am Ende hat wenigstens eine Überschrift und
+        einen Kontext. Der Button ist deshalb ersatzlos entfallen, nicht
+        verschoben.
+      */}
 
       {/*
         General contact form — separate from the /anfrage booking funnel on

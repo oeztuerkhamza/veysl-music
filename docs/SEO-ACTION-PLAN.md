@@ -225,6 +225,14 @@ https://www.veystunesofficial.de/ueber-uns/
 This is a genuinely small, thin WordPress site — good news for migration risk (see the
 timeline note below).
 
+> **Re-checked 2026-07-29 — the old install has since been gutted.** That same
+> sitemap now lists exactly **one** URL (the homepage). The homepage itself returns
+> **503**, and all five other paths above return **404**. The redirect map in §(d)
+> below stays exactly as it is: those URLs are still in Google's index and still
+> the target of whatever backlinks exist, so mapping them is the entire point —
+> what changed is the urgency, not the plan. See `docs/DEPLOYMENT.md` →
+> "Domain migration", step 2.
+
 ### 301 redirect map
 
 | Old URL | New URL | Notes |

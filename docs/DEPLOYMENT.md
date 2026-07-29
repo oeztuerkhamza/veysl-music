@@ -374,9 +374,36 @@ The highest technical/SEO risk in this project (CHECKLIST.md A.4). Sequence:
    indefinitely — it's still carrying the redirect and whatever residual
    direct traffic/backlinks point at it.
 2. Launch `dj-veys.de` first (steps above), verify it's healthy, and let it
-   settle for a few days.
+   settle for a few days. ✅ **Done** — `dj-veys.de` serves `200`, its sitemap
+   returns 157 URLs, `www` 301s to the apex.
+
+   > **The "settle for a few days" caution has since expired — do not read it
+   > as a reason to keep waiting.** It was written on the assumption that the
+   > old site is healthy and still carrying visibility worth protecting.
+   > Measured against the live domain on 2026-07-29, that premise no longer
+   > holds: `https://www.veystunesofficial.de/` returns **503**, every other
+   > path (`/kontakt/`, `/ueber-uns/`, `/impressum/`, `/datenschutzerklaerung/`,
+   > `/blog-hochzeitstipps/`) returns **404**, and the WordPress sitemap that
+   > `docs/SEO-ACTION-PLAN.md` §(d) recorded with six URLs now lists exactly
+   > one. The old install has been gutted.
+   >
+   > So the old domain is currently showing Google a `503` on the homepage and
+   > `404`s everywhere else — the two worst things it could show. Waiting no
+   > longer protects anything; it just extends the window in which residual
+   > link equity drains instead of being redirected. Phase 3 is now the
+   > *lower*-risk option, and should be done at the next opportunity.
+   >
+   > **Keep every path in `deploy/redirects-legacy.conf` anyway.** That those
+   > five URLs 404 today does not make mapping them pointless — Google's index
+   > and any external backlinks still reference them, and a 301 is what
+   > converts those hits into signal for the new domain. Deleting the map
+   > because the source pages are gone would throw away exactly what this step
+   > exists to capture.
 3. Point `veystunesofficial.de` + `www.veystunesofficial.de` DNS at
-   `<SERVER_IP>` (see DNS table above).
+   `<SERVER_IP>`, and **delete the legacy zone's AAAA records** — the VPS has
+   no IPv6 and Googlebot crawls over it, so an AAAA left pointing at IONOS
+   quietly bypasses the whole redirect. Full record-by-record table, including
+   which rows to leave alone (MX): `docs/DNS-RECORDS.md` → "Phase 3".
 4. Expand the TLS certificate to cover the legacy domain too (no downtime,
    updates the existing cert in place):
    ```bash
@@ -384,9 +411,17 @@ The highest technical/SEO risk in this project (CHECKLIST.md A.4). Sequence:
    CERTBOT_DOMAINS="dj-veys.de www.dj-veys.de veystunesofficial.de www.veystunesofficial.de" \
    deploy/setup-ssl.sh
    ```
-5. Verify the redirect: `curl -I https://veystunesofficial.de/kontakt/` should
-   return `301` with `Location: https://dj-veys.de/kontakt`. Check every path
-   in `deploy/redirects-legacy.conf` the same way.
+5. Verify the redirects — every path, both host forms, in one go:
+   ```bash
+   deploy/verify-legacy-redirects.sh
+   ```
+   Exits `0` only if all of them pass. It checks each path in
+   `deploy/redirects-legacy.conf` against its promised target, plus three
+   things a spot-check by hand reliably misses: that unmapped paths reach the
+   catch-all instead of 404ing, that query strings survive the hop (UTM
+   attribution from any old-domain link depends on it), and that the legacy
+   zone's AAAA records are gone. Run it before step 6 — telling Search Console
+   about a move whose redirects are half-broken is worse than not telling it.
 6. **Google Search Console**: verify `dj-veys.de` as a new property, then run
    the **Change of Address** tool from the *old* verified property, pointing
    it at the new one. This is a distinct step from the 301s — it tells
