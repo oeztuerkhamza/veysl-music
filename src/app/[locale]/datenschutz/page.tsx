@@ -13,7 +13,7 @@ import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
 import { Reveal } from '@/components/motion/reveal';
 import { PageHero } from '@/components/pages/page-hero';
-import { DraftNotice, LegalSectionList } from '@/components/pages/legal-section-list';
+import { LegalSectionList } from '@/components/pages/legal-section-list';
 import { FinalCta } from '@/components/pages/final-cta';
 
 interface PageProps {
@@ -29,7 +29,6 @@ export default async function DatenschutzPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('legal.privacy');
-  const tLegal = await getTranslations('legal');
 
   const sections = t.raw('sections') as { id: string; title: string; paragraphs: string[] }[];
 
@@ -40,9 +39,6 @@ export default async function DatenschutzPage({ params }: PageProps) {
       <Section>
         <Container>
           <div className="flex flex-col gap-10">
-            <Reveal>
-              <DraftNotice text={tLegal('draftNotice')} />
-            </Reveal>
 
             <Reveal>
               <p className="text-sm text-ink-faint">{t('updated')}</p>

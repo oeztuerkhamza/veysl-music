@@ -15,7 +15,7 @@ import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
 import { Reveal } from '@/components/motion/reveal';
 import { PageHero } from '@/components/pages/page-hero';
-import { DraftNotice, LegalSectionList, MissingValue } from '@/components/pages/legal-section-list';
+import { LegalSectionList, MissingValue } from '@/components/pages/legal-section-list';
 import { FinalCta } from '@/components/pages/final-cta';
 
 interface PageProps {
@@ -51,9 +51,6 @@ export default async function ImpressumPage({ params }: PageProps) {
       <Section>
         <Container>
           <div className="flex flex-col gap-10">
-            <Reveal>
-              <DraftNotice text={tLegal('draftNotice')} />
-            </Reveal>
 
             <Reveal>
               <div className="grid gap-8 sm:grid-cols-2">

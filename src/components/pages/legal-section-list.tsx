@@ -1,4 +1,3 @@
-import { AlertTriangle } from 'lucide-react';
 
 interface LegalSection {
   id: string;
@@ -32,15 +31,6 @@ export function LegalSectionList({ sections }: LegalSectionListProps) {
   );
 }
 
-/** Prominent "must be reviewed by a lawyer" banner for both legal pages. */
-export function DraftNotice({ text }: { text: string }) {
-  return (
-    <div role="note" className="flex items-start gap-3 rounded-lg border border-gold/40 bg-surface-2 p-4 text-sm text-ink-muted">
-      <AlertTriangle aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-      <p>{text}</p>
-    </div>
-  );
-}
 
 /** Inline placeholder for still-missing Impressum facts (street address, VAT id, …). */
 export function MissingValue({ text }: { text: string }) {
