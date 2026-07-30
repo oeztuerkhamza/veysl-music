@@ -66,11 +66,12 @@ section "Mail configuration (verdicts only — never values)"
 # One `docker exec printenv`, processed here. The dump itself is never echoed:
 # it contains SMTP_PASS, PAYLOAD_SECRET and every other secret the app holds.
 env_dump=$(docker exec "$APP_CONTAINER" printenv 2>/dev/null)
+# Defined unconditionally so the reachability section further down can use it.
+value_of() { printf '%s\n' "$env_dump" | sed -n "s/^$1=//p" | head -1; }
+
 if [ -z "$env_dump" ]; then
   echo "(could not read the environment of container $APP_CONTAINER — is it running?)"
 else
-  value_of() { printf '%s\n' "$env_dump" | sed -n "s/^$1=//p" | head -1; }
-
   # Not secrets, and reading them is most of the diagnosis: a transport of
   # `console` explains total silence, and a host or port that is wrong explains
   # the rest.
@@ -83,7 +84,15 @@ else
   # customer data, but the domain is all any check here needs.
   for var in BOOKING_NOTIFY_EMAIL SMTP_USER SMTP_FROM_EMAIL RESEND_FROM_EMAIL; do
     v=$(value_of "$var")
-    if [ -n "$v" ]; then echo "$var = (set, domain ${v##*@})"; else echo "$var = (unset)"; fi
+    # Trailing `>` stripped: these are written in the display-name form
+    # (`DJ Veys <no-reply@dj-veys.de>`), so `${v##*@}` alone reported the domain
+    # as `dj-veys.de>`.
+    if [ -n "$v" ]; then
+      domain=${v##*@}
+      echo "$var = (set, domain ${domain%>})"
+    else
+      echo "$var = (unset)"
+    fi
   done
 
   # Secrets: presence and length only. Length is deliberate — it is what
@@ -105,8 +114,82 @@ docker logs "$APP_CONTAINER" --since 48h 2>&1 \
   | scrub \
   || echo "(no matching log lines — either nothing was submitted, or this image predates the tagged logging)"
 
+# ---------------------------------------------------------------------------
+# Can the application reach the mailserver at all?
+#
+# This section exists because of a fault it found on the first run: three real
+# enquiries logged `owner notification failed Connection timeout` while the
+# mailserver was up, its queue empty, outbound port 25 open and every DNS
+# record correct. Everything looked healthy from both ends and no mail was
+# sent, because the two containers were not on a common network — so the app
+# resolved SMTP_HOST over public DNS and tried to connect back into the host's
+# published port from inside the Docker bridge. Credentials and DNS cannot
+# explain that, and nothing else here would have shown it.
+# ---------------------------------------------------------------------------
+section "Does the app share a Docker network with the mailserver?"
+container_nets() {
+  docker inspect -f '{{range $k,$v := .NetworkSettings.Networks}}{{$k}} {{end}}' "$1" 2>/dev/null
+}
+app_nets=$(container_nets "$APP_CONTAINER")
+mail_nets=$(container_nets "$MAIL_CONTAINER")
+echo "app  ($APP_CONTAINER):  ${app_nets:-(unknown)}"
+echo "mail ($MAIL_CONTAINER): ${mail_nets:-(not running / unknown)}"
+shared=""
+for n in $app_nets; do
+  for m in $mail_nets; do
+    [ "$n" = "$m" ] && shared="$shared $n"
+  done
+done
+if [ -n "$shared" ]; then
+  echo "VERDICT: shared network(s) —$shared"
+elif [ -z "$mail_nets" ]; then
+  echo "VERDICT: no mailserver container to compare against."
+else
+  echo "VERDICT: NO shared network between the app and the mailserver."
+  echo "  The app must then resolve SMTP_HOST to the public IP and connect back"
+  echo "  into this host's published port. That is hairpin routing, it commonly"
+  echo "  times out, and the timeout is indistinguishable from a mailserver"
+  echo "  being down. Fix: put the mailserver on the app's network with a"
+  echo "  network alias of SMTP_HOST, so the name resolves internally and the"
+  echo "  TLS certificate still matches (deploy/mail/docker-compose.mail.yml)."
+fi
+
+section "App → SMTP_HOST:SMTP_PORT (the exact connection an enquiry mail needs)"
+smtp_host=$(value_of SMTP_HOST)
+smtp_port=$(value_of SMTP_PORT)
+smtp_port=${smtp_port:-587}
+if [ -z "$smtp_host" ]; then
+  echo "(SMTP_HOST is unset — nothing to test)"
+else
+  # Run from inside the app container, because that is the only vantage point
+  # whose result matters. A TCP connect only — no credentials, no mail.
+  if docker exec "$APP_CONTAINER" node -e '
+      const net = require("net");
+      const [host, port] = process.argv.slice(1);
+      const socket = net.createConnection({ host, port: Number(port) });
+      socket.setTimeout(8000);
+      socket.on("connect", () => { console.log(`CONNECTED to ${host}:${port}`); socket.destroy(); process.exit(0); });
+      socket.on("timeout", () => { console.log(`TIMEOUT connecting to ${host}:${port}`); process.exit(1); });
+      socket.on("error", (err) => { console.log(`ERROR ${err.code} connecting to ${host}:${port}`); process.exit(1); });
+    ' "$smtp_host" "$smtp_port" 2>&1; then
+    echo "VERDICT: the app can reach the mailserver. Credentials are the next thing to check."
+  else
+    echo "VERDICT: the app CANNOT open a TCP connection to $smtp_host:$smtp_port."
+    echo "  No mail can be sent, whatever the credentials say. This is the fault"
+    echo "  behind '[anfrage] owner notification failed Connection timeout'."
+  fi
+fi
+
+if [ -n "$mail_nets" ]; then
+  section "Is the mailserver actually listening on 25/587/993?"
+  docker exec "$MAIL_CONTAINER" ss -lntp 2>/dev/null | grep -E ':(25|587|993)\b' \
+    || echo '(could not read listening sockets — ss may be absent from the image)'
+fi
+
 section "Transport self-test (connection + login, sends nothing)"
 docker exec "$APP_CONTAINER" node scripts/mail-test.mjs --verify-only 2>&1 | scrub | tail -30
+echo "(If this says MODULE_NOT_FOUND, the running image predates the commit that"
+echo " copies scripts/ into it — deploy master and re-run.)"
 
 if docker ps --format '{{.Names}}' | grep -qx "$MAIL_CONTAINER"; then
   section "Postfix queue — the check nothing outside this box can make"

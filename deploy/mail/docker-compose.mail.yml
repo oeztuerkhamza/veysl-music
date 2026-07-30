@@ -60,6 +60,40 @@ services:
     cap_add:
       - NET_ADMIN
     stop_grace_period: 1m
+    networks:
+      # `default` muss hier stehen, sobald `networks:` überhaupt gesetzt wird —
+      # sonst verliert der Container das Projektnetz, in dem Roundcube ihn per
+      # IMAP erreicht.
+      default:
+      # Das eigentliche Problem, das dieser Block löst.
+      #
+      # Bisher hing nur Roundcube in diesem gemeinsamen Netz, der Mailserver
+      # nicht. Die Anwendung löst `SMTP_HOST=mail.dj-veys.de` also über
+      # öffentliches DNS auf, landet bei der öffentlichen Server-IP und
+      # versucht von innerhalb des Docker-Netzes eine Verbindung zurück auf den
+      # veröffentlichten Port 587 desselben Hosts. Dieses Hairpin-Routing
+      # funktioniert hier nicht, und das Ergebnis stand im Log:
+      #
+      #   [anfrage] owner notification failed Connection timeout
+      #
+      # Für drei echte Anfragen (Freiburg, Stuttgart, Freiburg) — Mailserver
+      # läuft, Queue leer, ausgehender Port 25 offen, DNS vollständig, und
+      # trotzdem keine Mail, weil die Anwendung den Mailserver gar nicht
+      # erreicht.
+      #
+      # Der Alias ist der Grund, hier nicht einfach `SMTP_HOST=mailserver` zu
+      # setzen: auf 587 gilt `requireTLS`, und nodemailer prüft das Zertifikat.
+      # Das Let's-Encrypt-Zertifikat ist auf `mail.dj-veys.de` ausgestellt, ein
+      # Verbindungsaufbau gegen `mailserver` scheitert also an der
+      # Namensprüfung. Mit dem Alias zeigt derselbe Name innerhalb des Netzes
+      # auf die Container-IP: kein Hairpin, und das Zertifikat passt weiterhin.
+      #
+      # `PERMIT_DOCKER: none` bleibt richtig und wird davon nicht berührt — die
+      # Einlieferung läuft weiter authentifiziert über 587, nicht über
+      # `mynetworks`.
+      web:
+        aliases:
+          - mail.dj-veys.de
 
   roundcube:
     image: roundcube/roundcubemail:1.6.x-apache
