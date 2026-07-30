@@ -133,6 +133,14 @@ jobs:
         env:
           DOMAIN: ${{ needs.preflight.outputs.domain }}
         run: |
+          # GitHub runs `run:` blocks as `bash -e {0}`, so errexit is already on
+          # and `set -uo pipefail` below does not turn it off. That matters here
+          # more than anywhere else in this file: `dig … | grep v=spf1` exits 1
+          # when the record is ABSENT, which under -e aborts the step, leaves
+          # `verdict` unset, and — before the report job was taught to treat a
+          # crashed check as a failure — read as healthy. A missing DNS record
+          # would have reported green. Hence `|| true` on every pipeline whose
+          # empty result is a finding rather than an error.
           set -uo pipefail
           problems=0
           out=dns.md
@@ -148,29 +156,29 @@ jobs:
           note "| Record | | Value / why it matters |"
           note "|---|---|---|"
 
-          mx=$(dig +short MX "$DOMAIN" | sort | tr '\n' ' ')
+          mx=$(dig +short MX "$DOMAIN" | sort | tr '\n' ' ' || true)
           if [ -n "$mx" ]; then pass "MX" "$mx"; else fail "MX" "No MX record — this domain cannot receive mail at all."; fi
 
-          spf=$(dig +short TXT "$DOMAIN" | tr -d '"' | grep -i '^v=spf1' | head -1)
+          spf=$(dig +short TXT "$DOMAIN" | tr -d '"' | grep -i '^v=spf1' | head -1 || true)
           if [ -n "$spf" ]; then pass "SPF" "\`$spf\`"; else fail "SPF" "No \`v=spf1\` record. Receivers cannot tell that our server is allowed to send, so confirmations go to spam."; fi
 
-          dmarc=$(dig +short TXT "_dmarc.$DOMAIN" | tr -d '"' | grep -i '^v=DMARC1' | head -1)
+          dmarc=$(dig +short TXT "_dmarc.$DOMAIN" | tr -d '"' | grep -i '^v=DMARC1' | head -1 || true)
           if [ -n "$dmarc" ]; then pass "DMARC" "\`$dmarc\`"; else fail "DMARC" "No \`_dmarc\` record. Gmail and Yahoo require one for bulk senders and treat its absence as a negative signal."; fi
 
           # The selector docs/MAIL-SELFHOSTED.md prescribes for docker-mailserver.
-          dkim=$(dig +short TXT "mail._domainkey.$DOMAIN" | tr -d '"' | grep -i 'v=DKIM1' | head -1)
+          dkim=$(dig +short TXT "mail._domainkey.$DOMAIN" | tr -d '"' | grep -i 'v=DKIM1' | head -1 || true)
           if [ -n "$dkim" ]; then pass "DKIM (mail selector)" "present (${#dkim} chars)"; else fail "DKIM" "No \`mail._domainkey\` record. Unsigned mail from a small VPS is treated as suspicious by default."; fi
 
           # rDNS — per docs/MAIL-SELFHOSTED.md the single biggest deliverability
           # factor, and the one that is set in the provider panel rather than in
           # the DNS zone, so it is the one most often forgotten.
           mailhost="mail.$DOMAIN"
-          ip=$(dig +short A "$mailhost" | head -1)
+          ip=$(dig +short A "$mailhost" | head -1 || true)
           if [ -z "$ip" ]; then
             fail "A $mailhost" "Does not resolve. The mailserver has no address."
           else
             pass "A $mailhost" "$ip"
-            ptr=$(dig +short -x "$ip" | head -1)
+            ptr=$(dig +short -x "$ip" | head -1 || true)
             ptr=${ptr%.}
             if [ -z "$ptr" ]; then
               fail "PTR (rDNS) for $ip" "Not set. Receivers check that the name a server greets them with matches its IP; without it, mail is reliably spam-filed or rejected. Set it in the netcup SCP under Server → Netzwerk → rDNS."
@@ -181,7 +189,7 @@ jobs:
             fi
           fi
 
-          mta=$(dig +short TXT "_mta-sts.$DOMAIN" | tr -d '"' | grep -i '^v=STSv1' | head -1)
+          mta=$(dig +short TXT "_mta-sts.$DOMAIN" | tr -d '"' | grep -i '^v=STSv1' | head -1 || true)
           if [ -n "$mta" ]; then pass "MTA-STS" "\`$mta\`"; else warn "MTA-STS" "Not set. Optional — enforces TLS for inbound mail (record 7 in docs/MAIL-SELFHOSTED.md)."; fi
 
           note ""
@@ -193,7 +201,7 @@ jobs:
             echo "verdict=ok" >> "$GITHUB_OUTPUT"
           fi
 
-          cat "$out" >> "$GITHUB_STEP_SUMMARY"
+          tee -a "$GITHUB_STEP_SUMMARY" < "$out"
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -239,23 +247,23 @@ jobs:
             000)
               note "❌ **The site did not answer.** Not a mail problem — the host or nginx is down, or DNS is broken."
               echo "verdict=unreachable" >> "$GITHUB_OUTPUT"
-              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+              tee -a "$GITHUB_STEP_SUMMARY" < "$out"; exit 0 ;;
             404)
               note "❌ **HTTP 404 — the endpoint is not deployed.** The running image predates this health check. Deploy the branch that adds it (Actions → \"Build, verify, deploy\" → Run workflow), then re-run."
               echo "verdict=not_deployed" >> "$GITHUB_OUTPUT"
-              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+              tee -a "$GITHUB_STEP_SUMMARY" < "$out"; exit 0 ;;
             401)
               note "❌ **HTTP 401 — token rejected.** The repo secret \`MAIL_HEALTH_TOKEN\` and the \`MAIL_HEALTH_TOKEN\` in \`/opt/veysl/app/.env\` are not the same value. Note that the server only re-reads \`.env\` on \`docker compose up -d app\`."
               echo "verdict=unauthorized" >> "$GITHUB_OUTPUT"
-              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+              tee -a "$GITHUB_STEP_SUMMARY" < "$out"; exit 0 ;;
             503)
               note "❌ **HTTP 503 — \`MAIL_HEALTH_TOKEN\` is not set on the server.** Add it to \`/opt/veysl/app/.env\` and run \`docker compose up -d app\`."
               echo "verdict=disabled" >> "$GITHUB_OUTPUT"
-              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+              tee -a "$GITHUB_STEP_SUMMARY" < "$out"; exit 0 ;;
             *)
               note "❌ **Unexpected HTTP $code.**"
               echo "verdict=http_$code" >> "$GITHUB_OUTPUT"
-              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+              tee -a "$GITHUB_STEP_SUMMARY" < "$out"; exit 0 ;;
           esac
 
           # The response is designed to be safe to publish: addresses are
@@ -301,7 +309,7 @@ jobs:
           note ""
           jq -r '.limits[] | "- " + .' response.json >> "$out"
 
-          cat "$out" >> "$GITHUB_STEP_SUMMARY"
+          tee -a "$GITHUB_STEP_SUMMARY" < "$out"
           if [ "$ok" = "true" ]; then echo "verdict=ok" >> "$GITHUB_OUTPUT"; else echo "verdict=problems" >> "$GITHUB_OUTPUT"; fi
 
       - uses: actions/upload-artifact@v4
@@ -451,6 +459,7 @@ jobs:
           DNS_VERDICT: ${{ needs.dns.outputs.verdict }}
           PROBE_VERDICT: ${{ needs.probe.outputs.verdict }}
           SERVER_VERDICT: ${{ needs.server.outputs.verdict }}
+          DNS_RESULT: ${{ needs.dns.result }}
           PROBE_RESULT: ${{ needs.probe.result }}
           SERVER_RESULT: ${{ needs.server.result }}
         # github-script over curl for one reason that matters to a monitor: a
@@ -468,10 +477,24 @@ jobs:
               catch { return ''; }
             };
 
-            const { DNS_VERDICT, PROBE_VERDICT, SERVER_VERDICT, PROBE_RESULT, SERVER_RESULT } = process.env;
-            const healthyVerdicts = ['ok', ''];
-            const broken = [DNS_VERDICT, PROBE_VERDICT, SERVER_VERDICT]
-              .filter((v) => v && !healthyVerdicts.includes(v));
+            const env = process.env;
+            const checks = [
+              { name: 'dns', verdict: env.DNS_VERDICT, result: env.DNS_RESULT },
+              { name: 'probe', verdict: env.PROBE_VERDICT, result: env.PROBE_RESULT },
+              { name: 'server', verdict: env.SERVER_VERDICT, result: env.SERVER_RESULT },
+            ];
+
+            // A check that could not run is NOT a check that passed. The earlier
+            // version compared verdicts only and counted an empty one as
+            // healthy, which meant any job that died before writing its output
+            // — the `bash -e` abort that a missing DNS record used to cause —
+            // was reported as green. Only an explicit `skipped` (secrets absent,
+            // which is reported separately) is allowed to be silent.
+            const broken = checks.filter((c) => {
+              if (c.result === 'skipped') return false;
+              if (c.result !== 'success') return true;
+              return c.verdict !== 'ok';
+            });
 
             const sections = [
               read('dns.md'),
@@ -480,8 +503,14 @@ jobs:
             ].filter(Boolean);
 
             const skipped = [];
-            if (PROBE_RESULT === 'skipped') skipped.push('`probe` — repo secret `MAIL_HEALTH_TOKEN` is not set, so the live endpoint was not queried. This is the check that names the actual fault; it is worth setting up.');
-            if (SERVER_RESULT === 'skipped') skipped.push('`server` — the `DEPLOY_SSH_*` secrets are not set, so the Postfix queue and outbound port 25 were not checked.');
+            if (env.PROBE_RESULT === 'skipped') skipped.push('`probe` — repo secret `MAIL_HEALTH_TOKEN` is not set, so the live endpoint was not queried. This is the check that names the actual fault; it is worth setting up.');
+            if (env.SERVER_RESULT === 'skipped') skipped.push('`server` — the `DEPLOY_SSH_*` secrets are not set, so the Postfix queue and outbound port 25 were not checked.');
+
+            const brokenLines = broken.map((c) =>
+              c.result !== 'success'
+                ? `- \`${c.name}\` — the check itself did not complete (job result: ${c.result}). Its own log has the reason.`
+                : `- \`${c.name}\` — reported \`${c.verdict}\`.`
+            );
 
             // Deliberately never "everything is fine". The checks that ran are
             // named, and so are the ones that did not — a pass from the probe
@@ -498,6 +527,7 @@ jobs:
               '',
               verdictLine,
               '',
+              ...(brokenLines.length ? [...brokenLines, ''] : []),
               ...(skipped.length ? ['> **Not checked**', ...skipped.map((s) => '> - ' + s), ''] : []),
               ...sections,
               '',
