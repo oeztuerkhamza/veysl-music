@@ -1,19 +1,23 @@
 name: Build, verify, deploy
 
 # See docs/DEPLOYMENT.md. Two jobs:
-#   build-and-verify — always runs (push + PR). This is the useful part
-#     today: `next build` has never run in CI before this workflow existed,
-#     and it currently fails outright (see the "why the deploy job is gated
-#     off" note below) — this job exists specifically to catch that class of
-#     problem before it reaches a server, not after.
-#   deploy — present but deliberately inert until a human turns it on. See
-#     the comment on that job.
+#   build-and-verify — always runs (push + PR). `next build` had never run in
+#     CI before this workflow existed; this job exists to catch a build that
+#     only breaks in production before it reaches a server, not after.
+#   deploy — runs on a `v*` tag or on a manual "Run workflow", both behind the
+#     `production` Environment. See the comment on that job.
 
 on:
   push:
     branches: [main, master]
     tags: ['v*']
   pull_request:
+  # Manual deploys, and the reason they were added: a fix can sit committed on
+  # master for days while production keeps running the old image, because a tag
+  # is the only thing that triggered a deploy and nobody tags. That is not a
+  # theoretical failure — it is how a mail fix stayed undeployed. Pick the
+  # branch or tag in the Actions UI; `github.ref_name` follows that choice.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -63,43 +67,40 @@ jobs:
         run: npm run build
 
   # ---------------------------------------------------------------------------
-  # Deploy — gated behind a `v*` tag AND a GitHub Environment approval, on
-  # top of build-and-verify passing. Present because the brief asked for a
-  # deploy step "gated behind manual approval or a tag, using SSH key auth
-  # from secrets" — but treat this as a template to finish wiring, not a
-  # ready switch:
+  # Deploy — a `v*` tag or a manual "Run workflow", both on top of
+  # build-and-verify passing and both behind the `production` Environment.
   #
-  #   1. `next build` currently fails outright on a stale locale map in
-  #      src/app/[locale]/fragen/metadata.ts (missing `nl` — see
-  #      docs/DEPLOYMENT.md "Known issues"). Nothing here can deploy a build
-  #      that doesn't build.
-  #   2. No production server has taken a manual `deploy/deploy.sh` run yet —
-  #      get that working and verified first (see docs/DEPLOYMENT.md), THEN
-  #      wire this job's secrets. Deploying to a server nobody's tested the
-  #      manual path on is how a broken automated pipeline finds out about
-  #      problems by taking prod down.
-  #   3. Configure a "production" Environment in GitHub repo Settings ->
-  #      Environments with required reviewers — that's what makes
-  #      `environment: production` below actually pause for approval rather
-  #      than being a no-op label.
-  #   4. Add repo secrets: DEPLOY_SSH_HOST, DEPLOY_SSH_USER, DEPLOY_SSH_KEY
-  #      (private key matching a public key already authorized for the
-  #      deploy user — see deploy/server-setup.sh's DEPLOY_SSH_PUBKEY).
+  # Before the first use:
+  #   1. Verify a manual `deploy/deploy.sh` run on the box first (see
+  #      docs/DEPLOYMENT.md). Automating a path nobody has walked by hand is
+  #      how a pipeline discovers problems by taking production down.
+  #   2. Configure a "production" Environment in Settings → Environments with
+  #      required reviewers — that is what makes `environment: production`
+  #      below actually pause for approval instead of being a decorative label.
+  #   3. Add repo secrets DEPLOY_SSH_HOST, DEPLOY_SSH_USER, DEPLOY_SSH_KEY
+  #      (private key matching a public key already authorised for the deploy
+  #      user — see deploy/server-setup.sh's DEPLOY_SSH_PUBKEY), and ideally
+  #      DEPLOY_SSH_HOST_KEY (see the note in the step below).
   #
-  # Until all four are true, don't push a `v*` tag expecting this to do
-  # anything useful/safe.
+  # An earlier version of this comment said `next build` failed outright on a
+  # stale locale map in src/app/[locale]/fragen/metadata.ts. That has been
+  # fixed: the production build completes cleanly, verified against the current
+  # tree. The note is left here only so nobody re-derives it from the git
+  # history and re-disables the job.
   deploy:
-    name: Deploy (manual-gated)
+    name: Deploy (tag or manual)
     needs: build-and-verify
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     environment: production
+    timeout-minutes: 30
     steps:
       - name: Deploy over SSH
         env:
           SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
           SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
           SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SSH_HOST_KEY: ${{ secrets.DEPLOY_SSH_HOST_KEY }}
         run: |
           set -euo pipefail
           if [ -z "${SSH_HOST:-}" ] || [ -z "${SSH_USER:-}" ] || [ -z "${SSH_KEY:-}" ]; then
@@ -107,11 +108,33 @@ jobs:
             exit 1
           fi
           mkdir -p ~/.ssh
-          echo "$SSH_KEY" > ~/.ssh/deploy_key
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          if [ -n "${SSH_HOST_KEY:-}" ]; then
+            printf '%s\n' "$SSH_HOST_KEY" > ~/.ssh/known_hosts
+          else
+            # This used to be `ssh-keyscan -H "$SSH_HOST" >> known_hosts
+            # 2>/dev/null`. Two problems, both fixed here. The stderr redirect
+            # discarded the only explanation of a failure — ssh-keyscan exits 1
+            # when it resolves nothing, so an unreachable or misspelled host
+            # aborted the deploy with a bare exit code and no reason. And on an
+            # ephemeral runner, trusting the key on first sight gives none of
+            # the change-detection that makes trust-on-first-use worthwhile for
+            # a key that grants shell access to production: pin it in
+            # DEPLOY_SSH_HOST_KEY (`ssh-keyscan -t ed25519 <host>`) instead.
+            echo "::warning::DEPLOY_SSH_HOST_KEY is not set — accepting the server's host key on first sight."
+            ssh-keyscan -t rsa,ecdsa,ed25519 "$SSH_HOST" >> ~/.ssh/known_hosts || {
+              echo "::error::ssh-keyscan could not reach $SSH_HOST (see the output above). Check DEPLOY_SSH_HOST."
+              exit 1
+            }
+          fi
+
           # $GITHUB_REF_NAME is expanded HERE (on the runner, double-quoted)
-          # before the command is sent over SSH — the remote shell never
-          # sees a literal "$GITHUB_REF_NAME" it would need to resolve itself.
-          ssh -i ~/.ssh/deploy_key "$SSH_USER@$SSH_HOST" \
-            "cd /opt/veysl/app && git fetch --tags && git checkout '${GITHUB_REF_NAME}' && deploy/deploy.sh"
+          # before the command is sent over SSH — the remote shell never sees a
+          # literal "$GITHUB_REF_NAME" it would need to resolve itself. It is
+          # the tag name for a tag push and the selected branch for a manual
+          # run; deploy/deploy.sh handles both (it skips its own `git pull` on a
+          # detached HEAD, which is what checking out a tag produces).
+          ssh -i ~/.ssh/deploy_key -o BatchMode=yes -o ConnectTimeout=20 "$SSH_USER@$SSH_HOST" \
+            "cd /opt/veysl/app && git fetch --prune --tags origin && git checkout '${GITHUB_REF_NAME}' && deploy/deploy.sh"

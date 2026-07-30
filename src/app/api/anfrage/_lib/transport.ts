@@ -15,6 +15,7 @@ import { createTransport, type Transporter } from 'nodemailer';
 import type { Locale } from '@/i18n/routing';
 import type { EnquiryOutput } from '@/lib/booking';
 import type { ContactMessageOutput } from '@/lib/contact';
+import { recipientDomain } from '@/lib/mail-health';
 import { buildContactConfirmation, buildContactOwnerNotification } from '../../kontakt/_lib/templates';
 import type { LeadScore } from './lead-score';
 import { buildCustomerAutoReply, buildOwnerNotification } from './templates';
@@ -26,7 +27,51 @@ export interface EnquiryContext {
   submittedAt: string;
 }
 
+/**
+ * The three values `BOOKING_TRANSPORT` accepts. Exported so the health
+ * endpoint reports the same vocabulary the env var uses, instead of a second
+ * set of names that has to be kept in step with this one.
+ */
+export const MAIL_TRANSPORT_KINDS = ['console', 'resend', 'smtp'] as const;
+export type MailTransportKind = (typeof MAIL_TRANSPORT_KINDS)[number];
+
+/**
+ * Reads `BOOKING_TRANSPORT`, defaulting to the console stand-in.
+ *
+ * Throws on an unrecognised value, which is a change in behaviour worth
+ * spelling out: the selection below used to be
+ * `kind === 'resend' ? … : kind === 'smtp' ? … : new ConsoleMailSender()`,
+ * so **any** typo — `smpt`, `SMTP`, `smtp ` with a trailing space — fell
+ * through to the stand-in that sends nothing. The site then accepted
+ * enquiries, reported success, logged nothing unusual, and delivered no mail
+ * at all. A misspelled transport name is the one mail misconfiguration that
+ * produced no evidence whatsoever; now it produces an error.
+ *
+ * Throwing is safe here for the same reason `ownerRecipient()` may throw:
+ * every caller builds its transport *after* the enquiry is persisted and
+ * treats a failure as "notifications lost, enquiry kept".
+ */
+export function getMailTransportKind(): MailTransportKind {
+  const raw = (process.env.BOOKING_TRANSPORT ?? 'console').trim();
+  if (!(MAIL_TRANSPORT_KINDS as readonly string[]).includes(raw)) {
+    throw new Error(
+      `BOOKING_TRANSPORT="${raw}" ist keiner der erlaubten Werte (${MAIL_TRANSPORT_KINDS.join(', ')}) — siehe .env.example`
+    );
+  }
+  return raw as MailTransportKind;
+}
+
 export interface EnquiryTransport {
+  /** Which `BOOKING_TRANSPORT` this is — reported by the caller so a misconfiguration is visible at the API boundary. */
+  readonly kind: MailTransportKind;
+  /**
+   * `false` when nothing actually leaves the process — i.e. the `console`
+   * stand-in. Callers MUST NOT report a notification as sent unless this is
+   * `true`: a `send()` that only printed to stdout resolves successfully,
+   * and treating that as success is what let a production deployment run for
+   * weeks reporting `ownerNotified: true` while sending zero mail.
+   */
+  readonly delivers: boolean;
   /**
    * Deliver the business-critical notification to the DJ. Must be awaited
    * and its failure treated as fatal by the caller — a lead that never
@@ -47,6 +92,10 @@ export interface ContactMessageContext {
 }
 
 export interface ContactTransport {
+  /** See `EnquiryTransport.kind`. */
+  readonly kind: MailTransportKind;
+  /** See `EnquiryTransport.delivers` — the same rule binds this caller. */
+  readonly delivers: boolean;
   /** Notify the owner of a new `/kontakt` message. `ownerEmail` is resolved by the caller from `getSite().contact.email` — never hardcoded here. */
   notifyOwner(ctx: ContactMessageContext, ownerEmail: string): Promise<void>;
   /** Short confirmation to the sender, in the locale they submitted from. Best-effort — never blocks the request. */
@@ -62,7 +111,21 @@ export interface MailMessage {
 }
 
 interface MailSender {
+  readonly kind: MailTransportKind;
+  /** See `EnquiryTransport.delivers`. */
+  readonly delivers: boolean;
   send(message: MailMessage): Promise<void>;
+  /**
+   * Check credentials and reachability **without sending anything**, for
+   * `GET /api/health/mail`. Resolves when the path is usable, throws
+   * otherwise; `undefined` on a sender that has no meaningful check.
+   *
+   * This is the one probe that tells "password wrong" (SMTP 535/EAUTH) apart
+   * from "host unreachable" (ETIMEDOUT) apart from "fine" — the distinction
+   * `scripts/mail-test.mjs` exists to make on the server, made available
+   * over HTTP so it can be made from anywhere.
+   */
+  verify?(): Promise<void>;
 }
 
 /**
@@ -77,7 +140,29 @@ interface MailSender {
  * server/process logs.
  */
 class ConsoleMailSender implements MailSender {
+  readonly kind = 'console' as const;
+  /**
+   * The whole point of this class, stated where callers can read it: it
+   * delivers nothing. Every notification routed through it is recorded as
+   * `suppressed`, and `/api/health/mail` reports it as a critical problem.
+   */
+  readonly delivers = false;
+
   async send(message: MailMessage): Promise<void> {
+    // In production the full body is a personal-data leak into log storage,
+    // which the module header warns about — but a warning in a comment does
+    // not stop it happening, and this transport being active in production is
+    // precisely the misconfiguration we are trying to survive. So: keep the
+    // full dump in development, where eyeballing the mail is the point, and
+    // reduce it to non-identifying metadata in production, where the value of
+    // this output is only "something tried to send and nothing was sent".
+    if (process.env.NODE_ENV === 'production') {
+      console.error(
+        `[mail] NOT SENT (BOOKING_TRANSPORT=console) — to=…@${recipientDomain(message.to) ?? '(unparsable)'} subject=${message.subject}`
+      );
+      return;
+    }
+
     console.log(
       `\n----- [ConsoleTransport] -----\nTo: ${message.to}${message.replyTo ? `\nReply-To: ${message.replyTo}` : ''}\nSubject: ${message.subject}\n\n${message.text}\n---------------------------------------------------\n`
     );
@@ -97,6 +182,8 @@ const SEND_TIMEOUT_MS = 10_000;
  * erreicht, muss laut scheitern statt still verloren zu gehen.
  */
 class ResendMailSender implements MailSender {
+  readonly kind = 'resend' as const;
+  readonly delivers = true;
   private readonly apiKey: string;
   private readonly from: string;
 
@@ -136,6 +223,53 @@ class ResendMailSender implements MailSender {
       throw new Error(`Resend antwortete ${response.status}: ${detail.slice(0, 300)}`);
     }
   }
+
+  /**
+   * `GET /domains` — kein Versand, prüft aber beides, was hier schiefgehen
+   * kann: ob der API-Schlüssel gilt, und ob die Absenderdomain verifiziert
+   * ist. Das Zweite ist wichtiger als es klingt: ohne Verifizierung liefert
+   * Resend nur an die eigene Konto-Adresse aus. Die Mail an den Betreiber
+   * kommt also an, die an das Paar nicht — dasselbe Fehlerbild wie ein
+   * gesperrter ausgehender Port 25 beim eigenen Mailserver, und ohne diese
+   * Prüfung ebenso unsichtbar.
+   */
+  async verify(): Promise<void> {
+    const response = await fetch('https://api.resend.com/domains', {
+      headers: { Authorization: `Bearer ${this.apiKey}` },
+      signal: AbortSignal.timeout(SEND_TIMEOUT_MS),
+    });
+
+    if (response.status === 401 || response.status === 403) {
+      throw new Error(
+        `RESEND_API_KEY wurde abgelehnt (HTTP ${response.status}) — Schlüssel falsch, widerrufen, oder er gehört zu einem anderen Konto`
+      );
+    }
+    if (!response.ok) {
+      const detail = await response.text().catch(() => '');
+      throw new Error(`Resend /domains antwortete ${response.status}: ${detail.slice(0, 200)}`);
+    }
+
+    const body = (await response.json().catch(() => null)) as {
+      data?: { name?: string; status?: string }[];
+    } | null;
+    const domains = body?.data ?? [];
+    const fromDomain = recipientDomain(this.from);
+    if (!fromDomain) {
+      throw new Error(`RESEND_FROM_EMAIL enthält keine erkennbare Adresse: ${this.from}`);
+    }
+
+    const match = domains.find((entry) => entry.name?.toLowerCase() === fromDomain);
+    if (!match) {
+      throw new Error(
+        `Die Absenderdomain ${fromDomain} ist in diesem Resend-Konto nicht angelegt. Ohne verifizierte Domain liefert Resend nur an die eigene Konto-Adresse — die Bestätigung an das Paar kommt dann nie an.`
+      );
+    }
+    if (match.status !== 'verified') {
+      throw new Error(
+        `Die Absenderdomain ${fromDomain} steht in Resend auf "${match.status ?? 'unbekannt'}" statt "verified". Solange das so ist, erreicht keine Mail eine fremde Adresse.`
+      );
+    }
+  }
 }
 
 /**
@@ -156,6 +290,8 @@ class ResendMailSender implements MailSender {
  * `EnquiryTransport.notifyOwner` verlässt.
  */
 class SmtpMailSender implements MailSender {
+  readonly kind = 'smtp' as const;
+  readonly delivers = true;
   private readonly transporter: Transporter;
   private readonly from: string;
 
@@ -215,6 +351,21 @@ class SmtpMailSender implements MailSender {
       ...(message.replyTo ? { replyTo: message.replyTo } : {}),
     });
   }
+
+  /**
+   * nodemailers `verify()` — baut die Verbindung auf, handelt STARTTLS aus
+   * und meldet sich an, ohne eine Mail zu verschicken. Genau die Prüfung, die
+   * `scripts/mail-test.mjs --verify-only` auf dem Server macht.
+   *
+   * Was sie NICHT beweist: dass eine angenommene Mail auch ausgeliefert wird.
+   * Postfix nimmt an und stellt in die Queue; ist ausgehend TCP/25 gesperrt,
+   * stirbt die Zustellung danach, und davon sieht diese Prüfung nichts. Das
+   * bleibt der eine Punkt, für den es Shell-Zugriff auf den Server braucht
+   * (`postqueue -p`) — siehe docs/MAIL-SELFHOSTED.md, Voraussetzung 1.
+   */
+  async verify(): Promise<void> {
+    await this.transporter.verify();
+  }
 }
 
 /**
@@ -230,16 +381,76 @@ class SmtpMailSender implements MailSender {
  */
 let cachedSender: MailSender | undefined;
 
+/** Once per process — an error repeated on every enquiry buries the enquiry logs it sits next to. */
+let warnedAboutConsoleInProduction = false;
+
 /** Selects the underlying mail sender via `BOOKING_TRANSPORT` (defaults to the console stand-in). Shared by both `EnquiryTransport` and `ContactTransport`. */
 function getMailSender(): MailSender {
   if (cachedSender) return cachedSender;
 
-  const kind = process.env.BOOKING_TRANSPORT ?? 'console';
+  const kind = getMailTransportKind();
+
+  // The single most likely reason a live deployment sends no mail at all: the
+  // shipped default was never changed. It is not an error the site can fail
+  // on — dropping enquiries would be worse — so it is announced instead, at
+  // error level, once, with the fix in the message.
+  if (kind === 'console' && process.env.NODE_ENV === 'production' && !warnedAboutConsoleInProduction) {
+    warnedAboutConsoleInProduction = true;
+    console.error(
+      '[mail] BOOKING_TRANSPORT=console in production — NOT ONE mail is being sent, neither the owner notification nor the customer confirmation. Enquiries are still saved (/admin → Anfragen). Fix: set BOOKING_TRANSPORT=smtp (or resend) plus its credentials in /opt/veysl/app/.env and run `docker compose up -d app`. See docs/MAIL-SETUP.md.'
+    );
+  }
+
   const sender: MailSender =
     kind === 'resend' ? new ResendMailSender() : kind === 'smtp' ? new SmtpMailSender() : new ConsoleMailSender();
 
   cachedSender = sender;
   return sender;
+}
+
+/** Outcome of a credential/reachability probe that sends no mail. */
+export interface MailConnectionCheck {
+  /** `false` when the active transport has no meaningful check (the console stand-in). */
+  attempted: boolean;
+  ok: boolean;
+  /** nodemailer/Node error code where there is one — `EAUTH`, `ETIMEDOUT`, `ECONNREFUSED`, `ESOCKET`, `EDNS`. */
+  code?: string;
+  /** SMTP reply code where there is one — `535` is "password rejected". */
+  responseCode?: number;
+  message?: string;
+}
+
+/**
+ * Builds the configured transport and runs its `verify()`. Never throws:
+ * every way this can fail *is* the answer the caller wants, so each is
+ * returned as data. Used only by `GET /api/health/mail`.
+ */
+export async function checkMailConnection(): Promise<MailConnectionCheck> {
+  let sender: MailSender;
+  try {
+    sender = getMailSender();
+  } catch (err) {
+    // Construction failure is a configuration failure, not a connection
+    // failure — but it is reported through the same field, because from the
+    // outside "the mail path does not work, here is why" is one question.
+    return { attempted: false, ok: false, message: err instanceof Error ? err.message : String(err) };
+  }
+
+  if (!sender.verify) return { attempted: false, ok: false };
+
+  try {
+    await sender.verify();
+    return { attempted: true, ok: true };
+  } catch (err) {
+    const detail = err as { code?: unknown; responseCode?: unknown; message?: unknown };
+    return {
+      attempted: true,
+      ok: false,
+      code: typeof detail.code === 'string' ? detail.code : undefined,
+      responseCode: typeof detail.responseCode === 'number' ? detail.responseCode : undefined,
+      message: err instanceof Error ? err.message.slice(0, 300) : String(err).slice(0, 300),
+    };
+  }
 }
 
 /**
@@ -273,6 +484,14 @@ function ownerReplyTo(): string | undefined {
 class MailEnquiryTransport implements EnquiryTransport {
   constructor(private readonly sender: MailSender) {}
 
+  get kind(): MailTransportKind {
+    return this.sender.kind;
+  }
+
+  get delivers(): boolean {
+    return this.sender.delivers;
+  }
+
   async notifyOwner(ctx: EnquiryContext): Promise<void> {
     const { subject, text } = buildOwnerNotification(ctx.enquiry, ctx.score, ctx.locale);
     await this.sender.send({ to: ownerRecipient(), subject, text, replyTo: ctx.enquiry.email });
@@ -288,6 +507,14 @@ class MailEnquiryTransport implements EnquiryTransport {
 
 class MailContactTransport implements ContactTransport {
   constructor(private readonly sender: MailSender) {}
+
+  get kind(): MailTransportKind {
+    return this.sender.kind;
+  }
+
+  get delivers(): boolean {
+    return this.sender.delivers;
+  }
 
   async notifyOwner(ctx: ContactMessageContext, ownerEmail: string): Promise<void> {
     const { subject, text } = buildContactOwnerNotification(ctx.message, ctx.locale);

@@ -1,0 +1,536 @@
+name: Mail doctor
+
+# Answers "why is no enquiry mail going out?" from GitHub, without an SSH
+# session. Run it from the Actions tab (Run workflow) or let the schedule do it.
+#
+# Three independent checks, each degrading on its own rather than failing the
+# run when it is not configured yet:
+#
+#   dns     — MX / SPF / DKIM / DMARC / rDNS for dj-veys.de. Needs NO secrets,
+#             so it works the moment this file lands. A mailserver with a
+#             missing PTR or SPF record delivers straight to spam, which looks
+#             exactly like "no mail arrived".
+#   probe   — GET /api/health/mail on the live site. Needs the repo secret
+#             MAIL_HEALTH_TOKEN (and MAIL_HEALTH_TOKEN set to the same value in
+#             /opt/veysl/app/.env). This is the one that names the actual
+#             misconfiguration: console transport, missing credential, wrong
+#             password, unreachable host.
+#   server  — SSH into the VPS for the two things the application genuinely
+#             cannot see: the Postfix queue, and whether outbound TCP/25 is
+#             open. Needs DEPLOY_SSH_HOST / DEPLOY_SSH_USER / DEPLOY_SSH_KEY,
+#             the same secrets the deploy workflow uses.
+#
+# Setup, shortest path first:
+#   1. Nothing — push this file and run it. The dns job already reports.
+#   2. `openssl rand -hex 32` → add as repo secret MAIL_HEALTH_TOKEN, and add
+#      the same value as MAIL_HEALTH_TOKEN in /opt/veysl/app/.env, then
+#      `docker compose up -d app`. The probe job now works.
+#   3. Optionally add the three DEPLOY_SSH_* secrets (see docs/DEPLOYMENT.md)
+#      for the server job.
+#
+# NOTE on the schedule: `schedule:` only ever fires from the repository's
+# DEFAULT branch, using that branch's copy of this file. Until this is merged
+# to master the cron does nothing — use "Run workflow" against the branch
+# instead, which does run the branch's copy.
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_mail_to:
+        description: 'Optional: send one real test mail to this address (requires the SSH secrets). Leave empty for checks only.'
+        required: false
+        type: string
+        default: ''
+  schedule:
+    # 06:17 UTC daily. Off the hour on purpose — scheduled runs at :00 queue
+    # behind everyone else's.
+    - cron: '17 6 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  # A fixed literal, deliberately without github.ref: the schedule always runs
+  # on the default branch, so the ref adds nothing, while a branch dispatch
+  # would then run alongside the cron and both would post to the same issue.
+  group: mail-doctor
+  cancel-in-progress: false
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Which checks can run at all.
+  #
+  # This job exists because of one GitHub Actions rule: the `secrets` context is
+  # NOT available in a job-level `if:`. It is not in the context table for
+  # `jobs.<job_id>.if` (which allows only github, needs, vars, inputs), so
+  # `if: secrets.FOO != ''` is not a condition that evaluates false — it is a
+  # workflow validation error that fails the entire run red. Job *outputs* may
+  # read secrets, so presence is decided here once and every other job gates on
+  # `needs.preflight.outputs.*`.
+  # ---------------------------------------------------------------------------
+  preflight:
+    name: Which checks are configured
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      probe: ${{ steps.detect.outputs.probe }}
+      ssh: ${{ steps.detect.outputs.ssh }}
+      site: ${{ steps.detect.outputs.site }}
+      domain: ${{ steps.detect.outputs.domain }}
+    steps:
+      - id: detect
+        env:
+          MAIL_HEALTH_TOKEN: ${{ secrets.MAIL_HEALTH_TOKEN }}
+          DEPLOY_SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+          DEPLOY_SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: |
+          set -euo pipefail
+          site="${SITE_URL:-https://dj-veys.de}"
+          domain="${site#https://}"; domain="${domain#http://}"; domain="${domain%%/*}"
+          {
+            echo "site=$site"
+            echo "domain=$domain"
+            if [ -n "$MAIL_HEALTH_TOKEN" ]; then echo "probe=true"; else echo "probe=false"; fi
+            if [ -n "$DEPLOY_SSH_HOST" ] && [ -n "$DEPLOY_SSH_USER" ] && [ -n "$DEPLOY_SSH_KEY" ]; then
+              echo "ssh=true"
+            else
+              echo "ssh=false"
+            fi
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            echo "### Mail doctor — configured checks"
+            echo
+            echo "| Check | Status |"
+            echo "|---|---|"
+            echo "| dns (no secrets needed) | running |"
+            if [ -n "$MAIL_HEALTH_TOKEN" ]; then
+              echo "| probe \`$site/api/health/mail\` | running |"
+            else
+              echo "| probe | **skipped** — repo secret \`MAIL_HEALTH_TOKEN\` is not set |"
+            fi
+            if [ -n "$DEPLOY_SSH_HOST" ] && [ -n "$DEPLOY_SSH_USER" ] && [ -n "$DEPLOY_SSH_KEY" ]; then
+              echo "| server (SSH) | running |"
+            else
+              echo "| server (SSH) | **skipped** — \`DEPLOY_SSH_HOST\`/\`DEPLOY_SSH_USER\`/\`DEPLOY_SSH_KEY\` not all set |"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # ---------------------------------------------------------------------------
+  # Deliverability DNS. No secrets, so this is the check that works on day one.
+  # ---------------------------------------------------------------------------
+  dns:
+    name: Mail DNS records
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      verdict: ${{ steps.check.outputs.verdict }}
+    steps:
+      - id: check
+        env:
+          DOMAIN: ${{ needs.preflight.outputs.domain }}
+        run: |
+          set -uo pipefail
+          problems=0
+          out=dns.md
+          : > "$out"
+
+          note() { printf '%s\n' "$1" >> "$out"; }
+          fail() { note "| $1 | ❌ | $2 |"; problems=$((problems + 1)); }
+          pass() { note "| $1 | ✅ | $2 |"; }
+          warn() { note "| $1 | ⚠️ | $2 |"; }
+
+          note "### Mail DNS for \`$DOMAIN\`"
+          note ""
+          note "| Record | | Value / why it matters |"
+          note "|---|---|---|"
+
+          mx=$(dig +short MX "$DOMAIN" | sort | tr '\n' ' ')
+          if [ -n "$mx" ]; then pass "MX" "$mx"; else fail "MX" "No MX record — this domain cannot receive mail at all."; fi
+
+          spf=$(dig +short TXT "$DOMAIN" | tr -d '"' | grep -i '^v=spf1' | head -1)
+          if [ -n "$spf" ]; then pass "SPF" "\`$spf\`"; else fail "SPF" "No \`v=spf1\` record. Receivers cannot tell that our server is allowed to send, so confirmations go to spam."; fi
+
+          dmarc=$(dig +short TXT "_dmarc.$DOMAIN" | tr -d '"' | grep -i '^v=DMARC1' | head -1)
+          if [ -n "$dmarc" ]; then pass "DMARC" "\`$dmarc\`"; else fail "DMARC" "No \`_dmarc\` record. Gmail and Yahoo require one for bulk senders and treat its absence as a negative signal."; fi
+
+          # The selector docs/MAIL-SELFHOSTED.md prescribes for docker-mailserver.
+          dkim=$(dig +short TXT "mail._domainkey.$DOMAIN" | tr -d '"' | grep -i 'v=DKIM1' | head -1)
+          if [ -n "$dkim" ]; then pass "DKIM (mail selector)" "present (${#dkim} chars)"; else fail "DKIM" "No \`mail._domainkey\` record. Unsigned mail from a small VPS is treated as suspicious by default."; fi
+
+          # rDNS — per docs/MAIL-SELFHOSTED.md the single biggest deliverability
+          # factor, and the one that is set in the provider panel rather than in
+          # the DNS zone, so it is the one most often forgotten.
+          mailhost="mail.$DOMAIN"
+          ip=$(dig +short A "$mailhost" | head -1)
+          if [ -z "$ip" ]; then
+            fail "A $mailhost" "Does not resolve. The mailserver has no address."
+          else
+            pass "A $mailhost" "$ip"
+            ptr=$(dig +short -x "$ip" | head -1)
+            ptr=${ptr%.}
+            if [ -z "$ptr" ]; then
+              fail "PTR (rDNS) for $ip" "Not set. Receivers check that the name a server greets them with matches its IP; without it, mail is reliably spam-filed or rejected. Set it in the netcup SCP under Server → Netzwerk → rDNS."
+            elif [ "$ptr" = "$mailhost" ]; then
+              pass "PTR (rDNS) for $ip" "$ptr"
+            else
+              fail "PTR (rDNS) for $ip" "Points at \`$ptr\`, not \`$mailhost\`. Forward-confirmed reverse DNS fails, with the same effect as no PTR at all."
+            fi
+          fi
+
+          mta=$(dig +short TXT "_mta-sts.$DOMAIN" | tr -d '"' | grep -i '^v=STSv1' | head -1)
+          if [ -n "$mta" ]; then pass "MTA-STS" "\`$mta\`"; else warn "MTA-STS" "Not set. Optional — enforces TLS for inbound mail (record 7 in docs/MAIL-SELFHOSTED.md)."; fi
+
+          note ""
+          if [ "$problems" -gt 0 ]; then
+            note "**$problems record(s) missing or wrong.** Mail may be sent and still not arrive: these control whether receivers accept it. See \`docs/DNS-RECORDS.md\`."
+            echo "verdict=problems" >> "$GITHUB_OUTPUT"
+          else
+            note "All required records present."
+            echo "verdict=ok" >> "$GITHUB_OUTPUT"
+          fi
+
+          cat "$out" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mail-doctor-dns
+          path: dns.md
+          retention-days: 14
+
+  # ---------------------------------------------------------------------------
+  # The live endpoint. This is the job that names the actual fault.
+  # ---------------------------------------------------------------------------
+  probe:
+    name: Probe /api/health/mail
+    needs: preflight
+    if: needs.preflight.outputs.probe == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      verdict: ${{ steps.query.outputs.verdict }}
+    steps:
+      - id: query
+        env:
+          # The token reaches curl through the environment, never through the
+          # command line: process arguments are world-readable on the runner,
+          # and an `Authorization:` header assembled in `run:` text would also
+          # be echoed by `set -x` if anyone ever adds it.
+          TOKEN: ${{ secrets.MAIL_HEALTH_TOKEN }}
+          SITE: ${{ needs.preflight.outputs.site }}
+        run: |
+          set -uo pipefail
+          code=$(curl -sS --max-time 60 -o response.json -w '%{http_code}' \
+                   -H "Authorization: Bearer $TOKEN" \
+                   "$SITE/api/health/mail" || echo 000)
+
+          out=probe.md
+          : > "$out"
+          note() { printf '%s\n' "$1" >> "$out"; }
+          note "### Live mail health — \`$SITE/api/health/mail\`"
+          note ""
+
+          case "$code" in
+            200) ;;
+            000)
+              note "❌ **The site did not answer.** Not a mail problem — the host or nginx is down, or DNS is broken."
+              echo "verdict=unreachable" >> "$GITHUB_OUTPUT"
+              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+            404)
+              note "❌ **HTTP 404 — the endpoint is not deployed.** The running image predates this health check. Deploy the branch that adds it (Actions → \"Build, verify, deploy\" → Run workflow), then re-run."
+              echo "verdict=not_deployed" >> "$GITHUB_OUTPUT"
+              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+            401)
+              note "❌ **HTTP 401 — token rejected.** The repo secret \`MAIL_HEALTH_TOKEN\` and the \`MAIL_HEALTH_TOKEN\` in \`/opt/veysl/app/.env\` are not the same value. Note that the server only re-reads \`.env\` on \`docker compose up -d app\`."
+              echo "verdict=unauthorized" >> "$GITHUB_OUTPUT"
+              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+            503)
+              note "❌ **HTTP 503 — \`MAIL_HEALTH_TOKEN\` is not set on the server.** Add it to \`/opt/veysl/app/.env\` and run \`docker compose up -d app\`."
+              echo "verdict=disabled" >> "$GITHUB_OUTPUT"
+              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+            *)
+              note "❌ **Unexpected HTTP $code.**"
+              echo "verdict=http_$code" >> "$GITHUB_OUTPUT"
+              cat "$out" >> "$GITHUB_STEP_SUMMARY"; exit 0 ;;
+          esac
+
+          # The response is designed to be safe to publish: addresses are
+          # reduced to domains and secrets to a length, so it can go into a CI
+          # log and an artifact as-is.
+          ok=$(jq -r '.ok' response.json)
+          note "| | |"
+          note "|---|---|"
+          note "| Transport | \`$(jq -r '.transport.configured' response.json)\` (delivers: $(jq -r '.transport.delivers' response.json)) |"
+          note "| NODE_ENV | \`$(jq -r '.nodeEnv' response.json)\` |"
+          note "| Checked at | $(jq -r '.checkedAt' response.json) |"
+          note "| Connection probe | $(jq -r 'if .connection.attempted then (if .connection.ok then "login accepted" else "FAILED: " + (.connection.code // "no code") + " — " + (.connection.message // "") end) else "not applicable for this transport" end' response.json) |"
+          note "| Notifications since restart | $(jq -r '.history.counts | "accepted \(.accepted), failed \(.failed), suppressed \(.suppressed)"' response.json) |"
+          note ""
+
+          if [ "$(jq -r '.problems | length' response.json)" -gt 0 ]; then
+            note "#### Findings"
+            note ""
+            jq -r '.problems[] | "- " + (if .severity == "critical" then "❌" elif .severity == "warning" then "⚠️" else "ℹ️" end) + " **`" + .code + "`** — " + .message + (if .fix then "  \n  _Fix:_ " + .fix else "" end)' response.json >> "$out"
+            note ""
+          fi
+
+          note "#### Configuration (values never leave the server)"
+          note ""
+          note '```'
+          jq -r '.config | to_entries[] | "\(.key) = " + (if .value.set then (if .value.value then .value.value elif .value.domain then "(set, domain \(.value.domain))" elif .value.length then "(set, \(.value.length) characters)" else "(set)" end) else "(UNSET)" end)' response.json >> "$out"
+          note '```'
+          note ""
+
+          if [ "$(jq -r '.history.attempts | length' response.json)" -gt 0 ]; then
+            note "#### Recent notifications (recipient domains only)"
+            note ""
+            note '```'
+            jq -r '.history.attempts[] | "\(.at)  \(.channel)  \(.outcome)  \(.recipientDomain // "-")  \(.error // "")"' response.json >> "$out"
+            note '```'
+            note ""
+          fi
+
+          # Rendered on every run, including a green one. `ok: true` here means
+          # "nothing the application can see is wrong", and the gap between that
+          # and "mail is arriving" is where the original fault lived.
+          note "#### What this check cannot prove"
+          note ""
+          jq -r '.limits[] | "- " + .' response.json >> "$out"
+
+          cat "$out" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$ok" = "true" ]; then echo "verdict=ok" >> "$GITHUB_OUTPUT"; else echo "verdict=problems" >> "$GITHUB_OUTPUT"; fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mail-doctor-probe
+          # response.json is included on purpose: it is the raw evidence, and by
+          # construction it holds no secret and no customer address.
+          path: |
+            probe.md
+            response.json
+          retention-days: 14
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # The queue and outbound port 25 — the two facts no HTTP endpoint can reach.
+  # ---------------------------------------------------------------------------
+  server:
+    name: Server-side checks (SSH)
+    needs: preflight
+    if: needs.preflight.outputs.ssh == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      verdict: ${{ steps.remote.outputs.verdict }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate the optional test-mail address
+        id: mail_to
+        env:
+          # Never interpolated into a `run:` block. `${{ inputs.x }}` is
+          # substituted into the script text before the shell sees it, so a
+          # crafted value executes as code; via the environment it is data. That
+          # matters twice over here, because this value then crosses a SECOND
+          # shell over ssh.
+          TEST_MAIL_TO: ${{ inputs.test_mail_to }}
+        run: |
+          set -euo pipefail
+          to="${TEST_MAIL_TO:-}"
+          if [ -z "$to" ]; then
+            echo "value=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Strict allowlist rather than escaping. After this, the value
+          # provably contains no shell metacharacter, which is what makes it
+          # safe to pass through the remote shell as an assignment.
+          if ! printf '%s' "$to" | grep -qE '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'; then
+            echo "::error::test_mail_to is not a plain email address. Refusing to pass it to the server."
+            exit 1
+          fi
+          echo "value=$to" >> "$GITHUB_OUTPUT"
+
+      - name: Run the remote diagnostic
+        id: remote
+        env:
+          SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+          SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SSH_HOST_KEY: ${{ secrets.DEPLOY_SSH_HOST_KEY }}
+          TEST_MAIL_TO: ${{ steps.mail_to.outputs.value }}
+        run: |
+          set -uo pipefail
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/doctor_key
+          chmod 600 ~/.ssh/doctor_key
+
+          if [ -n "${SSH_HOST_KEY:-}" ]; then
+            # Preferred: the host key is pinned in a secret, so the connection
+            # is authenticated in both directions.
+            printf '%s\n' "$SSH_HOST_KEY" > ~/.ssh/known_hosts
+          else
+            # Fallback. On an ephemeral runner every run is a first contact, so
+            # this trusts whatever answers — acceptable for a read-only
+            # diagnostic, not something to rely on long-term. stderr is kept
+            # (the deploy workflow used to discard it, which turned a DNS
+            # failure into a bare exit 1 with no explanation).
+            echo "::warning::DEPLOY_SSH_HOST_KEY is not set — trusting the host key on first sight. Pin it with: ssh-keyscan -t ed25519 <host>"
+            ssh-keyscan -t rsa,ecdsa,ed25519 "$SSH_HOST" >> ~/.ssh/known_hosts || {
+              echo "::error::ssh-keyscan could not reach $SSH_HOST."
+              echo "verdict=unreachable" >> "$GITHUB_OUTPUT"
+              exit 0
+            }
+          fi
+
+          # The script is piped in on stdin rather than passed as a command
+          # string, so nothing in it is re-parsed by the remote shell. The one
+          # value that does cross as text was allowlisted above.
+          if ssh -i ~/.ssh/doctor_key -o BatchMode=yes -o ConnectTimeout=20 \
+               "$SSH_USER@$SSH_HOST" "TEST_MAIL_TO='$TEST_MAIL_TO' bash -s" \
+               < .github/scripts/mail-doctor-remote.sh > server.txt 2>&1; then
+            status=ok
+          else
+            status=failed
+          fi
+
+          {
+            echo "### Server-side checks"
+            echo
+            echo '```'
+            cat server.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$status" != ok ]; then
+            echo "verdict=failed" >> "$GITHUB_OUTPUT"
+          elif grep -qE 'VERDICT: (the queue is NOT empty|outbound TCP/25 looks BLOCKED)' server.txt; then
+            echo "verdict=problems" >> "$GITHUB_OUTPUT"
+          elif grep -q "was never started" server.txt; then
+            echo "verdict=problems" >> "$GITHUB_OUTPUT"
+          else
+            echo "verdict=ok" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mail-doctor-server
+          path: server.txt
+          retention-days: 14
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # One issue, kept up to date, closed when the mail path is healthy again.
+  # ---------------------------------------------------------------------------
+  report:
+    name: Report
+    needs: [preflight, dns, probe, server]
+    # `always()` so a skipped probe/server job (secrets not configured) still
+    # produces a report rather than silently cancelling this one.
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      # A job-level `permissions:` block REPLACES the workflow-level one rather
+      # than merging, so `contents: read` has to be repeated here.
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - uses: actions/github-script@v9
+        env:
+          DNS_VERDICT: ${{ needs.dns.outputs.verdict }}
+          PROBE_VERDICT: ${{ needs.probe.outputs.verdict }}
+          SERVER_VERDICT: ${{ needs.server.outputs.verdict }}
+          PROBE_RESULT: ${{ needs.probe.result }}
+          SERVER_RESULT: ${{ needs.server.result }}
+        # github-script over curl for one reason that matters to a monitor: a
+        # non-2xx from the API throws and fails the step, whereas curl exits 0
+        # on an HTTP 403 unless told otherwise. A watchdog that quietly files
+        # nothing is worse than no watchdog.
+        with:
+          script: |
+            const fs = require('fs');
+            const LABEL = 'mail-health';
+            const TITLE = 'Mail doctor: the enquiry mail path needs attention';
+
+            const read = (name) => {
+              try { return fs.readFileSync(`artifacts/${name}`, 'utf8').trim(); }
+              catch { return ''; }
+            };
+
+            const { DNS_VERDICT, PROBE_VERDICT, SERVER_VERDICT, PROBE_RESULT, SERVER_RESULT } = process.env;
+            const healthyVerdicts = ['ok', ''];
+            const broken = [DNS_VERDICT, PROBE_VERDICT, SERVER_VERDICT]
+              .filter((v) => v && !healthyVerdicts.includes(v));
+
+            const sections = [
+              read('dns.md'),
+              read('probe.md'),
+              read('server.txt') && '### Server-side checks\n\n```\n' + read('server.txt') + '\n```',
+            ].filter(Boolean);
+
+            const skipped = [];
+            if (PROBE_RESULT === 'skipped') skipped.push('`probe` — repo secret `MAIL_HEALTH_TOKEN` is not set, so the live endpoint was not queried. This is the check that names the actual fault; it is worth setting up.');
+            if (SERVER_RESULT === 'skipped') skipped.push('`server` — the `DEPLOY_SSH_*` secrets are not set, so the Postfix queue and outbound port 25 were not checked.');
+
+            // Deliberately never "everything is fine". The checks that ran are
+            // named, and so are the ones that did not — a pass from the probe
+            // alone leaves the Postfix queue unexamined, and that queue is where
+            // "accepted but never delivered" hides.
+            const verdictLine = broken.length
+              ? `**Failing checks:** ${broken.length}`
+              : skipped.length
+                ? 'Every check that ran passed. Some checks did not run — see below.'
+                : 'Every check passed.';
+
+            const body = [
+              `_Updated by [Mail doctor](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) — ${new Date().toISOString()}_`,
+              '',
+              verdictLine,
+              '',
+              ...(skipped.length ? ['> **Not checked**', ...skipped.map((s) => '> - ' + s), ''] : []),
+              ...sections,
+              '',
+              '---',
+              '_Generated by [Claude Code](https://claude.ai/code)_',
+            ].join('\n');
+
+            // listForRepo rather than the search API: search is eventually
+            // consistent and would happily open a second issue while the first
+            // is still being indexed.
+            const existing = (await github.rest.issues.listForRepo({
+              ...context.repo, state: 'open', labels: LABEL, per_page: 10,
+            })).data[0];
+
+            if (broken.length === 0) {
+              if (existing) {
+                await github.rest.issues.createComment({ ...context.repo, issue_number: existing.number, body });
+                await github.rest.issues.update({ ...context.repo, issue_number: existing.number, state: 'closed', state_reason: 'completed' });
+                core.notice(`No failing checks — closed #${existing.number}.`);
+              } else {
+                core.notice(verdictLine.replace(/\*\*/g, ''));
+              }
+              return;
+            }
+
+            if (existing) {
+              // Rewrite the body so the issue always shows current state, and
+              // comment so the thread keeps its history.
+              await github.rest.issues.update({ ...context.repo, issue_number: existing.number, body });
+              await github.rest.issues.createComment({ ...context.repo, issue_number: existing.number, body: `Still failing (${broken.length} check(s)) as of ${new Date().toISOString()}. Details in the issue body above.\n\n---\n_Generated by [Claude Code](https://claude.ai/code)_` });
+              core.setFailed(`Mail path unhealthy — updated #${existing.number}.`);
+              return;
+            }
+
+            const created = await github.rest.issues.create({ ...context.repo, title: TITLE, body, labels: [LABEL] });
+            core.setFailed(`Mail path unhealthy — opened #${created.data.number}.`);

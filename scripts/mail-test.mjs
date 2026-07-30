@@ -162,6 +162,23 @@ if (missing.length > 0) {
   process.exit(1);
 }
 
+// Dieselbe Prüfung wie in SmtpMailSender. Ohne sie wählte dieses Skript bei
+// leerem SMTP_PORT den Port 0 (`Number('')` ist 0, und `??` greift bei einem
+// leeren String nicht), lief in einen Verbindungsfehler und meldete "Host nicht
+// erreichbar" — während die Anwendung an derselben Konfiguration mit einer
+// klaren Konfigurationsmeldung scheitert. Ein Diagnosewerkzeug, das eine andere
+// Ursache nennt als der Code, den es diagnostizieren soll, ist schlimmer als
+// keins.
+if (!Number.isInteger(port) || port <= 0 || port > 65535) {
+  console.error(`
+FEHLER: SMTP_PORT ist kein gültiger Port: "${process.env.SMTP_PORT ?? ''}"
+
+Ein leerer Wert (SMTP_PORT= ohne Zahl) wird zu 0. Für authentifizierte
+Einlieferung gehört hier 587 hin, für implizites TLS 465.
+`);
+  process.exit(1);
+}
+
 // Identisch zu SmtpMailSender in src/app/api/anfrage/_lib/transport.ts —
 // wird dort etwas an den Verbindungsoptionen geändert, gehört es hierher
 // gespiegelt, sonst testet dieses Skript etwas anderes als die Anwendung.
@@ -174,6 +191,12 @@ const transporter = createTransport({
   connectionTimeout: 10_000,
   greetingTimeout: 10_000,
   socketTimeout: 10_000,
+  // Ohne das bleibt die Namensauflösung bei nodemailers Standard von 30 s und
+  // läuft vor connectionTimeout — dieses Skript hinge dann dreimal so lange wie
+  // die Anwendung an derselben Fehlkonfiguration.
+  dnsTimeout: 10_000,
+  // `pool`/`maxConnections` fehlen hier bewusst: sie sind der einzige
+  // Unterschied zu SmtpMailSender und für einen einzelnen Aufruf ohne Wirkung.
   logger: has('--debug'),
   debug: has('--debug'),
 });

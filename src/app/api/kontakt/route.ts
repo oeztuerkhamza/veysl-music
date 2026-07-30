@@ -16,6 +16,7 @@ import { getSite } from '@/content/get-site';
 import { locales } from '@/i18n/routing';
 import { CONTACT_HONEYPOT_FIELD, contactMessageSchema, type ContactMessageOutput } from '@/lib/contact';
 import { getPayloadClient } from '@/lib/payload';
+import { recordTransportUnavailable, runNotification } from '../_lib/notify';
 import { getClientIp, isRateLimited } from '../_lib/rate-limit';
 import { getContactTransport, type ContactTransport } from '../anfrage/_lib/transport';
 
@@ -93,40 +94,62 @@ export async function POST(request: NextRequest) {
     // writes again, while the original sits in /admin. Persist-first, promised
     // in this file's header, only holds if everything after the write is
     // caught.
-    let ownerNotified = true;
-    let senderConfirmed = true;
+    // Both start at `false` and only become true on a delivery that really
+    // happened — see the same reasoning spelled out in /api/anfrage's route:
+    // with `BOOKING_TRANSPORT=console` every `send()` on the site is a
+    // `console.log` that resolves, so a flag that starts at `true` reports
+    // success for mail nobody received. `runNotification` owns that rule.
+    let ownerNotified = false;
+    let senderConfirmed = false;
 
     let transport: ContactTransport | undefined;
     try {
       transport = getContactTransport();
     } catch (err) {
-      ownerNotified = false;
-      senderConfirmed = false;
+      const message = err instanceof Error ? err.message : String(err);
       console.error(
         '[kontakt] mail transport unavailable (check BOOKING_TRANSPORT and its credentials) — message IS saved, check /admin',
-        err instanceof Error ? err.message : err,
+        message,
       );
+      recordTransportUnavailable(['kontakt:owner', 'kontakt:sender'], message);
     }
 
     if (transport) {
+      // Bound to a const so the closures below keep the narrowing.
+      const mail = transport;
+
+      // `getSite()` resolves the owner address rather than hardcoding it. It
+      // fails soft to the static defaults in src/content/site.ts, but it is
+      // still awaited inside a guard: everything past the persist above must
+      // be incapable of reaching the outer catch and turning a saved message
+      // into a 500 the visitor is told to retry.
+      let ownerEmail: string | undefined;
       try {
-        const site = await getSite();
-        await transport.notifyOwner(ctx, site.contact.email);
+        ownerEmail = (await getSite()).contact.email;
       } catch (err) {
-        ownerNotified = false;
-        console.error('[kontakt] owner notification failed — message IS saved, check /admin', err instanceof Error ? err.message : err);
+        const message = err instanceof Error ? err.message : String(err);
+        console.error('[kontakt] could not resolve the owner address — message IS saved, check /admin', message);
+        recordTransportUnavailable(['kontakt:owner'], message);
       }
 
-      try {
-        await transport.sendConfirmation(ctx);
-      } catch (err) {
-        senderConfirmed = false;
-        // Recipient *domain* only — the address itself is personal data. A run
-        // of failures that all share an external domain is the signature of a
-        // mailserver that delivers locally but not to the outside world.
-        const domain = typedMessage.email.split('@')[1] ?? '(unparsable)';
-        console.error(`[kontakt] sender confirmation failed — recipient domain=${domain}`, err instanceof Error ? err.message : err);
+      if (ownerEmail) {
+        const to = ownerEmail;
+        ownerNotified = await runNotification({
+          channel: 'kontakt:owner',
+          transport: mail,
+          recipient: to,
+          label: '[kontakt] owner notification (message IS saved, check /admin)',
+          send: () => mail.notifyOwner(ctx, to),
+        });
       }
+
+      senderConfirmed = await runNotification({
+        channel: 'kontakt:sender',
+        transport: mail,
+        recipient: typedMessage.email,
+        label: '[kontakt] sender confirmation',
+        send: () => mail.sendConfirmation(ctx),
+      });
     }
 
     // Reported for the same reason as on /anfrage: without these, a broken

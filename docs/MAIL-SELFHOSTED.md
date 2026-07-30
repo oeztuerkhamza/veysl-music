@@ -205,6 +205,21 @@ docker exec -it veysl-app node scripts/mail-test.mjs --verify-only
 docker exec -it veysl-app node scripts/mail-test.mjs --to <eigene-gmail-adresse>
 ```
 
+Beides geht auch **ohne SSH**, über GitHub: Actions → „Mail doctor" → *Run
+workflow*. Der Ablauf prüft dieselben Dinge, dazu die DNS-Einträge aus dem
+Abschnitt oben und `postqueue -p`, und legt bei einem Fehler ein Issue mit dem
+Ergebnis an. Nötig sind dafür die Secrets aus `docs/DEPLOYMENT.md`
+(`MAIL_HEALTH_TOKEN` für die HTTP-Prüfung, `DEPLOY_SSH_*` für die
+Server-Prüfung); ohne sie laufen die jeweiligen Jobs nicht mit, statt rot zu
+werden. Ein Wert im Feld „send one real test mail to this address" entspricht
+`--to` unten.
+
+Der schnellste Einzelbefund ohne alles davon:
+
+```bash
+curl -sH "Authorization: Bearer $MAIL_HEALTH_TOKEN" https://dj-veys.de/api/health/mail | jq '.ok, .problems'
+```
+
 Schritt 1 trennt "Passwort falsch" (SMTP 535/EAUTH) sauber von "Server nicht
 erreichbar" ab. Schritt 2 schickt eine echte Mail an eine **externe** Adresse —
 und genau das ist der Weg, den die Bestätigung an das Paar nimmt und den die
