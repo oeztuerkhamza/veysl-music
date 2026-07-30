@@ -431,7 +431,7 @@ jobs:
             echo "verdict=problems" >> "$GITHUB_OUTPUT"
           elif grep -q "was never started" server.txt; then
             echo "verdict=problems" >> "$GITHUB_OUTPUT"
-          elif grep -q "MODULE_NOT_FOUND" server.txt; then
+          elif grep -qE "Cannot find module .*mail-test\.mjs" server.txt; then
             # The running image predates the commit that copies scripts/ into
             # it, so the container is out of date with master. Worth failing on:
             # a deployment several commits behind is the reason a fix "does not
