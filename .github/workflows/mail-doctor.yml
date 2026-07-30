@@ -406,6 +406,12 @@ jobs:
             status=failed
           fi
 
+          # To stdout as well as the summary. The summary is not readable
+          # through the Actions API, so a run whose findings went only there
+          # left the log showing the echoed script and none of its results —
+          # and this job's output is the part that cannot be reconstructed from
+          # anywhere else.
+          cat server.txt
           {
             echo "### Server-side checks"
             echo
