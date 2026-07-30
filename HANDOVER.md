@@ -125,7 +125,16 @@ Diese Bereiche sind bewusst leer und zeigen einen gestalteten Leerzustand.
       läuft über den eigenen Mailserver, siehe docs/MAIL-SELFHOSTED.md.
 - [ ] Zugang Google Search Console und Google Business Profile
 - [ ] Entscheidung Hosting: Vercel oder Cloudflare Pages
-- [ ] E-Mail-Versand für Anfragen (z. B. Resend) — die Anfragen laufen sonst nur ins Log
+- [ ] **E-Mail-Versand für Anfragen — noch nicht aktiv.** `BOOKING_TRANSPORT`
+      steht auf `console`, und das bedeutet: **keine einzige Mail wird
+      verschickt** — weder die Benachrichtigung an dich noch die Bestätigung an
+      das Paar. Die Anfragen selbst gehen nicht verloren, sie stehen in
+      `/admin` → Anfragen. Beide Versandwege sind fertig implementiert und
+      brauchen nur Zugangsdaten: `smtp` (eigener Mailserver,
+      `docs/MAIL-SELFHOSTED.md` — setzt offenen ausgehenden Port 25 voraus,
+      der per Ticket freigeschaltet werden muss) oder `resend`
+      (`docs/MAIL-SETUP.md`, heute einsatzbereit).
+      Ob es läuft, sagt Actions → „Mail doctor" → *Run workflow*.
 
 ---
 

@@ -12,6 +12,7 @@ import { z } from 'zod';
 import { locales } from '@/i18n/routing';
 import { enquirySchema, HONEYPOT_FIELD, type EnquiryOutput } from '@/lib/booking';
 import { getPayloadClient } from '@/lib/payload';
+import { recordTransportUnavailable, runNotification } from '../_lib/notify';
 import { getClientIp, isRateLimited } from '../_lib/rate-limit';
 import { scoreEnquiry } from './_lib/lead-score';
 import { getEnquiryTransport, type EnquiryTransport } from './_lib/transport';
@@ -111,8 +112,18 @@ export async function POST(request: NextRequest) {
     // logged at error level (it is a real incident, and the mail setup needs
     // fixing) but the visitor is told the truth, which is that their enquiry
     // arrived.
-    let ownerNotified = true;
-    let customerNotified = true;
+    //
+    // Both flags start at `false` and only become true on a delivery that
+    // really happened. They used to start at `true` and be cleared on failure,
+    // which reported success for a notification that was never attempted —
+    // and that is not a hypothetical: with `BOOKING_TRANSPORT=console` (the
+    // value env.production.example ships) every mail on the site is a
+    // `console.log` that resolves happily, so the endpoint answered
+    // `ownerNotified: true, customerNotified: true` while sending nothing at
+    // all. `runNotification` is what enforces the distinction now — see
+    // `EnquiryTransport.delivers`.
+    let ownerNotified = false;
+    let customerNotified = false;
 
     // Constructing the transport is itself a step that can throw (see the note
     // where `ctx` is built). Now that the enquiry is safely persisted, that
@@ -121,49 +132,48 @@ export async function POST(request: NextRequest) {
     try {
       transport = getEnquiryTransport();
     } catch (err) {
-      ownerNotified = false;
-      customerNotified = false;
+      const message = err instanceof Error ? err.message : String(err);
       console.error(
         '[anfrage] mail transport unavailable (check BOOKING_TRANSPORT and its credentials) — enquiry IS saved, check /admin → Anfragen',
-        err instanceof Error ? err.message : err,
+        message,
       );
+      recordTransportUnavailable(['anfrage:owner', 'anfrage:customer'], message);
     }
 
     if (transport) {
-      try {
-        await transport.notifyOwner(ctx);
-      } catch (err) {
-        ownerNotified = false;
-        console.error(
-          '[anfrage] owner notification failed — enquiry IS saved, check /admin → Anfragen',
-          err instanceof Error ? err.message : err,
-        );
-      }
-    }
+      // Bound to a const so the closures below keep the narrowing — a `let`
+      // captured in a callback is `EnquiryTransport | undefined` again.
+      const mail = transport;
 
-    // The customer auto-reply is a nice-to-have; don't fail the request over it.
-    //
-    // It is, however, the piece that goes *outward* — the owner notification
-    // goes to BOOKING_NOTIFY_EMAIL, which on the self-hosted setup is a
-    // mailbox on the very same Postfix and is delivered locally, while this
-    // one has to reach gmail.com/gmx.de/web.de over the open internet. So
-    // "the enquiry reached me but the couple never got their confirmation" is
-    // the expected shape of a half-broken mail server, not an odd edge case,
-    // and it needs to be as visible as the owner side. Logging the recipient
-    // *domain* (never the address — that is personal data) is what makes a
-    // pattern like "every external domain fails, dj-veys.de succeeds"
-    // readable straight from the logs.
-    if (transport) {
-      try {
-        await transport.sendCustomerAutoReply(ctx);
-      } catch (err) {
-        customerNotified = false;
-        const domain = enquiry.email.split('@')[1] ?? '(unparsable)';
-        console.error(
-          `[anfrage] customer auto-reply failed — recipient domain=${domain}`,
-          err instanceof Error ? err.message : err,
-        );
-      }
+      ownerNotified = await runNotification({
+        channel: 'anfrage:owner',
+        transport: mail,
+        recipient: process.env.BOOKING_NOTIFY_EMAIL ?? '',
+        label: '[anfrage] owner notification (enquiry IS saved, check /admin → Anfragen)',
+        send: () => mail.notifyOwner(ctx),
+      });
+
+      // The customer auto-reply is a nice-to-have; don't fail the request over
+      // it.
+      //
+      // It is, however, the piece that goes *outward* — the owner notification
+      // goes to BOOKING_NOTIFY_EMAIL, which on the self-hosted setup is a
+      // mailbox on the very same Postfix and is delivered locally, while this
+      // one has to reach gmail.com/gmx.de/web.de over the open internet. So
+      // "the enquiry reached me but the couple never got their confirmation" is
+      // the expected shape of a half-broken mail server, not an odd edge case,
+      // and it needs to be as visible as the owner side. `runNotification`
+      // records the recipient *domain* (never the address — that is personal
+      // data), which is what makes a pattern like "every external domain
+      // fails, dj-veys.de succeeds" readable from the logs and from
+      // /api/health/mail.
+      customerNotified = await runNotification({
+        channel: 'anfrage:customer',
+        transport: mail,
+        recipient: enquiry.email,
+        label: '[anfrage] customer auto-reply',
+        send: () => mail.sendCustomerAutoReply(ctx),
+      });
     }
 
     // Both flags are reported, not acted on by the client: the funnel shows

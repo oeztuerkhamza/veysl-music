@@ -232,13 +232,51 @@ adding anything.
 
 | Secret | Used by |
 |---|---|
-| `DEPLOY_SSH_HOST` | the `deploy` job in `.github/workflows/deploy.yml` |
+| `DEPLOY_SSH_HOST` | the `deploy` job in `.github/workflows/deploy.yml`, and the `server` job in `mail-doctor.yml` |
 | `DEPLOY_SSH_USER` | same |
 | `DEPLOY_SSH_KEY` | same — private key matching the deploy user's `authorized_keys` |
+| `DEPLOY_SSH_HOST_KEY` | optional but recommended — the server's public host key (`ssh-keyscan -t ed25519 <SERVER_IP>`). Without it both workflows accept whatever answers on first contact, and on an ephemeral runner every run *is* a first contact, so trust-on-first-use buys nothing while a key with shell access to production is at stake. |
+| `MAIL_HEALTH_TOKEN` | the `probe` job in `mail-doctor.yml`. Must equal `MAIL_HEALTH_TOKEN` in the server's `.env` — generate once with `openssl rand -hex 32` and set it in both places. |
 
 Set them with `gh secret set DEPLOY_SSH_KEY < key` or via repo Settings →
 Secrets and variables → Actions. **Only the repository owner can do this**;
 values must never be pasted into a chat, a commit, or a doc.
+
+Optional repository **variable** (Settings → Secrets and variables → Actions →
+Variables): `SITE_URL`, if the site ever moves off `https://dj-veys.de`. The
+workflows fall back to that domain when it is unset.
+
+### Deploying from GitHub
+
+`.github/workflows/deploy.yml` deploys on a `v*` tag **or** on a manual
+Actions → "Build, verify, deploy" → *Run workflow* (pick any branch). The
+manual trigger exists because a tag was previously the only path, and a fix
+committed to `master` therefore sat undeployed while production kept serving
+the old image — which is exactly how a mail fix went live weeks late. Both
+paths pass through the `production` Environment, so configuring required
+reviewers there is what makes a deploy pause for approval.
+
+### Diagnosing mail without SSH
+
+`.github/workflows/mail-doctor.yml` answers "why is no enquiry mail going
+out?" from the Actions tab. It has three independent checks and each skips
+cleanly when its secrets are absent:
+
+| Check | Needs | Answers |
+|---|---|---|
+| `dns` | nothing | MX / SPF / DKIM / DMARC / rDNS — whether a *sent* mail is accepted or spam-filed |
+| `probe` | `MAIL_HEALTH_TOKEN` | `GET /api/health/mail` — active transport, missing credentials, SMTP login, recent notification outcomes |
+| `server` | `DEPLOY_SSH_*` | `postqueue -p` and outbound TCP/25 — the only proof that accepted mail was actually *delivered* |
+
+Failures open (and later close) a single issue labelled `mail-health`.
+
+Two things to know about it. `schedule:` only ever fires from the **default
+branch**, so the daily run does nothing until the workflow is merged to
+`master` — use *Run workflow* against a branch to test it. And a green
+`probe` on its own does not mean mail is arriving: for a self-hosted Postfix,
+"accepted" means our own server took the message, and only the `server` job
+can tell whether it left. The endpoint states that limitation in its own
+response rather than leaving the reader to know it.
 
 **The server's `/opt/veysl/app/.env`** — everything the *application* needs at
 runtime: `PAYLOAD_SECRET`, `DATABASE_URI`, `SMTP_PASS`, `RESEND_API_KEY`,

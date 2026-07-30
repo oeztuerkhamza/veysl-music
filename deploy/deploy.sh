@@ -24,10 +24,20 @@ log "1/6 — Pulling latest source"
 if [ -d .git ]; then
   branch="$(git rev-parse --abbrev-ref HEAD)"
   git fetch --quiet origin
-  # --ff-only: refuses to run if the server has local commits/edits that
-  # would need a merge — surfaces that problem loudly instead of silently
-  # creating a merge commit or clobbering something on a production box.
-  git pull --ff-only origin "$branch" || die "git pull --ff-only failed — resolve manually (local changes on the server?) and re-run."
+  if [ "$branch" = "HEAD" ]; then
+    # Detached HEAD: the checkout is pinned to an exact commit, which is what
+    # `git checkout <tag>` produces and what .github/workflows/deploy.yml does
+    # when it deploys a `v*` tag. There is no branch to pull, and the previous
+    # unconditional `git pull --ff-only origin "$branch"` would have run
+    # `git pull origin HEAD` — which resolves to the remote's *default branch*
+    # and would quietly build something other than the tag that was asked for.
+    echo "  Detached HEAD at $(git rev-parse --short HEAD) — nothing to pull, building this exact commit."
+  else
+    # --ff-only: refuses to run if the server has local commits/edits that
+    # would need a merge — surfaces that problem loudly instead of silently
+    # creating a merge commit or clobbering something on a production box.
+    git pull --ff-only origin "$branch" || die "git pull --ff-only failed — resolve manually (local changes on the server?) and re-run."
+  fi
 else
   warn "Not a git checkout — skipping pull (assuming source was synced another way, e.g. CI artifact/rsync)."
 fi
