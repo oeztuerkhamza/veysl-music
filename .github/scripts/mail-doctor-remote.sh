@@ -197,6 +197,63 @@ echo "(If the self-test above could not find the script at all, the running imag
 echo " predates the commit that copies scripts/ into it — deploy master and re-run.)"
 
 if docker ps --format '{{.Names}}' | grep -qx "$MAIL_CONTAINER"; then
+  # -------------------------------------------------------------------------
+  # DKIM: is outgoing mail actually SIGNED, and with the key DNS advertises?
+  #
+  # The DNS check in the workflow proves a `mail._domainkey` record exists. It
+  # cannot prove the mailserver signs with the matching private key, and the two
+  # failures that gap hides are the ones that put correctly-delivered mail in
+  # the spam folder:
+  #
+  #   - Rspamd does the signing here (ENABLE_RSPAMD=1, ENABLE_OPENDKIM=0). A key
+  #     generated for OpenDKIM and never wired into Rspamd means mail leaves
+  #     unsigned while the DNS record sits there looking correct.
+  #   - A record that does not match the key on disk is WORSE than no record:
+  #     verification then actively fails instead of being absent, which
+  #     docs/MAIL-SELFHOSTED.md warns about in exactly those words.
+  #
+  # The public key is printed on one marked line so the workflow can compare it
+  # against DNS. It is a *public* key — publishing it is its entire purpose.
+  # -------------------------------------------------------------------------
+  section "DKIM signing"
+  dkim_files=$(docker exec "$MAIL_CONTAINER" sh -c '
+    ls -1 /tmp/docker-mailserver/rspamd/dkim/*.public.key \
+          /tmp/docker-mailserver/rspamd/dkim/*.txt \
+          /tmp/docker-mailserver/opendkim/keys/*/*.txt 2>/dev/null
+  ' 2>/dev/null)
+  if [ -z "$dkim_files" ]; then
+    echo "VERDICT: no DKIM public key found on disk. Outgoing mail is very likely UNSIGNED,"
+    echo "  which lands it in spam even with a DKIM record published in DNS."
+    echo "  Generate one: docker exec -it $MAIL_CONTAINER setup config dkim keysize 2048 domain dj-veys.de"
+  else
+    echo "Key files found:"
+    printf '%s\n' "$dkim_files" | sed 's/^/  /'
+    # Whatever the file layout, the public key is the base64 blob after `p=`.
+    pubkey=$(docker exec "$MAIL_CONTAINER" sh -c "cat $(printf '%s' "$dkim_files" | tr '\n' ' ') 2>/dev/null" 2>/dev/null \
+      | tr -d '\n"\t ' | sed -n 's/.*p=\([A-Za-z0-9+\/=]\{40,\}\).*/\1/p' | head -1)
+    if [ -n "$pubkey" ]; then
+      echo "DKIM_PUBKEY_ON_DISK=$pubkey"
+    else
+      echo "VERDICT: a key file exists but no p= value could be read from it."
+    fi
+  fi
+
+  # Is Rspamd — the component that actually signs here — configured to?
+  if docker exec "$MAIL_CONTAINER" sh -c 'test -s /etc/rspamd/local.d/dkim_signing.conf -o -s /etc/rspamd/override.d/dkim_signing.conf' 2>/dev/null; then
+    echo "Rspamd dkim_signing: configured."
+  else
+    echo "VERDICT: Rspamd has no dkim_signing config, and it is the signer in this stack"
+    echo "  (ENABLE_RSPAMD=1, ENABLE_OPENDKIM=0). Mail is leaving unsigned."
+  fi
+
+  section "What receiving servers actually did with our mail"
+  # The remote server's own response, which is where "accepted then filtered"
+  # becomes visible. Addresses scrubbed on the way out.
+  docker exec "$MAIL_CONTAINER" sh -c '
+    cat /var/log/mail/mail.log /var/log/mail.log 2>/dev/null
+  ' 2>/dev/null | grep -E 'status=(sent|deferred|bounced)' | tail -15 | scrub \
+    || echo "(no delivery lines found in the mail log)"
+
   section "Postfix queue — the check nothing outside this box can make"
   # Empty queue = delivered. Entries = accepted by our Postfix and then stuck,
   # which is what "the enquiry reached me but the couple never got their
