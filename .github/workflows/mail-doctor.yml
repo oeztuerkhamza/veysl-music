@@ -371,6 +371,9 @@ jobs:
           SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
           SSH_HOST_KEY: ${{ secrets.DEPLOY_SSH_HOST_KEY }}
           TEST_MAIL_TO: ${{ steps.mail_to.outputs.value }}
+          # Needed for the DKIM-vs-DNS comparison below, which is the one check
+          # that requires a fact from the server and a fact from DNS at once.
+          DOMAIN: ${{ needs.preflight.outputs.domain }}
         run: |
           set -uo pipefail
           mkdir -p ~/.ssh
@@ -406,6 +409,44 @@ jobs:
             status=failed
           fi
 
+          # ---------------------------------------------------------------
+          # Does the DKIM key the mailserver signs with match the one DNS
+          # publishes?
+          #
+          # Neither side alone can answer this: the server knows its key, the
+          # runner can resolve DNS. Both are here, so the comparison happens
+          # here and its verdict is appended to server.txt so it flows into the
+          # summary and the failure grep like any other.
+          #
+          # It matters because a mismatch is the failure mode that survives
+          # every other check in this workflow. Delivery works, the queue is
+          # empty, the record exists — and every message fails DKIM validation
+          # at the recipient, which is a direct route to the spam folder.
+          # docs/MAIL-SELFHOSTED.md puts it plainly: a wrong DKIM record is
+          # worse than none, because verification then actively fails.
+          # ---------------------------------------------------------------
+          on_disk=$(sed -n 's/^DKIM_PUBKEY_ON_DISK=//p' server.txt | head -1)
+          in_dns=$(dig +short TXT "mail._domainkey.$DOMAIN" 2>/dev/null \
+                     | tr -d '"\n \t' | sed -n 's/.*p=\([A-Za-z0-9+/=]\{40,\}\).*/\1/p' | head -1)
+          {
+            echo
+            echo "==== DKIM key on disk vs in DNS ===="
+            if [ -z "$on_disk" ]; then
+              echo "(no key was read from the server — see the DKIM section above)"
+            elif [ -z "$in_dns" ]; then
+              echo "VERDICT: DKIM key mismatch — a key exists on the server but no readable p= value is in DNS at mail._domainkey.$DOMAIN."
+            elif [ "$on_disk" = "$in_dns" ]; then
+              echo "VERDICT: DKIM key matches DNS (${#on_disk} chars). Signatures will validate."
+            else
+              echo "VERDICT: DKIM key mismatch between the server and DNS."
+              echo "  on disk: ${#on_disk} chars, starts ${on_disk%%"${on_disk#??????????}"}…"
+              echo "  in DNS : ${#in_dns} chars, starts ${in_dns%%"${in_dns#??????????}"}…"
+              echo "  Every signed message will FAIL validation at the recipient, which is"
+              echo "  worse than publishing no DKIM record at all. Replace the p= value of"
+              echo "  the mail._domainkey TXT record with the key from the server."
+            fi
+          } >> server.txt
+
           # To stdout as well as the summary. The summary is not readable
           # through the Actions API, so a run whose findings went only there
           # left the log showing the echoed script and none of its results —
@@ -427,7 +468,7 @@ jobs:
           # "VERDICT:" prefix.
           if [ "$status" != ok ]; then
             echo "verdict=failed" >> "$GITHUB_OUTPUT"
-          elif grep -qE 'VERDICT: (the queue is NOT empty|outbound TCP/25 looks BLOCKED|NO shared network|the app CANNOT open a TCP connection)' server.txt; then
+          elif grep -qE 'VERDICT: (the queue is NOT empty|outbound TCP/25 looks BLOCKED|NO shared network|the app CANNOT open a TCP connection|no DKIM public key found|Rspamd has no dkim_signing config|DKIM key mismatch)' server.txt; then
             echo "verdict=problems" >> "$GITHUB_OUTPUT"
           elif grep -q "was never started" server.txt; then
             echo "verdict=problems" >> "$GITHUB_OUTPUT"
