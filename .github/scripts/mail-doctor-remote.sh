@@ -188,8 +188,13 @@ fi
 
 section "Transport self-test (connection + login, sends nothing)"
 docker exec "$APP_CONTAINER" node scripts/mail-test.mjs --verify-only 2>&1 | scrub | tail -30
-echo "(If this says MODULE_NOT_FOUND, the running image predates the commit that"
-echo " copies scripts/ into it — deploy master and re-run.)"
+# Deliberately does NOT name the Node error code. The workflow greps this file
+# for that code to detect a stale image, and an earlier version of this hint
+# quoted it verbatim — so the hint matched the grep, and every run reported a
+# stale image whether or not one existed. A monitor that always says "broken" is
+# no more use than one that always says "fine".
+echo "(If the self-test above could not find the script at all, the running image"
+echo " predates the commit that copies scripts/ into it — deploy master and re-run.)"
 
 if docker ps --format '{{.Names}}' | grep -qx "$MAIL_CONTAINER"; then
   section "Postfix queue — the check nothing outside this box can make"
