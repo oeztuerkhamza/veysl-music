@@ -1,0 +1,135 @@
+name: Deploy the mail stack
+
+# Applies deploy/mail/docker-compose.mail.yml to the server, then verifies that
+# the application can reach the mailserver.
+#
+# Separate from "Build, verify, deploy" on purpose, and not because of caution
+# alone: `deploy/deploy.sh` must never restart the mailbox as a side effect of
+# a website deploy, so the two stacks have deliberately separate lifecycles.
+# The cost of that separation was that the mail stack had no deployment path at
+# all — its compose file could only be applied by hand over SSH — and that is
+# how a broken app→mailserver network went unnoticed while enquiry
+# notifications timed out. This closes the gap without coupling the two.
+#
+# Manual only. There is no push or schedule trigger: recreating the mailserver
+# interrupts mail delivery for a few seconds, which is not something to do on
+# every commit that happens to touch the file.
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "apply" to confirm. This recreates the mailserver container — mail is briefly interrupted.'
+        required: true
+        type: string
+        default: ''
+      ref:
+        description: 'Branch to apply from. Defaults to the branch you launched this from.'
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-mail
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    name: Apply and verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Same gate as the app deploy: if the production Environment has required
+    # reviewers configured, this pauses for approval.
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the confirmation
+        env:
+          # Through the environment, never interpolated into the script body.
+          CONFIRM: ${{ inputs.confirm }}
+        run: |
+          set -euo pipefail
+          if [ "${CONFIRM:-}" != "apply" ]; then
+            echo "::error::Type exactly \"apply\" in the confirm field to run this. Nothing was changed."
+            exit 1
+          fi
+
+      - name: Apply the mail stack over SSH
+        env:
+          SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+          SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SSH_HOST_KEY: ${{ secrets.DEPLOY_SSH_HOST_KEY }}
+          REF_INPUT: ${{ inputs.ref }}
+        run: |
+          set -uo pipefail
+          if [ -z "${SSH_HOST:-}" ] || [ -z "${SSH_USER:-}" ] || [ -z "${SSH_KEY:-}" ]; then
+            echo "::error::DEPLOY_SSH_HOST / DEPLOY_SSH_USER / DEPLOY_SSH_KEY are not set — see docs/DEPLOYMENT.md."
+            exit 1
+          fi
+
+          # A branch name, nothing else. The value crosses into a remote shell
+          # as an environment assignment, so it is allowlisted rather than
+          # escaped — after this it provably holds no shell metacharacter.
+          ref="${REF_INPUT:-$GITHUB_REF_NAME}"
+          if ! printf '%s' "$ref" | grep -qE '^[A-Za-z0-9._/-]+$'; then
+            echo "::error::Refusing to pass \"$ref\" to the server as a branch name."
+            exit 1
+          fi
+
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/mail_key
+          chmod 600 ~/.ssh/mail_key
+          if [ -n "${SSH_HOST_KEY:-}" ]; then
+            printf '%s\n' "$SSH_HOST_KEY" > ~/.ssh/known_hosts
+          else
+            echo "::warning::DEPLOY_SSH_HOST_KEY is not set — accepting the host key on first sight."
+            ssh-keyscan -t rsa,ecdsa,ed25519 "$SSH_HOST" >> ~/.ssh/known_hosts || {
+              echo "::error::ssh-keyscan could not reach $SSH_HOST."
+              exit 1
+            }
+          fi
+
+          # Script on stdin, so nothing in it is re-parsed by the remote shell.
+          set -o pipefail
+          ssh -i ~/.ssh/mail_key -o BatchMode=yes -o ConnectTimeout=20 \
+            "$SSH_USER@$SSH_HOST" "REF='$ref' bash -s" \
+            < .github/scripts/deploy-mail-apply.sh 2>&1 | tee apply.txt
+          status=${PIPESTATUS[0]}
+
+          {
+            echo "### Mail stack apply"
+            echo
+            echo '```'
+            cat apply.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$status" -ne 0 ]; then
+            echo "::error::The apply failed — read the output above. The mailserver may be down."
+            exit 1
+          fi
+
+          # The point of the whole run. A successful `up -d` that leaves the app
+          # unable to reach the mailserver has changed nothing worth having, so
+          # it must not report success.
+          if grep -q 'RESULT: FIXED' apply.txt; then
+            echo "::notice::The app can now reach the mailserver."
+          elif grep -q 'RESULT: STILL BROKEN' apply.txt; then
+            echo "::error::Applied, but the app still cannot reach the mailserver. See the output above."
+            exit 1
+          else
+            echo "::warning::Could not determine whether the app can reach the mailserver — run the Mail doctor workflow."
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mail-stack-apply
+          path: apply.txt
+          retention-days: 14
+          if-no-files-found: ignore
