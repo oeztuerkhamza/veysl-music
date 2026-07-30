@@ -420,11 +420,22 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
+          # Every VERDICT line the remote script can emit that means "mail
+          # cannot work", plus the stale-image marker. Anything not listed here
+          # would be reported green, so this list and the script's VERDICT lines
+          # have to be kept in step — that is why they share the literal
+          # "VERDICT:" prefix.
           if [ "$status" != ok ]; then
             echo "verdict=failed" >> "$GITHUB_OUTPUT"
-          elif grep -qE 'VERDICT: (the queue is NOT empty|outbound TCP/25 looks BLOCKED)' server.txt; then
+          elif grep -qE 'VERDICT: (the queue is NOT empty|outbound TCP/25 looks BLOCKED|NO shared network|the app CANNOT open a TCP connection)' server.txt; then
             echo "verdict=problems" >> "$GITHUB_OUTPUT"
           elif grep -q "was never started" server.txt; then
+            echo "verdict=problems" >> "$GITHUB_OUTPUT"
+          elif grep -q "MODULE_NOT_FOUND" server.txt; then
+            # The running image predates the commit that copies scripts/ into
+            # it, so the container is out of date with master. Worth failing on:
+            # a deployment several commits behind is the reason a fix "does not
+            # work" often enough to be the first thing to rule out.
             echo "verdict=problems" >> "$GITHUB_OUTPUT"
           else
             echo "verdict=ok" >> "$GITHUB_OUTPUT"
