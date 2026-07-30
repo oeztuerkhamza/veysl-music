@@ -38,7 +38,7 @@ MAIL_CONTAINER=${MAIL_CONTAINER:-mailserver}
 scrub() {
   sed -E \
     -e 's/[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})/…@\1/g' \
-    -e 's/\+?[0-9][0-9 ()\/-]{7,}[0-9]/(phone redacted)/g' \
+    -e 's/(^|[^0-9A-Za-z:])(\+[0-9][0-9 ()\/-]{7,}[0-9]|0[0-9][0-9 ()\/-]{7,}[0-9])/\1(phone redacted)/g' \
     -e 's/^([[:space:]]*(SMTP_PASS|RESEND_API_KEY|MAIL_HEALTH_TOKEN|PAYLOAD_SECRET)[[:space:]]*=).*/\1 (redacted by CI)/'
 }
 
