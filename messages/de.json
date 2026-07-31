@@ -1350,12 +1350,12 @@
   "blog": {
     "meta": {
       "title": "Ratgeber: Hochzeits-DJ, Musik & Planung | DJ Veys",
-      "description": "{count} ausführliche Guides zu Hochzeits-DJ, Musik, Technik, Kosten und deutsch-türkischen Hochzeiten — von DJ Veys, DJ & Orkestra aus Stuttgart."
+      "description": "{count, plural, one {Ein ausführlicher Guide} other {# ausführliche Guides}} zu Hochzeits-DJ, Musik, Technik, Kosten und deutsch-türkischen Hochzeiten — aus über 12 Jahren Praxis."
     },
     "index": {
       "eyebrow": "Ratgeber",
       "title": "Ratgeber für Ihre Hochzeit",
-      "subtitle": "{count} ausführliche Guides zu Planung, Musik, Technik und deutsch-türkischen Hochzeiten — geschrieben aus über 12 Jahren Praxis.",
+      "subtitle": "{count, plural, one {Ein ausführlicher Guide} other {# ausführliche Guides}} zu Planung, Musik, Technik und deutsch-türkischen Hochzeiten — geschrieben aus über 12 Jahren Praxis.",
       "updated": "Zuletzt aktualisiert am {date}",
       "meta": {
         "emptyDescription": "Der Ratgeber von DJ Veys zu Hochzeits-DJ, Musik und Planung — diese Sprache folgt in Kürze."

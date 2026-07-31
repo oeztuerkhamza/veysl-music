@@ -1350,12 +1350,12 @@
   "blog": {
     "meta": {
       "title": "Wedding Guide: DJ, Music & Planning | DJ Veys",
-      "description": "{count} in-depth guides on wedding DJs, music, technology, cost and German-Turkish weddings — from DJ Veys, DJ & Orkestra based in Stuttgart."
+      "description": "{count, plural, one {One in-depth guide} other {# in-depth guides}} on wedding DJs, music, technology, costs and German-Turkish weddings — from over 12 years of practice."
     },
     "index": {
       "eyebrow": "Guide",
       "title": "Wedding planning guide",
-      "subtitle": "{count} in-depth guides on planning, music, technology and German-Turkish weddings — written from over 12 years of hands-on experience.",
+      "subtitle": "{count, plural, one {One in-depth guide} other {# in-depth guides}} on planning, music, technology and German-Turkish weddings — written from over 12 years of hands-on experience.",
       "updated": "Last updated on {date}",
       "meta": {
         "emptyDescription": "DJ Veys's guide to wedding DJs, music and planning — this language is coming soon."

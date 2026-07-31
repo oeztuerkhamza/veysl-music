@@ -1245,12 +1245,12 @@
   "blog": {
     "meta": {
       "title": "Gids: bruiloft-DJ, muziek & planning | DJ Veys",
-      "description": "{count} uitgebreide gidsen over bruiloft-DJ, muziek, techniek, kosten en Duits-Turkse bruiloften — van DJ Veys, DJ & Orkestra uit Stuttgart."
+      "description": "{count, plural, one {Eén uitgebreide gids} other {# uitgebreide gidsen}} over bruiloft-dj, muziek, techniek, kosten en Duits-Turkse bruiloften — uit ruim 12 jaar praktijk."
     },
     "index": {
       "eyebrow": "Gids",
       "title": "Gids voor uw bruiloft",
-      "subtitle": "{count} uitgebreide gidsen over planning, muziek, techniek en Duits-Turkse bruiloften — geschreven vanuit ruim 12 jaar praktijk.",
+      "subtitle": "{count, plural, one {Eén uitgebreide gids} other {# uitgebreide gidsen}} over planning, muziek, techniek en Duits-Turkse bruiloften — geschreven vanuit ruim 12 jaar praktijk.",
       "updated": "Laatst bijgewerkt op {date}",
       "meta": {
         "emptyDescription": "De gids van DJ Veys over bruiloft-DJ, muziek en planning — binnenkort ook in het Nederlands."

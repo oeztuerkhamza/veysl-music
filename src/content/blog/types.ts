@@ -38,8 +38,24 @@
 import type { Locale } from '@/i18n/routing';
 import type { StaticPathname } from '@/lib/seo';
 
-/** Locales this corpus is actually written in today. ku/fr/es are a deliberate backlog — see docs/BLOG-PLAN.md. */
-export const BLOG_LOCALES = ['de', 'tr', 'en'] as const;
+/**
+ * Locales the Ratgeber can appear in at all.
+ *
+ * Listing a locale here does **not** claim every article exists in it.
+ * `getReadyLocalesForPost()` filters per post, and `resolveBlogLocale()`
+ * returns `null` rather than falling back to German — so a half-translated
+ * language shows exactly the articles that are really translated and nothing
+ * else, in the index, in hreflang and in the sitemap alike. That is what makes
+ * it safe to open nl/fr/es before all seventeen posts are done.
+ *
+ * `ku` is deliberately absent, and not because of effort. The Kurmancî
+ * articles need a native speaker: `src/i18n/routing.ts` already flags even the
+ * Kurdish *slugs* as awaiting a translator, and a fifteen-thousand-word corpus
+ * nobody on this project can proofread would be exactly the machine-translated
+ * filler this codebase refuses everywhere else. The moment real Kurmancî copy
+ * exists, adding `'ku'` here and one `ku:` block per post is the whole change.
+ */
+export const BLOG_LOCALES = ['de', 'tr', 'en', 'nl', 'fr', 'es'] as const;
 export type BlogLocale = (typeof BLOG_LOCALES)[number];
 
 /**
@@ -134,10 +150,25 @@ export type BlogTranslations = { de: BlogLocaleContent; tr: BlogLocaleContent; e
  * do a straight find-and-replace, which is what "turn a real event into a post in
  * fifteen minutes" (per the brief) actually requires.
  */
+/**
+ * de/tr/en are mandatory, every further blog locale optional — the same rule
+ * `BlogTranslations` follows, for the same reason: a locale is added to
+ * `BLOG_LOCALES` as soon as it *can* carry articles, which is long before
+ * every string in it exists.
+ *
+ * Previously `Record<BlogLocale, string>`, which quietly coupled these editor
+ * labels to the published-locale list: opening nl/fr/es to the Ratgeber turned
+ * into 60 type errors in two recap templates that have nothing to do with
+ * which languages readers can browse.
+ */
+type BlogEditorText = { de: string; tr: string; en: string } & Partial<
+  Record<Exclude<BlogLocale, 'de' | 'tr' | 'en'>, string>
+>;
+
 export interface BlogTemplateField {
   key: string;
-  label: Record<BlogLocale, string>;
-  hint: Record<BlogLocale, string>;
+  label: BlogEditorText;
+  hint: BlogEditorText;
   example?: string;
 }
 

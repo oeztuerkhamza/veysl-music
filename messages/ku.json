@@ -1245,12 +1245,12 @@
   "blog": {
     "meta": {
       "title": "Rêbername: DJ'ê dawetê, muzîk & plansazî | DJ Veys",
-      "description": "{count} rêbernameyên berfireh derbarê DJ'ê dawetê, muzîk, teknîk, lêçûn û dawetên alman-tirk de — ji DJ Veys, DJ & Orkestra ji Stuttgartê."
+      "description": "{count, plural, one {Rêbernameyek berfireh} other {# rêbernameyên berfireh}} derbarê DJ’ê dawetê, muzîk, teknîk, mesref û dawetên alman-tirkî — ji zêdetirî 12 salan ezmûnê."
     },
     "index": {
       "eyebrow": "Rêbername",
       "title": "Rêbername ji bo daweta we",
-      "subtitle": "{count} rêbernameyên berfireh derbarê plansazî, muzîk, teknîk û dawetên alman-tirk de — ji zêdetirî 12 salan tecrûbeya pratîkê hatine nivîsîn.",
+      "subtitle": "{count, plural, one {Rêbernameyek berfireh} other {# rêbernameyên berfireh}} derbarê plansazî, muzîk, teknîk û dawetên alman-tirkî — ji zêdetirî 12 salan ezmûnê hatiye nivîsandin.",
       "updated": "Cara dawî hat nûkirin: {date}",
       "meta": {
         "emptyDescription": "Rêbernameya DJ Veys derbarê DJ'ê dawetê, muzîk û plansaziyê de — bi vî zimanî di demeke nêz de."

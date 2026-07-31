@@ -1245,12 +1245,12 @@
   "blog": {
     "meta": {
       "title": "Guide mariage : DJ, musique & organisation | DJ Veys",
-      "description": "{count} guides détaillés sur le DJ de mariage, la musique, la technique, le budget et les mariages germano-turcs — par DJ Veys, DJ & orchestre à Stuttgart."
+      "description": "{count, plural, one {Un guide détaillé sur le DJ de mariage, la musique, la technique, les coûts et les mariages germano-turcs — issu de plus de 12 ans de pratique.} other {# guides détaillés sur le DJ de mariage, la musique, la technique, les coûts et les mariages germano-turcs — issus de plus de 12 ans de pratique.}}"
     },
     "index": {
       "eyebrow": "Guide",
       "title": "Le guide de votre mariage",
-      "subtitle": "{count} guides détaillés sur l’organisation, la musique, la technique et les mariages germano-turcs — écrits à partir de plus de 12 ans de pratique.",
+      "subtitle": "{count, plural, one {Un guide détaillé sur l’organisation, la musique, la technique et les mariages germano-turcs — écrit à partir de plus de 12 ans de pratique.} other {# guides détaillés sur l’organisation, la musique, la technique et les mariages germano-turcs — écrits à partir de plus de 12 ans de pratique.}}",
       "updated": "Dernière mise à jour le {date}",
       "meta": {
         "emptyDescription": "Le guide DJ Veys sur le DJ de mariage, la musique et l’organisation — la version française arrive bientôt."
