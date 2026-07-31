@@ -259,10 +259,23 @@ export default async function IslamischeHochzeitPage({ params }: PageProps) {
                 title={t('cta.title')}
                 lead={t('cta.subtitle')}
               />
-              <div className="mt-8 flex justify-center">
+              {/* Zweiter Weg zu Umfang und Preisrahmen. Bis hierher endete die
+                  Seite ausschließlich im Anfrageformular — wer überzeugt war,
+                  aber vor dem Formular erst wissen wollte, was ein Paket
+                  überhaupt umfasst, hatte von dieser Seite aus keinen Pfad
+                  dorthin. Beschriftet mit `nav.packages`, das in allen sieben
+                  Sprachen bereits übersetzt ist: kein neuer Copy-String für
+                  einen Link, den der Header ohnehin so benennt. */}
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <Button href="/anfrage" variant="gold" size="lg">
                   {t('cta.button')}
                 </Button>
+                <Link
+                  href="/pakete"
+                  className="text-sm text-ink-muted underline underline-offset-4 transition-colors hover:text-ink"
+                >
+                  {tRoot('nav.packages')}
+                </Link>
               </div>
             </div>
           </Reveal>

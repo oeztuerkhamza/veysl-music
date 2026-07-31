@@ -58,11 +58,24 @@ function navItemsFor(locale: Locale) {
  * The bar itself carries five links, not the full set. Eight items at 1024 px
  * already forced the whole navigation — language switcher included — behind a
  * single low contrast icon, which read as "the menu is gone", and the list has
- * since grown to ten. Five fit comfortably; the full set always lives one
+ * since grown to eleven. Five fit comfortably; the full set always lives one
  * click away in the overlay, which now opens at every width rather than being
  * a mobile fallback.
+ *
+ * `islamicWedding` took the slot that `music` used to hold, rather than
+ * becoming a sixth item: five is a measured limit here, not a preference, and
+ * a sixth entry would push the bar back into the collapsed state that this
+ * list was trimmed to avoid. Music keeps its place in the overlay, one click
+ * away, which is where seven of the eleven entries already live.
  */
-const PRIMARY_KEYS = new Set(['services', 'packages', 'weddings', 'music', 'contact']);
+const PRIMARY_KEYS = new Set(['services', 'islamicWedding', 'packages', 'weddings', 'contact']);
+
+/**
+ * Fallback for locales without the islamic page (ku): without it the bar would
+ * simply show four links there instead of five. `music` is the entry that
+ * gave up the slot, so it is also the one that takes it back.
+ */
+const PRIMARY_FALLBACK_KEY = 'music';
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -71,7 +84,10 @@ export function Header() {
   const t = useTranslations('nav');
   const locale = useLocale() as Locale;
   const navItems = navItemsFor(locale);
-  const primaryItems = navItems.filter((item) => PRIMARY_KEYS.has(item.key));
+  const primaryKeys = navItems.some((item) => item.key === 'islamicWedding')
+    ? PRIMARY_KEYS
+    : new Set([...PRIMARY_KEYS, PRIMARY_FALLBACK_KEY]);
+  const primaryItems = navItems.filter((item) => primaryKeys.has(item.key));
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
