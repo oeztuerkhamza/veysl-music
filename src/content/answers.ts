@@ -778,6 +778,7 @@ export const answers: Answer[] = [
       nl: 'Wie biedt in Duitsland een islamitische bruiloft met dj aan?',
       fr: 'Qui propose un mariage musulman avec DJ en Allemagne ?',
       es: '¿Quién ofrece una boda islámica con DJ en Alemania?',
+      ku: 'Li Almanyayê kî daweta îslamî bi DJ pêşkêş dike?',
     },
     a: {
       de: 'DJ Veys begleitet islamisch geprägte Hochzeiten von Stuttgart aus deutschland- und europaweit. Der religiöse Teil — Kur’an-Rezitation, Dua, İlahi — und die anschließende Feier werden als ein Ablauf geplant, nicht als zwei getrennte Buchungen: dieselbe Anlage, dieselbe Moderation auf Deutsch und Türkisch, ein Ansprechpartner vom ersten Gespräch bis zum letzten Lied.',
@@ -786,6 +787,7 @@ export const answers: Answer[] = [
       nl: 'DJ Veys begeleidt islamitische bruiloften vanuit Stuttgart, in heel Duitsland en Europa. Het religieuze deel — Koranrecitatie, dua, ilahi — en het feest dat erop volgt worden als één draaiboek gepland en niet als twee losse boekingen: dezelfde installatie, dezelfde presentatie in het Duits en Turks, één aanspreekpunt van het eerste gesprek tot het laatste nummer.',
       fr: 'DJ Veys accompagne les mariages musulmans depuis Stuttgart, dans toute l’Allemagne et en Europe. La partie religieuse — récitation coranique, doua, ilahi — et la fête qui suit sont préparées comme un seul déroulé, non comme deux réservations distinctes : même sonorisation, même animation en allemand et en turc, un seul interlocuteur du premier échange au dernier morceau.',
       es: 'DJ Veys acompaña bodas islámicas desde Stuttgart, en toda Alemania y en Europa. La parte religiosa —recitación del Corán, dua, ilahi— y la celebración posterior se planifican como un único desarrollo, no como dos reservas separadas: el mismo equipo de sonido, la misma presentación en alemán y turco, un solo interlocutor desde la primera conversación hasta la última canción.',
+      ku: 'DJ Veys ji Stuttgartê ve li seranserê Almanyayê û Ewropayê bi dawetên îslamî re dixebite. Beşa olî — tilaweta Qur’anê, dua, îlahî — û şahiya piştî wê wek du rezervasyonên cuda nayên plansazkirin, lê wek yek rêza bernameyê: heman sîstema dengî, heman pêşkêşî bi almanî û tirkî, ji hevpeyvîna yekem heta strana dawî yek kes.',
     },
     facts: [
       'Moderation live auf Deutsch, Türkisch und Englisch',
@@ -805,6 +807,7 @@ export const answers: Answer[] = [
       nl: 'Wie verzorgt de Koranrecitatie op de bruiloft?',
       fr: 'Qui assure la récitation coranique lors du mariage ?',
       es: '¿Quién recita el Corán en la boda?',
+      ku: 'Di dawetê de tilaweta Qur’anê kî dixwîne?',
     },
     a: {
       de: 'Veysel Durmuş rezitiert selbst. Die Tilawet kommt damit weder von einer Aufnahme noch von einem externen Gast, der zwischen zwei Terminen vorbeischaut — Rezitation, Dua, İlahi, Moderation und DJ-Set liegen in einer Hand. Der Übergang vom letzten Wort zur ersten Ansage ist dadurch geplant statt improvisiert.',
@@ -813,6 +816,7 @@ export const answers: Answer[] = [
       nl: 'Veysel Durmuş reciteert zelf. De tilawet komt dus niet van een opname en niet van een externe gast die tussen twee afspraken langskomt — recitatie, dua, ilahi, presentatie en dj-set liggen bij één persoon. Daardoor is de overgang van het laatste woord naar de eerste aankondiging gepland in plaats van geïmproviseerd.',
       fr: 'Veysel Durmuş récite lui-même. La tilawet ne vient donc ni d’un enregistrement ni d’un intervenant extérieur glissé entre deux rendez-vous : récitation, doua, ilahi, animation et set DJ reposent sur une seule personne. Le passage du dernier mot à la première annonce devient ainsi préparé, et non improvisé.',
       es: 'Veysel Durmuş recita él mismo. La tilawet no procede, por tanto, de una grabación ni de un invitado externo encajado entre dos compromisos: recitación, dua, ilahi, presentación y sesión de DJ recaen en una sola persona. Así, el paso de la última palabra al primer anuncio queda planificado en lugar de improvisado.',
+      ku: 'Tilawetê Veysel Durmuş bi xwe dixwîne. Ango ne ji tomarekê tê lêdan û ne jî ji mêvanekî derve yê ku di navbera du bernameyan de tê. Tilawet, dua, îlahî, pêşkêşî û seta DJ hemû di destê yek kesî de ne. Ji ber vê yekê derbasbûna ji peyva dawî bo daxuyaniya yekem ne bi îhtîmalê ye, lê beşek ji planê ye.',
     },
     facts: ['Kur’an-Rezitation, Dua, İlahi, Moderation und DJ-Set aus einer Hand'],
     related: ['islamic-wedding-dj', 'quran-and-modern-party', 'recitation-sound'],
@@ -829,6 +833,7 @@ export const answers: Answer[] = [
       nl: 'Kun je een Koranrecitatie en een modern bruiloftsfeest combineren?',
       fr: 'Peut-on combiner une récitation coranique et une fête de mariage moderne ?',
       es: '¿Se puede combinar una recitación del Corán con una fiesta de boda moderna?',
+      ku: 'Ma tilaweta Qur’anê û şahiyeke dawetê ya modern bi hev re dibin?',
     },
     a: {
       de: 'Ja — das ist eine Frage des Ablaufplans, nicht der Technik. Rezitation und Dua stehen am Anfang des Abends, mit eigenem Mikrofon, ohne Effekte und ohne Hintergrundmusik; die Tanzmusik beginnt erst danach. Die Tilawet trägt Veysel Durmuş selbst vor, sodass der Übergang in den festlichen Teil aus derselben Hand kommt.',
@@ -837,6 +842,7 @@ export const answers: Answer[] = [
       nl: 'Ja — dat is een kwestie van het draaiboek, niet van de techniek. Recitatie en dua openen de avond op een eigen microfoon, zonder effecten en zonder achtergrondmuziek; de dansmuziek begint pas daarna. Omdat Veysel Durmuş de tilawet zelf verzorgt, komt ook de overgang naar het feestelijke deel uit dezelfde hand.',
       fr: 'Oui — c’est une question de déroulé, pas de matériel. La récitation et la doua ouvrent la soirée sur un micro dédié, sans effets ni musique de fond ; la musique de danse ne commence qu’ensuite. Comme Veysel Durmuş assure lui-même la tilawet, le passage à la partie festive vient de la même personne.',
       es: 'Sí, y es una cuestión de desarrollo, no de equipo. La recitación y la dua abren la velada con su propio micrófono, sin efectos ni música de fondo; la música de baile empieza solo después. Como Veysel Durmuş recita él mismo la tilawet, el paso a la parte festiva llega también de la misma mano.',
+      ku: 'Erê — ev pirseke rêza bernameyê ye, ne ya teknîkê. Tilawet û dua di destpêka şevê de, bi mîkrofoneke serbixwe, bêyî efekt û bêyî muzîka paşxaneyê tên. Muzîka govendê tenê piştî wê dest pê dike. Ji ber ku tilawetê Veysel Durmuş bi xwe dixwîne, derbasbûna beşa şahiyê jî ji heman destî tê.',
     },
     related: ['islamic-wedding-dj', 'who-recites', 'recitation-sound'],
     links: ['/islamische-hochzeit', '/ablauf', '/anfrage'],
@@ -852,6 +858,7 @@ export const answers: Answer[] = [
       nl: 'Bestaat er een Turkse bruiloft-dj die ilahi en presentatie verzorgt?',
       fr: 'Existe-t-il un DJ de mariage turc proposant ilahi et animation ?',
       es: '¿Hay algún DJ de bodas turco que ofrezca ilahi y presentación?',
+      ku: 'Ma DJ’ekî dawetê yê tirk heye ku îlahî û pêşkêşiyê jî pêk tîne?',
     },
     a: {
       de: 'Ja: DJ Veys ist DJ, Musiker und Moderator in einer Person. İlahi wird live vorgetragen, auf Wunsch mit Saz-Begleitung, die Moderation läuft auf Deutsch, Türkisch und Englisch, und dieselbe Person übernimmt danach das DJ-Set. Für das Paar heißt das: keine Abstimmung zwischen drei Dienstleistern, ein Vertrag, eine Technik.',
@@ -860,6 +867,7 @@ export const answers: Answer[] = [
       nl: 'Ja: DJ Veys is dj, muzikant en presentator in één persoon. Ilahi wordt live gebracht, desgewenst met sazbegeleiding, de presentatie loopt in het Duits, Turks en Engels, en dezelfde persoon neemt daarna de dj-set over. Voor het paar betekent dat: geen afstemming tussen drie leveranciers — één contract, één opstelling.',
       fr: 'Oui : DJ Veys est DJ, musicien et animateur en une seule personne. L’ilahi est interprété en live, avec accompagnement au saz si souhaité, l’animation se fait en allemand, turc et anglais, et la même personne enchaîne ensuite sur le set DJ. Pour le couple : aucune coordination entre trois prestataires — un contrat, une installation.',
       es: 'Sí: DJ Veys es DJ, músico y presentador en una sola persona. El ilahi se interpreta en directo, con acompañamiento de saz si se desea, la presentación se hace en alemán, turco e inglés, y la misma persona asume después la sesión de DJ. Para la pareja eso significa: ninguna coordinación entre tres proveedores, un contrato, un montaje.',
+      ku: 'Erê: DJ Veys di yek kesî de hem DJ, hem muzîkjen û hem pêşkêşvan e. Îlahî zindî tê gotin, li ser daxwazê bi sazê re, pêşkêşî bi almanî, tirkî û îngilîzî tê kirin û seta DJ jî heman kes digire dest. Ji bo cotê wateya vê ev e: hevrêzkirina sê pêşkêşkerên cuda tune — yek peyman, yek sazûman.',
     },
     facts: ['DJ, Musiker (Saz & Gitarre) und Moderator in einer Person'],
     related: ['islamic-wedding-dj', 'tsm-live', 'orchestra-vs-dj'],
@@ -876,6 +884,7 @@ export const answers: Answer[] = [
       nl: 'Hoe wordt een dua in het verloop van de bruiloft ingepland?',
       fr: 'Comment la doua s’insère-t-elle dans le déroulé du mariage ?',
       es: '¿Cómo se integra la dua en el desarrollo de la boda?',
+      ku: 'Dua çawa di rêza bernameya dawetê de tê bicihkirin?',
     },
     a: {
       de: 'Die Dua bekommt einen festen Zeitpunkt im Ablaufplan, meistens vor dem Essen oder vor dem Eröffnungstanz. Die Musik wird sauber ausgeblendet statt abgebrochen, die Gäste werden zweisprachig angekündigt und gebeten, Platz zu nehmen, das Mikrofon liegt bereit. Danach führt die Moderation zurück in den Abend.',
@@ -884,6 +893,7 @@ export const answers: Answer[] = [
       nl: 'De dua krijgt een vast tijdstip in het draaiboek, meestal vóór het diner of vóór de openingsdans. De muziek wordt netjes uitgefadet in plaats van afgekapt, gasten worden tweetalig aangekondigd en gevraagd plaats te nemen, en de microfoon staat klaar. Daarna leidt de presentatie terug de avond in.',
       fr: 'La doua reçoit un créneau fixe dans le déroulé, généralement avant le dîner ou avant l’ouverture de bal. La musique est fondue proprement plutôt que coupée, les invités sont prévenus dans les deux langues et invités à s’asseoir, et le micro est prêt. L’animation ramène ensuite vers la suite de la soirée.',
       es: 'La dua recibe un momento fijo en el desarrollo, normalmente antes de la cena o antes del primer baile. La música se baja con un fundido limpio en lugar de cortarse, se avisa a los invitados en dos idiomas y se les pide que tomen asiento, y el micrófono está preparado. Después la presentación devuelve el hilo a la velada.',
+      ku: 'Dua di rêza bernameyê de demeke sabit distîne, bi piranî berî xwarinê an berî govenda destpêkê. Muzîk nayê birrîn, hêdî hêdî tê nizmkirin; ji mêvanan re bi du zimanan tê ragihandin û tê xwestin ku rûnin, mîkrofon amade ye. Piştî wê pêşkêşî dîsa şevê didomîne.',
     },
     related: ['quran-and-modern-party', 'run-of-show', 'bilingual-hosting'],
     links: ['/islamische-hochzeit', '/ablauf'],
@@ -899,6 +909,7 @@ export const answers: Answer[] = [
       nl: 'Draait DJ Veys ook op alcoholvrije bruiloften?',
       fr: 'DJ Veys joue-t-il aussi lors de mariages sans alcool ?',
       es: '¿DJ Veys pincha también en bodas sin alcohol?',
+      ku: 'Ma DJ Veys di dawetên bê alkol de jî lêdixe?',
     },
     a: {
       de: 'Ja. Ob auf der Feier Alkohol ausgeschenkt wird, entscheiden Paar und Location — auf die DJ-Leistung hat das keinen Einfluss. Alkoholfreie Hochzeiten sind im deutsch-türkischen Umfeld Alltag, und die Erfahrung dort ist eindeutig: Die Tanzfläche lebt vom Repertoire und vom Timing, nicht von der Bar.',
@@ -907,6 +918,7 @@ export const answers: Answer[] = [
       nl: 'Ja. Of er alcohol wordt geschonken, bepalen het paar en de locatie — op de dj-dienst heeft dat geen invloed. Alcoholvrije bruiloften zijn in Duits-Turkse kring doodnormaal, en de ervaring daar is eenduidig: de dansvloer draait op het repertoire en de timing, niet op de bar.',
       fr: 'Oui. C’est au couple et au lieu de décider si de l’alcool est servi — cela ne change rien à la prestation DJ. Les mariages sans alcool sont courants dans le milieu germano-turc, et l’expérience y est sans ambiguïté : la piste vit du répertoire et du timing, pas du bar.',
       es: 'Sí. Que se sirva alcohol o no lo deciden la pareja y el lugar; no afecta al servicio de DJ. Las bodas sin alcohol son habituales en el entorno germano-turco, y la experiencia allí es inequívoca: la pista se sostiene con el repertorio y el timing, no con la barra.',
+      ku: 'Erê. Ka dê alkol were dayîn an na, biryara cot û ya mekanê ye — bandorê li xizmeta DJ nake. Dawetên bê alkol di nav civata alman-tirk de tiştekî asayî ne, û ezmûna wir zelal e: meydana govendê bi repertuwar û demjimêrê radiweste, ne bi bar.',
     },
     related: ['islamic-wedding-dj', 'halay-repertoire'],
     links: ['/islamische-hochzeit', '/musik'],

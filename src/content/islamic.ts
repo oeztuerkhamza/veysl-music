@@ -31,13 +31,16 @@ import type { Locale } from '@/i18n/routing';
  * Dokument der ganzen Domain, und sie ist mit ~700 Wörtern billiger zu
  * übersetzen als jeder einzelne Ratgeber-Artikel.
  *
- * `ku` fehlt weiterhin, aus demselben Grund wie beim Blog (siehe
- * `BLOG_LOCALES`): hreflang für eine Sprache zu behaupten, in der nur eine
- * maschinelle Übersetzung stünde, ist schlechter als sie wegzulassen — und bei
- * einem religiösen Thema ist eine schiefe Übersetzung kein SEO-Problem,
- * sondern ein Glaubwürdigkeitsproblem.
+ * ⚠️ `ku` ist auf ausdrücklichen Wunsch des Kunden dazugekommen und trägt
+ * denselben Vorbehalt wie die kurdischen Slugs in `src/i18n/routing.ts`:
+ * **zur Prüfung durch einen Muttersprachler markiert.** Der Vorbehalt ist
+ * bewusst hier notiert und nicht stillschweigend übergangen — die religiösen
+ * Begriffe selbst (Tilawet, Dua, Îlahî) sind arabische Lehnwörter und in
+ * kurdischsprachigen muslimischen Gemeinden identisch gebräuchlich, das Risiko
+ * liegt im Satzbau, nicht in der Terminologie. Bis zur Freigabe gilt: lieber
+ * eine geprüfte Korrektur als eine stillschweigende Annahme, dass es passt.
  */
-export const ISLAMIC_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'tr', 'en', 'nl', 'fr', 'es'];
+export const ISLAMIC_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'tr', 'en', 'nl', 'fr', 'es', 'ku'];
 
 export function isIslamicLocale(locale: Locale): boolean {
   return ISLAMIC_SUPPORTED_LOCALES.includes(locale);

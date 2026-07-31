@@ -6,6 +6,7 @@
     "weddings": "Dawetên Rastîn",
     "music": "Muzîk",
     "process": "Pêvajo & Pirs",
+    "islamicWedding": "Daweta îslamî",
     "questions": "Pirs & Bersiv",
     "guide": "Rêbername",
     "europe": "DJ li Ewropayê",
@@ -485,6 +486,110 @@
       }
     ]
   },
+    "islamic": {
+      "meta": {
+        "title": "Daweta îslamî bi DJ — dua, îlahî û şahî | DJ Veys",
+        "description": "Tilaweta Qur’anê, dua û îlahiya zindî — û piştre meydaneke govendê ya tijî. Yek rêza bernameyê, yek sîstema dengî, yek kes. Stuttgart û seranserê Almanyayê."
+      },
+      "hero": {
+        "eyebrow": "Dawetên îslamî û olî",
+        "title": "Dua û meydana govendê, di heman şevê de",
+        "subtitle": "Tilaweta Qur’anê, dua û îlahî li vir dikevin nav rêza bernameyê, ne nav rezervasyoneke cuda. Piştî wê şahî dest pê dike — herdu ji yek destî, bi pêşkêşiya almanî, tirkî û îngilîzî."
+      },
+      "intro": {
+        "eyebrow": "Pirsa rastîn",
+        "title": "Ma ev herdu bi rastî bi hev re dibin?",
+        "body": "Hema hema her cot li vê xalê du pêşniyarên cuda distîne — yek ji bo beşa olî, yek ji bo şahiyê — û neçar dimîne ku derbasbûnan bi xwe birêve bibe. Şev tam li wir xera dibe: muzîk di nîvê strana de tê birrîn, mêvan nizanin ka dê rûnin an na, û piştî duayê salon sar dibe, ji ber ku kes wê dîsa nade tevgerê. Li vir herdu yek rêza bernameyê ne, ji aliyê wî kesî ve hatiye nivîsandin ku wê şevê bi xwe jî pêk tîne."
+      },
+      "recitation": {
+        "eyebrow": "Cudahî",
+        "title": "Tilawetê ez bi xwe dixwînim",
+        "body": "Tilaweta Qur’anê ne ji tomarekê tê û ne jî ji mêvanekî derve yê ku di navbera du bernameyan de derbas dibe: Veysel Durmuş bi xwe dixwîne. Di pratîkê de wateya vê ev e ku tilawet, dua, îlahî, pêşkêşî û seta DJ hemû di destê yek kesî de ne — ji ber vê yekê derbasbûna ji peyva dawî bo daxuyaniya yekem êdî ne rîsk e, lê beşek ji planê ye."
+      },
+      "program": {
+        "eyebrow": "Pêkhate",
+        "title": "Şev ji çi pêk tê",
+        "lead": "Bi serbestî tên hev. Di hevpeyvîna plansaziyê de bi hev re diyar dikin ka kîjan ji van dê di dawetê we de hebe — û kîjan bi zelalî tune be.",
+        "optionalLabel": "Bi daxwaz",
+        "items": {
+          "tilawet": {
+            "title": "Tilaweta Qur’anê",
+            "text": "Zindî tê xwendin, bi mîkrofoneke serbixwe, bêyî deng-vegerandin û bêyî efekt, bi astek dengî ya diyar nizmtir ji seta govendê. Armanca tenê ya li vir têgihîştin e li seranserê salonê."
+          },
+          "dua": {
+            "title": "Dua",
+            "text": "Di rêza bernameyê de demeke sabit distîne, bi piranî berî xwarinê an berî govenda destpêkê. Berî wê daxuyaniyek bi du zimanan, da ku her mêvan bizane dê çi bibe."
+          },
+          "ilahi": {
+            "title": "Îlahî — zindî",
+            "text": "Zindî tê gotin, li ser daxwazê bi sazê re. Ne playback, ne playlist."
+          },
+          "tsm": {
+            "title": "Türk Sanat Müziği",
+            "text": "Bi piranî di dema xwarinê de an wek beşeke aram di navbera du gerên govendê de — ev jî dikare zindî bi sazê be, ne tenê ji komputerê."
+          },
+          "djset": {
+            "title": "Seta DJ & pêşkêşî",
+            "text": "Tirkî, almanî û navneteweyî tevlihev, ne di blokên cuda de. Pêşkêşî zindî bi almanî, tirkî û îngilîzî."
+          },
+          "afterparty": {
+            "title": "After Wedding Party",
+            "text": "Beşa azadtir piştî ku bernameya fermî diqede — an dîrokeke cuda bi çemberek biçûktir, berî an piştî wê."
+          }
+        }
+      },
+      "timeline": {
+        "eyebrow": "Rêza nimûne",
+        "title": "Şeveke wisa bi rastî çawa diçe",
+        "lead": "Nimûneyek ji pratîkê. Demjimêr, rêzik û dirêjiya her blokê li gorî mekan û hejmara mêvanên we diguhere.",
+        "note": "Ev rêz nimûneyek e, ne pêşniyarek. Rêza bernameya we ya rastîn di hevpeyvîna plansaziyê de derdikeve û paşê bi nivîskî dikeve peymanê.",
+        "steps": {
+          "welcome": {
+            "title": "Pêşwazî",
+            "text": "Muzîkeke paşxaneyê ya aram, mêvan tên. Teknîk ji kontrola dengî ve amade ye."
+          },
+          "tilawet": {
+            "title": "Tilaweta Qur’anê",
+            "text": "Muzîk nayê birrîn, hêdî hêdî tê nizmkirin. Daxuyaniyek bi du zimanan, paşê tilawet."
+          },
+          "dua": {
+            "title": "Dua",
+            "text": "Rasterast piştî wê, heman mîkrofon, heman ast."
+          },
+          "dinner": {
+            "title": "Xwarin",
+            "text": "Türk Sanat Müziği û muzîka enstrumantal a aram, bi astek ku sohbet nabirre."
+          },
+          "ilahi": {
+            "title": "Îlahiya zindî",
+            "text": "Zindî tê gotin, li ser daxwazê bi sazê — derbasbûna ji beşa olî bo beşa şahiyê ya şevê."
+          },
+          "entrance": {
+            "title": "Ketina cotê",
+            "text": "Daxuyanî bi almanî û tirkî, ronahî li ser cotê, muzîk li gorî hilbijartina we."
+          },
+          "dance": {
+            "title": "Meydana govendê",
+            "text": "Halay, Roman Havası, stranên tirkî yên nûjen û setên navneteweyî — tevlihev, ne di blokan de."
+          },
+          "close": {
+            "title": "Girtin",
+            "text": "Strana dawî bi lihevkirinê, paşê rakirin. Demjimêr li gorî mekanê tê diyarkirin."
+          }
+        }
+      },
+      "faq": {
+        "eyebrow": "Pirsên pirûbêj",
+        "title": "Cot li vê xalê çi dipirsin",
+        "more": "Hemû pirs û bersivan bibîne"
+      },
+      "cta": {
+        "eyebrow": "Dîrok",
+        "title": "Ma dîroka we hîn vala ye?",
+        "subtitle": "Dîrok, cih û hejmara texmînî ya mêvanan ji me re bişînin. Bersiva derbarê valahiyê bi piranî di nav 24 saetan de tê.",
+        "button": "Dîrokê bipirse"
+      }
+    },
   "answers": {
     "hero": {
       "eyebrow": "Pirs & Bersiv",

@@ -48,14 +48,16 @@ import type { StaticPathname } from '@/lib/seo';
  * else, in the index, in hreflang and in the sitemap alike. That is what makes
  * it safe to open nl/fr/es before all seventeen posts are done.
  *
- * `ku` is deliberately absent, and not because of effort. The Kurmancî
- * articles need a native speaker: `src/i18n/routing.ts` already flags even the
- * Kurdish *slugs* as awaiting a translator, and a fifteen-thousand-word corpus
- * nobody on this project can proofread would be exactly the machine-translated
- * filler this codebase refuses everywhere else. The moment real Kurmancî copy
- * exists, adding `'ku'` here and one `ku:` block per post is the whole change.
+ * ⚠️ `ku` is on the list, but with exactly one article behind it today — the
+ * religious-wedding guide, written on the client's explicit instruction. It
+ * carries the same caveat as the Kurdish slugs in `src/i18n/routing.ts`:
+ * **flagged for review by a native speaker.** The per-post gating is what
+ * makes that safe to ship: `/ku/reber` shows that one article and nothing
+ * else, so an unreviewed translation can never leak into a locale as if the
+ * whole corpus existed there. Any further Kurmancî article is one `ku:` block
+ * in the relevant post module.
  */
-export const BLOG_LOCALES = ['de', 'tr', 'en', 'nl', 'fr', 'es'] as const;
+export const BLOG_LOCALES = ['de', 'tr', 'en', 'nl', 'fr', 'es', 'ku'] as const;
 export type BlogLocale = (typeof BLOG_LOCALES)[number];
 
 /**

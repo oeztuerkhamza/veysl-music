@@ -726,6 +726,122 @@ Situar la parte religiosa temprano, preparar el sonido para ella y diseñar la t
 conciencia da ambas cosas en plena calidad: un marco digno y una pista llena.
 `.trim();
 
+/**
+ * ⚠️ Kurmancî — zur Prüfung durch einen Muttersprachler markiert, wie die
+ * kurdischen Slugs in `src/i18n/routing.ts` und der `islamic`-Namespace in
+ * `messages/ku.json`. Auf Kundenwunsch geschrieben statt weiter zurückgestellt;
+ * der Vorbehalt steht hier, damit er beim Gegenlesen nicht übersehen wird.
+ */
+export const islamischeHochzeitKu = `
+## Du şahî di şeveke de — û çima ev dilê plansaziyê ye
+
+Daweteke îslamî erkekî datîne ber cotan ku şahiyeke tenê fermî nas nake: divê du hawayên
+pir cuda di şeveke de li tenişta hev bijîn. Beşa olî hêminî, baldarî û têgihîştinê dixwaze.
+Şahiya piştî wê enerjî, deng û meydaneke govendê ya tijî dixwaze. Herdu bê guman bi hev re
+dibin — lê ne bi xwe. Ev pirseke rêza bernameyê ye.
+
+Ji ber vê yekê xeletiya herî pirûbêj ne ya muzîkê ye, lê ya rêxistinê ye: beşa olî û şahî
+cuda tên fikirîn, gelek caran cuda tên rezervekirin, û kes bi zelalî ji derbasbûnê berpirs
+nîne. Şev tam li wir xera dibe — muzîk di nîvê strana de tê birrîn, mêvan nizanin ka dê
+rûnin an na, û piştî duayê salon sar dibe, ji ber ku kes wê dîsa nade tevgerê.
+
+## Kî çi dike: rolan zû zelal bikin
+
+Berî ku behsa demjimêran bê kirin, lîsteyeke sade ya kî kîjan beşê digire dest bêtir kêrhatî ye:
+
+| Erk | Bi gelemperî kî dike | Divê zû zelal be |
+|---|---|---|
+| Tilaweta Qur’anê | Mele, kesek ji malbatê — an DJ/pêşkêşvan bi xwe, eger bixwîne | Bi rastî kî, û çiqas dirêj |
+| Dua | Bi piranî heman kesê ku tilawetê dixwîne | Cihê wê di rêzê de, ne “berî xwarinê carekê” |
+| Îlahî | Zindî tê gotin an ji tomarê | Zindî an playback, bi saz an bê saz |
+| Daxuyanî û derbasbûn | Pêşkêşî | Bi kîjan zimanan, û kî salonê dîsa dide tevgerê |
+| Teknîka beşa olî | Deng û ronahî | Mîkrofona serbixwe, ast, bê efekt |
+
+Rêza çaremîn ya herî zêde tê ji bîr kirin û ya herî diyarker e. Tilawetek ku berî wê
+daxuyaniyeke ji her kesî re fêmbar nehatibe kirin, beşek ji mêvanan bêamade digire — û
+salonek ku nîvê wê hîn li ber bûfeyê ye, wê kêliyê nade heqê wê.
+
+## Rêzika ku di pratîkê de xwe îspat kiriye
+
+Rêzikeke mecbûrî tune ye, û malbat cuda cuda dikin. Lê ya ku di pratîkê de her carê xurt
+derdikeve: beşa olî **di destpêka şevê de**, berî xwarinê, ne di navbera du gerên govendê de.
+
+Sê sedemên pratîkî hene. Ya yekem, mêvan hemû hazir in û hîn bala wan heye. Ya duyem, asta
+dengê şevê wê demê jixwe nizm e, ango derbasbûn biçûk e. Ya sêyem — û ya herî girîng —
+piştî wê divê enerjî tenê hilkişe. Kesê ku beşa olî datîne nav gerek govendê ya berdewam,
+wê gerê dibirre û neçar dimîne cara duyem hewayê ji nû ve ava bike.
+
+## Teknîk: cudahiya di navbera bihîstin û fêmkirinê de
+
+Ji bo beşa olî qaîdeyên teknîkî yên cuda hene. Ew ne balkêş in, lê li ser wan pazar nabe:
+
+- **Mîkrofoneke serbixwe**, bi rêkûpêk hatiye eyarkirin — ne ya destan a ku pêşkêşvan bi
+  tesadufî di dest de ye.
+- **Bê deng-vegerandin, bê efekt.** Tiştê ku li ser dengekî di seta govendê de xweş e,
+  tilawetê zehmettir dike ku bê fêmkirin.
+- **Astek diyar nizmtir** ji seta govendê — armanc têgihîştin e li seranserê salonê, ne
+  bilindahiya dengê.
+- **Ast di kontrola dengî de tê eyarkirin**, ne di wê kêliyê de. Kesê ku di dema tilawetê de
+  destê xwe dide ser eyaran, dereng maye.
+
+## Muzîk: berî çi, piştî çi
+
+Muzîka berî beşa olî divê nizm, enstrumantal û bêdeng be — nayê birrîn, hêdî hêdî tê
+nizmkirin. Nizmbûneke paqij a çend saniyan cudahiya di navbera derbasbûn û birrînê de ye.
+
+Piştî duayê gaveke navîn ji lêdana rasterast a muzîka govendê çêtir dixebite. Îlahî — zindî,
+li ser daxwazê bi sazê — tam ew gav e: hîn ne şahî, êdî ne îbadet. Kesê ku vê blokê derbas
+dike, ji salonê dixwaze ku di saniyeyekê de hawayê xwe biguhere, û ev kêm caran dibe.
+
+Türk Sanat Müziği ji ber heman sedemê ji beşa xwarinê re dibe: têra sohbetê aram, lê ne
+tiştekî bêqîmet.
+
+## Bê alkol şahî kirin — pirseke ku ne pirs e
+
+Gelek cot dipirsin ka şahiyeke bê alkol “zehmettir tê hawayê”. Ezmûna ji civata alman-tirk,
+ku li wir ev tiştekî asayî ye, bi zelalî dibêje na. Meydana govendê bi repertuwar, bi
+demjimêr û bi pêşkêşiyê radiweste — ne bi bar. Kesê ku berevajiyê wê dibêje, bi piranî
+pirsgirêka repertuwarê heye, ne ya vexwarinê.
+
+## Pirzimanî: cihê ku hawa lê çêdibe an lê winda dibe
+
+Di lîsteyeke mêvanan a ji du cîhanên zimanî de, pêşkêşî bi giranî diyar dike ka her kes xwe
+muxatab hîs dike an na. Girîng ne ew e ku her hevok du caran bê gotin, lê ew e ku **herdu
+kom bizanin di wê kêliyê de çi diqewime** — nemaze berî beşa olî. Daxuyaniyeke ku komeke
+mêvanan bi awayekî pratîk li derve dihêle, hawayê bi awayekî berbiçav kêm dike, muzîk çiqas
+baş be jî.
+
+## Pênc xeletiyên ku dubare dibin
+
+1. **Ji bo tilawet û duayê demeke sabit tune** — tenê “berî xwarinê” ya nezelal.
+2. **Du pêşkêşkerên cuda bêyî rêzeke bernameyê ya hevpar**, her yek bi têgihîştina xwe ya
+   demjimêrê.
+3. **Muzîk tê birrîn li şûna ku hêdî bê nizmkirin**, ku derbasbûnê hişk û bêhemdî bêrêz
+   dike.
+4. **Di navbera dua û meydana govendê de gaveke navîn tune**, ji ber vê yekê salon sekinî
+   dimîne.
+5. **Asta tilawetê di wê kêliyê de tê lêgerîn** li şûna ku di kontrola dengî de bê diyarkirin.
+
+## Ev ji bo hilbijartina pêşkêşkerî çi tê wateyê
+
+Pirsa diyarker a ji pêşkêşkerekî re ne “tu muzîka tirkî jî lê didî?” ye, lê ev e: **kî
+derbasbûnê digire ser xwe?** Eger tilawet, dua, îlahî, pêşkêşî û seta DJ ji yek destî bên,
+hevrêzkirina çend bernameyên demê ji holê radibe — û bi wê re çavkaniya xeletiyê ya herî
+pirûbêj a şevê jî.
+
+Li cem DJ Veys ev pêkhate bi rastî di destê yek kesî de ne: tilaweta Qur’anê Veysel Durmuş
+bi xwe dixwîne, îlahî zindî tê lêdan, pêşkêşî bi almanî, tirkî û îngilîzî tê kirin, û seta
+DJ jî heman kes digire dest. Rêzeke nimûne ya berfireh bi demjimêran li ser rûpela daweta
+îslamî heye.
+
+## Encam
+
+Daweteke îslamî ne rewşeke taybet e ku tawîzên taybet dixwaze — ew şeveke bi du beşan e ku
+li şûna du rezervasyonên cuda yek rêza bernameyê ya bifikirî dixwaze. Kesê ku beşa olî zû
+datîne, teknîka wê pêşî amade dike û derbasbûnê bi zanebûn ava dike, herduyan bi qalîteya
+tam distîne: çarçoveyeke bi rûmet û meydaneke govendê ya tijî.
+`.trim();
+
 export const islamischeHochzeitPost: BlogPost = {
   id: 'islamische-hochzeit-planen',
   slug: 'islamische-hochzeit-planen',
@@ -809,6 +925,18 @@ export const islamischeHochzeitPost: BlogPost = {
         metaTitle: 'Organizar una boda islámica: desarrollo y dua | DJ Veys',
         metaDescription:
           'Planificar recitación del Corán, dua y fiesta en una noche: el orden que funciona, el sonido de la parte religiosa y los cinco errores más comunes.',
+      },
+    },
+    ku: {
+      slug: 'plansaziya-daweta-islami',
+      title: 'Plansaziya daweta îslamî: rêza bernameyê, dua û şahî di şeveke de',
+      excerpt:
+        'Daweteke îslamî şeveke bi du beşan e — çarçoveya olî û şahiya piştî wê. Ev rêbername nîşan dide kîjan rêzik xwe îspat dike, beşa olî çi teknîkê dixwaze û kîjan pênc xeletî her carê dubare dibin.',
+      body: islamischeHochzeitKu,
+      seo: {
+        metaTitle: 'Plansaziya daweta îslamî: rêz & dua | DJ Veys',
+        metaDescription:
+          'Tilaweta Qur’anê, dua û şahî di şeveke de plansaz bikin: rêzika ku dixebite, teknîka beşa olî û pênc xeletiyên herî pirûbêj.',
       },
     },
   },
