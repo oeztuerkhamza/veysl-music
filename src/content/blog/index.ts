@@ -29,6 +29,7 @@ import { dramaturgiePost } from './dramaturgie-hochzeitsabend';
 import { laermschutzPost } from './laermschutz-sperrzeiten-baden-wuerttemberg';
 import { freieTrauungPost } from './freie-trauung-beschallung-mikrofone-wetter';
 import { deutschTuerkischePost } from './deutsch-tuerkische-hochzeit-zwei-familien';
+import { islamischeHochzeitPost } from './islamische-hochzeit-planen';
 import { timelinePost } from './hochzeits-timeline-musterablauf';
 import { akustikPost } from './location-akustik-checkliste';
 import { davulZurnaPost } from './davul-zurna-halay-roman-havasi';
@@ -66,6 +67,7 @@ export const blogPosts: BlogPost[] = [
   laermschutzPost,
   freieTrauungPost,
   deutschTuerkischePost,
+  islamischeHochzeitPost,
   timelinePost,
   akustikPost,
   davulZurnaPost,

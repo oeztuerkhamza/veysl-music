@@ -69,6 +69,15 @@ export type BlogCategory =
   | 'kosten'
   | 'musik'
   | 'tuerkische-hochzeit'
+  /**
+   * Religiös geprägte Hochzeiten — bewusst neben `tuerkische-hochzeit`, nicht
+   * darin. Die Suchintention dahinter ist religiös, nicht ethnisch: „islamische
+   * Hochzeit mit DJ" tippen arabische und bosnische Paare genauso wie türkische.
+   * In `tuerkische-hochzeit` einsortiert wäre der Cluster für genau jene
+   * Leserinnen und Leser unsichtbar, für die er geschrieben ist.
+   * Siehe docs/SEO-KEYWORD-MAP.md §5 und src/content/islamic.ts.
+   */
+  | 'islamische-hochzeit'
   | 'technik'
   | 'recht'
   | 'international'
