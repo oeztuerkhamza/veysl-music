@@ -71,7 +71,14 @@ export function WhatsappPrequalifyModal({ open, onClose, whatsappNumber, source 
 
   // Tracks the previous `open` value (state, not a ref — safe to set during
   // render) so the restore below can detect a false→true transition.
-  const [prevOpen, setPrevOpen] = useState(open);
+  //
+  // Initialised to `false`, not to `open`: since the provider loads this
+  // component lazily, its very first render can already carry `open === true`.
+  // With `useState(open)` there would be no false→true transition in that
+  // pass, and the sessionStorage restore below would silently never run on the
+  // first open — the exact case it exists for. Starting from `false` is also
+  // simply the truth: before mounting, this dialog was not open.
+  const [prevOpen, setPrevOpen] = useState(false);
   const [hasRestored, setHasRestored] = useState(false);
 
   // Restore persisted answers once, on first open — adjusted during render (not in

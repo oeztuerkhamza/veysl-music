@@ -4,7 +4,7 @@ import { Section } from '@/components/ui/section';
 import { Eyebrow } from '@/components/ui/eyebrow';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/motion/reveal';
-import { ParticleDrift } from '@/components/motion/particle-drift';
+import { StageHaze } from '@/components/motion/stage-haze';
 import { mixes, type MixMoment } from '@/content/mixes';
 
 /** Hand-picked to show range: live instrumentation, cultural specialty, ambient dinner. */
@@ -44,7 +44,7 @@ export async function MusicPreview() {
         className="pointer-events-none absolute inset-0 opacity-45 bg-[radial-gradient(ellipse_60%_50%_at_50%_115%,var(--color-glow),transparent_65%)]"
         aria-hidden="true"
       />
-      <ParticleDrift />
+      <StageHaze />
 
       <Container className="relative z-10">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">

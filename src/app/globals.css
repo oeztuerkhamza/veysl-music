@@ -421,3 +421,81 @@
   text-transform: uppercase;
   line-height: 1;
 }
+
+/**
+ * Bühnendunst hinter dem Nacht-Abschnitt (`<StageHaze>`).
+ *
+ * Ersetzt eine three.js-Szene, die 864 KB wog — 45 % des JavaScripts der
+ * Startseite — und dabei hinter einem Abschnitt lag, der ohne sie genauso
+ * funktioniert. Hier macht das dieselbe Arbeit in reinem CSS.
+ *
+ * Warum drei Schichten statt einer: eine einzelne wandernde Fläche liest sich
+ * als Fleck, der hin- und herrutscht. Drei unterschiedlich große Felder mit
+ * teilerfremden Zykluslängen (37 s / 53 s / 71 s) überlagern sich zu einem
+ * Muster, das sich für das Auge praktisch nicht wiederholt.
+ *
+ * Nur `transform` und `opacity` werden animiert — beides läuft im Compositor,
+ * ohne Layout oder Paint pro Frame. Die globale
+ * `prefers-reduced-motion`-Regel weiter oben friert die Animationen ohnehin
+ * ein; sichtbar bleibt dann eine ruhige, statische Aufhellung.
+ */
+.stage-haze-layer {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+  /* `screen` statt normaler Deckung: das additive Verhalten der alten
+     WebGL-Schicht — hellt auf, verdunkelt nie. Auf dunklem Grund ist genau
+     das der Unterschied zwischen "Dunst im Scheinwerfer" und "grauer Fleck". */
+  mix-blend-mode: screen;
+}
+
+.stage-haze-layer-1 {
+  inset: -30% 40% 20% -20%;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--color-gold) 14%, transparent), transparent 70%);
+  animation: stage-haze-drift-1 37s ease-in-out infinite alternate;
+}
+
+.stage-haze-layer-2 {
+  inset: 10% -25% -35% 45%;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--color-gold-soft) 11%, transparent), transparent 72%);
+  animation: stage-haze-drift-2 53s ease-in-out infinite alternate;
+}
+
+.stage-haze-layer-3 {
+  inset: -10% 15% 30% 25%;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--color-glow) 60%, transparent), transparent 68%);
+  animation: stage-haze-drift-3 71s ease-in-out infinite alternate;
+}
+
+@keyframes stage-haze-drift-1 {
+  from {
+    transform: translate3d(-4%, 2%, 0) scale(1);
+    opacity: 0.75;
+  }
+  to {
+    transform: translate3d(6%, -5%, 0) scale(1.14);
+    opacity: 1;
+  }
+}
+
+@keyframes stage-haze-drift-2 {
+  from {
+    transform: translate3d(3%, -3%, 0) scale(1.08);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(-5%, 4%, 0) scale(0.94);
+    opacity: 0.7;
+  }
+}
+
+@keyframes stage-haze-drift-3 {
+  from {
+    transform: translate3d(2%, 4%, 0) scale(0.96);
+    opacity: 0.6;
+  }
+  to {
+    transform: translate3d(-3%, -6%, 0) scale(1.2);
+    opacity: 0.95;
+  }
+}
