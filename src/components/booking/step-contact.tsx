@@ -5,13 +5,12 @@ import { useTranslations } from 'next-intl';
 import { useFormContext } from 'react-hook-form';
 import { Link } from '@/i18n/navigation';
 import { FieldShell, fieldControlClass } from './field-shell';
-import { sourceValues, type EnquiryFormInput } from '@/lib/booking';
+import { type EnquiryFormInput } from '@/lib/booking';
 
 export function StepContact({ headingRef }: { headingRef: RefObject<HTMLHeadingElement | null> }) {
   const t = useTranslations('booking');
   const tCommon = useTranslations('common');
   const tValidation = useTranslations('booking.validation');
-  const tSources = useTranslations('booking.sources');
   const {
     register,
     formState: { errors },
@@ -73,18 +72,6 @@ export function StepContact({ headingRef }: { headingRef: RefObject<HTMLHeadingE
           </FieldShell>
         </div>
 
-        <FieldShell id="partnerName" label={t('fields.partnerName')}>
-          <input
-            id="partnerName"
-            type="text"
-            inputMode="text"
-            autoComplete="off"
-            enterKeyHint="next"
-            className={fieldControlClass}
-            {...register('partnerName')}
-          />
-        </FieldShell>
-
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <FieldShell
             id="email"
@@ -137,17 +124,6 @@ export function StepContact({ headingRef }: { headingRef: RefObject<HTMLHeadingE
             className={fieldControlClass}
             {...register('message')}
           />
-        </FieldShell>
-
-        <FieldShell id="source" label={t('fields.source')}>
-          <select id="source" enterKeyHint="next" defaultValue="" className={fieldControlClass} {...register('source')}>
-            <option value="" />
-            {sourceValues.map((value) => (
-              <option key={value} value={value}>
-                {tSources(value)}
-              </option>
-            ))}
-          </select>
         </FieldShell>
 
         <div className="flex flex-col gap-2">

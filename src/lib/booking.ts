@@ -146,7 +146,17 @@ export const enquirySchema = z.object({
     .min(1, { error: 'required' })
     .refine((v) => isValidIsoDate(v), { error: 'date' })
     .refine((v) => isFutureIsoDate(v), { error: 'date' }),
-  eventType: z.enum(eventTypeValues, { error: 'required' }),
+  /**
+   * Optional seit dem Verschlanken des Formulars: Das Pflicht-Dropdown „Art
+   * der Feier" ist auf Kundenwunsch aus Schritt 1 entfernt worden, damit dort
+   * nur noch Kalender, Stadt und Location stehen.
+   *
+   * Das Feld bleibt im Schema — und in der `enquiries`-Collection —, statt
+   * gelöscht zu werden: bereits eingegangene Anfragen tragen den Wert, und der
+   * WhatsApp-Flow erfasst ihn weiterhin über seine eigenen Chips. Nur die
+   * Pflicht fällt weg. `templates.ts` lässt die Zeile aus, wenn nichts da ist.
+   */
+  eventType: optionalEnum(eventTypeValues),
   city: z.string({ error: 'required' }).trim().min(1, { error: 'required' }).max(120, { error: 'max' }),
   venue: optionalTrimmedString(160),
 
@@ -181,7 +191,7 @@ export type EnquiryOutput = Omit<z.output<typeof enquirySchema>, typeof HONEYPOT
 /** RHF `defaultValues` — every field present so inputs stay controlled from the start. */
 export const enquiryDefaultValues: EnquiryFormInput = {
   eventDate: '',
-  eventType: undefined as unknown as EventType,
+  eventType: undefined,
   city: '',
   venue: '',
   guests: '' as unknown as number,
@@ -207,26 +217,9 @@ export const enquiryDefaultValues: EnquiryFormInput = {
 // via `trigger(stepFields)` without surfacing errors for unreached fields.
 // ---------------------------------------------------------------------------
 
-export const step1Fields = ['eventDate', 'eventType', 'city', 'venue'] as const;
-export const step2Fields = [
-  'guests',
-  'startTime',
-  'endTime',
-  'package',
-  'budget',
-  'services',
-  'hostingLanguage',
-] as const;
-export const step3Fields = [
-  'firstName',
-  'lastName',
-  'partnerName',
-  'email',
-  'phone',
-  'message',
-  'source',
-  'consent',
-] as const;
+export const step1Fields = ['eventDate', 'city', 'venue'] as const;
+export const step2Fields = ['services'] as const;
+export const step3Fields = ['firstName', 'lastName', 'email', 'phone', 'message', 'consent'] as const;
 
 export const stepFieldGroups = [step1Fields, step2Fields, step3Fields] as const;
 

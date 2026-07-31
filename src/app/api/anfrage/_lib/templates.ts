@@ -21,7 +21,9 @@ function formatEventDate(iso: string, locale: Locale): string {
 
 // Internal-only label maps for the owner's German notification — separate
 // from messages/de.json on purpose (see file header).
-const EVENT_TYPE_LABELS_DE: Record<EnquiryOutput['eventType'], string> = {
+// `NonNullable`, seit `eventType` optional ist: Als Record-Schlüssel taugt
+// `undefined` nicht, und die Aufrufer prüfen ohnehin vorher auf Anwesenheit.
+const EVENT_TYPE_LABELS_DE: Record<NonNullable<EnquiryOutput['eventType']>, string> = {
   wedding: 'Hochzeit',
   engagement: 'Verlobung / Nişan',
   henna: 'Henna-Abend / Kına',
@@ -86,7 +88,10 @@ export function buildOwnerNotification(enquiry: EnquiryOutput, score: LeadScore,
     `Neue Anfrage — Priorität: ${tierLabel} (Score ${score.score})`,
     '',
     `Termin: ${dateLabel} (${enquiry.eventDate})`,
-    `Anlass: ${EVENT_TYPE_LABELS_DE[enquiry.eventType]}`,
+    // Seit dem Verschlanken des Formulars optional: Das Dropdown „Art der
+    // Feier" ist raus, der Wert kommt nur noch aus dem WhatsApp-Flow oder aus
+    // Altbestand. Fehlt er, entfällt die Zeile — wie bei Location und Zeit.
+    enquiry.eventType ? `Anlass: ${EVENT_TYPE_LABELS_DE[enquiry.eventType]}` : undefined,
     `Stadt: ${enquiry.city}`,
     enquiry.venue ? `Location: ${enquiry.venue}` : undefined,
     enquiry.guests !== undefined ? `Gäste: ${enquiry.guests}` : 'Gäste: keine Angabe',
@@ -112,7 +117,13 @@ export function buildOwnerNotification(enquiry: EnquiryOutput, score: LeadScore,
   ].filter((line): line is string => line !== undefined);
 
   return {
-    subject: `[${tierLabel}] Neue Anfrage: ${EVENT_TYPE_LABELS_DE[enquiry.eventType]} am ${enquiry.eventDate} — ${enquiry.firstName} ${enquiry.lastName}`,
+    // Der Anlass führte die Betreffzeile an, solange er ein Pflichtfeld war.
+    // Jetzt kann er fehlen — dann trägt das Datum den Betreff, statt dass dort
+    // „undefined" steht. Datum und Name bleiben in jedem Fall drin: Danach
+    // wird im Postfach gesucht.
+    subject: enquiry.eventType
+      ? `[${tierLabel}] Neue Anfrage: ${EVENT_TYPE_LABELS_DE[enquiry.eventType]} am ${enquiry.eventDate} — ${enquiry.firstName} ${enquiry.lastName}`
+      : `[${tierLabel}] Neue Anfrage: ${enquiry.eventDate} — ${enquiry.firstName} ${enquiry.lastName}`,
     text: lines.join('\n'),
   };
 }

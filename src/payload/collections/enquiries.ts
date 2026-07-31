@@ -88,7 +88,13 @@ export const Enquiries: CollectionConfig = {
       name: 'eventType',
       label: { de: 'Art der Feier', tr: 'Etkinlik türü' },
       type: 'select',
-      required: true,
+      /**
+       * Nicht mehr `required`: Das Dropdown ist aus dem öffentlichen Formular
+       * entfernt worden, der Wert kommt nur noch aus dem WhatsApp-Flow oder aus
+       * Anfragen von vor der Umstellung. Bliebe die Pflicht hier stehen, würde
+       * jede neue Anfrage beim Speichern scheitern — die Mail ginge raus, der
+       * Datensatz nicht.
+       */
       options: [
         { label: { de: 'Hochzeit', tr: 'Düğün' }, value: 'wedding' },
         { label: { de: 'Verlobung / Nişan', tr: 'Nişan' }, value: 'engagement' },

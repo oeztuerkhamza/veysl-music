@@ -108,15 +108,15 @@ export interface Config {
     | ('false' | 'none' | 'null')
     | false
     | null
-    | ('de' | 'en' | 'tr' | 'ku' | 'nl' | 'fr' | 'es')
-    | ('de' | 'en' | 'tr' | 'ku' | 'nl' | 'fr' | 'es')[];
+    | ('de' | 'tr' | 'ku' | 'en' | 'nl' | 'fr' | 'es')
+    | ('de' | 'tr' | 'ku' | 'en' | 'nl' | 'fr' | 'es')[];
   globals: {
     'site-settings': SiteSetting;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
-  locale: 'de' | 'en' | 'tr' | 'ku' | 'nl' | 'fr' | 'es';
+  locale: 'de' | 'tr' | 'ku' | 'en' | 'nl' | 'fr' | 'es';
   widgets: {
     collections: CollectionsWidget;
   };
@@ -145,7 +145,7 @@ export interface UserAuthOperations {
   };
 }
 /**
- * Zugänge für das VEYSL-Adminpanel. In der Regel reicht ein einziger Account.
+ * Zugänge für das DJ Veys-Adminpanel. In der Regel reicht ein einziger Account.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
@@ -353,7 +353,7 @@ export interface Enquiry {
    */
   locale?: ('de' | 'en' | 'tr' | 'ku' | 'nl' | 'fr' | 'es') | null;
   eventDate: string;
-  eventType: 'wedding' | 'engagement' | 'henna' | 'afterparty' | 'corporate' | 'birthday' | 'other';
+  eventType?: ('wedding' | 'engagement' | 'henna' | 'afterparty' | 'corporate' | 'birthday' | 'other') | null;
   city: string;
   venue?: string | null;
   guests?: number | null;
@@ -526,7 +526,7 @@ export interface Testimonial {
   venue?: string | null;
   quote: string;
   /**
-   * 1–5 Sterne, falls bekannt.
+   * 1–5 Sterne, falls bekannt. Ab drei bewerteten Stimmen erscheint die Sterne-Auszeichnung in Google.
    */
   rating?: number | null;
   coverImage?: (number | null) | Media;

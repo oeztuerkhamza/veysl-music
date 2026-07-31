@@ -7,7 +7,6 @@ import { FieldShell, fieldControlClass } from './field-shell';
 import { AvailabilityIndicator } from './availability-indicator';
 import { AvailabilityCalendar } from './availability-calendar';
 import type { EnquiryFormInput } from '@/lib/booking';
-import { eventTypeValues } from '@/lib/booking';
 
 export function StepDatePlace({
   headingRef,
@@ -19,7 +18,6 @@ export function StepDatePlace({
   const t = useTranslations('booking');
   const tCommon = useTranslations('common');
   const tValidation = useTranslations('booking.validation');
-  const tEventTypes = useTranslations('booking.eventTypes');
   const {
     register,
     control,
@@ -30,7 +28,6 @@ export function StepDatePlace({
   const eventDate = useWatch({ control, name: 'eventDate' });
 
   const dateError = errors.eventDate?.message ? tValidation(errors.eventDate.message) : undefined;
-  const eventTypeError = errors.eventType?.message ? tValidation(errors.eventType.message) : undefined;
   const cityError = errors.city?.message ? tValidation(errors.city.message) : undefined;
 
   return (
@@ -41,32 +38,23 @@ export function StepDatePlace({
       <fieldset className="flex flex-col gap-6">
         <legend className="sr-only">{t('steps.date')}</legend>
 
-        <div className="flex flex-col gap-2">
-          <FieldShell
-            id="eventDate"
-            label={t('fields.eventDate')}
-            required
-            requiredMarkLabel={tCommon('required')}
-            error={dateError}
-          >
-            <input
-              id="eventDate"
-              type="date"
-              inputMode="none"
-              enterKeyHint="next"
-              autoComplete="off"
-              placeholder={t('fields.eventDatePlaceholder')}
-              aria-invalid={!!errors.eventDate}
-              aria-describedby={errors.eventDate ? 'eventDate-error' : undefined}
-              className={fieldControlClass}
-              {...register('eventDate')}
-            />
-          </FieldShell>
-          <AvailabilityIndicator onAnnounce={onAvailabilityAnnounce} />
-        </div>
+        {/* Nur noch der Kalender. Vorher stand darüber ein `<input type="date">`
+            plus der Hinweis „Oder direkt im Kalender wählen" — zwei Wege für
+            dasselbe Feld, von denen der obere die Verfügbarkeit gar nicht
+            kennt: Er nimmt klaglos ein Datum an, das der Kalender als belegt
+            markiert. Ein Weg, der die Belegung zeigt, ist besser als zwei, von
+            denen einer widerspricht.
 
+            `eventDate` ist deshalb jetzt ein reines `setValue`-Feld ohne
+            eigenes Control. Das Label bleibt sichtbar und trägt weiterhin die
+            Fehlermeldung — das Pflichtfeld ist unverändert, nur die Eingabe
+            ist es nicht mehr. */}
         <div className="flex flex-col gap-2">
-          <p className="text-sm text-ink-muted">{t('calendar.pickerLabel')}</p>
+          <p id="eventDate-label" className="text-sm font-medium text-ink">
+            {t('fields.eventDate')}
+            <span aria-hidden="true" className="text-gold"> *</span>
+            <span className="sr-only"> ({tCommon('required')})</span>
+          </p>
           <AvailabilityCalendar
             value={eventDate}
             onSelect={(iso) => {
@@ -75,34 +63,17 @@ export function StepDatePlace({
             }}
             onAnnounce={onAvailabilityAnnounce}
           />
+          {/* Registriert das Feld, ohne es zu zeigen: RHF braucht die
+              Registrierung, damit `trigger`/`errors` für `eventDate` greifen,
+              und ein Submit ohne Auswahl muss weiterhin scheitern. */}
+          <input type="hidden" {...register('eventDate')} />
+          {dateError ? (
+            <p id="eventDate-error" role="alert" className="text-sm text-danger">
+              {dateError}
+            </p>
+          ) : null}
+          <AvailabilityIndicator onAnnounce={onAvailabilityAnnounce} />
         </div>
-
-        <FieldShell
-          id="eventType"
-          label={t('fields.eventType')}
-          required
-          requiredMarkLabel={tCommon('required')}
-          error={eventTypeError}
-        >
-          <select
-            id="eventType"
-            enterKeyHint="next"
-            aria-invalid={!!errors.eventType}
-            aria-describedby={errors.eventType ? 'eventType-error' : undefined}
-            className={fieldControlClass}
-            defaultValue=""
-            {...register('eventType')}
-          >
-            <option value="" disabled>
-              {tCommon('required')}
-            </option>
-            {eventTypeValues.map((value) => (
-              <option key={value} value={value}>
-                {tEventTypes(value)}
-              </option>
-            ))}
-          </select>
-        </FieldShell>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <FieldShell
