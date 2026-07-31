@@ -17,16 +17,27 @@
 import type { Locale } from '@/i18n/routing';
 
 /**
- * Nur die drei Sprachen, in denen echte, geschriebene Inhalte vorliegen —
- * dieselbe Regel wie beim Europa-Hub (`HUB_SUPPORTED_LOCALES`), beim Blog
- * (`BLOG_LOCALES`) und beim Antwort-Korpus (`getReadyLocalesForAnswers()`).
+ * Die Sprachen, in denen diese Seite vollständig vorliegt — Seitentexte
+ * (`messages/*.json` → `islamic`) **und** die sechs Antworten der Kategorie
+ * `islamisch`, die den FAQ-Block der Seite speisen. Beides muss zusammen
+ * übersetzt sein: der FAQ-Block liest über `resolveAnswerText()`, das ohne
+ * Übersetzung auf Deutsch zurückfällt — eine niederländische Seite mit
+ * deutschem FAQ-Abschnitt wäre schlechter als gar keine.
  *
- * Der Grund ist nicht Bequemlichkeit: hreflang für eine Sprache zu behaupten,
- * in der nur eine maschinelle Übersetzung stünde, ist schlechter als sie
- * wegzulassen — und bei einem religiösen Thema ist eine schiefe Übersetzung
- * nicht nur ein SEO-Problem, sondern ein Glaubwürdigkeitsproblem.
+ * nl/fr/es kamen dazu, als klar wurde, wie schief die Prioritäten lagen: der
+ * Ratgeber war für diese drei Sprachen bereits geöffnet, ausgerechnet die
+ * religiöse Seite nicht. In den Niederlanden und Frankreich lebt eine große
+ * muslimische Community — für die ist genau diese Seite das relevanteste
+ * Dokument der ganzen Domain, und sie ist mit ~700 Wörtern billiger zu
+ * übersetzen als jeder einzelne Ratgeber-Artikel.
+ *
+ * `ku` fehlt weiterhin, aus demselben Grund wie beim Blog (siehe
+ * `BLOG_LOCALES`): hreflang für eine Sprache zu behaupten, in der nur eine
+ * maschinelle Übersetzung stünde, ist schlechter als sie wegzulassen — und bei
+ * einem religiösen Thema ist eine schiefe Übersetzung kein SEO-Problem,
+ * sondern ein Glaubwürdigkeitsproblem.
  */
-export const ISLAMIC_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'tr', 'en'];
+export const ISLAMIC_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'tr', 'en', 'nl', 'fr', 'es'];
 
 export function isIslamicLocale(locale: Locale): boolean {
   return ISLAMIC_SUPPORTED_LOCALES.includes(locale);

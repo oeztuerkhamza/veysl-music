@@ -6,6 +6,7 @@
     "weddings": "Vrais mariages",
     "music": "Musique",
     "process": "Déroulé & FAQ",
+    "islamicWedding": "Mariage musulman",
     "questions": "Questions & réponses",
     "guide": "Conseils",
     "europe": "DJ en Europe",
@@ -485,6 +486,110 @@
       }
     ]
   },
+    "islamic": {
+      "meta": {
+        "title": "Mariage musulman avec DJ — doua, ilahi & fête | DJ Veys",
+        "description": "Récitation coranique, doua et ilahi en live — puis une piste pleine. Un seul déroulé, une seule sonorisation, un seul interlocuteur. Stuttgart et toute l’Allemagne."
+      },
+      "hero": {
+        "eyebrow": "Mariages musulmans & religieux",
+        "title": "La doua et la piste, le même soir",
+        "subtitle": "Récitation coranique, doua et ilahi font ici partie du déroulé, pas d’une réservation séparée. La fête commence ensuite — les deux assurés par le même prestataire, animation en allemand, turc et anglais."
+      },
+      "intro": {
+        "eyebrow": "La vraie question",
+        "title": "Les deux vont-ils vraiment ensemble ?",
+        "body": "Presque chaque couple reçoit ici deux devis distincts — un pour la partie religieuse, un pour la fête — et doit organiser lui-même les transitions. C’est précisément là que la soirée bascule : la musique est coupée en plein morceau, personne ne sait quand les invités doivent s’asseoir, et après la doua la salle reste figée. Ici, les deux ne forment qu’un seul déroulé, écrit par la personne qui l’exécute aussi le soir même."
+      },
+      "recitation": {
+        "eyebrow": "La différence",
+        "title": "La tilawet, je la récite moi-même",
+        "body": "La récitation coranique ne vient ni d’un enregistrement, ni d’un intervenant extérieur glissé entre deux rendez-vous : Veysel Durmuş récite lui-même. Concrètement, récitation, doua, ilahi, animation et set DJ reposent sur une seule personne — le passage du dernier mot à la première annonce cesse ainsi d’être un risque pour devenir une étape prévue."
+      },
+      "program": {
+        "eyebrow": "Les briques",
+        "title": "Ce dont la soirée est faite",
+        "lead": "Librement combinables. Lors de l’entretien de préparation, nous décidons ensemble lesquelles font partie de votre fête — et lesquelles n’en font expressément pas partie.",
+        "optionalLabel": "En option",
+        "items": {
+          "tilawet": {
+            "title": "Récitation coranique",
+            "text": "Récitée en direct, sur un micro dédié, sans réverbération ni effets et à un niveau nettement inférieur au set dansant. L’intelligibilité dans toute la salle est ici le seul objectif."
+          },
+          "dua": {
+            "title": "Doua",
+            "text": "Reçoit un créneau fixe dans le déroulé, généralement avant le dîner ou avant l’ouverture de bal. Une annonce bilingue au préalable, pour que chaque invité sache ce qui va se passer."
+          },
+          "ilahi": {
+            "title": "Ilahi — en live",
+            "text": "Interprété en direct, avec accompagnement au saz si souhaité. Pas de playback, pas de playlist."
+          },
+          "tsm": {
+            "title": "Türk Sanat Müziği",
+            "text": "Le plus souvent pendant le dîner ou comme bloc plus calme entre deux séquences dansantes — également possible en live au saz, et pas seulement diffusé."
+          },
+          "djset": {
+            "title": "Set DJ & animation",
+            "text": "Turc, allemand et international mêlés plutôt que joués en blocs séparés. Animation en direct en allemand, turc et anglais."
+          },
+          "afterparty": {
+            "title": "After-wedding party",
+            "text": "La partie plus libre une fois le programme officiel terminé — ou une date à part en petit comité, avant ou après."
+          }
+        }
+      },
+      "timeline": {
+        "eyebrow": "Exemple de déroulé",
+        "title": "Comment une telle soirée se passe réellement",
+        "lead": "Un schéma issu de la pratique. Les horaires, l’ordre et la durée de chaque bloc bougent selon votre lieu et votre nombre d’invités.",
+        "note": "Ce déroulé est un exemple, pas une offre. Le vôtre naît de l’entretien de préparation et est ensuite consigné par écrit dans le contrat.",
+        "steps": {
+          "welcome": {
+            "title": "Accueil",
+            "text": "Musique d’ambiance discrète, les invités arrivent. Le matériel est en place depuis la balance."
+          },
+          "tilawet": {
+            "title": "Récitation coranique",
+            "text": "La musique est fondue, non coupée. Une annonce bilingue, puis la récitation."
+          },
+          "dua": {
+            "title": "Doua",
+            "text": "Immédiatement après, même micro, même niveau."
+          },
+          "dinner": {
+            "title": "Dîner",
+            "text": "Türk Sanat Müziği et musique instrumentale calme, à un volume qui laisse parler."
+          },
+          "ilahi": {
+            "title": "Ilahi en live",
+            "text": "Interprété en direct, au saz si souhaité — le passage de la partie religieuse à la partie festive de la soirée."
+          },
+          "entrance": {
+            "title": "Entrée des mariés",
+            "text": "Annonce en allemand et en turc, lumière sur le couple, musique de votre choix."
+          },
+          "dance": {
+            "title": "Piste de danse",
+            "text": "Halay, Roman Havası, titres turcs actuels et sets internationaux — mêlés, pas en blocs."
+          },
+          "close": {
+            "title": "Clôture",
+            "text": "Dernier morceau convenu à l’avance, puis démontage. L’heure dépend du lieu."
+          }
+        }
+      },
+      "faq": {
+        "eyebrow": "Questions fréquentes",
+        "title": "Ce que les couples demandent à ce stade",
+        "more": "Voir toutes les questions & réponses"
+      },
+      "cta": {
+        "eyebrow": "Date",
+        "title": "Votre date est-elle encore libre ?",
+        "subtitle": "Envoyez-nous la date, le lieu et un nombre d’invités approximatif. La réponse sur les disponibilités arrive en général sous 24 heures.",
+        "button": "Vérifier la date"
+      }
+    },
   "answers": {
     "hero": {
       "eyebrow": "Questions & réponses",

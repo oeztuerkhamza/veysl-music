@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
+import type { Locale } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { site } from '@/content/site';
+import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from './language-switcher';
 import { ThemeToggle } from './theme-toggle';
@@ -26,6 +28,16 @@ import { ThemeToggle } from './theme-toggle';
  */
 const NAV_ITEMS = [
   { href: '/hochzeit-events', key: 'services' },
+  /**
+   * Direkt hinter den allgemeinen Leistungen, nicht ans Ende: Das ist der
+   * Bereich mit dem klarsten eigenen Profil und der schwächsten Konkurrenz im
+   * deutschsprachigen Markt (siehe docs/SEO-KEYWORD-MAP.md §5). Solange er nur
+   * im Footer stand, las er sich wie eine Fußnote unter „Hochzeit & Events" —
+   * genau das Gegenteil eines eigenständigen Angebots.
+   *
+   * `locales` blendet ihn dort aus, wo es die Seite nicht gibt (ku).
+   */
+  { href: '/islamische-hochzeit', key: 'islamicWedding', locales: ISLAMIC_SUPPORTED_LOCALES },
   { href: '/pakete', key: 'packages' },
   { href: '/echte-hochzeiten', key: 'weddings' },
   { href: '/musik', key: 'music' },
@@ -35,7 +47,12 @@ const NAV_ITEMS = [
   { href: '/galerie', key: 'gallery' },
   { href: '/epk', key: 'epk' },
   { href: '/kontakt', key: 'contact' },
-] as const;
+] as const satisfies ReadonlyArray<{ href: string; key: string; locales?: readonly Locale[] }>;
+
+/** Entries whose page exists in the current locale. See the `locales` note on the islamic entry. */
+function navItemsFor(locale: Locale) {
+  return NAV_ITEMS.filter((item) => !('locales' in item) || item.locales.includes(locale));
+}
 
 /**
  * The bar itself carries five links, not the full set. Eight items at 1024 px
@@ -46,13 +63,15 @@ const NAV_ITEMS = [
  * a mobile fallback.
  */
 const PRIMARY_KEYS = new Set(['services', 'packages', 'weddings', 'music', 'contact']);
-const PRIMARY_ITEMS = NAV_ITEMS.filter((item) => PRIMARY_KEYS.has(item.key));
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
 export function Header() {
   const t = useTranslations('nav');
+  const locale = useLocale() as Locale;
+  const navItems = navItemsFor(locale);
+  const primaryItems = navItems.filter((item) => PRIMARY_KEYS.has(item.key));
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -158,7 +177,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label={t('menu')}>
-          {PRIMARY_ITEMS.map((item) => (
+          {primaryItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -239,7 +258,7 @@ export function Header() {
           aria-label={t('menu')}
         >
           <div className="m-auto flex w-full flex-col gap-1 py-4">
-            {NAV_ITEMS.map((item, index) => (
+            {navItems.map((item, index) => (
               <Link
                 key={item.href}
                 href={item.href}

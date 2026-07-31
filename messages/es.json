@@ -6,6 +6,7 @@
     "weddings": "Bodas reales",
     "music": "Música",
     "process": "Proceso y FAQ",
+    "islamicWedding": "Boda islámica",
     "questions": "Preguntas y respuestas",
     "guide": "Guía",
     "europe": "DJ en Europa",
@@ -485,6 +486,110 @@
       }
     ]
   },
+    "islamic": {
+      "meta": {
+        "title": "Boda islámica con DJ — dua, ilahi y fiesta | DJ Veys",
+        "description": "Recitación del Corán, dua e ilahi en directo, y después una pista llena. Un solo desarrollo, un solo equipo, un solo interlocutor. Stuttgart y toda Alemania."
+      },
+      "hero": {
+        "eyebrow": "Bodas islámicas y religiosas",
+        "title": "La dua y la pista, la misma noche",
+        "subtitle": "La recitación del Corán, la dua y el ilahi forman parte aquí del desarrollo, no de una reserva aparte. Después empieza la fiesta: ambas cosas de la misma mano, con presentación en alemán, turco e inglés."
+      },
+      "intro": {
+        "eyebrow": "La pregunta de fondo",
+        "title": "¿De verdad encajan las dos cosas?",
+        "body": "Casi todas las parejas reciben en este punto dos presupuestos separados —uno para la parte religiosa y otro para la fiesta— y tienen que organizar ellas mismas las transiciones. Justo ahí se tuerce la noche: la música se corta a media canción, nadie sabe cuándo deben sentarse los invitados y, tras la dua, la sala se queda en blanco. Aquí ambas partes son un único desarrollo, escrito por la persona que también lo ejecuta esa noche."
+      },
+      "recitation": {
+        "eyebrow": "La diferencia",
+        "title": "La tilawet la recito yo mismo",
+        "body": "La recitación del Corán no procede de una grabación ni de un invitado externo que pasa entre dos compromisos: Veysel Durmuş recita él mismo. En la práctica eso significa que recitación, dua, ilahi, presentación y sesión de DJ recaen en una sola persona, de modo que el paso de la última palabra al primer anuncio deja de ser un riesgo y se convierte en parte del plan."
+      },
+      "program": {
+        "eyebrow": "Componentes",
+        "title": "De qué se compone la noche",
+        "lead": "Combinables con libertad. En la reunión de planificación decidimos juntos cuáles forman parte de vuestra celebración y cuáles expresamente no.",
+        "optionalLabel": "Opcional",
+        "items": {
+          "tilawet": {
+            "title": "Recitación del Corán",
+            "text": "Recitada en directo, con micrófono propio, sin reverberación ni efectos y a un volumen claramente inferior al de la sesión de baile. La inteligibilidad en toda la sala es aquí el único objetivo."
+          },
+          "dua": {
+            "title": "Dua",
+            "text": "Recibe un momento fijo en el desarrollo, normalmente antes de la cena o del primer baile. Antes, un anuncio en dos idiomas para que cada invitado sepa qué va a ocurrir."
+          },
+          "ilahi": {
+            "title": "Ilahi — en directo",
+            "text": "Interpretado en vivo, con acompañamiento de saz si se desea. Sin playback, sin lista de reproducción."
+          },
+          "tsm": {
+            "title": "Türk Sanat Müziği",
+            "text": "Normalmente durante la cena o como bloque tranquilo entre dos rondas de baile, también posible en directo con saz y no solo reproducido."
+          },
+          "djset": {
+            "title": "Sesión de DJ y presentación",
+            "text": "Turco, alemán e internacional entremezclados en lugar de en bloques separados. Presentación en directo en alemán, turco e inglés."
+          },
+          "afterparty": {
+            "title": "After-wedding party",
+            "text": "La parte más libre una vez terminado el programa oficial, o una fecha aparte en círculo reducido, antes o después."
+          }
+        }
+      },
+      "timeline": {
+        "eyebrow": "Desarrollo de ejemplo",
+        "title": "Cómo transcurre realmente una noche así",
+        "lead": "Un patrón extraído de la práctica. Las horas, el orden y la duración de cada bloque se mueven con vuestro lugar y vuestro número de invitados.",
+        "note": "Este desarrollo es un ejemplo, no una oferta. El vuestro nace de la reunión de planificación y queda después por escrito en el contrato.",
+        "steps": {
+          "welcome": {
+            "title": "Recepción",
+            "text": "Música de fondo tranquila, van llegando los invitados. El equipo está montado desde la prueba de sonido."
+          },
+          "tilawet": {
+            "title": "Recitación del Corán",
+            "text": "La música se baja con un fundido, no se corta. Un anuncio en dos idiomas y después la recitación."
+          },
+          "dua": {
+            "title": "Dua",
+            "text": "Justo a continuación, mismo micrófono, mismo nivel."
+          },
+          "dinner": {
+            "title": "Cena",
+            "text": "Türk Sanat Müziği y música instrumental tranquila, a un volumen que permita conversar."
+          },
+          "ilahi": {
+            "title": "Ilahi en directo",
+            "text": "Interpretado en vivo, con saz si se desea: el paso de la parte religiosa a la parte festiva de la noche."
+          },
+          "entrance": {
+            "title": "Entrada de la pareja",
+            "text": "Anuncio en alemán y turco, luz sobre la pareja, música a vuestra elección."
+          },
+          "dance": {
+            "title": "Pista de baile",
+            "text": "Halay, Roman Havası, temas turcos actuales y sets internacionales, mezclados y no por bloques."
+          },
+          "close": {
+            "title": "Cierre",
+            "text": "Última canción acordada de antemano y después desmontaje. La hora depende del lugar."
+          }
+        }
+      },
+      "faq": {
+        "eyebrow": "Preguntas frecuentes",
+        "title": "Lo que preguntan las parejas en este punto",
+        "more": "Ver todas las preguntas y respuestas"
+      },
+      "cta": {
+        "eyebrow": "Fecha",
+        "title": "¿Vuestra fecha sigue libre?",
+        "subtitle": "Enviadnos la fecha, el lugar y un número aproximado de invitados. La respuesta sobre disponibilidad suele llegar en 24 horas.",
+        "button": "Consultar fecha"
+      }
+    },
   "answers": {
     "hero": {
       "eyebrow": "Preguntas y respuestas",

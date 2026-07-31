@@ -6,6 +6,7 @@
     "weddings": "Echte bruiloften",
     "music": "Muziek",
     "process": "Werkwijze & FAQ",
+    "islamicWedding": "Islamitische bruiloft",
     "questions": "Vragen & antwoorden",
     "guide": "Gids",
     "europe": "DJ in Europa",
@@ -485,6 +486,110 @@
       }
     ]
   },
+    "islamic": {
+      "meta": {
+        "title": "Islamitische bruiloft met dj — dua, ilahi & feest | DJ Veys",
+        "description": "Koranrecitatie, dua en live ilahi — en daarna een volle dansvloer. Eén draaiboek, één installatie, één aanspreekpunt. Stuttgart en heel Duitsland."
+      },
+      "hero": {
+        "eyebrow": "Islamitische & religieuze bruiloften",
+        "title": "De dua en de dansvloer, dezelfde avond",
+        "subtitle": "Koranrecitatie, dua en ilahi horen hier in het draaiboek, niet in een aparte boeking. Daarna begint het feest — allebei uit één hand, gepresenteerd in het Duits, Turks en Engels."
+      },
+      "intro": {
+        "eyebrow": "De echte vraag",
+        "title": "Gaan die twee eigenlijk samen?",
+        "body": "Bijna elk paar krijgt op dit punt twee losse offertes — één voor het religieuze deel, één voor het feest — en moet de overgangen zelf regelen. Precies daar kantelt de avond: de muziek wordt middenin afgekapt, niemand weet wanneer de gasten moeten gaan zitten, en na de dua valt de zaal stil. Hier zijn beide één draaiboek, geschreven door de persoon die het die avond ook uitvoert."
+      },
+      "recitation": {
+        "eyebrow": "Het verschil",
+        "title": "De tilawet reciteer ik zelf",
+        "body": "De Koranrecitatie komt niet van een opname en niet van een externe gast die tussen twee afspraken langskomt: Veysel Durmuş reciteert zelf. In de praktijk betekent dat dat recitatie, dua, ilahi, presentatie en dj-set bij één persoon liggen — waardoor de overgang van het laatste woord naar de eerste aankondiging geen risico meer is, maar onderdeel van het plan."
+      },
+      "program": {
+        "eyebrow": "Bouwstenen",
+        "title": "Waaruit de avond bestaat",
+        "lead": "Vrij te combineren. In het planningsgesprek bepalen we samen wat hiervan bij uw feest hoort — en wat uitdrukkelijk niet.",
+        "optionalLabel": "Optioneel",
+        "items": {
+          "tilawet": {
+            "title": "Koranrecitatie",
+            "text": "Live gereciteerd, via een eigen microfoon, zonder galm en zonder effecten, op een duidelijk lager niveau dan de dansset. Verstaanbaarheid in de hele zaal is hier het enige doel."
+          },
+          "dua": {
+            "title": "Dua",
+            "text": "Krijgt een vast tijdstip in het verloop, meestal vóór het diner of vóór de openingsdans. Vooraf een tweetalige aankondiging, zodat elke gast weet wat er gaat gebeuren."
+          },
+          "ilahi": {
+            "title": "Ilahi — live",
+            "text": "Live gebracht, desgewenst met sazbegeleiding. Geen playback, geen playlist."
+          },
+          "tsm": {
+            "title": "Türk Sanat Müziği",
+            "text": "Meestal tijdens het diner of als rustig blok tussen twee dansrondes — ook live op de saz mogelijk in plaats van alleen van de laptop."
+          },
+          "djset": {
+            "title": "Dj-set & presentatie",
+            "text": "Turks, Duits en internationaal door elkaar in plaats van in aparte blokken. Presentatie live in het Duits, Turks en Engels."
+          },
+          "afterparty": {
+            "title": "After-wedding party",
+            "text": "Het vrijere deel nadat het officiële programma voorbij is — of een eigen datum in kleinere kring, ervoor of erna."
+          }
+        }
+      },
+      "timeline": {
+        "eyebrow": "Voorbeeldverloop",
+        "title": "Hoe zo’n avond werkelijk loopt",
+        "lead": "Een patroon uit de praktijk. Tijden, volgorde en de lengte van elk blok schuiven mee met uw locatie en uw aantal gasten.",
+        "note": "Dit verloop is een voorbeeld, geen aanbod. Uw echte draaiboek ontstaat in het planningsgesprek en wordt daarna schriftelijk in het contract vastgelegd.",
+        "steps": {
+          "welcome": {
+            "title": "Ontvangst",
+            "text": "Rustige achtergrondmuziek, de gasten komen binnen. De techniek staat er sinds de soundcheck."
+          },
+          "tilawet": {
+            "title": "Koranrecitatie",
+            "text": "De muziek wordt uitgefadet, niet afgekapt. Een tweetalige aankondiging, dan de recitatie."
+          },
+          "dua": {
+            "title": "Dua",
+            "text": "Direct aansluitend, dezelfde microfoon, hetzelfde niveau."
+          },
+          "dinner": {
+            "title": "Diner",
+            "text": "Türk Sanat Müziği en rustige instrumentale muziek, op gespreksvolume."
+          },
+          "ilahi": {
+            "title": "Ilahi live",
+            "text": "Live gebracht, desgewenst met saz — de overgang van het religieuze naar het feestelijke deel van de avond."
+          },
+          "entrance": {
+            "title": "Binnenkomst van het paar",
+            "text": "Aankondiging in het Duits en Turks, licht op het paar, muziek naar uw keuze."
+          },
+          "dance": {
+            "title": "Dansvloer",
+            "text": "Halay, Roman Havası, actuele Turkse en internationale sets — door elkaar, niet in blokken."
+          },
+          "close": {
+            "title": "Afsluiting",
+            "text": "Laatste nummer in overleg, daarna afbouw. Het tijdstip hangt van de locatie af."
+          }
+        }
+      },
+      "faq": {
+        "eyebrow": "Veelgestelde vragen",
+        "title": "Wat paren op dit punt vragen",
+        "more": "Alle vragen & antwoorden bekijken"
+      },
+      "cta": {
+        "eyebrow": "Datum",
+        "title": "Is uw datum nog vrij?",
+        "subtitle": "Stuur ons de datum, de locatie en een globaal aantal gasten. Een antwoord over beschikbaarheid komt meestal binnen 24 uur.",
+        "button": "Datum aanvragen"
+      }
+    },
   "answers": {
     "hero": {
       "eyebrow": "Vragen & antwoorden",
