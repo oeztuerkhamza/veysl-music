@@ -269,6 +269,306 @@ the packages page lays out scope and timing clearly, and any open question can b
 through the enquiry form at no cost.
 `.trim();
 
+export const hochzeitsDjChecklisteNl = `
+## Waarom de dj-keuze meer tijd verdient dan die meestal krijgt
+
+De meeste bruidsparen steken weken in het kiezen van een locatie en maanden in de
+gastenlijst, maar beslissen binnen een paar dagen over een dj — vaak na één Instagram-reel
+of een prijslijst per e-mail. Terwijl juist de dj degene is die de hele avond bij elkaar
+houdt: van de entree via de speeches tot het laatste uur op de dansvloer. Een verkeerde
+keuze valt op de trouwdag zelf niet meer te corrigeren.
+
+Deze checklist vervangt geen persoonlijk gesprek, maar geeft wel een structuur waarmee
+verschillende aanbieders echt te vergelijken zijn — in plaats van alleen onderbuikgevoel
+tegen onderbuikgevoel.
+
+## De checklist in één oogopslag
+
+| Criterium | Waar u op let | Waarom het belangrijk is |
+|---|---|---|
+| Ervaring | Een concreet aantal jaren en begeleide feesten, niet alleen "al vele jaren" | Ervaring blijkt uit rust bij programmawijzigingen, niet alleen uit muzieksmaak |
+| Voorgesprek | Video- of locatieafspraak vóór de boeking, niet alleen een vragenlijst per mail | Laat zien of het klikt en of de dj werkelijk luistert |
+| Techniek | Eigen, professionele installatie in plaats van op het laatste moment geleende apparatuur | Eigen techniek betekent ingespeelde apparatuur in plaats van een black box op de trouwdag |
+| Wensen- én no-golijst | Worden beide schriftelijk vastgelegd en ook echt nagekomen? | Voorkomt het klassieke twistpunt "de dj deed gewoon wat hij zelf wilde" |
+| Contract | Schriftelijke vastlegging van tijden, diensten en prijs | Mondelinge toezeggingen zijn op de dag zelf niet meer te controleren |
+| Meertaligheid | Relevant bij gemengde gastenlijsten, bijvoorbeeld Duits-Turks | Een presentatie die één gastengroep buitensluit, kost merkbaar sfeer |
+| Achtervang | Een helder antwoord op "en als je ziek wordt?" | Wie hier omheen draait, heeft waarschijnlijk geen plan |
+
+## 1. Ervaring die zich laat controleren
+
+"Jarenlange ervaring" is de meest gebruikte en minst bewijsbare formulering op
+dj-websites. Vraag naar concrete cijfers: sinds hoeveel jaar, hoeveel bruiloften en
+evenementen in totaal, en waar is dat na te gaan? Een actief Instagram- of YouTube-kanaal
+met regelmatige fragmenten van echte feesten zegt vaak meer dan een klantcitaat op de
+eigen website, omdat het zich niet achteraf laat bijschaven. DJ Veys noemt hier bewust
+concrete, controleerbare cijfers: ruim 12 jaar ervaring, meer dan 200 begeleide
+bruiloften en evenementen, en een actief onderhouden Instagram-profiel met regelmatige
+beelden van echte optredens.
+
+## 2. Een persoonlijk voorgesprek vóór de boeking
+
+Een serieuze aanbieder boekt niet "blind" via een formulier, maar voert vóór de
+definitieve toezegging een gesprek — via video of ter plaatse. Daarin hoort meer aan bod
+te komen dan de prijs: het tijdsverloop van de dag, muzieksmaak, no-go's, sleutelmomenten
+als de entree en de openingsdans, en de technische omstandigheden van de locatie. Wie dit
+gesprek overslaat of alleen schriftelijk via chat afhandelt, ontneemt zichzelf de kans om
+vóór de handtekening een gevoel te krijgen bij de persoon achter de draaitafel.
+
+## 3. Eigen techniek in plaats van ad-hochuur
+
+Vraag concreet of de geluids- en lichtapparatuur van de aanbieder zelf is of pas kort van
+tevoren voor het feest wordt samengesteld. Beide kan werken, maar eigen techniek betekent
+in de regel: ingespeelde apparatuur, bekende zwakke plekken, geen black box op de
+trouwdag. Bij grotere feesten met meerdere ruimtes of een buitenceremonie wordt het
+verschil extra duidelijk — geïmproviseerde oplossingen laten zich meestal precies zien
+wanneer er geen tijd meer is om te improviseren.
+
+## 4. Wensenlijst én no-golijst — allebei, niet één van beide
+
+Een goede dj vraagt actief naar allebei: de nummers die absoluut niet mogen ontbreken, en
+de nummers of genres die taboe zijn. Bepalend is niet de lijst zelf, maar of die op de
+avond ook echt wordt nagekomen, ook als gasten spontaan iets anders vragen. Vraag in het
+voorgesprek gericht hoe met tegenstrijdige gastwensen wordt omgegaan — het antwoord zegt
+meer over de werkwijze dan welke prijslijst ook.
+
+## 5. Een schriftelijk contract in plaats van een mondelinge toezegging
+
+Speelduur, het geboekte pakket inclusief technische omvang, afgesproken extra's als
+presentatie of live muziek en de betalingsafspraken van aanbetaling en restbedrag horen
+in een schriftelijk contract — niet in een vrijblijvende e-mail. Dat beschermt beide
+partijen en voorkomt misverstanden die op de trouwdag zelf niet meer op te lossen zijn.
+
+## 6. Meertaligheid bij gemengde gastenlijsten
+
+Bij Duits-Turkse, Koerdische of andere multiculturele feesten loont een gerichte vraag:
+wordt er in beide, respectievelijk alle relevante talen gepresenteerd, of wordt er alleen
+pro forma één zin in de tweede taal tussendoor gegooid? Een presentatie die een hele
+gastengroep feitelijk buitensluit, kost merkbaar sfeer — hoe goed de muziekkeuze verder
+ook is.
+
+## 7. Het ernstige geval: wat gebeurt er bij ziekte of uitval?
+
+Een ongemakkelijke maar belangrijke vraag: wat gebeurt er als de geboekte dj op het
+laatste moment uitvalt? Een serieuze aanbieder heeft daar een voorbereid antwoord op en
+neemt het onderwerp op in het contract, in plaats van eromheen te draaien of het als
+onwaarschijnlijk af te doen.
+
+## Rode vlaggen — wanneer voorzichtigheid geboden is
+
+- Geen persoonlijk gesprek mogelijk vóór de boeking, alleen een online formulier
+- Geen concrete cijfers over ervaring, alleen algemene bewoordingen
+- Geen schriftelijk contract, alleen een bevestiging per e-mail
+- Ontwijkende antwoorden op de vraag naar eigen techniek
+- Geen belangstelling voor een no-golijst, alleen "dat komt wel goed"
+
+## Conclusie
+
+De beste beslissing komt voort uit een vergelijking langs heldere criteria, niet uit het
+gevoel "die heeft een mooie video". Neem voor twee of drie kandidaten telkens een
+voorgesprek — het verschil is meestal al in de eerste tien minuten voelbaar. Wie de eigen
+checklist tegen DJ Veys wil houden, vindt op het pakketoverzicht het technische en
+tijdsmatige kader en kan daarnaast openstaande vragen altijd vrijblijvend stellen.
+`.trim();
+
+export const hochzeitsDjChecklisteFr = `
+## Pourquoi le choix du DJ mérite plus de temps qu'on ne lui accorde
+
+La plupart des couples passent des semaines à choisir un lieu et des mois sur la liste
+des invités, mais tranchent la question du DJ en quelques jours — souvent après un seul
+reel Instagram ou une grille tarifaire reçue par e-mail. Or le DJ est justement la
+personne qui tient toute la soirée : de l'entrée aux discours, jusqu'à la dernière heure
+sur la piste. Une erreur de choix ne se rattrape plus le jour même.
+
+Cette check-list ne remplace pas un entretien, mais elle donne une structure permettant de
+comparer réellement plusieurs prestataires — au lieu d'opposer une intuition à une autre.
+
+## La check-list en un coup d'œil
+
+| Critère | À quoi faire attention | Pourquoi c'est important |
+|---|---|---|
+| Expérience | Un nombre concret d'années et d'événements accompagnés, pas seulement « depuis de nombreuses années » | L'expérience se voit au calme lors des changements de programme, pas seulement aux goûts musicaux |
+| Entretien préalable | Rendez-vous en visio ou sur place avant la réservation, pas seulement un questionnaire par mail | Montre si le courant passe et si le DJ écoute vraiment |
+| Matériel | Sonorisation professionnelle en propre plutôt que du matériel loué à la dernière minute | Du matériel à soi signifie des appareils rodés plutôt qu'une boîte noire le jour J |
+| Liste de souhaits ET liste noire | Les deux sont-elles consignées par écrit et réellement respectées ? | Évite le classique « le DJ a fait ce qu'il voulait » |
+| Contrat | Horaires, prestations et prix fixés par écrit | Les promesses orales ne sont plus vérifiables le jour même |
+| Multilinguisme | Déterminant avec une liste d'invités mixte, par exemple germano-turque | Une animation qui exclut un groupe d'invités coûte visiblement en ambiance |
+| Solution de repli | Une réponse claire à « et si tu tombes malade ? » | Qui élude n'a probablement pas de plan |
+
+## 1. Une expérience vérifiable
+
+« Longue expérience » est la formule la plus employée et la moins démontrable sur les
+sites de DJ. Demandez des chiffres concrets : depuis combien d'années, combien de mariages
+et d'événements au total, et où cela se vérifie-t-il ? Une chaîne Instagram ou YouTube
+active, avec des extraits réguliers de vraies fêtes, est souvent plus parlante qu'un
+témoignage publié sur le site du prestataire, parce qu'elle ne se retouche pas après coup.
+DJ Veys donne ici volontairement des chiffres concrets et vérifiables : plus de 12 ans
+d'expérience, plus de 200 mariages et événements accompagnés, et un profil Instagram
+entretenu avec des extraits réguliers de prestations réelles.
+
+## 2. Un entretien personnel avant la réservation
+
+Un prestataire sérieux ne réserve pas « à l'aveugle » via un formulaire : il mène un
+entretien avant l'engagement ferme, en visio ou sur place. On doit y parler d'autre chose
+que du prix : le déroulé de la journée, les goûts musicaux, les interdits, les moments
+clés comme l'entrée et l'ouverture de bal, ainsi que les contraintes techniques du lieu.
+Qui saute cet entretien ou le traite uniquement par écrit se prive de la possibilité de
+sentir, avant de signer, la personne derrière les platines.
+
+## 3. Du matériel en propre plutôt qu'une location de dernière minute
+
+Demandez précisément si la sonorisation et les lumières appartiennent au prestataire ou
+sont assemblées peu avant la fête. Les deux peuvent fonctionner, mais du matériel en
+propre signifie en général : des appareils rodés, des faiblesses connues, pas de boîte
+noire le jour J. Sur les grandes fêtes à plusieurs salles ou avec une cérémonie en
+extérieur, la différence saute aux yeux — les solutions improvisées se révèlent
+généralement au moment précis où il n'y a plus le temps d'improviser.
+
+## 4. Liste de souhaits et liste noire — les deux, pas l'une ou l'autre
+
+Un bon DJ demande activement les deux : les titres qui ne doivent absolument pas manquer,
+et ceux ou les genres qui sont proscrits. L'essentiel n'est pas la liste elle-même, mais
+si elle est réellement tenue le soir venu, même quand des invités demandent spontanément
+autre chose. Demandez explicitement, lors de l'entretien, comment sont gérées les demandes
+contradictoires — la réponse en dit plus sur la méthode que n'importe quelle grille
+tarifaire.
+
+## 5. Un contrat écrit plutôt qu'une promesse orale
+
+La durée de prestation, la formule réservée avec son étendue technique, les prestations
+annexes convenues comme l'animation ou la musique live, ainsi que les modalités de
+paiement entre acompte et solde ont leur place dans un contrat écrit — pas dans un e-mail
+sans valeur. Cela protège les deux parties et évite des malentendus qu'on ne peut plus
+clarifier le jour du mariage.
+
+## 6. Le multilinguisme avec une liste d'invités mixte
+
+Pour les fêtes germano-turques, kurdes ou plus largement multiculturelles, une question
+ciblée s'impose : l'animation se fait-elle dans les deux — ou dans toutes les — langues
+concernées, ou se contente-t-on d'une phrase pour la forme dans la seconde langue ? Une
+animation qui exclut de fait tout un groupe d'invités coûte sensiblement en ambiance,
+quelle que soit la qualité du reste de la programmation.
+
+## 7. Le cas critique : que se passe-t-il en cas de maladie ou de défaillance ?
+
+Une question désagréable mais importante : que se passe-t-il si le DJ réservé se
+désiste au dernier moment ? Un prestataire sérieux a une réponse préparée et inscrit le
+sujet au contrat, au lieu d'esquiver ou de balayer l'hypothèse comme improbable.
+
+## Signaux d'alerte — quand se méfier
+
+- Aucun entretien personnel possible avant la réservation, seulement un formulaire en ligne
+- Aucun chiffre concret sur l'expérience, seulement des formules générales
+- Aucun contrat écrit, seulement une confirmation par e-mail
+- Des réponses évasives à la question du matériel en propre
+- Aucun intérêt pour une liste noire, seulement « ça ira bien »
+
+## Conclusion
+
+La meilleure décision naît d'une comparaison selon des critères clairs, pas du sentiment
+« celui-là a une belle vidéo ». Prenez un entretien préalable avec deux ou trois
+candidats — la différence se ressent généralement dès les dix premières minutes. Qui
+souhaite confronter sa propre check-list à DJ Veys trouvera sur la page des formules le
+cadre technique et horaire, et pourra poser ses questions restantes sans engagement.
+`.trim();
+
+export const hochzeitsDjChecklisteEs = `
+## Por qué elegir DJ merece más tiempo del que suele recibir
+
+La mayoría de las parejas dedica semanas a elegir el lugar y meses a la lista de
+invitados, pero decide sobre el DJ en pocos días, a menudo tras un solo reel de Instagram
+o una lista de precios por correo. Y sin embargo el DJ es quien sostiene toda la velada:
+desde la entrada y los discursos hasta la última hora en la pista. Una mala elección ya no
+se corrige el día de la boda.
+
+Esta lista no sustituye una conversación personal, pero da una estructura con la que
+comparar de verdad a distintos proveedores, en lugar de enfrentar una intuición con otra.
+
+## La lista de un vistazo
+
+| Criterio | En qué fijarse | Por qué importa |
+|---|---|---|
+| Experiencia | Un número concreto de años y de eventos acompañados, no solo «desde hace muchos años» | La experiencia se nota en la calma ante cambios de programa, no solo en el gusto musical |
+| Reunión previa | Cita por vídeo o presencial antes de reservar, no solo un cuestionario por correo | Muestra si hay química y si el DJ escucha de verdad |
+| Equipo | Equipo profesional propio en lugar de material alquilado a última hora | Equipo propio significa aparatos rodados, no una caja negra el día de la boda |
+| Lista de deseos Y lista de vetos | ¿Se recogen ambas por escrito y se cumplen realmente? | Evita el clásico «el DJ hizo lo que le dio la gana» |
+| Contrato | Horarios, servicios y precio fijados por escrito | Las promesas verbales ya no son comprobables el día mismo |
+| Multilingüismo | Clave con listas de invitados mixtas, por ejemplo germano-turcas | Una presentación que excluye a un grupo de invitados cuesta ambiente de forma perceptible |
+| Plan B | Una respuesta clara a «¿y si te pones enfermo?» | Quien esquiva la pregunta probablemente no tiene plan |
+
+## 1. Experiencia que se puede comprobar
+
+«Amplia experiencia» es la fórmula más usada y menos demostrable en las webs de DJ. Pida
+cifras concretas: desde hace cuántos años, cuántas bodas y eventos en total y dónde puede
+comprobarse. Un canal activo de Instagram o YouTube con fragmentos habituales de fiestas
+reales suele decir más que un testimonio publicado en la propia web, porque no se puede
+maquillar a posteriori. DJ Veys da aquí, de forma deliberada, cifras concretas y
+verificables: más de 12 años de experiencia, más de 200 bodas y eventos acompañados y un
+perfil de Instagram activo con imágenes periódicas de actuaciones reales.
+
+## 2. Una reunión personal antes de reservar
+
+Un proveedor serio no reserva «a ciegas» mediante un formulario, sino que mantiene una
+conversación antes del compromiso firme, por vídeo o presencial. Ahí debe hablarse de algo
+más que del precio: el desarrollo horario del día, el gusto musical, los vetos, los
+momentos clave como la entrada y el primer baile, y las condiciones técnicas del lugar.
+Quien se salta esa conversación o la resuelve solo por chat se priva de percibir, antes de
+firmar, a la persona que estará tras la cabina.
+
+## 3. Equipo propio en lugar de alquiler improvisado
+
+Pregunte con claridad si el equipo de sonido e iluminación es propiedad del proveedor o se
+reúne poco antes de la fiesta. Ambas cosas pueden funcionar, pero el equipo propio suele
+significar: aparatos rodados, puntos débiles conocidos, ninguna caja negra el día de la
+boda. En celebraciones grandes con varias salas o con una ceremonia al aire libre la
+diferencia se ve especialmente bien: las soluciones improvisadas aparecen justo cuando ya
+no queda tiempo para improvisar.
+
+## 4. Lista de deseos y lista de vetos: las dos, no una
+
+Un buen DJ pregunta activamente por ambas: las canciones que no pueden faltar y las
+canciones o géneros que están prohibidos. Lo decisivo no es la lista en sí, sino si de
+verdad se respeta esa noche, incluso cuando los invitados piden otra cosa sobre la marcha.
+Pregunte expresamente en la reunión previa cómo se gestionan las peticiones
+contradictorias: la respuesta dice más sobre la forma de trabajar que cualquier tarifa.
+
+## 5. Contrato escrito en lugar de promesa verbal
+
+La duración, el paquete reservado con su alcance técnico, los servicios adicionales
+acordados como presentación o música en directo y las condiciones de pago entre señal y
+resto pertenecen a un contrato escrito, no a un correo sin valor. Eso protege a ambas
+partes y evita malentendidos que ya no pueden aclararse el día de la boda.
+
+## 6. Multilingüismo con listas de invitados mixtas
+
+En celebraciones germano-turcas, kurdas u otras multiculturales conviene una pregunta
+concreta: ¿se presenta en ambos —o en todos— los idiomas relevantes, o solo se intercala
+una frase de cortesía en el segundo idioma? Una presentación que en la práctica excluye a
+todo un grupo de invitados cuesta ambiente de forma perceptible, por buena que sea la
+selección musical.
+
+## 7. El caso serio: ¿qué pasa si hay enfermedad o ausencia?
+
+Una pregunta incómoda pero importante: ¿qué ocurre si el DJ contratado falla a última
+hora? Un proveedor serio tiene una respuesta preparada e incorpora el asunto al contrato,
+en lugar de esquivarlo o descartarlo como improbable.
+
+## Señales de alarma: cuándo conviene desconfiar
+
+- No es posible una conversación personal antes de reservar, solo un formulario en línea
+- No hay cifras concretas sobre la experiencia, solo formulaciones generales
+- No hay contrato escrito, solo una confirmación por correo
+- Respuestas evasivas a la pregunta sobre el equipo propio
+- Ningún interés por una lista de vetos, solo «ya saldrá bien»
+
+## Conclusión
+
+La mejor decisión nace de una comparación con criterios claros, no de la sensación de «este
+tiene un vídeo bonito». Concierte una reunión previa con dos o tres candidatos: la
+diferencia suele notarse ya en los primeros diez minutos. Quien quiera contrastar su
+propia lista con DJ Veys encontrará en la página de paquetes el marco técnico y horario, y
+podrá plantear el resto de dudas sin compromiso.
+`.trim();
+
 export const hochzeitsDjChecklistePost: BlogPost = {
   id: 'hochzeits-dj-checkliste',
   slug: 'hochzeits-dj-checkliste',
@@ -317,6 +617,42 @@ export const hochzeitsDjChecklistePost: BlogPost = {
         metaTitle: 'How to Find a Wedding DJ: The Checklist | DJ Veys',
         metaDescription:
           'What separates a good wedding DJ from a risky one? 7 criteria, a comparison table and red flags to watch for — with DJ Veys as a worked example.',
+      },
+    },
+    nl: {
+      slug: 'bruiloft-dj-checklist',
+      title: 'De juiste bruiloft-dj vinden: de checklist',
+      excerpt:
+        'Een goede bruiloft-dj herkent u aan controleerbare criteria, niet aan de mooiste Instagram-reel: aantoonbare ervaring, een persoonlijk voorgesprek, eigen apparatuur, een schriftelijk contract en een no-golijst die ook echt wordt nagekomen. Deze checklist maakt kandidaten vergelijkbaar.',
+      body: hochzeitsDjChecklisteNl,
+      seo: {
+        metaTitle: 'Bruiloft-dj vinden: de complete checklist | DJ Veys',
+        metaDescription:
+          'Wat onderscheidt een goede bruiloft-dj van een risico? 7 criteria, een vergelijkingstabel en rode vlaggen om op te letten.',
+      },
+    },
+    fr: {
+      slug: 'checklist-dj-de-mariage',
+      title: 'Trouver le bon DJ de mariage : la check-list',
+      excerpt:
+        'Un bon DJ de mariage se reconnaît à des critères vérifiables, pas au plus beau reel Instagram : une expérience démontrable, un entretien préalable, du matériel en propre, un contrat écrit et une liste noire réellement respectée. Cette check-list rend les candidats comparables.',
+      body: hochzeitsDjChecklisteFr,
+      seo: {
+        metaTitle: 'Choisir son DJ de mariage : la check-list | DJ Veys',
+        metaDescription:
+          'Qu\'est-ce qui distingue un bon DJ de mariage d\'un pari risqué ? 7 critères, un tableau comparatif et les signaux d\'alerte à repérer.',
+      },
+    },
+    es: {
+      slug: 'checklist-dj-de-bodas',
+      title: 'Encontrar el DJ de bodas adecuado: la lista de comprobación',
+      excerpt:
+        'Un buen DJ de bodas se reconoce por criterios comprobables, no por el mejor reel de Instagram: experiencia demostrable, una reunión previa, equipo propio, contrato escrito y una lista de vetos que se respeta de verdad. Esta lista hace comparables a los candidatos.',
+      body: hochzeitsDjChecklisteEs,
+      seo: {
+        metaTitle: 'Elegir DJ de bodas: la lista completa | DJ Veys',
+        metaDescription:
+          '¿Qué distingue a un buen DJ de bodas de una apuesta arriesgada? 7 criterios, una tabla comparativa y señales de alarma en las que fijarse.',
       },
     },
   },

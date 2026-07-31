@@ -116,6 +116,336 @@ Bestandteil des Planungsgesprächs, das sich über die Anfrageseite unverbindlic
 lässt.
 `.trim();
 
+export const eroeffnungstanzNl = `
+## De openingsdans is het moment dat de meeste gasten het langst onthouden
+
+Van alle programmaonderdelen van een bruiloft is de openingsdans meestal het onderdeel dat
+het langst wordt voorbereid en het scherpst wordt onthouden. Juist daarom loont het om de
+songkeuze niet pas twee weken van tevoren te maken, maar met echte voorbereidingstijd — de
+keuze bepaalt niet alleen de sfeer van het moment, maar ook hoe goed de dans te oefenen is
+en hoe soepel de overgang naar de rest van de avond verloopt.
+
+## Drie vragen vóór de songkeuze
+
+Nog voordat losse titels ter sprake komen, helpen drie vragen om de keuze af te bakenen:
+
+1. **Moet het nummer een persoonlijke betekenis hebben** — bijvoorbeeld het nummer van
+   de eerste date — of eerder sfeervol en voor alle gasten toegankelijk zijn?
+2. **Wordt er daadwerkelijk gechoreografeerd gedanst**, of is het een vrijer, gevoelig
+   moment zonder ingestudeerde passen?
+3. **Hoe moet de overgang naar de rest van de avond eruitzien** — eindigt het nummer en
+   begint het feest meteen, of komt er een vloeiende wissel naar een tweede, dansbaarder
+   stuk?
+
+## Songlengte en -versie: vaak over het hoofd gezien, maar bepalend
+
+De originele versie van een nummer is zelden ideaal voor de openingsdans. Een popsong van
+vier minuten met een lange intro of outro kan het moment laten uitlopen of te abrupt
+eindigen. In de praktijk werkt vaak:
+
+- **Een ingekorte edit** van ongeveer twee tot drie minuten, die intro en bridge inkort.
+- **Een nette fade-in en fade-out**, zodat het moment niet middenin het nummer eindigt.
+- **Een mashup van twee nummers**, als beide partners andere muziekvoorkeuren hebben —
+  bijvoorbeeld een langzame start die overgaat in een dansbaarder tweede stuk.
+
+## Muzikale categorieën die vaak werken
+
+| Categorie | Effect | Karakter |
+|---|---|---|
+| Klassieke liefdessong | Emotioneel, meestal rustiger, klassiek "eerste dans"-karakter | Ballads, akoestische versies |
+| Persoonlijke betekenis | Grootste emotionele werking, maar niet elke gast kent het | Het nummer van de kennismaking, een gedeelde favoriete artiest |
+| Live versie met saz of gitaar | Uniek, niet reproduceerbaar, zeer persoonlijk | Akoestische interpretatie van een bekend nummer |
+| Genremix bij biculturele paren | Verbindt beide muzikale werelden zichtbaar | Een Duits/internationaal nummer dat overgaat in een Turks motief, of andersom |
+
+## De overgang naar het feest
+
+Een vaak onderschat punt: wat gebeurt er direct na de laatste noot van de openingsdans?
+Zonder plan ontstaat hier vaak een ongemakkelijke stilte terwijl gasten nog naar de
+dansvloer komen. Beproefd is een strak getimed tweede nummer met hoger tempo dat de
+energie meteen doortrekt — ofwel naadloos in elkaar gemixt, ofwel met een korte, bewust
+geplaatste pauze voor applaus.
+
+## Als live muziek in het spel komt
+
+Een openingsdans op live muziek — bijvoorbeeld gespeeld op saz of gitaar in plaats van van
+plaat — is een moment dat geen ander feest exact kan reproduceren. Belangrijk is om dat op
+tijd te plannen: welke versie van het nummer instrumentaal uitvoerbaar is, hoe lang de
+liveversie duurt, en hoe de overgang naar de overige, gedraaide muziek klinkt.
+
+## Het juiste moment in het verloop
+
+Naast de songkeuze zelf loont een bewuste beslissing over wanneer de openingsdans
+plaatsvindt: direct na het diner, als eigen ceremonieel moment vóór de piektijd, of pas
+later op de avond, als er al gedanst is. Elke variant heeft een ander karakter — een
+vroege openingsdans voelt intiemer en geconcentreerder, een latere vaak organischer omdat
+de dansvloer al in beweging is. Er is geen objectief juist antwoord, maar de beslissing
+hoort bewust genomen te worden en niet aan het toeval van de avond te worden overgelaten.
+
+## Praktische tijdlijn voor de voorbereiding
+
+- **6 tot 3 maanden vooraf:** globale muzikale richting bepalen, samen meerdere opties
+  beluisteren.
+- **3 tot 1 maand vooraf:** definitieve keuze, versie en lengte afstemmen met de dj of
+  muzikant.
+- **Laatste weken:** wordt er gechoreografeerd, gebruik dan de definitieve montage voor de
+  repetities en wissel niet meer.
+
+## Als beide partners andere muzikale ideeën hebben
+
+Het komt regelmatig voor dat bruid en bruidegom verschillende lievelingsnummers of zelfs
+verschillende muzieksmaken in gedachten hebben voor de openingsdans. In plaats van een
+compromis te zoeken dat uiteindelijk niemand echt bevalt, werkt een bewust gebouwde mashup
+vaak beter: de ene helft van de dans op het ene nummer, een duidelijk hoorbare wissel, dan
+de tweede helft op het andere. Zo krijgt elke voorkeur zijn eigen moment in plaats van
+elkaar te verwateren.
+
+## Dansles: zinvol of overschat?
+
+Niet elk paar heeft professionele dansles nodig voor de openingsdans — veel momenten
+werken juist het persoonlijkst als ze niet doorgechoreografeerd zijn, maar bestaan uit
+eenvoudige, steeds terugkerende basispassen en echte emotie. Wie toch voor les kiest, geeft
+het gekozen nummer het best zo vroeg mogelijk door aan de dansdocent: versie en lengte
+bepalen direct welke passenreeksen qua tijd überhaupt passen.
+
+## En als plankenkoorts het moment overschaduwt?
+
+Een vaak onderschatte factor: veel paren zijn bij de openingsdans zenuwachtiger dan
+verwacht, ook als ze geoefend hebben. Een bewust gekozen, vertrouwd nummer met
+persoonlijke betekenis helpt hier vaak meer dan een technisch perfect gedanst maar
+emotioneel afstandelijk optreden. Ook de positie van de gasten — dicht om de dansvloer of
+juist met wat meer afstand — kan vooraf met de dj of de locatie worden afgesproken, om wat
+druk van het moment te halen.
+
+## Conclusie
+
+De openingsdans verdient meer voorbereiding dan hem meestal wordt gegund — niet omdat het
+nummer zelf ingewikkeld zou zijn, maar omdat versie, lengte, overgang en een eventuele
+live-uitvoering samen bepalen hoe het moment werkt. Wie die punten vroeg regelt, heeft op
+de trouwdag zelf één zorg minder. De concrete afstemming, inclusief een mogelijke
+liveversie op saz of gitaar, hoort vast bij het planningsgesprek, dat via de
+aanvraagpagina vrijblijvend te starten is.
+`.trim();
+
+export const eroeffnungstanzFr = `
+## L'ouverture de bal est le moment que la plupart des invités retiennent le plus longtemps
+
+De toutes les étapes d'un mariage, l'ouverture de bal est généralement celle qu'on prépare
+le plus longtemps et dont on se souvient le plus précisément. C'est justement pour cela
+qu'il vaut la peine de choisir le morceau non pas quinze jours avant, mais avec une vraie
+anticipation : ce choix influence non seulement l'émotion du moment, mais aussi la facilité
+à répéter la danse et la propreté de l'enchaînement vers le reste de la soirée.
+
+## Trois questions avant de choisir le morceau
+
+Avant même de discuter de titres précis, trois questions aident à cadrer le choix :
+
+1. **Le morceau doit-il avoir une signification personnelle** — celui du premier
+   rendez-vous, par exemple — ou plutôt créer une ambiance accessible à tous les invités ?
+2. **La danse sera-t-elle réellement chorégraphiée**, ou s'agit-il d'un moment plus libre
+   et sensible, sans pas appris ?
+3. **À quoi doit ressembler la transition vers la suite** — le morceau se termine et la
+   fête démarre aussitôt, ou passe-t-on en fondu vers un second titre plus dansant ?
+
+## Durée et version du morceau : souvent négligées, pourtant décisives
+
+La version originale d'une chanson est rarement idéale pour l'ouverture de bal. Un titre
+pop de quatre minutes avec une longue intro ou outro peut faire traîner le moment ou le
+couper trop brutalement. En pratique, on retient souvent :
+
+- **Un edit raccourci** d'environ deux à trois minutes, qui resserre l'intro et le pont.
+- **Un fondu d'entrée et de sortie propre**, pour que le moment ne s'arrête pas au milieu
+  du morceau.
+- **Un mashup de deux titres**, quand les deux partenaires ont des goûts différents — par
+  exemple un début lent qui bascule vers un second morceau plus dansant.
+
+## Des catégories musicales qui fonctionnent souvent
+
+| Catégorie | Effet | Caractère |
+|---|---|---|
+| Chanson d'amour classique | Émotionnel, souvent plus calme, caractère « première danse » classique | Ballades, versions acoustiques |
+| Référence personnelle | Effet émotionnel maximal, mais pas connue de tous les invités | Le morceau de la rencontre, un artiste commun |
+| Version live au saz ou à la guitare | Unique, non reproductible, très personnel | Interprétation acoustique d'un titre connu |
+| Mélange de genres pour les couples biculturels | Relie visiblement les deux mondes musicaux | Un titre allemand/international qui glisse vers un motif turc, ou l'inverse |
+
+## La transition vers la fête
+
+Un point souvent sous-estimé : que se passe-t-il immédiatement après la dernière note de
+l'ouverture de bal ? Sans plan, un silence gênant s'installe souvent pendant que les
+invités affluent encore sur la piste. Ce qui fonctionne : un second morceau au tempo plus
+élevé, calé précisément, qui prolonge l'énergie sans rupture — mixé sans couture, ou
+séparé par une courte pause délibérée pour les applaudissements.
+
+## Quand la musique live entre en jeu
+
+Une ouverture de bal en live — jouée au saz ou à la guitare plutôt que diffusée — est un
+moment qu'aucune autre fête ne reproduira à l'identique. L'essentiel est de le préparer à
+temps : quelle version du morceau se transpose à l'instrument, combien de temps dure la
+version live, et comment sonne la transition vers la musique diffusée ensuite.
+
+## Le bon moment dans le déroulé
+
+Au-delà du choix du titre, il vaut la peine de décider consciemment quand placer
+l'ouverture de bal : juste après le dîner, comme moment cérémoniel avant le peak time, ou
+plus tard dans la soirée, quand on a déjà dansé. Chaque variante a un caractère différent —
+une ouverture précoce paraît plus intime et plus concentrée, une ouverture tardive semble
+souvent plus organique parce que la piste est déjà en mouvement. Il n'y a pas de réponse
+objectivement juste, mais la décision doit être prise sciemment et non laissée au hasard.
+
+## Calendrier pratique de préparation
+
+- **6 à 3 mois avant :** définir la direction musicale générale, écouter ensemble
+  plusieurs options.
+- **3 à 1 mois avant :** choix définitif, version et durée à caler avec le DJ ou le
+  musicien.
+- **Dernières semaines :** en cas de chorégraphie, répéter sur le montage final et ne plus
+  en changer.
+
+## Quand les deux partenaires n'ont pas les mêmes envies musicales
+
+Il n'est pas rare que la mariée et le marié aient en tête des morceaux préférés, voire des
+goûts musicaux, différents pour l'ouverture de bal. Plutôt que de chercher un compromis qui
+ne plaira vraiment à personne, un mashup construit exprès fonctionne souvent mieux : une
+moitié de la danse sur un morceau, un changement clairement audible, puis la seconde moitié
+sur l'autre. Chaque préférence a ainsi son propre moment au lieu de se diluer.
+
+## Cours de danse : utile ou surestimé ?
+
+Tous les couples n'ont pas besoin de cours de danse pour l'ouverture de bal — beaucoup de
+moments sont justement les plus personnels quand ils ne sont pas entièrement chorégraphiés,
+mais reposent sur des pas de base simples et répétés et une émotion sincère. Qui choisit
+malgré tout de prendre des cours a intérêt à transmettre le morceau retenu au professeur
+le plus tôt possible : la version et la durée déterminent directement quelles séquences de
+pas tiennent dans le temps imparti.
+
+## Et si le trac gâche le moment ?
+
+Un facteur fréquemment sous-estimé : beaucoup de couples sont plus nerveux qu'ils ne
+l'imaginaient lors de l'ouverture de bal, même après avoir répété. Un morceau familier,
+choisi pour sa signification personnelle, aide souvent davantage qu'une prestation
+techniquement parfaite mais émotionnellement distante. La position des invités — serrés
+autour de la piste ou un peu à distance — peut également se convenir à l'avance avec le DJ
+ou le lieu, pour alléger un peu la pression du moment.
+
+## Conclusion
+
+L'ouverture de bal mérite plus de préparation qu'on ne lui en accorde d'ordinaire — non
+parce que le morceau serait compliqué, mais parce que version, durée, transition et
+éventuelle exécution live décident ensemble de l'effet produit. Régler ces points tôt,
+c'est un souci de moins le jour J. La mise au point concrète, y compris une éventuelle
+version live au saz ou à la guitare, fait partie intégrante de l'entretien de préparation,
+que la page de demande permet d'engager sans engagement.
+`.trim();
+
+export const eroeffnungstanzEs = `
+## El primer baile es el momento que la mayoría de los invitados recuerda más tiempo
+
+De todos los momentos de una boda, el primer baile suele ser el que más tiempo se prepara y
+con más precisión se recuerda. Precisamente por eso conviene elegir la canción no dos
+semanas antes, sino con verdadera antelación: la elección influye no solo en la emoción del
+momento, sino también en lo bien que se puede ensayar el baile y en lo limpia que resulta
+la transición hacia el resto de la noche.
+
+## Tres preguntas antes de elegir la canción
+
+Antes incluso de discutir títulos concretos, tres preguntas ayudan a acotar la elección:
+
+1. **¿Debe la canción tener un significado personal** —la de la primera cita, por
+   ejemplo— o más bien crear ambiente y resultar accesible a todos los invitados?
+2. **¿Se bailará realmente con coreografía**, o será un momento más libre y emotivo, sin
+   pasos ensayados?
+3. **¿Cómo debe ser la transición al resto de la noche?** ¿Termina la canción y la fiesta
+   empieza de inmediato, o hay un paso fluido a un segundo tema más bailable?
+
+## Duración y versión: a menudo se pasan por alto y son decisivas
+
+La versión original de una canción rara vez es la ideal para el primer baile. Un tema pop
+de cuatro minutos con una intro o un final largos puede alargar el momento o cortarlo de
+forma demasiado abrupta. En la práctica suele funcionar:
+
+- **Una edición recortada** de unos dos a tres minutos, que ajusta la intro y el puente.
+- **Un fundido de entrada y salida limpio**, para que el momento no termine a mitad de la
+  canción.
+- **Un mashup de dos canciones**, si cada miembro de la pareja tiene gustos distintos: por
+  ejemplo una entrada lenta que da paso a un segundo tema más bailable.
+
+## Categorías musicales que suelen funcionar
+
+| Categoría | Efecto | Carácter |
+|---|---|---|
+| Canción de amor clásica | Emotiva, normalmente más tranquila, carácter clásico de «primer baile» | Baladas, versiones acústicas |
+| Referencia personal | Máximo efecto emocional, aunque no todos los invitados la conozcan | La canción de cuando se conocieron, un artista compartido |
+| Versión en directo con saz o guitarra | Única, irrepetible, muy personal | Interpretación acústica de un tema conocido |
+| Mezcla de géneros en parejas biculturales | Une de forma visible ambos mundos musicales | Un tema alemán/internacional que pasa a un motivo turco, o al revés |
+
+## La transición a la fiesta
+
+Un punto habitualmente subestimado: ¿qué ocurre justo después de la última nota del primer
+baile? Sin un plan suele producirse un silencio incómodo mientras los invitados todavía se
+acercan a la pista. Lo que funciona es un segundo tema de tempo más alto, medido con
+precisión, que mantiene la energía de inmediato: mezclado sin costuras o con una pausa
+breve y deliberada para el aplauso.
+
+## Cuando entra la música en directo
+
+Un primer baile con música en directo —tocado al saz o a la guitarra en lugar de
+reproducido— es un momento que ninguna otra celebración puede reproducir igual. Lo
+importante es planificarlo a tiempo: qué versión de la canción se puede llevar a
+instrumento, cuánto dura la versión en vivo y cómo suena la transición hacia la música
+pinchada posterior.
+
+## El momento adecuado dentro del desarrollo
+
+Además de la elección de la canción, conviene decidir conscientemente cuándo tiene lugar el
+primer baile: justo después de la cena, como momento ceremonial propio antes del peak time,
+o más tarde, cuando ya se ha bailado. Cada variante tiene un carácter distinto: un primer
+baile temprano resulta más íntimo y concentrado; uno más tardío suele sentirse más orgánico
+porque la pista ya está en movimiento. No hay una respuesta objetivamente correcta, pero la
+decisión debería tomarse a conciencia y no dejarse al azar de la noche.
+
+## Cronología práctica para la preparación
+
+- **De 6 a 3 meses antes:** fijar la dirección musical aproximada y escuchar juntos varias
+  opciones.
+- **De 3 a 1 mes antes:** elección definitiva; acordar versión y duración con el DJ o el
+  músico.
+- **Últimas semanas:** si hay coreografía, ensayar con el montaje definitivo y no volver a
+  cambiarlo.
+
+## Cuando cada miembro de la pareja tiene una idea musical distinta
+
+No es raro que novia y novio tengan en mente canciones favoritas —o incluso gustos
+musicales— distintos para el primer baile. En lugar de buscar un compromiso que al final no
+convence a nadie, suele funcionar mejor un mashup construido a propósito: una mitad del
+baile con una canción, un cambio claramente audible y la segunda mitad con la otra. Así
+cada preferencia tiene su propio momento en lugar de diluirse mutuamente.
+
+## Clases de baile: ¿útiles o sobrevaloradas?
+
+No toda pareja necesita clases profesionales para el primer baile: muchos momentos resultan
+precisamente más personales cuando no están del todo coreografiados, sino que se apoyan en
+pasos básicos sencillos y repetidos y en emoción auténtica. Quien aun así opte por las
+clases hará bien en pasar la canción elegida al profesor cuanto antes: la versión y la
+duración determinan directamente qué secuencias de pasos caben en el tiempo disponible.
+
+## ¿Y si los nervios ensombrecen el momento?
+
+Un factor a menudo subestimado: muchas parejas están más nerviosas de lo que esperaban en
+el primer baile, incluso habiendo ensayado. Una canción familiar, elegida a conciencia por
+su significado personal, ayuda aquí más que una actuación técnicamente perfecta pero
+emocionalmente distante. También la posición de los invitados —muy cerca de la pista o algo
+más apartados— puede acordarse de antemano con el DJ o con el lugar, para quitar algo de
+presión al momento.
+
+## Conclusión
+
+El primer baile merece más preparación de la que suele concedérsele, no porque la canción
+en sí sea complicada, sino porque versión, duración, transición y una posible ejecución en
+directo deciden en conjunto el efecto del momento. Quien resuelve esos puntos con
+antelación tiene una preocupación menos el día de la boda. El ajuste concreto, incluida una
+posible versión en vivo con saz o guitarra, forma parte fija de la reunión de
+planificación, que puede iniciarse sin compromiso desde la página de solicitud.
+`.trim();
+
 export const eroeffnungstanzTr = `
 ## Açılış dansı, davetlilerin en uzun süre hatırladığı andır
 
@@ -375,6 +705,42 @@ export const eroeffnungstanzPost: BlogPost = {
         metaTitle: 'First Dance: Song Choice & Timing | DJ Veys',
         metaDescription:
           'Which song suits a first dance? Version, length, the transition into the party and live music on saz or guitar — a practical guide.',
+      },
+    },
+    nl: {
+      slug: 'openingsdans-nummer-kiezen',
+      title: 'De openingsdans: het juiste nummer kiezen',
+      excerpt:
+        'De openingsdans is het moment dat gasten het langst onthouden — songkeuze, versie, lengte en de overgang naar het feest bepalen samen hoe hij landt. Deze gids laat zien hoe u dat met echte voorbereidingstijd plant, inclusief live muziek op saz of gitaar.',
+      body: eroeffnungstanzNl,
+      seo: {
+        metaTitle: 'Openingsdans: nummerkeuze & timing | DJ Veys',
+        metaDescription:
+          'Welk nummer past bij een openingsdans? Versie, lengte, de overgang naar het feest en live muziek op saz of gitaar — een praktische gids.',
+      },
+    },
+    fr: {
+      slug: 'ouverture-de-bal-choix-du-morceau',
+      title: 'L\'ouverture de bal : choisir le bon morceau',
+      excerpt:
+        'L\'ouverture de bal est le moment dont les invités se souviennent le plus longtemps — choix du morceau, version, durée et transition vers la fête décident ensemble de son effet. Ce guide montre comment la préparer avec de l\'avance, musique live au saz ou à la guitare comprise.',
+      body: eroeffnungstanzFr,
+      seo: {
+        metaTitle: 'Ouverture de bal : choix du morceau | DJ Veys',
+        metaDescription:
+          'Quel morceau pour une ouverture de bal ? Version, durée, transition vers la fête et musique live au saz ou à la guitare — un guide pratique.',
+      },
+    },
+    es: {
+      slug: 'primer-baile-eleccion-cancion',
+      title: 'El primer baile: elegir la canción adecuada',
+      excerpt:
+        'El primer baile es el momento que los invitados recuerdan más tiempo: la elección de la canción, la versión, la duración y la transición a la fiesta deciden en conjunto cómo funciona. Esta guía muestra cómo planificarlo con antelación real, incluida la música en directo con saz o guitarra.',
+      body: eroeffnungstanzEs,
+      seo: {
+        metaTitle: 'Primer baile: elegir canción y momento | DJ Veys',
+        metaDescription:
+          '¿Qué canción encaja en un primer baile? Versión, duración, la transición a la fiesta y música en directo con saz o guitarra: una guía práctica.',
       },
     },
   },

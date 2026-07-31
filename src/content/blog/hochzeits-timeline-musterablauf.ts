@@ -308,6 +308,337 @@ important adjustment every couple should make themselves: deliberate buffers bet
 blocks instead of a minute-by-minute chain, and early coordination with every supplier.
 `.trim();
 
+export const timelineNl = `
+## Een voorbeeld, geen recept
+
+Nauwelijks een planningsvraag wordt zo vaak gesteld als "hoe ziet een realistisch
+tijdschema voor de trouwdag eruit?" — en nauwelijks een antwoord wordt zo vaak verkeerd
+begrepen. De onderstaande tijdlijn is een voorbeeld, gebaseerd op een typisch verloop,
+geen sjabloon dat ongewijzigd over te nemen valt. Elke locatie, elk aantal gasten en elke
+familietraditie verschuift losse blokken — de structuur eronder blijft in de meeste
+gevallen verrassend vergelijkbaar.
+
+## Voorbeeldtijdlijn voor een trouwdag
+
+| Tijd | Programmaonderdeel | Aandachtspunt |
+|---|---|---|
+| 13:00–14:00 | Getting ready, laatste voorbereidingen | Marge inplannen, het duurt bijna altijd langer dan gedacht |
+| 14:00–14:30 | Ceremonie (gemeentehuis of vrije ceremonie) | Bij een vrije ceremonie: techniekcheck minstens 30 minuten vooraf |
+| 14:30–16:00 | Ontvangst, felicitaties, foto's | Kan bij veel gasten flink uitlopen |
+| 16:00–18:00 | Aperitief op de feestlocatie | Rustige achtergrondmuziek, eerste gesprekken |
+| 18:00–20:00 | Binnenkomst, diner, speeches | Speeches vooraf globaal qua tijd afstemmen, anders loopt het verloop uit de hand |
+| 20:00–21:00 | Taart aansnijden, openingsdans, eerste dansrondes | De overgang van zitten naar dansen bewust vormgeven |
+| 21:00–24:00 | Piektijd, hoofdprogramma op de dansvloer | De energieke kern van de avond |
+| 24:00–ca. 02:00 | Uitloop, after-hours | Het tempo zakt, maar de dansvloer blijft open |
+
+## Waarom marges belangrijker zijn dan exacte tijden
+
+De grootste fout in zelfgemaakte tijdlijnen: programmaonderdelen worden op de minuut
+achter elkaar gepland, zonder marge. In de praktijk duurt vrijwel elk onderdeel — foto's,
+speeches, aankomst van de gasten — langer dan gedacht. Een realistisch tijdschema werkt
+daarom met bewuste marges van 15 tot 30 minuten tussen de grotere blokken, in plaats van
+met een sluitende ketting van punten.
+
+## Getting ready: waarom dit blok zo vaak te krap wordt ingeschat
+
+Het eerste blok van de tijdlijn — haar, make-up, laatste pasmomenten, eerste foto's —
+wordt in zelfgemaakte schema's bijna systematisch te kort ingepland. Tussen bruid,
+getuigen en eventueel de bruidegom op een tweede locatie ontstaat makkelijk vertraging die
+doorwerkt in de rest van de dag. Wie dit blok bewust ruim plant, wint rust voor het hele
+verdere verloop.
+
+## Hoe de tijdlijn verschuift bij een Turkse of Duits-Turkse bruiloft
+
+Bij Turkse en Duits-Turkse bruiloften verschuift het zwaartepunt meestal richting
+ceremonie en dansprogramma: een dichtere ceremonie met ringoverhandiging, een vroegere
+start van dans en halay, en een over het geheel langere, dansintensievere avond die vaak
+na 02:00 uur doorloopt. Een apart artikel gaat dieper in op het verloop van Turkse
+bruiloften in Duitsland.
+
+## De drie meest voorkomende timingfouten
+
+1. **Te weinig marge na de ceremonie**, waardoor foto's uitlopen en de ontvangst
+   verlaat begint.
+2. **Speeches zonder globale tijdsafspraak**, waardoor het diner veel langer duurt dan
+   voorzien en de piektijd naar achteren schuift.
+3. **De sluitingstijd van de locatie of een geluidsverordening niet meegenomen**, zodat
+   het hoogtepunt van de avond abrupt moet worden afgebroken.
+
+## Marge vóór de piektijd: het blok dat het vaakst ontbreekt
+
+Tussen het einde van het diner en het begin van de eigenlijke piektijd zit in de praktijk
+vaak een onderschat overgangsblok: tafels worden afgeruimd of verplaatst, gasten
+verplaatsen zich naar de bar, de dansvloer komt vrij. Wordt daar geen apart tijdvenster
+voor ingepland, dan voelt de overgang abrupt, en de muzikaal zorgvuldig opgebouwde
+piektijd verpuft omdat nog niet alle gasten zover zijn.
+
+## Hoe de eigen tijdlijn ontstaat
+
+Een houdbare tijdlijn ontstaat niet alleen aan de keukentafel, maar in overleg met alle
+betrokkenen — locatie, fotograaf, cateraar en dj. In het planningsgesprek worden precies
+die raakvlakken op elkaar afgestemd, zodat de timing tussen camera, muziek en draaiboek
+klopt in plaats van pas op de dag zelf zichtbaar te worden.
+
+## En als de ceremonie uitloopt?
+
+Een scenario dat in de praktijk geregeld voorkomt: het gemeentehuis loopt uit, of gasten
+vinden niet op tijd een parkeerplaats. Een houdbare tijdlijn plant daar bewust marge voor
+in — niet omdat vertraging waarschijnlijk is, maar omdat ze mogelijk is. Ontbreekt die
+marge, dan schuift de hele resterende tijdlijn met hetzelfde bedrag op, vaak tot laat op
+de avond, waar dan uitgerekend de piektijd moet worden ingekort.
+
+## Hoeveel programmaonderdelen zijn te veel?
+
+Een veelgemaakte planningsfout: er worden steeds meer onderdelen aan de tijdlijn
+toegevoegd — spelletjes, verrassingen, extra speeches — zonder dat de totale tijd opnieuw
+wordt berekend. Als ruwe richtlijn geldt: voor elk extra onderdeel horen minstens 15 tot
+20 minuten realistisch te worden ingepland, inclusief de tijd die gasten nodig hebben om
+zich opnieuw te verzamelen. Een tijdlijn met te veel onderdelen voelt uiteindelijk gejaagd
+in plaats van feestelijk.
+
+## De tijdlijn met alle dienstverleners delen
+
+Een tijdlijn die alleen bij het bruidspaar ligt, helpt weinig. Fotograaf, locatie,
+cateraar en dj horen dezelfde, actuele versie te kennen — idealiter als één gezamenlijk
+afgestemd document dat ruim voor het feest naar alle betrokkenen gaat. Verandert er op het
+laatste moment iets, dan moet die wijziging alle betrokkenen tegelijk bereiken, niet
+slechts een deel.
+
+## Wat de dag ervoor nog een keer gecontroleerd hoort te worden
+
+- Is de definitieve tijdlijn naar alle dienstverleners verstuurd?
+- Zijn de marges na de ceremonie en vóór het diner werkelijk ingepland?
+- Is bekend tot hoe laat de locatie of een geluidsregeling een grens stelt?
+- Is er een contactpersoon ter plaatse die bij vertraging snel te bereiken is?
+
+## Conclusie
+
+De bovenstaande tijdlijn is een realistisch uitgangspunt, geen star schema. De
+belangrijkste aanpassing die elk paar zelf zou moeten maken: bewuste marges tussen de
+blokken in plaats van een ketting op de minuut, en tijdige afstemming met alle
+dienstverleners. Details over het verloop en hoe dat in het voorgesprek voor het eigen
+feest wordt vastgelegd, staan op de pagina over de werkwijze.
+`.trim();
+
+export const timelineFr = `
+## Un modèle, pas une recette
+
+Peu de questions d'organisation reviennent aussi souvent que « à quoi ressemble un
+planning réaliste pour le jour du mariage ? » — et peu de réponses sont aussi souvent mal
+comprises. La timeline ci-dessous est un exemple, calé sur un déroulé typique, non un
+modèle à reprendre tel quel. Chaque lieu, chaque nombre d'invités et chaque tradition
+familiale déplace certains blocs — mais la structure sous-jacente reste, dans la plupart
+des cas, étonnamment semblable.
+
+## Exemple de timeline pour une journée de mariage
+
+| Horaire | Étape | Remarque |
+|---|---|---|
+| 13h00–14h00 | Préparatifs, derniers réglages | Prévoir de la marge, cela dure presque toujours plus longtemps que prévu |
+| 14h00–14h30 | Cérémonie (mairie ou cérémonie laïque) | Pour une cérémonie laïque : test technique au moins 30 minutes avant |
+| 14h30–16h00 | Accueil, félicitations, photos | Peut s'allonger nettement avec beaucoup d'invités |
+| 16h00–18h00 | Vin d'honneur sur le lieu de réception | Musique d'ambiance discrète, premières conversations |
+| 18h00–20h00 | Entrée en salle, dîner, discours | Caler grossièrement la durée des discours à l'avance, sinon le déroulé dérape |
+| 20h00–21h00 | Découpe du gâteau, ouverture de bal, premières danses | Soigner consciemment le passage de l'assise à la piste |
+| 21h00–24h00 | Peak time, cœur du programme dansant | Le noyau énergique de la soirée |
+| 24h00–env. 02h00 | Fin de soirée, after | Le rythme baisse, mais la piste reste ouverte |
+
+## Pourquoi les marges comptent plus que les horaires exacts
+
+La plus grande erreur des timelines faites soi-même : enchaîner les étapes à la minute
+près, sans marge. Dans la pratique, presque chaque étape — photos, discours, arrivée des
+invités — dure plus longtemps que prévu. Un planning réaliste travaille donc avec des
+marges assumées de 15 à 30 minutes entre les grands blocs, plutôt qu'avec une chaîne sans
+respiration.
+
+## Les préparatifs : pourquoi ce bloc est si souvent sous-évalué
+
+Le premier bloc de la timeline — coiffure, maquillage, derniers essayages, premières
+photos — est presque systématiquement trop court dans les plannings faits maison. Entre la
+mariée, les témoins et éventuellement le marié dans un second lieu, les retards
+s'accumulent facilement et se propagent sur le reste de la journée. Prévoir large sur ce
+bloc, c'est gagner du calme pour tout ce qui suit.
+
+## Comment la timeline se décale pour un mariage turc ou germano-turc
+
+Lors des mariages turcs et germano-turcs, le centre de gravité se déplace généralement
+vers la cérémonie et le programme dansant : une cérémonie plus dense avec remise des
+alliances, une entrée plus précoce dans la danse et le halay, et une soirée globalement
+plus longue et plus dansante, qui dépasse souvent 2 heures du matin. Un article dédié
+traite en détail du déroulé des mariages turcs en Allemagne.
+
+## Les trois erreurs de timing les plus fréquentes
+
+1. **Trop peu de marge après la cérémonie**, quand les photos s'éternisent et que le vin
+   d'honneur commence en retard.
+2. **Des discours sans cadrage horaire**, ce qui rallonge nettement le dîner et repousse
+   le peak time.
+3. **L'heure de fermeture du lieu ou une réglementation sonore non intégrée** au planning,
+   obligeant à interrompre brutalement le sommet de la soirée.
+
+## La marge avant le peak time : le bloc le plus souvent absent
+
+Entre la fin du dîner et le début du véritable peak time se glisse en pratique un bloc de
+transition sous-estimé : on débarrasse ou déplace les tables, les invités se dirigent vers
+le bar, la piste se libère. Sans créneau dédié, la transition paraît abrupte et le peak
+time, pourtant construit musicalement, retombe parce que tous les invités ne sont pas
+encore prêts.
+
+## Comment se construit votre propre timeline
+
+Une timeline solide ne se fabrique pas seul à son bureau, mais en échange avec tous les
+intervenants — lieu, photographe, traiteur et DJ. L'entretien de préparation sert
+précisément à aligner ces interfaces, pour que le timing entre caméra, musique et déroulé
+concorde, au lieu de se révéler le jour même.
+
+## Et si la cérémonie prend du retard ?
+
+Un scénario qui se produit régulièrement : la mairie a du retard, ou les invités ne
+trouvent pas de place de stationnement à temps. Une timeline solide prévoit
+délibérément de la marge pour cela — non parce qu'un retard est probable, mais parce
+qu'il est possible. Sans cette marge, tout le reste du planning se décale d'autant,
+souvent jusque tard dans la soirée, où c'est justement le peak time qu'il faut raccourcir.
+
+## Combien d'étapes, c'est trop ?
+
+Une erreur d'organisation courante : ajouter toujours plus d'étapes — jeux, surprises,
+discours supplémentaires — sans recalculer la durée totale. Comme repère grossier : pour
+chaque étape supplémentaire, compter au minimum 15 à 20 minutes réalistes, temps nécessaire
+aux invités pour se rassembler inclus. Une timeline trop chargée finit par paraître
+pressée plutôt que festive.
+
+## Partager la timeline avec tous les prestataires
+
+Une timeline qui ne circule qu'entre les mariés ne sert pas à grand-chose. Photographe,
+lieu, traiteur et DJ doivent connaître la même version, à jour — idéalement un document
+commun, validé et envoyé à tous suffisamment tôt. Si quelque chose change à la dernière
+minute, ce changement doit atteindre tout le monde en même temps, pas seulement une partie.
+
+## Ce qu'il faut revérifier la veille
+
+- La timeline définitive a-t-elle été envoyée à tous les prestataires ?
+- Les marges après la cérémonie et avant le dîner sont-elles réellement prévues ?
+- Sait-on jusqu'à quelle heure le lieu ou une réglementation sonore impose une fin ?
+- Existe-t-il un interlocuteur sur place, joignable rapidement en cas de retard ?
+
+## Conclusion
+
+La timeline ci-dessus est un point de départ réaliste, pas un carcan. L'adaptation la plus
+importante que chaque couple devrait faire lui-même : des marges assumées entre les blocs
+plutôt qu'une chaîne minutée, et une concertation précoce avec tous les prestataires. Le
+détail du déroulé, et la façon dont il est fixé en entretien préalable pour votre propre
+fête, figure sur la page consacrée au déroulement.
+`.trim();
+
+export const timelineEs = `
+## Un modelo, no una receta
+
+Pocas preguntas de organización se repiten tanto como «¿cómo es un horario realista para
+el día de la boda?», y pocas respuestas se malinterpretan tanto. La siguiente cronología es
+un ejemplo, basado en un desarrollo típico, no una plantilla que pueda copiarse sin
+cambios. Cada lugar, cada número de invitados y cada tradición familiar desplaza bloques
+concretos, pero la estructura de fondo se mantiene, en la mayoría de los casos,
+sorprendentemente parecida.
+
+## Cronología de ejemplo para un día de boda
+
+| Hora | Momento | Observación |
+|---|---|---|
+| 13:00–14:00 | Preparativos, últimos retoques | Prever margen: casi siempre dura más de lo previsto |
+| 14:00–14:30 | Ceremonia (registro civil o ceremonia libre) | En ceremonia al aire libre: prueba técnica al menos 30 minutos antes |
+| 14:30–16:00 | Recepción, felicitaciones, fotos | Con muchos invitados puede alargarse bastante |
+| 16:00–18:00 | Cóctel en el lugar de la fiesta | Música de fondo tranquila, primeras conversaciones |
+| 18:00–20:00 | Entrada al salón, cena, discursos | Acordar antes la duración aproximada de los discursos, o el horario se descontrola |
+| 20:00–21:00 | Corte de la tarta, primer baile, primeras rondas de baile | Cuidar conscientemente el paso de estar sentados a bailar |
+| 21:00–24:00 | Peak time, programa principal de baile | El núcleo energético de la noche |
+| 24:00–aprox. 02:00 | Cierre, after | El ritmo baja, pero la pista sigue abierta |
+
+## Por qué los márgenes importan más que las horas exactas
+
+El mayor error en las cronologías caseras: encadenar los momentos al minuto, sin margen.
+En la práctica casi todo —fotos, discursos, llegada de los invitados— dura más de lo
+previsto. Un horario realista trabaja por eso con márgenes conscientes de 15 a 30 minutos
+entre los bloques grandes, en lugar de una cadena sin respiración.
+
+## Los preparativos: por qué este bloque se calcula tan corto
+
+El primer bloque de la cronología —peinado, maquillaje, últimas pruebas, primeras fotos—
+se planifica casi sistemáticamente demasiado corto en los horarios caseros. Entre la
+novia, las testigos y, en su caso, el novio en otro lugar, surgen fácilmente retrasos que
+se arrastran al resto del día. Quien planifica este bloque con holgura gana calma para
+todo lo que viene después.
+
+## Cómo se desplaza la cronología en una boda turca o germano-turca
+
+En las bodas turcas y germano-turcas el peso suele desplazarse hacia la ceremonia y el
+programa de baile: una ceremonia más densa con entrega de anillos, una entrada más
+temprana al baile y al halay, y una noche en conjunto más larga y más bailada, que a
+menudo se prolonga más allá de las 02:00. Un artículo aparte trata en detalle el
+desarrollo de las bodas turcas en Alemania.
+
+## Los tres errores de timing más frecuentes
+
+1. **Poco margen tras la ceremonia**, cuando las fotos se alargan y el cóctel empieza
+   con retraso.
+2. **Discursos sin un acuerdo aproximado de duración**, lo que alarga la cena mucho más de
+   lo previsto y retrasa el peak time.
+3. **No haber contado con la hora de cierre del lugar o una normativa de ruido**, de modo
+   que el punto álgido de la noche debe cortarse de golpe.
+
+## El margen antes del peak time: el bloque que más falta
+
+Entre el final de la cena y el comienzo del peak time propiamente dicho suele haber en la
+práctica un bloque de transición infravalorado: se recogen o mueven las mesas, los
+invitados se desplazan a la barra, la pista queda libre. Si no se reserva una franja
+propia para eso, la transición resulta abrupta y el peak time, construido con cuidado
+musical, se diluye porque todavía no todos los invitados están listos.
+
+## Cómo nace la cronología propia
+
+Una cronología sólida no se hace en solitario sobre el papel, sino hablando con todos los
+implicados: lugar, fotógrafo, catering y DJ. La reunión de planificación sirve justamente
+para ajustar esos puntos de contacto, de modo que el timing entre cámara, música y
+programa encaje en lugar de revelarse el mismo día.
+
+## ¿Y si la ceremonia se retrasa?
+
+Un escenario que ocurre con regularidad: el registro civil va con retraso, o los invitados
+no encuentran aparcamiento a tiempo. Una cronología sólida reserva margen precisamente
+para eso, no porque el retraso sea probable, sino porque es posible. Si falta ese margen,
+todo lo que queda se desplaza en la misma medida, a menudo hasta bien entrada la noche,
+donde acaba recortándose justamente el peak time.
+
+## ¿Cuántos momentos son demasiados?
+
+Un error de planificación habitual: añadir cada vez más momentos a la cronología —juegos,
+sorpresas, más discursos— sin recalcular el tiempo total. Como orientación aproximada:
+por cada momento adicional conviene reservar de forma realista al menos 15 a 20 minutos,
+incluido el tiempo que necesitan los invitados para volver a reunirse. Una cronología con
+demasiados momentos acaba resultando apresurada en lugar de festiva.
+
+## Compartir la cronología con todos los proveedores
+
+Una cronología que solo tiene la pareja sirve de poco. Fotógrafo, lugar, catering y DJ
+deberían conocer la misma versión actualizada, idealmente como un documento común,
+acordado y enviado a todos con suficiente antelación. Si algo cambia a última hora, ese
+cambio debe llegar a todos a la vez, no solo a una parte.
+
+## Qué conviene revisar una vez más la víspera
+
+- ¿Se ha enviado la cronología definitiva a todos los proveedores?
+- ¿Están realmente previstos los márgenes tras la ceremonia y antes de la cena?
+- ¿Se sabe hasta qué hora pone límite el lugar o una normativa de ruido?
+- ¿Hay una persona de contacto in situ a la que avisar rápido si hay retrasos?
+
+## Conclusión
+
+La cronología anterior es un punto de partida realista, no un esquema rígido. El ajuste
+más importante que cada pareja debería hacer por su cuenta: márgenes conscientes entre los
+bloques en lugar de una cadena al minuto, y una coordinación temprana con todos los
+proveedores. Los detalles del proceso y cómo se fija en la reunión previa para la propia
+celebración están en la página sobre el desarrollo.
+`.trim();
+
 export const timelinePost: BlogPost = {
   id: 'hochzeits-timeline-musterablauf',
   slug: 'hochzeits-timeline-musterablauf',
@@ -356,6 +687,42 @@ export const timelinePost: BlogPost = {
         metaTitle: 'Wedding Timeline: A Realistic Example | DJ Veys',
         metaDescription:
           'What does a realistic timeline for the wedding day look like? An example timeline, the most common timing mistakes, and buffer recommendations.',
+      },
+    },
+    nl: {
+      slug: 'bruiloft-tijdlijn-voorbeeld',
+      title: 'De bruiloftstijdlijn: een realistisch voorbeeldverloop',
+      excerpt:
+        'Een betrouwbare bruiloftstijdlijn drijft op bewuste marges, niet op planning per minuut. Deze gids toont een voorbeeldtijdlijn van 13:00 tot 02:00, de drie meest voorkomende timingfouten en hoe het verloop verschuift bij Turkse bruiloften.',
+      body: timelineNl,
+      seo: {
+        metaTitle: 'Bruiloftstijdlijn: realistisch voorbeeld | DJ Veys',
+        metaDescription:
+          'Hoe ziet een realistisch tijdschema voor de trouwdag eruit? Een voorbeeldtijdlijn, de vaakst gemaakte timingfouten en aanbevolen marges.',
+      },
+    },
+    fr: {
+      slug: 'timeline-mariage-exemple',
+      title: 'La timeline du mariage : un déroulé type réaliste',
+      excerpt:
+        'Une timeline de mariage fiable repose sur des marges assumées, pas sur un minutage serré. Ce guide présente un exemple de 13h à 2h du matin, les trois erreurs de timing les plus fréquentes et la façon dont le déroulé se décale pour un mariage turc.',
+      body: timelineFr,
+      seo: {
+        metaTitle: 'Timeline de mariage : un exemple réaliste | DJ Veys',
+        metaDescription:
+          'À quoi ressemble un planning réaliste pour le jour du mariage ? Un exemple de timeline, les erreurs de timing courantes et les marges à prévoir.',
+      },
+    },
+    es: {
+      slug: 'cronologia-boda-ejemplo',
+      title: 'La cronología de la boda: un desarrollo de ejemplo realista',
+      excerpt:
+        'Una cronología de boda fiable se sostiene sobre márgenes conscientes, no sobre una planificación al minuto. Esta guía muestra un ejemplo de 13:00 a 02:00, los tres errores de timing más frecuentes y cómo se desplaza el desarrollo en una boda turca.',
+      body: timelineEs,
+      seo: {
+        metaTitle: 'Cronología de boda: un ejemplo realista | DJ Veys',
+        metaDescription:
+          '¿Cómo es un horario realista para el día de la boda? Una cronología de ejemplo, los errores de timing más comunes y los márgenes recomendados.',
       },
     },
   },
