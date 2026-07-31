@@ -36,6 +36,7 @@ export const ANSWER_CATEGORIES = [
   'musik',
   'technik',
   'tuerkisch',
+  'islamisch',
   'location',
   'recht',
 ] as const;
@@ -81,6 +82,28 @@ export interface Answer {
 }
 
 const U = '2026-07-24';
+
+/**
+ * Zweites Datum für die religiös geprägte Ebene (Kategorie `islamisch` plus
+ * die drei Ergänzungen in `musik`/`ablauf`/`technik`), die der Kunde am
+ * 2026-07-30 als bestehendes, bis dahin nirgends dokumentiertes Angebot
+ * bestätigt hat — siehe `.claude/BRAND-FACTS.md`, Abschnitt „Religiös
+ * geprägte Hochzeiten“. Bewusst nicht als Sammel-Update auf alle 40
+ * Altbestände gezogen: `updated` ist ein Frischesignal für Antwortmaschinen
+ * und wird wertlos, wenn unveränderte Texte ein neues Datum bekommen.
+ */
+const U_ISLAM = '2026-07-30';
+
+/**
+ * Einen Tag später bestätigte der Kunde zusätzlich, dass er die Kur’an-
+ * Rezitation **selbst** vorträgt. Das ist keine Formulierungsfrage, sondern
+ * der Unterschied zwischen „koordiniert den religiösen Teil“ und „führt ihn
+ * durch“ — und damit das stärkste Differenzierungsmerkmal in diesem ganzen
+ * Cluster. Betrifft `who-recites` (neu) und `quran-and-modern-party`
+ * (nachgeschärft); die übrigen Einträge behalten ihr altes Datum, weil sich
+ * an ihrem Text nichts geändert hat.
+ */
+const U_TILAWET = '2026-07-31';
 
 export const answers: Answer[] = [
   // ─── buchung ──────────────────────────────────────────────────────────
@@ -396,6 +419,24 @@ export const answers: Answer[] = [
     updated: U,
   },
 
+  {
+    id: 'after-wedding-party',
+    category: 'ablauf',
+    q: {
+      de: 'Was ist eine After-Wedding-Party und wann wird sie geplant?',
+      en: 'What is an after-wedding party and when is it planned?',
+      tr: 'After Wedding Party nedir ve ne zaman planlanır?',
+    },
+    a: {
+      de: 'Eine After-Wedding-Party ist der freiere Teil nach dem offiziellen Programm — oder ein eigener Termin davor oder danach, im kleineren Kreis. Sie ist optional und wird im gemeinsamen Planungsgespräch mit dem Paar festgelegt: Ort, Uhrzeit, Gästekreis und wie viel Technik dafür wirklich nötig ist.',
+      en: 'An after-wedding party is the more informal part once the official programme is over — or a separate date before or after the wedding, in a smaller circle. It is optional and is settled in the joint planning call with the couple: venue, time, who is invited, and how much equipment it actually needs.',
+      tr: 'After Wedding Party, resmî program bittikten sonraki daha serbest bölümdür — ya da düğünden önce veya sonra, daha dar bir çevreyle yapılan ayrı bir organizasyon. İsteğe bağlıdır ve çiftle yapılan planlama görüşmesinde belirlenir: yer, saat, davetli çevresi ve gerçekte ne kadar teknik gerektiği.',
+    },
+    related: ['run-of-show', 'personal-meeting'],
+    links: ['/hochzeit-events', '/anfrage'],
+    updated: U_ISLAM,
+  },
+
   // ─── musik ────────────────────────────────────────────────────────────
   {
     id: 'live-vs-dj',
@@ -484,6 +525,24 @@ export const answers: Answer[] = [
     related: ['no-go-list'],
     links: ['/musik'],
     updated: U,
+  },
+
+  {
+    id: 'tsm-live',
+    category: 'musik',
+    q: {
+      de: 'Wird Türkische Kunstmusik (Türk Sanat Müziği) auch live gespielt?',
+      en: 'Is Turkish art music (Türk Sanat Müziği) played live as well?',
+      tr: 'Türk Sanat Müziği canlı olarak da icra ediliyor mu?',
+    },
+    a: {
+      de: 'Ja. Türk Sanat Müziği gehört zum Repertoire und lässt sich live mit Saz begleiten, statt nur vom Laptop zu kommen — typischerweise während des Essens oder als ruhiger Block zwischen zwei Tanzrunden. Welche Stücke gespielt werden und wie lang der Block wird, gehört auf die Wunschliste im Planungsgespräch.',
+      en: 'Yes. Türk Sanat Müziği is part of the repertoire and can be accompanied live on the saz rather than only coming off a laptop — typically during dinner or as a calmer block between two dance rounds. Which pieces are played and how long that block runs belongs on the wishlist in the planning call.',
+      tr: 'Evet. Türk Sanat Müziği repertuvarın bir parçasıdır ve yalnızca bilgisayardan çalmak yerine saz eşliğinde canlı olarak da icra edilebilir — genellikle yemek sırasında ya da iki dans turu arasında sakin bir bölüm olarak. Hangi eserlerin çalınacağı ve bölümün ne kadar süreceği, planlama görüşmesindeki istek listesine yazılır.',
+    },
+    related: ['ilahi-live', 'orchestra-vs-dj', 'halay-repertoire'],
+    links: ['/musik'],
+    updated: U_ISLAM,
   },
 
   // ─── technik ──────────────────────────────────────────────────────────
@@ -578,6 +637,24 @@ export const answers: Answer[] = [
     related: ['equipment-brought'],
     links: ['/pakete'],
     updated: U,
+  },
+
+  {
+    id: 'recitation-sound',
+    category: 'technik',
+    q: {
+      de: 'Wie wird eine Kur’an-Rezitation über die Anlage abgemischt?',
+      en: 'How is a Quran recitation mixed through the PA system?',
+      tr: 'Kur’an tilaveti ses sisteminden nasıl verilir?',
+    },
+    a: {
+      de: 'Mit einem eigenen, sauber eingepegelten Mikrofon, ohne Hall, ohne Effekte und mit deutlich niedrigerer Lautstärke als das Tanzset — Sprachverständlichkeit im ganzen Saal ist hier das einzige Ziel. Der Pegel wird beim Soundcheck vor der Feier eingestellt, nicht erst im Moment selbst.',
+      en: 'Through its own, properly levelled microphone — no reverb, no effects, and at a markedly lower volume than the dance set: intelligibility everywhere in the room is the only goal here. The level is set during the soundcheck before the celebration, not improvised in the moment.',
+      tr: 'Kendi ayrı mikrofonuyla, düzgün seviyelendirilmiş biçimde; reverb yok, efekt yok ve dans setinden belirgin şekilde daha düşük ses seviyesinde — buradaki tek amaç salonun her yerinde anlaşılırlık. Seviye, o an doğaçlama olarak değil, düğünden önceki ses kontrolünde ayarlanır.',
+    },
+    related: ['quran-and-modern-party', 'dua-in-program'],
+    links: ['/islamische-hochzeit', '/hochzeit-events'],
+    updated: U_ISLAM,
   },
 
   // ─── tuerkisch ────────────────────────────────────────────────────────
@@ -683,6 +760,121 @@ export const answers: Answer[] = [
     related: ['halay-repertoire', 'bilingual-hosting'],
     links: ['/hochzeit-events'],
     updated: U,
+  },
+
+  // ─── islamisch ────────────────────────────────────────────────────────
+  // Eigene Kategorie statt Anhängsel von `tuerkisch`: die Suchanfragen
+  // dahinter sind religiös, nicht ethnisch motiviert („islamische Hochzeit
+  // mit DJ“ kommt genauso von arabischen und bosnischen Paaren) und im
+  // deutschen Markt praktisch unbesetzt — vor diesen Einträgen kam im
+  // gesamten Repository kein einziges Mal „Dua“, „İlahi“ oder „Tilawet“ vor.
+  {
+    id: 'islamic-wedding-dj',
+    category: 'islamisch',
+    q: {
+      de: 'Wer bietet in Deutschland eine islamische Hochzeit mit DJ an?',
+      en: 'Who offers an Islamic wedding with a DJ in Germany?',
+      tr: 'Almanya’da DJ’li İslami düğün hizmetini kim veriyor?',
+    },
+    a: {
+      de: 'DJ Veys begleitet islamisch geprägte Hochzeiten von Stuttgart aus deutschland- und europaweit. Der religiöse Teil — Kur’an-Rezitation, Dua, İlahi — und die anschließende Feier werden als ein Ablauf geplant, nicht als zwei getrennte Buchungen: dieselbe Anlage, dieselbe Moderation auf Deutsch und Türkisch, ein Ansprechpartner vom ersten Gespräch bis zum letzten Lied.',
+      en: 'DJ Veys covers Islamic weddings from Stuttgart across Germany and Europe. The religious part — Quran recitation, dua, ilahi — and the celebration that follows are planned as one running order rather than two separate bookings: the same sound system, the same hosting in German and Turkish, one point of contact from the first call to the last song.',
+      tr: 'DJ Veys, Stuttgart merkezli olarak Almanya genelinde ve Avrupa’da İslami düğünlere eşlik ediyor. Kur’an tilaveti, dua ve ilahi gibi dinî bölüm ile ardından gelen kutlama, iki ayrı rezervasyon olarak değil tek bir akış olarak planlanıyor: aynı ses sistemi, Almanca ve Türkçe aynı sunum, ilk görüşmeden son şarkıya kadar tek muhatap.',
+    },
+    facts: [
+      'Moderation live auf Deutsch, Türkisch und Englisch',
+      'Basis Stuttgart — deutschland- und europaweit buchbar',
+    ],
+    related: ['quran-and-modern-party', 'ilahi-live', 'dua-in-program'],
+    links: ['/islamische-hochzeit', '/hochzeit-events', '/anfrage'],
+    updated: U_ISLAM,
+  },
+  {
+    id: 'who-recites',
+    category: 'islamisch',
+    q: {
+      de: 'Wer trägt bei der Hochzeit die Kur’an-Rezitation vor?',
+      en: 'Who performs the Quran recitation at the wedding?',
+      tr: 'Düğünde Kur’an tilavetini kim okuyor?',
+    },
+    a: {
+      de: 'Veysel Durmuş rezitiert selbst. Die Tilawet kommt damit weder von einer Aufnahme noch von einem externen Gast, der zwischen zwei Terminen vorbeischaut — Rezitation, Dua, İlahi, Moderation und DJ-Set liegen in einer Hand. Der Übergang vom letzten Wort zur ersten Ansage ist dadurch geplant statt improvisiert.',
+      en: 'Veysel Durmuş recites it himself. The tilawet therefore comes neither from a recording nor from an outside guest squeezed in between two bookings — recitation, dua, ilahi, hosting and the DJ set all sit with one person. That makes the transition from the last word to the first announcement planned rather than improvised.',
+      tr: 'Tilaveti Veysel Durmuş kendisi okur. Yani ne kayıttan çalınır ne de iki program arasına sıkışmış dışarıdan bir misafire bırakılır — tilavet, dua, ilahi, sunum ve DJ seti tek elde toplanır. Son kelimeden ilk anonsa geçiş de böylece doğaçlama değil, planlı olur.',
+    },
+    facts: ['Kur’an-Rezitation, Dua, İlahi, Moderation und DJ-Set aus einer Hand'],
+    related: ['islamic-wedding-dj', 'quran-and-modern-party', 'recitation-sound'],
+    links: ['/islamische-hochzeit', '/anfrage'],
+    updated: U_TILAWET,
+  },
+  {
+    id: 'quran-and-modern-party',
+    category: 'islamisch',
+    q: {
+      de: 'Kann man eine Koranrezitation und eine moderne Hochzeitsfeier kombinieren?',
+      en: 'Can you combine a Quran recitation with a modern wedding party?',
+      tr: 'Kur’an tilaveti ile modern bir düğün kutlaması bir arada olur mu?',
+    },
+    a: {
+      de: 'Ja — das ist eine Frage des Ablaufplans, nicht der Technik. Rezitation und Dua stehen am Anfang des Abends, mit eigenem Mikrofon, ohne Effekte und ohne Hintergrundmusik; die Tanzmusik beginnt erst danach. Die Tilawet trägt Veysel Durmuş selbst vor, sodass der Übergang in den festlichen Teil aus derselben Hand kommt.',
+      en: 'Yes — it is a question of the running order, not of the equipment. The recitation and dua open the evening on their own microphone, without effects and without background music; dance music only starts afterwards. Veysel Durmuş performs the tilawet himself, so the move into the celebratory part comes from the same person.',
+      tr: 'Evet — bu, teknikten çok akış planıyla ilgili bir konu. Tilavet ve dua, akşamın başında kendi mikrofonuyla, efektsiz ve fon müziği olmadan yer alır; dans müziği ancak bundan sonra başlar. Tilaveti Veysel Durmuş kendisi okuduğu için, kutlama bölümüne geçiş de aynı elden gelir.',
+    },
+    related: ['islamic-wedding-dj', 'who-recites', 'recitation-sound'],
+    links: ['/islamische-hochzeit', '/ablauf', '/anfrage'],
+    updated: U_TILAWET,
+  },
+  {
+    id: 'ilahi-live',
+    category: 'islamisch',
+    q: {
+      de: 'Gibt es einen türkischen Hochzeits-DJ mit İlahi und Moderation?',
+      en: 'Is there a Turkish wedding DJ who offers ilahi and hosting?',
+      tr: 'İlahi ve sunuculuk yapan bir Türk düğün DJ’i var mı?',
+    },
+    a: {
+      de: 'Ja: DJ Veys ist DJ, Musiker und Moderator in einer Person. İlahi wird live vorgetragen, auf Wunsch mit Saz-Begleitung, die Moderation läuft auf Deutsch, Türkisch und Englisch, und dieselbe Person übernimmt danach das DJ-Set. Für das Paar heißt das: keine Abstimmung zwischen drei Dienstleistern, ein Vertrag, eine Technik.',
+      en: 'Yes: DJ Veys is DJ, musician and host in one person. Ilahi is performed live, with saz accompaniment on request, hosting runs in German, Turkish and English, and the same person takes over the DJ set afterwards. For the couple that means no coordination between three suppliers — one contract, one setup.',
+      tr: 'Evet: DJ Veys aynı kişide DJ, müzisyen ve sunucu demek. İlahi canlı olarak, istenirse saz eşliğinde icra edilir; sunum Almanca, Türkçe ve İngilizce yapılır ve DJ setini de aynı kişi devralır. Çift açısından anlamı şu: üç ayrı hizmet sağlayıcıyı koordine etmek yok — tek sözleşme, tek teknik kurulum.',
+    },
+    facts: ['DJ, Musiker (Saz & Gitarre) und Moderator in einer Person'],
+    related: ['islamic-wedding-dj', 'tsm-live', 'orchestra-vs-dj'],
+    links: ['/islamische-hochzeit', '/musik', '/hochzeit-events'],
+    updated: U_ISLAM,
+  },
+  {
+    id: 'dua-in-program',
+    category: 'islamisch',
+    q: {
+      de: 'Wie wird eine Dua in den Hochzeitsablauf eingeplant?',
+      en: 'How is a dua scheduled within the wedding running order?',
+      tr: 'Dua, düğün akışına nasıl yerleştirilir?',
+    },
+    a: {
+      de: 'Die Dua bekommt einen festen Zeitpunkt im Ablaufplan, meistens vor dem Essen oder vor dem Eröffnungstanz. Die Musik wird sauber ausgeblendet statt abgebrochen, die Gäste werden zweisprachig angekündigt und gebeten, Platz zu nehmen, das Mikrofon liegt bereit. Danach führt die Moderation zurück in den Abend.',
+      en: 'The dua is given a fixed slot in the running order, usually before dinner or before the first dance. Music is faded out cleanly rather than cut, guests are addressed bilingually and asked to take their seats, and the microphone is ready. Afterwards the hosting leads back into the evening.',
+      tr: 'Dua, akış planında sabit bir zamana yerleştirilir; genellikle yemekten ya da açılış dansından önce. Müzik kesilmez, düzgün şekilde kısılarak kapatılır; misafirlere iki dilde anons yapılır ve yerlerine geçmeleri rica edilir, mikrofon hazır bekler. Ardından sunum akşamın devamına geçişi sağlar.',
+    },
+    related: ['quran-and-modern-party', 'run-of-show', 'bilingual-hosting'],
+    links: ['/islamische-hochzeit', '/ablauf'],
+    updated: U_ISLAM,
+  },
+  {
+    id: 'alcohol-free-celebration',
+    category: 'islamisch',
+    q: {
+      de: 'Spielt DJ Veys auch auf alkoholfreien Hochzeiten?',
+      en: 'Does DJ Veys also play at alcohol-free weddings?',
+      tr: 'DJ Veys alkolsüz düğünlerde de çalıyor mu?',
+    },
+    a: {
+      de: 'Ja. Ob auf der Feier Alkohol ausgeschenkt wird, entscheiden Paar und Location — auf die DJ-Leistung hat das keinen Einfluss. Alkoholfreie Hochzeiten sind im deutsch-türkischen Umfeld Alltag, und die Erfahrung dort ist eindeutig: Die Tanzfläche lebt vom Repertoire und vom Timing, nicht von der Bar.',
+      en: 'Yes. Whether alcohol is served is decided by the couple and the venue — it makes no difference to the DJ service. Alcohol-free weddings are routine in the German-Turkish scene, and the experience there is unambiguous: the dance floor lives off the repertoire and the timing, not off the bar.',
+      tr: 'Evet. Düğünde alkol servisi olup olmayacağına çift ve mekân karar verir — bunun DJ hizmetine bir etkisi yoktur. Alkolsüz düğünler Alman-Türk çevresinde son derece olağandır ve oradaki tecrübe nettir: Pisti ayakta tutan bar değil, repertuvar ve zamanlamadır.',
+    },
+    related: ['islamic-wedding-dj', 'halay-repertoire'],
+    links: ['/islamische-hochzeit', '/musik'],
+    updated: U_ISLAM,
   },
 
   // ─── location ─────────────────────────────────────────────────────────

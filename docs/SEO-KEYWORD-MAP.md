@@ -239,3 +239,64 @@ beat) and it matches a real capability (English hosting is already a verified fa
 `.claude/BRAND-FACTS.md`), not because there's confirmed search demand. Treat it as a
 long-term compounding asset, not a near-term lead-flow channel — re-visit priority once
 GSC data exists for the EN pages (28+ days post-launch, per the GSC-analysis reference).
+
+---
+
+## 5. Religiös geprägte Hochzeiten — the cluster with no landing page yet
+
+Added 2026-07-30, after the client confirmed that Kur'an-Rezitation, Dua, İlahi (live),
+Türk Sanat Müziği and an optional After-Wedding-Party are part of what he already
+delivers (`.claude/BRAND-FACTS.md` → "Religiös geprägte Hochzeiten"). Until that day the
+words "Dua", "İlahi", "Tilawet" and "islamisch" appeared **nowhere** in this repository —
+so this section documents a gap that has only been half closed, not a shipped page.
+
+**Why this cluster is different from every row above it.** Everywhere else in this map,
+DJ Veys competes with established DJs for a crowded term. Here the German-language SERP
+splits into two camps that do not overlap: religious-service providers (hoca, İlahi
+groups, nasheed ensembles) and party DJs. Almost nobody is positioned as *both*, and the
+couple who wants a Dua at 19:00 and a full dance floor at 22:00 has to reconcile that
+themselves. The offer already reconciles it — one running order, one PA, one host — which
+is why this is the strongest *content-market fit* in the whole map even though the raw
+volume is certainly lower than `hochzeits-dj stuttgart`.
+
+Same caveat as everywhere else in this document: **no volume tool was used.** The
+difficulty ratings below read the SERP, not a database.
+
+| Keyword | Intent | Difficulty | Currently served by |
+|---|---|---|---|
+| `islamische hochzeit dj` | Commercial investigation — "is this even allowed/possible" | Easy — SERP is religious content, not DJ services | `/fragen` only |
+| `muslim wedding dj germany` (EN) | Commercial, expat/international | Easy | `/fragen` only |
+| `hochzeit mit dua` | Informational, high emotional intent | Easy | `/fragen` only |
+| `hochzeit mit ilahi` / `ilahili düğün` (TR) | Commercial — looking for a live performer | Easy | `/fragen` only |
+| `koranrezitation hochzeit` / `kuran tilaveti düğün` (TR) | Informational, feeds the combination question | Easy | `/fragen` only |
+| `dj für alkoholfreie hochzeit` | Commercial, high qualification value | Easy | `/fragen` only |
+| `türk sanat müziği canlı düğün` (TR) | Commercial — live-music angle | Medium | `/fragen`, `/musik` |
+| `after wedding party dj` | Commercial, add-on/upsell | Medium | `/fragen` |
+
+### What exists today vs. what this cluster still needs
+
+**Shipped:** eight entries in `src/content/answers.ts` (category `islamisch` plus
+`tsm-live`, `after-wedding-party`, `recitation-sound`), DE/EN/TR, live on `/fragen` and
+`/api/faq`, inside the existing `FAQPage` schema. That makes the cluster *citable* by
+answer engines immediately — which is precisely the GEO mechanic in
+`docs/GEO-STRATEGY.md` §2.
+
+**Not shipped, in descending order of expected return:**
+
+1. **A dedicated route** (`/islamische-hochzeit`, TR `/islami-dugun`). Eight Q&As on a
+   shared hub rank far weaker for a head term than one page whose H1, title, URL and
+   internal links all say the same thing. This is a real build — `src/i18n/routing.ts`,
+   `src/lib/seo.ts` `MetaKey`, `sitemap.ts`, a page component and `meta.*` copy in seven
+   message files — not a content edit, which is why it is listed rather than done.
+2. **A blog post** in the existing `/ratgeber` cluster: "Islamische Hochzeit mit DJ
+   planen — Ablauf, Dua, İlahi und moderne Feier in einem Abend". The blog architecture
+   (`src/content/blog/`) already supports DE/TR/EN bodies and internal linking, so this is
+   additive rather than structural.
+3. **`services.items`** in `messages/*.json` currently lists four services (`wedding`,
+   `engagement`, `afterparty`, `corporate`). A fifth entry for the religious offer would
+   surface it on `/hochzeit-events`, where commercial intent is highest — today the offer
+   is answerable on `/fragen` but invisible on the actual services page.
+4. **One open question for the client, blocking the strongest copy:** who performs the
+   Kur'an recitation — Veysel, a hoca, or the family? The current answers are written to
+   be true either way and therefore stay slightly general. A confirmed answer allows a
+   direct, first-person claim, which is what actually converts on this topic.

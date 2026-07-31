@@ -11,7 +11,8 @@ import { AnswerBlock } from '@/components/geo/answer-block';
 import { Link } from '@/i18n/navigation';
 import { type Locale } from '@/i18n/routing';
 import { formatDate } from '@/lib/utils';
-import { absoluteUrl } from '@/lib/seo';
+import { absoluteUrl, type StaticPathname } from '@/lib/seo';
+import { isIslamicLocale } from '@/content/islamic';
 import { breadcrumbSchema, faqPageSchema, localBusinessSchema, websiteSchema } from '@/lib/schema';
 import {
   answers,
@@ -42,6 +43,16 @@ export async function generateMetadata({ params }: FragenPageProps): Promise<Met
 export default async function FragenPage({ params }: FragenPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  /**
+   * `/islamische-hochzeit` gibt es nur in de/tr/en; in den übrigen vier
+   * Sprachen liefert die Seite `notFound()` und ihr Label fehlt in den
+   * messages. Der Korpus verlinkt sie trotzdem — hier wird der Link für
+   * jene Sprachen entfernt, statt ihn im Korpus wegzulassen und damit auch
+   * den drei Sprachen zu nehmen, in denen er stimmt.
+   */
+  const reachableLinks = (links: readonly StaticPathname[] | undefined): StaticPathname[] =>
+    (links ?? []).filter((href) => href !== '/islamische-hochzeit' || isIslamicLocale(locale));
 
   const t = await getTranslations('answers');
   // Root-level translator (no namespace) so this page can resolve labels that
@@ -134,9 +145,9 @@ export default async function FragenPage({ params }: FragenPageProps) {
                   answer={resolveAnswerText(item.a, locale)}
                   facts={item.facts}
                   links={
-                    item.links && item.links.length > 0 ? (
+                    reachableLinks(item.links).length > 0 ? (
                       <>
-                        {item.links.map((href) => {
+                        {reachableLinks(item.links).map((href) => {
                           const labelKey = ROUTE_LABEL_KEY[href];
                           if (!labelKey) return null;
                           return (

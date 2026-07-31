@@ -46,6 +46,9 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
   '/hochzeits-dj-europa': 'regions.hub.meta',
   '/hochzeits-dj-europa/[land]': 'regions.country.meta',
   '/galerie': 'meta.gallery',
+  // Islamische Hochzeit — own `islamic.meta` namespace, same pattern as the
+  // city/regions/blog clusters: the page owns its copy, this map only points.
+  '/islamische-hochzeit': 'islamic.meta',
   // GEO answer hub — owned by the answers/GEO agent, same pattern as `city.meta`:
   // read their `answers.meta.title` / `.description` directly, no duplicate namespace.
   '/fragen': 'answers.meta',

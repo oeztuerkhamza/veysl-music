@@ -56,7 +56,7 @@ That is a different optimization target than classic SEO:
 
 | Piece | Role |
 |---|---|
-| `src/content/answers.ts` | 40 Q&A entries, 8 categories (`buchung`, `preis`, `ablauf`, `musik`, `technik`, `tuerkisch`, `location`, `recht`). DE + EN + TR on every entry (see §5 on why EN, not just DE/TR). `facts`/`related`/`links`/`updated` per entry. |
+| `src/content/answers.ts` | 48 Q&A entries, 9 categories (`buchung`, `preis`, `ablauf`, `musik`, `technik`, `tuerkisch`, `islamisch`, `location`, `recht`). DE + EN + TR on every entry (see §5 on why EN, not just DE/TR). `facts`/`related`/`links`/`updated` per entry. |
 | `src/app/[locale]/fragen/page.tsx` | The answer hub. Server-rendered, no client JS required to read a single answer. Entity paragraph + key facts near the top, category jump-nav, then every answer as heading+paragraph, grouped by category. `FAQPage` + `BreadcrumbList` + `WebSite`/`LocalBusiness` JSON-LD. |
 | `src/components/geo/entity-card.tsx` | The one-paragraph who/what/where/languages block (mechanic #5). Reusable on any page. |
 | `src/components/geo/key-facts.tsx` | Years / events / languages / service area / capabilities as a plain `<dl>` list (mechanic #3). |
@@ -76,6 +76,30 @@ bilingual hosting, Kurdish/Arabic repertoire, Vienna/international dates, cancel
 terms, and what happens to enquiry-form data. `/fragen` links back to `/ablauf`'s FAQ
 section (and vice versa should — see §6) so the two corpora read as one coherent whole
 rather than a competing, half-duplicated FAQ.
+
+### The `islamisch` category (added 2026-07-30) — the one genuinely empty room
+
+The eight newest entries (`islamic-wedding-dj`, `quran-and-modern-party`, `ilahi-live`,
+`dua-in-program`, `alcohol-free-celebration`, plus `tsm-live`, `after-wedding-party` and
+`recitation-sound` in the existing categories) came from the client himself and close the
+largest content gap this project had. Two things make them worth more than eight ordinary
+FAQ entries:
+
+1. **The service already existed and was invisible.** Before these entries the repository
+   contained *zero* occurrences of "Dua", "İlahi", "Tilawet" or "islamisch" across code,
+   copy and all seven message files. No engine could cite what was never written down.
+2. **The queries behind them are religious, not ethnic.** "Islamische Hochzeit mit DJ"
+   is typed by Arabic and Bosnian couples as much as Turkish ones, so this does not
+   duplicate `tuerkisch` — it reaches an audience that cluster never addressed. It is also
+   the thinnest German-language SERP in this whole map: competitors position as *either*
+   a religious service *or* a party DJ, and the couple planning both is left to reconcile
+   the two themselves. That reconciliation — one running order, one PA, one host — is
+   exactly what these answers describe, which is why they read as a genuine answer rather
+   than a keyword page.
+
+The honesty rule from §2/§6 was not relaxed for them: no answer claims Veysel personally
+recites the Qur'an (unconfirmed — see `.claude/BRAND-FACTS.md`), and every entry stays on
+what is verifiable, namely the running order, the microphone and the trilingual hosting.
 
 ### Why DE + EN + TR on every entry, not just DE + TR
 
@@ -100,6 +124,18 @@ A representative sample (not exhaustive — the corpus itself is the real target
   wedding", "wedding DJ with live band Stuttgart".
 - **TR:** "Stuttgart'ta en iyi düğün DJ'i", "Alman-Türk düğün DJ'i", "kına gecesi DJ
   Stuttgart", "düğün DJ'i canlı müzik".
+
+Added with the `islamisch` category — the queries the client named himself, plus the
+obvious neighbours:
+
+- **DE:** "Wer bietet eine islamische Hochzeit mit DJ in Deutschland an?", "Kann man
+  Koranrezitation und eine moderne Hochzeitsfeier kombinieren?", "Gibt es einen türkischen
+  Hochzeits-DJ mit İlahi und Moderation?", "islamische Hochzeit Deutschland DJ", "Hochzeit
+  mit Dua", "DJ für alkoholfreie Hochzeit".
+- **EN:** "muslim wedding DJ Germany", "islamic wedding DJ with Quran recitation",
+  "wedding DJ for alcohol-free wedding Germany".
+- **TR:** "İslami düğün DJ'i Almanya", "duali düğün", "ilahili düğün organizasyonu",
+  "Türk Sanat Müziği canlı düğün".
 
 ## 5. Dependencies on other agents — report
 

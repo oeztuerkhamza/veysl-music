@@ -6,6 +6,7 @@ import type { Locale } from '@/i18n/routing';
 import { Container } from '@/components/ui/container';
 import { InstagramIcon, WhatsAppIcon, YouTubeIcon, type SocialIconProps } from '@/components/ui/social-icons';
 import { getSite } from '@/content/get-site';
+import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
 import { localized } from '@/lib/utils';
 
 /**
@@ -18,6 +19,7 @@ import { localized } from '@/lib/utils';
  */
 const NAV_LINKS = [
   { href: '/hochzeit-events', key: 'services' },
+  { href: '/islamische-hochzeit', key: 'islamicWedding', locales: ISLAMIC_SUPPORTED_LOCALES },
   { href: '/pakete', key: 'packages' },
   { href: '/echte-hochzeiten', key: 'weddings' },
   { href: '/musik', key: 'music' },
@@ -28,7 +30,7 @@ const NAV_LINKS = [
   { href: '/galerie', key: 'gallery' },
   { href: '/epk', key: 'epk' },
   { href: '/kontakt', key: 'contact' },
-] as const;
+] as const satisfies ReadonlyArray<{ href: string; key: string; locales?: readonly Locale[] }>;
 
 const linkClasses = 'text-sm text-ink-muted transition-colors duration-300 hover:text-ink';
 const columnTitleClasses = 'text-xs font-semibold uppercase tracking-[0.15em] text-ink-faint';
@@ -91,7 +93,11 @@ export async function Footer() {
 
         <nav aria-label={t('footer.navTitle')} className="flex flex-col gap-3">
           <p className={columnTitleClasses}>{t('footer.navTitle')}</p>
-          {NAV_LINKS.map((item) => (
+          {/* `locales` filtert Seiten heraus, die es in dieser Sprache nicht gibt.
+              Ohne das würde der Footer in ku/nl/fr/es auf eine URL zeigen, deren
+              Seite dort `notFound()` liefert — und deren Label in jenen
+              messages-Dateien ohnehin fehlt. */}
+          {NAV_LINKS.filter((item) => !('locales' in item) || item.locales.includes(locale)).map((item) => (
             <Link key={item.href} href={item.href} className={linkClasses}>
               {t(`nav.${item.key}`)}
             </Link>

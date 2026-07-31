@@ -161,6 +161,26 @@ export const pathnames = {
     es: '/galeria',
   },
   /**
+   * Islamische/religiös geprägte Hochzeiten — eigene Landingpage, weil das
+   * die einzige Suchintention im ganzen Keyword-Map ist, für die es im
+   * deutschsprachigen Markt praktisch kein Angebot gibt: Anbieter positionieren
+   * sich entweder religiös ODER als Party-DJ, nie als beides. Genau diese
+   * Kombination ist hier aber das Produkt. Inhalt: messages/*.json →
+   * "islamic", Fragen aus src/content/answers.ts (Kategorie `islamisch`),
+   * Begründung in docs/SEO-KEYWORD-MAP.md §5.
+   *
+   * Nur de/tr/en — siehe ISLAMIC_SUPPORTED_LOCALES in src/content/islamic.ts.
+   */
+  '/islamische-hochzeit': {
+    de: '/islamische-hochzeit',
+    tr: '/islami-dugun',
+    ku: '/daweta-islami',
+    en: '/islamic-wedding',
+    nl: '/islamitische-bruiloft',
+    fr: '/mariage-musulman',
+    es: '/boda-islamica',
+  },
+  /**
    * Antwort-Hub für GEO (Generative Engine Optimization): ~40 ausführlich
    * beantwortete Fragen, server-gerendert und FAQPage-ausgezeichnet, damit
    * KI-Assistenten die Seite als Quelle zitieren können. Siehe

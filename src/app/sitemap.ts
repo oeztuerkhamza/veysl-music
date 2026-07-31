@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { locales, defaultLocale, localeTags, type Locale } from '@/i18n/routing';
 import { absoluteUrl, type StaticPathname, type DynamicPathname } from '@/lib/seo';
+import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
 
 const CITY_PATHNAME: DynamicPathname = '/hochzeits-dj/[stadt]';
 const REGION_HUB_PATHNAME: StaticPathname = '/hochzeits-dj-europa';
@@ -31,6 +32,9 @@ interface RouteSeoConfig {
  * - `/fragen` (GEO answer hub): same shape — the corpus is authored in de/tr/en
  *   and falls back to German elsewhere, so `buildFragenMetadata()` marks the
  *   other four `noindex`. Emitted per-locale below, not here.
+ * - `/islamische-hochzeit`: written in de/tr/en only (`ISLAMIC_SUPPORTED_LOCALES`);
+ *   the page itself `notFound()`s for the other four rather than shipping a
+ *   machine-translated shell. Emitted per-locale below, not here.
  * - `/impressum` + `/datenschutz`: both pages set `noIndex: true` in their own
  *   `generateMetadata`. A sitemap entry is a request to index; pairing it with
  *   a `noindex` page is a direct contradiction that Search Console reports as
@@ -39,7 +43,15 @@ interface RouteSeoConfig {
  *   flag, add it back to the map below and the type stops complaining.
  */
 const staticRoutes: Record<
-  Exclude<StaticPathname, '/hochzeits-dj-europa' | '/ratgeber' | '/fragen' | '/impressum' | '/datenschutz'>,
+  Exclude<
+    StaticPathname,
+    | '/hochzeits-dj-europa'
+    | '/ratgeber'
+    | '/fragen'
+    | '/islamische-hochzeit'
+    | '/impressum'
+    | '/datenschutz'
+  >,
   RouteSeoConfig
 > = {
   '/': { changeFrequency: 'weekly', priority: 1 },
@@ -59,6 +71,15 @@ const staticRoutes: Record<
  * most content-dense page on the site. Weekly since it's expected to grow.
  */
 const ANSWERS_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'weekly', priority: 0.9 };
+
+/**
+ * Islamische Hochzeit — priority on a par with `/pakete`, deliberately above
+ * the other service pages. Not because the traffic is bigger (it is almost
+ * certainly smaller) but because it is the one page on this site with barely
+ * any German-language competition, so an indexed URL is worth
+ * disproportionately more here. See docs/SEO-KEYWORD-MAP.md §5.
+ */
+const ISLAMIC_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly', priority: 0.9 };
 
 /**
  * `/ratgeber` and `/ratgeber/[slug]` are fully wired below (loader, config,
@@ -294,6 +315,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ...(answers.lastModified && { lastModified: answers.lastModified }),
         changeFrequency: ANSWERS_ROUTE_CONFIG.changeFrequency,
         priority: ANSWERS_ROUTE_CONFIG.priority,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // Islamische Hochzeit — de/tr/en only, same rule as the answer hub above.
+  {
+    const languages = buildLanguages(
+      (locale) => absoluteUrl('/islamische-hochzeit', locale),
+      ISLAMIC_SUPPORTED_LOCALES,
+    );
+    for (const locale of ISLAMIC_SUPPORTED_LOCALES) {
+      entries.push({
+        url: absoluteUrl('/islamische-hochzeit', locale),
+        changeFrequency: ISLAMIC_ROUTE_CONFIG.changeFrequency,
+        priority: ISLAMIC_ROUTE_CONFIG.priority,
         alternates: { languages },
       });
     }

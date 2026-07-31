@@ -36,6 +36,39 @@ This is the key positioning insight: **DJ + Musiker + Moderator in one person.**
 5. **Vermietung von Ton-, Licht- und Veranstaltungstechnik** — owns and rents
    professional AV equipment
 
+## Religiös geprägte Hochzeiten — confirmed by the client on 2026-07-30
+
+Volunteered by the client directly, as an offer that **already exists** and was simply
+never written down anywhere. Before this, the entire repository contained zero
+occurrences of "Dua", "İlahi", "Tilawet" or "islamisch" — a real service was invisible
+to both search engines and answer engines.
+
+Part of the offer, in his own listing:
+
+- **Kur'an Tilaveti** (Quran recitation) and **Dua** as planned parts of the running order
+- **İlahi — live**, not from a playlist
+- **Türk Sanat Müziği** (Turkish art music), live-capable via saz
+- Live music, premium sound and lighting (already covered above)
+- **After-Wedding-Party — optional**, scoped in the planning call with the couple, and it
+  can sit before or after the official programme
+
+Positioning terms he wants to be found under: *Muslim Wedding DJ Germany*, *Islamische
+Hochzeit Deutschland*, *Hochzeit mit Dua*, *Hochzeit mit İlahi*.
+
+Where this landed in code: category `islamisch` in `src/content/answers.ts` (5 entries)
+plus `tsm-live`, `after-wedding-party` and `recitation-sound` in the existing categories —
+all DE/EN/TR, all dated `2026-07-30`.
+
+**RESOLVED by the client on 2026-07-31: Veysel recites the Kur'an himself.** Not a
+recording, not an external hoca booked in for that slot. This is the single strongest
+differentiator in the whole cluster, because it collapses what competitors split across
+two suppliers — recitation, dua, İlahi, hosting and the DJ set are one person.
+
+Published as a direct, first-person claim in the answer `who-recites`, in the sharpened
+`quran-and-modern-party`, and as its own section on `/islamische-hochzeit`
+(`islamic.recitation` in `messages/{de,tr,en}.json`). Everywhere else the wording stays on
+the running order and the microphone, which was already true before this confirmation.
+
 ## Target audience (confirmed by his own copy)
 
 > "DJ, Musiker und Moderator für **deutsch-türkische, türkische und multikulturelle**

@@ -6,6 +6,7 @@
     "weddings": "Gerçek Düğünler",
     "music": "Müzik",
     "process": "Süreç & SSS",
+    "islamicWedding": "İslami düğün",
     "questions": "Sorular & Yanıtlar",
     "guide": "Rehber",
     "europe": "Avrupa'da DJ",
@@ -485,6 +486,110 @@
       }
     ]
   },
+    "islamic": {
+      "meta": {
+        "title": "DJ’li İslami düğün — dua, ilahi ve kutlama | DJ Veys",
+        "description": "Kur’an tilaveti, dua ve canlı ilahi — ardından dolu bir pist. Tek akış planı, tek ses sistemi, tek muhatap. Stuttgart ve Almanya geneli."
+      },
+      "hero": {
+        "eyebrow": "İslami ve dinî düğünler",
+        "title": "Dua da aynı akşamda, pist de",
+        "subtitle": "Kur’an tilaveti, dua ve ilahi burada ayrı bir organizasyona değil, akış planının içine yazılır. Ardından kutlama başlar — ikisi de tek elden, Almanca, Türkçe ve İngilizce sunumla."
+      },
+      "intro": {
+        "eyebrow": "Asıl soru",
+        "title": "Bu ikisi gerçekten bir arada olur mu?",
+        "body": "Çiftlerin çoğu bu noktada iki ayrı teklif alıyor — biri dinî bölüm, diğeri kutlama için — ve geçişleri kendileri ayarlamak zorunda kalıyor. Akşam tam orada bozuluyor: Müzik şarkının ortasında kesiliyor, misafirlerin ne zaman oturacağını kimse bilmiyor ve duadan sonra salon donup kalıyor. Burada ikisi tek bir akış planı; üstelik o planı akşam sahnede uygulayan kişi yazıyor."
+      },
+      "recitation": {
+        "eyebrow": "Farkı yaratan şey",
+        "title": "Tilaveti kendim okuyorum",
+        "body": "Kur’an tilaveti ne kayıttan çalınıyor ne de iki program arasına sıkıştırılmış dışarıdan bir misafire bırakılıyor: Veysel Durmuş tilaveti kendisi okuyor. Pratikte bunun anlamı şu — tilavet, dua, ilahi, sunum ve DJ seti tek elde. Son kelimeden ilk anonsa geçiş artık bir risk değil, planın parçası."
+      },
+      "program": {
+        "eyebrow": "Bileşenler",
+        "title": "Akşam nelerden oluşuyor",
+        "lead": "Hepsi serbestçe birleştirilebilir. Planlama görüşmesinde hangisinin sizin düğününüze gireceğine — ve hangisinin kesinlikle girmeyeceğine — birlikte karar veriyoruz.",
+        "optionalLabel": "İsteğe bağlı",
+        "items": {
+          "tilawet": {
+            "title": "Kur’an Tilaveti",
+            "text": "Canlı okunur; kendi ayrı mikrofonuyla, reverb ve efekt olmadan, dans setinden belirgin şekilde düşük seviyede. Buradaki tek amaç salonun her yerinde anlaşılırlık."
+          },
+          "dua": {
+            "title": "Dua",
+            "text": "Akışta sabit bir zamana yerleşir; genellikle yemekten ya da açılış dansından önce. Öncesinde iki dilde anons yapılır, böylece her misafir birazdan ne olacağını bilir."
+          },
+          "ilahi": {
+            "title": "İlahi — canlı",
+            "text": "Canlı icra edilir, istenirse saz eşliğinde. Playback yok, playlist yok."
+          },
+          "tsm": {
+            "title": "Türk Sanat Müziği",
+            "text": "Genellikle yemek sırasında ya da iki dans turu arasında sakin bir bölüm olarak — bu da yalnızca bilgisayardan değil, saz eşliğinde canlı olabilir."
+          },
+          "djset": {
+            "title": "DJ seti & sunum",
+            "text": "Türkçe, Almanca ve uluslararası müzik ayrı bloklar hâlinde değil, harmanlanarak çalınır. Sunum canlı olarak Almanca, Türkçe ve İngilizce."
+          },
+          "afterparty": {
+            "title": "After Wedding Party",
+            "text": "Resmî program bittikten sonraki daha serbest bölüm — ya da öncesinde veya sonrasında, daha dar bir çevreyle ayrı bir organizasyon."
+          }
+        }
+      },
+      "timeline": {
+        "eyebrow": "Örnek akış",
+        "title": "Böyle bir akşam gerçekte nasıl ilerliyor",
+        "lead": "Sahadan bir örnek. Saatler, sıralama ve her bölümün uzunluğu mekânınıza ve misafir sayınıza göre kayar.",
+        "note": "Bu akış bir örnektir, teklif değildir. Sizin gerçek akış planınız planlama görüşmesinde çıkar ve ardından yazılı olarak sözleşmeye girer.",
+        "steps": {
+          "welcome": {
+            "title": "Karşılama",
+            "text": "Sakin fon müziği, misafirler geliyor. Teknik, ses kontrolünden beri hazır."
+          },
+          "tilawet": {
+            "title": "Kur’an Tilaveti",
+            "text": "Müzik kesilmez, yavaşça kısılarak kapatılır. İki dilde anons, ardından tilavet."
+          },
+          "dua": {
+            "title": "Dua",
+            "text": "Hemen ardından; aynı mikrofon, aynı ses seviyesi."
+          },
+          "dinner": {
+            "title": "Yemek",
+            "text": "Türk Sanat Müziği ve sakin enstrümantal müzik; ses seviyesi sohbeti bölmeyecek kadar."
+          },
+          "ilahi": {
+            "title": "Canlı ilahi",
+            "text": "Canlı icra, istenirse saz eşliğinde — akşamın dinî bölümünden kutlama bölümüne geçiş tam burada olur."
+          },
+          "entrance": {
+            "title": "Çiftin girişi",
+            "text": "Almanca ve Türkçe anons, ışık çiftin üzerinde, müzik sizin seçiminiz."
+          },
+          "dance": {
+            "title": "Pist",
+            "text": "Halay, Roman havası, güncel Türkçe ve uluslararası setler — bloklar hâlinde değil, harmanlanarak."
+          },
+          "close": {
+            "title": "Kapanış",
+            "text": "Son şarkı önceden konuşulur, ardından toplanma. Saat mekâna göre belirlenir."
+          }
+        }
+      },
+      "faq": {
+        "eyebrow": "Sık sorulanlar",
+        "title": "Çiftlerin tam bu noktada sorduğu sorular",
+        "more": "Tüm soru ve cevapları gör"
+      },
+      "cta": {
+        "eyebrow": "Tarih",
+        "title": "Tarihiniz hâlâ boş mu?",
+        "subtitle": "Bize tarihi, yeri ve yaklaşık misafir sayısını yazın. Uygunluk yanıtı genellikle 24 saat içinde geliyor.",
+        "button": "Teklif al"
+      }
+    },
   "answers": {
     "hero": {
       "eyebrow": "Sorular & Yanıtlar",
@@ -507,6 +612,7 @@
       "musik": "Müzik & repertuvar",
       "technik": "Ses & ışık tekniği",
       "tuerkisch": "Türk & çok kültürlü düğünler",
+      "islamisch": "İslami & dinî düğünler",
       "location": "Mekân & ulaşım",
       "recht": "Sözleşme & hukuk"
     },
