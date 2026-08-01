@@ -499,3 +499,20 @@
     opacity: 0.95;
   }
 }
+
+/**
+ * Vor-Ort-Bildbearbeitung (src/components/cms/).
+ *
+ * Gilt ausschliesslich, solange `<EditOverlay>` montiert ist — die Klasse setzt
+ * es selbst auf `<body>` und nimmt sie beim Aufraeumen zurueck. Fuer Besucher
+ * existiert diese Regel damit praktisch nicht, obwohl das Attribut
+ * `data-cms-slot` in jedem ausgelieferten HTML steht.
+ *
+ * Noetig ist sie nur fuer den leeren Bildzustand (`<ImagePlaceholder>`): Der
+ * Container mit echtem Foto ist bereits `relative`, der Platzhalter nicht — und
+ * ohne Positionierungskontext saesse der Knopf in der linken oberen Ecke der
+ * Seite statt in der Ecke der Flaeche, um die es geht.
+ */
+body.cms-editing [data-cms-slot] {
+  position: relative;
+}

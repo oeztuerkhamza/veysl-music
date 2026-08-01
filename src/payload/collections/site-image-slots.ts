@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload';
 import { isAdmin } from '../access/is-admin';
+import { revalidateAfterChange, revalidateAfterDelete } from '../revalidate';
 
 /**
  * Mirrors the *base* (non-dynamic-instance) keys in the image-slot agent's
@@ -85,6 +86,10 @@ export const SiteImageSlots: CollectionConfig = {
     delete: isAdmin,
   },
   hooks: {
+    // Ohne diese beiden erscheint ein hier gewähltes Bild erst beim nächsten
+    // Deploy auf der Seite — siehe src/payload/revalidate.ts.
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
     beforeValidate: [
       ({ data }) => {
         if (data?.slotKey) {

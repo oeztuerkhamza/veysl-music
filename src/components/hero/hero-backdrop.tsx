@@ -43,7 +43,12 @@ export async function HeroBackdrop() {
   if (!image?.src) return null;
 
   return (
-    <div className="absolute inset-0 -z-10" aria-hidden="true">
+    // `data-cms-slot` auch hier, obwohl diese Komponente bewusst kein
+    // `<SiteImage>` ist: Sonst wäre ausgerechnet das Foto der Startseite das
+    // einzige, das man vor Ort nicht austauschen kann. Solange gar kein Bild
+    // gesetzt ist, rendert diese Komponente `null` — dieser Fall wird über die
+    // Slot-Liste im Overlay abgedeckt, nicht über einen Knopf im Nichts.
+    <div className="absolute inset-0 -z-10" aria-hidden="true" data-cms-slot="home.hero.background">
       <Image
         src={image.src}
         // Empty alt on purpose: this is atmosphere behind a headline that

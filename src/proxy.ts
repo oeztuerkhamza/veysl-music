@@ -10,9 +10,56 @@
  * next-intl, nicht die Next.js-Konvention, und der wurde nicht umbenannt.
  */
 import createMiddleware from 'next-intl/middleware';
+import type { NextRequest } from 'next/server';
 import { routing } from './i18n/routing';
 
-export default createMiddleware(routing);
+const handleI18n = createMiddleware(routing);
+
+/** Payloads Session-Cookie. Steht `httpOnly` und ist für JavaScript unsichtbar — genau deshalb braucht es den Hinweis unten. */
+const PAYLOAD_SESSION_COOKIE = 'payload-token';
+
+/**
+ * Lesbarer Hinweis „hier sitzt vermutlich jemand mit Adminsitzung".
+ *
+ * Warum überhaupt: Jede Seite dieses Projekts ist statisch vorgerendert. Das
+ * ausgelieferte HTML ist für alle identisch, der Server weiß beim Rendern
+ * nichts von einer Sitzung — und das soll auch so bleiben, sonst wären alle
+ * Seiten dynamisch und die halbierte JavaScript-Last wäre wieder dahin.
+ *
+ * Die Bearbeitungsschicht muss die Entscheidung also im Browser treffen. Sie
+ * darf dafür aber nicht bei jedem Aufruf `/api/users/me` anfragen — das wäre
+ * eine Anfrage pro Besuch für ein Feature, das eine einzige Person benutzt.
+ * Dieser Hinweis kostet stattdessen nichts: Er entsteht nur, wenn ohnehin ein
+ * Payload-Cookie mitkommt.
+ *
+ * ⚠️ Er ist ein *Hinweis*, keine Berechtigung. Er ist absichtlich fälschbar —
+ * wer ihn selbst setzt, bekommt eine Oberfläche, deren Aufrufe allesamt an
+ * Payloads `isAdmin`-Zugriffsregeln scheitern. Die Autorität liegt beim
+ * `httpOnly`-Token und der serverseitigen Prüfung, nie hier.
+ */
+const ADMIN_HINT_COOKIE = 'dj-cms-hint';
+
+export default function proxy(request: NextRequest) {
+  const response = handleI18n(request);
+
+  const hasSession = request.cookies.has(PAYLOAD_SESSION_COOKIE);
+  const hasHint = request.cookies.has(ADMIN_HINT_COOKIE);
+
+  if (hasSession && !hasHint) {
+    response.cookies.set(ADMIN_HINT_COOKIE, '1', {
+      httpOnly: false, // muss für JavaScript lesbar sein — das ist der ganze Zweck
+      sameSite: 'lax',
+      path: '/',
+      secure: process.env.NODE_ENV === 'production',
+    });
+  } else if (!hasSession && hasHint) {
+    // Abgemeldet: Hinweis wieder wegnehmen, damit die Oberfläche nicht als
+    // Karteileiche stehen bleibt und ihre Aufrufe ins Leere laufen.
+    response.cookies.delete(ADMIN_HINT_COOKIE);
+  }
+
+  return response;
+}
 
 export const config = {
   // Alles außer API-Routen, dem Payload-Adminpanel (/admin, src/app/(payload)/**

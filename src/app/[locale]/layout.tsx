@@ -8,6 +8,7 @@ import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { StickyCtaBar } from '@/components/layout/sticky-cta-bar';
 import { WhatsAppFab } from '@/components/booking/whatsapp-fab';
+import { CmsEditLayer } from '@/components/cms/edit-layer';
 import { WhatsappModalProvider } from '@/components/whatsapp/whatsapp-modal-provider';
 import { getPathname } from '@/i18n/navigation';
 import { localeTags, ogLocales, routing, type Locale } from '@/i18n/routing';
@@ -119,6 +120,9 @@ export default async function LocaleLayout({
                 <Footer />
                 <StickyCtaBar />
                 <WhatsAppFab />
+                {/* Rendert für Besucher `null` und lädt seinen Chunk nie —
+                    siehe den Kopf von edit-layer.tsx. */}
+                <CmsEditLayer />
               </AudioDock>
             </WhatsappModalProvider>
           </ThemeProvider>

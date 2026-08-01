@@ -1,6 +1,7 @@
 import path from 'node:path';
 import type { CollectionConfig } from 'payload';
 import { isAdmin } from '../access/is-admin';
+import { revalidateAfterChange, revalidateAfterDelete } from '../revalidate';
 
 /**
  * Upload library backing blog covers, testimonial photos and every named
@@ -25,6 +26,14 @@ export const Media: CollectionConfig = {
     create: isAdmin,
     update: isAdmin,
     delete: isAdmin,
+  },
+  // Auch hier, nicht nur auf `site-images`: Wird ein bereits zugewiesenes Bild
+  // ersetzt oder sein Alt-Text korrigiert, ändert sich der Slot-Datensatz
+  // nicht — nur das Medium. Ohne diesen Hook bliebe die Seite auf dem alten
+  // Stand, obwohl im Admin sichtbar das neue Bild steht.
+  hooks: {
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
   },
   upload: {
     staticDir: path.resolve(process.cwd(), 'media'),

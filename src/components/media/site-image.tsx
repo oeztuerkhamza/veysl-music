@@ -47,11 +47,20 @@ export async function SiteImage({ slot, sizes = '100vw', className, priority = f
   const resolvedAlt = decorative ? '' : (alt ?? resolved?.alt ?? definition?.fallbackAlt ?? '');
 
   if (!src) {
-    return <ImagePlaceholder aspect={aspect} shape={shape} className={className} />;
+    return <ImagePlaceholder aspect={aspect} shape={shape} className={className} data-cms-slot={slot} />;
   }
 
   return (
     <div
+      /**
+       * Der einzige Haken, den die Vor-Ort-Bildbearbeitung braucht (siehe
+       * `src/components/cms/`). Ein Attribut, kein Byte JavaScript: Für
+       * Besucherinnen und Besucher ist das unsichtbar und folgenlos, und weil
+       * *jedes* Bild der Seite durch diese Komponente läuft, ist damit
+       * automatisch jeder Slot markiert — ohne eine zweite Liste, die
+       * veralten könnte.
+       */
+      data-cms-slot={slot}
       className={cn('relative w-full overflow-hidden bg-surface-2', shape === 'circle' ? 'rounded-full' : 'rounded-lg', className)}
       style={{ aspectRatio: ASPECT_RATIO_CSS[aspect] }}
     >

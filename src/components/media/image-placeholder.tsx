@@ -12,6 +12,12 @@ export interface ImagePlaceholderProps {
   /** Circle instead of rounded panel — for avatar-shaped slots (`aspect="1/1"`). */
   shape?: 'panel' | 'circle';
   className?: string;
+  /**
+   * Slot-Kennung für die Vor-Ort-Bildbearbeitung — durchgereicht von
+   * `<SiteImage>`. Gerade der leere Zustand braucht sie am dringendsten: Das
+   * ist die Fläche, auf der noch gar kein Foto liegt.
+   */
+  'data-cms-slot'?: string;
 }
 
 /**
@@ -27,7 +33,14 @@ export interface ImagePlaceholderProps {
  * imagery — just gold, grain and light, consistent with the rest of the
  * design system.
  */
-export async function ImagePlaceholder({ aspect, icon: Icon = Camera, caption, shape = 'panel', className }: ImagePlaceholderProps) {
+export async function ImagePlaceholder({
+  aspect,
+  icon: Icon = Camera,
+  caption,
+  shape = 'panel',
+  className,
+  'data-cms-slot': cmsSlot,
+}: ImagePlaceholderProps) {
   const t = await getTranslations('media');
   const label = caption === null ? null : (caption ?? t('comingSoon'));
   const isWide = aspect === '21/9' || aspect === '16/9';
@@ -37,6 +50,7 @@ export async function ImagePlaceholder({ aspect, icon: Icon = Camera, caption, s
     <div
       role="img"
       aria-label={t('placeholderAriaLabel')}
+      data-cms-slot={cmsSlot}
       className={cn(
         'grain relative isolate flex w-full items-center justify-center overflow-hidden border border-line bg-gradient-to-b from-surface to-surface-2',
         isCircle ? 'rounded-full' : 'rounded-lg',
