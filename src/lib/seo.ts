@@ -42,6 +42,8 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
   '/ablauf': 'meta.process',
   '/anfrage': 'meta.booking',
   '/hochzeits-dj/[stadt]': 'city.meta',
+  // Landesseite Baden-Württemberg — eigener Namespace, wie die Cluster oben.
+  '/hochzeits-dj-baden-wuerttemberg': 'bw.meta',
   // Europe reach cluster — owned by the regions agent (src/content/regions.ts).
   '/hochzeits-dj-europa': 'regions.hub.meta',
   '/hochzeits-dj-europa/[land]': 'regions.country.meta',

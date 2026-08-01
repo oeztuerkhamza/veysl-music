@@ -128,6 +128,29 @@ export const pathnames = {
     es: '/dj-boda/[stadt]',
   },
   /**
+   * Landes-Ebene: „Hochzeits-DJ Baden-Württemberg".
+   *
+   * Diese Suchanfrage gehört laut docs/SEO-COMPETITIVE-ANALYSIS.md §1 zu den
+   * drei Kernabfragen dieses Markts — und hatte bis hierher **keine Seite**.
+   * Die Startseite zielt auf Stuttgart, die Stadtseiten je auf ihre Stadt,
+   * `/hochzeits-dj-europa` auf Länder außerhalb Deutschlands. Die Ebene
+   * dazwischen, das eigene Bundesland, war unbesetzt; „Baden-Württemberg" kam
+   * nur in Fließtext vor, in keinem Titel und keiner Überschrift.
+   *
+   * Sie ist zugleich der fehlende Knoten im Städte-Cluster: Die acht
+   * Stadtseiten hatten keine gemeinsame Elternseite (`/hochzeits-dj` lief in
+   * einen 404), verlinkten sich also nur seitwärts über `nearby`.
+   */
+  '/hochzeits-dj-baden-wuerttemberg': {
+    de: '/hochzeits-dj-baden-wuerttemberg',
+    tr: '/dugun-dj-baden-wuerttemberg',
+    ku: '/dj-dawete-baden-wuerttemberg',
+    en: '/wedding-dj-baden-wuerttemberg',
+    nl: '/bruiloft-dj-baden-wuerttemberg',
+    fr: '/dj-mariage-baden-wuerttemberg',
+    es: '/dj-boda-baden-wuerttemberg',
+  },
+  /**
    * Reichweiten-Ebene: europaweite Buchbarkeit auf **Länder**-Ebene, bewusst
    * nicht auf Städte-Ebene. Städteseiten außerhalb der Kernregion wären
    * Doorway Pages und würden das lokale Cluster gefährden, das tatsächlich

@@ -127,11 +127,31 @@ const nextConfig: NextConfig = {
       { prefix: '/es/dj-boda', home: '/es' },
     ];
 
-    return cityRoutes.map(({ prefix, home }) => ({
-      source: `${prefix}/stuttgart`,
-      destination: home,
-      permanent: true,
-    }));
+    /**
+     * Zusätzlich: `/hochzeits-dj` selbst lief ebenfalls in einen 404 — die
+     * Route ist `/hochzeits-dj/[stadt]`, die Elternebene gab es nicht. Das ist
+     * die zweite naheliegend geratene URL des Clusters, und seit August 2026
+     * hat sie ein echtes Ziel: die Landesseite, die genau diese acht
+     * Stadtseiten bündelt.
+     *
+     * Nur für die drei Sprachen mit Landesseite (BW_SUPPORTED_LOCALES). In den
+     * übrigen bleibt es beim 404 — eine Weiterleitung auf eine Seite, die dort
+     * `notFound()` liefert, wäre ein Umweg mit demselben Ende.
+     */
+    const clusterParents = [
+      { source: '/hochzeits-dj', destination: '/hochzeits-dj-baden-wuerttemberg' },
+      { source: '/tr/dugun-dj', destination: '/tr/dugun-dj-baden-wuerttemberg' },
+      { source: '/en/wedding-dj', destination: '/en/wedding-dj-baden-wuerttemberg' },
+    ];
+
+    return [
+      ...cityRoutes.map(({ prefix, home }) => ({
+        source: `${prefix}/stuttgart`,
+        destination: home,
+        permanent: true,
+      })),
+      ...clusterParents.map((entry) => ({ ...entry, permanent: true })),
+    ];
   },
 
   async headers() {

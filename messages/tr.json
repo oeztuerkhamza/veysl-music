@@ -590,6 +590,74 @@
         "button": "Teklif al"
       }
     },
+    "bw": {
+      "meta": {
+        "title": "Baden-Württemberg düğün DJ’i | DJ Veys",
+        "description": "Baden-Württemberg genelinde düğün DJ’i: Stuttgart, Ludwigsburg, Esslingen, Karlsruhe, Mannheim ve daha fazlası. Almanca, Türkçe, İngilizce sunum. Ulaşım şeffaf hesaplanır."
+      },
+      "hero": {
+        "eyebrow": "Baden-Württemberg",
+        "title": "Baden-Württemberg genelinde düğün DJ’i",
+        "subtitle": "Mannheim’dan Reutlingen’e, Karlsruhe’den Heilbronn’a — kendi ses ve ışık ekipmanıyla, Almanca, Türkçe ve İngilizce sunumla ve sonradan faturada değil, önceden teklifte duran bir ulaşım kalemiyle."
+      },
+      "intro": {
+        "eyebrow": "Bu neden ayrı bir soru",
+        "title": "Tek eyalet, çok farklı düğünler",
+        "body": "Stuttgart şehir merkezindeki bir düğünle Kraichgau’daki bir düğünün eyalet dışında pek ortak yanı yoktur: farklı mekânlar, farklı gürültü saatleri, farklı ulaşım, çoğu zaman bambaşka bir misafir karışımı. Aynı kalması gereken şey standarttır — aynı ses sistemi, aynı hazırlık, aynı muhatap. Bu sayfanın konusu tam olarak bu: her yerde iddia etmek değil, mesafeyle birlikte neyin aynı kaldığını ve neyin değiştiğini somut olarak anlatmak."
+      },
+      "pillars": {
+        "eyebrow": "Mesafe söz konusu olunca",
+        "title": "Kilometreyle ne değişir, ne değişmez",
+        "items": {
+          "travel": {
+            "title": "Ulaşım sonradan değil, önceden",
+            "text": "Stuttgart çevresinde 50 km içinde ulaşım paketlere dahildir. Ötesinde, imzadan önce teklifte ayrı bir kalem olarak görünür. Olmayan şey şu: sonradan “bir de şu var” diye büyüyen bir götürü ücret."
+          },
+          "equipment": {
+            "title": "Nerede olursa olsun aynı teknik",
+            "text": "Ekipman bizimle gelir; yerinde kiralanarak toplanmaz. Bu, düğün gününde kara kutu yerine tanıdık cihazlar ve bilinen zayıf noktalar demek — ve Mannheim’daki bir düğünün teknik olarak Esslingen’dekiyle aynı işlemesinin sebebi bu."
+          },
+          "oneContact": {
+            "title": "Tek muhatap, taşeron değil",
+            "text": "Ön görüşmeyi yapan kişi akşam kabinde duran kişidir. Bölge üstü çalışan ajanslarda çoğu zaman böyle olmaz: bir marka rezerve edilir, karşınıza hiç konuşmadığınız serbest bir çalışan çıkar."
+          }
+        }
+      },
+      "cities": {
+        "eyebrow": "Şehirler",
+        "title": "Çekirdek bölge için ayrıntılı sayfalar",
+        "lead": "Bu şehirler için mekânları, ulaşımı ve orada somut olarak çıkan soruları anlatan ayrı birer sayfa var — şehir adı değiştirilmiş hazır kalıplar değil.",
+        "note": "Şehriniz listede yok mu? Bu, çok uzak olduğu anlamına gelmez; sadece henüz o şehir için ayrı bir sayfa yok demektir. Tarihi doğrudan sorabilirsiniz."
+      },
+      "faq": {
+        "eyebrow": "Sık sorulanlar",
+        "title": "Stuttgart dışındaki çiftlerin sorduğu şeyler",
+        "items": [
+          {
+            "q": "Uzak bir düğün otomatik olarak daha mı pahalı?",
+            "a": "Otomatik olarak değil. Stuttgart çevresinde 50 km içinde ulaşım paketlere dahildir; ötesinde önceden görünen ayrı bir kalem olarak eklenir. DJ hizmetinin kendisi — çalma süresi, teknik, sunum — mesafeyle değişmez."
+          },
+          {
+            "q": "Bizim bölgedeki mekânları tanıyor musunuz?",
+            "a": "Hepsini değil ve öyle bir iddia da edilmiyor. Bunun yerine olan şu: düğünden önce mekân teknik olarak netleştirilir — elektrik, giriş, salon düzeni, gürültü saatleri. Büyük düğünlerde Prestige paketinde önceden keşif de vardır."
+          },
+          {
+            "q": "Uzak mesafede konaklama gerekir mi?",
+            "a": "Gece geç saate kadar süren ve mesafesi uzak olan düğünlerde bu, sabahın dördünde dönüş yolundan daha dürüst bir çözümdür. Gerekip gerekmediği ve maliyeti teklifte yazar — sonradan sürpriz olarak değil."
+          },
+          {
+            "q": "Çok dilli sunum her yerde geçerli mi?",
+            "a": "Evet. Almanca, Türkçe ve İngilizce ek paket değil, hizmetin parçasıdır — Mannheim’da da Stuttgart’taki gibi."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Tarih",
+        "title": "Tarihiniz hâlâ boş mu?",
+        "subtitle": "Tarih, yer ve yaklaşık misafir sayısı yeterli. Uygunluk yanıtı genellikle 24 saat içinde gelir.",
+        "button": "Teklif al"
+      }
+    },
   "answers": {
     "hero": {
       "eyebrow": "Sorular & Yanıtlar",

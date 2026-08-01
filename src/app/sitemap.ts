@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { locales, defaultLocale, localeTags, type Locale } from '@/i18n/routing';
 import { absoluteUrl, type StaticPathname, type DynamicPathname } from '@/lib/seo';
 import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
+import { BW_SUPPORTED_LOCALES } from '@/content/region-bw';
 
 const CITY_PATHNAME: DynamicPathname = '/hochzeits-dj/[stadt]';
 const REGION_HUB_PATHNAME: StaticPathname = '/hochzeits-dj-europa';
@@ -35,6 +36,9 @@ interface RouteSeoConfig {
  * - `/islamische-hochzeit`: written in de/tr/en only (`ISLAMIC_SUPPORTED_LOCALES`);
  *   the page itself `notFound()`s for the other four rather than shipping a
  *   machine-translated shell. Emitted per-locale below, not here.
+ * - `/hochzeits-dj-baden-wuerttemberg`: same shape, de/tr/en only
+ *   (`BW_SUPPORTED_LOCALES`). A state-level page exists to rank for a
+ *   German-language query; a French edition of it competes for nothing.
  * - `/impressum` + `/datenschutz`: both pages set `noIndex: true` in their own
  *   `generateMetadata`. A sitemap entry is a request to index; pairing it with
  *   a `noindex` page is a direct contradiction that Search Console reports as
@@ -49,6 +53,7 @@ const staticRoutes: Record<
     | '/ratgeber'
     | '/fragen'
     | '/islamische-hochzeit'
+    | '/hochzeits-dj-baden-wuerttemberg'
     | '/impressum'
     | '/datenschutz'
   >,
@@ -315,6 +320,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ...(answers.lastModified && { lastModified: answers.lastModified }),
         changeFrequency: ANSWERS_ROUTE_CONFIG.changeFrequency,
         priority: ANSWERS_ROUTE_CONFIG.priority,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // Landesseite Baden-Württemberg — de/tr/en, und mit hoher Priorität: Sie ist
+  // die Elternseite des gesamten Städte-Clusters und zielt auf eine der drei
+  // Kernabfragen dieses Markts.
+  {
+    const languages = buildLanguages(
+      (locale) => absoluteUrl('/hochzeits-dj-baden-wuerttemberg', locale),
+      BW_SUPPORTED_LOCALES,
+    );
+    for (const locale of BW_SUPPORTED_LOCALES) {
+      entries.push({
+        url: absoluteUrl('/hochzeits-dj-baden-wuerttemberg', locale),
+        changeFrequency: 'monthly',
+        priority: 0.9,
         alternates: { languages },
       });
     }

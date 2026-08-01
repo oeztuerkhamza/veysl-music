@@ -590,6 +590,74 @@
         "button": "Termin anfragen"
       }
     },
+    "bw": {
+      "meta": {
+        "title": "Hochzeits-DJ Baden-Württemberg | DJ Veys",
+        "description": "Hochzeits-DJ für ganz Baden-Württemberg: Stuttgart, Ludwigsburg, Esslingen, Karlsruhe, Mannheim und mehr. Deutsch, Türkisch, Englisch moderiert. Anfahrt transparent kalkuliert."
+      },
+      "hero": {
+        "eyebrow": "Baden-Württemberg",
+        "title": "Hochzeits-DJ in ganz Baden-Württemberg",
+        "subtitle": "Von Mannheim bis Reutlingen, von Karlsruhe bis Heilbronn — mit eigener Ton- und Lichttechnik, Moderation auf Deutsch, Türkisch und Englisch und einer Anfahrt, die vorher im Angebot steht statt hinterher auf der Rechnung."
+      },
+      "intro": {
+        "eyebrow": "Warum das eine eigene Frage ist",
+        "title": "Ein Land, sehr verschiedene Feiern",
+        "body": "Eine Hochzeit in der Stuttgarter Innenstadt und eine im Kraichgau haben wenig gemeinsam außer dem Bundesland: andere Locations, andere Sperrzeiten, andere Anfahrt, oft eine ganz andere Gästemischung. Was gleich bleiben muss, ist der Standard — dieselbe Anlage, dieselbe Vorbereitung, derselbe Ansprechpartner. Genau darum geht es auf dieser Seite: nicht darum, überall zu behaupten, sondern darum, zu erklären, was über Distanz konkret gleich bleibt und was sich ändert."
+      },
+      "pillars": {
+        "eyebrow": "Über Distanz",
+        "title": "Was sich mit den Kilometern ändert — und was nicht",
+        "items": {
+          "travel": {
+            "title": "Anfahrt vorher, nicht nachher",
+            "text": "Innerhalb von 50 km um Stuttgart ist die Anfahrt in den Paketen enthalten. Darüber hinaus wird sie im Angebot als eigene Position ausgewiesen, bevor unterschrieben wird. Was nicht passiert: eine Pauschale, die am Ende „doch noch\" wächst."
+          },
+          "equipment": {
+            "title": "Dieselbe Technik, egal wo",
+            "text": "Die Anlage fährt mit — sie wird nicht vor Ort zusammengemietet. Das heißt eingespielte Geräte und bekannte Fehlerquellen statt einer Blackbox am Hochzeitstag, und es ist der Grund, warum eine Feier in Mannheim technisch genauso läuft wie eine in Esslingen."
+          },
+          "oneContact": {
+            "title": "Ein Ansprechpartner, kein Subunternehmer",
+            "text": "Wer das Vorgespräch führt, steht am Abend auch am Pult. Bei überregional arbeitenden Agenturen ist das oft nicht so — dort bucht man eine Marke und bekommt einen freien Mitarbeiter, den man vorher nie gesprochen hat."
+          }
+        }
+      },
+      "cities": {
+        "eyebrow": "Städte",
+        "title": "Ausführliche Seiten für die Kernregion",
+        "lead": "Für diese Städte gibt es eine eigene Seite mit Locations, Anfahrt und Fragen, die dort konkret aufkommen — keine Textbausteine mit ausgetauschtem Ortsnamen.",
+        "note": "Ihre Stadt ist nicht dabei? Das heißt nicht, dass sie zu weit weg ist — nur, dass es dafür noch keine eigene Seite gibt. Fragen Sie den Termin einfach an."
+      },
+      "faq": {
+        "eyebrow": "Häufige Fragen",
+        "title": "Was Paare außerhalb von Stuttgart fragen",
+        "items": [
+          {
+            "q": "Kostet eine Feier weiter weg automatisch mehr?",
+            "a": "Nicht automatisch. Innerhalb von 50 km um Stuttgart ist die Anfahrt in den Paketen enthalten; darüber hinaus kommt sie als eigene, vorher sichtbare Position dazu. Der DJ-Teil selbst — Spielzeit, Technik, Moderation — ändert sich mit der Entfernung nicht."
+          },
+          {
+            "q": "Kennen Sie die Locations bei uns in der Region?",
+            "a": "Nicht jede, und das wird auch nicht behauptet. Was stattdessen passiert: Vor der Feier wird die Location technisch abgeklärt — Strom, Zufahrt, Raumaufteilung, Sperrzeiten. Bei größeren Feiern gehört im Prestige-Paket eine Begehung vorab dazu."
+          },
+          {
+            "q": "Ist bei weiter Anfahrt eine Übernachtung nötig?",
+            "a": "Bei Feiern, die bis in die Nacht gehen, und größerer Entfernung ist das die ehrlichere Lösung als eine Rückfahrt um vier Uhr morgens. Ob es nötig ist und was es kostet, steht im Angebot — nicht als Überraschung danach."
+          },
+          {
+            "q": "Gilt die mehrsprachige Moderation überall?",
+            "a": "Ja. Deutsch, Türkisch und Englisch sind kein Zusatzpaket, sondern Teil der Leistung — in Mannheim genauso wie in Stuttgart."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Termin",
+        "title": "Ist Ihr Datum noch frei?",
+        "subtitle": "Datum, Ort und ungefähre Gästezahl genügen. Rückmeldung zur Verfügbarkeit in der Regel innerhalb von 24 Stunden.",
+        "button": "Termin anfragen"
+      }
+    },
   "answers": {
     "hero": {
       "eyebrow": "Fragen & Antworten",

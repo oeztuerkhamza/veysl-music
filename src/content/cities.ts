@@ -237,19 +237,33 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    // Zurückgestellt (siehe Dateikopf): kommt in `docs/SEO-CITY-STRATEGY.md`
-    // gar nicht vor (Recherche-Agent hat die Stadt nicht bearbeitet) und
-    // ist nicht Teil der bestätigten Tier-1-Liste. Inhalt ist inhaltlich
-    // solide und die beiden Venues sind sehr bekannte, unzweifelhaft reale
-    // Wahrzeichen — aber ohne eigene Recherche-Bestätigung bleibt sie
-    // vorerst auf `priority: 3`, statt sie am Recherche-Prozess vorbei
-    // auszuspielen.
+    /**
+     * Seit August 2026 ausgespielt (`priority: 1`).
+     *
+     * Zurückgehalten war sie nie aus inhaltlichen Gründen, sondern aus
+     * Verfahrensgründen: `docs/SEO-CITY-STRATEGY.md` listet sie nicht, weil
+     * der Recherche-Pass sie schlicht nicht bearbeitet hat. Der alte Kommentar
+     * an dieser Stelle sagte das auch — "Inhalt ist inhaltlich solide und die
+     * beiden Venues sind sehr bekannte, unzweifelhaft reale Wahrzeichen".
+     *
+     * Nachgeprüft, bevor sie freigegeben wurde: Intro, `angle` und beide
+     * FAQ-Paare liegen in de/en/tr vor, die Einwohnerzahl ist gesetzt, und die
+     * Venues sind Residenzschloss Ludwigsburg und Schloss Monrepos — zwei der
+     * bekanntesten Hochzeitsadressen des Landes, nicht erfunden und nicht als
+     * Partnerschaft ausgegeben. Damit erfüllt der Eintrag jedes Kriterium, das
+     * die übrigen Tier-1-Städte erfüllen.
+     *
+     * Eine fertige Seite für eine 17 km entfernte Stadt dieser Größe
+     * ungenutzt liegen zu lassen, kostet mehr als das Verfahren wert ist —
+     * zumal Ludwigsburg über `serviceAreas` in `site.ts` ohnehin schon als
+     * Einzugsgebiet ausgewiesen wird.
+     */
     slug: 'ludwigsburg',
     name: 'Ludwigsburg',
     region: 'Baden-Württemberg',
     distanceKm: 17,
     population: 93000,
-    priority: 3,
+    priority: 1,
     turkishCommunity: true,
     nearby: ['boeblingen', 'esslingen'],
     travel: { included: true },
@@ -321,7 +335,7 @@ export const allCityEntries: City[] = [
     population: null,
     priority: 1,
     turkishCommunity: true,
-    nearby: ['esslingen', 'reutlingen', 'pforzheim'],
+    nearby: ['esslingen', 'reutlingen', 'pforzheim', 'ludwigsburg'],
     travel: { included: true },
     // TODO(kunde): Konkrete Hochzeitslocation in Böblingen/Sindelfingen
     // im Recherche-Pass nicht verifiziert — siehe SEO-CITY-STRATEGY.md.
@@ -371,7 +385,7 @@ export const allCityEntries: City[] = [
     population: 96182,
     priority: 1,
     turkishCommunity: true,
-    nearby: ['boeblingen', 'reutlingen', 'heilbronn'],
+    nearby: ['boeblingen', 'reutlingen', 'heilbronn', 'ludwigsburg'],
     travel: { included: true },
     venues: [
       {
@@ -487,7 +501,7 @@ export const allCityEntries: City[] = [
     population: 131653,
     priority: 1,
     turkishCommunity: true,
-    nearby: ['boeblingen', 'esslingen', 'reutlingen'],
+    nearby: ['boeblingen', 'esslingen', 'reutlingen', 'ludwigsburg'],
     // Luftlinie laut Recherche ~40 km, damit innerhalb der 50-km-Zone —
     // anders als in einem früheren Entwurf dieser Datei (dort mit
     // geschätzter Fahrstrecke als "außerhalb" markiert). Diese Fassung
