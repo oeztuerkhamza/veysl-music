@@ -17,6 +17,7 @@ import { GoogleReviews } from '@/components/home/google-reviews';
 import { ProcessPreview } from '@/components/home/process-preview';
 import { ServiceAreas } from '@/components/home/service-areas';
 import { FinalCta } from '@/components/home/final-cta';
+import { InstagramStrip, YouTubeStrip } from '@/components/social';
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
@@ -77,6 +78,18 @@ export default async function HomePage({ params }: HomePageProps) {
       <Testimonials testimonials={testimonials} />
       {/* Renders nothing until GOOGLE_PLACES_API_KEY is set on the server. */}
       <GoogleReviews locale={locale} />
+      {/*
+        Beide Strips waren gebaut, übersetzt und nirgends eingebunden — sie
+        standen seit ihrer Entstehung in `src/components/social/`, ohne dass
+        eine einzige Seite sie gerendert hätte.
+
+        Platziert direkt hinter den Google-Bewertungen: Das ist der Block, in
+        dem die Seite ohnehin von fremden Stimmen auf eigene Belege umschaltet.
+        Beide vertragen einen leeren Zustand (`<SocialEmptyState>`), fallen
+        also nicht auf, solange eine Quelle noch keine Daten liefert.
+      */}
+      <YouTubeStrip />
+      <InstagramStrip />
       <ProcessPreview />
       <ServiceAreas />
       <FinalCta />

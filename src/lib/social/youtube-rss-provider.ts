@@ -42,7 +42,27 @@ async function resolveChannelId(): Promise<string | null> {
     if (!res.ok) return null;
 
     const html = await res.text();
-    const match = html.match(/"channelId":"(UC[a-zA-Z0-9_-]{10,})"/);
+    /**
+     * Zwei Schlüssel, nicht einer.
+     *
+     * Der Kommentar oben beschrieb nur `"channelId"`. Auf der aktuell
+     * ausgelieferten Kanalseite von `@djveysofficial` kommt genau dieser
+     * Schlüssel **nicht** vor — die ID steht dort unter `"externalId"`.
+     * Nachgeprüft am 1. August 2026: Die Seite antwortet mit 200 und 1,3 MB,
+     * `"channelId"` findet sich null Mal, `"externalId":"UCTQ2T7c-TQEZe9Dp1Se96oQ"`
+     * einmal. Mit nur dem alten Muster lieferte dieser Provider also still
+     * eine leere Liste — kein Fehler im Log, einfach kein Video auf der Seite.
+     *
+     * Welcher Schlüssel erscheint, hängt davon ab, welche Variante der
+     * Kanalseite YouTube gerade ausliefert; beide tragen dieselbe ID. Deshalb
+     * werden beide akzeptiert, statt auf eine Schreibweise zu wetten, die sich
+     * schon einmal geändert hat.
+     *
+     * Wer das gar nicht dem Zufall überlassen will, setzt `YOUTUBE_CHANNEL_ID`
+     * — dieser Zweig läuft dann nie an. Für diesen Kanal:
+     * `UCTQ2T7c-TQEZe9Dp1Se96oQ`.
+     */
+    const match = html.match(/"(?:channelId|externalId)":"(UC[a-zA-Z0-9_-]{10,})"/);
     if (!match) return null;
 
     cachedChannelId = { id: match[1], resolvedAt: Date.now() };
