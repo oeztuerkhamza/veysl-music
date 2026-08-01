@@ -46,9 +46,23 @@ export async function YouTubeStrip() {
           </Button>
         </div>
 
+        {/*
+          Zwei Spalten, nicht vier.
+
+          Bei vier nebeneinander war jede Kachel auf einem normalen Laptop nur
+          rund 250 px breit — und der Inhalt dieses Kanals sind überwiegend
+          Shorts, also Hochformat. Ein 9:16-Video in einem 16:9-Rahmen zeigt
+          nur einen schmalen Streifen in der Mitte, flankiert von schwarzen
+          Balken. Aus 250 px Kachelbreite wurden so vielleicht 140 px
+          tatsächliches Bild: zu wenig, um zu erkennen, worum es überhaupt geht.
+
+          Zwei Spalten halbieren die Kacheln pro Reihe und verdoppeln die
+          Breite; bei vier Videos ergibt das ein sauberes 2×2 ohne Waise in der
+          letzten Reihe.
+        */}
         <div className="mt-10">
           {posts.length > 0 ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2">
               {posts.map((post) => (
                 <Reveal key={post.id}>
                   <YouTubeVideoTile post={post} playLabel={t('grid.playLabel')} altFallback={altFallback} />
