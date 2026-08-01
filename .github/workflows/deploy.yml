@@ -67,30 +67,40 @@ jobs:
         run: npm run build
 
   # ---------------------------------------------------------------------------
-  # Deploy — a `v*` tag or a manual "Run workflow", both on top of
-  # build-and-verify passing and both behind the `production` Environment.
+  # Deploy — every push to master, plus `v*` tags and manual runs. All three
+  # only after build-and-verify passes, all three through the `production`
+  # Environment.
   #
-  # Before the first use:
-  #   1. Verify a manual `deploy/deploy.sh` run on the box first (see
-  #      docs/DEPLOYMENT.md). Automating a path nobody has walked by hand is
-  #      how a pipeline discovers problems by taking production down.
-  #   2. Configure a "production" Environment in Settings → Environments with
-  #      required reviewers — that is what makes `environment: production`
-  #      below actually pause for approval instead of being a decorative label.
-  #   3. Add repo secrets DEPLOY_SSH_HOST, DEPLOY_SSH_USER, DEPLOY_SSH_KEY
-  #      (private key matching a public key already authorised for the deploy
-  #      user — see deploy/server-setup.sh's DEPLOY_SSH_PUBKEY), and ideally
-  #      DEPLOY_SSH_HOST_KEY (see the note in the step below).
+  # Master used to be excluded, and the comment right here predicted what that
+  # would cost: "a fix can sit committed on master for days while production
+  # keeps running the old image, because a tag is the only thing that triggered
+  # a deploy and nobody tags." That is exactly what happened — a logo, a
+  # two-thirds cut in homepage JavaScript, a whole new language cluster and a
+  # rewritten enquiry form all sat on master, green, and unseen. The manual
+  # trigger was added as the fix and was itself forgotten twice.
   #
-  # An earlier version of this comment said `next build` failed outright on a
-  # stale locale map in src/app/[locale]/fragen/metadata.ts. That has been
-  # fixed: the production build completes cleanly, verified against the current
-  # tree. The note is left here only so nobody re-derives it from the git
-  # history and re-disables the job.
+  # So: pushing to master now means shipping. That is the point, and it is
+  # worth stating plainly rather than discovering.
+  #
+  # ⚠️ The `production` Environment currently has **no protection rules**
+  # (checked via the API: `protection_rules: []`), so `environment: production`
+  # below is a label, not a gate — nothing pauses between a merge and the live
+  # site. If a pair of eyes is wanted before each release, add required
+  # reviewers under Settings → Environments → production; the job already
+  # points at it and will start pausing with no change to this file.
+  #
+  # Preconditions, all met at the time of writing:
+  #   - `deploy/deploy.sh` has been exercised: the manual run on 2026-07-31
+  #     completed in 6m23s and the site served the new build afterwards.
+  #   - Secrets DEPLOY_SSH_HOST / DEPLOY_SSH_USER / DEPLOY_SSH_KEY exist
+  #     (DEPLOY_SSH_HOST_KEY is still optional — see the step below).
   deploy:
-    name: Deploy (tag or manual)
+    name: Deploy (master, tag or manual)
     needs: build-and-verify
-    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    if: >-
+      github.event_name == 'workflow_dispatch'
+      || startsWith(github.ref, 'refs/tags/v')
+      || (github.event_name == 'push' && github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
     environment: production
     timeout-minutes: 30
