@@ -23,6 +23,35 @@ export function generateStaticParams() {
 }
 
 /**
+ * Nach diesem Zeitfenster darf eine Seite beim nächsten Aufruf im Hintergrund
+ * neu gerendert werden. Gilt für den gesamten Segmentbaum darunter, also für
+ * jede öffentliche Seite.
+ *
+ * Der Grund ist kein Wunsch nach Aktualität, sondern ein handfester Defekt:
+ * Alle Seiten werden beim `next build` vorgerendert, und dieser Build läuft im
+ * Docker-Image — zu einem Zeitpunkt, an dem `/app/data` noch nicht existiert.
+ * Dort liegt aber die SQLite-Datei (`DATABASE_URI=file:/app/data/veysl-cms.db`,
+ * eingehängt als Volume erst zur Laufzeit). Jeder `resolveSlot()`-Aufruf findet
+ * beim Bauen also nichts und backt einen Platzhalter ins HTML.
+ *
+ * Wirkung ohne diese Zeile: **Jeder Deploy nimmt sämtliche CMS-Bilder wieder
+ * von der Seite.** Nicht die Dateien — Datenbank und Medien-Volume überleben
+ * beides —, sondern das vorgerenderte HTML, das sie vergessen hat. Genau das
+ * war der Grund, warum ein frisch hochgeladenes Foto erst da war und nach dem
+ * nächsten Deploy wieder weg.
+ *
+ * Zusammen mit den `afterChange`-Hooks (src/payload/revalidate.ts) ergibt das
+ * zwei Wege zurück in den korrekten Zustand: sofort beim Speichern im Admin,
+ * und spätestens nach diesem Fenster nach einem Deploy. Fünf Minuten, weil das
+ * Neu-Rendern im Hintergrund passiert und CMS-Lesezugriffe ohnehin ein
+ * Zeitlimit mit Fallback haben (`readFromCms`).
+ *
+ * ⚠️ Was das *nicht* repariert: Der allererste Aufruf nach einem Deploy
+ * bekommt noch die gebaute Fassung. Erst der darauf folgende sieht die Bilder.
+ */
+export const revalidate = 300;
+
+/**
  * Next 16 generiert die Route-Typen mit `locale: string`. Der Parameter wird
  * hier deshalb breit angenommen und erst per `hasLocale` auf `Locale`
  * verengt — sonst schlägt die Typprüfung beim Build fehl.
