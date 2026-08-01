@@ -9,6 +9,15 @@ volumes:
   veysl-data:
   # Payload upload storage — src/payload/collections/media.ts staticDir.
   veysl-media:
+  # Erstfrei zwischengespeicherte Social-Vorschaubilder —
+  # src/lib/social/media-cache.ts. Ohne dieses Volume landet der Cache im
+  # Container-Dateisystem und ist nach jedem Deploy weg: Die Seite verweist
+  # dann auf /api/social/media/<id>, die Datei dahinter existiert nicht mehr,
+  # und der Besucher sieht ein kaputtes Bild statt eines Video-Vorschaubilds.
+  # Genau dieser Zustand war live. Die Datei sagt es selbst: "should point at
+  # a persistent volume/bind mount in production so the cache survives
+  # restarts".
+  veysl-social-cache:
   # Let's Encrypt certs + ACME webroot, shared between nginx and certbot.
   certbot-conf:
   certbot-www:
@@ -38,9 +47,17 @@ services:
       - '3000'
     env_file:
       - .env
+    # Nach `env_file`, also mit Vorrang davor — und bewusst hier statt in der
+    # `.env`: Dieser Pfad ist keine Betreiber-Einstellung, sondern die andere
+    # Hälfte des Volumes drei Zeilen weiter unten. Die beiden getrennt zu
+    # pflegen heißt, dass genau eins von beidem irgendwann fehlt — und der
+    # Fehler dann still ist: kaputte Vorschaubilder, kein Log, kein Alarm.
+    environment:
+      SOCIAL_MEDIA_CACHE_DIR: /app/social-cache
     volumes:
       - veysl-data:/app/data
       - veysl-media:/app/media
+      - veysl-social-cache:/app/social-cache
     networks:
       - veysl
     healthcheck:

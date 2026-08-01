@@ -99,7 +99,14 @@ ENV NODE_ENV=production \
 #   /app/media — Payload upload storage (src/payload/collections/media.ts
 #                `staticDir: path.resolve(process.cwd(), 'media')`, and
 #                process.cwd() for `node server.js` is this WORKDIR)
-RUN mkdir -p /app/data /app/media && chown -R node:node /app/data /app/media
+#   /app/social-cache — first-party copies of Instagram/YouTube thumbnails
+#                (src/lib/social/media-cache.ts, via SOCIAL_MEDIA_CACHE_DIR).
+#                Needs a volume for the same reason as the two above: without
+#                one it lives in the container layer and every deploy wipes it,
+#                leaving /api/social/media/<id> answering 404 for thumbnails
+#                the already-rendered HTML still points at.
+RUN mkdir -p /app/data /app/media /app/social-cache \
+  && chown -R node:node /app/data /app/media /app/social-cache
 
 # Standalone output: a self-contained server.js + the exact node_modules
 # subset Next traced as actually required. `.next/static` and `public/` are
