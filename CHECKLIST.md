@@ -130,10 +130,18 @@ Elimizdeki 12 fotoğrafın içinde **tek bir gerçek düğün karesi yok** — �
 
 Rakip analizinde bulundu: benzer DJ'lerde **12–86 yorum** var. En tehlikeli rakip DJ Serkan'da ~30 yorum + 20 yıl.
 
-- [ ] **Yorum sayını söyle.** Profilde 5,0 ★ görünüyor ama sayı bilinmiyor. **Bu sayı gelmeden yıldız rozeti ve rating schema'sı açılmıyor** — uydurma sayı basmıyoruz.
-- [ ] **Google Place ID**
+- [x] ~~**Yorum sayını söyle.**~~ ✅ **5,0 ★ / 31 yorum** — `site.reviews`'a girildi
+- [x] ~~**Google Place ID**~~ ✅ `ChIJqW8NRI0tU6gROWl2dblWNbg` — girildi ve doğrulandı
 - [ ] **Sistemli yorum topla:** her düğünden 2-3 gün sonra kısa WhatsApp + doğrudan yorum linki. Gerçekçi hedef: 1 yılda 30-50 yorum.
 - [ ] Google Business Profile'ı tamamla: kategori, hizmet alanı, hizmetler, fotoğraflar, düzenli gönderi
+
+> **Sayı geldi, tablo değişti.** 31 yorum, en tehlikeli rakiple (~30) **parite**
+> demek — yani eksik olan sayı değil, **hız.** 12+ yıl ve 200+ etkinliğe karşı
+> 31 yorum yılda ~2,5 ediyor. Bu bir itibar problemi değil, **kimse istemiyor**
+> problemi ve tek en yüksek getirili iş bu.
+>
+> Adım adım operasyonel liste: [docs/LOCAL-SEO-CHECKLIST.md](docs/LOCAL-SEO-CHECKLIST.md) §2
+> · teşhis: [docs/MAPS-SIRALAMA-ANALIZI.md](docs/MAPS-SIRALAMA-ANALIZI.md)
 
 ## B.3 🔴 Instagram — 63.000 kişi bekliyor
 
