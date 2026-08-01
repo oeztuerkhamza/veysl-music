@@ -390,6 +390,43 @@ export interface ResolvedImage {
  * yet. `<SiteImage>` then falls back to the slot's `fallbackSrc`, and finally
  * to the designed empty state — see `.claude/BRAND-FACTS.md` "Media".
  */
+/**
+ * Macht aus Payloads Upload-URL einen seitenrelativen Pfad.
+ *
+ * Payload liefert `image.url` als **absolute** URL, sobald in der Konfiguration
+ * eine `serverURL` steht — also `https://dj-veys.de/api/media/file/foo.webp`.
+ * Für `next/image` ist das ein *fremder* Host, und fremde Hosts müssen in
+ * `next.config.ts` → `images.remotePatterns` stehen. Der eigene Host stand dort
+ * nicht (die Liste enthält Spotify, SoundCloud, Mixcloud, Google), also
+ * antwortete der Optimierer mit **400** und der Browser zeigte ein kaputtes
+ * Bild — während die Datei selbst unter derselben Adresse tadellos ausgeliefert
+ * wurde. Genau dieses Bild war auf `/echte-hochzeiten` zu sehen.
+ *
+ * Der naheliegende Weg wäre gewesen, `dj-veys.de` in `remotePatterns` (und in
+ * die CSP-`img-src`) aufzunehmen. Dieser hier ist besser: Ein relativer Pfad
+ * ist für den Optimierer ein *lokales* Bild, braucht überhaupt keine
+ * Freigabeliste und funktioniert unverändert auf localhost, auf einer
+ * Staging-Domain und in Produktion. Eine Konfiguration, die den eigenen Host
+ * fest verdrahtet, wäre in jeder anderen Umgebung wieder falsch.
+ *
+ * Fremde Hosts bleiben unangetastet — falls Uploads später auf S3 oder einen
+ * CDN wandern, fällt der Wert unverändert durch und die Freigabeliste greift
+ * wie vorgesehen.
+ */
+function toSameOriginPath(url: string): string {
+  if (url.startsWith('/')) return url;
+
+  const base = process.env.NEXT_PUBLIC_SITE_URL;
+  if (!base) return url;
+
+  try {
+    const parsed = new URL(url);
+    return parsed.origin === new URL(base).origin ? `${parsed.pathname}${parsed.search}` : url;
+  } catch {
+    return url;
+  }
+}
+
 export async function resolveSlot(key: string): Promise<ResolvedImage | null> {
   // Läuft im Render-Pfad jeder Seite mit Bild-Slot, deshalb über `readFromCms`
   // (Zeitlimit + Fallback). Ein blockierendes Payload würde sonst nicht nur
@@ -409,7 +446,7 @@ export async function resolveSlot(key: string): Promise<ResolvedImage | null> {
       const image = result.docs[0]?.image;
       if (!image || typeof image !== 'object' || !('url' in image) || !image.url) return null;
 
-      return { src: image.url as string, alt: typeof image.alt === 'string' ? image.alt : '' };
+      return { src: toSameOriginPath(image.url as string), alt: typeof image.alt === 'string' ? image.alt : '' };
     },
     null,
     `site-image "${key}"`

@@ -43,6 +43,27 @@ export const Media: CollectionConfig = {
       { name: 'hero', width: 2400, height: 1350, position: 'centre' },
     ],
     formatOptions: { format: 'webp', options: { quality: 82 } },
+    /**
+     * Obergrenze für die gespeicherte Originaldatei.
+     *
+     * Bis hierher gab es keine: `formatOptions` wandelte zwar jeden Upload in
+     * WebP, ließ die Auflösung aber unangetastet. Ein Foto direkt vom Handy
+     * kommt mit 4000 px und mehr — und genau so lag es dann auf der Platte,
+     * obwohl die größte Variante dieser Seite (`hero`) 2400 px breit ist.
+     *
+     * Das kostet an drei Stellen: Plattenplatz im `veysl-media`-Volume, CPU
+     * beim Optimierer (der das Vollbild für *jede* neue Breiten-/Format-
+     * Kombination erneut dekodiert) — und im Fehlerfall die Bandbreite der
+     * Besucherin, denn wenn `next/image` ausfällt, ist die Originaldatei das,
+     * was der Browser bekommt. Wie knapp dieser Fall ist, hat sich gerade
+     * gezeigt: Der Optimierer antwortete wochenlang mit 400.
+     *
+     * 2560 px lässt der 2400er-Variante Luft und nimmt jedem realistischen
+     * Upload den Rest. `withoutEnlargement` verhindert, dass ein kleineres
+     * Bild künstlich hochskaliert (und damit größer) wird; `fit: 'inside'`
+     * behält das Seitenverhältnis — beschnitten wird erst in den `imageSizes`.
+     */
+    resizeOptions: { width: 2560, height: 2560, fit: 'inside', withoutEnlargement: true },
     // Explicit raster allowlist, not 'image/*'. That wildcard admits
     // image/svg+xml, which Payload serves same-origin from
     // /api/media/file/<name> with no CSP in front of it. Payload does screen
