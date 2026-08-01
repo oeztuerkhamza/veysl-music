@@ -947,6 +947,9 @@ export interface SiteSetting {
   address?: {
     street?: string | null;
     postalCode?: string | null;
+    /**
+     * Nur der postalische Ort — „Stuttgart", nicht der Stadtbezirk „Stuttgart-Obertürkheim". Dieser Wert muss zeichengleich mit dem Ort im Google-Unternehmensprofil sein, sonst leidet die lokale Sichtbarkeit.
+     */
     city?: string | null;
   };
   /**
