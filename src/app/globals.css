@@ -516,3 +516,61 @@
 body.cms-editing [data-cms-slot] {
   position: relative;
 }
+
+/**
+ * Bewertungs-Laufband (src/components/home/google-reviews.tsx).
+ *
+ * Die Spur enthaelt die Kartenliste zweimal. Die Animation schiebt um genau
+ * -50% — also um die Breite einer Kopie — und springt dann auf 0 zurueck. Weil
+ * dort die zweite Kopie exakt an der Stelle der ersten steht, ist der Sprung
+ * unsichtbar und das Band laeuft endlos.
+ *
+ * Nur `transform` wird animiert: das laeuft im Compositor, ohne Layout oder
+ * Paint pro Frame, und kostet damit praktisch nichts — anders als ein
+ * JavaScript-Karussell, das pro Frame Positionen rechnet.
+ *
+ * Die Dauer haengt an der Kartenzahl, nicht an einer festen Sekundenzahl:
+ * `--reviews-count` setzt die Komponente nicht, deshalb greift der Default —
+ * ein Wert, der bei fuenf Karten (Maximum der Places API) eine ruhige,
+ * lesbare Geschwindigkeit ergibt.
+ */
+.reviews-marquee-track {
+  animation: reviews-marquee 42s linear infinite;
+}
+
+/* Anhalten bei Maus UND bei Tastaturfokus. Nur `:hover` waere fuer alle
+   unbrauchbar, die nicht mit der Maus navigieren. */
+.reviews-marquee:hover .reviews-marquee-track,
+.reviews-marquee:focus-within .reviews-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes reviews-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/**
+ * Ohne diesen Block waere das Laufband unter `prefers-reduced-motion` KAPUTT,
+ * nicht ruhig: Die globale Regel weiter oben setzt `animation-duration` auf
+ * 0.01ms, und eine Endlosanimation springt damit sofort an ihr Ende — das Band
+ * stuende dauerhaft um -50% verschoben, also halb aus dem Bild.
+ *
+ * Deshalb hier die Animation ganz abschalten und aus der Spur eine normale,
+ * horizontal scrollbare Reihe machen. Wer Bewegung reduziert hat, bekommt
+ * dieselben Bewertungen — nur selbst gesteuert.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .reviews-marquee {
+    overflow-x: auto;
+  }
+
+  .reviews-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}

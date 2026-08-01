@@ -5,7 +5,6 @@ import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
 import { Card } from '@/components/ui/card';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { Reveal } from '@/components/motion/reveal';
 import { fetchGoogleReviews } from '@/lib/reviews/google-places';
 import type { Locale } from '@/i18n/routing';
 
@@ -57,10 +56,48 @@ export async function GoogleReviews({ locale }: { locale: Locale }) {
           </a>
         </div>
 
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {summary.reviews.map((review, index) => (
-            <Reveal key={`${review.authorName}-${index}`} as="li" y={18} delay={index * 0.05} className="block">
-              <Card className="flex h-full flex-col gap-4 p-6">
+      </Container>
+
+      {/*
+        Laufband statt Raster.
+
+        Bewusst außerhalb von `<Container>`: Das Band läuft randlos durch das
+        Fenster, sonst bricht die Illusion an der Containerkante ab.
+
+        Die Liste wird **zweimal** gerendert. Das ist der ganze Trick an einem
+        nahtlosen Laufband: Die Animation schiebt genau um die Breite einer
+        Hälfte (-50 %) und springt dann zurück auf 0 — weil an dieser Stelle die
+        zweite Kopie exakt dort steht, wo die erste stand, ist der Sprung
+        unsichtbar. Die Kopie ist `aria-hidden`, sonst läse ein Screenreader
+        jede Bewertung doppelt vor.
+
+        Wie viele Bewertungen hier ankommen, entscheidet nicht dieser Code:
+        Die Places API liefert höchstens fünf pro Ort, unabhängig davon, wie
+        viele das Profil insgesamt hat. Der Link „alle … auf Google lesen"
+        oben ist deshalb kein Zierrat, sondern der einzige Weg zum Rest.
+      */}
+      <div
+        className="reviews-marquee group relative mt-10 overflow-hidden"
+        // Pausiert bei Maus *und* bei Tastaturfokus. Nur Hover wäre für alle
+        // unbenutzbar, die nicht mit der Maus navigieren — und WCAG 2.2.2
+        // verlangt für Bewegung, die länger als fünf Sekunden läuft, eine
+        // Möglichkeit zum Anhalten, nicht nur eine für Mausnutzer.
+        role="region"
+        aria-label={t('title')}
+      >
+        {/* Weiche Kanten, damit die Karten nicht hart abgeschnitten wirken. */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-bg to-transparent sm:w-24" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-bg to-transparent sm:w-24" />
+
+        <ul className="reviews-marquee-track flex w-max gap-6">
+          {[0, 1].flatMap((copy) =>
+            summary.reviews.map((review, index) => (
+              <li
+                key={`${copy}-${review.authorName}-${index}`}
+                className="w-[19rem] shrink-0 sm:w-[22rem]"
+                aria-hidden={copy === 1 ? true : undefined}
+              >
+                <Card className="flex h-full flex-col gap-4 p-6">
                 <div
                   className="flex items-center gap-1"
                   role="img"
@@ -111,12 +148,15 @@ export async function GoogleReviews({ locale }: { locale: Locale }) {
                       {t('sourceGoogle')}
                     </p>
                   </div>
-                </footer>
-              </Card>
-            </Reveal>
-          ))}
+                  </footer>
+                </Card>
+              </li>
+            ))
+          )}
         </ul>
+      </div>
 
+      <Container>
         <p className="mt-8 text-sm text-ink-muted">
           {t('writeOwnPrompt')}{' '}
           <a
