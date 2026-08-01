@@ -147,10 +147,24 @@ export interface PostalAddressSchema {
 }
 
 /**
- * Street and postal code are still TODO(kunde) in site.ts (required for a legally
- * complete Impressum, but unknown for now) — omitted entirely rather than
- * shipping an empty string. `addressLocality` uses the more specific
- * `site.address.city` ("Stuttgart-Obertürkheim"), not the coarser `site.city`.
+ * Every field is spread conditionally: a value that isn't known is omitted
+ * entirely rather than shipped as an empty string. Street and postal code were
+ * the case that motivated this — they were `TODO(kunde)` until the owner
+ * supplied them — and the guards stay as the cheap defence against a field
+ * being emptied again.
+ *
+ * `addressLocality` is the **postal locality** — "Stuttgart". Not the more
+ * specific "Stuttgart-Obertürkheim": this string's job is to match the Google
+ * Business Profile byte for byte, and Google's canonical locality for 70329 is
+ * "Stuttgart". The district lives in `site.district` and in prose copy instead.
+ *
+ * ⚠️ Note the data source: this file reads the **static** `site` const, while
+ * the Impressum page renders `getSite()`, which layers the admin panel's values
+ * on top. An address edited in the admin panel therefore changes the visible
+ * Impressum but NOT this JSON-LD — the exact NAP mismatch the paragraph above
+ * exists to prevent. Fixing it means threading the resolved site through every
+ * `localBusinessSchema()` caller; until then, an address change has to be made
+ * in `site.ts` too, not only in the panel.
  */
 function businessAddress(): PostalAddressSchema {
   const { street, postalCode, city } = site.address;

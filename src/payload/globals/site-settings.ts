@@ -118,7 +118,16 @@ export const SiteSettings: GlobalConfig = {
       fields: [
         { name: 'street', label: { de: 'Straße und Hausnummer', tr: 'Sokak ve numara' }, type: 'text', admin: { placeholder: 'Musterstraße 12' } },
         { name: 'postalCode', label: { de: 'Postleitzahl', tr: 'Posta kodu' }, type: 'text', admin: { placeholder: '70329' } },
-        { name: 'city', label: { de: 'Ort', tr: 'Şehir' }, type: 'text' },
+        {
+          name: 'city', label: { de: 'Ort', tr: 'Şehir' }, type: 'text',
+          admin: {
+            placeholder: 'Stuttgart',
+            description: {
+              de: 'Nur der postalische Ort — „Stuttgart", nicht der Stadtbezirk „Stuttgart-Obertürkheim". Dieser Wert muss zeichengleich mit dem Ort im Google-Unternehmensprofil sein, sonst leidet die lokale Sichtbarkeit.',
+              tr: 'Sadece posta adresindeki şehir — "Stuttgart", semt adı ("Stuttgart-Obertürkheim") değil. Bu değer Google işletme profilindeki şehirle birebir aynı olmalı, yoksa yerel görünürlük zarar görüyor.',
+            },
+          },
+        },
       ],
     },
     {

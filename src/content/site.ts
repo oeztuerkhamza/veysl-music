@@ -164,11 +164,28 @@ export const site = {
    *
    * Füllt gleichzeitig `streetAddress`/`postalCode` in `businessAddress()`
    * (src/lib/schema.ts), die bis hierher leer bleiben mussten.
+   *
+   * ⚠️ `city` ist der **postalische Ort**, nicht der Stadtbezirk: „Stuttgart",
+   * nicht „Stuttgart-Obertürkheim". Hier stand bis August 2026 der Bezirk, und
+   * das war aus zwei unabhängigen Gründen falsch:
+   *
+   * 1. **NAP-Abgleich.** Google kennt zur PLZ 70329 genau eine kanonische
+   *    Ortsangabe — „Stuttgart" — und genau die steht im Unternehmensprofil.
+   *    Der Kommentar oben nennt die Deckungsgleichheit als den eigentlichen
+   *    Zweck dieses Blocks; ein abweichender Ortsstring in `addressLocality`
+   *    hat ihr genau dort widersprochen, wo sie zählt.
+   * 2. **§ 5 DDG.** Die ladungsfähige Anschrift ist die postalische Anschrift.
+   *    „70329 Stuttgart-Obertürkheim" ist keine korrekt gebildete Zustell-
+   *    adresse, auch wenn die Post sie zustellen würde.
+   *
+   * Der Bezirk geht dabei nicht verloren: er steht in `district` und in der
+   * Fließtext-Copy (`answers.ts`, `cities.ts`, `public/llms.txt`), wo er als
+   * Ortskenntnis-Argument hingehört statt in ein Adressfeld.
    */
   address: {
     street: 'Asangstraße 98',
     postalCode: '70329',
-    city: 'Stuttgart-Obertürkheim',
+    city: 'Stuttgart',
   },
 
   /**

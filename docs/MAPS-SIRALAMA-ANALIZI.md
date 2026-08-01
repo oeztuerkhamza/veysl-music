@@ -292,28 +292,48 @@ etkileyenler:
 
 ---
 
-## 9. Kodda düzeltilecek iki somut şey
+## 9. Kodda bulunan sorunlar
 
-Bunlar küçük ama gerçek, ve doğrudan bu analizden çıktı:
+### ✅ (a) `addressLocality` GBP ile uyuşmuyordu — düzeltildi
 
-### (a) `addressLocality` GBP ile uyuşmuyor
+`site.address.city` **"Stuttgart-Obertürkheim"** yazıyordu. Google 70329 posta kodunun
+kanonik yerleşimini **"Stuttgart"** olarak biliyor ve GBP'de de öyle görünüyor. Yani
+sitenin schema'sı ile Google profili NAP'ın "A"sında birbirini tutmuyordu.
 
-`src/lib/schema.ts` → `businessAddress()` şu anda `addressLocality` olarak
-**"Stuttgart-Obertürkheim"** yazıyor (`site.address.city`). Google 70329 posta kodunun
-kanonik yerleşimini **"Stuttgart"** olarak biliyor ve GBP'de de öyle görünecek.
+İlginç olan şu: `site.ts`'teki kendi yorumu zaten *"identisch mit der Adresse im
+Google-Unternehmensprofil"* diyordu — değer, kendi gerekçesiyle çelişiyordu.
 
-Yani sitenin schema'sı ile Google profili NAP'ın "A"sında birbirini tutmuyor. Semtin
-bilgi olarak kalması iyi ama `addressLocality` alanının **"Stuttgart"** olması gerekiyor.
+Bu tek değer iki yeri birden bozuyordu, çünkü Impressum de aynı alanı kullanıyor:
+**"70329 Stuttgart-Obertürkheim"** düzgün kurulmuş bir posta adresi değil (§ 5 DDG
+ladungsfähige Anschrift = postalische Anschrift). Değer `'Stuttgart'` yapıldı; semt
+`site.district` ve fließtext copy'de zaten duruyor, hiçbir bilgi kaybolmadı.
 
-### (b) Aynı fonksiyondaki yorum satırı artık yanlış
+Ayrıca admin panelindeki "Ort" alanına açıklama eklendi (DE + TR), çünkü CMS bu değeri
+ezebiliyor — yani aynı hata panelden tekrar girilebilirdi.
 
-`src/lib/schema.ts:149-153`:
+### ✅ (b) Yanıltıcı yorum satırı — düzeltildi
 
-> `Street and postal code are still TODO(kunde) in site.ts ... unknown for now`
+`src/lib/schema.ts` hâlâ *"Street and postal code are still TODO(kunde) … unknown for
+now"* diyordu; adres `08e5d4d` commit'inde girilmişti.
 
-Bu artık doğru değil — adres `08e5d4d` commit'inde girildi. Yanıltıcı yorum.
+### ⚠️ (c) YENİ BULGU: schema ile Impressum farklı kaynaktan besleniyor — **açık**
 
-*(Bu ikisi bu raporun kapsamı dışında; ayrı bir değişiklik olarak yapılmalı.)*
+(a) düzeltilirken çıktı ve tek satırla kapanmıyor:
+
+- `src/app/[locale]/impressum/page.tsx` → **`getSite()`** kullanıyor (admin panelinin
+  değerlerini üstüne bindiriyor)
+- `src/lib/schema.ts` → **statik `site`** sabitini import ediyor
+
+Sonuç: **Veysel adresi admin panelinden değiştirirse, görünen Impressum değişir ama aynı
+sayfadaki JSON-LD değişmez.** Yani panelden yapılan bir düzeltme, tam olarak (a)'da
+kapatılan NAP uyumsuzluğunu sessizce geri getirir.
+
+Bu bilinçli olarak bu değişikliğin dışında bırakıldı: düzeltmek için çözümlenmiş `site`
+nesnesinin `localBusinessSchema()`'yı çağıran ~8 yere kadar taşınması gerekiyor — ayrı ve
+dikkat isteyen bir iş. Kod içine uyarı olarak not düşüldü.
+
+**O zamana kadar geçerli kural:** adres değişikliği **hem** `src/content/site.ts`'te
+**hem** panelde yapılmalı, sadece panelde değil.
 
 ---
 
