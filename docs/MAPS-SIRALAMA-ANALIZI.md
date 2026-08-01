@@ -17,13 +17,13 @@ her şey **"kontrol edilecek"** olarak işaretlendi.
 
 ## Kısa cevap
 
-Tek bir sebep yok, ama **en büyük sebep senin kontrolünde değil, ikinci en büyük sebep
-ise geri alınamaz bir kayıp.** Sırayla:
+Tek bir sebep yok. **En büyük sebep senin kontrolünde değil** (mesafe), ama hemen
+ardından gelenlerin çoğu tamamen senin elinde — ve en güçlü kozun yorum akışı. Sırayla:
 
 | # | Sebep | Etki | Düzeltilebilir mi? |
 |---|---|---|---|
 | 1 | **Adres Obertürkheim'da** — şehir merkezine ~8 km | 🔴 Çok yüksek | ❌ Hayır (adres uydurmak yasak) |
-| 2 | **Eski alan adı `veystunesofficial.de` iptal edildi** | 🔴 Çok yüksek | ❌ Kalıcı kayıp, telafi edilir |
+| 2 | **Eski alan adı `veystunesofficial.de` iptal edildi** | 🟡 Orta — ilk değerlendirme abartılıydı, bkz. §3 | ⚠️ Süre dolmadıysa geri alınabilir |
 | 3 | **"DJ Veys" adı başka bir müzisyenle çakışıyor** | 🟠 Yüksek | ⚠️ Yönetilebilir |
 | 4 | **31 yorum var ama yorum hızı çok düşük** | 🟠 Yüksek | ✅ Evet — en güçlü kozun |
 | 5 | **Site henüz Google'da görünmüyor** | 🟠 Yüksek | ✅ Evet |
@@ -106,11 +106,9 @@ yazmak, seni Stuttgart merkezine taşımaz.
 
 ---
 
-## 3. 🔴 Sebep 2: Eski alan adı iptal edildi — en büyük onarılabilir hasar
+## 3. 🟡 Sebep 2: Eski alan adı iptal edildi
 
-Bu, projedeki en pahalı olay ve maalesef önceden yazılı olarak uyarılmıştı.
-
-`HANDOVER.md` §3'te kırmızı başlıkla şu yazıyor:
+`HANDOVER.md` §3'te kırmızı başlıkla şu yazıyordu:
 
 > - [ ] Alte Domain **behalten**, nicht kündigen
 
@@ -118,27 +116,47 @@ Ama `src/content/site.ts` içindeki not ve `e1ec27d` numaralı commit ("Retire t
 domain now that its registration is gone") **kaydın gittiğini** söylüyor. Yani tam tersi
 oldu.
 
-### Bunun somut bedeli
+> ### ⚠️ Bu bölümün ilk hâli bu kaybı abartıyordu — düzeltildi
+>
+> Burada önce "projedeki en pahalı olay" ve 🔴 çok yüksek etki yazıyordu. Bu bir
+> **çıkarımdı**, ölçüm değil. Repoda ise tarihli, doğrudan gözlem var
+> (`docs/SEO-ACTION-PLAN.md`, 2026-07-29):
+>
+> - Eski site genel düğün-DJ sorgularında **zaten sıralanmıyordu**
+> - İptalden önce ana sayfası **503**, diğer beş yolun hepsi **404** veriyordu
+> - Sitemap'i tek URL'e düşmüştü
+>
+> Yani backlink'ler zaten ölüydü; iptal onları öldürmedi. `docs/DEPLOYMENT.md`'nin
+> değerlendirmesi doğru olan: **"The loss is real but small — this was a thin site,
+> not an established one."** Ölçülmüş kanıt, benim çıkarımımı geçer.
 
-| Kayıp | Neden önemli |
+### Geriye gerçekten kalan bedel
+
+| Kayıp | Gerçek ağırlığı |
 |---|---|
-| **Tüm backlink'ler öldü** | `veystunesofficial.de`'ye yıllar içinde verilmiş her link artık boşluğa gidiyor. 301 yönlendirme yapılamıyor — çünkü alan adı artık senin değil. Link gücü **transfer edilmedi, yok oldu.** |
-| **Search Console "Adressänderung" imkânsız** | Bu araç her iki alan adına da sahip olmanı şart koşar. Google'a "aynı işletmeyim, yeni adresteyim" demenin resmî yolu kapandı. |
-| **Rehberlerdeki her kayıt artık ölü link gösteriyor** | Gelbe Seiten, Das Örtliche, 11880, Yelp.de, hochzeitsportal-stuttgart.de... hepsinde çalışmayan bir web adresi duruyor. Bu, NAP tutarsızlığının en kötü türü. |
-| **Alan adı üçüncü şahsa geçebilir** | Serbest kalan bir alan adını bir rakip veya spam sitesi alabilir. Kod bunu doğru şekilde ele almış: `sameAs` içinden çıkarılmış. |
+| **301 artık hiç yapılamaz** | Alan adı senin olmadığı için yönlendirme kurulamıyor. Ama yönlendirilecek link gücü de zaten yoktu — sayfalar iptalden önce 404/503 veriyordu. Kaybedilen şey *güç* değil, **seçenek**. |
+| **Search Console "Adressänderung" imkânsız** | Araç her iki alan adına da sahip olmanı şart koşar. Google'a "aynı işletmeyim, taşındım" demenin resmî yolu kapandı. Bunun yerini kimlik sinyalleri alıyor: `sameAs`, GBP, tutarlı NAP. |
+| **Rehberlerdeki kayıtlar ölü link gösteriyor** | Gelbe Seiten, Das Örtliche, 11880, Yelp.de, hochzeitsportal-stuttgart.de… **Asıl iş bu** ve alan adından bağımsız: her biri elle `dj-veys.de`'ye çevrilmeli. Domain geri alınsa bile bu iş yine yapılacaktı. |
+| **Alan adı üçüncü şahsa geçebilir** | Marka koruması meselesi, SEO meselesi değil. Bir rakip ya da spam sitesi alabilir. Kod tarafı doğru davranmış: `sameAs` içinden çıkarılmış (`src/lib/schema.ts`). |
 
-**"Bilinirlik" = Google'ın "bu işletme web'de ne kadar tanınıyor" okuması.** Markanın web
-geçmişini silmek, doğrudan bu skoru düşürür.
+### Ne yapılır
 
-### Ne yapılır (telafi)
+1. **Süre dolmadıysa iptali geri çek.** Alman registrar'larında kündigung genelde dönem
+   sonunda işler ve o pencerede geri çekilebilir; domain çoğu zaman bu süre boyunca hâlâ
+   çözülür. IONOS'ta **Domains & SSL** bölümüne bak. Geri gelirse
+   `deploy/redirects-legacy.conf` ve nginx'teki legacy blok **olduğu gibi çalışır** —
+   yol-yol eşleme haritası hazır duruyor.
+   *Değeri: öncelikle marka koruması ve 301 seçeneğinin geri kazanılması. Sıralama
+   kurtarma operasyonu değil.*
+2. **Süre dolduysa üzülme, asıl işe geç.** Eski adrese link veren her yeri elle
+   `dj-veys.de`'ye çevirt: Instagram bio, YouTube kanal bilgisi, GBP web sitesi alanı,
+   rehberler. Bu liste zaten §6 ve §5'te duruyor ve **domain geri gelse de gelmese de
+   yapılacak iş.**
 
-1. **Alan adı hâlâ serbest mi diye bak.** `veystunesofficial.de` henüz kimse tarafından
-   alınmadıysa **geri al** — yıllık ~10 €. Sonra sayfa sayfa 301 ile `dj-veys.de`'ye
-   yönlendir. Backlink'lerin bir kısmı geri kazanılabilir. **Bu maddeyi bugün kontrol et,
-   her gün risk artıyor.**
-2. Alınmışsa: eski siteye link veren yerleri tek tek bulup (Instagram bio, YouTube kanal
-   bilgisi, rehberler, partner siteleri) **elle `dj-veys.de`'ye çevirt.** Yavaş ama işe
-   yarar.
+> ⛔ **Domain geri alınırsa yapılmayacak tek şey:** onu certbot'a `-d` olarak eklemek.
+> Certbot tek bir alan adı doğrulanamazsa **tüm isteği** reddediyor, yani legacy domaini
+> eklemek `dj-veys.de`'nin kendi sertifika yenilemesini kırabilir. `deploy/setup-ssl.sh`
+> aynı uyarıyı taşıyor.
 
 ---
 
