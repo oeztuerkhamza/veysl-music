@@ -54,23 +54,100 @@ function nonEmptyStrings(values: Array<string | undefined | null>): string[] {
  * The two `veystunesofficial` entries that remain are the YouTube and Instagram
  * *accounts*. They are unaffected — the owner still controls them, and the
  * Instagram one is the review-history anchor. Only the domain is gone.
+ *
+ * ── Why this list is hand-written instead of "every `site.social.*` value" ──
+ *
+ * It used to spread `tiktok`, `spotify`, `soundcloud` and `mixcloud` in too.
+ * All four are empty `TODO(kunde)` today, so nothing was emitted — but the
+ * moment anyone filled one in, in `site.ts` **or in the admin panel**, it
+ * became an identity claim automatically, with no second thought required.
+ *
+ * That default is wrong here specifically, because the brand name is not
+ * unique. "DJ Veys" already resolves to a *different*, older and better
+ * established recording artist on Spotify, Apple Music, Amazon Music,
+ * SoundCloud and Bandcamp. Anyone filling in `spotify` will search the
+ * platform for "DJ Veys" and find that artist first. Pasting it here would
+ * not merely be a wrong link — it would tell every search engine, on every
+ * page, that this Stuttgart wedding-DJ business *is* that artist, turning a
+ * passive name collision into an asserted merge. That is the single worst
+ * outcome available in this file.
+ *
+ * So the two concerns are now separated, because they were never the same:
+ *
+ *   `site.social.*`  — a link we are willing to SHOW. Fill freely.
+ *   this list        — a claim that the profile IS this business.
+ *
+ * Promoting a profile from the first to the second is a deliberate edit here,
+ * next to this comment. The rule for making it: only a profile the owner can
+ * log into. If that cannot be confirmed, leave it out — an absent `sameAs`
+ * costs nothing, a wrong one invites search engines to doubt the whole entity
+ * mapping (the same reasoning as the corrected YouTube handle in `site.ts`).
  */
 function businessSameAs(): string[] {
   return nonEmptyStrings([
-    site.social.instagram,
-    site.social.instagramLegacy,
-    site.social.youtube,
-    site.social.googleMaps,
-    site.social.tiktok,
-    site.social.spotify,
-    site.social.soundcloud,
-    site.social.mixcloud,
+    verifiedProfile('instagram', site.social.instagram),
+    verifiedProfile('instagramLegacy', site.social.instagramLegacy),
+    verifiedProfile('youtube', site.social.youtube),
+    verifiedProfile('googleMaps', site.social.googleMaps),
+    // Streaming platforms are deliberately absent — see the note above.
   ]);
 }
 
 /** `sameAs` for the person entity: personal/brand profiles only, not the Maps listing. */
 function personSameAs(): string[] {
-  return nonEmptyStrings([site.social.instagram, site.social.instagramLegacy, site.social.youtube]);
+  return nonEmptyStrings([
+    verifiedProfile('instagram', site.social.instagram),
+    verifiedProfile('instagramLegacy', site.social.instagramLegacy),
+    verifiedProfile('youtube', site.social.youtube),
+  ]);
+}
+
+/**
+ * Hosts a `sameAs` URL is allowed to point at, per field.
+ *
+ * This catches the sloppy half of the problem — a search-results URL, a
+ * tracking wrapper, a typo'd domain, a link pasted into the wrong field. It
+ * cannot catch the dangerous half: a real Spotify URL belonging to the wrong
+ * person passes every check here, because no amount of parsing reveals who
+ * owns an account. That half is what the ownership rule above is for, and
+ * why streaming platforms are not in the list at all.
+ */
+const SAME_AS_HOSTS = {
+  instagram: ['instagram.com', 'www.instagram.com'],
+  instagramLegacy: ['instagram.com', 'www.instagram.com'],
+  youtube: ['youtube.com', 'www.youtube.com', 'm.youtube.com'],
+  googleMaps: ['maps.app.goo.gl', 'goo.gl', 'maps.google.com', 'www.google.com'],
+} as const satisfies Record<string, readonly string[]>;
+
+/**
+ * Throws rather than dropping the value. Every input is a static constant in
+ * `site.ts`, so a bad one fails `next build` — in CI, before it can reach a
+ * page. Silently omitting it would instead ship an entity that quietly lost
+ * one of its identity anchors, which is the kind of regression nobody notices
+ * for months.
+ */
+function verifiedProfile(field: keyof typeof SAME_AS_HOSTS, url: string): string | undefined {
+  if (!url) return undefined;
+
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    throw new Error(`sameAs: site.social.${field} is not a valid URL: ${JSON.stringify(url)}`);
+  }
+  if (parsed.protocol !== 'https:') {
+    throw new Error(`sameAs: site.social.${field} must be https, got ${parsed.protocol}//`);
+  }
+
+  const allowed: readonly string[] = SAME_AS_HOSTS[field];
+  const host = parsed.hostname.toLowerCase();
+  if (!allowed.includes(host)) {
+    throw new Error(
+      `sameAs: site.social.${field} points at "${host}", which is not one of ${allowed.join(', ')}. ` +
+        'A profile on the wrong platform in this field is an identity claim about the wrong account.'
+    );
+  }
+  return url;
 }
 
 /**
@@ -115,7 +192,47 @@ const CAPABILITY_SUMMARY: Partial<Record<Locale, string>> = {
 function entityDescription(locale: Locale): string {
   const tagline = localizedTagline(locale);
   const summary = CAPABILITY_SUMMARY[locale];
-  return summary ? `${tagline} — ${summary}` : tagline;
+  // The city belongs in the prose description, not only in `address`. Until
+  // now `description` never said where this business is — it read as a job
+  // title plus a service list, which is exactly the shape a touring act's
+  // description has too. Naming the city is the cheapest signal available
+  // that this is a local business, and it costs one interpolation.
+  const base = `${tagline} — ${site.city}`;
+  return summary ? `${base}. ${summary}` : base;
+}
+
+/**
+ * schema.org's `disambiguatingDescription` is defined for precisely this
+ * situation: "a short description of the item used to disambiguate from
+ * other, similar items."
+ *
+ * The similar item here is real. "DJ Veys" also resolves to an established
+ * recording artist across the major streaming platforms (see the note above
+ * `businessSameAs`), and that entity is older and better connected than this
+ * one. Both would carry `MusicGroup`, so the type alone does not separate
+ * them.
+ *
+ * It disambiguates positively — by place, by category, by the fact that what
+ * gets booked is a person travelling to a venue — rather than by naming the
+ * other entity. A defensive "not to be confused with…" would publish a
+ * third party's relevance into this site's own structured data, and read
+ * oddly to anyone who opens the JSON-LD.
+ *
+ * Honest scope: this is not a documented Google rich-result input and will
+ * not by itself resolve an ambiguous brand query. It is the correct property,
+ * it is cheap, and it makes the distinction explicit to anything that parses
+ * the entity. The load-bearing work is the verified Google Business Profile
+ * and consistent co-occurrence of the name with the city — see
+ * docs/LOCAL-SEO-CHECKLIST.md.
+ */
+const DISAMBIGUATION: Partial<Record<Locale, string>> = {
+  de: `Örtlicher Dienstleister für Hochzeiten und Events mit Sitz in ${site.address.city}-${site.district}: gebucht wird ${site.owner}, der mit eigener Ton- und Lichttechnik zur Veranstaltung anreist. Kein Musiklabel und kein Tonträger-Act.`,
+  en: `Local wedding and event service based in ${site.address.city}-${site.district}, Germany: the booking is for ${site.owner} in person, travelling to the venue with his own sound and lighting equipment. Not a record label or recording act.`,
+  tr: `${site.address.city}-${site.district} merkezli yerel düğün ve etkinlik hizmeti: ${site.owner} bizzat, kendi ses ve ışık ekipmanıyla mekâna gelerek çalışıyor. Bir plak şirketi ya da kayıt sanatçısı değil.`,
+};
+
+function disambiguation(locale: Locale): string | undefined {
+  return DISAMBIGUATION[locale] ?? DISAMBIGUATION[defaultLocale];
 }
 
 /** E.164-ish phone string derived from `contact.phoneHref` (falls back to the display format). */
@@ -256,6 +373,8 @@ export interface LocalBusinessSchema {
   alternateName: string[];
   legalName?: string | null;
   description: string;
+  /** Separates this entity from the same-named recording artist — see `DISAMBIGUATION`. */
+  disambiguatingDescription?: string;
   url: string;
   telephone?: string;
   email?: string;
@@ -297,6 +416,7 @@ export function localBusinessSchema(
     alternateName: [...site.previousNames],
     legalName: site.legalName ?? undefined,
     description: entityDescription(locale),
+    disambiguatingDescription: disambiguation(locale),
     url: absoluteUrl('/', locale),
     telephone: telephoneE164(),
     email: site.contact.email || undefined,
@@ -324,6 +444,8 @@ export interface MusicGroupSchema {
   name: string;
   alternateName: string[];
   description: string;
+  /** Separates this act from the same-named recording artist — see `DISAMBIGUATION`. */
+  disambiguatingDescription?: string;
   url: string;
   sameAs?: string[];
   member: { '@id': string };
@@ -357,6 +479,7 @@ export function musicGroupSchema(locale: Locale = defaultLocale): MusicGroupSche
     name: site.name,
     alternateName: [...site.previousNames],
     description: entityDescription(locale),
+    disambiguatingDescription: disambiguation(locale),
     url: absoluteUrl('/', locale),
     ...(sameAs.length > 0 && { sameAs }),
     member: { '@id': entityId(PERSON_ID_FRAGMENT) },
