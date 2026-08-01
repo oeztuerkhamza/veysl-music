@@ -165,7 +165,14 @@ rather than generic DJ boilerplate.
   (docs/MAIL-SELFHOSTED.md). Automated sends use `no-reply@dj-veys.de` instead, on
   purpose: a send-only address whose reputation cannot damage the personal mailbox.
   The old private Gmail is no longer referenced anywhere in the app.
-- Instagram: `@veystunesofficial` · YouTube: `@veystunesofficial`
+- Instagram: `@dj_veys` (main, 63k) · `@veystunesofficial` (legacy second account)
+- YouTube: **`@djveysofficial`** — corrected by the client on 2026-08-01. The
+  earlier `@veystunesofficial` was wrong everywhere it appeared
+  (`site.social.youtube`, `public/llms.txt`, this file). It matters more than a
+  broken link: `site.social.youtube` feeds `sameAs` in `src/lib/schema.ts`, and
+  `sameAs` asserts identity rather than linking — a channel that does not exist
+  at the claimed address invites a search engine to doubt the whole entity
+  mapping instead of confirming it.
 - Google Maps profile: linked in `site.social.googleMaps`
 
 ## Still unknown — do NOT invent

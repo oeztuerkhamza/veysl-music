@@ -189,7 +189,18 @@ export const site = {
     instagramHandle: '@dj_veys',
     /** Zweitkonto unter der alten Marke. */
     instagramLegacy: 'https://www.instagram.com/veystunesofficial/',
-    youtube: 'https://www.youtube.com/@veystunesofficial',
+    /**
+     * Vom Kunden am 2026-08-01 korrigiert: Der Kanal läuft unter
+     * `@djveysofficial`, nicht mehr unter `@veystunesofficial`.
+     *
+     * Das ist mehr als ein Linkwechsel. Dieser Wert speist `sameAs` in
+     * `src/lib/schema.ts` — und `sameAs` ist keine Verlinkung, sondern eine
+     * Identitätsbehauptung ("dieses Unternehmen ist auch jenes Profil"). Ein
+     * Kanal, den es unter der behaupteten Adresse nicht gibt, ist deshalb
+     * schlechter als gar keine Angabe: Er lädt Suchmaschinen dazu ein, die
+     * Entitätszuordnung anzuzweifeln, statt sie zu bestätigen.
+     */
+    youtube: 'https://www.youtube.com/@djveysofficial',
     googleMaps: 'https://maps.app.goo.gl/YCLDDHtrZfQEbhd48',
     tiktok: '', // TODO(kunde)
     spotify: '', // TODO(kunde)
