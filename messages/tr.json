@@ -46,7 +46,7 @@
   },
   "meta": {
     "home": {
-      "title": "Düğün DJ'i {city} — Premium Düğün & Etkinlik DJ'i | DJ Veys",
+      "title": "Düğün DJ'i {city} – DJ, müzisyen & sunucu | DJ Veys",
       "description": "{city} ve çevresinde premium düğün ve etkinlik DJ'i. Kişisel ön görüşme, kendi ses ve ışık sistemi, dolup taşan bir pist. Tarihinizi hemen sorgulayın."
     },
     "services": {
@@ -104,7 +104,7 @@
     },
     "intro": "{name}, {years} yılı aşkın süredir düğün DJ'i, sazda ve gitarda canlı müzisyen ve sunucu olarak {city} şehrinden çalışıyor. Baden-Württemberg genelinde, Almanya'nın her yerinde ve Avrupa'da düğün ve etkinliklere eşlik ediyor — Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve Alman-Türk ile çok kültürlü düğünlerde uzmanlaştı.",
     "trust": {
-      "title": "Güvenebileceğiniz detaylar",
+      "title": "Stuttgart’ta düğün DJ’i — neye güvenebilirsiniz",
       "items": {
         "planning": {
           "title": "Kişisel ön görüşme",
@@ -182,7 +182,7 @@
     },
     "serviceAreas": {
       "eyebrow": "Hizmet bölgesi",
-      "title": "Yakınınızdaki düğün DJ'i",
+      "title": "Stuttgart ve çevresi için düğün DJ’i",
       "subtitle": "Stuttgart çevresindeki bu şehirlerde düzenli olarak çalıyoruz — ve kutlama olan her yerde.",
       "coreTitle": "Ana bölge — Stuttgart & Baden-Württemberg",
       "germanyTitle": "Almanya genelinde",

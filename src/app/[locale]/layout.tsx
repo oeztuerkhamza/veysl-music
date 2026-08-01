@@ -94,6 +94,31 @@ export async function generateMetadata({
       alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => ogLocales[l]),
       siteName: site.name,
     },
+    /**
+     * Search-Console-Verifizierung, sofern hinterlegt.
+     *
+     * Bis hierher trug die Seite überhaupt kein `google-site-verification` —
+     * nachgeprüft am ausgelieferten HTML der Startseite. Ohne verifizierte
+     * Property gibt es keine Search Console, und ohne Search Console gibt es
+     * keine Antwort auf die einzige Frage, die beim Ranking zuerst zählt:
+     * *Ist die Seite überhaupt im Index, und für welche Suchanfragen wird sie
+     * angezeigt?* Alles andere — Titel, Überschriften, Schema — ist Raten,
+     * solange das offen ist. Die Sitemap kann dort ebenfalls erst nach der
+     * Verifizierung eingereicht werden.
+     *
+     * Als Umgebungsvariable, nicht fest verdrahtet: Der Token gehört zur
+     * Property, nicht zum Quellcode, und Staging-Umgebungen sollen ihn nicht
+     * mitschleppen. Fehlt er, entfällt das Tag ersatzlos — Next lässt
+     * `undefined` hier einfach weg.
+     *
+     * Einrichten: In der Search Console die Property `dj-veys.de` anlegen,
+     * Methode „HTML-Tag" wählen, den `content`-Wert als
+     * `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in die `.env` des Servers
+     * schreiben, deployen, dann in der Search Console auf „Bestätigen".
+     */
+    verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : undefined,
   };
 }
 

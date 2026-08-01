@@ -46,7 +46,7 @@
   },
   "meta": {
     "home": {
-      "title": "DJ'ê dawetê {city} — DJ'ê premium ji bo dawet & şahiyan | DJ Veys",
+      "title": "DJ'ê dawetê {city} – DJ, muzîkjen & pêşkêş | DJ Veys",
       "description": "Li bajarê {city} û derdorê DJ'ê premium yê dawet û şahiyan. Hevpeyvîna kesane ya berê, sîstema deng û ronahiyê ya xwe, meydaneke govendê ya tijî. Dîroka xwe niha bipirsin."
     },
     "services": {
@@ -104,7 +104,7 @@
     },
     "intro": "{name} ji {years} salan zêdetir e ku wek DJ'ê dawetê, muzîkjenê zindî yê saz û gîtarê û pêşkêşvanê ji bajarê {city} kar dike. Ew dawet û şahiyan li seranserê Baden-Württemberg, li tevahiya Almanyayê û Ewropayê bi rê ve dibe — bi Almanî, Tirkî û Îngilîzî zindî pêşkêş dike û li ser dawetên alman-tirk û pirçandî pispor e.",
     "trust": {
-      "title": "Tiştên ku hûn dikarin pişta xwe pê girêbidin",
+      "title": "DJ'ê dawetê li Stuttgartê — hûn dikarin li ser çi bawer bin",
       "items": {
         "planning": {
           "title": "Hevpeyvîna kesane ya berê",
@@ -182,7 +182,7 @@
     },
     "serviceAreas": {
       "eyebrow": "Herêma xizmetê",
-      "title": "DJ'ê dawetê li nêzîkî we",
+      "title": "DJ'ê dawetê ji bo Stuttgart û derdorê",
       "subtitle": "Li van bajarên derdora Stuttgartê bi rêkûpêk tê rezervekirin — û li her derê ku şahî lê heye.",
       "coreTitle": "Herêma sereke — Stuttgart & Baden-Württemberg",
       "germanyTitle": "Li seranserê Almanyayê",

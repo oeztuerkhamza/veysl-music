@@ -100,6 +100,40 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'gsap'],
   },
+  /**
+   * Stuttgart hat als einzige Stadt im Einzugsgebiet **keine** eigene
+   * Stadtseite — `src/content/cities.ts` hält sie mit `priority: 3` bewusst
+   * zurück, weil die Startseite selbst auf „Hochzeits-DJ Stuttgart" zielt und
+   * eine zweite Seite dieselbe Absicht kannibalisieren würde.
+   *
+   * Die Entscheidung stimmt, die Folge war unbeabsichtigt: `/hochzeits-dj/
+   * stuttgart` lieferte **404**, während 49 andere Städte unter genau diesem
+   * Muster erreichbar sind. Das ist die URL, die ein Mensch rät und die ein
+   * Verzeichnis oder eine Wettbewerberseite verlinkt — und jeder Link darauf
+   * lief in eine Sackgasse, statt der Startseite zugutezukommen.
+   *
+   * 301 statt 404, in allen sieben Sprachen unter ihrem jeweiligen Slug. Die
+   * Strategie bleibt unangetastet: Es entsteht keine konkurrierende Seite,
+   * die Absicht landet nur dort, wo sie ohnehin hingehört.
+   */
+  async redirects() {
+    const cityRoutes: Array<{ prefix: string; home: string }> = [
+      { prefix: '/hochzeits-dj', home: '/' },
+      { prefix: '/tr/dugun-dj', home: '/tr' },
+      { prefix: '/ku/dj-dawete', home: '/ku' },
+      { prefix: '/en/wedding-dj', home: '/en' },
+      { prefix: '/nl/bruiloft-dj', home: '/nl' },
+      { prefix: '/fr/dj-mariage', home: '/fr' },
+      { prefix: '/es/dj-boda', home: '/es' },
+    ];
+
+    return cityRoutes.map(({ prefix, home }) => ({
+      source: `${prefix}/stuttgart`,
+      destination: home,
+      permanent: true,
+    }));
+  },
+
   async headers() {
     return [
       {
