@@ -500,22 +500,25 @@
   }
 }
 
-/**
- * Vor-Ort-Bildbearbeitung (src/components/cms/).
+/*
+ * ENTFERNT: `body.cms-editing [data-cms-slot] { position: relative }`
  *
- * Gilt ausschliesslich, solange `<EditOverlay>` montiert ist — die Klasse setzt
- * es selbst auf `<body>` und nimmt sie beim Aufraeumen zurueck. Fuer Besucher
- * existiert diese Regel damit praktisch nicht, obwohl das Attribut
- * `data-cms-slot` in jedem ausgelieferten HTML steht.
+ * Die Regel sollte dem leeren Bildzustand einen Positionierungskontext geben,
+ * damit der Bearbeiten-Knopf in der Ecke der Flaeche sitzt und nicht in der
+ * Ecke der Seite. Nur traf das auf keinen einzigen Fall zu: `ImagePlaceholder`
+ * bringt `relative` selbst mit (siehe seine Klassenliste), `SiteImage`
+ * ebenfalls — die Begruendung der Regel war schon beim Schreiben nicht wahr.
  *
- * Noetig ist sie nur fuer den leeren Bildzustand (`<ImagePlaceholder>`): Der
- * Container mit echtem Foto ist bereits `relative`, der Platzhalter nicht — und
- * ohne Positionierungskontext saesse der Knopf in der linken oberen Ecke der
- * Seite statt in der Ecke der Flaeche, um die es geht.
+ * Schaden hat sie trotzdem angerichtet, und zwar genau an einer Stelle: Der
+ * Hero-Hintergrund ist `absolute inset-0`. Im Bearbeitungsmodus machte diese
+ * Regel `relative` daraus, womit die Ebene aus der Ueberlagerung in den
+ * Textfluss fiel — und weil ihr einziges Kind ein `fill`-Bild ist, also selbst
+ * absolut, blieb eine Box ohne Hoehe uebrig. Das Hero-Foto verschwand, sobald
+ * man sich anmeldete, und war ausgerechnet im Bearbeitungsmodus unsichtbar.
+ *
+ * Eine Regel, die jedes `[data-cms-slot]` umpositioniert, kann das nicht
+ * wissen. Deshalb ersatzlos gestrichen statt mit `:not()` geflickt.
  */
-body.cms-editing [data-cms-slot] {
-  position: relative;
-}
 
 /**
  * Bewertungs-Laufband (src/components/home/google-reviews.tsx).

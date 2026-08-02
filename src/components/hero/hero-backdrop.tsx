@@ -44,33 +44,47 @@ import { getSlotFallback, resolveSlot } from '@/content/site-images';
  */
 export async function HeroBackdrop() {
   const image = (await resolveSlot('home.hero.background')) ?? getSlotFallback('home.hero.background');
-  if (!image?.src) return null;
 
   return (
-    // `data-cms-slot` auch hier, obwohl diese Komponente bewusst kein
-    // `<SiteImage>` ist: Sonst wäre ausgerechnet das Foto der Startseite das
-    // einzige, das man vor Ort nicht austauschen kann. Solange gar kein Bild
-    // gesetzt ist, rendert diese Komponente `null` — dieser Fall wird über die
-    // Slot-Liste im Overlay abgedeckt, nicht über einen Knopf im Nichts.
+    /**
+     * Die Ebene wird IMMER gerendert, auch ohne Bild — nur ihr Inhalt haengt
+     * am Slot.
+     *
+     * Vorher gab diese Komponente ohne Bild `null` zurueck, mit dem Hinweis,
+     * der leere Fall sei "ueber die Slot-Liste im Overlay abgedeckt". Das war
+     * er nicht: `EditOverlay` sammelt seine Ziele mit
+     * `querySelectorAll('[data-cms-slot]')` ein (siehe edit-overlay.tsx). Kein
+     * Element, kein Ziel, kein Knopf — der Hero war damit der einzige Slot der
+     * Seite, den man nur befuellen konnte, indem man vorher schon ein Bild
+     * hatte. Ein leerer, absolut positionierter Layer kostet nichts: kein
+     * Layout, kein Byte, kein sichtbarer Unterschied fuer Besucher.
+     */
     <div className="absolute inset-0 -z-10" aria-hidden="true" data-cms-slot="home.hero.background">
-      <Image
-        src={image.src}
-        // Empty alt on purpose: this is atmosphere behind a headline that
-        // already says what the page is. Announcing it would make a screen
-        // reader read decoration before content.
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      {/* Scrim. The slot brief asks for a photo that "must also work heavily
-          darkened and overlaid with a gradient" precisely so this can exist:
-          it is what keeps the headline readable over an unpredictable
-          user-supplied image, and what stops a bright photo from fighting the
-          warm-paper palette. Two stops rather than a flat wash so the top
-          stays legible while the bottom melts into the page background. */}
-      <div className="absolute inset-0 bg-gradient-to-b from-bg/85 via-bg/60 to-bg" />
+      {image?.src ? (
+        <>
+          <Image
+            src={image.src}
+            // Empty alt on purpose: this is atmosphere behind a headline that
+            // already says what the page is. Announcing it would make a screen
+            // reader read decoration before content.
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          {/* Scrim. The slot brief asks for a photo that "must also work heavily
+              darkened and overlaid with a gradient" precisely so this can exist:
+              it is what keeps the headline readable over an unpredictable
+              user-supplied image, and what stops a bright photo from fighting the
+              warm-paper palette. Two stops rather than a flat wash so the top
+              stays legible while the bottom melts into the page background.
+
+              Only alongside a photo: on its own it would lay a dark wash over
+              the hero's own background for no reason. */}
+          <div className="absolute inset-0 bg-gradient-to-b from-bg/85 via-bg/60 to-bg" />
+        </>
+      ) : null}
     </div>
   );
 }
