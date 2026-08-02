@@ -152,6 +152,34 @@ const nextConfig: NextConfig = {
           { key: 'Content-Security-Policy', value: CONTENT_SECURITY_POLICY },
         ],
       },
+      /**
+       * Keep the Payload admin out of the search index.
+       *
+       * It was reachable and indexable: nginx proxies everything to the app
+       * (nginx/nginx.conf says so explicitly), `robots.ts` allows `/`, and
+       * Payload's own `generatePageMetadata` emits no robots directive —
+       * verified in node_modules/@payloadcms/next/dist/utilities/meta.js,
+       * which sets only title/icons. Nothing anywhere said "do not index the
+       * login screen".
+       *
+       * This is hygiene, not a security fix: the panel is authenticated, and
+       * robots directives never protect anything. What an indexed admin login
+       * does buy you is a discoverable target for credential-stuffing bots and
+       * a non-content URL sitting in `site:dj-veys.de` results.
+       *
+       * Deliberately a header and NOT a `Disallow: /admin` in robots.ts. Those
+       * two look interchangeable and are not: `Disallow` blocks *crawling*, so
+       * a URL Google learns about elsewhere can still be listed URL-only —
+       * and, worse, a crawler forbidden to fetch the page can never see the
+       * `noindex` telling it to stay out. Allowing the crawl and answering
+       * `noindex` is the combination that actually removes it.
+       *
+       * `/admin/:path*` alone would miss `/admin` itself, so both are listed.
+       */
+      ...['/admin', '/admin/:path*'].map((source) => ({
+        source,
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      })),
     ];
   },
 };
