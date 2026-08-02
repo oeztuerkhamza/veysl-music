@@ -1,0 +1,197 @@
+name: Lighthouse
+
+# Answers "why is the site slow?" with numbers, from GitHub, against the real
+# production URL — the same reason docs/MAIL-SELFHOSTED.md's doctor exists for
+# mail. PageSpeed Insights is the obvious tool and stays the reference, but it
+# cannot be scripted reliably without an API key: the keyless endpoint shares
+# one Google project across every anonymous caller and returns HTTP 429
+# ("Quota exceeded ... Queries per day") for most of the day.
+#
+# So this runs Lighthouse itself on the runner. Same engine PageSpeed uses,
+# no quota, and the runner reaches dj-veys.de directly.
+#
+# What this measures and what it does NOT:
+#
+#   measured — everything Lighthouse scores in a lab run: LCP, CLS, TBT, FCP,
+#     Speed Index, plus the accessibility/best-practices/SEO audits, against
+#     the real server, real TLS, real nginx, real images.
+#
+#   NOT measured — field data. PageSpeed's top panel ("Discover what your real
+#     users are experiencing") comes from CrUX, which needs enough real traffic
+#     to exist at all and cannot be reproduced in a lab. For a site this new
+#     that panel is likely empty anyway. INP in particular is a field metric;
+#     the lab proxy for it is Total Blocking Time, reported below.
+#
+#   Also not the same as PageSpeed's own numbers — a GitHub runner is a
+#     different machine on a different network than Google's servers. Compare
+#     runs from THIS workflow to each other over time; do not read a five-point
+#     gap against pagespeed.web.dev as a regression.
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL to audit (defaults to the production homepage)'
+        required: false
+        type: string
+        default: 'https://dj-veys.de/de'
+      form_factor:
+        description: 'Device to emulate'
+        required: false
+        type: choice
+        options: [mobile, desktop, both]
+        default: both
+      runs:
+        description: 'Runs per form factor — the median is reported. Lab numbers are noisy; 1 is a guess, 3 is a measurement.'
+        required: false
+        type: choice
+        options: ['1', '3', '5']
+        default: '3'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lighthouse
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Lighthouse (${{ matrix.form_factor }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        # `both` is the default, so the matrix is computed rather than fixed.
+        # A single-value matrix still runs one job, which keeps the summary
+        # layout identical whichever option was chosen.
+        form_factor: ${{ inputs.form_factor == 'both' && fromJSON('["mobile","desktop"]') || fromJSON(format('["{0}"]', inputs.form_factor || 'mobile')) }}
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run Lighthouse
+        env:
+          TARGET_URL: ${{ inputs.url || 'https://dj-veys.de/de' }}
+          FORM_FACTOR: ${{ matrix.form_factor }}
+          RUNS: ${{ inputs.runs || '3' }}
+        run: |
+          set -euo pipefail
+          # Chrome is preinstalled on ubuntu-latest runners.
+          preset=()
+          [ "$FORM_FACTOR" = "desktop" ] && preset=(--preset=desktop)
+
+          for i in $(seq 1 "$RUNS"); do
+            echo "::group::run $i/$RUNS ($FORM_FACTOR)"
+            npx --yes lighthouse@12 "$TARGET_URL" \
+              "${preset[@]}" \
+              --quiet \
+              --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage" \
+              --output=json --output-path="report-$FORM_FACTOR-$i.json" \
+              --output=html --output-path="report-$FORM_FACTOR-$i.html" || true
+            echo "::endgroup::"
+          done
+
+          # Lighthouse writes only the LAST --output-path when several are
+          # given, so the two flags above produce one file each per run with
+          # the extension deciding which. Verify rather than assume: a missing
+          # JSON here would otherwise surface as an empty summary that reads
+          # like a passing audit.
+          ls -1 report-"$FORM_FACTOR"-*.json >/dev/null 2>&1 \
+            || { echo "::error::no Lighthouse JSON produced for $FORM_FACTOR"; exit 1; }
+
+      - name: Summarise (median run)
+        env:
+          FORM_FACTOR: ${{ matrix.form_factor }}
+          TARGET_URL: ${{ inputs.url || 'https://dj-veys.de/de' }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import glob, json, os, statistics
+
+          ff = os.environ["FORM_FACTOR"]
+          files = sorted(glob.glob(f"report-{ff}-*.json"))
+          reports = []
+          for f in files:
+              try:
+                  reports.append(json.load(open(f)))
+              except Exception as e:
+                  print(f"- could not read `{f}`: {e}")
+          if not reports:
+              print(f"### {ff}: no usable report")
+              raise SystemExit(0)
+
+          def perf(r):
+              return (r.get("categories", {}).get("performance", {}) or {}).get("score") or 0
+
+          # Median BY PERFORMANCE SCORE, then report that whole run. Taking the
+          # median of each metric independently would describe a run that never
+          # happened and can be internally inconsistent.
+          reports.sort(key=perf)
+          r = reports[len(reports) // 2]
+          audits = r.get("audits", {})
+          cats = r.get("categories", {})
+
+          print(f"### {ff} — {os.environ['TARGET_URL']}")
+          print()
+          print(f"Median of {len(reports)} run(s). Lighthouse {r.get('lighthouseVersion','?')}.")
+          print()
+          print("| Category | Score |")
+          print("|---|---|")
+          for key in ("performance", "accessibility", "best-practices", "seo"):
+              c = cats.get(key)
+              if not c:
+                  continue
+              s = c.get("score")
+              print(f"| {c.get('title', key)} | {'n/a' if s is None else round(s * 100)} |")
+          print()
+          print("| Metric | Value |")
+          print("|---|---|")
+          for key in ("largest-contentful-paint", "cumulative-layout-shift",
+                      "total-blocking-time", "first-contentful-paint",
+                      "speed-index", "interactive", "server-response-time"):
+              a = audits.get(key)
+              if a and a.get("displayValue"):
+                  print(f"| {a.get('title', key)} | {a['displayValue']} |")
+          print()
+
+          # Opportunities and diagnostics that actually failed, biggest first.
+          rows = []
+          for key, a in audits.items():
+              score = a.get("score")
+              if score is None or score >= 0.9:
+                  continue
+              if a.get("scoreDisplayMode") in ("notApplicable", "manual", "informative"):
+                  continue
+              saving = ((a.get("details") or {}).get("overallSavingsMs")) or 0
+              rows.append((saving, key, a.get("title", key), a.get("displayValue") or ""))
+          rows.sort(reverse=True)
+
+          if rows:
+              print("| Failing audit | Detail | Est. saving |")
+              print("|---|---|---|")
+              for saving, key, title, dv in rows[:30]:
+                  ms = f"{int(saving)} ms" if saving else "—"
+                  print(f"| {title} | {dv} | {ms} |")
+              if len(rows) > 30:
+                  print()
+                  print(f"_{len(rows) - 30} further failing audits omitted — see the JSON artifact._")
+          else:
+              print("No audit scored below 0.9.")
+
+          spread = [round(perf(x) * 100) for x in sorted(reports, key=perf)]
+          if len(spread) > 1:
+              print()
+              print(f"_Performance across runs: {spread} (spread {spread[-1] - spread[0]} points)._")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-${{ matrix.form_factor }}
+          path: |
+            report-*.json
+            report-*.html
+          retention-days: 14
+          if-no-files-found: warn
