@@ -1,16 +1,20 @@
 import Image from 'next/image';
-import { resolveSlot } from '@/content/site-images';
+import { getSlotFallback, resolveSlot } from '@/content/site-images';
 
 /**
- * Optional photographic backdrop for the homepage hero.
+ * Photographic backdrop for the homepage hero.
  *
- * Renders **nothing at all** until a photo is assigned to
- * `home.hero.background` in the admin. That is the whole design of it: the
- * hero was built deliberately without photography ("the only existing photos
- * are an empty-room DJ-booth shot and an unlicensed stock image, neither
- * usable for a wedding hero" — see hero.tsx), and it has to keep looking
- * finished with nothing behind it. Uploading a photo is what turns this on;
- * removing it turns it back off. No deploy either way.
+ * Resolution order is the same as `<SiteImage>`: an admin upload wins, else the
+ * slot's `fallbackSrc`, else nothing at all. It used to consult only the CMS,
+ * which meant the one photo the homepage most needs was also the only one that
+ * could not be shipped with the code — the slot had a perfectly good default
+ * and this component could not see it. Uploading in the admin still overrides
+ * it, and clearing the upload falls back here rather than to a blank hero.
+ *
+ * The `null` branch is still real and still matters: it is what kept the hero
+ * looking finished through the whole period when no usable photograph existed
+ * (see hero.tsx), and it is where this lands again if the default is ever
+ * removed.
  *
  * Deliberately not `<SiteImage>`: that component falls back to a designed
  * `<ImagePlaceholder>` box with a fixed aspect ratio, which is right for a
@@ -39,7 +43,7 @@ import { resolveSlot } from '@/content/site-images';
  * photograph converts worse than one that loads 80 KB slower.
  */
 export async function HeroBackdrop() {
-  const image = await resolveSlot('home.hero.background');
+  const image = (await resolveSlot('home.hero.background')) ?? getSlotFallback('home.hero.background');
   if (!image?.src) return null;
 
   return (

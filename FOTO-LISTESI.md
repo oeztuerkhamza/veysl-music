@@ -7,6 +7,58 @@ Sitenin tasarımı fotoğrafsız da düzgün görünecek şekilde kuruldu — bo
 
 ---
 
+## 📌 DURUM — 02.08.2026 teslimatından sonra
+
+Veysel 32 fotoğraf gönderdi. Bunlardan **31 tanesi işlendi** ve sitede
+**görünen her bir görsel alanı doldurdu** — hiçbir yerde tasarlanmış boşluk
+kalmadı. Dosyalar `public/images/veys/`, slot eşleşmeleri
+`src/content/site-images.ts` içinde.
+
+Ana sayfa (hero + showreel), EPK, Galeri (8 kare), Müzik, Kontakt,
+Echte Hochzeiten, 4 hizmet bloğunun hepsi ve **16 blog yazısının hepsi**
+artık gerçek fotoğrafla çıkıyor.
+
+**Hepsi varsayılan (default).** Admin panelinden herhangi birine yeni görsel
+yüklendiği anda, o görsel varsayılanın yerine geçer — kod değişmez, deploy
+gerekmez. Yüklenen görsel silinirse tekrar buradaki varsayılana döner.
+
+### Dolu ama "asıl istenen kare" değil — sırası gelince değiştir
+
+Aşağıdakiler boş görünmüyor, ama briefteki kareyle birebir değil. Öncelik
+sırasıyla:
+
+| # | Slot | Şu an ne var | Asıl istenen |
+|---|---|---|---|
+| **1** | Ana sayfa hero | Sahnede moderasyon karesi (setin en yüksek çözünürlüklüsü, 5120 px) | **Gece dolu tanzfläche.** Teslimatta pistte dans eden insan olan tek bir kare bile yok. Hâlâ listenin en değerli karesi. |
+| **2** | Showreel | Salonun akşam karesi — **play tuşu bilerek yok**, çünkü video yok | Aftermovie (30–90 sn) + ondan alınmış kapak karesi |
+| 5 | EPK portresi | Etkinlikte gülen kare (papyonlu, sıcak) | Stüdyo portresi. EPK + iletişim + basın + Google Business = 4 yerde kullanılacak. |
+| 6 | Basın: canlı performans | Bağlama yakın çekimi | **Sahnede, düğünde, arkada dinleyen insanlarla saz.** Rakiplerden ayrıştıran kare tam olarak bu. |
+| 7 | Hizmet: Düğün | Veysel salonda pultun başında | Gelin-damat karesi — **var ama izin yok**, aşağıya bak |
+| 8 | Hizmet: Kına/Nişan | Moderasyon karesi | Kına gecesi: kına tepsisi, kırmızı örtü, halay |
+| 10 | Hizmet: Firmenevent | Dekorsuz, sade salonda kurulum | Gerçek kurumsal etkinlik |
+| 14 | Signature paketi | Büyük aydınlık salon | Zirve anı, dolu pist |
+| 15 | Şehir sayfaları | Sadece Stuttgart (sazla, Stuttgart manzarası) | Diğer 8 şehir için o şehirden gerçek mekân karesi |
+
+> Kısacası: **eksik olan "Veysel" değil, "kalabalık".** Gelen karelerin
+> neredeyse hepsi kurulum, ekipman, sahne ve Veysel'in kendisi. Sitede en çok
+> dönüşüm getirecek şey — dolu pist — tek bir karede bile yok. Sonraki
+> düğünde fotoğrafçıya söylenecek tek cümle bu.
+
+### ⚠️ Kullanılamayan kare
+
+Gelin ve damatla birlikte çekilen kare (ikisinin de yüzü net görünüyor)
+**siteye konmadı.** Yazılı izin olmadan yayınlanamaz — aşağıdaki bölüm tam
+olarak bunu anlatıyor. İzin alınırsa kare hazır, eklenmesi beş dakika.
+
+### Teknik not
+
+Gelen dosyaların çoğu WhatsApp'tan geçtiği için sıkıştırılmış (çoğu 960–1600 px).
+Sitede iyi duruyorlar, ama **orijinaller elde varsa gönderilsin** — özellikle
+sahne/moderasyon kareleri büyük ekranda daha net çıkar. İki dosya orijinal
+çözünürlükte geldi (5120 px) ve farkı görülüyor.
+
+---
+
 ## ⚠️ Önce izin
 
 Almanya'da tanınabilir insan olan fotoğrafı yayınlamak **yazılı izin** gerektiriyor (DSGVO + Recht am eigenen Bild). Bu bir formalite değil, ihtarname konusu.
@@ -117,6 +169,9 @@ Bunlar sitenin en görünür yerleri. Diğer hepsinden önce bunlar.
 Site çalışıyor ve şık duruyor — o yerlerde altın çizgili, tasarlanmış boşluklar var, kırık resim değil.
 
 Ama şunu net söyleyeyim: **teknik SEO seni Google'da 1. sıraya taşısa bile, siteye giren çift boş beyaz oda fotoğrafı görürse rakibe gider.** Bu listedeki 6 kare, sitenin geri kalanının yapabileceği her şeyden daha çok anfrage getirir.
+
+02.08.2026 teslimatından sonra da bu cümle aynen geçerli: eksik olan tek şey
+kalabalık, ve tam da o eksik olan şey en çok getiriyi olan şey.
 
 ## Stok fotoğraf kullanmıyoruz
 

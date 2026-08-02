@@ -9,11 +9,16 @@
  * .claude/BRAND-FACTS.md) in messages/*.json unter "epk.bio" — nicht hier,
  * da es sich um übersetzte Fließtext-Prosa handelt, kein Stammdatum.
  *
- * Bild-Slots: laut der aktualisierten Media-Review in
- * .claude/BRAND-FACTS.md gibt es in public/images/legacy/ kein einziges
- * echtes Hochzeitsfoto, aber zwei Aufnahmen, die für genau diese EPK-Slots
- * freigegeben sind. Alles andere (inkl. des Stockfotos 05-86ab7620.jpg, das
- * NICHT Veysel zeigt) bleibt unangetastet.
+ * Bild-Slots: seit der Kundenlieferung vom 02.08.2026 stehen für beide Slots
+ * bessere Aufnahmen bereit als die bisherigen aus public/images/legacy/ — das
+ * Alpen-Wanderbild ist der Bağlama-Aufnahme gewichen (erzählt zusätzlich die
+ * Musikergeschichte), der leere weiße Raum dem fertig eingerichteten Saal.
+ * Die Legacy-Dateien bleiben liegen, werden aber nicht mehr referenziert; das
+ * Stockfoto 05-86ab7620.jpg (NICHT Veysel) bleibt gesperrt.
+ *
+ * Die Maße unten sind die echten Pixelmaße der Dateien — `next/image` braucht
+ * sie für die Reservierung des Platzes; ein falscher Wert erzeugt genau das
+ * Layout-Springen, das der Rest des Projekts sorgfältig vermeidet.
  */
 
 export interface EpkImage {
@@ -30,16 +35,16 @@ export const epkImages: {
   setupDetail: EpkImage | null;
 } = {
   personalStory: {
-    src: '/images/legacy/08-2ef27d08.jpg',
-    alt: 'Veysel Durmuş beim Wandern in den Alpen',
-    width: 1500,
-    height: 2000,
+    src: '/images/veys/saz-bank-4x5.jpg',
+    alt: 'Veysel Durmuş spielt Bağlama auf einer Bank im Freien, Weinberge und Ortschaft im Hintergrund',
+    width: 1278,
+    height: 1597,
   },
   setupDetail: {
-    src: '/images/legacy/01-156b4efb.jpg',
-    alt: 'Veysel Durmuş an seinem DJ-Pult beim Soundcheck',
-    width: 1500,
-    height: 2000,
+    src: '/images/veys/setup-licht-4x5.jpg',
+    alt: 'Veysel Durmuş an seinem beleuchteten DJ-Pult, Bodennebel und Lichtstimmung im Saal',
+    width: 959,
+    height: 1199,
   },
 };
 
