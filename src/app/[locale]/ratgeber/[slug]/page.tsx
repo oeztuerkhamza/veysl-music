@@ -103,7 +103,7 @@ export default async function RatgeberPostPage({ params }: PageProps) {
 
       <Section className="pt-0">
         <Container size="narrow">
-          <PostCover post={post} title={content.title} priority sizes="(min-width: 768px) 700px, 100vw" />
+          <PostCover post={post} priority sizes="(min-width: 768px) 700px, 100vw" />
         </Container>
       </Section>
 

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { getImageSlot, resolveSlot, type ImageSlotKey } from '@/content/site-images';
+import { getImageSlot, getSlotFallback, resolveSlot, type ImageSlotKey } from '@/content/site-images';
 import { ImagePlaceholder } from './image-placeholder';
 import { ASPECT_RATIO_CSS } from './aspect';
 
@@ -43,8 +43,13 @@ export async function SiteImage({ slot, sizes = '100vw', className, priority = f
   const aspect = definition?.aspect ?? '4/5';
   const resolved = await resolveSlot(slot);
 
-  const src = resolved?.src ?? definition?.fallbackSrc ?? null;
-  const resolvedAlt = decorative ? '' : (alt ?? resolved?.alt ?? definition?.fallbackAlt ?? '');
+  // `getSlotFallback` rather than `definition.fallbackSrc`: for a dynamic slot
+  // the definition is the shared *base* entry, whose fallback would answer for
+  // every city/article at once. See `src/content/site-images.ts`.
+  const fallback = getSlotFallback(slot);
+
+  const src = resolved?.src ?? fallback?.src ?? null;
+  const resolvedAlt = decorative ? '' : (alt ?? resolved?.alt ?? fallback?.alt ?? '');
 
   if (!src) {
     return <ImagePlaceholder aspect={aspect} shape={shape} className={className} data-cms-slot={slot} />;

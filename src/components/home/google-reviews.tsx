@@ -77,18 +77,25 @@ export async function GoogleReviews({ locale }: { locale: Locale }) {
         oben ist deshalb kein Zierrat, sondern der einzige Weg zum Rest.
       */}
       <div
-        className="reviews-marquee group relative mt-10 overflow-hidden"
+        className="reviews-marquee group relative mt-10"
         // Pausiert bei Maus *und* bei Tastaturfokus. Nur Hover wäre für alle
         // unbenutzbar, die nicht mit der Maus navigieren — und WCAG 2.2.2
         // verlangt für Bewegung, die länger als fünf Sekunden läuft, eine
         // Möglichkeit zum Anhalten, nicht nur eine für Mausnutzer.
+        //
+        // `tabIndex={0}`, weil das hier seit globals.css ein echter
+        // Scroll-Container ist: ein scrollbarer Bereich, den man nicht per
+        // Tastatur erreichen kann, ist Inhalt hinter einer Mauer (WCAG 2.1.1).
+        // Fokussierbar heißt außerdem, dass die Pfeiltasten das Band bewegen —
+        // und dass `:focus-within` es dabei anhält.
+        //
+        // Die weichen Kanten sitzen als `mask-image` an derselben CSS-Klasse.
+        // Als absolut positionierte Verläufe wären sie hier mitgescrollt und
+        // hätten die Karten mitten im Band überdeckt.
         role="region"
         aria-label={t('title')}
+        tabIndex={0}
       >
-        {/* Weiche Kanten, damit die Karten nicht hart abgeschnitten wirken. */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-bg to-transparent sm:w-24" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-bg to-transparent sm:w-24" />
-
         <ul className="reviews-marquee-track flex w-max gap-6">
           {[0, 1].flatMap((copy) =>
             summary.reviews.map((review, index) => (

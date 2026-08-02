@@ -23,7 +23,7 @@ export async function PostCard({ post, locale, priority = false }: PostCardProps
   return (
     <Link href={{ pathname: '/ratgeber/[slug]', params: { slug: getPostSlug(post, locale) } }} className="group block h-full">
       <Card className="flex h-full flex-col overflow-hidden p-0">
-        <PostCover post={post} title={content.title} priority={priority} sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 100vw" />
+        <PostCover post={post} priority={priority} sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 100vw" />
         <div className="flex flex-1 flex-col gap-3 p-6">
           <Eyebrow>{tCategory(post.category)}</Eyebrow>
           <h3 className="font-display text-xl leading-snug text-ink transition-colors group-hover:text-gold">{content.title}</h3>

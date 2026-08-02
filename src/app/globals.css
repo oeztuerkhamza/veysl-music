@@ -534,13 +534,55 @@ body.cms-editing [data-cms-slot] {
  * ein Wert, der bei fuenf Karten (Maximum der Places API) eine ruhige,
  * lesbare Geschwindigkeit ergibt.
  */
+/**
+ * Das Band laeuft von selbst UND laesst sich von Hand schieben.
+ *
+ * Vorher war das ein Widerspruch: `overflow: hidden` liess zwar anhalten, aber
+ * nicht weiterblaettern. Auf dem Touchscreen ist das die schlechteste aller
+ * Varianten — die Beruehrung stoppt das Band (Mobile-Browser feuern `:hover`
+ * beim Tippen), und danach passiert nichts mehr. Genau der Moment, in dem
+ * jemand eine Bewertung zu Ende lesen will, ist der Moment, in dem die
+ * Bewegung aufhoert und keine Alternative da ist.
+ *
+ * `overflow-x: auto` macht daraus einen echten Scroll-Container: wischen,
+ * Shift+Rad, Trackpad, Pfeiltasten (die Spur ist per `tabindex` fokussierbar).
+ * Die Animation bleibt, sie pausiert nur waehrend der Bedienung — dann steht
+ * auch die `transform`-Verschiebung still, und die Scrollbreite bleibt
+ * stabil, waehrend gewischt wird.
+ */
+.reviews-marquee {
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* Die Leiste selbst waere hier nur Optik-Schaden; gescrollt wird per Wisch,
+     Rad oder Tastatur. */
+  scrollbar-width: none;
+  /* Verhindert, dass ein Wisch am Bandende die ganze Seite mitzieht bzw. die
+     Zurueck-Geste des Browsers ausloest. */
+  overscroll-behavior-x: contain;
+  /*
+   * Weiche Kanten als Maske statt als zwei absolut positionierte Verlaeufe.
+   * In einem Scroll-Container waeren die naemlich mitgescrollt und haetten die
+   * Karten irgendwo in der Mitte ueberdeckt. Die Maske haengt am Rand des
+   * Elements, nicht am Inhalt — und funktioniert nebenbei auf jedem
+   * Hintergrund, waehrend der Verlauf fest auf `--bg` verdrahtet war.
+   */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 clamp(2rem, 6vw, 6rem), #000 calc(100% - clamp(2rem, 6vw, 6rem)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 clamp(2rem, 6vw, 6rem), #000 calc(100% - clamp(2rem, 6vw, 6rem)), transparent);
+}
+
+.reviews-marquee::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 .reviews-marquee-track {
   animation: reviews-marquee 42s linear infinite;
 }
 
-/* Anhalten bei Maus UND bei Tastaturfokus. Nur `:hover` waere fuer alle
-   unbrauchbar, die nicht mit der Maus navigieren. */
+/* Anhalten bei Maus, bei Tastaturfokus UND waehrend eines Wischs. Nur `:hover`
+   waere fuer alle unbrauchbar, die nicht mit der Maus navigieren. */
 .reviews-marquee:hover .reviews-marquee-track,
+.reviews-marquee:active .reviews-marquee-track,
 .reviews-marquee:focus-within .reviews-marquee-track {
   animation-play-state: paused;
 }
@@ -560,15 +602,11 @@ body.cms-editing [data-cms-slot] {
  * 0.01ms, und eine Endlosanimation springt damit sofort an ihr Ende — das Band
  * stuende dauerhaft um -50% verschoben, also halb aus dem Bild.
  *
- * Deshalb hier die Animation ganz abschalten und aus der Spur eine normale,
- * horizontal scrollbare Reihe machen. Wer Bewegung reduziert hat, bekommt
- * dieselben Bewertungen — nur selbst gesteuert.
+ * Deshalb hier die Animation ganz abschalten. Scrollbar ist das Band seit der
+ * Regel weiter oben ohnehin immer — wer Bewegung reduziert hat, bekommt
+ * dieselben Bewertungen, nur ohne den selbstlaufenden Teil.
  */
 @media (prefers-reduced-motion: reduce) {
-  .reviews-marquee {
-    overflow-x: auto;
-  }
-
   .reviews-marquee-track {
     animation: none !important;
     transform: none !important;

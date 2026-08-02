@@ -183,6 +183,50 @@ venue partners, press mentions, Spotify/SoundCloud/Mixcloud profiles.
 
 ## Media — ⚠️ READ THIS BEFORE WIRING ANY IMAGE
 
+### Update 2026-08-02 — the client delivered real photography
+
+32 photos arrived from Veysel; 31 are processed into `public/images/veys/`. **Every image
+slot that actually renders on a page now has a real photograph** — no page shows a
+designed empty state any more. `gallery.ts` is seeded with 8, and all 16 published guide
+articles have covers. Every derivative is **pre-cropped to its slot's aspect ratio**, so
+`object-cover` never crops a second time — do not swap in a file with a different ratio
+without re-cropping.
+
+These are **defaults, not fixtures**: an admin upload overrides any of them (that is what
+`resolveSlot` → `fallbackSrc` ordering is for), and deleting the upload falls back here.
+`HeroBackdrop` now follows the same order — it used to consult only the CMS, which made
+the homepage the one place a shipped default could not reach.
+
+The legacy folder is no longer referenced from any content file. Rules 1–2 and 4 below
+still stand word for word; rule 3 is now partly superseded (`gallery.ts` is seeded,
+`weddings.ts` and `testimonials.ts` are still empty and still must stay that way).
+
+**Filled ≠ finished.** Several slots hold an honest stand-in rather than the shot their
+`purpose` describes; each one says so in a comment above its `fallbackSrc`. The two that
+matter most:
+
+1. **No packed dance floor exists.** Not one frame shows guests dancing.
+   `home.hero.background` carries the stage/hosting frame because it is the only 5120 px
+   image in the set and the only one that survives a full-bleed layer. It is still the #1
+   missing photograph and the highest-value one on the site.
+2. **No publishable couple.** The single bride-and-groom frame shows both faces clearly
+   and came with no written consent, so it is deliberately *not* in `public/images/veys/`.
+   Do not add it without documented consent (DSGVO / Recht am eigenen Bild — see the
+   checklist at the top of `FOTO-LISTESI.md`). `services.wedding.image` therefore shows
+   Veysel at work rather than the couple its brief asks for.
+
+Also stand-ins: `epk.portrait` (reportage frame, not a studio portrait),
+`epk.pressPhoto.performance` (saz close-up, not saz live on stage),
+`services.engagement.image` (no Kına material exists), `services.corporate.image` (a
+decor-free rig, not a corporate event), `packages.signature.image` (a big hall, not a peak
+moment), and `home.showreel.poster` (no aftermovie — which is why `ShowreelFacade`
+deliberately renders **no play button** without an `embedUrl`).
+
+Alt texts are written to describe what is actually in each picture, never what the slot
+wishes were in it. Keep it that way when replacing any of these.
+
+### The original legacy review (still binding for `public/images/legacy/`)
+
 12 photos from the existing site are in `public/images/legacy/` (1500×2000 and up, so
 resolution is fine). The client authorised reuse. **But the set has been reviewed and it
 does not contain what this site needs:**
@@ -211,6 +255,10 @@ Consequences that every agent must respect:
    weddings would be a misrepresentation, and it is exactly what the empty states exist to
    avoid.
 
-**This is the #1 launch blocker and it is a client task, not a code task:** professional
+**This was the #1 launch blocker and it is a client task, not a code task:** professional
 photos and video from real weddings (couples, packed dance floor, venue, him hosting with
 a microphone, him playing saz), plus one proper portrait and an aftermovie.
+
+The 2026-08-02 delivery covered the venue, the hosting, the live band and the saz. It did
+**not** cover the packed dance floor, a consented couple, a studio portrait or the
+aftermovie — see the update at the top of this section.
