@@ -333,7 +333,7 @@ export const davulZurnaPost: BlogPost = {
   updatedAt: '2026-07-25',
   tags: ['musik', 'tuerkische-hochzeit', 'davul-zurna', 'halay'],
   readingTimeMinutes: 5,
-  links: ['/musik', '/hochzeit-events'],
+  links: ['/hochzeit-events'],
   relatedAnswers: ['halay-repertoire', 'davul-zurna', 'orchestra-vs-dj'],
   relatedPosts: ['dj-live-band-oder-beides', 'tuerkische-hochzeit-ablauf-musik-timing'],
   translations: {

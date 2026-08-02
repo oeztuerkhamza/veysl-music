@@ -19,7 +19,7 @@ import type { Locale } from '@/i18n/routing';
  * this shape; the core pages never got one, so `/ablauf`, `/musik`, `/epk`
  * and `/pakete` shipped zero structured data. Two of the builders they need
  * had in fact been written and documented in `@/lib/schema` for exactly these
- * pages — `musicGroupSchema()` ("put this on /musik") and `personSchema()`
+ * pages — `musicGroupSchema()` (now on /epk, see below) and `personSchema()`
  * ("Use on /epk") — and were never called from anywhere. This file is where
  * they finally get used.
  *
@@ -89,28 +89,27 @@ export function buildProcessJsonLd({
 }
 
 /**
- * `/musik` — the performing act, not the booking logistics.
- *
- * `musicGroupSchema()` carries the Instagram follower count as an
- * `InteractionCounter`: real, verifiable social proof, and deliberately not
- * an `aggregateRating` (a follower count is not a rating). The unverified
- * Google review count stays gated inside `localBusinessSchema()` as before —
- * nothing here opens that gate.
- */
-export function buildMusicJsonLd({ locale, homeLabel, pageLabel }: PageJsonLdBase): Record<string, unknown>[] {
-  const pageUrl = absoluteUrl('/musik', locale);
-  return [asRecord(musicGroupSchema(locale)), asRecord(trail(locale, homeLabel, pageLabel, pageUrl))];
-}
-
-/**
  * `/epk` — Veysel Durmuş as a `Person`, plus the lean `Organization` so the
  * `worksFor: { '@id': '#business' }` reference on the person actually
  * resolves on this page instead of dangling at an `@id` defined only on `/`.
+ *
+ * `musicGroupSchema()` moved here when `/musik` was retired (August 2026).
+ * It describes the performing act — DJ plus live orchestra — and had no other
+ * page; dropping it with the route would have silently deleted the only
+ * structured description of what Veysel actually performs as. The EPK is where
+ * it belongs anyway: that page is about the act, while `/musik` was about its
+ * setlist.
+ *
+ * It carries the Instagram follower count as an `InteractionCounter`: real,
+ * verifiable social proof, and deliberately not an `aggregateRating` (a
+ * follower count is not a rating). The unverified Google review count stays
+ * gated inside `localBusinessSchema()` as before — nothing here opens that gate.
  */
 export function buildEpkJsonLd({ locale, homeLabel, pageLabel }: PageJsonLdBase): Record<string, unknown>[] {
   const pageUrl = absoluteUrl('/epk', locale);
   return [
     asRecord(personSchema(locale)),
+    asRecord(musicGroupSchema(locale)),
     asRecord(organizationSchema(locale)),
     asRecord(trail(locale, homeLabel, pageLabel, pageUrl)),
   ];

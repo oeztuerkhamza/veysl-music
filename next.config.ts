@@ -144,6 +144,32 @@ const nextConfig: NextConfig = {
       { source: '/en/wedding-dj', destination: '/en/wedding-dj-baden-wuerttemberg' },
     ];
 
+    /**
+     * Die Musik-/Sets-Seite ist entfallen (Kundenentscheidung, August 2026).
+     * Sie war zu diesem Zeitpunkt eine leere Hülle — alle sieben Sets in
+     * `src/content/mixes.ts` haben `src: null`, alle drei Streaming-Profile in
+     * `site.ts` sind leere Strings; die Seite zeigte also sieben
+     * "Demnächst"-Player und eine Linkliste ohne Links.
+     *
+     * Trotzdem 301 statt 404: Die URL stand in der Sitemap, in beiden
+     * Navigationen und in einem Dutzend interner Verweise, war also für Google
+     * eine bekannte Adresse. Ziel ist die Galerie — die Seite, die inzwischen
+     * das zeigt, was jemand hier eigentlich sucht: wie so ein Abend aussieht.
+     *
+     * Alle sieben Sprachen unter ihrem jeweiligen Slug, sonst greift die
+     * Weiterleitung ausgerechnet für die Sprachen nicht, in denen die URL
+     * anders hieß.
+     */
+    const retiredMusicRoutes = [
+      { source: '/musik', destination: '/galerie' },
+      { source: '/tr/muzik', destination: '/tr/galeri' },
+      { source: '/ku/muzika', destination: '/ku/wene-u-video' },
+      { source: '/en/music', destination: '/en/gallery' },
+      { source: '/nl/muziek', destination: '/nl/fotos-videos' },
+      { source: '/fr/musique', destination: '/fr/galerie-photos' },
+      { source: '/es/musica', destination: '/es/galeria' },
+    ];
+
     return [
       ...cityRoutes.map(({ prefix, home }) => ({
         source: `${prefix}/stuttgart`,
@@ -151,6 +177,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       })),
       ...clusterParents.map((entry) => ({ ...entry, permanent: true })),
+      ...retiredMusicRoutes.map((entry) => ({ ...entry, permanent: true })),
     ];
   },
 

@@ -668,7 +668,7 @@ export const eroeffnungstanzPost: BlogPost = {
   updatedAt: '2026-07-25',
   tags: ['musik', 'eroeffnungstanz', 'songauswahl', 'planung'],
   readingTimeMinutes: 6,
-  links: ['/musik', '/pakete'],
+  links: ['/pakete'],
   relatedAnswers: ['first-dance', 'planning-call'],
   relatedPosts: ['musikwuensche-no-go-liste', 'dramaturgie-hochzeitsabend'],
   translations: {

@@ -38,7 +38,6 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
   '/hochzeit-events': 'meta.services',
   '/pakete': 'meta.packages',
   '/echte-hochzeiten': 'meta.weddings',
-  '/musik': 'meta.music',
   '/ablauf': 'meta.process',
   '/anfrage': 'meta.booking',
   '/hochzeits-dj/[stadt]': 'city.meta',

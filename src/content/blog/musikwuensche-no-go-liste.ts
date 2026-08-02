@@ -327,7 +327,7 @@ export const musikwuenschePost: BlogPost = {
   updatedAt: '2026-07-25',
   tags: ['musik', 'wunschliste', 'no-go-liste', 'planung'],
   readingTimeMinutes: 6,
-  links: ['/musik', '/fragen'],
+  links: ['/fragen'],
   relatedAnswers: ['no-go-list', 'guest-requests-night', 'genre-range'],
   relatedPosts: ['eroeffnungstanz-songauswahl', 'dramaturgie-hochzeitsabend'],
   translations: {

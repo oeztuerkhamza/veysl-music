@@ -40,7 +40,6 @@ const NAV_ITEMS = [
   { href: '/islamische-hochzeit', key: 'islamicWedding', locales: ISLAMIC_SUPPORTED_LOCALES },
   { href: '/pakete', key: 'packages' },
   { href: '/echte-hochzeiten', key: 'weddings' },
-  { href: '/musik', key: 'music' },
   { href: '/ablauf', key: 'process' },
   { href: '/fragen', key: 'questions' },
   { href: '/ratgeber', key: 'guide' },

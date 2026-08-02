@@ -17,7 +17,6 @@ export const BLOG_ROUTE_LABEL_KEY: Partial<Record<StaticPathname, string>> = {
   '/hochzeit-events': 'nav.services',
   '/pakete': 'nav.packages',
   '/echte-hochzeiten': 'nav.weddings',
-  '/musik': 'nav.music',
   '/ablauf': 'nav.process',
   '/anfrage': 'nav.booking',
   '/galerie': 'nav.gallery',

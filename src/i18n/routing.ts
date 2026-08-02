@@ -86,15 +86,6 @@ export const pathnames = {
     fr: '/vrais-mariages',
     es: '/bodas-reales',
   },
-  '/musik': {
-    de: '/musik',
-    tr: '/muzik',
-    ku: '/muzika',
-    en: '/music',
-    nl: '/muziek',
-    fr: '/musique',
-    es: '/musica',
-  },
   '/ablauf': {
     de: '/ablauf',
     tr: '/nasil-calisiyoruz',

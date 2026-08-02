@@ -13,7 +13,6 @@ import { ServicesPreview } from '@/components/home/services-preview';
 import { Showreel } from '@/components/home/showreel';
 import { GalleryStrip } from '@/components/home/gallery-strip';
 import { PackagesPreview } from '@/components/home/packages-preview';
-import { MusicPreview } from '@/components/home/music-preview';
 import { Testimonials, type Testimonial } from '@/components/home/testimonials';
 import { GoogleReviews } from '@/components/home/google-reviews';
 import { ProcessPreview } from '@/components/home/process-preview';
@@ -87,7 +86,18 @@ export default async function HomePage({ params }: HomePageProps) {
           `src/content/gallery.ts` leer ist. */}
       <GalleryStrip />
       <PackagesPreview />
-      <MusicPreview />
+      {/*
+        <MusicPreview> stand hier und ist mit der Musik-Seite entfallen.
+        Nicht nur, weil sein Knopf ins Leere zeigte: Der Abschnitt hieß
+        „Reinhören statt raten" und bot „Alle Sets anhören" an, während in
+        `src/content/mixes.ts` bei allen sieben Sets `src: null` steht. Es gab
+        also nichts zu hören — die Überschrift war schon vor dem Löschen ein
+        Versprechen, das die Seite nicht einlösen konnte.
+
+        Komponente und `mixes.ts` bleiben liegen. Sobald echte Aufnahmen
+        vorliegen, ist der Abschnitt eine Zeile Arbeit — und dann stimmt auch
+        seine Überschrift.
+      */}
       <Testimonials testimonials={testimonials} />
       {/* Renders nothing until GOOGLE_PLACES_API_KEY is set on the server. */}
       <GoogleReviews locale={locale} />
