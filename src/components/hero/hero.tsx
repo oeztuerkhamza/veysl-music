@@ -85,8 +85,13 @@ export async function Hero() {
                 <Button href="/anfrage" variant="clay" size="lg">
                   {tCta('primary')}
                 </Button>
-                <Button href="/musik" variant="secondary" size="lg">
-                  {tCta('listen')}
+                {/* Zweite Handlung neben der Anfrage: die Galerie, nicht mehr
+                    die Sets. Wer eine Hochzeit plant, will zuerst sehen, wie
+                    ein Abend aussieht — und seit der Bildlieferung gibt es dort
+                    auch etwas zu sehen, während die Sets-Seite die schwächere
+                    zweite Frage beantwortet. */}
+                <Button href="/galerie" variant="secondary" size="lg">
+                  {tCta('gallery')}
                 </Button>
               </div>
             </Reveal>
