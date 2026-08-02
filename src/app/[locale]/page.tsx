@@ -6,6 +6,7 @@ import { buildMetadata } from '@/lib/seo';
 import { localBusinessSchema, websiteSchema } from '@/lib/schema';
 import { firstPartyAggregate, getPublishedTestimonials } from '@/lib/testimonials';
 import { Hero } from '@/components/hero/hero';
+import { StageBand } from '@/components/home/stage-band';
 import { Intro } from '@/components/home/intro';
 import { TrustStrip } from '@/components/home/trust-strip';
 import { ServicesPreview } from '@/components/home/services-preview';
@@ -70,6 +71,12 @@ export default async function HomePage({ params }: HomePageProps) {
           are now the hero's marginalia column, where they do the same job
           above the fold instead of repeating it 1.400 px further down. */}
       <Hero />
+      {/* Das Bühnenfoto lag vorher als Hintergrund IM Hero. Dort folgte seine
+          Fläche dem Fenster, also schnitt `object-cover` es aus einer Richtung
+          an, die von Gerät zu Gerät wechselt — es sah angeschnitten aus. Hier
+          steht es eine Etage tiefer in fester 21:9-Geometrie, unabhängig vom
+          Hero und ohne Abdunklung. Siehe `home.stage.image`. */}
+      <StageBand />
       <Intro />
       <TrustStrip />
       <ServicesPreview />
