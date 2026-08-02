@@ -310,7 +310,7 @@ export const answers: Answer[] = [
     },
     facts: ['Moderation: Deutsch, Türkisch, Englisch', 'Live-Musik: Saz & Gitarre seit der Kindheit'],
     related: ['live-vs-dj', 'who-is-veysl'],
-    links: ['/hochzeit-events', '/musik'],
+    links: ['/hochzeit-events'],
     updated: U,
   },
   {
@@ -453,7 +453,7 @@ export const answers: Answer[] = [
     },
     facts: ['Saz & Gitarre seit der Kindheit'],
     related: ['orchestra-vs-dj', 'extras-included'],
-    links: ['/musik', '/epk'],
+    links: ['/epk'],
     updated: U,
   },
   {
@@ -471,7 +471,7 @@ export const answers: Answer[] = [
     },
     facts: ['Format: DJ & Orkestra — DJ-Set + Live-Band mit Bläsern'],
     related: ['live-vs-dj', 'halay-repertoire'],
-    links: ['/musik'],
+    links: ['/hochzeit-events'],
     updated: U,
   },
   {
@@ -488,7 +488,7 @@ export const answers: Answer[] = [
       tr: 'İkisi de, ayrı bloklar halinde değil harmanlanmış şekilde: repertuvar güncel uluslararası ve Alman hit listelerinden house müziğe, zamansız klasiklere ve arabesk, halay gibi Türk türlerine kadar uzanır. Düğününüze uygun dengenin ne olacağı, sabit bir standart programla değil, kişisel istek listenizle belirlenir.',
     },
     related: ['no-go-list', 'halay-repertoire'],
-    links: ['/musik'],
+    links: ['/hochzeit-events'],
     updated: U,
   },
   {
@@ -523,7 +523,7 @@ export const answers: Answer[] = [
       tr: 'Misafir istekleri memnuniyetle karşılanır ve akşam boyunca doğrudan alınır. Önemli olan, bu isteklerin çiftin önceden hazırladığı istek ve istenmeyenler listesiyle karşılaştırılmasıdır: uygun olan anlık bir istek çalınır; kararlaştırılan çerçeveyle çelişen bir istek ise nazikçe ama kararlılıkla reddedilir.',
     },
     related: ['no-go-list'],
-    links: ['/musik'],
+    links: ['/hochzeit-events'],
     updated: U,
   },
 
@@ -541,7 +541,7 @@ export const answers: Answer[] = [
       tr: 'Evet. Türk Sanat Müziği repertuvarın bir parçasıdır ve yalnızca bilgisayardan çalmak yerine saz eşliğinde canlı olarak da icra edilebilir — genellikle yemek sırasında ya da iki dans turu arasında sakin bir bölüm olarak. Hangi eserlerin çalınacağı ve bölümün ne kadar süreceği, planlama görüşmesindeki istek listesine yazılır.',
     },
     related: ['ilahi-live', 'orchestra-vs-dj', 'halay-repertoire'],
-    links: ['/musik'],
+    links: ['/hochzeit-events'],
     updated: U_ISLAM,
   },
 
@@ -672,7 +672,7 @@ export const answers: Answer[] = [
       tr: 'Halay, Roman havası ve arabesk, güncel Türkçe hit listeleriyle birlikte temel repertuvarın parçasıdır — ayrı bir blok olarak değil, Alman ve uluslararası setlerle harmanlanarak çalınır. Düğününüze hangi oranın uyacağı misafir karışımınıza ve akışa bağlıdır ve planlama görüşmesinde kişisel istek listenizle birlikte belirlenir.',
     },
     related: ['orchestra-vs-dj', 'timeline-diff'],
-    links: ['/musik', '/hochzeit-events'],
+    links: ['/hochzeit-events'],
     updated: U,
   },
   {
@@ -871,7 +871,7 @@ export const answers: Answer[] = [
     },
     facts: ['DJ, Musiker (Saz & Gitarre) und Moderator in einer Person'],
     related: ['islamic-wedding-dj', 'tsm-live', 'orchestra-vs-dj'],
-    links: ['/islamische-hochzeit', '/musik', '/hochzeit-events'],
+    links: ['/islamische-hochzeit', '/hochzeit-events'],
     updated: U_ISLAM,
   },
   {
@@ -921,7 +921,7 @@ export const answers: Answer[] = [
       ku: 'Erê. Ka dê alkol were dayîn an na, biryara cot û ya mekanê ye — bandorê li xizmeta DJ nake. Dawetên bê alkol di nav civata alman-tirk de tiştekî asayî ne, û ezmûna wir zelal e: meydana govendê bi repertuwar û demjimêrê radiweste, ne bi bar.',
     },
     related: ['islamic-wedding-dj', 'halay-repertoire'],
-    links: ['/islamische-hochzeit', '/musik'],
+    links: ['/islamische-hochzeit'],
     updated: U_ISLAM,
   },
 

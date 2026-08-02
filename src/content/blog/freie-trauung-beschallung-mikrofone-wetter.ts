@@ -328,7 +328,7 @@ export const freieTrauungPost: BlogPost = {
   updatedAt: '2026-07-25',
   tags: ['technik', 'freie-trauung', 'beschallung', 'outdoor'],
   readingTimeMinutes: 6,
-  links: ['/hochzeit-events', '/musik'],
+  links: ['/hochzeit-events'],
   relatedAnswers: ['outdoor-ceremony-power', 'power-requirements', 'outdoor-weather'],
   relatedCities: ['esslingen', 'ludwigsburg'],
   relatedPosts: ['location-akustik-checkliste', 'laermschutz-sperrzeiten-baden-wuerttemberg'],

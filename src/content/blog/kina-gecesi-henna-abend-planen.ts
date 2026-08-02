@@ -328,7 +328,7 @@ export const kinaGecesiPost: BlogPost = {
   updatedAt: '2026-07-25',
   tags: ['tuerkische-hochzeit', 'kina-gecesi', 'henna', 'planung'],
   readingTimeMinutes: 6,
-  links: ['/hochzeit-events', '/musik', '/anfrage'],
+  links: ['/hochzeit-events', '/anfrage'],
   relatedAnswers: ['kina-gecesi', 'davul-zurna'],
   relatedPosts: ['tuerkische-hochzeit-ablauf-musik-timing', 'davul-zurna-halay-roman-havasi'],
   translations: {

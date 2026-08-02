@@ -590,7 +590,7 @@ export const djLiveBandPost: BlogPost = {
   updatedAt: '2026-07-25',
   tags: ['musik', 'live-band', 'dj', 'entscheidungshilfe'],
   readingTimeMinutes: 6,
-  links: ['/musik', '/epk'],
+  links: ['/epk'],
   relatedAnswers: ['orchestra-vs-dj', 'live-vs-dj'],
   relatedPosts: ['davul-zurna-halay-roman-havasi', 'hochzeits-dj-checkliste'],
   translations: {

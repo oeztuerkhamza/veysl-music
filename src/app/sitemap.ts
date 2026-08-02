@@ -63,7 +63,6 @@ const staticRoutes: Record<
   '/hochzeit-events': { changeFrequency: 'monthly', priority: 0.8 },
   '/pakete': { changeFrequency: 'monthly', priority: 0.9 },
   '/echte-hochzeiten': { changeFrequency: 'monthly', priority: 0.8 },
-  '/musik': { changeFrequency: 'monthly', priority: 0.7 },
   '/ablauf': { changeFrequency: 'monthly', priority: 0.7 },
   '/anfrage': { changeFrequency: 'monthly', priority: 0.9 },
   '/galerie': { changeFrequency: 'monthly', priority: 0.6 },
