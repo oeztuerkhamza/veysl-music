@@ -10,6 +10,7 @@ import { Intro } from '@/components/home/intro';
 import { TrustStrip } from '@/components/home/trust-strip';
 import { ServicesPreview } from '@/components/home/services-preview';
 import { Showreel } from '@/components/home/showreel';
+import { GalleryStrip } from '@/components/home/gallery-strip';
 import { PackagesPreview } from '@/components/home/packages-preview';
 import { MusicPreview } from '@/components/home/music-preview';
 import { Testimonials, type Testimonial } from '@/components/home/testimonials';
@@ -73,6 +74,11 @@ export default async function HomePage({ params }: HomePageProps) {
       <TrustStrip />
       <ServicesPreview />
       <Showreel />
+      {/* Direkt hinter dem Showreel: Dort erwartet man nach dem Standbild
+          ohnehin mehr Bildmaterial, und der Streifen fängt genau die Leute ab,
+          die noch keinen Aftermovie zu sehen bekommen. Rendert `null`, solange
+          `src/content/gallery.ts` leer ist. */}
+      <GalleryStrip />
       <PackagesPreview />
       <MusicPreview />
       <Testimonials testimonials={testimonials} />

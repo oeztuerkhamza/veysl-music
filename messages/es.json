@@ -141,6 +141,12 @@
       "subtitle": "Momentos de bodas y eventos reales.",
       "play": "Reproducir showreel"
     },
+    "gallery": {
+      "eyebrow": "Impresiones",
+      "title": "Fotos de noches reales",
+      "subtitle": "Montaje, equipo, banda en directo y presentación — fotografiados en celebraciones reales, no en un estudio.",
+      "cta": "Ver la galería"
+    },
     "packages": {
       "eyebrow": "Paquetes",
       "title": "Precios transparentes",
