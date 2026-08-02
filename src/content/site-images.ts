@@ -81,16 +81,37 @@ export const imageSlots: ImageSlot[] = [
       'Volle Tanzfläche bei Nacht, Weitwinkel von der Bühne/DJ-Position aus. Gäste in Bewegung (eine leichte Bewegungsunschärfe wirkt hochwertiger als ein scharfes Gruppenfoto), warmes Bühnenlicht, DJ-Pult im Hintergrund erkennbar, aber nicht der Fokus. Muss auch stark abgedunkelt und mit Farbverlauf überlagert funktionieren — der Seitentitel liegt als Text darüber und bleibt die eigentliche LCP-Fläche, das Foto ist reine Atmosphäre dahinter.',
     aspect: '21/9',
     priority: 1,
-    // VORLÄUFIG, und der Slot mit dem größten offenen Abstand zum Brief: Die
-    // volle Tanzfläche existiert in der Lieferung 08/2026 nicht. Hier steht
-    // deshalb der Bühnenmoment aus derselben Feier — mit 5120 px das einzige
-    // Bild, das eine vollflächige 100vw-Ebene ohne Hochskalieren trägt, und
-    // eines, das unter dem Scrim der Komponente als „Live-Abend" liest statt
-    // als Porträt. Ersetzen, sobald ein Tanzflächen-Foto existiert.
-    fallbackSrc: '/images/veys/buehne-abend-21x9.jpg',
-    fallbackAlt: 'Veysel Durmuş moderiert mit Mikrofon auf der Bühne, Live-Musiker im Hintergrund',
+    // BEWUSST LEER — nicht aus Mangel, sondern weil dieser Slot ein Motiv
+    // verlangt, das es noch nicht gibt.
+    //
+    // Der Hero ist eine 100vw-Fläche mit der Höhe des Fensters, also je nach
+    // Gerät zwischen etwa 1,6:1 und 0,5:1. `object-cover` schneidet ein Foto
+    // deshalb hier härter zu als an jeder anderen Stelle der Seite, und zwar
+    // in einer Richtung, die niemand vorher kennt. Für ein Motiv, das aus
+    // Fläche besteht (volle Tanzfläche, Licht, Nebel), ist das folgenlos. Für
+    // ein Motiv mit einer Person darin ist es das nicht: Der Bühnenmoment, der
+    // hier eine Zeit lang stand, wurde bei 1265×784 seitlich beschnitten und
+    // hochskaliert — er sah angeschnitten aus, weil er es war.
+    //
+    // Statt ihn kleinzurechnen, steht er jetzt eine Etage tiefer in
+    // `home.stage.image`, in einem Band mit fester 21:9-Geometrie, das genau
+    // seinem Zuschnitt entspricht. Hier bleibt so lange nichts, bis ein Foto
+    // vorliegt, das einen unvorhersehbaren Beschnitt aushält.
+    fallbackSrc: null,
     altHint:
       'Sachlich, ohne Namen einzelner Gäste, z. B. „Tanzfläche bei einer Hochzeitsfeier, Gäste tanzen im warmen Bühnenlicht, DJ-Pult im Hintergrund.“ Keine Keyword-Häufung.',
+  },
+  {
+    key: 'home.stage.image',
+    page: 'Startseite — Bildband unter dem Hero',
+    label: 'Bildband (Startseite, unter dem Hero)',
+    purpose:
+      'Ein Motiv, das für sich steht statt als Hintergrund zu dienen: Bühne, Tanzfläche oder Saal im Moment der Feier, quer und weit. Anders als beim Hero ist die Geometrie hier fest (21:9) und das Bild wird nicht abgedunkelt — es liegt kein Text darüber. Ein Foto mit einer Person darin ist hier also ausdrücklich richtig, während es im Hero am unvorhersehbaren Beschnitt scheitert.',
+    aspect: '21/9',
+    priority: 1,
+    fallbackSrc: '/images/veys/buehne-abend-21x9.jpg',
+    fallbackAlt: 'Veysel Durmuş moderiert mit Mikrofon auf der Bühne, Live-Musiker im Hintergrund',
+    altHint: 'Beschreibt das Motiv sachlich und ohne Namen einzelner Gäste, z. B. „Veysel Durmuş an der Bühne, Gäste auf der Tanzfläche.“',
   },
   {
     key: 'home.showreel.poster',
