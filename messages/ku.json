@@ -141,6 +141,12 @@
       "subtitle": "Beşên ji dawet û şahiyên rastîn.",
       "play": "Showreelê vekin"
     },
+    "gallery": {
+      "eyebrow": "Wêne",
+      "title": "Wêneyên ji şevên rastîn",
+      "subtitle": "Amadekarî, teknîk, koma zindî û pêşkêşî — di şahiyên rastîn de hatine kişandin, ne di studyoyê de.",
+      "cta": "Biçe galeriyê"
+    },
     "packages": {
       "eyebrow": "Paket",
       "title": "Bi hesabê zelal",

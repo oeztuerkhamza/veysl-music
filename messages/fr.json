@@ -141,6 +141,12 @@
       "subtitle": "Extraits de vrais mariages et de vrais événements.",
       "play": "Lancer le showreel"
     },
+    "gallery": {
+      "eyebrow": "Aperçus",
+      "title": "Photos de vraies soirées",
+      "subtitle": "Installation, matériel, formation live et animation — photographiés lors de vraies fêtes, pas en studio.",
+      "cta": "Voir la galerie"
+    },
     "packages": {
       "eyebrow": "Formules",
       "title": "Des tarifs transparents",

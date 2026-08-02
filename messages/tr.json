@@ -141,6 +141,12 @@
       "subtitle": "Gerçek düğün ve etkinliklerden kesitler.",
       "play": "Showreel'i oynat"
     },
+    "gallery": {
+      "eyebrow": "Kareler",
+      "title": "Gerçek gecelerden fotoğraflar",
+      "subtitle": "Kurulum, ekipman, canlı ekip ve sunum — stüdyoda değil, gerçek kutlamalarda çekildi.",
+      "cta": "Galeriye git"
+    },
     "packages": {
       "eyebrow": "Paketler",
       "title": "Şeffaf fiyatlandırma",

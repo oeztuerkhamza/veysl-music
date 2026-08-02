@@ -141,6 +141,12 @@
       "subtitle": "Moments from real weddings and events.",
       "play": "Play showreel"
     },
+    "gallery": {
+      "eyebrow": "Impressions",
+      "title": "Photos from real evenings",
+      "subtitle": "Setup, equipment, the live band and hosting — photographed at actual celebrations, not in a studio.",
+      "cta": "View the gallery"
+    },
     "packages": {
       "eyebrow": "Packages",
       "title": "Transparently priced",

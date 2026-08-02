@@ -4,6 +4,7 @@ import { Section } from '@/components/ui/section';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/motion/reveal';
+import { SiteImage } from '@/components/media';
 
 const KEYS = ['wedding', 'engagement', 'afterparty', 'corporate'] as const;
 
@@ -39,6 +40,14 @@ export async function ServicesPreview() {
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
                 {tItems(`${lead}.text`)}
               </p>
+              {/* Das Hochzeitsbild bekommt die volle Breite des Aufmachers —
+                  dieselbe Gewichtung, die der Text hier schon hat. */}
+              <SiteImage
+                slot={`services.${lead}.image`}
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                className="mt-8"
+                decorative
+              />
             </article>
           </Reveal>
 
@@ -51,12 +60,25 @@ export async function ServicesPreview() {
                 delay={index * 0.06}
                 className="block border-t border-line last:border-b"
               >
-                <div className="py-7">
-                  <p className="text-label text-gold">{tItems(`${key}.tagline`)}</p>
-                  <h3 className="mt-3 font-display text-2xl text-ink">{tItems(`${key}.title`)}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                    {tItems(`${key}.text`)}
-                  </p>
+                {/* Miniatur links, Text rechts: Die drei Nebeneinträge bleiben
+                    eine Liste — ein zweites Raster gleich großer Bilder würde
+                    genau die Gleichgewichtung zurückholen, die dieser Abschnitt
+                    bewusst vermeidet. */}
+                <div className="flex items-start gap-5 py-7">
+                  <div className="w-20 shrink-0 sm:w-24">
+                    <SiteImage
+                      slot={`services.${key}.image`}
+                      sizes="(min-width: 640px) 6rem, 5rem"
+                      decorative
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-label text-gold">{tItems(`${key}.tagline`)}</p>
+                    <h3 className="mt-3 font-display text-2xl text-ink">{tItems(`${key}.title`)}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                      {tItems(`${key}.text`)}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}

@@ -6,6 +6,7 @@ import { SectionHeading } from '@/components/ui/section-heading';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/motion/reveal';
+import { SiteImage } from '@/components/media';
 import { cn } from '@/lib/utils';
 
 const TIERS = ['essential', 'signature', 'prestige'] as const;
@@ -32,8 +33,25 @@ export async function PackagesPreview() {
             return (
               <Reveal key={tier}>
                 <Card
-                  className={cn('flex h-full flex-col p-8', isSignature && 'border-gold ring-1 ring-gold')}
+                  className={cn(
+                    // `overflow-hidden` + `p-0`: das Bild sitzt randlos oben in
+                    // der Karte statt eingerückt im Innenabstand. Der Abstand
+                    // wandert dafür in den Textteil darunter.
+                    'flex h-full flex-col overflow-hidden p-0',
+                    isSignature && 'border-gold ring-1 ring-gold'
+                  )}
                 >
+                  <SiteImage
+                    slot={`packages.${tier}.image`}
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="rounded-none"
+                    // Dekorativ: Direkt darunter steht der Paketname, und der
+                    // Alt-Text der Registry würde hier nur die Bildbeschreibung
+                    // vor den eigentlichen Inhalt schieben.
+                    decorative
+                  />
+
+                  <div className="flex flex-1 flex-col p-8">
                   {isSignature && (
                     <span className="mb-4 inline-flex w-fit items-center rounded-full bg-gold/10 px-3 py-1 text-xs uppercase tracking-[0.15em] text-gold">
                       {tCommon('mostBooked')}
@@ -80,6 +98,7 @@ export async function PackagesPreview() {
                     >
                       {tCommon('readMore')}
                     </Button>
+                  </div>
                   </div>
                 </Card>
               </Reveal>
