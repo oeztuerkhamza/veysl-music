@@ -63,11 +63,12 @@ export const site = {
    * YouTube-/Instagram-Konten `@veystunesofficial` sind davon nicht berührt.
    */
 
-  /** Alle sechs Locales — siehe routing.ts. Kein Fallback nötig. */
+  /** Alle acht Locales — siehe routing.ts. Kein Fallback nötig. */
   tagline: {
     de: 'Hochzeits-DJ, Musiker & Moderator',
     tr: 'Düğün DJ’i, Müzisyen & Sunucu',
     ku: 'DJ’yê dawetê, muzîkjen û pêşkêşvan',
+    ar: 'دي جي أفراح، موسيقي ومقدّم حفلات',
     en: 'Wedding DJ, Musician & Host',
     nl: 'Bruiloft-DJ, muzikant & presentator',
     fr: 'DJ de mariage, musicien & animateur',
@@ -136,6 +137,7 @@ export const site = {
     de: 'Stuttgart · Baden-Württemberg · deutschlandweit · europaweit',
     tr: 'Stuttgart · Baden-Württemberg · Almanya geneli · Avrupa geneli',
     ku: 'Stuttgart · Baden-Württemberg · li seranserê Almanyayê · li seranserê Ewropayê',
+    ar: 'شتوتغارت · بادن-فورتمبيرغ · جميع أنحاء ألمانيا · جميع أنحاء أوروبا',
     en: 'Stuttgart · Baden-Württemberg · Germany-wide · Europe-wide',
     nl: 'Stuttgart · Baden-Württemberg · heel Duitsland · heel Europa',
     fr: 'Stuttgart · Bade-Wurtemberg · toute l’Allemagne · toute l’Europe',

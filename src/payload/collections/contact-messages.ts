@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload';
+import { SITE_LOCALE_OPTIONS } from '../site-locales';
 import { denyAll, isAdmin } from '../access/is-admin';
 import { validateIsoDate } from '../utils/iso-date';
 
@@ -48,7 +49,7 @@ export const ContactMessages: CollectionConfig = {
       name: 'locale', label: { de: 'Sprache der Nachricht', tr: 'Mesajın dili' },
       type: 'select',
       admin: { readOnly: true, description: { de: 'Sprache der Website beim Absenden — in dieser Sprache antworten.', tr: 'Gönderim anındaki site dili — bu dilde yanıtlayın.' } },
-      options: ['de', 'en', 'tr', 'ku', 'nl', 'fr', 'es'],
+      options: [...SITE_LOCALE_OPTIONS],
     },
     {
       name: 'subject', label: { de: 'Betreff', tr: 'Konu' },

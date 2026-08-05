@@ -6,7 +6,6 @@
     "weddings": "Echte Hochzeiten",
     "music": "Musik",
     "process": "Ablauf & FAQ",
-    "islamicWedding": "Islamische Hochzeit",
     "questions": "Fragen & Antworten",
     "guide": "Ratgeber",
     "europe": "DJ in Europa",
@@ -492,178 +491,74 @@
       }
     ]
   },
-    "islamic": {
-      "meta": {
-        "title": "Islamische Hochzeit mit DJ — Dua, İlahi & Feier | DJ Veys",
-        "description": "Kur’an-Rezitation, Dua und İlahi live — und danach eine volle Tanzfläche. Ein Ablaufplan, eine Anlage, ein Ansprechpartner. Stuttgart & deutschlandweit."
-      },
-      "hero": {
-        "eyebrow": "Islamische & religiös geprägte Hochzeiten",
-        "title": "Dua und Tanzfläche am selben Abend",
-        "subtitle": "Kur’an-Rezitation, Dua und İlahi gehören hier in den Ablaufplan, nicht in einen separaten Termin. Danach beginnt die Feier — beides aus einer Hand, moderiert auf Deutsch, Türkisch und Englisch."
-      },
-      "intro": {
-        "eyebrow": "Die eigentliche Frage",
-        "title": "Geht das überhaupt zusammen?",
-        "body": "Fast jedes Paar bekommt an dieser Stelle zwei getrennte Angebote — eines für den religiösen Teil, eines für die Party — und muss die Übergänge selbst organisieren. Genau dort kippt der Abend: Die Musik wird mitten im Stück abgewürgt, niemand weiß, wann die Gäste sitzen sollen, und nach der Dua steht der Saal still. Hier ist beides ein einziger Ablaufplan, geschrieben von der Person, die ihn am Abend auch durchführt."
-      },
-      "recitation": {
-        "eyebrow": "Der Unterschied",
-        "title": "Die Tilawet lese ich selbst",
-        "body": "Die Kur’an-Rezitation kommt nicht von einer Aufnahme und nicht von einem externen Gast, der zwischen zwei Terminen vorbeischaut: Veysel Durmuş rezitiert selbst. Praktisch heißt das, dass Rezitation, Dua, İlahi, Moderation und DJ-Set in einer Hand liegen — der Übergang vom letzten Wort zur ersten Ansage ist damit kein Risiko mehr, sondern geplant."
-      },
-      "program": {
-        "eyebrow": "Bausteine",
-        "title": "Woraus der Abend besteht",
-        "lead": "Frei kombinierbar. Im Planungsgespräch legen wir fest, was davon zu eurer Feier gehört — und was ausdrücklich nicht.",
-        "optionalLabel": "Optional",
-        "items": {
-          "tilawet": {
-            "title": "Kur’an Tilaveti",
-            "text": "Live rezitiert, über ein eigenes Mikrofon, ohne Hall und ohne Effekte, mit deutlich niedrigerem Pegel als das Tanzset. Sprachverständlichkeit im ganzen Saal ist hier das einzige Ziel."
-          },
-          "dua": {
-            "title": "Dua",
-            "text": "Bekommt einen festen Zeitpunkt im Ablauf, meist vor dem Essen oder vor dem Eröffnungstanz. Zweisprachige Ansage vorher, damit jeder Gast weiß, was gleich passiert."
-          },
-          "ilahi": {
-            "title": "İlahi — live",
-            "text": "Live vorgetragen, auf Wunsch mit Saz-Begleitung. Kein Playback, keine Playlist."
-          },
-          "tsm": {
-            "title": "Türk Sanat Müziği",
-            "text": "Meist während des Essens oder als ruhiger Block zwischen zwei Tanzrunden — ebenfalls live mit Saz möglich statt nur vom Laptop."
-          },
-          "djset": {
-            "title": "DJ-Set & Moderation",
-            "text": "Türkisch, deutsch und international gemischt statt in getrennten Blöcken. Moderation live auf Deutsch, Türkisch und Englisch."
-          },
-          "afterparty": {
-            "title": "After-Wedding-Party",
-            "text": "Der freiere Teil nach dem offiziellen Programm — oder ein eigener Termin im kleineren Kreis, davor oder danach."
-          }
+  "bw": {
+    "meta": {
+      "title": "Hochzeits-DJ Baden-Württemberg | DJ Veys",
+      "description": "Hochzeits-DJ für ganz Baden-Württemberg: Stuttgart, Ludwigsburg, Esslingen, Karlsruhe, Mannheim und mehr. Deutsch, Türkisch, Englisch moderiert. Anfahrt transparent kalkuliert."
+    },
+    "hero": {
+      "eyebrow": "Baden-Württemberg",
+      "title": "Hochzeits-DJ in ganz Baden-Württemberg",
+      "subtitle": "Von Mannheim bis Reutlingen, von Karlsruhe bis Heilbronn — mit eigener Ton- und Lichttechnik, Moderation auf Deutsch, Türkisch und Englisch und einer Anfahrt, die vorher im Angebot steht statt hinterher auf der Rechnung."
+    },
+    "intro": {
+      "eyebrow": "Warum das eine eigene Frage ist",
+      "title": "Ein Land, sehr verschiedene Feiern",
+      "body": "Eine Hochzeit in der Stuttgarter Innenstadt und eine im Kraichgau haben wenig gemeinsam außer dem Bundesland: andere Locations, andere Sperrzeiten, andere Anfahrt, oft eine ganz andere Gästemischung. Was gleich bleiben muss, ist der Standard — dieselbe Anlage, dieselbe Vorbereitung, derselbe Ansprechpartner. Genau darum geht es auf dieser Seite: nicht darum, überall zu behaupten, sondern darum, zu erklären, was über Distanz konkret gleich bleibt und was sich ändert."
+    },
+    "pillars": {
+      "eyebrow": "Über Distanz",
+      "title": "Was sich mit den Kilometern ändert — und was nicht",
+      "items": {
+        "travel": {
+          "title": "Anfahrt vorher, nicht nachher",
+          "text": "Innerhalb von 50 km um Stuttgart ist die Anfahrt in den Paketen enthalten. Darüber hinaus wird sie im Angebot als eigene Position ausgewiesen, bevor unterschrieben wird. Was nicht passiert: eine Pauschale, die am Ende „doch noch\" wächst."
+        },
+        "equipment": {
+          "title": "Dieselbe Technik, egal wo",
+          "text": "Die Anlage fährt mit — sie wird nicht vor Ort zusammengemietet. Das heißt eingespielte Geräte und bekannte Fehlerquellen statt einer Blackbox am Hochzeitstag, und es ist der Grund, warum eine Feier in Mannheim technisch genauso läuft wie eine in Esslingen."
+        },
+        "oneContact": {
+          "title": "Ein Ansprechpartner, kein Subunternehmer",
+          "text": "Wer das Vorgespräch führt, steht am Abend auch am Pult. Bei überregional arbeitenden Agenturen ist das oft nicht so — dort bucht man eine Marke und bekommt einen freien Mitarbeiter, den man vorher nie gesprochen hat."
         }
-      },
-      "timeline": {
-        "eyebrow": "Beispielablauf",
-        "title": "Wie so ein Abend tatsächlich läuft",
-        "lead": "Ein Muster aus der Praxis. Uhrzeiten, Reihenfolge und Länge jedes Blocks verschieben sich mit eurer Location und eurer Gästezahl.",
-        "note": "Dieser Ablauf ist ein Beispiel, kein Angebot. Euer echter Ablaufplan entsteht im Planungsgespräch und steht danach schriftlich im Vertrag.",
-        "steps": {
-          "welcome": {
-            "title": "Empfang",
-            "text": "Ruhige Hintergrundmusik, die Gäste kommen an. Die Technik steht seit dem Soundcheck."
-          },
-          "tilawet": {
-            "title": "Kur’an Tilaveti",
-            "text": "Die Musik wird ausgeblendet, nicht abgebrochen. Zweisprachige Ansage, dann die Rezitation."
-          },
-          "dua": {
-            "title": "Dua",
-            "text": "Direkt im Anschluss, dasselbe Mikrofon, derselbe Pegel."
-          },
-          "dinner": {
-            "title": "Essen",
-            "text": "Türk Sanat Müziği und ruhige Instrumentalmusik, Lautstärke auf Gesprächsniveau."
-          },
-          "ilahi": {
-            "title": "İlahi live",
-            "text": "Live vorgetragen, auf Wunsch mit Saz — der Übergang vom religiösen in den festlichen Teil des Abends."
-          },
-          "entrance": {
-            "title": "Einzug des Paares",
-            "text": "Ansage auf Deutsch und Türkisch, Licht auf das Paar, Musik nach eurer Wahl."
-          },
-          "dance": {
-            "title": "Tanzfläche",
-            "text": "Halay, Roman Havası, aktuelle türkische und internationale Sets — gemischt, nicht in Blöcken."
-          },
-          "close": {
-            "title": "Abschluss",
-            "text": "Letztes Lied nach Absprache, danach Abbau. Die Uhrzeit richtet sich nach der Location."
-          }
-        }
-      },
-      "faq": {
-        "eyebrow": "Häufige Fragen",
-        "title": "Was Paare an dieser Stelle fragen",
-        "more": "Alle Fragen & Antworten ansehen"
-      },
-      "cta": {
-        "eyebrow": "Termin",
-        "title": "Ist euer Datum noch frei?",
-        "subtitle": "Schickt uns Datum, Ort und ungefähre Gästezahl. Die Rückmeldung zur Verfügbarkeit kommt in der Regel innerhalb von 24 Stunden.",
-        "button": "Termin anfragen"
       }
     },
-    "bw": {
-      "meta": {
-        "title": "Hochzeits-DJ Baden-Württemberg | DJ Veys",
-        "description": "Hochzeits-DJ für ganz Baden-Württemberg: Stuttgart, Ludwigsburg, Esslingen, Karlsruhe, Mannheim und mehr. Deutsch, Türkisch, Englisch moderiert. Anfahrt transparent kalkuliert."
-      },
-      "hero": {
-        "eyebrow": "Baden-Württemberg",
-        "title": "Hochzeits-DJ in ganz Baden-Württemberg",
-        "subtitle": "Von Mannheim bis Reutlingen, von Karlsruhe bis Heilbronn — mit eigener Ton- und Lichttechnik, Moderation auf Deutsch, Türkisch und Englisch und einer Anfahrt, die vorher im Angebot steht statt hinterher auf der Rechnung."
-      },
-      "intro": {
-        "eyebrow": "Warum das eine eigene Frage ist",
-        "title": "Ein Land, sehr verschiedene Feiern",
-        "body": "Eine Hochzeit in der Stuttgarter Innenstadt und eine im Kraichgau haben wenig gemeinsam außer dem Bundesland: andere Locations, andere Sperrzeiten, andere Anfahrt, oft eine ganz andere Gästemischung. Was gleich bleiben muss, ist der Standard — dieselbe Anlage, dieselbe Vorbereitung, derselbe Ansprechpartner. Genau darum geht es auf dieser Seite: nicht darum, überall zu behaupten, sondern darum, zu erklären, was über Distanz konkret gleich bleibt und was sich ändert."
-      },
-      "pillars": {
-        "eyebrow": "Über Distanz",
-        "title": "Was sich mit den Kilometern ändert — und was nicht",
-        "items": {
-          "travel": {
-            "title": "Anfahrt vorher, nicht nachher",
-            "text": "Innerhalb von 50 km um Stuttgart ist die Anfahrt in den Paketen enthalten. Darüber hinaus wird sie im Angebot als eigene Position ausgewiesen, bevor unterschrieben wird. Was nicht passiert: eine Pauschale, die am Ende „doch noch\" wächst."
-          },
-          "equipment": {
-            "title": "Dieselbe Technik, egal wo",
-            "text": "Die Anlage fährt mit — sie wird nicht vor Ort zusammengemietet. Das heißt eingespielte Geräte und bekannte Fehlerquellen statt einer Blackbox am Hochzeitstag, und es ist der Grund, warum eine Feier in Mannheim technisch genauso läuft wie eine in Esslingen."
-          },
-          "oneContact": {
-            "title": "Ein Ansprechpartner, kein Subunternehmer",
-            "text": "Wer das Vorgespräch führt, steht am Abend auch am Pult. Bei überregional arbeitenden Agenturen ist das oft nicht so — dort bucht man eine Marke und bekommt einen freien Mitarbeiter, den man vorher nie gesprochen hat."
-          }
-        }
-      },
-      "cities": {
-        "eyebrow": "Städte",
-        "title": "Ausführliche Seiten für die Kernregion",
-        "lead": "Für diese Städte gibt es eine eigene Seite mit Locations, Anfahrt und Fragen, die dort konkret aufkommen — keine Textbausteine mit ausgetauschtem Ortsnamen.",
-        "note": "Ihre Stadt ist nicht dabei? Das heißt nicht, dass sie zu weit weg ist — nur, dass es dafür noch keine eigene Seite gibt. Fragen Sie den Termin einfach an."
-      },
-      "faq": {
-        "eyebrow": "Häufige Fragen",
-        "title": "Was Paare außerhalb von Stuttgart fragen",
-        "items": [
-          {
-            "q": "Kostet eine Feier weiter weg automatisch mehr?",
-            "a": "Nicht automatisch. Innerhalb von 50 km um Stuttgart ist die Anfahrt in den Paketen enthalten; darüber hinaus kommt sie als eigene, vorher sichtbare Position dazu. Der DJ-Teil selbst — Spielzeit, Technik, Moderation — ändert sich mit der Entfernung nicht."
-          },
-          {
-            "q": "Kennen Sie die Locations bei uns in der Region?",
-            "a": "Nicht jede, und das wird auch nicht behauptet. Was stattdessen passiert: Vor der Feier wird die Location technisch abgeklärt — Strom, Zufahrt, Raumaufteilung, Sperrzeiten. Bei größeren Feiern gehört im Prestige-Paket eine Begehung vorab dazu."
-          },
-          {
-            "q": "Ist bei weiter Anfahrt eine Übernachtung nötig?",
-            "a": "Bei Feiern, die bis in die Nacht gehen, und größerer Entfernung ist das die ehrlichere Lösung als eine Rückfahrt um vier Uhr morgens. Ob es nötig ist und was es kostet, steht im Angebot — nicht als Überraschung danach."
-          },
-          {
-            "q": "Gilt die mehrsprachige Moderation überall?",
-            "a": "Ja. Deutsch, Türkisch und Englisch sind kein Zusatzpaket, sondern Teil der Leistung — in Mannheim genauso wie in Stuttgart."
-          }
-        ]
-      },
-      "cta": {
-        "eyebrow": "Termin",
-        "title": "Ist Ihr Datum noch frei?",
-        "subtitle": "Datum, Ort und ungefähre Gästezahl genügen. Rückmeldung zur Verfügbarkeit in der Regel innerhalb von 24 Stunden.",
-        "button": "Termin anfragen"
-      }
+    "cities": {
+      "eyebrow": "Städte",
+      "title": "Ausführliche Seiten für die Kernregion",
+      "lead": "Für diese Städte gibt es eine eigene Seite mit Locations, Anfahrt und Fragen, die dort konkret aufkommen — keine Textbausteine mit ausgetauschtem Ortsnamen.",
+      "note": "Ihre Stadt ist nicht dabei? Das heißt nicht, dass sie zu weit weg ist — nur, dass es dafür noch keine eigene Seite gibt. Fragen Sie den Termin einfach an."
     },
+    "faq": {
+      "eyebrow": "Häufige Fragen",
+      "title": "Was Paare außerhalb von Stuttgart fragen",
+      "items": [
+        {
+          "q": "Kostet eine Feier weiter weg automatisch mehr?",
+          "a": "Nicht automatisch. Innerhalb von 50 km um Stuttgart ist die Anfahrt in den Paketen enthalten; darüber hinaus kommt sie als eigene, vorher sichtbare Position dazu. Der DJ-Teil selbst — Spielzeit, Technik, Moderation — ändert sich mit der Entfernung nicht."
+        },
+        {
+          "q": "Kennen Sie die Locations bei uns in der Region?",
+          "a": "Nicht jede, und das wird auch nicht behauptet. Was stattdessen passiert: Vor der Feier wird die Location technisch abgeklärt — Strom, Zufahrt, Raumaufteilung, Sperrzeiten. Bei größeren Feiern gehört im Prestige-Paket eine Begehung vorab dazu."
+        },
+        {
+          "q": "Ist bei weiter Anfahrt eine Übernachtung nötig?",
+          "a": "Bei Feiern, die bis in die Nacht gehen, und größerer Entfernung ist das die ehrlichere Lösung als eine Rückfahrt um vier Uhr morgens. Ob es nötig ist und was es kostet, steht im Angebot — nicht als Überraschung danach."
+        },
+        {
+          "q": "Gilt die mehrsprachige Moderation überall?",
+          "a": "Ja. Deutsch, Türkisch und Englisch sind kein Zusatzpaket, sondern Teil der Leistung — in Mannheim genauso wie in Stuttgart."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Termin",
+      "title": "Ist Ihr Datum noch frei?",
+      "subtitle": "Datum, Ort und ungefähre Gästezahl genügen. Rückmeldung zur Verfügbarkeit in der Regel innerhalb von 24 Stunden.",
+      "button": "Termin anfragen"
+    }
+  },
   "answers": {
     "hero": {
       "eyebrow": "Fragen & Antworten",
@@ -686,7 +581,6 @@
       "musik": "Musik & Repertoire",
       "technik": "Ton- & Lichttechnik",
       "tuerkisch": "Türkische & multikulturelle Hochzeiten",
-      "islamisch": "Islamische & religiös geprägte Hochzeiten",
       "location": "Location & Anreise",
       "recht": "Vertrag & Recht"
     },
@@ -1446,7 +1340,6 @@
       "kosten": "Kosten",
       "musik": "Musik",
       "tuerkische-hochzeit": "Türkische Hochzeit",
-      "islamische-hochzeit": "Islamische Hochzeit",
       "technik": "Technik",
       "recht": "Recht",
       "international": "International",

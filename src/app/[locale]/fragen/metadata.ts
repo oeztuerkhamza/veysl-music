@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { absoluteUrl, buildMetadata } from '@/lib/seo';
-import { answers, getReadyLocalesForAnswers } from '@/content/answers';
+import { getReadyLocalesForAnswers, getVisibleAnswers } from '@/content/answers';
 import type { Locale } from '@/i18n/routing';
 
 /**
@@ -29,10 +29,14 @@ export async function buildFragenMetadata(locale: Locale): Promise<Metadata> {
   return buildMetadata({
     locale,
     pathname: '/fragen',
-    // answers.meta.description enthält {count}
-    values: { count: answers.length },
-    // Ohne diese beiden Zeilen behauptete die Seite hreflang für alle sieben
-    // Sprachen und stand in allen sieben indexierbar in der Sitemap — obwohl
+    // answers.meta.description enthält {count} — gezählt wird, was dieses
+    // Locale tatsächlich sieht. Außerhalb von tr/ku/ar fehlen die neun
+    // religiös geprägten Einträge (src/content/islamic.ts); eine
+    // Meta-Description, die 40 Antworten verspricht und 31 liefert, wäre
+    // genau die Sorte Zahl, die eine Suchmaschine gegen die Seite verwendet.
+    values: { count: getVisibleAnswers(locale).length },
+    // Ohne diese beiden Zeilen behauptete die Seite hreflang für alle acht
+    // Sprachen und stand in allen acht indexierbar in der Sitemap — obwohl
     // ku/nl/fr/es Wort für Wort den deutschen Text ausliefern (der Fallback in
     // `resolveAnswerText()`). Für Besucher ist dieser Fallback richtig, für
     // Suchmaschinen ist es eine Übersetzung, die es nicht gibt: deshalb bleibt

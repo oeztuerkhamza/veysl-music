@@ -65,7 +65,7 @@ export function SocialPostCard({ post, labels, locale, className }: SocialPostCa
 
         <span
           aria-hidden="true"
-          className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+          className="absolute start-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
         >
           <PlatformIcon className="h-3.5 w-3.5" />
         </span>
@@ -79,7 +79,7 @@ export function SocialPostCard({ post, labels, locale, className }: SocialPostCa
         ) : post.type === 'carousel' ? (
           <span
             aria-hidden="true"
-            className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+            className="absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
           >
             <Images className="h-3.5 w-3.5" />
           </span>

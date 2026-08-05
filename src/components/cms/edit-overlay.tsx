@@ -256,7 +256,7 @@ export function EditOverlay() {
       <button
         type="button"
         onClick={() => setListOpen(true)}
-        className="fixed bottom-4 left-4 z-[190] inline-flex items-center gap-2 rounded-full border border-gold/60 bg-black/80 px-4 py-2 text-xs font-medium text-gold shadow-lg backdrop-blur-sm transition-colors hover:bg-black"
+        className="fixed bottom-4 start-4 z-[190] inline-flex items-center gap-2 rounded-full border border-gold/60 bg-black/80 px-4 py-2 text-xs font-medium text-gold shadow-lg backdrop-blur-sm transition-colors hover:bg-black"
       >
         <Camera className="size-3.5" />
         Bilder ({targets.length}/{slots.length})
@@ -291,7 +291,7 @@ export function EditOverlay() {
                         setListOpen(false);
                         setActive({ fullKey: slot.key, element: null });
                       }}
-                      className="flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-left text-sm text-ink transition-colors hover:bg-surface-2"
+                      className="flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-start text-sm text-ink transition-colors hover:bg-surface-2"
                     >
                       <span>
                         <span className="block">{slot.label}</span>
@@ -337,7 +337,7 @@ export function EditOverlay() {
               ref={fileRef}
               type="file"
               accept="image/jpeg,image/png,image/webp,image/avif"
-              className="mt-6 block w-full text-sm text-ink-muted file:mr-4 file:rounded-md file:border-0 file:bg-gold file:px-4 file:py-2 file:text-sm file:font-medium file:text-[var(--gold-ink)]"
+              className="mt-6 block w-full text-sm text-ink-muted file:me-4 file:rounded-md file:border-0 file:bg-gold file:px-4 file:py-2 file:text-sm file:font-medium file:text-[var(--gold-ink)]"
               onChange={(event) => {
                 const file = event.target.files?.[0];
                 if (file) void upload(file);
@@ -378,7 +378,7 @@ function SlotButton({ target, onOpen }: { target: Target; onOpen: () => void }) 
       type="button"
       onClick={onOpen}
       title={`Bild ändern — ${target.fullKey}`}
-      className="absolute right-2 top-2 z-50 inline-flex items-center gap-1.5 rounded-full border border-gold/60 bg-black/70 px-3 py-1.5 text-xs font-medium text-gold backdrop-blur-sm transition-colors hover:bg-black/85"
+      className="absolute end-2 top-2 z-50 inline-flex items-center gap-1.5 rounded-full border border-gold/60 bg-black/70 px-3 py-1.5 text-xs font-medium text-gold backdrop-blur-sm transition-colors hover:bg-black/85"
     >
       <Camera className="size-3.5" />
       Bild ändern

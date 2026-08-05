@@ -15,9 +15,8 @@ import { absoluteUrl, type StaticPathname } from '@/lib/seo';
 import { isIslamicLocale } from '@/content/islamic';
 import { breadcrumbSchema, faqPageSchema, localBusinessSchema, websiteSchema } from '@/lib/schema';
 import {
-  answers,
   ANSWER_CATEGORIES,
-  getAnswersByCategory,
+  getVisibleAnswers,
   latestAnswerUpdate,
   resolveAnswerText,
 } from '@/content/answers';
@@ -45,11 +44,16 @@ export default async function FragenPage({ params }: FragenPageProps) {
   setRequestLocale(locale);
 
   /**
-   * `/islamische-hochzeit` gibt es nur in de/tr/en; in den übrigen vier
+   * `/islamische-hochzeit` gibt es nur in tr/ku/ar; in den übrigen fünf
    * Sprachen liefert die Seite `notFound()` und ihr Label fehlt in den
    * messages. Der Korpus verlinkt sie trotzdem — hier wird der Link für
    * jene Sprachen entfernt, statt ihn im Korpus wegzulassen und damit auch
    * den drei Sprachen zu nehmen, in denen er stimmt.
+   *
+   * Greift auch nach dem Sichtbarkeitsfilter unten noch: Die Antwort, die
+   * diesen Link trägt, sitzt in `technik` und ist selbst religiös markiert —
+   * aber ein späterer, nicht-religiöser Eintrag darf jederzeit dorthin
+   * verlinken, ohne dass die deutsche Seite einen toten Link bekommt.
    */
   const reachableLinks = (links: readonly StaticPathname[] | undefined): StaticPathname[] =>
     (links ?? []).filter((href) => href !== '/islamische-hochzeit' || isIslamicLocale(locale));
@@ -61,9 +65,19 @@ export default async function FragenPage({ params }: FragenPageProps) {
   const tRoot = await getTranslations();
 
   const updatedDate = formatDate(latestAnswerUpdate(), locale);
+
+  /**
+   * The corpus as *this* locale sees it. Outside tr/ku/ar the religiously
+   * framed entries are not part of the site (src/content/islamic.ts), so they
+   * are absent from the headings, from the category nav, from the answer
+   * count in the hero and from the FAQPage schema alike — the `islamisch`
+   * category drops out on its own, because the filter below removes any
+   * category left with no items.
+   */
+  const visibleAnswers = getVisibleAnswers(locale);
   const categoriesWithItems = ANSWER_CATEGORIES.map((category) => ({
     category,
-    items: getAnswersByCategory(category),
+    items: visibleAnswers.filter((answer) => answer.category === category),
   })).filter((group) => group.items.length > 0);
 
   // Entity graph + FAQPage schema. Re-declares `websiteSchema`/`localBusinessSchema`
@@ -82,7 +96,7 @@ export default async function FragenPage({ params }: FragenPageProps) {
       { name: t('hero.title'), url: fragenUrl(locale) },
     ]),
     faqPageSchema(
-      answers.map((answer) => ({
+      visibleAnswers.map((answer) => ({
         q: resolveAnswerText(answer.q, locale),
         a: resolveAnswerText(answer.a, locale),
       })),
@@ -98,7 +112,7 @@ export default async function FragenPage({ params }: FragenPageProps) {
       <PageHero
         eyebrow={t('hero.eyebrow')}
         title={t('hero.title')}
-        subtitle={t('hero.subtitle', { count: answers.length })}
+        subtitle={t('hero.subtitle', { count: visibleAnswers.length })}
       />
 
       <Section>

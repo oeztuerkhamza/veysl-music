@@ -165,7 +165,7 @@ export default buildConfig({
   ],
   globals: [SiteSettings],
   /**
-   * Inhaltssprachen — die sieben Sprachen der Website (src/i18n/routing.ts).
+   * Inhaltssprachen — die acht Sprachen der Website (src/i18n/routing.ts).
    *
    * Mit benannten Locales statt bloßer Codes. Vorher stand im Sprachumschalter
    * des Adminpanels wörtlich `de`, `en`, `tr`, `ku`, `nl`, `fr`, `es` — wer
@@ -183,6 +183,7 @@ export default buildConfig({
       { code: 'de', label: { de: 'Deutsch', tr: 'Almanca' } },
       { code: 'tr', label: { de: 'Türkisch', tr: 'Türkçe' } },
       { code: 'ku', label: { de: 'Kurdisch (Kurmancî)', tr: 'Kürtçe (Kurmancî)' } },
+      { code: 'ar', label: { de: 'Arabisch', tr: 'Arapça' } },
       { code: 'en', label: { de: 'Englisch', tr: 'İngilizce' } },
       { code: 'nl', label: { de: 'Niederländisch', tr: 'Felemenkçe' } },
       { code: 'fr', label: { de: 'Französisch', tr: 'Fransızca' } },

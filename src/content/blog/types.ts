@@ -48,16 +48,21 @@ import type { StaticPathname } from '@/lib/seo';
  * else, in the index, in hreflang and in the sitemap alike. That is what makes
  * it safe to open nl/fr/es before all seventeen posts are done.
  *
- * ⚠️ `ku` is on the list, but with exactly one article behind it today — the
- * religious-wedding guide, written on the client's explicit instruction. It
- * carries the same caveat as the Kurdish slugs in `src/i18n/routing.ts`:
- * **flagged for review by a native speaker.** The per-post gating is what
- * makes that safe to ship: `/ku/reber` shows that one article and nothing
- * else, so an unreviewed translation can never leak into a locale as if the
- * whole corpus existed there. Any further Kurmancî article is one `ku:` block
- * in the relevant post module.
+ * ⚠️ `ku` and `ar` are on the list, but with exactly one article behind each
+ * today — the religious-wedding guide, written on the client's explicit
+ * instruction. Both carry the same caveat as the Kurdish and Arabic slugs in
+ * `src/i18n/routing.ts`: **flagged for review by a native speaker.** The
+ * per-post gating is what makes that safe to ship: `/ku/reber` and
+ * `/ar/dalil` show that one article and nothing else, so an unreviewed
+ * translation can never leak into a locale as if the whole corpus existed
+ * there. Any further article is one `ku:`/`ar:` block in the relevant module.
+ *
+ * Note the asymmetry this creates with `de`/`en`/`nl`/`fr`/`es`: those five
+ * are written in every article *except* that one, which `restrictToLocales`
+ * withholds from them. A locale's article list is therefore never simply
+ * "what is translated" — always run it through `getReadyLocalesForPost()`.
  */
-export const BLOG_LOCALES = ['de', 'tr', 'en', 'nl', 'fr', 'es', 'ku'] as const;
+export const BLOG_LOCALES = ['de', 'tr', 'en', 'nl', 'fr', 'es', 'ku', 'ar'] as const;
 export type BlogLocale = (typeof BLOG_LOCALES)[number];
 
 /**
@@ -209,5 +214,28 @@ export interface BlogPost {
   relatedPosts?: string[];
   /** Only present on `type: 'recap'` posts — the fill-in-the-blank field list for `body`'s `{{TOKENS}}`. */
   templateFields?: BlogTemplateField[];
+  /**
+   * Hard ceiling on the locales this post may appear in, independent of which
+   * translations exist.
+   *
+   * Normally a post is published in exactly the languages it is written in —
+   * `getReadyLocalesForPost()` derives that from `translations`, and that is
+   * the right default. This field exists for the one case where the two come
+   * apart: a post whose translation exists but must not be shown.
+   *
+   * Today that is `islamische-hochzeit-planen`. The client's decision of
+   * 2026-08-05 (reasoned through in `src/content/islamic.ts`) keeps the
+   * religiously framed layer to tr/ku/ar, and the German, English, Dutch,
+   * French and Spanish bodies of that article were already written. Deleting
+   * them was the obvious alternative and the wrong one: `BlogTranslations`
+   * makes `de`/`tr`/`en` mandatory, so deletion would mean weakening the type
+   * for every post to encode a decision about one — and it would throw away
+   * ~3.000 Wörter fertigen Text that comes back the moment the decision does.
+   *
+   * So the text stays and the gate sits here, in one place, where
+   * `getReadyLocalesForPost()` and `resolveBlogLocale()` both read it. Index,
+   * hreflang, sitemap and the article route all narrow together.
+   */
+  restrictToLocales?: readonly BlogLocale[];
   translations: BlogTranslations;
 }

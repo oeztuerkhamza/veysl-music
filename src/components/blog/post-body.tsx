@@ -44,7 +44,7 @@ function renderBlock(block: MarkdownBlock, index: number) {
       );
     case 'ul':
       return (
-        <ul key={index} className="mt-6 list-disc space-y-2 pl-6 text-lg leading-relaxed text-ink-muted marker:text-gold">
+        <ul key={index} className="mt-6 list-disc space-y-2 ps-6 text-lg leading-relaxed text-ink-muted marker:text-gold">
           {block.items.map((item, i) => (
             <li key={i}>{renderInline(item)}</li>
           ))}
@@ -52,7 +52,7 @@ function renderBlock(block: MarkdownBlock, index: number) {
       );
     case 'ol':
       return (
-        <ol key={index} className="mt-6 list-decimal space-y-2 pl-6 text-lg leading-relaxed text-ink-muted marker:font-semibold marker:text-gold">
+        <ol key={index} className="mt-6 list-decimal space-y-2 ps-6 text-lg leading-relaxed text-ink-muted marker:font-semibold marker:text-gold">
           {block.items.map((item, i) => (
             <li key={i}>{renderInline(item)}</li>
           ))}
@@ -61,7 +61,7 @@ function renderBlock(block: MarkdownBlock, index: number) {
     case 'table':
       return (
         <div key={index} className="mt-8 overflow-x-auto rounded-lg border border-line">
-          <table className="w-full min-w-[36rem] border-collapse text-left text-sm sm:text-base">
+          <table className="w-full min-w-[36rem] border-collapse text-start text-sm sm:text-base">
             <thead>
               <tr className="border-b border-line bg-surface-2">
                 {block.header.map((cell, i) => (
@@ -87,7 +87,7 @@ function renderBlock(block: MarkdownBlock, index: number) {
       );
     case 'blockquote':
       return (
-        <blockquote key={index} className="mt-6 border-l-2 border-gold py-1 pl-4 text-lg italic leading-relaxed text-ink-muted">
+        <blockquote key={index} className="mt-6 border-s-2 border-gold py-1 ps-4 text-lg italic leading-relaxed text-ink-muted">
           {renderInline(block.text)}
         </blockquote>
       );

@@ -36,7 +36,7 @@ export function AnswerBlock({ id, question, answer, facts, links }: AnswerBlockP
       {facts && facts.length > 0 ? (
         <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-1.5">
           {facts.map((fact) => (
-            <li key={fact} className="text-sm text-ink-faint before:mr-2 before:text-gold before:content-['•']">
+            <li key={fact} className="text-sm text-ink-faint before:me-2 before:text-gold before:content-['•']">
               {fact}
             </li>
           ))}

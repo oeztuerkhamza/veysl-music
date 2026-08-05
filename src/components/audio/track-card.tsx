@@ -54,7 +54,7 @@ export function TrackCard({ mix, queue, variant = 'default', className }: TrackC
         aria-current={isCurrent ? 'true' : undefined}
         aria-label={label}
         className={cn(
-          'flex w-full items-center gap-3 rounded-md px-2 py-1.5 text-left transition-colors',
+          'flex w-full items-center gap-3 rounded-md px-2 py-1.5 text-start transition-colors',
           'hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold',
           isCurrent && 'bg-surface-2',
           disabled && 'cursor-not-allowed opacity-50',

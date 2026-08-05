@@ -52,7 +52,7 @@ export function WhatsAppFab() {
         // dieser Knopf der einzige direkte WhatsApp-Weg — deshalb bleibt er
         // dort bestehen.
         'hidden lg:flex',
-        'fixed right-4 z-50 size-14 items-center justify-center rounded-full',
+        'fixed end-4 z-50 size-14 items-center justify-center rounded-full',
         'bg-[#25D366] text-white shadow-lift transition-transform duration-300 ease-out-expo',
         'hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
         'motion-reduce:transition-none motion-reduce:hover:scale-100',

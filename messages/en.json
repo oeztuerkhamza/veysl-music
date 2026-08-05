@@ -6,7 +6,6 @@
     "weddings": "Real Weddings",
     "music": "Music",
     "process": "How It Works",
-    "islamicWedding": "Islamic wedding",
     "questions": "Questions & Answers",
     "guide": "Guide",
     "europe": "DJ in Europe",
@@ -492,178 +491,74 @@
       }
     ]
   },
-    "islamic": {
-      "meta": {
-        "title": "Islamic Wedding With a DJ — Dua, Ilahi & Party | DJ Veys",
-        "description": "Quran recitation, dua and live ilahi — then a full dance floor. One running order, one PA, one point of contact. Stuttgart and across Germany."
-      },
-      "hero": {
-        "eyebrow": "Islamic & faith-based weddings",
-        "title": "The dua and the dance floor, same evening",
-        "subtitle": "Quran recitation, dua and ilahi belong in the running order here, not in a separate booking. The celebration starts afterwards — both from one supplier, hosted in German, Turkish and English."
-      },
-      "intro": {
-        "eyebrow": "The real question",
-        "title": "Can the two actually go together?",
-        "body": "Almost every couple is handed two separate quotes at this point — one for the religious part, one for the party — and has to organise the transitions themselves. That is exactly where the evening tips over: the music is cut mid-track, nobody knows when guests are meant to sit down, and after the dua the room simply stalls. Here both are a single running order, written by the person who also runs it on the night."
-      },
-      "recitation": {
-        "eyebrow": "The difference",
-        "title": "I recite the tilawet myself",
-        "body": "The Quran recitation does not come from a recording, and not from an outside guest squeezed in between two other bookings: Veysel Durmuş recites it himself. In practice that means recitation, dua, ilahi, hosting and the DJ set all sit with one person — so the transition from the last word to the first announcement stops being a risk and becomes part of the plan."
-      },
-      "program": {
-        "eyebrow": "Building blocks",
-        "title": "What the evening is made of",
-        "lead": "Freely combinable. In the planning call we decide which of these belong to your celebration — and which explicitly do not.",
-        "optionalLabel": "Optional",
-        "items": {
-          "tilawet": {
-            "title": "Quran recitation",
-            "text": "Recited live, on its own microphone, without reverb or effects and at a markedly lower level than the dance set. Intelligibility everywhere in the room is the only goal."
-          },
-          "dua": {
-            "title": "Dua",
-            "text": "Given a fixed slot in the running order, usually before dinner or before the first dance. A bilingual announcement first, so every guest knows what is about to happen."
-          },
-          "ilahi": {
-            "title": "Ilahi — live",
-            "text": "Performed live, with saz accompaniment on request. No playback, no playlist."
-          },
-          "tsm": {
-            "title": "Türk Sanat Müziği",
-            "text": "Usually during dinner or as a calmer block between two dance rounds — also possible live on the saz rather than only off a laptop."
-          },
-          "djset": {
-            "title": "DJ set & hosting",
-            "text": "Turkish, German and international music blended rather than played in separate blocks. Hosting live in German, Turkish and English."
-          },
-          "afterparty": {
-            "title": "After-wedding party",
-            "text": "The more informal part once the official programme is over — or a separate date in a smaller circle, before or after."
-          }
+  "bw": {
+    "meta": {
+      "title": "Wedding DJ Baden-Württemberg | DJ Veys",
+      "description": "Wedding DJ across Baden-Württemberg: Stuttgart, Ludwigsburg, Esslingen, Karlsruhe, Mannheim and more. Hosted in German, Turkish and English. Travel costed transparently."
+    },
+    "hero": {
+      "eyebrow": "Baden-Württemberg",
+      "title": "Wedding DJ across Baden-Württemberg",
+      "subtitle": "From Mannheim to Reutlingen, Karlsruhe to Heilbronn — with our own sound and lighting, hosting in German, Turkish and English, and travel that appears in the quote beforehand rather than on the invoice afterwards."
+    },
+    "intro": {
+      "eyebrow": "Why this is its own question",
+      "title": "One state, very different weddings",
+      "body": "A wedding in central Stuttgart and one in the Kraichgau have little in common beyond the state: different venues, different noise curfews, different journeys, often a completely different mix of guests. What has to stay the same is the standard — the same equipment, the same preparation, the same person. That is what this page is about: not claiming to be everywhere, but explaining concretely what stays the same across distance and what changes."
+    },
+    "pillars": {
+      "eyebrow": "Across distance",
+      "title": "What the kilometres change — and what they do not",
+      "items": {
+        "travel": {
+          "title": "Travel priced before, not after",
+          "text": "Within 50 km of Stuttgart, travel is included in the packages. Beyond that it appears as its own line in the quote, before anything is signed. What does not happen: a flat fee that quietly grows at the end."
+        },
+        "equipment": {
+          "title": "The same equipment, wherever",
+          "text": "The rig travels with us — it is not assembled from local rentals. That means familiar gear and known weak points instead of a black box on the wedding day, and it is why a celebration in Mannheim runs technically the same as one in Esslingen."
+        },
+        "oneContact": {
+          "title": "One contact, not a subcontractor",
+          "text": "Whoever runs the planning call is the person behind the decks that evening. With agencies working across regions that is often not the case — you book a brand and get a freelancer you have never spoken to."
         }
-      },
-      "timeline": {
-        "eyebrow": "Example running order",
-        "title": "How an evening like this actually runs",
-        "lead": "A pattern from practice. Times, order and the length of each block shift with your venue and your guest count.",
-        "note": "This running order is an example, not an offer. Your real one comes out of the planning call and is then written into the contract.",
-        "steps": {
-          "welcome": {
-            "title": "Reception",
-            "text": "Quiet background music, guests arriving. The equipment has been up since the soundcheck."
-          },
-          "tilawet": {
-            "title": "Quran recitation",
-            "text": "The music is faded out, not cut. A bilingual announcement, then the recitation."
-          },
-          "dua": {
-            "title": "Dua",
-            "text": "Directly afterwards — same microphone, same level."
-          },
-          "dinner": {
-            "title": "Dinner",
-            "text": "Türk Sanat Müziği and calm instrumental music, kept at conversation volume."
-          },
-          "ilahi": {
-            "title": "Ilahi, live",
-            "text": "Performed live, with saz on request — this is where the evening moves from the religious part into the celebration."
-          },
-          "entrance": {
-            "title": "The couple’s entrance",
-            "text": "Announced in German and Turkish, lighting on the couple, music of your choosing."
-          },
-          "dance": {
-            "title": "Dance floor",
-            "text": "Halay, Roman Havası, current Turkish and international sets — blended, not in blocks."
-          },
-          "close": {
-            "title": "Closing",
-            "text": "Last song agreed in advance, then teardown. The time depends on the venue."
-          }
-        }
-      },
-      "faq": {
-        "eyebrow": "Common questions",
-        "title": "What couples ask at this point",
-        "more": "See all questions & answers"
-      },
-      "cta": {
-        "eyebrow": "Date",
-        "title": "Is your date still free?",
-        "subtitle": "Send us the date, the venue and a rough guest count. An answer on availability usually comes within 24 hours.",
-        "button": "Check availability"
       }
     },
-    "bw": {
-      "meta": {
-        "title": "Wedding DJ Baden-Württemberg | DJ Veys",
-        "description": "Wedding DJ across Baden-Württemberg: Stuttgart, Ludwigsburg, Esslingen, Karlsruhe, Mannheim and more. Hosted in German, Turkish and English. Travel costed transparently."
-      },
-      "hero": {
-        "eyebrow": "Baden-Württemberg",
-        "title": "Wedding DJ across Baden-Württemberg",
-        "subtitle": "From Mannheim to Reutlingen, Karlsruhe to Heilbronn — with our own sound and lighting, hosting in German, Turkish and English, and travel that appears in the quote beforehand rather than on the invoice afterwards."
-      },
-      "intro": {
-        "eyebrow": "Why this is its own question",
-        "title": "One state, very different weddings",
-        "body": "A wedding in central Stuttgart and one in the Kraichgau have little in common beyond the state: different venues, different noise curfews, different journeys, often a completely different mix of guests. What has to stay the same is the standard — the same equipment, the same preparation, the same person. That is what this page is about: not claiming to be everywhere, but explaining concretely what stays the same across distance and what changes."
-      },
-      "pillars": {
-        "eyebrow": "Across distance",
-        "title": "What the kilometres change — and what they do not",
-        "items": {
-          "travel": {
-            "title": "Travel priced before, not after",
-            "text": "Within 50 km of Stuttgart, travel is included in the packages. Beyond that it appears as its own line in the quote, before anything is signed. What does not happen: a flat fee that quietly grows at the end."
-          },
-          "equipment": {
-            "title": "The same equipment, wherever",
-            "text": "The rig travels with us — it is not assembled from local rentals. That means familiar gear and known weak points instead of a black box on the wedding day, and it is why a celebration in Mannheim runs technically the same as one in Esslingen."
-          },
-          "oneContact": {
-            "title": "One contact, not a subcontractor",
-            "text": "Whoever runs the planning call is the person behind the decks that evening. With agencies working across regions that is often not the case — you book a brand and get a freelancer you have never spoken to."
-          }
-        }
-      },
-      "cities": {
-        "eyebrow": "Cities",
-        "title": "Detailed pages for the core region",
-        "lead": "These cities have their own page covering venues, travel and the questions that actually come up there — not a template with the place name swapped out.",
-        "note": "Your town not listed? That does not mean it is too far — only that it does not have its own page yet. Just ask about the date."
-      },
-      "faq": {
-        "eyebrow": "Common questions",
-        "title": "What couples outside Stuttgart ask",
-        "items": [
-          {
-            "q": "Does a wedding further away automatically cost more?",
-            "a": "Not automatically. Within 50 km of Stuttgart travel is included in the packages; beyond that it is added as its own line, visible in advance. The DJ side itself — playing time, equipment, hosting — does not change with distance."
-          },
-          {
-            "q": "Do you know the venues in our area?",
-            "a": "Not every one, and no such claim is made. What happens instead: the venue is clarified technically before the day — power, access, room layout, curfews. For larger celebrations the Prestige package includes a walk-through in advance."
-          },
-          {
-            "q": "Is an overnight stay needed for longer journeys?",
-            "a": "For celebrations running into the night at a real distance, that is the more honest answer than a drive home at four in the morning. Whether it is needed and what it costs is in the quote, not a surprise afterwards."
-          },
-          {
-            "q": "Does the multilingual hosting apply everywhere?",
-            "a": "Yes. German, Turkish and English are not an add-on but part of the service — in Mannheim exactly as in Stuttgart."
-          }
-        ]
-      },
-      "cta": {
-        "eyebrow": "Date",
-        "title": "Is your date still free?",
-        "subtitle": "The date, the place and a rough guest count are enough. An answer on availability usually comes within 24 hours.",
-        "button": "Check availability"
-      }
+    "cities": {
+      "eyebrow": "Cities",
+      "title": "Detailed pages for the core region",
+      "lead": "These cities have their own page covering venues, travel and the questions that actually come up there — not a template with the place name swapped out.",
+      "note": "Your town not listed? That does not mean it is too far — only that it does not have its own page yet. Just ask about the date."
     },
+    "faq": {
+      "eyebrow": "Common questions",
+      "title": "What couples outside Stuttgart ask",
+      "items": [
+        {
+          "q": "Does a wedding further away automatically cost more?",
+          "a": "Not automatically. Within 50 km of Stuttgart travel is included in the packages; beyond that it is added as its own line, visible in advance. The DJ side itself — playing time, equipment, hosting — does not change with distance."
+        },
+        {
+          "q": "Do you know the venues in our area?",
+          "a": "Not every one, and no such claim is made. What happens instead: the venue is clarified technically before the day — power, access, room layout, curfews. For larger celebrations the Prestige package includes a walk-through in advance."
+        },
+        {
+          "q": "Is an overnight stay needed for longer journeys?",
+          "a": "For celebrations running into the night at a real distance, that is the more honest answer than a drive home at four in the morning. Whether it is needed and what it costs is in the quote, not a surprise afterwards."
+        },
+        {
+          "q": "Does the multilingual hosting apply everywhere?",
+          "a": "Yes. German, Turkish and English are not an add-on but part of the service — in Mannheim exactly as in Stuttgart."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Date",
+      "title": "Is your date still free?",
+      "subtitle": "The date, the place and a rough guest count are enough. An answer on availability usually comes within 24 hours.",
+      "button": "Check availability"
+    }
+  },
   "answers": {
     "hero": {
       "eyebrow": "Questions & Answers",
@@ -686,7 +581,6 @@
       "musik": "Music & Repertoire",
       "technik": "Sound & Lighting",
       "tuerkisch": "Turkish & Multicultural Weddings",
-      "islamisch": "Islamic & Faith-Based Weddings",
       "location": "Location & Travel",
       "recht": "Contract & Legal"
     },
@@ -1446,7 +1340,6 @@
       "kosten": "Cost",
       "musik": "Music",
       "tuerkische-hochzeit": "Turkish Wedding",
-      "islamische-hochzeit": "Islamic Wedding",
       "technik": "Technology",
       "recht": "Legal",
       "international": "International",

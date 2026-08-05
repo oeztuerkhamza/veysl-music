@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload';
+import { SITE_LOCALE_OPTIONS } from '../site-locales';
 import { denyAll, isAdmin } from '../access/is-admin';
 import { validateIsoDate, validateOptionalTime } from '../utils/iso-date';
 
@@ -79,7 +80,7 @@ export const Enquiries: CollectionConfig = {
       label: { de: 'Sprache der Anfrage', tr: 'Talebin dili' },
       type: 'select',
       admin: { readOnly: true, description: { de: 'Sprache, in der die Anfrage abgeschickt wurde.', tr: 'Talebin gönderildiği dil.' } },
-      options: ['de', 'en', 'tr', 'ku', 'nl', 'fr', 'es'],
+      options: [...SITE_LOCALE_OPTIONS],
     },
 
     // --- Termin & Ort --------------------------------------------------------

@@ -104,7 +104,7 @@ export function LanguageSwitcher() {
           role="menu"
           aria-label={t('language')}
           onKeyDown={onMenuKeyDown}
-          className="absolute right-0 top-full z-50 mt-2 max-h-80 min-w-[10rem] overflow-y-auto rounded-md border border-line bg-surface py-1 shadow-lift"
+          className="absolute end-0 top-full z-50 mt-2 max-h-80 min-w-[10rem] overflow-y-auto rounded-md border border-line bg-surface py-1 shadow-lift"
         >
           {routing.locales.map((item, index) => {
             const isActive = item === locale;
@@ -119,7 +119,7 @@ export function LanguageSwitcher() {
                 aria-current={isActive ? 'true' : undefined}
                 onClick={() => selectLocale(item)}
                 className={cn(
-                  'flex w-full items-center justify-between gap-3 px-4 py-2 text-left text-sm text-ink-muted transition-colors duration-300 hover:bg-surface-2 hover:text-ink',
+                  'flex w-full items-center justify-between gap-3 px-4 py-2 text-start text-sm text-ink-muted transition-colors duration-300 hover:bg-surface-2 hover:text-ink',
                   isActive && 'text-ink'
                 )}
               >

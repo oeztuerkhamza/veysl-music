@@ -4,6 +4,8 @@ import { site } from '@/content/site';
 import {
   answers,
   ANSWER_CATEGORIES,
+  getVisibleAnswers,
+  isReligiousAnswer,
   resolveAnswerText,
   latestAnswerUpdate,
   type AnswerCategory,
@@ -27,7 +29,9 @@ import {
  *   the "raw corpus" view.
  * - `?locale=xx`: returns each entry resolved to that locale (falling back
  *   to German for any entry without a translation for `xx`), as flat
- *   `question`/`answer` strings — the convenience view.
+ *   `question`/`answer` strings — the convenience view. Restricted to the
+ *   entries that locale actually publishes: outside tr/ku/ar the nine
+ *   religiously framed entries are absent, exactly as on `/fragen`.
  * - `?category=yy`: filters either shape to one category. An unknown value
  *   is ignored rather than erroring, so a probing crawler always gets a
  *   valid (if unfiltered) response.
@@ -54,7 +58,18 @@ export async function GET(request: NextRequest) {
   const locale = isKnownLocale(localeParam) ? localeParam : undefined;
   const category = isKnownCategory(categoryParam) ? categoryParam : undefined;
 
-  const filtered = category ? answers.filter((answer) => answer.category === category) : answers;
+  /**
+   * With `?locale=`, the feed must show exactly what that locale's `/fragen`
+   * shows — otherwise this endpoint becomes the back door through which the
+   * religiously framed layer reaches a German or English answer engine after
+   * it was deliberately taken off the German and English site
+   * (src/content/islamic.ts). Without `?locale=` this stays the documented
+   * "raw corpus" view and keeps every entry; the `religious` flag below tells
+   * a consumer which ones are locale-restricted rather than leaving it to be
+   * inferred from the category name.
+   */
+  const scoped = locale ? getVisibleAnswers(locale) : answers;
+  const filtered = category ? scoped.filter((answer) => answer.category === category) : scoped;
 
   const items = locale
     ? filtered.map((answer) => ({
@@ -72,10 +87,16 @@ export async function GET(request: NextRequest) {
         question: answer.q,
         answer: answer.a,
         availableLocales: authoredLocales(answer.q),
+        religious: isReligiousAnswer(answer),
         facts: answer.facts ?? [],
         related: answer.related ?? [],
         updated: answer.updated,
       }));
+
+  /** Category list narrowed to what actually has items in this response. */
+  const visibleCategories = ANSWER_CATEGORIES.filter((name) =>
+    scoped.some((answer) => answer.category === name),
+  );
 
   const body = {
     source: `${site.url}/fragen`,
@@ -85,7 +106,7 @@ export async function GET(request: NextRequest) {
     resolvedLocale: locale ?? null,
     category: category ?? null,
     count: items.length,
-    categories: ANSWER_CATEGORIES,
+    categories: visibleCategories,
     items,
   };
 

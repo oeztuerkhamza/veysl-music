@@ -140,6 +140,7 @@ export function getRecapTemplates(): BlogPost[] {
  */
 export function resolveBlogLocale(post: BlogPost, locale: Locale): BlogLocaleContent | null {
   if (!isBlogLocale(locale)) return null;
+  if (!isPostAllowedInLocale(post, locale)) return null;
   return post.translations[locale] ?? null;
 }
 
@@ -147,9 +148,27 @@ export function isBlogLocale(locale: Locale): locale is BlogLocale {
   return (BLOG_LOCALES as readonly string[]).includes(locale);
 }
 
-/** Locales this specific post actually has real content for. */
+/**
+ * Whether this post may be shown in this locale at all — the `restrictToLocales`
+ * ceiling, applied before any translation is looked at. A post without the
+ * field is unrestricted, which is every post but one; see the field's comment
+ * in `./types.ts`.
+ */
+export function isPostAllowedInLocale(post: BlogPost, locale: BlogLocale): boolean {
+  return post.restrictToLocales === undefined || post.restrictToLocales.includes(locale);
+}
+
+/**
+ * Locales this specific post actually has real content for **and** is allowed
+ * to appear in. Everything downstream — the `/ratgeber` index, hreflang, the
+ * sitemap and `generateStaticParams` for the article route — derives from
+ * this one function, so a restricted post disappears from all of them at once
+ * instead of being removed from the index and left reachable by URL.
+ */
 export function getReadyLocalesForPost(post: BlogPost): BlogLocale[] {
-  return BLOG_LOCALES.filter((locale) => post.translations[locale] !== undefined);
+  return BLOG_LOCALES.filter(
+    (locale) => post.translations[locale] !== undefined && isPostAllowedInLocale(post, locale),
+  );
 }
 
 /** Most recent `updatedAt` across the whole corpus — ISO strings sort lexicographically. */

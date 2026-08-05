@@ -40,13 +40,13 @@ kapandı; site teknik olarak yayına hazır, yasal olarak değil.
 ## A.2 Bitmiş
 
 - [x] Next.js 16 + React 19 + TS + Tailwind v4
-- [x] **7 dil** (de/tr/ku/en/nl/fr/es), her dile özel SEO slug'ları
+- [x] **8 dil** (de/tr/ku/ar/en/nl/fr/es), her dile özel SEO slug'ları — Arapça sağdan sola (RTL) ve kendi font çiftiyle
 - [x] hreflang + x-default, otomatik dil yönlendirmesi kapalı (Googlebot Almanca ana sayfayı görsün diye)
 - [x] Design system, layout, dil seçici, tema
 - [x] Ana sayfa — WebGL hero, sıfır fotoğrafla çalışıyor
 - [x] Global audio player (waveform, sayfa geçişinde kesilmiyor)
 - [x] 3 adımlı anfrage hunisi + müsaitlik kontrolü + **lead scoring** (hot/warm/cold)
-- [x] 12 içerik sayfası × 7 dil
+- [x] 12 içerik sayfası × 8 dil (islami sayfa hariç: yalnızca tr/ku/ar)
 - [x] SEO: schema.org, sitemap, robots (AI botlarına izinli), llms.txt, PWA manifest
 - [x] **GEO cevap merkezi** `/fragen` — 40 soru + `/api/faq`
 - [x] 7 şehir landing sayfası (Karlsruhe, Mannheim, Heilbronn, Reutlingen, Pforzheim, Esslingen, Böblingen)

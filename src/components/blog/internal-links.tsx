@@ -3,7 +3,8 @@ import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 import type { StaticPathname } from '@/lib/seo';
-import { getAnswerById, resolveAnswerText } from '@/content/answers';
+import { getAnswerById, isReligiousAnswer, resolveAnswerText } from '@/content/answers';
+import { isIslamicLocale } from '@/content/islamic';
 import { getCityBySlug } from '@/content/cities';
 import { BLOG_ROUTE_LABEL_KEY } from './route-labels';
 
@@ -58,10 +59,22 @@ export interface RelatedAnswerLinksProps {
   title: string;
 }
 
-/** `post.relatedAnswers` — GEO corpus entries from `@/content/answers`, deep-linked to their anchor on `/fragen` (rendered unconditionally there, so the anchor always resolves). */
+/**
+ * `post.relatedAnswers` — GEO corpus entries from `@/content/answers`,
+ * deep-linked to their anchor on `/fragen`.
+ *
+ * The anchor has to exist for the link to be worth anything, and since the
+ * religiously framed entries render only in tr/ku/ar (src/content/islamic.ts)
+ * they are dropped everywhere else. Without this guard a German article
+ * linking to `after-wedding-party` would point at `/fragen#after-wedding-party`
+ * and land the reader at the top of a page that never mentions it.
+ */
 export function RelatedAnswerLinks({ ids, locale, title }: RelatedAnswerLinksProps) {
   if (!ids || ids.length === 0) return null;
-  const answers = ids.map((id) => getAnswerById(id)).filter((answer): answer is NonNullable<ReturnType<typeof getAnswerById>> => Boolean(answer));
+  const answers = ids
+    .map((id) => getAnswerById(id))
+    .filter((answer): answer is NonNullable<ReturnType<typeof getAnswerById>> => Boolean(answer))
+    .filter((answer) => isIslamicLocale(locale) || !isReligiousAnswer(answer));
   if (answers.length === 0) return null;
 
   return (

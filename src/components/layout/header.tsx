@@ -29,13 +29,15 @@ import { ThemeToggle } from './theme-toggle';
 const NAV_ITEMS = [
   { href: '/hochzeit-events', key: 'services' },
   /**
-   * Direkt hinter den allgemeinen Leistungen, nicht ans Ende: Das ist der
-   * Bereich mit dem klarsten eigenen Profil und der schwächsten Konkurrenz im
-   * deutschsprachigen Markt (siehe docs/SEO-KEYWORD-MAP.md §5). Solange er nur
-   * im Footer stand, las er sich wie eine Fußnote unter „Hochzeit & Events" —
-   * genau das Gegenteil eines eigenständigen Angebots.
+   * Direkt hinter den allgemeinen Leistungen, nicht ans Ende: Wo dieser
+   * Eintrag überhaupt erscheint, ist er der Bereich mit dem klarsten eigenen
+   * Profil. Solange er nur im Footer stand, las er sich wie eine Fußnote unter
+   * „Hochzeit & Events" — genau das Gegenteil eines eigenständigen Angebots.
    *
-   * `locales` blendet ihn dort aus, wo es die Seite nicht gibt (ku).
+   * `locales` blendet ihn überall dort aus, wo es die Seite nicht gibt — seit
+   * der Kundenentscheidung vom 2026-08-05 also in fünf von acht Sprachen,
+   * Deutsch eingeschlossen. Er erscheint nur noch in tr/ku/ar; die Begründung
+   * steht in `ISLAMIC_SUPPORTED_LOCALES` (src/content/islamic.ts).
    */
   { href: '/islamische-hochzeit', key: 'islamicWedding', locales: ISLAMIC_SUPPORTED_LOCALES },
   { href: '/pakete', key: 'packages' },

@@ -108,7 +108,7 @@ export async function Hero() {
               the headline block and gives the hero its asymmetry; below `lg`
               it becomes a horizontal rail rather than disappearing. */}
           <Reveal delay={0.4} y={24} className="lg:col-span-4 lg:self-end">
-            <dl className="flex gap-8 border-t border-line pt-6 sm:gap-12 lg:flex-col lg:gap-7 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <dl className="flex gap-8 border-t border-line pt-6 sm:gap-12 lg:flex-col lg:gap-7 lg:border-s lg:border-t-0 lg:ps-8 lg:pt-0">
               {/* `dt` before `dd` in the DOM, reversed visually with
                   flex-col-reverse. HTML requires the term to precede its
                   definition; emitting the number first would have screen
