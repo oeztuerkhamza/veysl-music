@@ -29,10 +29,11 @@ interface PageProps {
 }
 
 /**
- * Only the three locales the copy actually exists in. Same gate as the Europe
- * hub: `[locale]/layout.tsx` still enumerates all seven, so without this the
- * build would try to render this page for ku/nl/fr/es and crash on the
- * missing `islamic` namespace.
+ * Only tr/ku/ar — the three locales this page is published in at all, per the
+ * client decision reasoned through in `src/content/islamic.ts`. Same gate as
+ * the Europe hub: `[locale]/layout.tsx` still enumerates all eight, so without
+ * this the build would try to render the page for de/en/nl/fr/es and crash on
+ * the `islamic` namespace, which those five message files no longer carry.
  */
 export function generateStaticParams() {
   return ISLAMIC_SUPPORTED_LOCALES.map((locale) => ({ locale }));
@@ -168,7 +169,7 @@ export default async function IslamischeHochzeitPage({ params }: PageProps) {
                   <h3 className="mt-4 font-display text-xl text-ink">
                     {copy.title}
                     {item.optional ? (
-                      <span className="ml-2 align-middle text-xs uppercase tracking-wider text-ink-faint">
+                      <span className="ms-2 align-middle text-xs uppercase tracking-wider text-ink-faint">
                         {t('program.optionalLabel')}
                       </span>
                     ) : null}
@@ -186,11 +187,11 @@ export default async function IslamischeHochzeitPage({ params }: PageProps) {
           <Reveal>
             <SectionHeading eyebrow={t('timeline.eyebrow')} title={t('timeline.title')} lead={t('timeline.lead')} />
           </Reveal>
-          <ol className="mt-12 border-l border-line">
+          <ol className="mt-12 border-s border-line">
             {islamicTimeline.map((step) => {
               const copy = timelineCopy[step.id];
               return (
-                <li key={step.id} className="relative py-6 pl-8 first:pt-0 last:pb-0">
+                <li key={step.id} className="relative py-6 ps-8 first:pt-0 last:pb-0">
                   <span
                     className="absolute -left-[5px] top-7 size-[9px] rounded-full bg-gold first:top-1"
                     aria-hidden
@@ -263,7 +264,7 @@ export default async function IslamischeHochzeitPage({ params }: PageProps) {
                   Seite ausschließlich im Anfrageformular — wer überzeugt war,
                   aber vor dem Formular erst wissen wollte, was ein Paket
                   überhaupt umfasst, hatte von dieser Seite aus keinen Pfad
-                  dorthin. Beschriftet mit `nav.packages`, das in allen sieben
+                  dorthin. Beschriftet mit `nav.packages`, das in allen acht
                   Sprachen bereits übersetzt ist: kein neuer Copy-String für
                   einen Link, den der Header ohnehin so benennt. */}
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">

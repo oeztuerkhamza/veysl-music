@@ -18,13 +18,13 @@ interface RouteSeoConfig {
 
 /**
  * Every plain static route from `routing.pathnames` that is available in all
- * seven locales AND indexable gets an explicit priority/changeFrequency here.
+ * eight locales AND indexable gets an explicit priority/changeFrequency here.
  * Typed as `Record<Exclude<StaticPathname, …the ones handled separately…>, …>`
  * so a new route added to routing.ts fails to compile here until it's
  * classified — the sitemap can't silently miss it.
  *
  * Five routes are excluded, all on purpose:
- * - `/hochzeits-dj-europa` (the Europe reach hub): NOT available in all seven
+ * - `/hochzeits-dj-europa` (the Europe reach hub): NOT available in all eight
  *   locales, unlike every other entry here — see `HUB_ROUTE_CONFIG` and
  *   `loadRegionsData()` below.
  * - `/ratgeber` (blog index): real content in `BLOG_LOCALES` (de/tr/en) only;
@@ -33,9 +33,10 @@ interface RouteSeoConfig {
  * - `/fragen` (GEO answer hub): same shape — the corpus is authored in de/tr/en
  *   and falls back to German elsewhere, so `buildFragenMetadata()` marks the
  *   other four `noindex`. Emitted per-locale below, not here.
- * - `/islamische-hochzeit`: written in de/tr/en only (`ISLAMIC_SUPPORTED_LOCALES`);
- *   the page itself `notFound()`s for the other four rather than shipping a
- *   machine-translated shell. Emitted per-locale below, not here.
+ * - `/islamische-hochzeit`: published in tr/ku/ar only (`ISLAMIC_SUPPORTED_LOCALES`);
+ *   the page itself `notFound()`s for the other five — German included —
+ *   because the religiously framed layer is deliberately not part of those
+ *   sites at all. Emitted per-locale below, not here.
  * - `/hochzeits-dj-baden-wuerttemberg`: same shape, de/tr/en only
  *   (`BW_SUPPORTED_LOCALES`). A state-level page exists to rank for a
  *   German-language query; a French edition of it competes for nothing.
@@ -124,7 +125,7 @@ interface LocalizedEntry {
    * leave this unset.
    */
   slugByLocale?: Partial<Record<Locale, string>>;
-  /** Locales this specific entry actually has real, translated content for — never a blanket fallback to all seven. */
+  /** Locales this specific entry actually has real, translated content for — never a blanket fallback to all eight. */
   locales: readonly Locale[];
   /** ISO date of the last substantive content edit, when the content module tracks one. See the `lastmod` policy below. */
   lastModified?: string;
@@ -169,7 +170,7 @@ function slugFor(entry: LocalizedEntry, locale: Locale): string {
  *   only genuinely published pages are considered.
  * - `getReadyLocalesForCity()` computes, per city, which locales actually
  *   have real intro/angle/FAQ prose (`hasCityProse()`) — currently de/tr/en
- *   for every city, NOT all seven. This is what stops the sitemap from
+ *   for every city, NOT all eight. This is what stops the sitemap from
  *   asserting hreflang/URLs for locale variants that 404.
  *
  * Wrapped in a dynamic import + try/catch: if that module is mid-edit in a
@@ -197,7 +198,7 @@ interface RegionsData {
 /**
  * `src/content/regions.ts` (owned by the regions agent) is the source of
  * truth for both: the hub's restricted locale set (`HUB_SUPPORTED_LOCALES` —
- * only de/en/nl today, NOT all seven, because the `regions` message
+ * only de/en/nl today, NOT all eight, because the `regions` message
  * namespace hasn't synced to tr/ku/fr/es yet) and each country page's ready
  * locales (the `regions` export's `.locales`, already computed via
  * `getReadyLocalesForRegion()` inside that module). Same guard as cities.
@@ -221,7 +222,7 @@ async function loadRegionsData(): Promise<RegionsData> {
  * finished guide articles. `getReadyLocalesForPost()` returns exactly the
  * locales that post has real translated content for — today always
  * `['de','tr','en']` since ku/fr/es are an explicit backlog (`BLOG_LOCALES`
- * in src/content/blog/types.ts), never all seven. Same guard as cities/regions.
+ * in src/content/blog/types.ts), never all eight. Same guard as cities/regions.
  */
 async function loadPublishedBlogPosts(): Promise<LocalizedEntry[]> {
   try {
@@ -246,7 +247,7 @@ async function loadPublishedBlogPosts(): Promise<LocalizedEntry[]> {
 
 /**
  * The blog INDEX's own locale set — `BLOG_LOCALES` (de/tr/en). Distinct from
- * the per-article sets above: `/ratgeber` renders in all seven locales because
+ * the per-article sets above: `/ratgeber` renders in all eight locales because
  * `routing.pathnames` registers a slug for each, but the four without articles
  * render `<BlogEmptyState>` and `buildRatgeberIndexMetadata()` marks them
  * `noindex`. Listing those four here (which this file used to do, looping over
@@ -268,7 +269,7 @@ async function loadBlogIndexLocales(): Promise<{ locales: readonly Locale[]; las
 /**
  * The GEO hub's own locale set — the locales the answer corpus is actually
  * authored in (de/tr/en today), computed from the data by
- * `getReadyLocalesForAnswers()`. `/fragen` renders in all seven locales and
+ * `getReadyLocalesForAnswers()`. `/fragen` renders in all eight locales and
  * stays linked from the nav everywhere, but ku/nl/fr/es serve the German
  * original via `resolveAnswerText()`'s fallback, so `buildFragenMetadata()`
  * marks them `noindex` and drops them from hreflang. Reading the same function
@@ -342,7 +343,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Islamische Hochzeit — de/tr/en only, same rule as the answer hub above.
+  // Islamische Hochzeit — tr/ku/ar only, same rule as the answer hub above.
   {
     const languages = buildLanguages(
       (locale) => absoluteUrl('/islamische-hochzeit', locale),
@@ -358,7 +359,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // City cluster — one entry per (city, ready locale), never a fallback to all seven.
+  // City cluster — one entry per (city, ready locale), never a fallback to all eight.
   const cities = await loadPublishedCities();
   for (const city of cities) {
     if (city.locales.length === 0) continue;

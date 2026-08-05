@@ -162,6 +162,21 @@ const CUSTOMER_REPLY: Record<
       site.owner,
     ].join('\n'),
   }),
+  ar: ({ name, dateLabel, whatsappUrl }) => ({
+    subject: `وصلنا طلبك إلى ${site.name}`,
+    text: [
+      `مرحباً ${name}،`,
+      '',
+      `شكراً لطلبك بخصوص موعدك بتاريخ ${dateLabel}.`,
+      `ستصلك ردٌّ شخصي من ${site.owner} خلال 24 ساعة.`,
+      '',
+      `الأسرع عبر واتساب: ${whatsappUrl}`,
+      `أو عبر الهاتف: ${site.contact.phone}`,
+      '',
+      'مع أطيب التحيات',
+      site.owner,
+    ].join('\n'),
+  }),
   tr: ({ name, dateLabel, whatsappUrl }) => ({
     subject: `${site.name} talebiniz ulaştı`,
     text: [

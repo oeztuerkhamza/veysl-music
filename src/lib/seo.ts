@@ -144,7 +144,7 @@ interface BuildMetadataBase<P extends AppPathname> {
    * Restricts hreflang/OG alternates to locales that actually have real,
    * translated content for THIS page. Defaults to every configured locale
    * (`routing.locales`) — override this for pages (city/region/blog clusters
-   * in particular) that don't ship all seven languages yet. Asserting
+   * in particular) that don't ship all eight languages yet. Asserting
    * hreflang for a locale with thin or missing content is worse than
    * omitting it.
    */
@@ -185,7 +185,7 @@ export async function buildMetadata<P extends DynamicPathname>(
      *
      * Without this, hreflang substituted ONE set of params into every locale's
      * URL — correct for cities and countries (`karlsruhe` is `karlsruhe` in
-     * all seven) but wrong for blog articles once they gained localized slugs:
+     * all eight) but wrong for blog articles once they gained localized slugs:
      * the Turkish alternate would have pointed at
      * `/tr/rehber/<german-slug>`, a URL that no longer exists. Any locale
      * missing from this map falls back to `params`, so existing callers keep

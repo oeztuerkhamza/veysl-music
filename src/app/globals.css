@@ -288,7 +288,7 @@
   .skip-link {
     position: absolute;
     z-index: 100;
-    left: 1rem;
+    inset-inline-start: 1rem;
     top: -4rem;
     padding: 0.75rem 1.25rem;
     border-radius: var(--radius-md);

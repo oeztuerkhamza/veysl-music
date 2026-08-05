@@ -11,8 +11,8 @@ import { WhatsAppFab } from '@/components/booking/whatsapp-fab';
 import { CmsEditLayer } from '@/components/cms/edit-layer';
 import { WhatsappModalProvider } from '@/components/whatsapp/whatsapp-modal-provider';
 import { getPathname } from '@/i18n/navigation';
-import { localeTags, ogLocales, routing, type Locale } from '@/i18n/routing';
-import { fontDisplay, fontSans } from '@/lib/fonts';
+import { localeDirs, localeTags, ogLocales, routing, type Locale } from '@/i18n/routing';
+import { fontDisplay, fontDisplayArabic, fontSans, fontSansArabic } from '@/lib/fonts';
 import { localized } from '@/lib/utils';
 import { site } from '@/content/site';
 import { getSite } from '@/content/get-site';
@@ -145,11 +145,24 @@ export default async function LocaleLayout({
   const resolvedSite = await getSite();
   const whatsappNumber = resolvedSite.contact.whatsapp;
 
+  /**
+   * Schreibrichtung und Schriftpaar hängen an derselben Entscheidung. Beide
+   * Paare belegen dieselben CSS-Variablen (`--font-display`/`--font-sans`,
+   * siehe `@/lib/fonts`), sodass hier genau eines im `className` landet — eine
+   * deutsche Seite lädt damit keine arabischen Schriftdateien und umgekehrt.
+   */
+  const dir = localeDirs[locale];
+  const fontVariables =
+    dir === 'rtl'
+      ? `${fontDisplayArabic.variable} ${fontSansArabic.variable}`
+      : `${fontDisplay.variable} ${fontSans.variable}`;
+
   return (
     <html
       lang={localeTags[locale]}
+      dir={dir}
       suppressHydrationWarning
-      className={`${fontDisplay.variable} ${fontSans.variable}`}
+      className={fontVariables}
     >
       <body className="flex min-h-dvh flex-col bg-bg font-sans text-ink antialiased">
         <NextIntlClientProvider messages={messages}>

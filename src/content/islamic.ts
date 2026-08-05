@@ -5,7 +5,7 @@
  * Überschriften, Absätze und Programmpunkte kommen ausschließlich aus
  * `messages/*.json` → Namespace `islamic`. Diese Datei liefert nur stabile,
  * sprachneutrale IDs und die Reihenfolge — damit ein Umbenennen im Deutschen
- * keine sechs anderen Sprachdateien kaputt macht.
+ * keine sieben anderen Sprachdateien kaputt macht.
  *
  * Faktenlage: Der Kunde hat am 2026-07-30 bestätigt, dass Kur’an-Rezitation,
  * Dua, İlahi (live), Türk Sanat Müziği und eine optionale After-Wedding-Party
@@ -17,30 +17,44 @@
 import type { Locale } from '@/i18n/routing';
 
 /**
- * Die Sprachen, in denen diese Seite vollständig vorliegt — Seitentexte
- * (`messages/*.json` → `islamic`) **und** die sechs Antworten der Kategorie
- * `islamisch`, die den FAQ-Block der Seite speisen. Beides muss zusammen
- * übersetzt sein: der FAQ-Block liest über `resolveAnswerText()`, das ohne
- * Übersetzung auf Deutsch zurückfällt — eine niederländische Seite mit
- * deutschem FAQ-Abschnitt wäre schlechter als gar keine.
+ * Die Sprachen, in denen die religiös geprägte Ebene der Website überhaupt
+ * erscheint — die Landingpage `/islamische-hochzeit`, ihr Navigationseintrag,
+ * die Antwortkategorie `islamisch` auf `/fragen` und der Ratgeber-Artikel
+ * `islamische-hochzeit-planen`.
  *
- * nl/fr/es kamen dazu, als klar wurde, wie schief die Prioritäten lagen: der
- * Ratgeber war für diese drei Sprachen bereits geöffnet, ausgerechnet die
- * religiöse Seite nicht. In den Niederlanden und Frankreich lebt eine große
- * muslimische Community — für die ist genau diese Seite das relevanteste
- * Dokument der ganzen Domain, und sie ist mit ~700 Wörtern billiger zu
- * übersetzen als jeder einzelne Ratgeber-Artikel.
+ * **Türkisch, Kurdisch, Arabisch. Sonst nichts.**
  *
- * ⚠️ `ku` ist auf ausdrücklichen Wunsch des Kunden dazugekommen und trägt
- * denselben Vorbehalt wie die kurdischen Slugs in `src/i18n/routing.ts`:
- * **zur Prüfung durch einen Muttersprachler markiert.** Der Vorbehalt ist
- * bewusst hier notiert und nicht stillschweigend übergangen — die religiösen
- * Begriffe selbst (Tilawet, Dua, Îlahî) sind arabische Lehnwörter und in
- * kurdischsprachigen muslimischen Gemeinden identisch gebräuchlich, das Risiko
- * liegt im Satzbau, nicht in der Terminologie. Bis zur Freigabe gilt: lieber
- * eine geprüfte Korrektur als eine stillschweigende Annahme, dass es passt.
+ * Das ist eine Kundenentscheidung vom 2026-08-05 und kehrt die vorherige
+ * Richtung um: Die Liste stand auf allen sieben Sprachen, Deutsch als
+ * Hauptmarkt eingeschlossen. Der Kunde will die religiöse Positionierung
+ * ausdrücklich **nicht** in den deutschen Auftritt mischen — und in derselben
+ * Begründung auch nicht in die englische, niederländische, französische oder
+ * spanische. Die Zielgruppe dieser Seite spricht Türkisch, Kurdisch oder
+ * Arabisch; für alle anderen bleibt die Website ein reiner Hochzeits-DJ ohne
+ * religiöses Profil.
+ *
+ * Was das kostet, ist bewusst in Kauf genommen und soll hier nicht beschönigt
+ * werden: Die deutschsprachige Suchintention „islamische Hochzeit DJ“ war laut
+ * docs/SEO-KEYWORD-MAP.md §5 die einzige im ganzen Keyword-Map, für die es im
+ * deutschen Markt praktisch kein Angebot gibt — ein unbesetztes Feld, das
+ * dieses Projekt hätte besetzen können. Diese Chance wird hier abgegeben. Der
+ * Text dafür bleibt vollständig im Repository (`messages/de.json` behält den
+ * `islamic`-Namensraum nicht, wohl aber der Ratgeber-Artikel seinen deutschen
+ * Body), sodass die Entscheidung ohne Neuschreiben rückgängig zu machen ist:
+ * Es genügt, hier ein Locale wieder einzutragen.
+ *
+ * ⚠️ `ku` steht auf ausdrücklichen Kundenwunsch hier und trägt denselben
+ * Vorbehalt wie die kurdischen Slugs in `src/i18n/routing.ts`: **zur Prüfung
+ * durch einen Muttersprachler markiert.** Die religiösen Begriffe selbst
+ * (Tilawet, Dua, Îlahî) sind arabische Lehnwörter und in kurdischsprachigen
+ * muslimischen Gemeinden identisch gebräuchlich — das Risiko liegt im Satzbau,
+ * nicht in der Terminologie.
+ *
+ * ⚠️ `ar` ist mit derselben Entscheidung neu dazugekommen und trägt den
+ * Vorbehalt ebenfalls. Für Arabisch ist diese Seite nicht eine Seite unter
+ * vielen, sondern der Grund, warum es das Locale gibt.
  */
-export const ISLAMIC_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'tr', 'en', 'nl', 'fr', 'es', 'ku'];
+export const ISLAMIC_SUPPORTED_LOCALES: readonly Locale[] = ['tr', 'ku', 'ar'];
 
 export function isIslamicLocale(locale: Locale): boolean {
   return ISLAMIC_SUPPORTED_LOCALES.includes(locale);

@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload';
+import { SITE_LOCALE_OPTIONS } from '../site-locales';
 import { denyAll, isAdmin } from '../access/is-admin';
 import { validateIsoDate } from '../utils/iso-date';
 
@@ -66,7 +67,7 @@ export const WhatsappLeads: CollectionConfig = {
       name: 'locale', label: { de: 'Sprache', tr: 'Dil' },
       type: 'select',
       admin: { readOnly: true },
-      options: ['de', 'en', 'tr', 'ku', 'nl', 'fr', 'es'],
+      options: [...SITE_LOCALE_OPTIONS],
     },
     {
       name: 'eventType', label: { de: 'Art der Feier', tr: 'Etkinlik türü' },

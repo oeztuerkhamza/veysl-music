@@ -133,7 +133,7 @@ export function GlobalPlayer() {
             <p className="truncate font-display text-base text-ink sm:text-lg">{current.title}</p>
             <p className="truncate text-xs uppercase tracking-[0.15em] text-gold">
               {tMoments(current.moment)}
-              {disabled && <span className="ml-2 normal-case tracking-normal text-ink-faint">· {t('comingSoon')}</span>}
+              {disabled && <span className="ms-2 normal-case tracking-normal text-ink-faint">· {t('comingSoon')}</span>}
             </p>
           </div>
 
@@ -197,7 +197,7 @@ export function GlobalPlayer() {
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="w-9 shrink-0 text-right text-xs tabular-nums text-ink-faint">{formatTime(position)}</span>
+          <span className="w-9 shrink-0 text-end text-xs tabular-nums text-ink-faint">{formatTime(position)}</span>
           <div
             id={progressId}
             role="slider"
@@ -212,7 +212,7 @@ export function GlobalPlayer() {
             className="group relative h-1.5 flex-1 cursor-pointer rounded-full bg-line focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
           >
             <div
-              className="absolute inset-y-0 left-0 rounded-full bg-gold motion-reduce:transition-none"
+              className="absolute inset-y-0 start-0 rounded-full bg-gold motion-reduce:transition-none"
               style={{ width: `${progressPercent}%` }}
             />
           </div>

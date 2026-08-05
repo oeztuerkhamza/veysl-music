@@ -27,6 +27,7 @@
  */
 
 import { locales, type Locale } from '@/i18n/routing';
+import { isIslamicLocale } from '@/content/islamic';
 import type { StaticPathname } from '@/lib/seo';
 
 export const ANSWER_CATEGORIES = [
@@ -77,6 +78,24 @@ export interface Answer {
    * relevant service/package/city pages from within answers".
    */
   links?: StaticPathname[];
+  /**
+   * Marks an entry as part of the religiously-framed layer, for entries that
+   * do **not** sit in the `islamisch` category.
+   *
+   * Three answers carry religious content while genuinely belonging to another
+   * category: `after-wedding-party` (ablauf), `tsm-live` (musik) and
+   * `recitation-sound` (technik) — the "drei Ergänzungen" the `U_ISLAM`
+   * comment above already names. They are not miscategorised: a question about
+   * microphone technique for a recitation is a technical question, and moving
+   * it into `islamisch` would hide it from the technical cluster for the very
+   * readers it was written for.
+   *
+   * So visibility is expressed here instead of through the category. Anything
+   * where `isReligiousAnswer()` is true renders only in
+   * `ISLAMIC_SUPPORTED_LOCALES` (src/content/islamic.ts) — see
+   * `getVisibleAnswers()`.
+   */
+  religious?: boolean;
   /** ISO date (YYYY-MM-DD). Surfaced as "zuletzt aktualisiert" on /fragen — freshness is a citation signal for answer engines. */
   updated: string;
 }
@@ -434,6 +453,7 @@ export const answers: Answer[] = [
     },
     related: ['run-of-show', 'personal-meeting'],
     links: ['/hochzeit-events', '/anfrage'],
+    religious: true,
     updated: U_ISLAM,
   },
 
@@ -542,6 +562,7 @@ export const answers: Answer[] = [
     },
     related: ['ilahi-live', 'orchestra-vs-dj', 'halay-repertoire'],
     links: ['/hochzeit-events'],
+    religious: true,
     updated: U_ISLAM,
   },
 
@@ -654,6 +675,7 @@ export const answers: Answer[] = [
     },
     related: ['quran-and-modern-party', 'dua-in-program'],
     links: ['/islamische-hochzeit', '/hochzeit-events'],
+    religious: true,
     updated: U_ISLAM,
   },
 
@@ -1062,10 +1084,46 @@ export function resolveAnswerText(text: LocalizedAnswerText, locale: Locale): st
 }
 
 /**
+ * True for every entry belonging to the religiously-framed layer — the whole
+ * `islamisch` category plus the three `religious: true` entries that live in
+ * other categories (see the field's own comment).
+ */
+export function isReligiousAnswer(answer: Answer): boolean {
+  return answer.category === 'islamisch' || answer.religious === true;
+}
+
+/**
+ * The corpus as one locale may actually see it.
+ *
+ * Outside `ISLAMIC_SUPPORTED_LOCALES` (tr/ku/ar) the religiously-framed layer
+ * is not part of the site at all — a client decision, reasoned through in
+ * src/content/islamic.ts. `/fragen` renders from this function rather than
+ * from `answers` directly, so the German, English, Dutch, French and Spanish
+ * answer hubs simply do not contain those nine entries, and the `islamisch`
+ * category heading disappears with them (the page drops empty categories).
+ *
+ * This is the one place that filtering happens. `answers` itself stays
+ * complete on purpose: the Islamic landing page reads its FAQ block straight
+ * out of `getAnswersByCategory('islamisch')`, and it only ever renders in a
+ * locale where all of this is visible anyway.
+ */
+export function getVisibleAnswers(locale: Locale): Answer[] {
+  if (isIslamicLocale(locale)) return answers;
+  return answers.filter((answer) => !isReligiousAnswer(answer));
+}
+
+/**
  * The locales this corpus is genuinely authored in — a locale counts only if
- * EVERY entry has both its question and its answer written in it. Today that
- * is `de`/`tr`/`en` (40 entries each); `ku`/`nl`/`fr`/`es` have zero and are
- * served the German original through `resolveAnswerText()` above.
+ * EVERY entry **that locale can see** has both its question and its answer
+ * written in it. Today that is `de`/`tr`/`en` (40 entries each);
+ * `ku`/`nl`/`fr`/`es` have zero and are served the German original through
+ * `resolveAnswerText()` above.
+ *
+ * Coverage is measured against `getVisibleAnswers()`, not the raw corpus:
+ * a locale that never shows the religious layer must not be held to
+ * translating it. Measuring against all 40 would mean German — which hides
+ * nine of them — could still be blocked from "ready" by an untranslated
+ * answer no German visitor is ever served.
  *
  * That fallback is the right behaviour for a visitor — a real German answer
  * beats a machine-translated one — but it must never be dressed up as a
@@ -1083,7 +1141,7 @@ export function resolveAnswerText(text: LocalizedAnswerText, locale: Locale): st
  */
 export function getReadyLocalesForAnswers(): Locale[] {
   const hasFullCoverage = (locale: Locale): boolean =>
-    answers.every((answer) => {
+    getVisibleAnswers(locale).every((answer) => {
       const q = (answer.q as Partial<Record<Locale, string>>)[locale];
       const a = (answer.a as Partial<Record<Locale, string>>)[locale];
       return Boolean(q?.trim()) && Boolean(a?.trim());

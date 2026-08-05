@@ -106,6 +106,20 @@ const CONTACT_REPLY: Record<Locale, (args: { name: string }) => EmailContent> = 
       site.owner,
     ].join('\n'),
   }),
+  ar: ({ name }) => ({
+    subject: `وصلتنا رسالتك إلى ${site.name}`,
+    text: [
+      `مرحباً ${name}،`,
+      '',
+      'شكراً لرسالتك. سنعاود التواصل معك شخصياً في أقرب وقت ممكن.',
+      '',
+      `الأسرع عبر واتساب: https://wa.me/${site.contact.whatsapp}`,
+      `أو عبر الهاتف: ${site.contact.phone}`,
+      '',
+      'مع أطيب التحيات',
+      site.owner,
+    ].join('\n'),
+  }),
   fr: ({ name }) => ({
     subject: `Votre message à ${site.name} est bien arrivé`,
     text: [

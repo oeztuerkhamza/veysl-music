@@ -21,7 +21,14 @@ interface PageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-/** Published guides that actually have content for `locale` — `resolveBlogLocale` returns `null` for the untranslated locales (ku/nl/fr/es today), never machine-translated filler. */
+/**
+ * Published guides this locale actually gets. `resolveBlogLocale` returns
+ * `null` both for a locale a post was never translated into (never
+ * machine-translated filler) and for one a post is withheld from — which is
+ * how the religious-wedding guide stays off the German, English, Dutch,
+ * French and Spanish index while remaining fully written (see
+ * `restrictToLocales` in `src/content/blog/types.ts`).
+ */
 function postsForLocale(locale: Locale) {
   return getPublishedGuides().filter((post) => resolveBlogLocale(post, locale) !== null);
 }

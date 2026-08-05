@@ -108,15 +108,15 @@ export interface Config {
     | ('false' | 'none' | 'null')
     | false
     | null
-    | ('de' | 'tr' | 'ku' | 'en' | 'nl' | 'fr' | 'es')
-    | ('de' | 'tr' | 'ku' | 'en' | 'nl' | 'fr' | 'es')[];
+    | ('de' | 'tr' | 'ku' | 'ar' | 'en' | 'nl' | 'fr' | 'es')
+    | ('de' | 'tr' | 'ku' | 'ar' | 'en' | 'nl' | 'fr' | 'es')[];
   globals: {
     'site-settings': SiteSetting;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
-  locale: 'de' | 'tr' | 'ku' | 'en' | 'nl' | 'fr' | 'es';
+  locale: 'de' | 'tr' | 'ku' | 'ar' | 'en' | 'nl' | 'fr' | 'es';
   widgets: {
     collections: CollectionsWidget;
   };
@@ -351,7 +351,7 @@ export interface Enquiry {
   /**
    * Sprache, in der die Anfrage abgeschickt wurde.
    */
-  locale?: ('de' | 'en' | 'tr' | 'ku' | 'nl' | 'fr' | 'es') | null;
+  locale?: ('de' | 'tr' | 'ku' | 'ar' | 'en' | 'nl' | 'fr' | 'es') | null;
   eventDate: string;
   eventType?: ('wedding' | 'engagement' | 'henna' | 'afterparty' | 'corporate' | 'birthday' | 'other') | null;
   city: string;
@@ -386,7 +386,7 @@ export interface ContactMessage {
   /**
    * Sprache der Website beim Absenden — in dieser Sprache antworten.
    */
-  locale?: ('de' | 'en' | 'tr' | 'ku' | 'nl' | 'fr' | 'es') | null;
+  locale?: ('de' | 'tr' | 'ku' | 'ar' | 'en' | 'nl' | 'fr' | 'es') | null;
   subject: 'general' | 'booking' | 'technical' | 'partnership' | 'press' | 'other';
   firstName: string;
   lastName: string;
@@ -416,7 +416,7 @@ export interface WhatsappLead {
   leadScore?: number | null;
   leadTier?: ('hot' | 'warm' | 'cold') | null;
   source: 'fab' | 'stickyCta' | 'contactPage' | 'bookingSuccess';
-  locale?: ('de' | 'en' | 'tr' | 'ku' | 'nl' | 'fr' | 'es') | null;
+  locale?: ('de' | 'tr' | 'ku' | 'ar' | 'en' | 'nl' | 'fr' | 'es') | null;
   eventType?: ('wedding' | 'engagement' | 'henna' | 'corporate' | 'other') | null;
   /**
    * Format JJJJ-MM-TT.

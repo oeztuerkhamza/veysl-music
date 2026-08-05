@@ -33,7 +33,7 @@ export function ratgeberPostUrl(locale: Locale, post: BlogPost): string {
 }
 
 /**
- * `/ratgeber` renders (via `<BlogEmptyState>`) in all seven locales, because
+ * `/ratgeber` renders (via `<BlogEmptyState>`) in all eight locales, because
  * `routing.pathnames['/ratgeber']` registers a slug for every one — but only
  * `de`/`tr`/`en` (`BLOG_LOCALES`) currently have real articles. hreflang and
  * the sitemap should not claim seven equivalent, indexable translations of a

@@ -79,6 +79,21 @@ rather than a competing, half-duplicated FAQ.
 
 ### The `islamisch` category (added 2026-07-30) — the one genuinely empty room
 
+> **⚠️ Narrowed 2026-08-05.** These nine entries (the `islamisch` category plus
+> the three `religious: true` entries in `musik`/`ablauf`/`technik`) are now
+> served in **Turkish, Kurdish and Arabic only**. On the German, English, Dutch,
+> French and Spanish `/fragen` they are absent — from the headings, the category
+> nav, the answer count and the `FAQPage` schema alike — and `/api/faq?locale=`
+> mirrors that exactly, so no answer engine can pick them up under those
+> languages either. `getVisibleAnswers()` in `src/content/answers.ts` is the
+> gate; the client's reasoning is recorded in `src/content/islamic.ts`.
+>
+> The consequence for this document is concrete and worth stating plainly: the
+> German and English query lists in §4 below are no longer targets, and the
+> "thinnest German-language SERP in this whole map" argument in point 2 is now
+> an opportunity the site consciously declines. See the superseding note in
+> `docs/SEO-KEYWORD-MAP.md` §5.
+
 The eight newest entries (`islamic-wedding-dj`, `quran-and-modern-party`, `ilahi-live`,
 `dua-in-program`, `alcohol-free-celebration`, plus `tsm-live`, `after-wedding-party` and
 `recitation-sound` in the existing categories) came from the client himself and close the

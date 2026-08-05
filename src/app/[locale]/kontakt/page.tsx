@@ -55,7 +55,7 @@ export default async function KontaktPage({ params }: PageProps) {
                 source="contactPage"
                 title={tCta('whatsapp')}
                 text={t('whatsappText')}
-                className="flex h-full w-full flex-col gap-3 rounded-lg border border-gold bg-surface-2 p-6 text-left transition-colors hover:bg-surface"
+                className="flex h-full w-full flex-col gap-3 rounded-lg border border-gold bg-surface-2 p-6 text-start transition-colors hover:bg-surface"
               />
             </Reveal>
 
