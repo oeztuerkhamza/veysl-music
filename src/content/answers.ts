@@ -1084,6 +1084,30 @@ export function resolveAnswerText(text: LocalizedAnswerText, locale: Locale): st
 }
 
 /**
+ * Whether this entry is genuinely written in `locale` — both question and
+ * answer, non-empty.
+ *
+ * `resolveAnswerText()` deliberately falls back to German, which is right on
+ * `/fragen`: a real German answer beats no answer, and the page is marked
+ * `noindex` for locales where that fallback applies, so the substitution is
+ * never presented to a crawler as a translation.
+ *
+ * That reasoning does not carry to a page whose own copy *is* translated. The
+ * Islamic landing page ships fully localized prose and then reads its FAQ
+ * block out of this corpus; without this check, `/ku/daweta-islami` renders
+ * Kurmancî headings above six German questions, and `/ar/zafaf-islami` would
+ * do the same in Arabic — the exact "shell around German text" the comment on
+ * `getReadyLocalesForAnswers()` below treats as a defect. Callers that render
+ * answers inside otherwise-translated copy filter on this and drop the block
+ * entirely when nothing survives.
+ */
+export function isAnswerAuthoredIn(answer: Answer, locale: Locale): boolean {
+  const q = (answer.q as Partial<Record<Locale, string>>)[locale];
+  const a = (answer.a as Partial<Record<Locale, string>>)[locale];
+  return Boolean(q?.trim()) && Boolean(a?.trim());
+}
+
+/**
  * True for every entry belonging to the religiously-framed layer — the whole
  * `islamisch` category plus the three `religious: true` entries that live in
  * other categories (see the field's own comment).

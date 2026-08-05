@@ -12,7 +12,7 @@ import {
   isIslamicLocale,
   type IslamicProgramItem,
 } from '@/content/islamic';
-import { getAnswersByCategory, resolveAnswerText } from '@/content/answers';
+import { getAnswersByCategory, isAnswerAuthoredIn, resolveAnswerText } from '@/content/answers';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { Container } from '@/components/ui/container';
@@ -100,7 +100,23 @@ export default async function IslamischeHochzeitPage({ params }: PageProps) {
   const tRoot = await getTranslations();
 
   const pageUrl = absoluteUrl('/islamische-hochzeit', locale);
-  const answers = getAnswersByCategory('islamisch');
+
+  /**
+   * Nur die Fragen, die in dieser Sprache wirklich geschrieben sind. Der
+   * Deutsch-Fallback aus `resolveAnswerText()` ist auf `/fragen` richtig,
+   * hier aber nicht: Diese Seite ist vollständig übersetzt, und sechs deutsche
+   * Q&As unter kurmancî oder arabischen Überschriften wären schlechter als
+   * gar kein FAQ-Block. Bleibt nichts übrig, entfällt der Abschnitt komplett;
+   * Header und Footer verlinken `/fragen` weiterhin, es geht also kein Weg
+   * dorthin verloren.
+   *
+   * Heute betrifft das `ku` (der Korpus ist in de/tr/en geschrieben) und bis
+   * zum Abschluss der Übersetzung auch `ar`. Sobald die Antworten vorliegen,
+   * erscheint der Abschnitt von selbst — ohne Änderung an dieser Datei.
+   */
+  const answers = getAnswersByCategory('islamisch').filter((answer) =>
+    isAnswerAuthoredIn(answer, locale),
+  );
 
   const programCopy = t.raw('program.items') as Record<string, ProgramCopy>;
   const timelineCopy = t.raw('timeline.steps') as Record<string, ProgramCopy>;
@@ -207,48 +223,50 @@ export default async function IslamischeHochzeitPage({ params }: PageProps) {
         </Container>
       </Section>
 
-      <Section id="fragen" className="scroll-mt-24">
-        <Container size="narrow">
-          <Reveal>
-            <SectionHeading eyebrow={t('faq.eyebrow')} title={t('faq.title')} />
-          </Reveal>
-          <div className="mt-8">
-            {answers.map((answer) => (
-              <AnswerBlock
-                key={answer.id}
-                id={answer.id}
-                question={resolveAnswerText(answer.q, locale)}
-                answer={resolveAnswerText(answer.a, locale)}
-                facts={answer.facts}
-                links={
-                  selfLessLinks(answer.links).length > 0 ? (
-                    <>
-                      {selfLessLinks(answer.links).map((href) => {
-                        const labelKey = ROUTE_LABEL_KEY[href];
-                        if (!labelKey) return null;
-                        return (
-                          <Link
-                            key={href}
-                            href={href}
-                            className="text-gold underline underline-offset-4 hover:text-gold-soft"
-                          >
-                            {tRoot(labelKey)}
-                          </Link>
-                        );
-                      })}
-                    </>
-                  ) : undefined
-                }
-              />
-            ))}
-          </div>
-          <p className="mt-8 text-sm">
-            <Link href="/fragen" className="text-gold underline underline-offset-4 hover:text-gold-soft">
-              {t('faq.more')}
-            </Link>
-          </p>
-        </Container>
-      </Section>
+      {answers.length > 0 ? (
+        <Section id="fragen" className="scroll-mt-24">
+          <Container size="narrow">
+            <Reveal>
+              <SectionHeading eyebrow={t('faq.eyebrow')} title={t('faq.title')} />
+            </Reveal>
+            <div className="mt-8">
+              {answers.map((answer) => (
+                <AnswerBlock
+                  key={answer.id}
+                  id={answer.id}
+                  question={resolveAnswerText(answer.q, locale)}
+                  answer={resolveAnswerText(answer.a, locale)}
+                  facts={answer.facts}
+                  links={
+                    selfLessLinks(answer.links).length > 0 ? (
+                      <>
+                        {selfLessLinks(answer.links).map((href) => {
+                          const labelKey = ROUTE_LABEL_KEY[href];
+                          if (!labelKey) return null;
+                          return (
+                            <Link
+                              key={href}
+                              href={href}
+                              className="text-gold underline underline-offset-4 hover:text-gold-soft"
+                            >
+                              {tRoot(labelKey)}
+                            </Link>
+                          );
+                        })}
+                      </>
+                    ) : undefined
+                  }
+                />
+              ))}
+            </div>
+            <p className="mt-8 text-sm">
+              <Link href="/fragen" className="text-gold underline underline-offset-4 hover:text-gold-soft">
+                {t('faq.more')}
+              </Link>
+            </p>
+          </Container>
+        </Section>
+      ) : null}
 
       <Section>
         <Container>
