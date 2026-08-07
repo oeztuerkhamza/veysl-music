@@ -987,6 +987,10 @@
       "title": "{city} bölgesinde Türk DJ – Alman-Türk gücü burada da",
       "languagesTitle": "Sunum dilleri"
     },
+    "localAngle": {
+      "eyebrow": "Neden burada",
+      "title": "{city} bölgesinde farkı yaratan"
+    },
     "venues": {
       "eyebrow": "Mekânlar",
       "title": "{city} bölgesindeki bilinen düğün mekânları",

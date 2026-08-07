@@ -11,7 +11,7 @@ const HOSTING_LANGS = ['de', 'tr', 'en'] as const;
 /**
  * The Turkish/Kurdish diaspora angle — the genuine, honest advantage abroad
  * (see `Region.diaspora`). Renders nothing if no prose exists for `locale`,
- * mirroring `CityBicultural`'s "never a German fallback paragraph" rule.
+ * mirroring `CityAngle`'s "never a German fallback paragraph" rule.
  */
 export function RegionDiaspora({ region, locale }: { region: PublishedRegion; locale: Locale }) {
   const t = useTranslations('regions.country');

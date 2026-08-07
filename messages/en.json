@@ -881,6 +881,10 @@
       "title": "Turkish DJ in {city} — the German-Turkish strength",
       "languagesTitle": "Hosting languages"
     },
+    "localAngle": {
+      "eyebrow": "Why here",
+      "title": "What makes the difference in {city}"
+    },
     "venues": {
       "eyebrow": "Venues",
       "title": "Well-known wedding venues in {city}",
