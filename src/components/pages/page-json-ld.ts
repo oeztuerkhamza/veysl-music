@@ -110,7 +110,32 @@ export function buildEpkJsonLd({ locale, homeLabel, pageLabel }: PageJsonLdBase)
   return [
     asRecord(personSchema(locale)),
     asRecord(musicGroupSchema(locale)),
-    asRecord(organizationSchema(locale)),
+    asRecord(organizationSchema()),
+    asRecord(trail(locale, homeLabel, pageLabel, pageUrl)),
+  ];
+}
+
+/**
+ * `/hochzeit-events` — die Leistungsseite als `Service`-Graph.
+ *
+ * Die eine Seite, die das komplette Hochzeits-DJ-Angebot beschreibt (alle
+ * Leistungen aus `src/content/services.ts`, bereits übersetzt in
+ * `messages/*.json` → `services.items.*`), trug als einzige
+ * Kernseite überhaupt kein JSON-LD (SEO-Audit August 2026). Gleiches Muster
+ * wie `buildPackagesJsonLd()` darunter: Business-Entität + ein `Service` je
+ * Leistung + Breadcrumb. Nichts hier erfindet Copy — Namen und Beschreibungen
+ * sind exakt die Strings, die die Seite selbst rendert.
+ */
+export function buildServicesJsonLd({
+  locale,
+  homeLabel,
+  pageLabel,
+  services,
+}: PageJsonLdBase & { services: ServiceInput[] }): Record<string, unknown>[] {
+  const pageUrl = absoluteUrl('/hochzeit-events', locale);
+  return [
+    asRecord(localBusinessSchema(locale)),
+    ...serviceSchema(services, locale).map(asRecord),
     asRecord(trail(locale, homeLabel, pageLabel, pageUrl)),
   ];
 }
@@ -134,7 +159,7 @@ export function buildPackagesJsonLd({
   const pageUrl = absoluteUrl('/pakete', locale);
   return [
     asRecord(localBusinessSchema(locale)),
-    ...serviceSchema(services).map(asRecord),
+    ...serviceSchema(services, locale).map(asRecord),
     asRecord(trail(locale, homeLabel, pageLabel, pageUrl)),
   ];
 }

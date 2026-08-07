@@ -2,7 +2,8 @@ import { Check } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
-import { buildMetadata } from '@/lib/seo';
+import { absoluteUrl, buildMetadata } from '@/lib/seo';
+import { JsonLd } from '@/lib/json-ld';
 import { site } from '@/content/site';
 import { services } from '@/content/services';
 import { Container } from '@/components/ui/container';
@@ -12,6 +13,7 @@ import { PageHero } from '@/components/pages/page-hero';
 import { ServiceBlock } from '@/components/pages/service-block';
 import { CapabilityStrip } from '@/components/pages/capability-strip';
 import { FinalCta } from '@/components/pages/final-cta';
+import { buildServicesJsonLd } from '@/components/pages/page-json-ld';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -27,10 +29,31 @@ export default async function HochzeitEventsPage({ params }: PageProps) {
   setRequestLocale(locale);
 
   const t = await getTranslations('services');
+  const tRoot = await getTranslations();
   const includedItems = t.raw('included.items') as string[];
+
+  // Dieselben bereits übersetzten Strings, die die Seite unten rendert — als
+  // ein `Service` je Leistung ins JSON-LD (siehe buildServicesJsonLd).
+  const serviceInputs = services.map((service) => ({
+    // Gleicher `slug` wie im Graphen der Startseite — ein Knoten je Leistung,
+    // keine anonymen Dubletten (siehe `ServiceInput.slug`).
+    slug: service.id,
+    name: t(`items.${service.id}.title`),
+    description: t(`items.${service.id}.text`),
+    url: absoluteUrl('/hochzeit-events', locale),
+  }));
 
   return (
     <>
+      <JsonLd
+        data={buildServicesJsonLd({
+          locale,
+          homeLabel: tRoot('nav.home'),
+          pageLabel: tRoot('nav.services'),
+          services: serviceInputs,
+        })}
+      />
+
       <PageHero eyebrow={t('hero.eyebrow')} title={t('hero.title')} subtitle={t('hero.subtitle')}>
         <p className="mt-4 text-sm text-ink-faint">{site.reach[locale]}</p>
       </PageHero>

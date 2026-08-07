@@ -1,12 +1,17 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Route, Speaker, UserCheck, type LucideIcon } from 'lucide-react';
+import { Drum, Mic, Music, type LucideIcon } from 'lucide-react';
 import { absoluteUrl, buildMetadata } from '@/lib/seo';
 import { JsonLd } from '@/lib/json-ld';
 import { breadcrumbSchema, faqPageSchema, localBusinessSchema, localizedServiceType, serviceSchema } from '@/lib/schema';
-import { BW_SUPPORTED_LOCALES, bwPillars, isBwLocale, type BwPillarIcon } from '@/content/region-bw';
-import { getAllCities } from '@/content/cities';
+import {
+  TURKISH_DJ_SUPPORTED_LOCALES,
+  isTurkishDjLocale,
+  turkishDjPillars,
+  type TurkishDjPillarIcon,
+} from '@/content/turkish-dj';
+import { getAllCities, hasCityProse } from '@/content/cities';
 import { site } from '@/content/site';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
@@ -23,21 +28,21 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  return BW_SUPPORTED_LOCALES.map((locale) => ({ locale }));
+  return TURKISH_DJ_SUPPORTED_LOCALES.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  if (!isBwLocale(locale)) return {};
+  if (!isTurkishDjLocale(locale)) return {};
 
   return buildMetadata({
     locale,
-    pathname: '/hochzeits-dj-baden-wuerttemberg',
-    availableLocales: [...BW_SUPPORTED_LOCALES],
+    pathname: '/tuerkischer-dj-stuttgart',
+    availableLocales: [...TURKISH_DJ_SUPPORTED_LOCALES],
   });
 }
 
-const ICONS: Record<BwPillarIcon, LucideIcon> = { Route, Speaker, UserCheck };
+const ICONS: Record<TurkishDjPillarIcon, LucideIcon> = { Music, Drum, Mic };
 
 interface FaqItem {
   q: string;
@@ -45,40 +50,42 @@ interface FaqItem {
 }
 
 /**
- * Landesseite für „Hochzeits-DJ Baden-Württemberg".
+ * Nischen-Landingpage „Türkischer DJ Stuttgart".
  *
- * Zwei Aufgaben, die vorher niemand hatte. Erstens die Suchanfrage selbst: Sie
- * steht in docs/SEO-COMPETITIVE-ANALYSIS.md §1 unter den drei Kernabfragen und
- * hatte keine Seite — die Startseite zielt auf Stuttgart, jede Stadtseite auf
- * ihre Stadt, `/hochzeits-dj-europa` auf Länder außerhalb Deutschlands.
- * Zweitens die Cluster-Struktur: Die acht Stadtseiten verlinkten sich nur
- * seitwärts über `nearby` und hatten keine gemeinsame Elternseite, weil
- * `/hochzeits-dj` in einen 404 lief.
+ * Warum es sie gibt, steht bei der Route in `src/i18n/routing.ts` und im
+ * Dateikopf von `src/content/turkish-dj.ts`. Kurz: Die Abfragegruppe
+ * „türkischer dj (stuttgart)" ist ein dokumentiertes Keyword-Map-Ziel, kam
+ * aber in keinem Titel und keiner H1 der Website vor — während sie das
+ * Kerngeschäft beschreibt.
  *
- * Die Städteliste kommt aus `getAllCities()` und wird nicht dupliziert. Damit
- * ist diese Seite automatisch vollständig, sobald eine Stadt dazukommt — und
- * kann nicht in den Zustand geraten, eine Stadt zu nennen, die es nicht mehr
- * gibt.
- *
- * Inhaltlich bewusst *nicht* „warum DJ Veys gut ist" (das steht auf der
- * Startseite), sondern das, was ausschließlich auf Landesebene eine Frage ist:
- * Anfahrt über Distanz, gleiche Technik unabhängig vom Ort, ein Ansprechpartner
- * statt regionaler Subunternehmer. Sonst wäre es eine Dublette der Startseite
- * mit ausgetauschter Ortsangabe — genau der Fehler, den die Wettbewerbsanalyse
- * bei `tuerkischerdj.com` als Schwäche notiert.
+ * Inhaltlich bewusst NICHT die Startseite mit ausgetauschtem Adjektiv: Hier
+ * geht es ausschließlich um das, was an türkisch und deutsch-türkisch
+ * geprägten Feiern anders ist — doppeltes Repertoire, Traditionen mit eigener
+ * Dramaturgie (Gelin Çıkarma, Davul Zurna, Kına Gecesi), zweisprachige
+ * Moderation. Alle Fakten stammen aus `site.ts`/BRAND-FACTS.md
+ * (`capabilities`, `stats`), nichts ist erfunden.
  */
-export default async function BadenWuerttembergPage({ params }: PageProps) {
+export default async function TurkishDjPage({ params }: PageProps) {
   const { locale } = await params;
-  if (!isBwLocale(locale)) notFound();
+  if (!isTurkishDjLocale(locale)) notFound();
 
   setRequestLocale(locale);
 
-  const t = await getTranslations('bw');
+  const t = await getTranslations('turkishDj');
   const tNav = await getTranslations('nav');
 
-  const cities = getAllCities();
-  const pageUrl = absoluteUrl('/hochzeits-dj-baden-wuerttemberg', locale);
+  // Nur Städte, deren Seite es in DIESER Sprache gibt — die Stadtroute liefert
+  // sonst `notFound()`. Heute trifft das alle acht, aber `cities.ts` verlangt
+  // nur die deutsche Prosa; ohne den Filter würde die erste nur deutsch
+  // geschriebene Stadt hier tr/en-seitig in einen 404 verlinken.
+  const cities = getAllCities().filter((city) => hasCityProse(city, locale));
+  const pageUrl = absoluteUrl('/tuerkischer-dj-stuttgart', locale);
   const faqItems = t.raw('faq.items') as FaqItem[];
+
+  const statValues = {
+    years: site.stats.yearsExperience,
+    events: site.stats.eventsCompleted,
+  };
 
   const asRecord = (value: object): Record<string, unknown> => value as Record<string, unknown>;
   const jsonLd = [
@@ -87,7 +94,8 @@ export default async function BadenWuerttembergPage({ params }: PageProps) {
       { name: tNav('home'), url: absoluteUrl('/', locale) },
       { name: t('hero.title'), url: pageUrl },
     ]),
-    // Kurze Kategorie im `serviceType`, die H1 im `name` — siehe `ServiceInput`.
+    // `serviceType` bleibt die kurze Kategorie; die H1 ist der `name`. Ein
+    // ganzer Überschriftensatz im Kategorie-Feld dupliziert nur den Namen.
     ...serviceSchema(
       [
         {
@@ -106,7 +114,7 @@ export default async function BadenWuerttembergPage({ params }: PageProps) {
     <>
       <JsonLd data={jsonLd} />
 
-      <PageHero eyebrow={t('hero.eyebrow')} title={t('hero.title')} subtitle={t('hero.subtitle')}>
+      <PageHero eyebrow={t('hero.eyebrow')} title={t('hero.title')} subtitle={t('hero.subtitle', statValues)}>
         <p className="mt-4 text-sm text-ink-faint">{site.serviceAreas.join(' · ')}</p>
       </PageHero>
 
@@ -114,7 +122,7 @@ export default async function BadenWuerttembergPage({ params }: PageProps) {
         <Container size="narrow">
           <Reveal>
             <SectionHeading eyebrow={t('intro.eyebrow')} title={t('intro.title')} />
-            <p className="mt-6 leading-relaxed text-ink-muted">{t('intro.body')}</p>
+            <p className="mt-6 leading-relaxed text-ink-muted">{t('intro.body', statValues)}</p>
           </Reveal>
         </Container>
       </Section>
@@ -125,7 +133,7 @@ export default async function BadenWuerttembergPage({ params }: PageProps) {
             <SectionHeading eyebrow={t('pillars.eyebrow')} title={t('pillars.title')} />
           </Reveal>
           <ul className="mt-12 grid gap-8 sm:grid-cols-3">
-            {bwPillars.map((pillar) => {
+            {turkishDjPillars.map((pillar) => {
               const Icon = ICONS[pillar.icon];
               return (
                 <li key={pillar.id} className="rounded-lg border border-line bg-surface p-6">
@@ -159,7 +167,13 @@ export default async function BadenWuerttembergPage({ params }: PageProps) {
               </li>
             ))}
           </ul>
-          <p className="mt-6 text-sm text-ink-faint">{t('cities.note')}</p>
+          {/* Cluster-Elternseite: von hier aus geht es eine Ebene hoch zur
+              Landesseite — dieselbe Abfrage-Familie, breiterer Radius. */}
+          <p className="mt-6 text-sm text-ink-faint">
+            <Link href="/hochzeits-dj-baden-wuerttemberg" className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold">
+              {t('cities.bwLink')}
+            </Link>
+          </p>
         </Container>
       </Section>
 
@@ -170,7 +184,7 @@ export default async function BadenWuerttembergPage({ params }: PageProps) {
           </Reveal>
           <div className="mt-8">
             {faqItems.map((item, index) => (
-              <AnswerBlock key={item.q} id={`bw-faq-${index + 1}`} question={item.q} answer={item.a} />
+              <AnswerBlock key={item.q} id={`turkish-dj-faq-${index + 1}`} question={item.q} answer={item.a} />
             ))}
           </div>
         </Container>

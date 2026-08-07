@@ -254,6 +254,25 @@ function localizedTagline(locale: Locale): string {
 
 const LANGUAGE_NAMES: Record<string, string> = { de: 'German', en: 'English', tr: 'Turkish' };
 
+/**
+ * Bestätigte Markenformulierung der Kernleistung je Sprache — speist
+ * `serviceType` in den Service-Objekten der Stadt- und Länderseiten. Bis
+ * August 2026 stand dort in allen acht Sprachen das deutsche „Hochzeits-DJ";
+ * die türkischen Stadtseiten (`/tr/dugun-dj/<stadt>`) trugen damit kein
+ * „Düğün DJ'i" in ihrem eigenen Service-Markup. Nur die drei belegten
+ * Formulierungen (dieselben wie in `site.tagline`), Rest fällt auf Deutsch
+ * zurück — kein maschinell übersetzter Ballast.
+ */
+const SERVICE_TYPE_BY_LOCALE: Partial<Record<Locale, string>> = {
+  de: 'Hochzeits-DJ',
+  tr: "Düğün DJ'i",
+  en: 'Wedding DJ',
+};
+
+export function localizedServiceType(locale: Locale): string {
+  return SERVICE_TYPE_BY_LOCALE[locale] ?? SERVICE_TYPE_BY_LOCALE[defaultLocale] ?? 'Hochzeits-DJ';
+}
+
 export interface PostalAddressSchema {
   '@type': 'PostalAddress';
   streetAddress?: string;
@@ -330,7 +349,6 @@ export interface AggregateRatingSchema {
   '@type': 'AggregateRating';
   ratingValue: number;
   reviewCount: number;
-  itemReviewed: { '@type': string; '@id': string; name: string };
 }
 
 /**
@@ -356,11 +374,15 @@ export interface AggregateRatingSchema {
  */
 export function aggregateRatingSchema(firstParty: { rating: number; count: number } | null): AggregateRatingSchema | null {
   if (!firstParty || firstParty.count <= 0 || firstParty.rating <= 0) return null;
+  // Kein `itemReviewed`: Das Objekt wird ausschließlich GESCHACHTELT in
+  // `LocalBusiness.aggregateRating` ausgespielt — dort IST das Elternobjekt
+  // das bewertete Ding, und ein zusätzliches selbstreferenzielles
+  // `itemReviewed` produziert im Rich-Results-Test genau die Warnung, die es
+  // vermeiden wollte, sobald die ersten Erstpartei-Bewertungen es aktivieren.
   return {
     '@type': 'AggregateRating',
     ratingValue: firstParty.rating,
     reviewCount: firstParty.count,
-    itemReviewed: { '@type': 'LocalBusiness', '@id': entityId(BUSINESS_ID_FRAGMENT), name: site.name },
   };
 }
 
@@ -381,6 +403,10 @@ export interface LocalBusinessSchema {
   address: PostalAddressSchema;
   areaServed: AreaServedCity[];
   contactPoint: ContactPointSchema;
+  /** Sprachen, in denen live moderiert wird — `site.stats.hostingLanguages`. */
+  knowsLanguage: string[];
+  /** Das verifizierte Google-Unternehmensprofil als Kartenverweis. */
+  hasMap?: string;
   /** Absolute URL of a representative image — required for Google's LocalBusiness rich result. */
   image: string;
   sameAs?: string[];
@@ -417,12 +443,34 @@ export function localBusinessSchema(
     legalName: site.legalName ?? undefined,
     description: entityDescription(locale),
     disambiguatingDescription: disambiguation(locale),
-    url: absoluteUrl('/', locale),
+    // Immer die kanonische (deutsche) Startseite, auf JEDER Sprachversion:
+    // `@id` ist auf allen Seiten dasselbe Fragment, also müssen auch die
+    // Eigenschaften desselben Knotens überall identisch sein — acht Seiten,
+    // die demselben `#business` acht verschiedene `url`-Werte zuschreiben,
+    // sind ein Widerspruch im Entity-Graph. Die Sprachzuordnung übernimmt
+    // hreflang in `buildMetadata()`, nicht dieses Feld.
+    url: absoluteUrl('/', defaultLocale),
     telephone: telephoneE164(),
     email: site.contact.email || undefined,
     address: businessAddress(),
     areaServed: areaServedCities(),
     contactPoint: contactPointSchema(),
+    /**
+     * Stand bisher nur auf der Person, nicht auf dem Unternehmen — dabei ist
+     * genau das hier die Aussage, die dieses Geschäft von den meisten
+     * Mitbewerbern trennt: live moderiert auf Deutsch, Türkisch und Englisch
+     * (BRAND-FACTS.md). Eine Suche nach einem türkischsprachigen DJ ist eine
+     * Sprachanfrage, und das Unternehmen ist das Objekt, das gebucht wird.
+     */
+    knowsLanguage: site.stats.hostingLanguages.map((code) => LANGUAGE_NAMES[code] ?? code),
+    /**
+     * Der Kartenverweis aufs verifizierte Unternehmensprofil. Kein `geo`
+     * daneben: Google empfiehlt beides, aber Koordinaten dürfen nicht geraten
+     * oder nachgeschlagen werden — sie müssen dem Pin im Profil entsprechen,
+     * sonst behauptet die Seite einen anderen Ort als das Profil (NAP-Doktrin
+     * weiter oben). TODO(kunde): Lat/Long am Profil ablesen und hier ergänzen.
+     */
+    ...(site.social.googleMaps && { hasMap: site.social.googleMaps }),
     // Google lists `image` as required for the LocalBusiness rich result, and
     // it was missing entirely. Points at the share image rather than the logo
     // on purpose: `image` is meant to depict the business, `logo` to identify
@@ -480,7 +528,9 @@ export function musicGroupSchema(locale: Locale = defaultLocale): MusicGroupSche
     alternateName: [...site.previousNames],
     description: entityDescription(locale),
     disambiguatingDescription: disambiguation(locale),
-    url: absoluteUrl('/', locale),
+    // Kanonische Startseite auf jeder Sprachversion — gleiche Begründung wie
+    // bei `localBusinessSchema()`: ein `@id`, ein `url`.
+    url: absoluteUrl('/', defaultLocale),
     ...(sameAs.length > 0 && { sameAs }),
     member: { '@id': entityId(PERSON_ID_FRAGMENT) },
     ...(followerCounter && { interactionStatistic: followerCounter }),
@@ -514,7 +564,8 @@ export function personSchema(locale: Locale = defaultLocale): PersonSchema {
     name: site.owner,
     alternateName: [...site.previousNames],
     jobTitle: localizedTagline(locale),
-    url: absoluteUrl('/', locale),
+    // Kanonische Startseite — gleiche Begründung wie bei `localBusinessSchema()`.
+    url: absoluteUrl('/', defaultLocale),
     knowsLanguage: [...site.stats.hostingLanguages],
     ...(sameAs.length > 0 && { sameAs }),
     worksFor: { '@id': entityId(BUSINESS_ID_FRAGMENT) },
@@ -538,8 +589,12 @@ export interface OrganizationSchema {
  * entity as `localBusinessSchema()`, described with a leaner property set for
  * contexts (e.g. `websiteSchema().publisher`) that just need "who publishes
  * this site", not the full address/booking details.
+ *
+ * Nimmt keine Locale mehr entgegen: Seit `url` auf die kanonische Startseite
+ * zeigt (ein `@id`, ein `url` — siehe `localBusinessSchema()`), hängt keine
+ * Eigenschaft dieses Objekts mehr an der Sprache.
  */
-export function organizationSchema(locale: Locale = defaultLocale): OrganizationSchema {
+export function organizationSchema(): OrganizationSchema {
   const sameAs = businessSameAs();
   return {
     '@context': 'https://schema.org',
@@ -548,7 +603,8 @@ export function organizationSchema(locale: Locale = defaultLocale): Organization
     name: site.name,
     alternateName: [...site.previousNames],
     legalName: site.legalName ?? undefined,
-    url: absoluteUrl('/', locale),
+    // Kanonische Startseite — gleiche Begründung wie bei `localBusinessSchema()`.
+    url: absoluteUrl('/', defaultLocale),
     // `/logo.png` exists as of scripts/generate-brand-assets.mjs — until then
     // this property pointed at a 404 and Google silently dropped the logo.
     // What is there now is the typographic wordmark, not designed artwork:
@@ -575,7 +631,11 @@ export function websiteSchema(locale: Locale = defaultLocale): WebSiteSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': entityId(WEBSITE_ID_FRAGMENT),
+    // Anders als business/act/person ist die WebSite je Sprachversion ein
+    // eigener Knoten (eigene URL, eigenes `inLanguage`) — deshalb bekommt sie
+    // eine per-Locale-`@id` statt eines geteilten Fragments, das acht Seiten
+    // mit widersprüchlichen Werten befüllen würden.
+    '@id': `${absoluteUrl('/', locale)}${WEBSITE_ID_FRAGMENT}`,
     name: site.name,
     url: absoluteUrl('/', locale),
     description: localizedTagline(locale),
@@ -587,10 +647,24 @@ export function websiteSchema(locale: Locale = defaultLocale): WebSiteSchema {
 export interface ServiceInput {
   /** Cross-reference with `site.capabilities` when the item maps 1:1 to one. */
   id?: (typeof site.capabilities)[number];
+  /**
+   * Stabiler Anker für dieses Angebot, ohne führendes `#`. Zwei Seiten, die
+   * dieselbe Leistung beschreiben (Startseite und `/hochzeit-events` tun genau
+   * das), zeigen damit auf denselben Knoten, statt zwei anonyme Dubletten
+   * derselben vier Leistungen in den Graphen zu stellen.
+   */
+  slug?: string;
   /** Already-translated service name (from the caller's `messages/*.json`). */
   name: string;
   /** Already-translated service description. */
   description: string;
+  /**
+   * Kurze Dienstleistungs-Kategorie für `serviceType`. Ohne Angabe fällt es
+   * auf `localizedServiceType()` zurück — NIE auf `name`: `serviceType` ist
+   * ein Kategorie-Feld, ein ganzer Überschriftensatz darin ist für jeden
+   * Konsumenten wertlos und dupliziert nur `name`.
+   */
+  serviceType?: string;
   /** Absolute URL of the page/section describing this service, if it has one. */
   url?: string;
 }
@@ -598,6 +672,7 @@ export interface ServiceInput {
 export interface ServiceSchema {
   '@context': 'https://schema.org';
   '@type': 'Service';
+  '@id'?: string;
   serviceType: string;
   name: string;
   description: string;
@@ -611,13 +686,14 @@ export interface ServiceSchema {
  * AV-rental capabilities from `site.capabilities`, worded by whichever page
  * calls this — see the report for the exact shape). Never invents service copy.
  */
-export function serviceSchema(items: ServiceInput[]): ServiceSchema[] {
+export function serviceSchema(items: ServiceInput[], locale: Locale = defaultLocale): ServiceSchema[] {
   const areaServed = areaServedCities();
   const provider = { '@id': entityId(BUSINESS_ID_FRAGMENT) };
   return items.map((item) => ({
     '@context': 'https://schema.org' as const,
     '@type': 'Service' as const,
-    serviceType: item.name,
+    ...(item.slug && { '@id': entityId(`#service-${item.slug}`) }),
+    serviceType: item.serviceType ?? localizedServiceType(locale),
     name: item.name,
     description: item.description,
     ...(item.url && { url: item.url }),

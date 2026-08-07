@@ -7,6 +7,8 @@ import { Container } from '@/components/ui/container';
 import { InstagramIcon, WhatsAppIcon, YouTubeIcon, type SocialIconProps } from '@/components/ui/social-icons';
 import { getSite } from '@/content/get-site';
 import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
+import { BW_SUPPORTED_LOCALES } from '@/content/region-bw';
+import { TURKISH_DJ_SUPPORTED_LOCALES } from '@/content/turkish-dj';
 import { localized } from '@/lib/utils';
 
 /**
@@ -19,6 +21,11 @@ import { localized } from '@/lib/utils';
  */
 const NAV_LINKS = [
   { href: '/hochzeit-events', key: 'services' },
+  // Die beiden Geld-Seiten des Städte-Clusters. Bis August 2026 war die
+  // BW-Landesseite ein kompletter Verwaisten-Fall — null interne Links
+  // sitewide (SEO-Audit); der Footer ist ihr garantierter Einstiegspunkt.
+  { href: '/hochzeits-dj-baden-wuerttemberg', key: 'badenWuerttemberg', locales: BW_SUPPORTED_LOCALES },
+  { href: '/tuerkischer-dj-stuttgart', key: 'turkishDj', locales: TURKISH_DJ_SUPPORTED_LOCALES },
   { href: '/islamische-hochzeit', key: 'islamicWedding', locales: ISLAMIC_SUPPORTED_LOCALES },
   { href: '/pakete', key: 'packages' },
   { href: '/echte-hochzeiten', key: 'weddings' },

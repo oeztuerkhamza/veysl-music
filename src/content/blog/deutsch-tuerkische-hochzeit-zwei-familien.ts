@@ -313,7 +313,7 @@ export const deutschTuerkischePost: BlogPost = {
   updatedAt: '2026-07-25',
   tags: ['tuerkische-hochzeit', 'deutsch-tuerkisch', 'familie', 'planung'],
   readingTimeMinutes: 6,
-  links: ['/hochzeit-events', '/fragen'],
+  links: ['/tuerkischer-dj-stuttgart', '/hochzeit-events', '/fragen'],
   relatedAnswers: ['timeline-diff', 'bilingual-hosting', 'kurdish-arabic'],
   relatedCities: ['stuttgart', 'boeblingen'],
   relatedPosts: ['tuerkische-hochzeit-ablauf-musik-timing', 'davul-zurna-halay-roman-havasi'],

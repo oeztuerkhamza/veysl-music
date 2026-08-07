@@ -15,6 +15,13 @@ import type { StaticPathname } from '@/lib/seo';
  */
 export const BLOG_ROUTE_LABEL_KEY: Partial<Record<StaticPathname, string>> = {
   '/hochzeit-events': 'nav.services',
+  // Beide Cluster-Geldseiten tragen keyword-haltige Nav-Labels
+  // („Hochzeits-DJ Baden-Württemberg" / „Türkischer DJ Stuttgart") — genau
+  // die Anker, die der Blog an sie weitergeben soll. Beide Seiten und die
+  // Blog-Artikel teilen dieselben Sprachen (de/tr/en), die Labels existieren
+  // also überall, wo ein Artikel rendert.
+  '/hochzeits-dj-baden-wuerttemberg': 'nav.badenWuerttemberg',
+  '/tuerkischer-dj-stuttgart': 'nav.turkishDj',
   '/pakete': 'nav.packages',
   '/echte-hochzeiten': 'nav.weddings',
   '/ablauf': 'nav.process',

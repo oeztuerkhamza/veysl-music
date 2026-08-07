@@ -112,7 +112,7 @@ const nextConfig: NextConfig = {
    * Verzeichnis oder eine Wettbewerberseite verlinkt — und jeder Link darauf
    * lief in eine Sackgasse, statt der Startseite zugutezukommen.
    *
-   * 301 statt 404, in allen sieben Sprachen unter ihrem jeweiligen Slug. Die
+   * 301 statt 404, in allen acht Sprachen unter ihrem jeweiligen Slug. Die
    * Strategie bleibt unangetastet: Es entsteht keine konkurrierende Seite,
    * die Absicht landet nur dort, wo sie ohnehin hingehört.
    */
@@ -121,6 +121,10 @@ const nextConfig: NextConfig = {
       { prefix: '/hochzeits-dj', home: '/' },
       { prefix: '/tr/dugun-dj', home: '/tr' },
       { prefix: '/ku/dj-dawete', home: '/ku' },
+      // Arabisch kam später dazu als diese Liste entstand und fehlte hier —
+      // `/ar/dj-afrah/stuttgart` lief damit als einzige Sprache weiter in den
+      // 404, den alle anderen längst nicht mehr hatten.
+      { prefix: '/ar/dj-afrah', home: '/ar' },
       { prefix: '/en/wedding-dj', home: '/en' },
       { prefix: '/nl/bruiloft-dj', home: '/nl' },
       { prefix: '/fr/dj-mariage', home: '/fr' },

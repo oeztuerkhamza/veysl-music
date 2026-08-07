@@ -77,7 +77,15 @@ export default function robots(): MetadataRoute.Robots {
    * Alles andere unter `/api/` (Formular-Endpunkte, GraphQL, Payload)
    * bleibt gesperrt.
    */
-  const apiRule = { allow: ['/', '/api/faq'], disallow: '/api/' };
+  /**
+   * `/admin` steht neben `/api/`: Das Payload-Adminpanel liegt bewusst
+   * außerhalb des i18n-Proxys und wird wie jede andere Seite ausgeliefert —
+   * also auch gecrawlt. Eine indexierte CMS-Anmeldemaske gehört in keine
+   * Marken-SERP; sie ist keine Inhaltsseite und hat für Suchende keinen Wert.
+   * (Zugriffsschutz ist das nicht und soll es nicht sein — dafür sorgt die
+   * Anmeldung selbst, robots.txt ist eine Crawl-Anweisung.)
+   */
+  const apiRule = { allow: ['/', '/api/faq'], disallow: ['/api/', '/admin'] };
 
   return {
     rules: [

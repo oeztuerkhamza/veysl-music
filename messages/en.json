@@ -2,6 +2,8 @@
   "nav": {
     "home": "Home",
     "services": "Weddings & Events",
+    "badenWuerttemberg": "Wedding DJ Baden-Württemberg",
+    "turkishDj": "Turkish DJ Stuttgart",
     "packages": "Packages",
     "weddings": "Real Weddings",
     "music": "Music",
@@ -46,15 +48,15 @@
   "meta": {
     "home": {
       "title": "Wedding DJ {city} — Premium Wedding & Event DJ | DJ Veys",
-      "description": "Premium wedding and event DJ in {city} and beyond. Personal planning call, own sound and lighting rig, a dance floor that stays full. Check your date."
+      "description": "Wedding DJ, live musician (saz & guitar) and host in {city} — for German-Turkish & multicultural weddings. German, Turkish, English. Check your date."
     },
     "services": {
-      "title": "Weddings & Events — Services | DJ Veys",
-      "description": "DJ for weddings, engagements, henna nights, after-parties and corporate events. Exactly what each service includes."
+      "title": "DJ for Weddings & Events Stuttgart | DJ Veys",
+      "description": "DJ for weddings, engagements, kına gecesi (henna nights), after-parties and corporate events in Stuttgart. Exactly what each service includes."
     },
     "packages": {
-      "title": "Packages & Pricing — Wedding DJ | DJ Veys",
-      "description": "Three clear wedding and event packages: hours, technical setup and extras at a glance. Individual quote within 24 hours."
+      "title": "Wedding DJ Prices & Packages Stuttgart | DJ Veys",
+      "description": "What does a wedding DJ cost in Stuttgart? Three packages with hours, technical setup and extras at a glance. Individual quote within 24 hours."
     },
     "weddings": {
       "title": "Real Weddings — References & Venues | DJ Veys",
@@ -96,14 +98,14 @@
   "home": {
     "hero": {
       "eyebrow": "Wedding DJ · Live Music · Hosting",
-      "title": "The sound everyone",
-      "titleAccent": "will remember.",
+      "title": "Wedding DJ Stuttgart —",
+      "titleAccent": "the sound everyone will remember.",
       "subtitle": "From the first note at the reception to the last song at four in the morning — an evening with real dramaturgy and a dance floor that never empties.",
       "availability": "{year} dates are filling up — check availability now."
     },
     "intro": "{name} has been a wedding DJ, live musician on saz and guitar, and host based in {city} for over {years} years. He accompanies weddings and events across Baden-Württemberg, throughout Germany and Europe — hosting live in German, Turkish and English, and specialising in German-Turkish and multicultural weddings.",
     "trust": {
-      "title": "Wedding DJ in Stuttgart — what you can rely on",
+      "title": "What you can rely on on the day",
       "items": {
         "planning": {
           "title": "Personal planning call",
@@ -190,9 +192,14 @@
       "title": "Wedding DJ for Stuttgart and the surrounding area",
       "subtitle": "Regularly booked in these cities around Stuttgart — and anywhere there's a celebration.",
       "coreTitle": "Core region — Stuttgart & Baden-Württemberg",
+      "bwLink": "Wedding DJ Baden-Württemberg: all cities at a glance",
       "germanyTitle": "Bookable across Germany",
       "europeTitle": "Bookable across Europe",
       "europeText": "We travel for destination weddings and celebrations abroad. Travel, accommodation and any equipment needed on site are itemised transparently in the quote — including outside the EU."
+    },
+    "stuttgart": {
+      "eyebrow": "At home in Stuttgart",
+      "title": "Knowing the city is not an extra — it is the difference"
     },
     "finalCta": {
       "eyebrow": "Next step",
@@ -204,7 +211,7 @@
   "services": {
     "hero": {
       "eyebrow": "Weddings & Events",
-      "title": "One DJ, four occasions, one standard",
+      "title": "DJ for weddings & events — four occasions, one standard",
       "subtitle": "Whether it's an outdoor ceremony at a vineyard or a corporate gala in a ballroom — the preparation is always the same: thorough."
     },
     "items": {
@@ -303,7 +310,7 @@
   "packages": {
     "hero": {
       "eyebrow": "Packages & pricing",
-      "title": "Clear scope, clear price",
+      "title": "Packages & prices for your wedding DJ",
       "subtitle": "These three packages cover most weddings. Anything beyond is quoted individually — with no surcharge for the consultation."
     },
     "hours": "Playing time",
@@ -493,8 +500,8 @@
   },
   "bw": {
     "meta": {
-      "title": "Wedding DJ Baden-Württemberg | DJ Veys",
-      "description": "Wedding DJ across Baden-Württemberg: Stuttgart, Ludwigsburg, Esslingen, Karlsruhe, Mannheim and more. Hosted in German, Turkish and English. Travel costed transparently."
+      "title": "Wedding DJ Baden-Württemberg — German & Turkish | DJ Veys",
+      "description": "Wedding DJ across Baden-Württemberg: Stuttgart, Ludwigsburg, Karlsruhe, Mannheim and more. Hosted in German, Turkish and English, travel costed transparently."
     },
     "hero": {
       "eyebrow": "Baden-Württemberg",
@@ -559,10 +566,78 @@
       "button": "Check availability"
     }
   },
+  "turkishDj": {
+    "meta": {
+      "title": "Turkish DJ Stuttgart – Weddings, Kına & Events | DJ Veys",
+      "description": "Turkish DJ in Stuttgart: DJ & live orchestra for Turkish and German-Turkish weddings, kına gecesi and engagements. Hosted in Turkish, German and English."
+    },
+    "hero": {
+      "eyebrow": "Turkish DJ · Stuttgart & Baden-Württemberg",
+      "title": "Turkish DJ in Stuttgart – for Turkish and German-Turkish weddings",
+      "subtitle": "Halay alongside the current charts, gelin çıkarma before the first dance, and hosting that moves between Turkish and German without losing either half of the room. {years}+ years in the job, {events}+ weddings and events in total."
+    },
+    "intro": {
+      "eyebrow": "Two cultures, one evening",
+      "title": "Why a Turkish wedding needs its own DJ approach",
+      "body": "A Turkish or German-Turkish wedding follows its own dramaturgy: the grand entrance, halay circles with three generations dancing at once, kına moments that give you goosebumps — and in between, guests expecting German and international music. Veysel lives in Stuttgart, is at home in exactly this mix, and has played celebrations where both musical worlds meet for over {years} years — as a DJ, as a live musician on saz and guitar, and with a live orchestra including horns."
+    },
+    "pillars": {
+      "eyebrow": "What makes the difference",
+      "title": "Two musical worlds, one standard",
+      "items": {
+        "repertoire": {
+          "title": "Halay to charts",
+          "text": "Turkish pop, halay classics and Roman havası sit alongside German and international charts as equals. The floor gets read for both crowds at once — neither half of the room has to wait for its music."
+        },
+        "traditions": {
+          "title": "Gelin çıkarma, davul zurna & kına",
+          "text": "Traditions need timing: the couple's entrance, davul-zurna moments, the kına ceremony. The running order and transitions are planned to the minute in the planning call — with live orchestra and horns if you wish."
+        },
+        "hosting": {
+          "title": "Hosting in Turkish & German",
+          "text": "Both families should follow every part of the programme. Hosting switches fluently between Turkish and German — English on request — so nobody feels like a second-class guest."
+        }
+      }
+    },
+    "cities": {
+      "eyebrow": "Service area",
+      "title": "Turkish DJ for Stuttgart and the region",
+      "lead": "Stuttgart is home base — plus the cities of the region, many with their own page covering venues and travel.",
+      "bwLink": "Wedding DJ across Baden-Württemberg — see the overview page"
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "What couples ask before booking",
+      "items": [
+        {
+          "q": "Does a Turkish DJ also play German and international music?",
+          "a": "Yes — that is the heart of a German-Turkish wedding. The repertoire covers Turkish pop, halay and Roman havası as much as German and international charts. How the mix is weighted is decided together in the planning call."
+        },
+        {
+          "q": "Do you also cover kına gecesi and engagements?",
+          "a": "Yes. Kına gecesi, engagement (nişan) and the wedding each have their own dramaturgy — from the music for the henna ceremony to the evening's programme. All three are a fixed part of the offer, on their own or combined."
+        },
+        {
+          "q": "What does a Turkish DJ in Stuttgart cost?",
+          "a": "The packages are the same as for any wedding: three clear packages with playing time, equipment and extras, listed on the packages page. Travel within 50 km of Stuttgart is included; your individual quote arrives within 24 hours."
+        },
+        {
+          "q": "Are you only available in Stuttgart, or in other cities too?",
+          "a": "Bookings cover all of Baden-Württemberg — from Ludwigsburg and Esslingen to Karlsruhe and Mannheim — and Germany-wide beyond that. Many cities in the region have their own page with venues and travel details."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Date",
+      "title": "Düğün, kına or nişan — is your date still free?",
+      "subtitle": "The date, the venue and a rough guest count are enough to start. Languages, traditions and the running order are settled in the planning call.",
+      "button": "Check availability"
+    }
+  },
   "answers": {
     "hero": {
       "eyebrow": "Questions & Answers",
-      "title": "Every answer at a glance",
+      "title": "Every wedding-DJ question answered — Stuttgart and beyond",
       "subtitle": "{count} in-depth answers on booking, pricing, the day itself, music, technical setup, contracts and Turkish weddings — readable instantly, no clicks or accordions required."
     },
     "entity": "DJ Veys is the wedding-DJ, live-music and hosting service of {owner}, based in {city}, Germany. For over {years} years he has accompanied weddings and events across Baden-Württemberg, Germany and Europe, hosting live in German, Turkish and English, with a focus on German-Turkish, Turkish and multicultural weddings. He has played over {events}+ celebrations so far — as a DJ, a live musician on saz and guitar, and with a live band including horns.",
@@ -784,7 +859,7 @@
     },
     "meta": {
       "title": "Wedding DJ {city} — DJ, Musician & Host | DJ Veys",
-      "description": "Premium wedding DJ in {city}: DJ, musician and multilingual host for German-Turkish and international weddings. Check your date now."
+      "description": "Turkish wedding DJ & multilingual host in {city}: DJ and musician for German-Turkish, Turkish and international weddings. Check your date now."
     },
     "travel": {
       "eyebrow": "Travel & transparency",
@@ -803,7 +878,7 @@
     },
     "bicultural": {
       "eyebrow": "Two cultures, one evening",
-      "title": "The German-Turkish strength — in {city} too",
+      "title": "Turkish DJ in {city} — the German-Turkish strength",
       "languagesTitle": "Hosting languages"
     },
     "venues": {

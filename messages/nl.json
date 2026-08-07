@@ -96,14 +96,14 @@
   "home": {
     "hero": {
       "eyebrow": "Bruiloft-DJ · Livemuziek · Presentatie",
-      "title": "De sound die iedereen",
-      "titleAccent": "zich herinnert.",
+      "title": "Bruiloft-DJ Stuttgart —",
+      "titleAccent": "de sound die iedereen zich herinnert.",
       "subtitle": "Van de eerste noot bij de receptie tot het laatste nummer om vier uur 's nachts — een avond met opbouw en een dansvloer die niet leegloopt.",
       "availability": "De data voor {year} raken op — controleer direct de beschikbaarheid."
     },
     "intro": "{name} is al meer dan {years} jaar bruiloft-DJ, livemuzikant op saz en gitaar en presentator uit {city}. Hij begeleidt bruiloften en events in heel Baden-Württemberg, heel Duitsland en heel Europa — presenteert live in het Duits, Turks en Engels en is gespecialiseerd in Duits-Turkse en multiculturele bruiloften.",
     "trust": {
-      "title": "Bruiloft-dj in Stuttgart — waar u op kunt rekenen",
+      "title": "Waar u op de dag zelf op kunt rekenen",
       "items": {
         "planning": {
           "title": "Persoonlijk voorgesprek",

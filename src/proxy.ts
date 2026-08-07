@@ -10,7 +10,7 @@
  * next-intl, nicht die Next.js-Konvention, und der wurde nicht umbenannt.
  */
 import createMiddleware from 'next-intl/middleware';
-import type { NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { routing } from './i18n/routing';
 
 const handleI18n = createMiddleware(routing);
@@ -40,6 +40,38 @@ const PAYLOAD_SESSION_COOKIE = 'payload-token';
 const ADMIN_HINT_COOKIE = 'dj-cms-hint';
 
 export default function proxy(request: NextRequest) {
+  /**
+   * Kanonisierung der Schrägstrich-Variante — von Hand, weil Next sie hier
+   * nicht mehr selbst übernimmt.
+   *
+   * `skipTrailingSlashRedirect: true` in next.config.ts schaltet Nexts
+   * eingebauten 308 ab. Das ist dort begründet und muss so bleiben (ohne die
+   * Option dreht sich der Standalone-Server bei jeder lokalisierten Route in
+   * eine Endlosweiterleitung), nur: Ersatz gab es keinen. `/pakete/` und
+   * `/tr/dugun-dj/karlsruhe/` lieferten damit dieselbe Seite unter einer
+   * zweiten URL aus — genau die Duplikat-Situation, gegen die die Seite sonst
+   * überall kanonische URLs setzt.
+   *
+   * ⚠️ `new URL(request.url)`, NICHT `request.nextUrl.clone()`. `NextURL`
+   * merkt sich beim Parsen ein `trailingSlash`-Flag, und der `pathname`-Setter
+   * löscht es nicht: `toString()` hängt den Schrägstrich anschließend wieder
+   * an. Das Ziel wäre damit Byte für Byte die angefragte URL — aus der
+   * Kanonisierung würde eine Endlosweiterleitung, und zwar für jede URL mit
+   * Schrägstrich am Ende. (Genau so war diese Stelle zuerst gebaut; ein
+   * 308-Status allein beweist nichts, geprüft werden muss der
+   * `Location`-Wert.)
+   *
+   * `replace(/\/+$/, '')` statt `slice(0, -1)`: mehrere Schrägstriche am Ende
+   * fallen in einem Schritt weg statt in mehreren Weiterleitungen. Die Wurzel
+   * („/", Länge 1) ist ausgenommen — sie IST die kanonische Form.
+   */
+  const { pathname } = request.nextUrl;
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    const url = new URL(request.url);
+    url.pathname = pathname.replace(/\/+$/, '') || '/';
+    return NextResponse.redirect(url, 308);
+  }
+
   const response = handleI18n(request);
 
   const hasSession = request.cookies.has(PAYLOAD_SESSION_COOKIE);

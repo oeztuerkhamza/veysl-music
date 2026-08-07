@@ -49,6 +49,32 @@ export const localeTags: Record<Locale, string> = {
   es: 'es-ES',
 };
 
+/**
+ * hreflang-Codes — bewusst OHNE Regionsanteil, anders als `localeTags`.
+ *
+ * `hreflang="tr-TR"` matcht Nutzer mit türkischer Sprache **in der Türkei**.
+ * Die Kernzielgruppe dieser Website sind aber türkischsprachige Paare **in
+ * Deutschland** (BRAND-FACTS.md) — mit `tr-TR` fielen genau sie auf das
+ * deutsche x-default zurück, statt die türkische Fassung zu sehen. Das bloße
+ * `tr` matcht Türkischsprachige in jedem Land; dasselbe Argument gilt für
+ * `en-GB` (internationale Gäste sitzen nicht nur in Großbritannien), `nl-NL`
+ * (Flandern!) und `fr-FR` (Wallonien, Elsass-Grenzgänger mit fr-CH/fr-BE).
+ *
+ * `localeTags` bleibt regional für `<html lang>`, Intl-Formatierung und
+ * og:locale — dort ist die Regionsangabe korrekt bzw. harmlos. Nur hreflang
+ * (buildMetadata in src/lib/seo.ts und die Sitemap) nutzt diese Map.
+ */
+export const hreflangTags: Record<Locale, string> = {
+  de: 'de',
+  tr: 'tr',
+  ku: 'ku',
+  ar: 'ar',
+  en: 'en',
+  nl: 'nl',
+  fr: 'fr',
+  es: 'es',
+};
+
 export const ogLocales: Record<Locale, string> = {
   de: 'de_DE',
   tr: 'tr_TR',
@@ -185,6 +211,32 @@ export const pathnames = {
     nl: '/bruiloft-dj-baden-wuerttemberg',
     fr: '/dj-mariage-baden-wuerttemberg',
     es: '/dj-boda-baden-wuerttemberg',
+  },
+  /**
+   * Nischen-Landingpage „Türkischer DJ Stuttgart".
+   *
+   * Die Abfragegruppe (türkischer dj, türkischer dj stuttgart, dj türkische
+   * hochzeit) ist im eigenen Keyword-Map als Sekundärziel der Start- und
+   * Stadtseiten geführt — aber kein Titel, keine H1 und keine Seite trug die
+   * Wortgruppe selbst (Audit August 2026). Der stärkste Wettbewerber des
+   * Markts (tuerkischerdj.com, seit 2000) besetzt genau sie. Gleichzeitig ist
+   * das bikulturelle Angebot laut BRAND-FACTS.md der Kern des Geschäfts —
+   * eine eigene Seite dafür ist also keine Doorway-Page, sondern die Seite
+   * zum tatsächlichen Produkt.
+   *
+   * **Nur de/tr/en** — siehe TURKISH_DJ_SUPPORTED_LOCALES in
+   * src/content/turkish-dj.ts; die übrigen Sprachen liefern `notFound()`
+   * (gleiche Mechanik wie /islamische-hochzeit und die BW-Seite).
+   */
+  '/tuerkischer-dj-stuttgart': {
+    de: '/tuerkischer-dj-stuttgart',
+    tr: '/turk-dj-stuttgart',
+    ku: '/dj-tirki-stuttgart',
+    ar: '/dj-turki-stuttgart',
+    en: '/turkish-dj-stuttgart',
+    nl: '/turkse-dj-stuttgart',
+    fr: '/dj-turc-stuttgart',
+    es: '/dj-turco-stuttgart',
   },
   /**
    * Reichweiten-Ebene: europaweite Buchbarkeit auf **Länder**-Ebene, bewusst

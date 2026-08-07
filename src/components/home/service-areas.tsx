@@ -6,6 +6,7 @@ import { Reveal } from '@/components/motion/reveal';
 import { Link } from '@/i18n/navigation';
 import { site } from '@/content/site';
 import { getAllCities, hasCityProse } from '@/content/cities';
+import { BW_SUPPORTED_LOCALES } from '@/content/region-bw';
 import type { Locale } from '@/i18n/routing';
 
 function Chip({ children }: { children: React.ReactNode }) {
@@ -15,6 +16,9 @@ function Chip({ children }: { children: React.ReactNode }) {
     </span>
   );
 }
+
+const cityLinkClass =
+  'inline-flex items-center rounded-full border border-gold/40 bg-surface px-4 py-2 text-sm text-ink transition-colors hover:border-gold hover:text-gold';
 
 /**
  * Einzugsgebiet in drei Stufen — siehe site.ts.
@@ -52,7 +56,7 @@ export async function ServiceAreas() {
                       {slug ? (
                         <Link
                           href={{ pathname: '/hochzeits-dj/[stadt]', params: { stadt: slug } }}
-                          className="inline-flex items-center rounded-full border border-gold/40 bg-surface px-4 py-2 text-sm text-ink transition-colors hover:border-gold hover:text-gold"
+                          className={cityLinkClass}
                         >
                           {city}
                         </Link>
@@ -63,16 +67,48 @@ export async function ServiceAreas() {
                   );
                 })}
               </ul>
+              {/* Cluster-Elternseite. Die BW-Landesseite hatte bis August 2026
+                  sitewide null interne Links (SEO-Audit) — dieser Anker und der
+                  Footer sind ihre Einstiege. Nur in Sprachen mit echter Seite. */}
+              {BW_SUPPORTED_LOCALES.includes(locale) ? (
+                <p className="mt-4 text-sm text-ink-muted">
+                  <Link
+                    href="/hochzeits-dj-baden-wuerttemberg"
+                    className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold"
+                  >
+                    {t('bwLink')}
+                  </Link>
+                </p>
+              ) : null}
             </div>
 
             <div>
               <h3 className="text-xs uppercase tracking-[0.2em] text-gold">{t('germanyTitle')}</h3>
               <ul className="mt-3 flex flex-wrap gap-3">
-                {site.germanyCities.map((city) => (
-                  <li key={city}>
-                    <Chip>{city}</Chip>
-                  </li>
-                ))}
+                {/* Auch diese Stufe wird gegen die veröffentlichten Stadtseiten
+                    aufgelöst. Mannheim hat eine — sie war von der Startseite
+                    aus trotzdem nicht erreichbar, weil nur die Kernregion
+                    verlinkt wurde. Die Stadt in die Kernregion zu verschieben,
+                    wäre der falsche Weg gewesen: deren Überschrift behauptet
+                    „regelmäßig gebucht", und dafür gibt es für Mannheim
+                    (95 km, außerhalb der Inklusivstrecke) keinen Beleg. */}
+                {site.germanyCities.map((city) => {
+                  const slug = linkable.get(city);
+                  return (
+                    <li key={city}>
+                      {slug ? (
+                        <Link
+                          href={{ pathname: '/hochzeits-dj/[stadt]', params: { stadt: slug } }}
+                          className={cityLinkClass}
+                        >
+                          {city}
+                        </Link>
+                      ) : (
+                        <Chip>{city}</Chip>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 

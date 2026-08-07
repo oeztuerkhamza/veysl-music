@@ -2,6 +2,8 @@
   "nav": {
     "home": "Ana Sayfa",
     "services": "Düğün & Etkinlik",
+    "badenWuerttemberg": "Baden-Württemberg düğün DJ'i",
+    "turkishDj": "Stuttgart'ta Türk DJ",
     "packages": "Paketler",
     "weddings": "Gerçek Düğünler",
     "music": "Müzik",
@@ -47,15 +49,15 @@
   "meta": {
     "home": {
       "title": "Düğün DJ'i {city} – DJ, müzisyen & sunucu | DJ Veys",
-      "description": "{city} ve çevresinde premium düğün ve etkinlik DJ'i. Kişisel ön görüşme, kendi ses ve ışık sistemi, dolup taşan bir pist. Tarihinizi hemen sorgulayın."
+      "description": "{city} ve çevresinde Türk-Alman düğünleri için düğün DJ'i — Almanya genelinde rezervasyon. Canlı saz, üç dilde sunum. Tarihinizi hemen sorgulayın."
     },
     "services": {
-      "title": "Düğün & Etkinlik — Hizmetler | DJ Veys",
-      "description": "Düğün, nişan, kına gecesi, after-party ve kurumsal etkinlik DJ'i. Her hizmete tam olarak neler dahil, şeffafça anlatıldı."
+      "title": "Düğün & Etkinlik DJ'i Stuttgart | DJ Veys",
+      "description": "Stuttgart'ta düğün, nişan, kına gecesi, after-party ve kurumsal etkinlik DJ'i. Her hizmete tam olarak neler dahil, şeffafça anlatıldı."
     },
     "packages": {
-      "title": "Paketler & Fiyatlar — Düğün DJ'i | DJ Veys",
-      "description": "Düğün ve etkinlik için üç net paket: kapsam, saat, teknik donanım ve ekstralar tek bakışta. Size özel teklif 24 saat içinde."
+      "title": "Düğün DJ Fiyatları & Paketler Stuttgart | DJ Veys",
+      "description": "Stuttgart'ta bir düğün DJ'i ne kadar tutar? Üç paket; kapsam, saat ve teknik donanım tek bakışta. Size özel teklif 24 saat içinde."
     },
     "weddings": {
       "title": "Gerçek Düğünler — Referanslar & Mekânlar | DJ Veys",
@@ -97,14 +99,14 @@
   "home": {
     "hero": {
       "eyebrow": "Düğün DJ'i · Canlı müzik · Sunuculuk",
-      "title": "Herkesin yıllarca",
-      "titleAccent": "hatırlayacağı ses.",
+      "title": "Stuttgart Düğün DJ'i —",
+      "titleAccent": "herkesin yıllarca hatırlayacağı ses.",
       "subtitle": "Kokteyldeki ilk notadan sabahın dördündeki son şarkıya kadar — kurgusu düşünülmüş bir gece ve hiç boşalmayan bir pist.",
       "availability": "{year} tarihleri hızla doluyor — müsaitliği hemen sorgulayın."
     },
     "intro": "{name}, {years} yılı aşkın süredir düğün DJ'i, sazda ve gitarda canlı müzisyen ve sunucu olarak {city} şehrinden çalışıyor. Baden-Württemberg genelinde, Almanya'nın her yerinde ve Avrupa'da düğün ve etkinliklere eşlik ediyor — Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve Alman-Türk ile çok kültürlü düğünlerde uzmanlaştı.",
     "trust": {
-      "title": "Stuttgart’ta düğün DJ’i — neye güvenebilirsiniz",
+      "title": "Düğün gününde neye güvenebilirsiniz",
       "items": {
         "planning": {
           "title": "Kişisel ön görüşme",
@@ -191,9 +193,14 @@
       "title": "Stuttgart ve çevresi için düğün DJ’i",
       "subtitle": "Stuttgart çevresindeki bu şehirlerde düzenli olarak çalıyoruz — ve kutlama olan her yerde.",
       "coreTitle": "Ana bölge — Stuttgart & Baden-Württemberg",
-      "germanyTitle": "Almanya genelinde",
+      "bwLink": "Baden-Württemberg düğün DJ'i: tüm şehirler tek bakışta",
+      "germanyTitle": "Almanya genelinde düğün DJ’i",
       "europeTitle": "Avrupa genelinde",
       "europeText": "Yurt dışındaki düğün ve kutlamalar için yola çıkıyoruz. Ulaşım, konaklama ve yerinde gereken teknik ekipman teklifte açıkça belirtilir — AB dışı ülkeler dahil."
+    },
+    "stuttgart": {
+      "eyebrow": "Stuttgart'ta evinde",
+      "title": "Yerel bilgi bir ekstra değil, farkın kendisi"
     },
     "finalCta": {
       "eyebrow": "Sonraki adım",
@@ -205,7 +212,7 @@
   "services": {
     "hero": {
       "eyebrow": "Düğün & Etkinlik",
-      "title": "Tek DJ, dört organizasyon, tek standart",
+      "title": "Düğün & etkinlik DJ'i — dört organizasyon, tek standart",
       "subtitle": "İster bağ evinde bir nikâh töreni, ister balo salonunda kurumsal gala — hazırlık her zaman aynı: titiz."
     },
     "items": {
@@ -304,7 +311,7 @@
   "packages": {
     "hero": {
       "eyebrow": "Paketler & Fiyatlar",
-      "title": "Net kapsam, net fiyat",
+      "title": "Düğün DJ'iniz için paketler & fiyatlar",
       "subtitle": "Bu üç paket düğünlerin çoğunu karşılıyor. Fazlası size özel hesaplanır — danışmanlık için ek ücret alınmaz."
     },
     "hours": "Çalma süresi",
@@ -492,182 +499,250 @@
       }
     ]
   },
-    "islamic": {
-      "meta": {
-        "title": "DJ’li İslami düğün — dua, ilahi ve kutlama | DJ Veys",
-        "description": "Kur’an tilaveti, dua ve canlı ilahi — ardından dolu bir pist. Tek akış planı, tek ses sistemi, tek muhatap. Stuttgart ve Almanya geneli."
-      },
-      "hero": {
-        "eyebrow": "İslami ve dinî düğünler",
-        "title": "Dua da aynı akşamda, pist de",
-        "subtitle": "Kur’an tilaveti, dua ve ilahi burada ayrı bir organizasyona değil, akış planının içine yazılır. Ardından kutlama başlar — ikisi de tek elden, Almanca, Türkçe ve İngilizce sunumla."
-      },
-      "intro": {
-        "eyebrow": "Asıl soru",
-        "title": "Bu ikisi gerçekten bir arada olur mu?",
-        "body": "Çiftlerin çoğu bu noktada iki ayrı teklif alıyor — biri dinî bölüm, diğeri kutlama için — ve geçişleri kendileri ayarlamak zorunda kalıyor. Akşam tam orada bozuluyor: Müzik şarkının ortasında kesiliyor, misafirlerin ne zaman oturacağını kimse bilmiyor ve duadan sonra salon donup kalıyor. Burada ikisi tek bir akış planı; üstelik o planı akşam sahnede uygulayan kişi yazıyor."
-      },
-      "recitation": {
-        "eyebrow": "Farkı yaratan şey",
-        "title": "Tilaveti kendim okuyorum",
-        "body": "Kur’an tilaveti ne kayıttan çalınıyor ne de iki program arasına sıkıştırılmış dışarıdan bir misafire bırakılıyor: Veysel Durmuş tilaveti kendisi okuyor. Pratikte bunun anlamı şu — tilavet, dua, ilahi, sunum ve DJ seti tek elde. Son kelimeden ilk anonsa geçiş artık bir risk değil, planın parçası."
-      },
-      "program": {
-        "eyebrow": "Bileşenler",
-        "title": "Akşam nelerden oluşuyor",
-        "lead": "Hepsi serbestçe birleştirilebilir. Planlama görüşmesinde hangisinin sizin düğününüze gireceğine — ve hangisinin kesinlikle girmeyeceğine — birlikte karar veriyoruz.",
-        "optionalLabel": "İsteğe bağlı",
-        "items": {
-          "tilawet": {
-            "title": "Kur’an Tilaveti",
-            "text": "Canlı okunur; kendi ayrı mikrofonuyla, reverb ve efekt olmadan, dans setinden belirgin şekilde düşük seviyede. Buradaki tek amaç salonun her yerinde anlaşılırlık."
-          },
-          "dua": {
-            "title": "Dua",
-            "text": "Akışta sabit bir zamana yerleşir; genellikle yemekten ya da açılış dansından önce. Öncesinde iki dilde anons yapılır, böylece her misafir birazdan ne olacağını bilir."
-          },
-          "ilahi": {
-            "title": "İlahi — canlı",
-            "text": "Canlı icra edilir, istenirse saz eşliğinde. Playback yok, playlist yok."
-          },
-          "tsm": {
-            "title": "Türk Sanat Müziği",
-            "text": "Genellikle yemek sırasında ya da iki dans turu arasında sakin bir bölüm olarak — bu da yalnızca bilgisayardan değil, saz eşliğinde canlı olabilir."
-          },
-          "djset": {
-            "title": "DJ seti & sunum",
-            "text": "Türkçe, Almanca ve uluslararası müzik ayrı bloklar hâlinde değil, harmanlanarak çalınır. Sunum canlı olarak Almanca, Türkçe ve İngilizce."
-          },
-          "afterparty": {
-            "title": "After Wedding Party",
-            "text": "Resmî program bittikten sonraki daha serbest bölüm — ya da öncesinde veya sonrasında, daha dar bir çevreyle ayrı bir organizasyon."
-          }
+  "islamic": {
+    "meta": {
+      "title": "DJ’li İslami düğün — dua, ilahi ve kutlama | DJ Veys",
+      "description": "Kur’an tilaveti, dua ve canlı ilahi — ardından dolu bir pist. Tek akış planı, tek ses sistemi, tek muhatap. Stuttgart ve Almanya geneli."
+    },
+    "hero": {
+      "eyebrow": "İslami ve dinî düğünler",
+      "title": "Dua da aynı akşamda, pist de",
+      "subtitle": "Kur’an tilaveti, dua ve ilahi burada ayrı bir organizasyona değil, akış planının içine yazılır. Ardından kutlama başlar — ikisi de tek elden, Almanca, Türkçe ve İngilizce sunumla."
+    },
+    "intro": {
+      "eyebrow": "Asıl soru",
+      "title": "Bu ikisi gerçekten bir arada olur mu?",
+      "body": "Çiftlerin çoğu bu noktada iki ayrı teklif alıyor — biri dinî bölüm, diğeri kutlama için — ve geçişleri kendileri ayarlamak zorunda kalıyor. Akşam tam orada bozuluyor: Müzik şarkının ortasında kesiliyor, misafirlerin ne zaman oturacağını kimse bilmiyor ve duadan sonra salon donup kalıyor. Burada ikisi tek bir akış planı; üstelik o planı akşam sahnede uygulayan kişi yazıyor."
+    },
+    "recitation": {
+      "eyebrow": "Farkı yaratan şey",
+      "title": "Tilaveti kendim okuyorum",
+      "body": "Kur’an tilaveti ne kayıttan çalınıyor ne de iki program arasına sıkıştırılmış dışarıdan bir misafire bırakılıyor: Veysel Durmuş tilaveti kendisi okuyor. Pratikte bunun anlamı şu — tilavet, dua, ilahi, sunum ve DJ seti tek elde. Son kelimeden ilk anonsa geçiş artık bir risk değil, planın parçası."
+    },
+    "program": {
+      "eyebrow": "Bileşenler",
+      "title": "Akşam nelerden oluşuyor",
+      "lead": "Hepsi serbestçe birleştirilebilir. Planlama görüşmesinde hangisinin sizin düğününüze gireceğine — ve hangisinin kesinlikle girmeyeceğine — birlikte karar veriyoruz.",
+      "optionalLabel": "İsteğe bağlı",
+      "items": {
+        "tilawet": {
+          "title": "Kur’an Tilaveti",
+          "text": "Canlı okunur; kendi ayrı mikrofonuyla, reverb ve efekt olmadan, dans setinden belirgin şekilde düşük seviyede. Buradaki tek amaç salonun her yerinde anlaşılırlık."
+        },
+        "dua": {
+          "title": "Dua",
+          "text": "Akışta sabit bir zamana yerleşir; genellikle yemekten ya da açılış dansından önce. Öncesinde iki dilde anons yapılır, böylece her misafir birazdan ne olacağını bilir."
+        },
+        "ilahi": {
+          "title": "İlahi — canlı",
+          "text": "Canlı icra edilir, istenirse saz eşliğinde. Playback yok, playlist yok."
+        },
+        "tsm": {
+          "title": "Türk Sanat Müziği",
+          "text": "Genellikle yemek sırasında ya da iki dans turu arasında sakin bir bölüm olarak — bu da yalnızca bilgisayardan değil, saz eşliğinde canlı olabilir."
+        },
+        "djset": {
+          "title": "DJ seti & sunum",
+          "text": "Türkçe, Almanca ve uluslararası müzik ayrı bloklar hâlinde değil, harmanlanarak çalınır. Sunum canlı olarak Almanca, Türkçe ve İngilizce."
+        },
+        "afterparty": {
+          "title": "After Wedding Party",
+          "text": "Resmî program bittikten sonraki daha serbest bölüm — ya da öncesinde veya sonrasında, daha dar bir çevreyle ayrı bir organizasyon."
         }
-      },
-      "timeline": {
-        "eyebrow": "Örnek akış",
-        "title": "Böyle bir akşam gerçekte nasıl ilerliyor",
-        "lead": "Sahadan bir örnek. Saatler, sıralama ve her bölümün uzunluğu mekânınıza ve misafir sayınıza göre kayar.",
-        "note": "Bu akış bir örnektir, teklif değildir. Sizin gerçek akış planınız planlama görüşmesinde çıkar ve ardından yazılı olarak sözleşmeye girer.",
-        "steps": {
-          "welcome": {
-            "title": "Karşılama",
-            "text": "Sakin fon müziği, misafirler geliyor. Teknik, ses kontrolünden beri hazır."
-          },
-          "tilawet": {
-            "title": "Kur’an Tilaveti",
-            "text": "Müzik kesilmez, yavaşça kısılarak kapatılır. İki dilde anons, ardından tilavet."
-          },
-          "dua": {
-            "title": "Dua",
-            "text": "Hemen ardından; aynı mikrofon, aynı ses seviyesi."
-          },
-          "dinner": {
-            "title": "Yemek",
-            "text": "Türk Sanat Müziği ve sakin enstrümantal müzik; ses seviyesi sohbeti bölmeyecek kadar."
-          },
-          "ilahi": {
-            "title": "Canlı ilahi",
-            "text": "Canlı icra, istenirse saz eşliğinde — akşamın dinî bölümünden kutlama bölümüne geçiş tam burada olur."
-          },
-          "entrance": {
-            "title": "Çiftin girişi",
-            "text": "Almanca ve Türkçe anons, ışık çiftin üzerinde, müzik sizin seçiminiz."
-          },
-          "dance": {
-            "title": "Pist",
-            "text": "Halay, Roman havası, güncel Türkçe ve uluslararası setler — bloklar hâlinde değil, harmanlanarak."
-          },
-          "close": {
-            "title": "Kapanış",
-            "text": "Son şarkı önceden konuşulur, ardından toplanma. Saat mekâna göre belirlenir."
-          }
-        }
-      },
-      "faq": {
-        "eyebrow": "Sık sorulanlar",
-        "title": "Çiftlerin tam bu noktada sorduğu sorular",
-        "more": "Tüm soru ve cevapları gör"
-      },
-      "cta": {
-        "eyebrow": "Tarih",
-        "title": "Tarihiniz hâlâ boş mu?",
-        "subtitle": "Bize tarihi, yeri ve yaklaşık misafir sayısını yazın. Uygunluk yanıtı genellikle 24 saat içinde geliyor.",
-        "button": "Teklif al"
       }
     },
-    "bw": {
-      "meta": {
-        "title": "Baden-Württemberg düğün DJ’i | DJ Veys",
-        "description": "Baden-Württemberg genelinde düğün DJ’i: Stuttgart, Ludwigsburg, Esslingen, Karlsruhe, Mannheim ve daha fazlası. Almanca, Türkçe, İngilizce sunum. Ulaşım şeffaf hesaplanır."
-      },
-      "hero": {
-        "eyebrow": "Baden-Württemberg",
-        "title": "Baden-Württemberg genelinde düğün DJ’i",
-        "subtitle": "Mannheim’dan Reutlingen’e, Karlsruhe’den Heilbronn’a — kendi ses ve ışık ekipmanıyla, Almanca, Türkçe ve İngilizce sunumla ve sonradan faturada değil, önceden teklifte duran bir ulaşım kalemiyle."
-      },
-      "intro": {
-        "eyebrow": "Bu neden ayrı bir soru",
-        "title": "Tek eyalet, çok farklı düğünler",
-        "body": "Stuttgart şehir merkezindeki bir düğünle Kraichgau’daki bir düğünün eyalet dışında pek ortak yanı yoktur: farklı mekânlar, farklı gürültü saatleri, farklı ulaşım, çoğu zaman bambaşka bir misafir karışımı. Aynı kalması gereken şey standarttır — aynı ses sistemi, aynı hazırlık, aynı muhatap. Bu sayfanın konusu tam olarak bu: her yerde iddia etmek değil, mesafeyle birlikte neyin aynı kaldığını ve neyin değiştiğini somut olarak anlatmak."
-      },
-      "pillars": {
-        "eyebrow": "Mesafe söz konusu olunca",
-        "title": "Kilometreyle ne değişir, ne değişmez",
-        "items": {
-          "travel": {
-            "title": "Ulaşım sonradan değil, önceden",
-            "text": "Stuttgart çevresinde 50 km içinde ulaşım paketlere dahildir. Ötesinde, imzadan önce teklifte ayrı bir kalem olarak görünür. Olmayan şey şu: sonradan “bir de şu var” diye büyüyen bir götürü ücret."
-          },
-          "equipment": {
-            "title": "Nerede olursa olsun aynı teknik",
-            "text": "Ekipman bizimle gelir; yerinde kiralanarak toplanmaz. Bu, düğün gününde kara kutu yerine tanıdık cihazlar ve bilinen zayıf noktalar demek — ve Mannheim’daki bir düğünün teknik olarak Esslingen’dekiyle aynı işlemesinin sebebi bu."
-          },
-          "oneContact": {
-            "title": "Tek muhatap, taşeron değil",
-            "text": "Ön görüşmeyi yapan kişi akşam kabinde duran kişidir. Bölge üstü çalışan ajanslarda çoğu zaman böyle olmaz: bir marka rezerve edilir, karşınıza hiç konuşmadığınız serbest bir çalışan çıkar."
-          }
+    "timeline": {
+      "eyebrow": "Örnek akış",
+      "title": "Böyle bir akşam gerçekte nasıl ilerliyor",
+      "lead": "Sahadan bir örnek. Saatler, sıralama ve her bölümün uzunluğu mekânınıza ve misafir sayınıza göre kayar.",
+      "note": "Bu akış bir örnektir, teklif değildir. Sizin gerçek akış planınız planlama görüşmesinde çıkar ve ardından yazılı olarak sözleşmeye girer.",
+      "steps": {
+        "welcome": {
+          "title": "Karşılama",
+          "text": "Sakin fon müziği, misafirler geliyor. Teknik, ses kontrolünden beri hazır."
+        },
+        "tilawet": {
+          "title": "Kur’an Tilaveti",
+          "text": "Müzik kesilmez, yavaşça kısılarak kapatılır. İki dilde anons, ardından tilavet."
+        },
+        "dua": {
+          "title": "Dua",
+          "text": "Hemen ardından; aynı mikrofon, aynı ses seviyesi."
+        },
+        "dinner": {
+          "title": "Yemek",
+          "text": "Türk Sanat Müziği ve sakin enstrümantal müzik; ses seviyesi sohbeti bölmeyecek kadar."
+        },
+        "ilahi": {
+          "title": "Canlı ilahi",
+          "text": "Canlı icra, istenirse saz eşliğinde — akşamın dinî bölümünden kutlama bölümüne geçiş tam burada olur."
+        },
+        "entrance": {
+          "title": "Çiftin girişi",
+          "text": "Almanca ve Türkçe anons, ışık çiftin üzerinde, müzik sizin seçiminiz."
+        },
+        "dance": {
+          "title": "Pist",
+          "text": "Halay, Roman havası, güncel Türkçe ve uluslararası setler — bloklar hâlinde değil, harmanlanarak."
+        },
+        "close": {
+          "title": "Kapanış",
+          "text": "Son şarkı önceden konuşulur, ardından toplanma. Saat mekâna göre belirlenir."
         }
-      },
-      "cities": {
-        "eyebrow": "Şehirler",
-        "title": "Çekirdek bölge için ayrıntılı sayfalar",
-        "lead": "Bu şehirler için mekânları, ulaşımı ve orada somut olarak çıkan soruları anlatan ayrı birer sayfa var — şehir adı değiştirilmiş hazır kalıplar değil.",
-        "note": "Şehriniz listede yok mu? Bu, çok uzak olduğu anlamına gelmez; sadece henüz o şehir için ayrı bir sayfa yok demektir. Tarihi doğrudan sorabilirsiniz."
-      },
-      "faq": {
-        "eyebrow": "Sık sorulanlar",
-        "title": "Stuttgart dışındaki çiftlerin sorduğu şeyler",
-        "items": [
-          {
-            "q": "Uzak bir düğün otomatik olarak daha mı pahalı?",
-            "a": "Otomatik olarak değil. Stuttgart çevresinde 50 km içinde ulaşım paketlere dahildir; ötesinde önceden görünen ayrı bir kalem olarak eklenir. DJ hizmetinin kendisi — çalma süresi, teknik, sunum — mesafeyle değişmez."
-          },
-          {
-            "q": "Bizim bölgedeki mekânları tanıyor musunuz?",
-            "a": "Hepsini değil ve öyle bir iddia da edilmiyor. Bunun yerine olan şu: düğünden önce mekân teknik olarak netleştirilir — elektrik, giriş, salon düzeni, gürültü saatleri. Büyük düğünlerde Prestige paketinde önceden keşif de vardır."
-          },
-          {
-            "q": "Uzak mesafede konaklama gerekir mi?",
-            "a": "Gece geç saate kadar süren ve mesafesi uzak olan düğünlerde bu, sabahın dördünde dönüş yolundan daha dürüst bir çözümdür. Gerekip gerekmediği ve maliyeti teklifte yazar — sonradan sürpriz olarak değil."
-          },
-          {
-            "q": "Çok dilli sunum her yerde geçerli mi?",
-            "a": "Evet. Almanca, Türkçe ve İngilizce ek paket değil, hizmetin parçasıdır — Mannheim’da da Stuttgart’taki gibi."
-          }
-        ]
-      },
-      "cta": {
-        "eyebrow": "Tarih",
-        "title": "Tarihiniz hâlâ boş mu?",
-        "subtitle": "Tarih, yer ve yaklaşık misafir sayısı yeterli. Uygunluk yanıtı genellikle 24 saat içinde gelir.",
-        "button": "Teklif al"
       }
     },
+    "faq": {
+      "eyebrow": "Sık sorulanlar",
+      "title": "Çiftlerin tam bu noktada sorduğu sorular",
+      "more": "Tüm soru ve cevapları gör"
+    },
+    "cta": {
+      "eyebrow": "Tarih",
+      "title": "Tarihiniz hâlâ boş mu?",
+      "subtitle": "Bize tarihi, yeri ve yaklaşık misafir sayısını yazın. Uygunluk yanıtı genellikle 24 saat içinde geliyor.",
+      "button": "Teklif al"
+    }
+  },
+  "bw": {
+    "meta": {
+      "title": "Baden-Württemberg & Almanya genelinde düğün DJ’i | DJ Veys",
+      "description": "Baden-Württemberg genelinde düğün DJ’i: Stuttgart, Ludwigsburg, Karlsruhe, Mannheim ve daha fazlası. Almanca, Türkçe, İngilizce sunum, ulaşım şeffaf hesaplanır."
+    },
+    "hero": {
+      "eyebrow": "Baden-Württemberg",
+      "title": "Baden-Württemberg genelinde düğün DJ’i",
+      "subtitle": "Mannheim’dan Reutlingen’e, Karlsruhe’den Heilbronn’a — kendi ses ve ışık ekipmanıyla, Almanca, Türkçe ve İngilizce sunumla ve sonradan faturada değil, önceden teklifte duran bir ulaşım kalemiyle."
+    },
+    "intro": {
+      "eyebrow": "Bu neden ayrı bir soru",
+      "title": "Tek eyalet, çok farklı düğünler",
+      "body": "Stuttgart şehir merkezindeki bir düğünle Kraichgau’daki bir düğünün eyalet dışında pek ortak yanı yoktur: farklı mekânlar, farklı gürültü saatleri, farklı ulaşım, çoğu zaman bambaşka bir misafir karışımı. Aynı kalması gereken şey standarttır — aynı ses sistemi, aynı hazırlık, aynı muhatap. Bu sayfanın konusu tam olarak bu: her yerde iddia etmek değil, mesafeyle birlikte neyin aynı kaldığını ve neyin değiştiğini somut olarak anlatmak."
+    },
+    "pillars": {
+      "eyebrow": "Mesafe söz konusu olunca",
+      "title": "Kilometreyle ne değişir, ne değişmez",
+      "items": {
+        "travel": {
+          "title": "Ulaşım sonradan değil, önceden",
+          "text": "Stuttgart çevresinde 50 km içinde ulaşım paketlere dahildir. Ötesinde, imzadan önce teklifte ayrı bir kalem olarak görünür. Olmayan şey şu: sonradan “bir de şu var” diye büyüyen bir götürü ücret."
+        },
+        "equipment": {
+          "title": "Nerede olursa olsun aynı teknik",
+          "text": "Ekipman bizimle gelir; yerinde kiralanarak toplanmaz. Bu, düğün gününde kara kutu yerine tanıdık cihazlar ve bilinen zayıf noktalar demek — ve Mannheim’daki bir düğünün teknik olarak Esslingen’dekiyle aynı işlemesinin sebebi bu."
+        },
+        "oneContact": {
+          "title": "Tek muhatap, taşeron değil",
+          "text": "Ön görüşmeyi yapan kişi akşam kabinde duran kişidir. Bölge üstü çalışan ajanslarda çoğu zaman böyle olmaz: bir marka rezerve edilir, karşınıza hiç konuşmadığınız serbest bir çalışan çıkar."
+        }
+      }
+    },
+    "cities": {
+      "eyebrow": "Şehirler",
+      "title": "Çekirdek bölge için ayrıntılı sayfalar",
+      "lead": "Bu şehirler için mekânları, ulaşımı ve orada somut olarak çıkan soruları anlatan ayrı birer sayfa var — şehir adı değiştirilmiş hazır kalıplar değil.",
+      "note": "Şehriniz listede yok mu? Bu, çok uzak olduğu anlamına gelmez; sadece henüz o şehir için ayrı bir sayfa yok demektir. Tarihi doğrudan sorabilirsiniz."
+    },
+    "faq": {
+      "eyebrow": "Sık sorulanlar",
+      "title": "Stuttgart dışındaki çiftlerin sorduğu şeyler",
+      "items": [
+        {
+          "q": "Uzak bir düğün otomatik olarak daha mı pahalı?",
+          "a": "Otomatik olarak değil. Stuttgart çevresinde 50 km içinde ulaşım paketlere dahildir; ötesinde önceden görünen ayrı bir kalem olarak eklenir. DJ hizmetinin kendisi — çalma süresi, teknik, sunum — mesafeyle değişmez."
+        },
+        {
+          "q": "Bizim bölgedeki mekânları tanıyor musunuz?",
+          "a": "Hepsini değil ve öyle bir iddia da edilmiyor. Bunun yerine olan şu: düğünden önce mekân teknik olarak netleştirilir — elektrik, giriş, salon düzeni, gürültü saatleri. Büyük düğünlerde Prestige paketinde önceden keşif de vardır."
+        },
+        {
+          "q": "Uzak mesafede konaklama gerekir mi?",
+          "a": "Gece geç saate kadar süren ve mesafesi uzak olan düğünlerde bu, sabahın dördünde dönüş yolundan daha dürüst bir çözümdür. Gerekip gerekmediği ve maliyeti teklifte yazar — sonradan sürpriz olarak değil."
+        },
+        {
+          "q": "Çok dilli sunum her yerde geçerli mi?",
+          "a": "Evet. Almanca, Türkçe ve İngilizce ek paket değil, hizmetin parçasıdır — Mannheim’da da Stuttgart’taki gibi."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Tarih",
+      "title": "Tarihiniz hâlâ boş mu?",
+      "subtitle": "Tarih, yer ve yaklaşık misafir sayısı yeterli. Uygunluk yanıtı genellikle 24 saat içinde gelir.",
+      "button": "Teklif al"
+    }
+  },
+  "turkishDj": {
+    "meta": {
+      "title": "Stuttgart'ta Türk DJ – düğün, kına & nişan | DJ Veys",
+      "description": "Stuttgart'ta Türk düğün DJ'i: Türk ve Alman-Türk düğünleri, kına gecesi ve nişan için DJ & canlı orkestra. Türkçe-Almanca sunum. Tarihinizi sorgulayın."
+    },
+    "hero": {
+      "eyebrow": "Türk DJ · Stuttgart & Baden-Württemberg",
+      "title": "Stuttgart'ta Türk DJ – Türk ve Alman-Türk düğünleri için",
+      "subtitle": "Güncel chart'ların yanında halay, ilk danstan önce gelin çıkarma ve salonun iki yarısını da kaybetmeden Türkçe ile Almanca arasında geçen bir sunum. {years} yılı aşkın deneyim, toplamda {events}'den fazla düğün ve etkinlik."
+    },
+    "intro": {
+      "eyebrow": "İki kültür, tek gece",
+      "title": "Türk düğünü neden kendine özgü bir DJ yaklaşımı ister",
+      "body": "Türk ya da Alman-Türk bir düğünün kendine özgü bir kurgusu vardır: büyük giriş, üç kuşağın aynı anda oynadığı halay halkaları, tüyleri diken diken eden kına anları — ve arada Almanca ve uluslararası müzik bekleyen davetliler. Veysel Stuttgart'ta yaşıyor, tam da bu karışımın içinde kendini evinde hissediyor ve {years} yılı aşkın süredir iki müzik dünyasının buluştuğu kutlamalarda çalıyor — DJ olarak, sazda ve gitarda canlı müzisyen olarak ve nefesli çalgılı canlı orkestrasıyla."
+    },
+    "pillars": {
+      "eyebrow": "Farkı yaratan",
+      "title": "İki müzik dünyası, tek standart",
+      "items": {
+        "repertoire": {
+          "title": "Halaydan chart'lara",
+          "text": "Türk pop, halay klasikleri ve roman havası; Almanca ve uluslararası chart'larla eşit ağırlıkta. Pisti iki tarafa göre birden okuyoruz — salonun hiçbir yarısı kendi müziğini beklemek zorunda kalmaz."
+        },
+        "traditions": {
+          "title": "Gelin çıkarma, davul zurna & kına",
+          "text": "Gelenekler zamanlama ister: gelin-damat girişi, davul-zurna anları, kına töreni. Akış ve geçişler ön görüşmede dakikası dakikasına planlanır — istenirse canlı orkestra ve nefesli çalgılarla."
+        },
+        "hosting": {
+          "title": "Türkçe & Almanca sunum",
+          "text": "İki aile de programın her adımını anlayabilmeli. Sunum Türkçe ile Almanca arasında akıcı geçer — istenirse İngilizce de eklenir — kimse kendini ikinci sınıf davetli hissetmez."
+        }
+      }
+    },
+    "cities": {
+      "eyebrow": "Hizmet bölgesi",
+      "title": "Stuttgart ve bölgesi için Türk DJ",
+      "lead": "Stuttgart, Veysel'in yaşadığı ve çalıştığı şehir — buna bölgenin şehirleri ekleniyor; birçoğunun mekânlar ve ulaşım bilgileriyle kendi sayfası var.",
+      "bwLink": "Baden-Württemberg genelinde düğün DJ'i — genel bakış sayfasına git"
+    },
+    "faq": {
+      "eyebrow": "Sık sorulan sorular",
+      "title": "Çiftler rezervasyondan önce ne soruyor",
+      "items": [
+        {
+          "q": "Türk DJ Almanca ve uluslararası müzik de çalıyor mu?",
+          "a": "Evet — Alman-Türk düğününün özü tam olarak bu. Repertuvar Türk pop, halay ve roman havasını olduğu kadar Almanca ve uluslararası chart'ları da kapsar. Karışımın dengesini ön görüşmede birlikte belirleriz."
+        },
+        {
+          "q": "Kına gecesi ve nişan da yapıyor musunuz?",
+          "a": "Evet. Kına gecesi, nişan ve düğünün her birinin kendi kurgusu var — kına töreni müziğinden gecenin programına kadar. Üçü de hizmetin sabit parçası; tek başına ya da birlikte."
+        },
+        {
+          "q": "Stuttgart'ta Türk DJ ne kadar tutar?",
+          "a": "Paketler her düğün için aynı: çalma süresi, teknik donanım ve ekstralarıyla üç net paket — paket sayfasında görülebilir. Stuttgart çevresinde 50 km içinde ulaşım dahildir; size özel teklif 24 saat içinde gelir."
+        },
+        {
+          "q": "Sadece Stuttgart'ta mı, başka şehirlerde de çalıyor musunuz?",
+          "a": "Baden-Württemberg genelinde — Ludwigsburg ve Esslingen'den Karlsruhe ve Mannheim'a — ve Almanya genelinde rezervasyon yapılabilir. Bölgedeki birçok şehir için mekân ve ulaşım bilgileriyle ayrı sayfalar var."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Tarih",
+      "title": "Düğün, kına ya da nişan — tarihiniz hâlâ boş mu?",
+      "subtitle": "İlk adım için tarih, mekân ve yaklaşık davetli sayısı yeterli. Diller, gelenekler ve akış ön görüşmede netleşir.",
+      "button": "Teklif al"
+    }
+  },
   "answers": {
     "hero": {
       "eyebrow": "Sorular & Yanıtlar",
-      "title": "Tüm yanıtlar tek bakışta",
+      "title": "Stuttgart'ta düğün DJ'i hakkında tüm yanıtlar",
       "subtitle": "Rezervasyon, fiyatlar, süreç, müzik, teknik donanım, hukuk ve Türk düğünleri hakkında {count} ayrıntılı yanıt — tıklamadan, açıp kapatmadan doğrudan okunur."
     },
     "entity": "DJ Veys, {owner} tarafından {city} merkezli olarak yürütülen düğün DJ'i, canlı müzik ve sunuculuk hizmetidir. {years} yılı aşkın süredir Baden-Württemberg'de, Almanya genelinde ve Avrupa'da düğün ve etkinliklere eşlik ediyor; Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve Alman-Türk, Türk ve çok kültürlü düğünlerde uzmanlaştı. Bugüne kadar {events}+ kutlamaya eşlik etti — DJ olarak, sazda ve gitarda canlı müzisyen olarak ve nefesli sazları da olan canlı bir orkestrayla.",
@@ -890,7 +965,7 @@
     },
     "meta": {
       "title": "Düğün DJ'i {city} — DJ, müzisyen & sunucu | DJ Veys",
-      "description": "{city} ve çevresinde premium düğün DJ'i: Alman-Türk düğünleri için DJ, müzisyen ve çok dilli sunucu. Hemen tarih sorgulayın."
+      "description": "{city} ve çevresinde Türk düğün DJ'i: Alman-Türk ve Türk düğünleri için DJ, müzisyen ve çok dilli sunucu. Hemen tarih sorgulayın."
     },
     "travel": {
       "eyebrow": "Ulaşım & şeffaflık",
@@ -909,7 +984,7 @@
     },
     "bicultural": {
       "eyebrow": "İki kültür, tek gece",
-      "title": "Alman-Türk gücü – {city} bölgesinde de",
+      "title": "{city} bölgesinde Türk DJ – Alman-Türk gücü burada da",
       "languagesTitle": "Sunum dilleri"
     },
     "venues": {

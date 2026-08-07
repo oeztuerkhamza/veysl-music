@@ -2,6 +2,8 @@
   "nav": {
     "home": "Start",
     "services": "Hochzeit & Events",
+    "badenWuerttemberg": "Hochzeits-DJ Baden-Württemberg",
+    "turkishDj": "Türkischer DJ Stuttgart",
     "packages": "Pakete",
     "weddings": "Echte Hochzeiten",
     "music": "Musik",
@@ -46,15 +48,15 @@
   "meta": {
     "home": {
       "title": "Hochzeits-DJ {city} – DJ, Musiker & Moderator | DJ Veys",
-      "description": "Premium Hochzeits- und Event-DJ in {city} und Umgebung. Persönliches Vorgespräch, eigene Ton- und Lichtanlage, volle Tanzfläche. Termin jetzt prüfen."
+      "description": "Hochzeits-DJ, Live-Musiker (Saz & Gitarre) und Moderator in {city} — für deutsch-türkische & multikulturelle Hochzeiten. Deutsch, Türkisch, Englisch. Termin prüfen."
     },
     "services": {
-      "title": "Hochzeit & Events — Leistungen | DJ Veys",
-      "description": "DJ für Hochzeit, Verlobung, Henna, After-Party und Firmenevents. Was in jeder Leistung enthalten ist — transparent erklärt."
+      "title": "DJ für Hochzeit & Events Stuttgart | DJ Veys",
+      "description": "DJ für Hochzeit, Verlobung, Kına Gecesi, After-Party und Firmenevent in Stuttgart. Leistungen, Technik und Moderation transparent erklärt."
     },
     "packages": {
-      "title": "Pakete & Preise — Hochzeits-DJ | DJ Veys",
-      "description": "Drei klare Pakete für Hochzeit und Event: Umfang, Stunden, Technik und Extras auf einen Blick. Individuelles Angebot in 24 Stunden."
+      "title": "Hochzeits-DJ Preise & Pakete Stuttgart | DJ Veys",
+      "description": "Was kostet ein Hochzeits-DJ in Stuttgart? Drei Pakete mit Umfang, Stunden und Technik im Überblick. Individuelles Angebot in 24 Stunden."
     },
     "weddings": {
       "title": "Echte Hochzeiten — Referenzen & Locations | DJ Veys",
@@ -96,14 +98,14 @@
   "home": {
     "hero": {
       "eyebrow": "Hochzeits-DJ · Live-Musik · Moderation",
-      "title": "Der Sound, an den sich",
-      "titleAccent": "alle erinnern.",
+      "title": "Hochzeits-DJ Stuttgart —",
+      "titleAccent": "der Sound, an den sich alle erinnern.",
       "subtitle": "Vom ersten Ton beim Sektempfang bis zum letzten Song um vier Uhr morgens — ein Abend mit Dramaturgie und eine Tanzfläche, die nicht leer wird.",
       "availability": "Termine für {year} werden knapp — Verfügbarkeit direkt prüfen."
     },
     "intro": "{name} ist seit über {years} Jahren Hochzeits-DJ, Live-Musiker an Saz und Gitarre sowie Moderator aus {city}. Er begleitet Hochzeiten und Events in ganz Baden-Württemberg, deutschlandweit und europaweit — moderiert live auf Deutsch, Türkisch und Englisch und hat sich auf deutsch-türkische und multikulturelle Hochzeiten spezialisiert.",
     "trust": {
-      "title": "Hochzeits-DJ in Stuttgart — worauf Sie sich verlassen können",
+      "title": "Worauf Sie sich am Hochzeitstag verlassen können",
       "items": {
         "planning": {
           "title": "Persönliches Vorgespräch",
@@ -190,9 +192,14 @@
       "title": "Hochzeits-DJ für Stuttgart und Umgebung",
       "subtitle": "Regelmäßig gebucht in diesen Städten rund um Stuttgart — und überall dort, wo gefeiert wird.",
       "coreTitle": "Kernregion — Stuttgart & Baden-Württemberg",
+      "bwLink": "Hochzeits-DJ Baden-Württemberg: alle Städte im Überblick",
       "germanyTitle": "Deutschlandweit buchbar",
       "europeTitle": "Europaweit buchbar",
       "europeText": "Für Destination Weddings und Feiern im Ausland reisen wir an. Anfahrt, Übernachtung und benötigte Technik werden im Angebot transparent ausgewiesen — auch außerhalb der EU."
+    },
+    "stuttgart": {
+      "eyebrow": "Zuhause in Stuttgart",
+      "title": "Ortskenntnis ist kein Zusatz, sondern der Unterschied"
     },
     "finalCta": {
       "eyebrow": "Nächster Schritt",
@@ -204,7 +211,7 @@
   "services": {
     "hero": {
       "eyebrow": "Hochzeit & Events",
-      "title": "Ein DJ, vier Anlässe, ein Anspruch",
+      "title": "DJ für Hochzeit & Events — vier Anlässe, ein Anspruch",
       "subtitle": "Ob freie Trauung im Weingut oder Firmengala im Ballsaal — die Vorbereitung ist immer dieselbe: gründlich."
     },
     "items": {
@@ -303,7 +310,7 @@
   "packages": {
     "hero": {
       "eyebrow": "Pakete & Preise",
-      "title": "Klarer Umfang, klarer Preis",
+      "title": "Pakete & Preise für Ihren Hochzeits-DJ",
       "subtitle": "Diese drei Pakete decken die meisten Hochzeiten ab. Alles darüber hinaus wird individuell kalkuliert — ohne Aufschlag für Beratung."
     },
     "hours": "Spielzeit",
@@ -493,8 +500,8 @@
   },
   "bw": {
     "meta": {
-      "title": "Hochzeits-DJ Baden-Württemberg | DJ Veys",
-      "description": "Hochzeits-DJ für ganz Baden-Württemberg: Stuttgart, Ludwigsburg, Esslingen, Karlsruhe, Mannheim und mehr. Deutsch, Türkisch, Englisch moderiert. Anfahrt transparent kalkuliert."
+      "title": "Hochzeits-DJ Baden-Württemberg – deutsch-türkisch | DJ Veys",
+      "description": "Hochzeits-DJ für ganz Baden-Württemberg: Stuttgart, Ludwigsburg, Karlsruhe, Mannheim und mehr. Deutsch, Türkisch, Englisch moderiert, Anfahrt transparent."
     },
     "hero": {
       "eyebrow": "Baden-Württemberg",
@@ -559,10 +566,78 @@
       "button": "Termin anfragen"
     }
   },
+  "turkishDj": {
+    "meta": {
+      "title": "Türkischer DJ Stuttgart – Hochzeit, Kına & Events | DJ Veys",
+      "description": "Türkischer DJ in Stuttgart: DJ & Live-Orchester für türkische und deutsch-türkische Hochzeiten, Kına Gecesi und Verlobung. Moderation auf Türkisch & Deutsch."
+    },
+    "hero": {
+      "eyebrow": "Türkischer DJ · Stuttgart & Baden-Württemberg",
+      "title": "Türkischer DJ in Stuttgart – für türkische und deutsch-türkische Hochzeiten",
+      "subtitle": "Halay neben den aktuellen Charts, Gelin Çıkarma vor dem Eröffnungstanz und eine Moderation, die zwischen Türkisch und Deutsch wechselt, ohne eine Hälfte des Saals zu verlieren. Seit über {years} Jahren im Einsatz, auf mehr als {events} Hochzeiten und Events insgesamt."
+    },
+    "intro": {
+      "eyebrow": "Zwei Kulturen, ein Abend",
+      "title": "Warum eine türkische Hochzeit einen eigenen DJ-Ansatz braucht",
+      "body": "Eine türkische oder deutsch-türkische Hochzeit folgt einer eigenen Dramaturgie: der große Einzug, Halay-Runden, in denen drei Generationen gleichzeitig tanzen, Kına-Momente mit Gänsehaut — und dazwischen Gäste, die deutsche und internationale Musik erwarten. Veysel lebt in Stuttgart, ist in genau dieser Mischung zu Hause und legt seit über {years} Jahren auf Feiern auf, bei denen beide Musikwelten zusammenkommen — als DJ, als Live-Musiker an Saz und Gitarre und mit Live-Orchester inklusive Bläsern."
+    },
+    "pillars": {
+      "eyebrow": "Was den Unterschied macht",
+      "title": "Beide Musikwelten, ein Standard",
+      "items": {
+        "repertoire": {
+          "title": "Halay bis Charts",
+          "text": "Türkischer Pop, Halay-Klassiker und Roman Havası stehen gleichberechtigt neben deutschen und internationalen Charts. Die Tanzfläche wird in beide Richtungen gelesen — keine Hälfte des Saals wartet auf „ihre\" Musik."
+        },
+        "traditions": {
+          "title": "Gelin Çıkarma, Davul Zurna & Kına",
+          "text": "Traditionen brauchen Timing: der Einzug des Brautpaars, Davul-Zurna-Momente, die Kına-Zeremonie. Ablauf und Übergänge werden im Vorgespräch minutengenau geplant — auf Wunsch mit Live-Orchester und Bläsern."
+        },
+        "hosting": {
+          "title": "Moderation auf Türkisch & Deutsch",
+          "text": "Beide Familien sollen jeden Programmpunkt verstehen. Die Moderation wechselt fließend zwischen Türkisch und Deutsch — auf Wunsch auch Englisch —, damit sich niemand als Gast zweiter Klasse fühlt."
+        }
+      }
+    },
+    "cities": {
+      "eyebrow": "Einsatzgebiet",
+      "title": "Türkischer DJ für Stuttgart und die Region",
+      "lead": "Stuttgart ist Wohn- und Arbeitsort — dazu kommen die Städte der Region, viele mit eigener Seite samt Locations und Anfahrt.",
+      "bwLink": "Hochzeits-DJ für ganz Baden-Württemberg — zur Übersichtsseite"
+    },
+    "faq": {
+      "eyebrow": "Häufige Fragen",
+      "title": "Was Paare vor der Buchung wissen wollen",
+      "items": [
+        {
+          "q": "Spielt ein türkischer DJ auch deutsche und internationale Musik?",
+          "a": "Ja — genau das ist der Kern einer deutsch-türkischen Hochzeit. Das Repertoire deckt türkischen Pop, Halay und Roman Havası genauso ab wie deutsche und internationale Charts. Wie die Mischung gewichtet wird, legen wir gemeinsam im Vorgespräch fest."
+        },
+        {
+          "q": "Übernehmen Sie auch Kına Gecesi und Verlobung?",
+          "a": "Ja. Kına Gecesi, Verlobung (Nişan) und Hochzeit haben jeweils eine eigene Dramaturgie — von der Musik für die Henna-Zeremonie bis zum Programm des Abends. Alle drei gehören fest zum Angebot, einzeln oder in Kombination."
+        },
+        {
+          "q": "Was kostet ein türkischer DJ in Stuttgart?",
+          "a": "Die Pakete sind dieselben wie für jede Hochzeit: drei klare Pakete mit Spielzeit, Technik und Extras, einsehbar auf der Paketseite. Innerhalb von 50 km um Stuttgart ist die Anfahrt enthalten; das individuelle Angebot kommt innerhalb von 24 Stunden."
+        },
+        {
+          "q": "Sind Sie nur in Stuttgart oder auch in anderen Städten buchbar?",
+          "a": "Gebucht wird in ganz Baden-Württemberg — von Ludwigsburg und Esslingen bis Karlsruhe und Mannheim — und darüber hinaus deutschlandweit. Für viele Städte der Region gibt es eigene Seiten mit Locations und Anfahrt."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Termin",
+      "title": "Düğün, Kına oder Nişan — ist Ihr Datum noch frei?",
+      "subtitle": "Datum, Location und ungefähre Gästezahl genügen für den ersten Schritt. Das Vorgespräch klärt dann Sprachen, Traditionen und Ablauf.",
+      "button": "Termin anfragen"
+    }
+  },
   "answers": {
     "hero": {
       "eyebrow": "Fragen & Antworten",
-      "title": "Alle Antworten auf einen Blick",
+      "title": "Alle Antworten zum Hochzeits-DJ in Stuttgart auf einen Blick",
       "subtitle": "{count} ausführliche Antworten zu Buchung, Preisen, Ablauf, Musik, Technik, Recht und türkischen Hochzeiten — sofort lesbar, ohne Klicks oder Aufklappen."
     },
     "entity": "DJ Veys ist der Hochzeits-DJ-, Live-Musik- und Moderationsservice von {owner} mit Sitz in {city}. Seit über {years} Jahren begleitet er Hochzeiten und Events in Baden-Württemberg, deutschlandweit und europaweit, moderiert live auf Deutsch, Türkisch und Englisch und hat sich auf deutsch-türkische, türkische und multikulturelle Hochzeiten spezialisiert. Über {events}+ Feiern hat er bereits begleitet — als DJ, Live-Musiker an Saz und Gitarre und mit einer Live-Band inklusive Bläsern.",
@@ -784,7 +859,7 @@
     },
     "meta": {
       "title": "Hochzeits-DJ {city} — DJ, Musiker & Moderator | DJ Veys",
-      "description": "Premium Hochzeits-DJ in {city}: DJ, Musiker und mehrsprachiger Moderator für deutsch-türkische Hochzeiten. Jetzt Termin anfragen."
+      "description": "Türkischer Hochzeits-DJ & mehrsprachiger Moderator in {city} — DJ für deutsch-türkische, türkische und multikulturelle Hochzeiten. Jetzt Termin anfragen."
     },
     "travel": {
       "eyebrow": "Anfahrt & Transparenz",
@@ -803,7 +878,7 @@
     },
     "bicultural": {
       "eyebrow": "Zwei Kulturen, ein Abend",
-      "title": "Die deutsch-türkische Stärke – auch in {city}",
+      "title": "Türkischer DJ in {city} – die deutsch-türkische Stärke",
       "languagesTitle": "Moderationssprachen"
     },
     "venues": {

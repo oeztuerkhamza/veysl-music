@@ -303,7 +303,7 @@ export const laermschutzPost: BlogPost = {
   updatedAt: '2026-07-25',
   tags: ['recht', 'laermschutz', 'sperrzeit', 'baden-wuerttemberg'],
   readingTimeMinutes: 6,
-  links: ['/hochzeit-events', '/kontakt'],
+  links: ['/hochzeits-dj-baden-wuerttemberg', '/hochzeit-events', '/kontakt'],
   relatedAnswers: ['outdoor-weather', 'power-requirements'],
   relatedCities: ['pforzheim', 'karlsruhe', 'mannheim'],
   relatedPosts: ['location-akustik-checkliste', 'freie-trauung-beschallung-mikrofone-wetter'],

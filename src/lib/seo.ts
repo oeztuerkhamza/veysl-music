@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/i18n/navigation';
-import { locales, defaultLocale, localeTags, ogLocales, type AppPathname, type Locale } from '@/i18n/routing';
+import { locales, defaultLocale, hreflangTags, ogLocales, type AppPathname, type Locale } from '@/i18n/routing';
 import { site } from '@/content/site';
 
 /**
@@ -43,6 +43,9 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
   '/hochzeits-dj/[stadt]': 'city.meta',
   // Landesseite Baden-Württemberg — eigener Namespace, wie die Cluster oben.
   '/hochzeits-dj-baden-wuerttemberg': 'bw.meta',
+  // Nischen-Landingpage „Türkischer DJ Stuttgart" — de/tr/en, siehe
+  // TURKISH_DJ_SUPPORTED_LOCALES in src/content/turkish-dj.ts.
+  '/tuerkischer-dj-stuttgart': 'turkishDj.meta',
   // Europe reach cluster — owned by the regions agent (src/content/regions.ts).
   '/hochzeits-dj-europa': 'regions.hub.meta',
   '/hochzeits-dj-europa/[land]': 'regions.country.meta',
@@ -219,7 +222,10 @@ export async function buildMetadata(
   // The current page's own locale must always be reachable via hreflang, even
   // if a caller's `availableLocales` omits it by mistake.
   const hreflangLocales = availableLocales.includes(locale) ? availableLocales : [...availableLocales, locale];
-  const languages = Object.fromEntries(hreflangLocales.map((l) => [localeTags[l], urlFor(l)]));
+  // `hreflangTags`, not `localeTags`: bare language codes so e.g. Turkish
+  // speakers IN GERMANY (the core audience) match `tr` — `tr-TR` only matched
+  // Turkey. See the map's comment in src/i18n/routing.ts.
+  const languages = Object.fromEntries(hreflangLocales.map((l) => [hreflangTags[l], urlFor(l)]));
   const xDefaultLocale = hreflangLocales.includes(defaultLocale) ? defaultLocale : locale;
 
   const ogImage = image ?? DEFAULT_OG_IMAGE;
@@ -250,7 +256,7 @@ export async function buildMetadata(
         // locale doesn't match any hreflang — point it at German if it's
         // among the available locales for this page, otherwise at the
         // page's own locale.
-        'x-default': languages[localeTags[xDefaultLocale]],
+        'x-default': languages[hreflangTags[xDefaultLocale]],
       },
     },
     openGraph: {

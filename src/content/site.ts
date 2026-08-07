@@ -87,7 +87,18 @@ export const site = {
    * weiteren Stufen zeigen die tatsächliche Reichweite.
    */
 
-  /** Stufe 1 — Kernregion. Basis für die Städte-Landingpages und Local SEO. */
+  /**
+   * Stufe 1 — Kernregion. Basis für die Städte-Landingpages und Local SEO.
+   *
+   * ⚠️ Diese Liste steht auf der Startseite unter „Regelmäßig gebucht in
+   * diesen Städten" — sie ist damit eine Tatsachenbehauptung, keine bloße
+   * Reichweitenangabe. Eine Stadt gehört hierher, weil dort regelmäßig
+   * gespielt wird, NICHT weil sie eine Landingpage hat. Mannheim (95 km,
+   * außerhalb der Inklusivstrecke) steht deshalb bewusst weiter unten in
+   * `germanyCities`, obwohl seine Stadtseite ausgespielt ist; verlinkt wird
+   * sie trotzdem — `service-areas.tsx` löst inzwischen beide Listen gegen die
+   * veröffentlichten Stadtseiten auf.
+   */
   serviceAreas: [
     'Stuttgart',
     'Esslingen',
