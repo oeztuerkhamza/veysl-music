@@ -38,7 +38,7 @@ function asRecord(value: object): Record<string, unknown> {
 }
 
 export function buildPostJsonLd({ post, content, locale, pageUrl, indexUrl, indexLabel, homeUrl }: BuildPostJsonLdArgs): Record<string, unknown>[] {
-  const publisher = organizationSchema(locale);
+  const publisher = organizationSchema();
 
   const article = {
     '@context': 'https://schema.org' as const,
@@ -66,15 +66,14 @@ export function buildPostJsonLd({ post, content, locale, pageUrl, indexUrl, inde
 }
 
 interface BuildIndexJsonLdArgs {
-  locale: Locale;
   homeUrl: string;
   indexUrl: string;
   indexLabel: string;
 }
 
 /** Lightweight breadcrumb-only graph for `/ratgeber` — only emit when the locale actually has articles (see `blog-seo.ts`'s `hasArticles` gate); an empty-shell locale gets no JSON-LD at all. */
-export function buildIndexJsonLd({ locale, homeUrl, indexUrl, indexLabel }: BuildIndexJsonLdArgs): Record<string, unknown>[] {
-  const publisher = organizationSchema(locale);
+export function buildIndexJsonLd({ homeUrl, indexUrl, indexLabel }: BuildIndexJsonLdArgs): Record<string, unknown>[] {
+  const publisher = organizationSchema();
   const breadcrumb = breadcrumbSchema([
     { name: site.name, url: homeUrl },
     { name: indexLabel, url: indexUrl },

@@ -1,4 +1,4 @@
-import { breadcrumbSchema, faqPageSchema, localBusinessSchema, type FaqItem } from '@/lib/schema';
+import { breadcrumbSchema, faqPageSchema, localBusinessSchema, localizedServiceType, type FaqItem } from '@/lib/schema';
 import { resolveLocalized, type City } from '@/content/cities';
 import type { Locale } from '@/i18n/routing';
 
@@ -32,7 +32,7 @@ export function buildCityJsonLd({ city, locale, pageUrl, homeUrl }: BuildCityJso
   const cityService = {
     '@context': 'https://schema.org' as const,
     '@type': 'Service' as const,
-    serviceType: 'Hochzeits-DJ',
+    serviceType: localizedServiceType(locale),
     name: `${business.name} — ${city.name}`,
     description: resolveLocalized(city.intro, locale) ?? city.intro.de,
     url: pageUrl,

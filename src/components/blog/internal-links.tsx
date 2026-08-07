@@ -95,18 +95,23 @@ export interface RelatedCityLinksProps {
 }
 
 /** `post.relatedCities` — nearby-city landing pages, only linked where that city actually ships prose for `locale` (mirrors the same guard `src/app/sitemap.ts` applies). */
-export function RelatedCityLinks({ slugs, locale, title }: RelatedCityLinksProps) {
+export async function RelatedCityLinks({ slugs, locale, title }: RelatedCityLinksProps) {
   if (!slugs || slugs.length === 0) return null;
   const cities = slugs
     .map((slug) => getCityBySlug(slug))
     .filter((city): city is NonNullable<typeof city> => city != null && city.locales.includes(locale));
   if (cities.length === 0) return null;
 
+  const t = await getTranslations({ locale });
+
   return (
     <LinkPillSection title={title}>
       {cities.map((city) => (
         <Link key={city.slug} href={{ pathname: '/hochzeits-dj/[stadt]', params: { stadt: city.slug } }} className={pillClass}>
-          {city.name}
+          {/* The city page's own H1 („Hochzeits-DJ in {city}") instead of the
+              bare city name: the anchor should say what the target page is
+              about, not only where it is — the same rule CityNearby follows. */}
+          {t('city.hero.title', { city: city.name })}
         </Link>
       ))}
     </LinkPillSection>

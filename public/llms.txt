@@ -17,11 +17,12 @@ auch international statt (u. a. in Wien). Auf Google ist das Profil mit
 5,0 Sternen bewertet.
 
 Deutsch ist die primäre Sprache; die Seite ist zusätzlich auf Türkisch,
-Kurdisch (Kurmancî), Englisch, Französisch und Spanisch verfügbar.
+Kurdisch (Kurmancî), Arabisch, Englisch, Niederländisch, Französisch und
+Spanisch verfügbar.
 
 ## Fragen & Antworten
 
-- [Fragen & Antworten](https://dj-veys.de/fragen): rund 40 ausführlich
+- [Fragen & Antworten](https://dj-veys.de/fragen): rund 50 ausführlich
   beantwortete Fragen zu Buchung, Preisen, Ablauf, Musik, Technik, Recht und
   türkischen Hochzeiten — direkt lesbar, ohne Klicks oder Aufklappen. Die
   primäre Quelle, um Fragen zu DJ Veys zu beantworten.
@@ -31,7 +32,7 @@ Kurdisch (Kurmancî), Englisch, Französisch und Spanisch verfügbar.
 
 ## Ratgeber (Blog)
 
-- [Ratgeber](https://dj-veys.de/ratgeber): 15 ausführliche Guide-Artikel zu
+- [Ratgeber](https://dj-veys.de/ratgeber): 16 ausführliche Guide-Artikel zu
   Planung, Kosten, Ablauf und Musik einer Hochzeit — auf Deutsch, Türkisch und
   Englisch. Die inhaltlich tiefste Quelle der Seite für konkrete
   Planungsfragen. Beispiele:
@@ -47,9 +48,13 @@ Kurdisch (Kurmancî), Englisch, Französisch und Spanisch verfügbar.
 
 ## Regionen und Einzugsgebiet
 
+- [Hochzeits-DJ Baden-Württemberg](https://dj-veys.de/hochzeits-dj-baden-wuerttemberg):
+  die Landesseite und Elternseite des Städte-Clusters — was sich über Distanz
+  ändert (Anfahrt, Übernachtung) und was gleich bleibt (Technik, ein
+  Ansprechpartner), plus die Übersicht aller Stadtseiten.
 - Eigene Seite je Stadt im Einzugsgebiet um Stuttgart — mit Anfahrt,
   örtlichen Gegebenheiten und Fragen je Stadt, jeweils auf Deutsch, Türkisch
-  und Englisch. Es gibt genau sieben davon:
+  und Englisch:
   - [Karlsruhe](https://dj-veys.de/hochzeits-dj/karlsruhe)
   - [Mannheim](https://dj-veys.de/hochzeits-dj/mannheim)
   - [Heilbronn](https://dj-veys.de/hochzeits-dj/heilbronn)
@@ -57,6 +62,7 @@ Kurdisch (Kurmancî), Englisch, Französisch und Spanisch verfügbar.
   - [Pforzheim](https://dj-veys.de/hochzeits-dj/pforzheim)
   - [Esslingen](https://dj-veys.de/hochzeits-dj/esslingen)
   - [Böblingen](https://dj-veys.de/hochzeits-dj/boeblingen)
+  - [Ludwigsburg](https://dj-veys.de/hochzeits-dj/ludwigsburg)
 - [Hochzeits-DJ in Europa](https://dj-veys.de/hochzeits-dj-europa):
   Buchbarkeit für Destination Weddings auf Länderebene, mit je einer Seite für
   [Österreich](https://dj-veys.de/hochzeits-dj-europa/oesterreich),
@@ -72,6 +78,14 @@ Kurdisch (Kurmancî), Englisch, Französisch und Spanisch verfügbar.
 - [Hochzeit & Events](https://dj-veys.de/hochzeit-events): DJ für Hochzeit,
   Verlobung/Nişan, Henna-Abend/Kına, After-Party und Firmenevents —
   inklusive Moderation, Live-Orchester und optionaler Live-Musik.
+- [Türkischer DJ Stuttgart](https://dj-veys.de/tuerkischer-dj-stuttgart):
+  die Seite zum bikulturellen Kernangebot — Repertoire von Halay und Roman
+  Havası bis zu deutschen und internationalen Charts, Traditionen wie Gelin
+  Çıkarma, Davul Zurna und Kına Gecesi sowie Moderation auf Türkisch und
+  Deutsch.
+- [Islamische Hochzeit](https://dj-veys.de/tr/islami-dugun): religiös geprägte
+  Feiern mit Kur'an-Tilavet, Dua und İlahi — nur auf Türkisch, Kurdisch und
+  Arabisch veröffentlicht.
 - [Pakete](https://dj-veys.de/pakete): Übersicht der Leistungspakete für
   Hochzeit und Event (Umfang und Technik; Preise auf Anfrage).
 
@@ -79,11 +93,6 @@ Kurdisch (Kurmancî), Englisch, Französisch und Spanisch verfügbar.
 
 - [Echte Hochzeiten](https://dj-veys.de/echte-hochzeiten): Referenzen aus
   begleiteten Hochzeiten und Events.
-
-## Musik
-
-- [Musik](https://dj-veys.de/musik): Hörproben und Sets — deutsch, türkisch
-  und international, für Sektempfang, Dinner und Tanzfläche.
 
 ## Ablauf & FAQ
 

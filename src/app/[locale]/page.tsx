@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 import { site } from '@/content/site';
-import { buildMetadata } from '@/lib/seo';
-import { localBusinessSchema, websiteSchema } from '@/lib/schema';
+import { absoluteUrl, buildMetadata } from '@/lib/seo';
+import { localBusinessSchema, serviceSchema, websiteSchema } from '@/lib/schema';
+import { services } from '@/content/services';
 import { firstPartyAggregate, getPublishedTestimonials } from '@/lib/testimonials';
 import { Hero } from '@/components/hero/hero';
 import { StageBand } from '@/components/home/stage-band';
@@ -17,6 +18,7 @@ import { Testimonials, type Testimonial } from '@/components/home/testimonials';
 import { GoogleReviews } from '@/components/home/google-reviews';
 import { ProcessPreview } from '@/components/home/process-preview';
 import { ServiceAreas } from '@/components/home/service-areas';
+import { StuttgartLocal } from '@/components/home/stuttgart-local';
 import { FinalCta } from '@/components/home/final-cta';
 import { InstagramStrip, YouTubeStrip } from '@/components/social';
 
@@ -56,10 +58,29 @@ export default async function HomePage({ params }: HomePageProps) {
   // resolves only to the `.ts` builders, making the `.tsx` component unreachable
   // without an explicit extension (unsupported without `allowImportingTsExtensions`).
   // Inlined here until the SEO agent renames one of the two files.
-  const jsonLd = JSON.stringify([websiteSchema(locale), localBusinessSchema(locale, firstPartyRating)]).replace(
-    /</g,
-    '\\u003c',
+  // Was hier gebucht werden kann, stand bisher nirgends maschinenlesbar: Die
+  // Startseite ist die Zielseite für „Hochzeits-DJ Stuttgart", trug aber nur
+  // die Identität des Unternehmens, keine einzige Leistung. Dieselben bereits
+  // übersetzten Strings, die /hochzeit-events rendert — kein neuer Text.
+  const tServices = await getTranslations('services');
+  const serviceNodes = serviceSchema(
+    services.map((service) => ({
+      // Derselbe `slug` wie auf /hochzeit-events: beide Seiten beschreiben
+      // dieselben vier Leistungen und verweisen deshalb auf denselben Knoten,
+      // statt ihn zu duplizieren.
+      slug: service.id,
+      name: tServices(`items.${service.id}.title`),
+      description: tServices(`items.${service.id}.text`),
+      url: absoluteUrl('/hochzeit-events', locale),
+    })),
+    locale,
   );
+
+  const jsonLd = JSON.stringify([
+    websiteSchema(locale),
+    localBusinessSchema(locale, firstPartyRating),
+    ...serviceNodes,
+  ]).replace(/</g, '\\u003c');
 
   return (
     <>
@@ -114,6 +135,9 @@ export default async function HomePage({ params }: HomePageProps) {
       <YouTubeStrip />
       <InstagramStrip />
       <ProcessPreview />
+      {/* Stuttgart-Substanz auf der Seite, die für „Hochzeits-DJ Stuttgart"
+          ranken soll — siehe Dateikopf von stuttgart-local.tsx. */}
+      <StuttgartLocal />
       <ServiceAreas />
       <FinalCta />
     </>

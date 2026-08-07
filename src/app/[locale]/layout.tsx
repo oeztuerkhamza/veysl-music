@@ -10,9 +10,9 @@ import { StickyCtaBar } from '@/components/layout/sticky-cta-bar';
 import { WhatsAppFab } from '@/components/booking/whatsapp-fab';
 import { CmsEditLayer } from '@/components/cms/edit-layer';
 import { WhatsappModalProvider } from '@/components/whatsapp/whatsapp-modal-provider';
-import { getPathname } from '@/i18n/navigation';
-import { localeDirs, localeTags, ogLocales, routing, type Locale } from '@/i18n/routing';
+import { localeDirs, localeTags, routing, type Locale } from '@/i18n/routing';
 import { fontDisplay, fontDisplayArabic, fontSans, fontSansArabic } from '@/lib/fonts';
+import { siteBaseUrl } from '@/lib/seo';
 import { localized } from '@/lib/utils';
 import { site } from '@/content/site';
 import { getSite } from '@/content/get-site';
@@ -68,30 +68,37 @@ export async function generateMetadata({
     ? rawLocale
     : routing.defaultLocale;
 
-  const languages = Object.fromEntries(
-    routing.locales.map((l) => [
-      localeTags[l],
-      new URL(getPathname({ locale: l, href: '/' }), site.url).toString(),
-    ])
-  );
-
   return {
-    metadataBase: new URL(site.url),
+    /**
+     * `siteBaseUrl()`, nicht `site.url`: Auf einer Vorschau-/Staging-Umgebung
+     * setzt `NEXT_PUBLIC_SITE_URL` den Host, und `buildMetadata()` folgt dem
+     * bereits. Ein fest verdrahtetes `site.url` hier hätte Layout und Seiten
+     * auf verschiedene Hosts zeigen lassen.
+     */
+    metadataBase: new URL(siteBaseUrl()),
     title: {
       template: `%s | ${site.name}`,
       default: `${site.name} — ${localized(site.tagline, locale)}`,
     },
     description: localized(site.tagline, locale),
-    alternates: {
-      canonical: new URL(getPathname({ locale, href: '/' }), site.url).toString(),
-      languages: {
-        ...languages,
-        'x-default': new URL(getPathname({ locale: routing.defaultLocale, href: '/' }), site.url).toString(),
-      },
-    },
+    /**
+     * KEIN `alternates` hier — bewusst entfernt (August 2026).
+     *
+     * Das Layout stempelte den Startseiten-Canonical plus den vollständigen
+     * hreflang-Satz auf JEDE Route darunter. Sichtbar wurde das bisher nicht,
+     * weil alle Seiten ihn über `buildMetadata()` überschreiben (Next ersetzt
+     * das `alternates`-Objekt der Elternebene komplett, es wird nicht
+     * gemischt). Genau das machte es aber zu einer scharf gestellten Falle:
+     * die erste Seite, die kein eigenes `generateMetadata` mitbringt, würde
+     * sich per rel=canonical selbst auf die Startseite konsolidieren — und
+     * indexierbar bleiben, weil `robots` dort ebenfalls voreingestellt ist.
+     *
+     * Canonical und hreflang gehören ausschließlich zu `buildMetadata()`
+     * (src/lib/seo.ts), das sie pro Seite und pro tatsächlich vorhandener
+     * Sprachfassung berechnet. Dasselbe gilt für die URL-abhängigen
+     * OpenGraph-Felder; `siteName` bleibt, weil es routenunabhängig ist.
+     */
     openGraph: {
-      locale: ogLocales[locale],
-      alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => ogLocales[l]),
       siteName: site.name,
     },
     /**

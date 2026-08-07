@@ -96,14 +96,14 @@
   "home": {
     "hero": {
       "eyebrow": "DJ de bodas · Música en directo · Presentación",
-      "title": "El sonido que",
-      "titleAccent": "todos recordarán.",
+      "title": "DJ de bodas Stuttgart —",
+      "titleAccent": "el sonido que todos recordarán.",
       "subtitle": "Desde la primera canción del cóctel de bienvenida hasta la última a las cuatro de la mañana: una noche con dramaturgia y una pista que no se vacía.",
       "availability": "Las fechas de {year} vuelan: consulten la disponibilidad ahora."
     },
     "intro": "{name} lleva más de {years} años como DJ de bodas, músico de saz y guitarra y maestro de ceremonias en {city}. Acompaña bodas y eventos por todo Baden-Württemberg, en toda Alemania y en Europa, presenta en directo en alemán, turco e inglés y está especializado en bodas germano-turcas, biculturales y multiculturales.",
     "trust": {
-      "title": "DJ de bodas en Stuttgart: en qué podéis confiar",
+      "title": "En qué podéis confiar el día de la boda",
       "items": {
         "planning": {
           "title": "Reunión de planificación",

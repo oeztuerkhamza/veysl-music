@@ -59,7 +59,6 @@ export default async function RatgeberIndexPage({ params }: PageProps) {
 
   const jsonLd = hasArticles
     ? buildIndexJsonLd({
-        locale,
         homeUrl: absoluteUrl('/', locale),
         indexUrl: ratgeberIndexUrl(locale),
         indexLabel: t('index.eyebrow'),

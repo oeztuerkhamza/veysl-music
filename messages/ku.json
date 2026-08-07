@@ -97,14 +97,14 @@
   "home": {
     "hero": {
       "eyebrow": "DJ'ê dawetê · Muzîka zindî · Pêşkêşî",
-      "title": "Ew deng ku her kes",
-      "titleAccent": "wê ji bîr neke.",
+      "title": "DJ'ê dawetê Stuttgart —",
+      "titleAccent": "ew deng ku her kes wê ji bîr neke.",
       "subtitle": "Ji nota yekem a pêşwaziyê heta stranê dawî yê saet çaran ê sibehê — şeveke bi rêzeke hunerî û meydaneke govendê ku tu carî vala nabe.",
       "availability": "Dîrokên {year}an kêm dibin — valahiyê rasterast kontrol bikin."
     },
     "intro": "{name} ji {years} salan zêdetir e ku wek DJ'ê dawetê, muzîkjenê zindî yê saz û gîtarê û pêşkêşvanê ji bajarê {city} kar dike. Ew dawet û şahiyan li seranserê Baden-Württemberg, li tevahiya Almanyayê û Ewropayê bi rê ve dibe — bi Almanî, Tirkî û Îngilîzî zindî pêşkêş dike û li ser dawetên alman-tirk û pirçandî pispor e.",
     "trust": {
-      "title": "DJ'ê dawetê li Stuttgartê — hûn dikarin li ser çi bawer bin",
+      "title": "Hûn dikarin di roja dawetê de li ser çi bawer bin",
       "items": {
         "planning": {
           "title": "Hevpeyvîna kesane ya berê",

@@ -336,7 +336,7 @@ export const tuerkischeHochzeitPost: BlogPost = {
   updatedAt: '2026-07-25',
   tags: ['tuerkische-hochzeit', 'ablauf', 'timing', 'musik'],
   readingTimeMinutes: 7,
-  links: ['/hochzeit-events', '/fragen'],
+  links: ['/tuerkischer-dj-stuttgart', '/hochzeit-events', '/fragen'],
   relatedAnswers: ['timeline-diff', 'halay-repertoire', 'bilingual-hosting', 'kina-gecesi'],
   relatedCities: ['stuttgart', 'esslingen'],
   relatedPosts: ['kina-gecesi-henna-abend-planen', 'davul-zurna-halay-roman-havasi', 'deutsch-tuerkische-hochzeit-zwei-familien'],

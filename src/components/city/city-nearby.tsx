@@ -38,6 +38,12 @@ export function CityNearby({ city }: { city: City }) {
 
         <p className="mt-12 text-xs uppercase tracking-[0.2em] text-gold">{t('nearby.servicesTitle')}</p>
         <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          {/* Cluster-Elternseite zuerst: jede Stadtseite verweist eine Ebene
+              hoch auf die BW-Landesseite (Stadtseiten und BW-Seite teilen
+              dieselben Sprachen de/tr/en, kein Locale-Guard nötig). */}
+          <Link href="/hochzeits-dj-baden-wuerttemberg" className="text-ink-muted transition-colors hover:text-ink">
+            {tNav('badenWuerttemberg')}
+          </Link>
           <Link href="/hochzeit-events" className="text-ink-muted transition-colors hover:text-ink">
             {tNav('services')}
           </Link>

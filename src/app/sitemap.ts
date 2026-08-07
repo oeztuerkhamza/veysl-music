@@ -1,8 +1,9 @@
 import type { MetadataRoute } from 'next';
-import { locales, defaultLocale, localeTags, type Locale } from '@/i18n/routing';
+import { locales, defaultLocale, hreflangTags, type Locale } from '@/i18n/routing';
 import { absoluteUrl, type StaticPathname, type DynamicPathname } from '@/lib/seo';
 import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
 import { BW_SUPPORTED_LOCALES } from '@/content/region-bw';
+import { TURKISH_DJ_SUPPORTED_LOCALES } from '@/content/turkish-dj';
 
 const CITY_PATHNAME: DynamicPathname = '/hochzeits-dj/[stadt]';
 const REGION_HUB_PATHNAME: StaticPathname = '/hochzeits-dj-europa';
@@ -40,6 +41,9 @@ interface RouteSeoConfig {
  * - `/hochzeits-dj-baden-wuerttemberg`: same shape, de/tr/en only
  *   (`BW_SUPPORTED_LOCALES`). A state-level page exists to rank for a
  *   German-language query; a French edition of it competes for nothing.
+ * - `/tuerkischer-dj-stuttgart`: same shape, de/tr/en only
+ *   (`TURKISH_DJ_SUPPORTED_LOCALES`) — the niche landing page for the
+ *   "türkischer DJ (Stuttgart)" query group. Emitted per-locale below.
  * - `/impressum` + `/datenschutz`: both pages set `noIndex: true` in their own
  *   `generateMetadata`. A sitemap entry is a request to index; pairing it with
  *   a `noindex` page is a direct contradiction that Search Console reports as
@@ -55,6 +59,7 @@ const staticRoutes: Record<
     | '/fragen'
     | '/islamische-hochzeit'
     | '/hochzeits-dj-baden-wuerttemberg'
+    | '/tuerkischer-dj-stuttgart'
     | '/impressum'
     | '/datenschutz'
   >,
@@ -286,9 +291,12 @@ async function loadAnswersLocales(): Promise<{ locales: readonly Locale[]; lastM
 
 /** Shared hreflang-map builder: `urlFor` resolves one locale's URL, `x-default` prefers German when it's included. */
 function buildLanguages(urlFor: (locale: Locale) => string, forLocales: readonly Locale[]): Record<string, string> {
-  const byTag = Object.fromEntries(forLocales.map((locale) => [localeTags[locale], urlFor(locale)]));
+  // Bare language codes, identical to what `buildMetadata()` emits in the page
+  // head — sitemap and page must never disagree about hreflang. Why bare and
+  // not regional: see `hreflangTags` in src/i18n/routing.ts.
+  const byTag = Object.fromEntries(forLocales.map((locale) => [hreflangTags[locale], urlFor(locale)]));
   const xDefaultLocale = forLocales.includes(defaultLocale) ? defaultLocale : forLocales[0];
-  return { ...byTag, 'x-default': byTag[localeTags[xDefaultLocale]] };
+  return { ...byTag, 'x-default': byTag[hreflangTags[xDefaultLocale]] };
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -336,6 +344,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of BW_SUPPORTED_LOCALES) {
       entries.push({
         url: absoluteUrl('/hochzeits-dj-baden-wuerttemberg', locale),
+        changeFrequency: 'monthly',
+        priority: 0.9,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // Nischen-Landingpage „Türkischer DJ Stuttgart" — de/tr/en. Priorität auf
+  // Höhe der Landesseite: Sie zielt auf die einzige Kernabfrage-Gruppe
+  // (türkischer dj …), die bis August 2026 gar keine Seite hatte, und
+  // beschreibt laut BRAND-FACTS.md das Kerngeschäft.
+  {
+    const languages = buildLanguages(
+      (locale) => absoluteUrl('/tuerkischer-dj-stuttgart', locale),
+      TURKISH_DJ_SUPPORTED_LOCALES,
+    );
+    for (const locale of TURKISH_DJ_SUPPORTED_LOCALES) {
+      entries.push({
+        url: absoluteUrl('/tuerkischer-dj-stuttgart', locale),
         changeFrequency: 'monthly',
         priority: 0.9,
         alternates: { languages },
