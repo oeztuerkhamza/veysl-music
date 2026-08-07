@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
+import { ConsentSettingsLink } from '@/components/analytics';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { Container } from '@/components/ui/container';
@@ -118,6 +119,9 @@ export async function Footer() {
           <Link href="/datenschutz" className={linkClasses}>
             {t('footer.privacy')}
           </Link>
+          {/* Rendert automatisch `null`, solange kein einwilligungspflichtiger
+              Anbieter konfiguriert ist — deshalb bedingungslos hier. */}
+          <ConsentSettingsLink className={linkClasses} />
         </div>
 
         <div className="flex flex-col gap-3">

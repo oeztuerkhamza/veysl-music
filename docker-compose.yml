@@ -38,6 +38,9 @@ services:
         NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL: ${NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL}
         NEXT_PUBLIC_GA4_MEASUREMENT_ID: ${NEXT_PUBLIC_GA4_MEASUREMENT_ID}
         NEXT_PUBLIC_CLARITY_PROJECT_ID: ${NEXT_PUBLIC_CLARITY_PROJECT_ID}
+        # Ohne diese Zeile erreicht der Search-Console-Token das gebaute HTML
+        # nie — siehe den ARG-Block im Dockerfile.
+        NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
     image: veysl-app:latest
     container_name: veysl-app
     restart: unless-stopped

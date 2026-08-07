@@ -115,6 +115,7 @@ docker build --target builder -t veysl-app:build-tools \
   --build-arg NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL="$(env_value NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL)" \
   --build-arg NEXT_PUBLIC_GA4_MEASUREMENT_ID="$(env_value NEXT_PUBLIC_GA4_MEASUREMENT_ID)" \
   --build-arg NEXT_PUBLIC_CLARITY_PROJECT_ID="$(env_value NEXT_PUBLIC_CLARITY_PROJECT_ID)" \
+  --build-arg NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION="$(env_value NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION)" \
   . >/dev/null
 
 # The volume is read off the running container rather than hardcoded. Compose
@@ -186,6 +187,33 @@ fi
 # Config reload only — cheap, and covers the (rare) case where nginx.conf or
 # redirects-legacy.conf changed in this pull. No downtime.
 docker compose exec -T nginx nginx -s reload 2>/dev/null || true
+
+# -----------------------------------------------------------------------------
+# Indexierbarkeits-Prüfung — laut, weil die Alternative lautlos ist.
+#
+# `src/app/robots.ts` sperrt bewusst ALLES, sobald NEXT_PUBLIC_SITE_URL nicht
+# auf die kanonische Domain zeigt. Das ist die richtige Richtung (eine
+# versehentlich indexierte Vorschau kostet Wochen), hat aber eine unangenehme
+# Eigenschaft: Vergisst jemand die Variable auf dem Produktivserver, liefert
+# der Deploy einen kerngesunden Container aus, der Google „Disallow: /" sagt.
+# Der Container ist `healthy`, die Seite lädt, nichts wirkt kaputt — und die
+# Sichtbarkeit ist weg, bis es jemandem auffällt.
+#
+# Die Prüfung greift auf den laufenden Container zu (nicht über nginx), damit
+# sie auch dann etwas aussagt, wenn DNS/TLS gerade nicht mitspielen.
+if robots="$(docker compose exec -T app wget -qO- http://127.0.0.1:3000/robots.txt 2>/dev/null)"; then
+  if printf '%s' "$robots" | grep -qE '^[[:space:]]*Disallow:[[:space:]]*/[[:space:]]*$'; then
+    warn "robots.txt sperrt die GESAMTE Seite (Disallow: /)."
+    warn "Ursache ist fast immer ein fehlendes oder falsches NEXT_PUBLIC_SITE_URL in der .env"
+    warn "(erwartet: https://dj-veys.de). Das ist ein Build-Arg — nach dem Korrigieren"
+    warn "'docker compose build' neu laufen lassen, ein Neustart genügt nicht."
+    warn "Der Deploy selbst ist erfolgreich; die Seite ist nur für Suchmaschinen gesperrt."
+  else
+    log "robots.txt erlaubt Crawling."
+  fi
+else
+  warn "robots.txt konnte nicht geprüft werden — bitte manuell ansehen: https://dj-veys.de/robots.txt"
+fi
 
 log "Deploy complete. veysl-app is healthy."
 docker compose ps

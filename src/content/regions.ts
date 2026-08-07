@@ -126,13 +126,25 @@ export function resolveLocalized(text: LocalizedProse | undefined, locale: Local
  * all six locale files before per-city prose was added), `regions.*` is a
  * brand-new namespace, so there is no existing safety net to lean on here.
  *
- * Once `messages/tr.json` (+ ku/fr/es) receive the `regions` namespace, widen
- * `BASE_SUPPORTED_LOCALES`/`FR_SUPPORTED_LOCALES` below — the Turkish and
- * French prose is already written and will start rendering immediately, no
- * other change needed. Same pattern as `cities.ts`'s
- * `CITY_PAGES_SUPPORTED_LOCALES`.
+ * ✅ ERLEDIGT (August 2026): Der Übersetzungs-Sync ist durch. Der `regions`-
+ * Namespace liegt inzwischen in ALLEN acht Sprachdateien vollständig vor
+ * (`regions.hub` und `regions.country` je 8 bzw. 12 Schlüssel, nachgeprüft).
+ * Damit ist die oben beschriebene Sperre gegenstandslos geworden — sie hat
+ * aber weiter gegriffen und die fertig geschriebene türkische Prosa aller
+ * fünf Länder sowie die französische für Frankreich und Belgien
+ * unveröffentlicht gehalten.
+ *
+ * `tr` ist hier die teuerste Auslassung gewesen, nicht irgendeine: Die
+ * türkischsprachige Zielgruppe ist laut .claude/BRAND-FACTS.md der Kernmarkt,
+ * und Zürich, Basel und Straßburg liegen näher an Stuttgart als manche
+ * deutsche Großstadt.
+ *
+ * Die eigentliche Inhaltsprüfung macht ohnehin `hasRegionProse()` weiter
+ * unten — ein Land ohne echte Prosa in einer Sprache fällt dort heraus,
+ * unabhängig davon, was hier steht. Diese Liste sagt nur noch, welche
+ * Sprachen überhaupt in Frage kommen.
  */
-const BASE_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'en'];
+const BASE_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'en', 'tr'];
 
 /**
  * For the hub page (`/hochzeits-dj-europa/page.tsx`), which has no
@@ -142,8 +154,14 @@ const BASE_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'en'];
  * `BASE_SUPPORTED_LOCALES` above. Includes `nl`: `messages/nl.json`'s
  * `regions.hub.*` block is complete (verified directly), and the hub itself
  * has no per-country content gate to worry about.
+ *
+ * `tr` und `fr` sind im August 2026 dazugekommen — beide haben den
+ * vollständigen `regions.hub`-Block, und beide haben ab jetzt auch
+ * Länderseiten, auf die der Hub verlinken kann (tr: alle fünf, fr:
+ * Frankreich und Belgien). Ein Hub ohne Ziele wäre eine leere Seite; das
+ * ist der Grund, warum diese Liste nicht einfach alle acht Sprachen führt.
  */
-export const HUB_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'en', 'nl'];
+export const HUB_SUPPORTED_LOCALES: readonly Locale[] = ['de', 'en', 'nl', 'tr', 'fr'];
 
 /** True if `region` has real, complete prose (all six prose fields + full FAQ) for `locale`. */
 export function hasRegionProse(region: Region, locale: Locale): boolean {
@@ -164,27 +182,27 @@ export function hasRegionProse(region: Region, locale: Locale): boolean {
  * Per-country candidate locale sets — MESSAGE-FILE readiness, not content
  * readiness (content readiness is `hasRegionProse`'s job, applied below).
  *
- *  - `de`, `en`: always — the two locales this agent added the `regions`
- *    namespace to directly.
- *  - `nl`: enabled for `niederlande` and `belgien` only. `messages/nl.json`
- *    already ships a complete, structurally matching `regions` namespace —
- *    a new `nl` locale (covering the Netherlands + Flanders, per
- *    `src/i18n/routing.ts`) landed while this file was being written, and
- *    real Dutch prose exists below for exactly these two countries.
- *  - `tr`, `fr`, `ku`, `es`: deliberately NOT enabled anywhere yet.
- *    `messages/tr.json`, `fr.json`, `ku.json` and `es.json` do not carry the
- *    `regions` namespace at all yet (pending the orchestrator's translator
- *    sync pass — see docs/SEO-EUROPE-STRATEGY.md). Full Turkish prose (every
- *    country) and French prose (Frankreich/Belgien) is already written
- *    below and ready — only this map needs widening once each message file
- *    is synced, exactly like `BASE_SUPPORTED_LOCALES`'s own doc comment.
+ *  - `de`, `en`, `tr`: überall (via `BASE_SUPPORTED_LOCALES`). Türkisch kam
+ *    im August 2026 dazu, nachdem der Übersetzungs-Sync alle acht
+ *    Sprachdateien mit dem vollständigen `regions`-Namespace versorgt hatte;
+ *    die türkische Prosa lag für alle fünf Länder längst geschrieben vor.
+ *  - `nl`: nur `niederlande` und `belgien` — dort und nur dort existiert
+ *    niederländische Prosa (Niederlande + Flandern, siehe
+ *    `src/i18n/routing.ts`).
+ *  - `fr`: `frankreich` und `belgien` — die beiden Länder mit französischer
+ *    Prosa (Frankreich selbst und die Wallonie). Für Frankreich ist das
+ *    zugleich die einzige Sprache, in der die Zielgruppe dort tatsächlich
+ *    sucht; Straßburg liegt rund 110 km von Stuttgart.
+ *  - `ku`, `es`, `ar`: weiterhin nirgends. Der Namespace ist zwar da, die
+ *    Prosa in diesem File ist es nicht — `hasRegionProse()` würde sie
+ *    ohnehin herausfiltern, sie hier zu führen wäre nur irreführend.
  */
 const CANDIDATE_LOCALES_BY_SLUG: Record<string, readonly Locale[]> = {
   oesterreich: BASE_SUPPORTED_LOCALES,
   schweiz: BASE_SUPPORTED_LOCALES,
-  niederlande: ['de', 'en', 'nl'],
-  belgien: ['de', 'en', 'nl'],
-  frankreich: BASE_SUPPORTED_LOCALES,
+  niederlande: ['de', 'en', 'nl', 'tr'],
+  belgien: ['de', 'en', 'nl', 'tr', 'fr'],
+  frankreich: ['de', 'en', 'tr', 'fr'],
 };
 
 export function getReadyLocalesForRegion(region: Region): Locale[] {
