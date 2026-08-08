@@ -93,7 +93,14 @@ legitimacy risk and the strongest existing internal-linking logic (link from `/`
 
 ---
 
-## 2. Tier 2 — build second (strong opportunity, not yet client-confirmed)
+## 2. Tier 2 — ✅ BUILT (August 2026)
+
+> **Status:** the operator confirmed on 2026-08-07 that he travels to and serves
+> these cities — the gate this section describes. All seven ship as pages
+> (`priority: 1` in `src/content/cities.ts`). Distances were recomputed before
+> publishing; several were wrong, corrected inline below. `turkishCommunity`
+> stays `false` everywhere: the confirmation covered travel, not the demographic
+> question these entries flag as "needs client input".
 
 Real hooks exist, competition is manageable, and each is a natural geographic/community
 extension of Tier 1 — but confirm with the client that he actually wants to (and
@@ -101,14 +108,14 @@ realistically will) travel/serve here regularly before publishing, since a city 
 implicitly promises local availability.
 
 ### Tübingen
-- **Distance:** ~40 km, general estimate (12 km from Reutlingen, which is 32 km from Stuttgart) — verify exact figure
+- **Distance:** **~30 km** (straight-line, haversine — corrected August 2026) exact figure
 - **Population:** ~93,615 (2023, [Stadt Tübingen](https://www.tuebingen.de/1370.html))
 - **Competition:** Medium — university town with several dedicated DJ pages (DJemi, Suite 219, The Event DJ). No Turkish-specific competitor found.
 - **Turkish community:** Not verified for this specific city — **needs client input**.
 - **Local hooks:** No specific bookable wedding venue confirmed — **needs client input**. Regional character (real, safe to use): university town on the Neckar, historic Altstadt, punting (Stocherkahn) tradition — strong photo/atmosphere hook even without a named venue.
 
 ### Heidelberg
-- **Distance:** ~109 km (straight-line, luftlinie.org)
+- **Distance:** **~79 km** (straight-line, haversine from city coordinates — see the "Batch August 2026" note in `src/content/cities.ts`). The ~109 km recorded in the original pass was wrong.
 - **Population:** ~155,175 ([Statistisches Landesamt BW](https://www.statistik-bw.de/))
 - **Competition:** Medium-high — dense DJ market (DJcall.de, Listen2 Band, Einfach Freddy, DJ Delta, H2O Promotions, DJ Martin Meyer). No Turkish-specific competitor found for Heidelberg.
 - **Turkish community:** Not verified — **needs client input**.
@@ -123,7 +130,7 @@ implicitly promises local availability.
 - **Local hooks:** Confirmed, well-known landmark: **Ulmer Münster / historic Rathaus** — civil ceremonies take place in Ulm's town hall, described as one of the most beautiful buildings in the region with Gothic-framed windows and facade painting (found via Standesamt/wedding-venue search). Real and distinctive.
 
 ### Göppingen
-- **Distance:** ~40 km, general estimate — verify
+- **Distance:** **~35 km** (straight-line, haversine — corrected August 2026)
 - **Population:** ~58,905 (2024, [Statistisches Landesamt BW](https://www.statistik-bw.de/))
 - **Competition:** Low-medium — mostly listed as a secondary market by Stuttgart/Ostalb-based DJs, no strong dedicated competitor.
 - **Turkish community:** Not verified — **needs client input**.
@@ -137,14 +144,14 @@ implicitly promises local availability.
 - **Local hooks:** Confirmed, well-known: civil ceremonies take place at **Freiburg's historic Rathaus**, and the **Historisches Kaufhaus at Münsterplatz** (red Gothic-arcade building) is described as the city's most popular wedding venue; **Schloss Ebnet** and the **Alte Wache** are also cited as special wedding locations (found via Standesamt/wedding-venue search). Strong, real, distinctive set of hooks.
 
 ### Aalen
-- **Distance:** ~70 km, general estimate — verify
+- **Distance:** **~67 km** (straight-line, haversine — corrected August 2026)
 - **Population:** ~67,697 (2024, [Statistisches Landesamt BW](https://www.statistik-bw.de/))
 - **Competition:** Low — mostly Ostalbkreis-wide DJs (Laura Schaible, Oliver Kraus, D-Veranstaltungsservice) rather than Aalen-specific pages.
 - **Turkish community:** Medium qualitatively (Ostalbkreis industrial towns have historic Turkish-German communities tied to local manufacturing) — **needs client input**.
 - **Local hooks:** Confirmed bookable venues: **Villa Stützel** and **Freudenschmaus** (both in Aalen); **Schloss Kapfenburg** (~15 km from Aalen, Rittersaal up to 90 guests / Fürstensaal up to 120) — all found via direct wedding-venue search.
 
 ### Schwäbisch Gmünd
-- **Distance:** ~50 km, general estimate — verify
+- **Distance:** **~45 km** (straight-line, haversine — corrected August 2026; comfortably inside the 50 km included-travel zone)
 - **Population:** ~64,237 (2024, [Statistisches Landesamt BW](https://www.statistik-bw.de/))
 - **Competition:** Low — a few solo DJs (Ein DJ Thomas, DJ DelL) with dedicated pages, otherwise Ostalbkreis-wide coverage.
 - **Turkish community:** Medium qualitatively — **needs client input**.
@@ -152,20 +159,23 @@ implicitly promises local availability.
 
 ---
 
-## 3. Tier 3 — later / lower urgency (real opportunity, lower priority)
+## 3. Tier 3 — ✅ BUILT (August 2026)
+
+> **Status:** shipped alongside Tier 2 after the same 2026-08-07 confirmation,
+> as `priority: 2`. Same distance and `turkishCommunity` caveats as above.
 
 Further away, and/or the client has given no signal he currently travels there
 regularly. Worth building once Tier 1–2 are live and converting, not before.
 
 ### Offenburg
-- **Distance:** ~140 km, general estimate (between Karlsruhe/62km and Freiburg/131km on the same corridor) — verify
+- **Distance:** **~97 km** (straight-line, haversine — corrected August 2026). The ~140 km estimate was self-contradictory: it cannot sit *between* Karlsruhe (62) and Freiburg (131) and also exceed both. It also contradicted `src/content/regions.ts`, which puts Strasbourg at ~110 km although Strasbourg lies further out.
 - **Population:** ~62,994 (2024, [Statistisches Landesamt BW](https://www.statistik-bw.de/))
 - **Competition:** Low-medium (DJ Zalmii, DJ D-ONE/events-offenburg.de, DJ-Bande, eventpeppers listing). No Turkish-specific competitor found.
 - **Turkish community:** Not verified — **needs client input**.
 - **Local hooks:** No specific venue verified — **needs client input**. Regional character: "Tor zum Schwarzwald" (gateway to the Black Forest) and to the Ortenau wine region, proximity to the French border/Strasbourg.
 
 ### Baden-Baden
-- **Distance:** ~100 km, general estimate — verify
+- **Distance:** **~69 km** (straight-line, haversine — corrected August 2026; the ~100 km estimate was wrong)
 - **Population:** ~56,738 (2024, [Statistisches Landesamt BW](https://www.statistik-bw.de/))
 - **Competition:** Low-medium (DJ Zalmii is based here specifically, several regional DJs list it secondarily).
 - **Turkish community:** Baden-Baden has one of the higher overall foreign-population shares in BW at 25.2% ([goodnews4.de, citing state statistics](https://www.goodnews4.de/nachrichten/daily-news/item/252-prozent-auslaender-in-baden-baden-platz-fuenf-in-baden-wuerttemberg)) — composition not broken down by nationality in the source found, so **do not assume this is majority-Turkish without client confirmation**.
@@ -179,7 +189,7 @@ regularly. Worth building once Tier 1–2 are live and converting, not before.
 - **Local hooks:** Confirmed, nearby and genuinely usable: **Neues Schloss Meersburg**, overlooking the Bodensee, originally a Baroque residence of the Konstanz prince-bishops (found via direct search) — technically in Meersburg, not Konstanz proper, so frame it as "nearby" honestly.
 
 ### Friedrichshafen
-- **Distance:** ~134 km (straight-line, luftlinie.org)
+- **Distance:** **~127 km** (straight-line, haversine — corrected August 2026)
 - **Population:** ~62,798 (2024, [Statistisches Landesamt BW](https://www.statistik-bw.de/))
 - **Competition:** Medium — same established Bodensee DJ cluster as Konstanz.
 - **Turkish community:** Not verified — **needs client input**.

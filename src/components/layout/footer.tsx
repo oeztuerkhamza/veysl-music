@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
+import { ConsentSettingsLink } from '@/components/analytics';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { Container } from '@/components/ui/container';
@@ -8,6 +9,7 @@ import { InstagramIcon, WhatsAppIcon, YouTubeIcon, type SocialIconProps } from '
 import { getSite } from '@/content/get-site';
 import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
 import { BW_SUPPORTED_LOCALES } from '@/content/region-bw';
+import { HUB_SUPPORTED_LOCALES } from '@/content/regions';
 import { TURKISH_DJ_SUPPORTED_LOCALES } from '@/content/turkish-dj';
 import { localized } from '@/lib/utils';
 
@@ -32,7 +34,11 @@ const NAV_LINKS = [
   { href: '/ablauf', key: 'process' },
   { href: '/fragen', key: 'questions' },
   { href: '/ratgeber', key: 'guide' },
-  { href: '/hochzeits-dj-europa', key: 'europe' },
+  // `locales` ist hier Pflicht, nicht Kosmetik: die Hub-Seite ruft
+  // `notFound()` für alles außerhalb von HUB_SUPPORTED_LOCALES. Ohne diese
+  // Angabe zeigte der Footer in ku/ar/es auf einen 404 — auf jeder Seite,
+  // in jedem Crawl.
+  { href: '/hochzeits-dj-europa', key: 'europe', locales: HUB_SUPPORTED_LOCALES },
   { href: '/galerie', key: 'gallery' },
   { href: '/epk', key: 'epk' },
   { href: '/kontakt', key: 'contact' },
@@ -118,6 +124,14 @@ export async function Footer() {
           <Link href="/datenschutz" className={linkClasses}>
             {t('footer.privacy')}
           </Link>
+          {/* Rendert automatisch `null`, solange kein einwilligungspflichtiger
+              Anbieter konfiguriert ist — deshalb bedingungslos hier.
+              `text-start`, weil dies als einziger Eintrag dieser Spalte ein
+              `<button>` ist: Buttons erben `text-align: center` vom Browser
+              (Tailwinds Preflight setzt das nicht zurück) und werden als
+              Flex-Kind auf die volle Spaltenbreite gedehnt — die Beschriftung
+              stünde sonst mittig neben zwei linksbündigen Links. */}
+          <ConsentSettingsLink className={`${linkClasses} text-start`} />
         </div>
 
         <div className="flex flex-col gap-3">

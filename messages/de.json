@@ -881,10 +881,14 @@
       "title": "Türkischer DJ in {city} – die deutsch-türkische Stärke",
       "languagesTitle": "Moderationssprachen"
     },
+    "localAngle": {
+      "eyebrow": "Warum hier",
+      "title": "Was in {city} den Unterschied macht"
+    },
     "venues": {
       "eyebrow": "Locations",
-      "title": "Bekannte Hochzeitslocations in {city}",
-      "note": "Hinweis: Keine dieser Locations ist ein offizieller Partner – es handelt sich um bekannte Orte in der Stadt, die zur Orientierung dienen.",
+      "title": "Bekannte Hochzeitslocations in und um {city}",
+      "note": "Hinweis: Keine dieser Locations ist ein offizieller Partner – es handelt sich um bekannte Orte in der Stadt und ihrer Umgebung, die zur Orientierung dienen. Wo eine Location außerhalb liegt, steht es dabei.",
       "empty": "Diese Liste wird für {city} sorgfältig recherchiert, statt sie mit unbestätigten Namen zu füllen. Erzählen Sie uns gern von Ihrer Wunsch-Location – das Setup wird darauf abgestimmt."
     },
     "venueKind": {

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
+import { AnalyticsRoot } from '@/components/analytics';
 import { AudioDock } from '@/components/audio';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
@@ -197,6 +198,17 @@ export default async function LocaleLayout({
                 {/* Rendert für Besucher `null` und lädt seinen Chunk nie —
                     siehe den Kopf von edit-layer.tsx. */}
                 <CmsEditLayer />
+                {/* Provider-Bootstrap, automatische Instrumentierung und
+                    Consent-Banner in einem. Ohne diese Zeile existierte die
+                    gesamte Analytics-Schicht nur als Quelltext: Kein Skript
+                    ging je an den Browser, also gab es zu keiner Seite und zu
+                    keiner Stadt Daten — bei einem Projekt, dessen nächster
+                    Schritt „nachsehen, wofür wir ranken" ist, ist das der
+                    teuerste blinde Fleck. Rendert nichts Sichtbares außer dem
+                    Banner (position: fixed), Platzierung im Baum ist daher
+                    layout-neutral. Jeder Provider bleibt aus, solange seine
+                    NEXT_PUBLIC_*-Variable leer ist. Siehe docs/ANALYTICS.md §5. */}
+                <AnalyticsRoot />
               </AudioDock>
             </WhatsappModalProvider>
           </ThemeProvider>

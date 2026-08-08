@@ -7,7 +7,7 @@ import { cities, getCityBySlug } from '@/content/cities';
 import type { Locale } from '@/i18n/routing';
 import { CityHero } from '@/components/city/city-hero';
 import { CityOffer } from '@/components/city/city-offer';
-import { CityBicultural } from '@/components/city/city-bicultural';
+import { CityAngle } from '@/components/city/city-angle';
 import { CityVenues } from '@/components/city/city-venues';
 import { CityTravel } from '@/components/city/city-travel';
 import { CityTrust } from '@/components/city/city-trust';
@@ -61,7 +61,7 @@ export default async function CityPage({ params }: PageProps) {
 
       <CityHero city={city} locale={locale} />
       <CityOffer city={city} />
-      <CityBicultural city={city} locale={locale} />
+      <CityAngle city={city} locale={locale} />
       <CityVenues city={city} locale={locale} />
       <CityTravel city={city} locale={locale} />
       <CityTrust city={city} />

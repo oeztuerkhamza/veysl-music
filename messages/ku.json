@@ -844,6 +844,10 @@
       "title": "Hêza alman-tirk – li {city} jî",
       "languagesTitle": "Zimanên pêşkêşiyê"
     },
+    "localAngle": {
+      "eyebrow": "Çima li vir",
+      "title": "Tişta ku li {city} cudahiyê çêdike"
+    },
     "venues": {
       "eyebrow": "Mekan",
       "title": "Mekanên dawetê yên naskirî li {city}",

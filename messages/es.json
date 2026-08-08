@@ -738,6 +738,10 @@
       "title": "La fuerza germano-turca, también en {city}",
       "languagesTitle": "Idiomas de presentación"
     },
+    "localAngle": {
+      "eyebrow": "Por qué aquí",
+      "title": "Lo que marca la diferencia en {city}"
+    },
     "venues": {
       "eyebrow": "Espacios",
       "title": "Espacios de boda conocidos en {city}",

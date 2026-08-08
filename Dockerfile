@@ -64,11 +64,20 @@ ARG NEXT_PUBLIC_PLAUSIBLE_DOMAIN
 ARG NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL
 ARG NEXT_PUBLIC_GA4_MEASUREMENT_ID
 ARG NEXT_PUBLIC_CLARITY_PROJECT_ID
+# Search-Console-Verifizierung. Muss ein Build-Arg sein, kein Runtime-Env:
+# `verification` in src/app/[locale]/layout.tsx wird beim Prerendern gelesen,
+# und jede Seite dieser Site ist vorgerendert — ein erst zur Laufzeit gesetzter
+# Wert erscheint in keinem ausgelieferten HTML. Genau daran wäre der in
+# docs/ORGANIK-SIRALAMA-ANALIZI.md §1 beschriebene Ablauf gescheitert: Token
+# in die .env eintragen, deployen, in der Search Console auf „Bestätigen" —
+# und das Meta-Tag ist trotzdem nicht da, ohne erkennbaren Grund.
+ARG NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL \
     NEXT_PUBLIC_PLAUSIBLE_DOMAIN=$NEXT_PUBLIC_PLAUSIBLE_DOMAIN \
     NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL=$NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL \
     NEXT_PUBLIC_GA4_MEASUREMENT_ID=$NEXT_PUBLIC_GA4_MEASUREMENT_ID \
-    NEXT_PUBLIC_CLARITY_PROJECT_ID=$NEXT_PUBLIC_CLARITY_PROJECT_ID
+    NEXT_PUBLIC_CLARITY_PROJECT_ID=$NEXT_PUBLIC_CLARITY_PROJECT_ID \
+    NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=$NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
 
 # `next build` unconditionally sets NODE_ENV=production itself; setting it
 # here too just keeps any other tooling in this stage consistent.
