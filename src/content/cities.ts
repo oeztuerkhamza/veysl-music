@@ -47,12 +47,46 @@
  * vorhanden (siehe Report) — der Flaschenhals ist ausschließlich die
  * Stadt-Prosa hier in dieser Datei, nicht mehr die Message-Infrastruktur.
  *
- * TIER 1 (ausgespielt, `priority: 1`): Karlsruhe, Mannheim, Heilbronn,
- * Reutlingen, Pforzheim, Esslingen, Böblingen — die vom Recherche-Agent
- * bestätigte Liste. Stuttgart und Ludwigsburg sind bewusst NICHT in
- * diesem Batch (siehe Kommentare bei den jeweiligen Einträgen unten,
- * `priority: 3`) — Inhalt bleibt erhalten, `getAllCities()` blendet sie
- * nur aus, bis das Team sie bewusst wieder aufnimmt.
+ * BATCH AUGUST 2026 — die elf Städte ab `tuebingen`:
+ * `docs/SEO-CITY-STRATEGY.md` hatte 23 Städte recherchiert und 8 ausgespielt.
+ * Der Rest hing weder an Text noch an Code, sondern an dem einen Kriterium,
+ * das §2 dort formuliert: Der Betreiber muss bestätigen, dass er dort
+ * tatsächlich spielt, weil eine Stadtseite lokale Verfügbarkeit verspricht.
+ * Diese Bestätigung liegt seit 2026-08-07 vor.
+ *
+ * `distanceKm` ist in diesem Batch die per Haversine aus den Koordinaten
+ * berechnete Luftlinie, nicht die Angabe der Recherche. Grund: Diese führt
+ * die meisten dieser Distanzen als „general estimate — verify", und drei
+ * waren deutlich falsch — Heidelberg 109 statt 79, Baden-Baden 100 statt 69,
+ * Offenburg 140 statt 97. Das letzte widersprach sogar dieser Website selbst:
+ * `regions.ts` gibt Straßburg mit rund 110 km an, und Straßburg liegt weiter
+ * weg als Offenburg. Die Rechnung reproduziert die hier bereits stehenden
+ * Werte für Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km und
+ * wurde deshalb vorgezogen.
+ *
+ * ⚠️ Wo die Recherche eine luftlinie.org-Quelle nennt (Heidelberg, Ulm,
+ * Freiburg, Konstanz, Friedrichshafen), weicht dieses File bewusst ab.
+ * `docs/SEO-CITY-STRATEGY.md` ist an diesen Stellen zu korrigieren — die
+ * Abweichung ist kein Versehen und soll nicht „zurückgeglichen" werden.
+ *
+ * `turkishCommunity` steht in diesem Batch durchgängig auf `false`. Die
+ * Recherche vermerkt für jede dieser Städte „needs client input"; bei drei
+ * Ostalb-Städten immerhin mit qualitativer Begründung. Die Bestätigung des
+ * Betreibers betraf jedoch die Anfahrt, nicht die Demografie — und beides ist
+ * nicht dasselbe. Sobald er eine Stadt ausdrücklich bestätigt, kann das Feld
+ * dort auf `true` und der bikulturelle Abschnitt erscheint (city-angle.tsx).
+ *
+ * PRIORITÄTEN — die Liste hier bewusst NICHT wiederholen, sie veraltet
+ * sonst bei jeder neuen Stadt (genau das ist ihr schon einmal passiert).
+ * Maßgeblich ist ausschließlich das `priority`-Feld je Eintrag:
+ *
+ *  - `priority: 1` — Tier 1 und Tier 2 aus `docs/SEO-CITY-STRATEGY.md`,
+ *    ausgespielt.
+ *  - `priority: 2` — Tier 3 dort: solide, aber schwächer belegt; wird
+ *    ebenfalls ausgespielt (`cities` filtert auf `priority <= 2`).
+ *  - `priority: 3` — zurückgestellt. Aktuell nur Stuttgart (siehe Kommentar
+ *    beim Eintrag): Inhalt bleibt erhalten, `getAllCities()` blendet ihn nur
+ *    aus, bis das Team ihn bewusst wieder aufnimmt.
  */
 
 import type { Locale } from '@/i18n/routing';
@@ -741,17 +775,7 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 2 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 2 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'tuebingen',
     name: 'Tübingen',
     region: 'Baden-Württemberg',
@@ -814,17 +838,7 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 2 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 2 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'goeppingen',
     name: 'Göppingen',
     region: 'Baden-Württemberg',
@@ -887,24 +901,14 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 2 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 2 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'schwaebisch-gmuend',
     name: 'Schwäbisch Gmünd',
     region: 'Baden-Württemberg',
     distanceKm: 45,
     population: 64237,
     priority: 1,
-    turkishCommunity: true,
+    turkishCommunity: false,
     nearby: ['aalen', 'goeppingen', 'esslingen'],
     travel: { included: true },
     venues: [
@@ -919,9 +923,9 @@ export const allCityEntries: City[] = [
       },
     ],
     intro: {
-      de: 'Schwäbisch Gmünd liegt im Ostalbkreis, rund 45 Kilometer östlich von Stuttgart, und gilt als älteste Stauferstadt. Wie die anderen Industriestädte der Ostalb hat die Stadt über die Fertigung deutsch-türkische Familien angezogen, die hier seit Generationen zu Hause sind. Bekannt ist in Gmünd unter anderem die Manufaktur B26 – eine Eventfläche zwischen historischen Automobilen, mit Bereichen, die Piazza und Boxengasse heißen. Das ist kein klassischer Festsaal, und genau das macht die Planung interessant.',
-      en: 'Schwäbisch Gmünd sits in the Ostalbkreis, roughly 45 kilometres east of Stuttgart, and is considered the oldest of the Staufer towns. As in the other industrial towns of the Ostalb, manufacturing brought German-Turkish families here who have been at home in the town for generations. One of the known venues in Gmünd is Manufaktur B26 — an event space set among historic cars, with areas called Piazza and Boxengasse. It is not a conventional banquet hall, and that is exactly what makes the planning interesting.',
-      tr: 'Schwäbisch Gmünd, Stuttgart’ın yaklaşık 45 kilometre doğusunda, Ostalbkreis’te yer alıyor ve en eski Staufer şehri sayılıyor. Ostalb’ın diğer sanayi kentleri gibi burası da üretim üzerinden Alman-Türk aileleri çekmiş; bu aileler kuşaklardır burada yaşıyor. Şehirde bilinen mekânlardan biri Manufaktur B26 – tarihi otomobillerin arasına kurulmuş, Piazza ve Boxengasse adlı bölümleri olan bir etkinlik alanı. Klasik bir düğün salonu değil, planlamayı ilginç kılan da tam olarak bu.',
+      de: 'Schwäbisch Gmünd liegt im Ostalbkreis, rund 45 Kilometer östlich von Stuttgart, und gilt als älteste Stauferstadt. Wie die anderen Industriestädte der Ostalb lebt sie von der Fertigung, die viele Familien über Generationen hier gehalten hat. Bekannt ist in Gmünd unter anderem die Manufaktur B26 – eine Eventfläche zwischen historischen Automobilen, mit Bereichen, die Piazza und Boxengasse heißen. Das ist kein klassischer Festsaal, und genau das macht die Planung interessant.',
+      en: 'Schwäbisch Gmünd sits in the Ostalbkreis, roughly 45 kilometres east of Stuttgart, and is considered the oldest of the Staufer towns. Like the other industrial towns of the Ostalb, it lives from manufacturing, which has kept many families here across generations. One of the known venues in Gmünd is Manufaktur B26 — an event space set among historic cars, with areas called Piazza and Boxengasse. It is not a conventional banquet hall, and that is exactly what makes the planning interesting.',
+      tr: 'Schwäbisch Gmünd, Stuttgart’ın yaklaşık 45 kilometre doğusunda, Ostalbkreis’te yer alıyor ve en eski Staufer şehri sayılıyor. Ostalb’ın diğer sanayi kentleri gibi burası da üretimle ayakta duruyor; birçok aileyi kuşaklar boyunca burada tutan da bu oldu. Şehirde bilinen mekânlardan biri Manufaktur B26 – tarihi otomobillerin arasına kurulmuş, Piazza ve Boxengasse adlı bölümleri olan bir etkinlik alanı. Klasik bir düğün salonu değil, planlamayı ilginç kılan da tam olarak bu.',
     },
     angle: {
       de: 'Eine Feier zwischen Oldtimern ist licht- und tontechnisch eine eigene Aufgabe: harte Oberflächen statt Teppich und Vorhang, dazu Fahrzeuge, an die weder Stativ noch Kabel gehören. So ein Raum wird vorab abgegangen, nicht am Abend improvisiert. Die 45 Kilometer nach Gmünd liegen dabei klar innerhalb der anfahrtskostenfreien Zone, und zweisprachige Moderation wird hier so regelmäßig angefragt, dass sie von vornherein eingeplant ist.',
@@ -956,24 +960,14 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 2 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 2 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'aalen',
     name: 'Aalen',
     region: 'Baden-Württemberg',
     distanceKm: 67,
     population: 67697,
     priority: 1,
-    turkishCommunity: true,
+    turkishCommunity: false,
     nearby: ['schwaebisch-gmuend', 'goeppingen', 'ulm'],
     travel: {
       included: false,
@@ -1013,9 +1007,9 @@ export const allCityEntries: City[] = [
       },
     ],
     intro: {
-      de: 'Aalen ist eine Industriestadt im Ostalbkreis – die Betriebe hier prägen nicht nur den Arbeitsalltag, sondern auch die Familiengeschichten: Ein Teil der deutsch-türkischen Familien kam über die Fertigung nach Aalen und ist dort seit Jahrzehnten zu Hause. Für Hochzeiten fällt vor allem die Spannweite der Räume auf – von der Villa Stützel und dem Freudenschmaus mitten in der Stadt bis zu den Sälen von Schloss Kapfenburg, rund 15 Kilometer außerhalb.',
-      en: 'Aalen is an industrial town in the Ostalbkreis, and the factories here shaped more than the working day — they shaped family histories too: some of the German-Turkish families came to Aalen for work in manufacturing and have been at home there for decades. For weddings, what stands out is the sheer range of room sizes — from Villa Stützel and the Freudenschmaus in the middle of town to the halls of Schloss Kapfenburg, some 15 kilometres outside it.',
-      tr: 'Aalen, Ostalbkreis’te bir sanayi kenti — buradaki fabrikalar yalnızca iş hayatını değil, aile hikâyelerini de şekillendirdi: Alman-Türk ailelerin bir bölümü Aalen’e fabrikalarda çalışmak üzere geldi ve onlarca yıldır burada yaşıyor. Düğünler açısından en dikkat çeken şey ise mekânların birbirinden çok farklı ölçeklerde olması — şehrin merkezindeki Villa Stützel ve Freudenschmaus’tan, yaklaşık 15 kilometre dışarıdaki Schloss Kapfenburg’un salonlarına kadar.',
+      de: 'Aalen ist eine Industriestadt im Ostalbkreis – die Betriebe prägen hier den Arbeitsalltag ganzer Familien, oft über mehrere Generationen. Für Hochzeiten fällt vor allem die Spannweite der Räume auf – von der Villa Stützel und dem Freudenschmaus mitten in der Stadt bis zu den Sälen von Schloss Kapfenburg, rund 15 Kilometer außerhalb.',
+      en: 'Aalen is an industrial town in the Ostalbkreis, where the factories have shaped the working lives of whole families, often across several generations. For weddings, what stands out is the sheer range of room sizes — from Villa Stützel and the Freudenschmaus in the middle of town to the halls of Schloss Kapfenburg, some 15 kilometres outside it.',
+      tr: 'Aalen, Ostalbkreis’te bir sanayi kenti — buradaki fabrikalar çoğu zaman birkaç kuşak boyunca ailelerin çalışma hayatını şekillendirmiş. Düğünler açısından en dikkat çeken şey ise mekânların birbirinden çok farklı ölçeklerde olması — şehrin merkezindeki Villa Stützel ve Freudenschmaus’tan, yaklaşık 15 kilometre dışarıdaki Schloss Kapfenburg’un salonlarına kadar.',
     },
     angle: {
       de: 'Ein Saal auf der Kapfenburg und eine Feier mitten in der Stadt sind zwei völlig verschiedene akustische Aufgaben: Ein Abend im Fürstensaal mit 120 Gästen braucht eine andere Beschallung als ein Raum im Ortskern. Deshalb wird die Technik nicht als Standardpaket geladen, sondern nach Raumgröße, Deckenhöhe und Nachbarschaft ausgewählt und vorab mit der Location abgestimmt. Die rund 67 Kilometer Anfahrt stehen offen im Angebot, statt im Preis zu verschwinden.',
@@ -1062,24 +1056,14 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 2 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 2 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'ulm',
     name: 'Ulm',
     region: 'Baden-Württemberg',
     distanceKm: 72,
     population: 128998,
     priority: 1,
-    turkishCommunity: true,
+    turkishCommunity: false,
     nearby: ['goeppingen', 'aalen', 'reutlingen'],
     travel: {
       included: false,
@@ -1150,17 +1134,7 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 2 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 2 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'heidelberg',
     name: 'Heidelberg',
     region: 'Baden-Württemberg',
@@ -1238,17 +1212,7 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 3 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 3 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'baden-baden',
     name: 'Baden-Baden',
     region: 'Baden-Württemberg',
@@ -1306,17 +1270,7 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 3 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 3 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'offenburg',
     name: 'Offenburg',
     region: 'Baden-Württemberg',
@@ -1386,17 +1340,7 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 2 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 2 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'freiburg',
     name: 'Freiburg im Breisgau',
     region: 'Baden-Württemberg',
@@ -1492,17 +1436,7 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 3 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 3 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'konstanz',
     name: 'Konstanz',
     region: 'Baden-Württemberg',
@@ -1580,17 +1514,7 @@ export const allCityEntries: City[] = [
     ],
   },
   {
-    /**
-     * Tier 3 laut docs/SEO-CITY-STRATEGY.md — vom Betreiber am 2026-08-07
-     * ausdrücklich als Einsatzgebiet bestätigt ("Evet buralara gidiyorum"),
-     * womit das dort formulierte Freigabe-Kriterium erfüllt ist.
-     *
-     * `distanceKm` ist die Luftlinie, berechnet per Haversine aus den
-     * Koordinaten der Stadt. Die Recherche führte hier eine grobe Schätzung;
-     * die Rechnung reproduziert die bereits im File stehenden Werte für
-     * Reutlingen, Heilbronn, Karlsruhe und Mannheim auf ±1 km genau, weshalb
-     * ihr gegenüber der Schätzung der Vorzug gegeben wurde.
-     */
+    /** Tier 3 — siehe „Batch August 2026" im Dateikopf. */
     slug: 'friedrichshafen',
     name: 'Friedrichshafen',
     region: 'Baden-Württemberg',

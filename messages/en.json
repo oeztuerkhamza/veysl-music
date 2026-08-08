@@ -887,8 +887,8 @@
     },
     "venues": {
       "eyebrow": "Venues",
-      "title": "Well-known wedding venues in {city}",
-      "note": "Note: none of these venues is an official partner — they're well-known local landmarks listed for orientation.",
+      "title": "Well-known wedding venues in and around {city}",
+      "note": "Note: none of these venues is an official partner — they're well-known places in and around the town, listed for orientation. Where a venue lies outside it, the entry says so.",
       "empty": "Rather than fill this list with unverified names, we're carefully researching venues for {city}. Tell us about your chosen venue — the setup is adapted to it."
     },
     "venueKind": {

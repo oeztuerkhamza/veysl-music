@@ -912,6 +912,10 @@
       "title": "القوة الألمانية التركية – في {city} أيضًا",
       "languagesTitle": "لغات التقديم"
     },
+    "localAngle": {
+      "eyebrow": "لماذا هنا",
+      "title": "ما الذي يصنع الفرق في {city}"
+    },
     "venues": {
       "eyebrow": "القاعات",
       "title": "قاعات أعراس معروفة في {city}",

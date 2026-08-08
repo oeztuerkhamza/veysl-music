@@ -74,11 +74,24 @@ export default async function TurkishDjPage({ params }: PageProps) {
   const t = await getTranslations('turkishDj');
   const tNav = await getTranslations('nav');
 
-  // Nur Städte, deren Seite es in DIESER Sprache gibt — die Stadtroute liefert
-  // sonst `notFound()`. Heute trifft das alle acht, aber `cities.ts` verlangt
-  // nur die deutsche Prosa; ohne den Filter würde die erste nur deutsch
-  // geschriebene Stadt hier tr/en-seitig in einen 404 verlinken.
-  const cities = getAllCities().filter((city) => hasCityProse(city, locale));
+  // Zwei Filter, zwei Gründe.
+  //
+  // `hasCityProse`: Nur Städte, deren Seite es in DIESER Sprache gibt — die
+  // Stadtroute liefert sonst `notFound()`. `cities.ts` verlangt nur die
+  // deutsche Prosa; ohne den Filter würde die erste nur deutsch geschriebene
+  // Stadt hier tr/en-seitig in einen 404 verlinken.
+  //
+  // `distanceKm`: Die Überschrift dieses Abschnitts verspricht „Stuttgart und
+  // die Region". Seit das Städte-Cluster bis an den Bodensee und in den
+  // Breisgau reicht, wäre eine ungefilterte Liste eine andere Aussage —
+  // Freiburg (131 km) oder Konstanz (124 km) unter dieser Überschrift
+  // behaupten einen regionalen Türkisch-DJ-Fußabdruck, den die verlinkten
+  // Seiten selbst bewusst nicht erheben. Die Grenze liegt beim Radius, den
+  // `site.serviceAreas` als Kernregion führt.
+  const REGION_RADIUS_KM = 100;
+  const cities = getAllCities().filter(
+    (city) => hasCityProse(city, locale) && city.distanceKm <= REGION_RADIUS_KM,
+  );
   const pageUrl = absoluteUrl('/tuerkischer-dj-stuttgart', locale);
   const faqItems = t.raw('faq.items') as FaqItem[];
 

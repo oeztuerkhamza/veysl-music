@@ -738,6 +738,10 @@
       "title": "De Duits-Turkse kracht – ook in {city}",
       "languagesTitle": "Presentatietalen"
     },
+    "localAngle": {
+      "eyebrow": "Waarom hier",
+      "title": "Wat in {city} het verschil maakt"
+    },
     "venues": {
       "eyebrow": "Locaties",
       "title": "Bekende trouwlocaties in {city}",
