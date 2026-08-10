@@ -83,6 +83,11 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/ssl-params.conf:/etc/nginx/ssl-params.conf:ro
+      # Liegt schon bereit, wird aber erst benutzt, wenn in nginx.conf das
+      # `include` dafür eingekommentiert ist — Begründung steht dort. Eine
+      # eingehängte, nicht eingebundene Datei kostet nichts; sie erspart beim
+      # CDN-Umzug nur einen zweiten Deploy.
+      - ./nginx/cloudflare-ips.conf:/etc/nginx/cloudflare-ips.conf:ro
       - ./deploy/redirects-legacy.conf:/etc/nginx/redirects-legacy.conf:ro
       - certbot-conf:/etc/letsencrypt:ro
       - certbot-www:/var/www/certbot:ro

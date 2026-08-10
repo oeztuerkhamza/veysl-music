@@ -58,3 +58,8 @@ dev.log
 # Backups — same reason as in .dockerignore: these are SQLite dumps of real
 # customer enquiries. A single `git add -A` on the server would commit them.
 /backups
+
+# Zwischenspeicher der Social-Media-Abrufe. Wird bei jedem Build neu gefuellt
+# und ist reine Laufzeitdaten — stand hier bisher nicht, und ein `git add -A`
+# haette die Dateien deshalb mitgenommen.
+/.cache

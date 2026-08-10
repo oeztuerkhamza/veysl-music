@@ -542,6 +542,68 @@ falls through to `/` as a last resort rather than 404ing.
 
 ---
 
+## CDN vorschalten (Cloudflare) — vorbereitet, nicht aktiv
+
+Nach der Performance-Arbeit vom 2026-08-10 ist der Ursprungsserver selbst
+schnell: TTFB ~95 ms, `x-nextjs-cache: HIT`, gzip an, 43 KB HTML auf der
+Leitung. Was PageSpeed Insights trotzdem mit **79** bewertet, während dieselbe
+Seite aus Deutschland gemessen **87–90** erreicht, ist keine Eigenschaft der
+Seite, sondern der Entfernung zwischen Googles Testmaschine und dem VPS
+(FCP 2,3 s dort gegen 1,1 s hier).
+
+Das ist der einzige verbliebene Hebel — und ausdrücklich **kein
+Ranking-Argument**: Für Core Web Vitals zählen Felddaten echter Besucher, und
+die kommen bei dieser Site aus dem Großraum Stuttgart, also aus der Nähe des
+Servers. Ein CDN verbessert vor allem das Laborergebnis und Besucher außerhalb
+der Region.
+
+### Die Reihenfolge ist die eigentliche Anleitung
+
+Alles ist im Repo schon vorbereitet; aktiv wird es erst durch Schritt 2. Wer
+Schritt 3 vergisst oder vor Schritt 1 umstellt, baut sich ein stilles
+Formular-Problem — die Begründung dazu steht ausführlich in `nginx/nginx.conf`
+über dem auskommentierten `include`.
+
+1. **Cloudflare einrichten, DNS aber noch NICHT umstellen.** Zone anlegen,
+   `dj-veys.de` und `www` als Proxy-Einträge (orange Wolke) vorbereiten,
+   SSL/TLS-Modus auf **Full (strict)** — der Ursprungsserver hat ein gültiges
+   Let's-Encrypt-Zertifikat, alles darunter würde es wegwerfen.
+2. **`include /etc/nginx/cloudflare-ips.conf;`** in `nginx/nginx.conf`
+   einkommentieren, deployen, `docker compose exec nginx nginx -t` prüfen.
+   (Meldet der Test `unknown directive "set_real_ip_from"`, fehlt dem Image
+   `ngx_http_realip_module` — dann ein nginx-Image mit diesem Modul wählen.
+   Beim offiziellen `nginx:1.27-alpine` ist es einkompiliert; nachgeprüft
+   werden konnte das beim Schreiben dieser Zeilen nicht, weil auf der
+   Entwicklungsmaschine kein Docker läuft.)
+   Ohne das sieht nginx als Absender jeder Anfrage den Cloudflare-Knoten,
+   und beide Ratenbegrenzungen dieser Site — die `limit_req`-Zonen **und**
+   der Token-Bucket in `src/app/api/_lib/rate-limit.ts`, der über `X-Real-IP`
+   an derselben Adresse hängt — zählen dann alle Besucher auf ein gemeinsames
+   Konto. Ergebnis: Das Anfrageformular antwortet echten Kundinnen mit 429.
+3. **DNS umstellen** (netcup → Cloudflare-Nameserver bzw. Proxy aktivieren).
+4. **Ursprungsserver abriegeln**: eingehend 80/443 nur noch aus den Bereichen
+   in `nginx/cloudflare-ips.conf`. Erst damit ist `CF-Connecting-IP`
+   tatsächlich unfälschbar — und erst damit ist Schritt 2 sicher, statt nur
+   funktional.
+
+### Was am CDN NICHT eingeschaltet werden darf
+
+- **„Cache Everything" für HTML.** Die Seiten setzen je nach Anfrage
+  `Set-Cookie: NEXT_LOCALE`, und der Ursprung liefert HTML bereits mit
+  `s-maxage=300, stale-while-revalidate` plus ISR aus. Der Gewinn wäre klein,
+  das Risiko — eine an alle ausgelieferte, falsch gecachte Sprachfassung —
+  wäre echt.
+- **Auto-Minify / Rocket Loader.** Next liefert bereits minimierten Code aus;
+  Rocket Loader verschiebt Skript-Ausführung und hat in dieser Konstellation
+  nichts zu gewinnen, kann aber die Hydration stören.
+
+Was das CDN übernehmen **soll**, ist `/_next/static/*`: unveränderliche,
+inhaltsgehashte Dateien mit `max-age=31536000, immutable`. Das sind rund
+460 KB der 623 KB einer Erstansicht (Skripte, Schriften, CSS) — genau der
+Teil, der beim ersten Malen im Weg steht.
+
+---
+
 ## Known issues / follow-ups found while building this pipeline
 
 - **Standalone-server redirect loop (fixed here)**: `next.config.ts` needed
