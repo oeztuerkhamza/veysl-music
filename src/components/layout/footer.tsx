@@ -109,8 +109,15 @@ export async function Footer() {
               Ohne das würde der Footer in ku/nl/fr/es auf eine URL zeigen, deren
               Seite dort `notFound()` liefert — und deren Label in jenen
               messages-Dateien ohnehin fehlt. */}
+          {/* `prefetch={false}`: dieselben Ziele stehen bereits in der
+              Kopfzeile, und der Footer ist die letzte Zeile einer Seite, die
+              auf dem Telefon zwölf Bildschirme hoch ist. Wer bis hierher
+              gescrollt hat, hat sich Zeit gelassen — auf ein Vorabladen beim
+              Seitenaufruf kann diese Liste also verzichten, statt die
+              Startanfragen zu verdoppeln (siehe die ausführliche Begründung in
+              `header.tsx`). Beim Zeigen/Antippen lädt Next weiterhin vor. */}
           {NAV_LINKS.filter((item) => !('locales' in item) || item.locales.includes(locale)).map((item) => (
-            <Link key={item.href} href={item.href} className={linkClasses}>
+            <Link key={item.href} href={item.href} prefetch={false} className={linkClasses}>
               {t(`nav.${item.key}`)}
             </Link>
           ))}
@@ -118,10 +125,10 @@ export async function Footer() {
 
         <div className="flex flex-col gap-3">
           <p className={columnTitleClasses}>{t('footer.legalTitle')}</p>
-          <Link href="/impressum" className={linkClasses}>
+          <Link href="/impressum" prefetch={false} className={linkClasses}>
             {t('footer.imprint')}
           </Link>
-          <Link href="/datenschutz" className={linkClasses}>
+          <Link href="/datenschutz" prefetch={false} className={linkClasses}>
             {t('footer.privacy')}
           </Link>
           {/* Rendert automatisch `null`, solange kein einwilligungspflichtiger

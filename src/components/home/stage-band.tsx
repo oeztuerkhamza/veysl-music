@@ -38,9 +38,25 @@ export async function StageBand() {
         src={image.src}
         alt={image.alt}
         fill
-        // The largest image on the page and, on most screens, the first thing
-        // below the fold — worth fetching in the first wave.
-        priority
+        /**
+         * Bewusst **ohne** `priority` — hier stand es, mit der Begründung, das
+         * sei „das größte Bild der Seite und auf den meisten Bildschirmen das
+         * erste unterhalb der Falz, also den ersten Zug wert".
+         *
+         * Genau das ist der Fehler. `priority` erzeugt ein
+         * `<link rel="preload" as="image">` im `<head>` und hebt die Anfrage in
+         * die höchste Prioritätsklasse. Der Hero darüber ist `min-h-[100svh]`,
+         * dieses Band beginnt also per Definition **unterhalb** des ersten
+         * Bildschirms — auf einem Telefon ist davon beim ersten Malen nichts zu
+         * sehen. Vorgeladen wurde damit ein 100-vw-Foto, das niemand sieht, und
+         * zwar in Konkurrenz zu dem, was man sehr wohl sieht: der Überschrift,
+         * die das LCP-Element dieser Seite ist und dafür auf ihre Schrift
+         * wartet.
+         *
+         * Ohne `priority` gilt das normale Lazy-Verhalten von `next/image`, das
+         * mit reichlich Vorlauf vor dem Sichtbarwerden startet. Auf dem Weg nach
+         * unten ist das Bild damit da; im ersten Malen kostet es nichts mehr.
+         */
         sizes="100vw"
         className="object-cover"
       />

@@ -279,6 +279,26 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                /**
+                 * Kein Vorabladen beim Einblenden ins Sichtfeld.
+                 *
+                 * Diese Liste ist immer im DOM (siehe die `inert`-Notiz weiter
+                 * oben) — für den Prefetcher von Next sind ihre zehn Ziele
+                 * damit ab der ersten Millisekunde „sichtbar", obwohl das
+                 * Overlay zu ist. Zusammen mit derselben Route in der
+                 * Desktop-Navigation und im Footer wurden auf der Startseite
+                 * **44 RSC-Anfragen mit zusammen 187 KB** ausgelöst — ein
+                 * Fünftel des gesamten Seitengewichts, für Seiten, die noch
+                 * niemand angesteuert hat, und in Konkurrenz zu dem, was gerade
+                 * gemalt werden soll.
+                 *
+                 * `false` schaltet nur das Vorabladen im Sichtfeld ab. Beim
+                 * Zeigen bzw. Antippen lädt Next die Route weiterhin vor, also
+                 * genau dann, wenn es eine Absicht gibt — und das ist bei einem
+                 * Menü, das man erst öffnen muss, ohnehin der einzige Moment,
+                 * in dem es etwas nützt.
+                 */
+                prefetch={false}
                 className={cn(
                   'group flex items-baseline gap-5 py-1 transition-all duration-500 ease-out-expo',
                   entered ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'

@@ -4,15 +4,15 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
 import { AnalyticsRoot } from '@/components/analytics';
-import { AudioDock } from '@/components/audio';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { StickyCtaBar } from '@/components/layout/sticky-cta-bar';
 import { WhatsAppFab } from '@/components/booking/whatsapp-fab';
 import { CmsEditLayer } from '@/components/cms/edit-layer';
 import { WhatsappModalProvider } from '@/components/whatsapp/whatsapp-modal-provider';
+import { pickClientMessages } from '@/i18n/client-messages';
 import { localeDirs, localeTags, routing, type Locale } from '@/i18n/routing';
-import { fontDisplay, fontDisplayArabic, fontSans, fontSansArabic } from '@/lib/fonts';
+import { fontDisplay, fontDisplayArabic, fontSansArabic } from '@/lib/fonts';
 import { siteBaseUrl } from '@/lib/seo';
 import { localized } from '@/lib/utils';
 import { site } from '@/content/site';
@@ -154,16 +154,27 @@ export default async function LocaleLayout({
   const whatsappNumber = resolvedSite.contact.whatsapp;
 
   /**
-   * Schreibrichtung und Schriftpaar hängen an derselben Entscheidung. Beide
-   * Paare belegen dieselben CSS-Variablen (`--font-display`/`--font-sans`,
-   * siehe `@/lib/fonts`), sodass hier genau eines im `className` landet — eine
-   * deutsche Seite lädt damit keine arabischen Schriftdateien und umgekehrt.
+   * Schreibrichtung und Schriften hängen an derselben Entscheidung.
+   *
+   * Die beiden Zweige sind bewusst **nicht** symmetrisch:
+   *
+   * - `rtl` (`/ar`) setzt beide Variablen — Amiri für Überschriften, IBM Plex
+   *   Sans Arabic für den Fließtext. Der Systemstapel ist hier keine Option:
+   *   Welche arabische Schrift ein Gerät mitbringt, ist von iPhone zu Android
+   *   zu Windows völlig verschieden.
+   * - Lateinisch setzt **nur** `--font-display`. `--font-sans` bleibt
+   *   absichtlich leer, damit der Fließtext die Systemschrift des Geräts
+   *   bekommt; Inter ist entfallen (134 KB, Begründung in `@/lib/fonts`).
+   *
+   * Diese Weiche entscheidet, welche Schrift *benutzt* wird — nicht, welche
+   * geladen wird. Das steuert `preload` in `@/lib/fonts`; dort steht auch,
+   * warum die deutsche Startseite nicht mehr 840 KB Schrift vorlädt.
    */
   const dir = localeDirs[locale];
   const fontVariables =
     dir === 'rtl'
       ? `${fontDisplayArabic.variable} ${fontSansArabic.variable}`
-      : `${fontDisplay.variable} ${fontSans.variable}`;
+      : fontDisplay.variable;
 
   return (
     <html
@@ -173,7 +184,12 @@ export default async function LocaleLayout({
       className={fontVariables}
     >
       <body className="flex min-h-dvh flex-col bg-bg font-sans text-ink antialiased">
-        <NextIntlClientProvider messages={messages}>
+        {/* Nur die Namensräume, die eine Client-Komponente wirklich aufruft —
+            die Liste und ihre Begründung stehen in `@/i18n/client-messages`.
+            Server-Komponenten lesen ihre Texte weiterhin vollständig über
+            `getTranslations()`; hier geht es ausschließlich um das, was im
+            HTML jeder Seite mitreisen muss. */}
+        <NextIntlClientProvider messages={pickClientMessages(messages)}>
           {/* `enableSystem={false}` ist eine Markenentscheidung, kein Versehen:
               das warme Elfenbein IST die Gestaltung. Mit Systemerkennung
               bekämen alle Besucherinnen und Besucher mit dunkel gestelltem
@@ -183,9 +199,26 @@ export default async function LocaleLayout({
             <a href="#main" className="skip-link">
               {t('skipToContent')}
             </a>
+            {/*
+              `<AudioDock>` stand hier und ist entfallen — nicht als Aufräumen,
+              sondern weil er nichts mehr tun konnte.
+
+              Er brachte `AudioProvider`, `GlobalPlayer`, `TrackCard` und die
+              WebGL-nahe `AudioReactive` auf **jede** Seite. Der Player rendert
+              `null`, solange kein Titel läuft; ein Titel kann aber nur über
+              `TrackList`/`MusicExplorer` starten, und die hingen an der
+              Musik-Seite, die im August 2026 abgeschaltet wurde (siehe die
+              Weiterleitungen in `next.config.ts`). Zusätzlich steht in
+              `src/content/mixes.ts` bei allen sieben Sets `src: null`. Es gab
+              also keinen Weg mehr, den Player überhaupt sichtbar zu machen —
+              sein JavaScript wurde trotzdem auf jeder Seite geladen und
+              hydriert.
+
+              Die Bauteile bleiben unverändert liegen. Sobald echte Aufnahmen
+              und eine Seite dafür existieren, ist das hier wieder eine Zeile.
+            */}
             <WhatsappModalProvider whatsappNumber={whatsappNumber}>
-              <AudioDock>
-                <Header />
+              <Header />
                 {/* No top padding here on purpose: every page's hero is meant
                     to sit full-bleed behind the transparent-over-hero header
                     (see header.tsx) and must account for its own height itself. */}
@@ -209,7 +242,6 @@ export default async function LocaleLayout({
                     layout-neutral. Jeder Provider bleibt aus, solange seine
                     NEXT_PUBLIC_*-Variable leer ist. Siehe docs/ANALYTICS.md §5. */}
                 <AnalyticsRoot />
-              </AudioDock>
             </WhatsappModalProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

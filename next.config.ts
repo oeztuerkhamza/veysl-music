@@ -210,4 +210,50 @@ const nextConfig: NextConfig = {
 // withPayload wraps last so its Turbopack/webpack aliasing (needed for the
 // admin panel at src/app/(payload)/**, see payload.config.ts) applies on
 // top of the next-intl plugin rather than being overridden by it.
-export default withPayload(withNextIntl(nextConfig), { devBundleServerPackages: false });
+const withPayloadConfig = withPayload(withNextIntl(nextConfig), { devBundleServerPackages: false });
+
+/**
+ * `withPayload` hängt an `/:path*` — also an **jede** Seite dieser Site —
+ * folgenden Satz Header:
+ *
+ *     Accept-CH:   Sec-CH-Prefers-Color-Scheme
+ *     Vary:        Sec-CH-Prefers-Color-Scheme
+ *     Critical-CH: Sec-CH-Prefers-Color-Scheme
+ *
+ * (nachzulesen in `node_modules/@payloadcms/next/dist/cjs/withPayload.cjs`)
+ *
+ * Die ersten beiden sind harmlos. `Critical-CH` ist es nicht: Es weist den
+ * Browser an, die Anfrage **sofort zu verwerfen und mit dem angeforderten Hint
+ * zu wiederholen**, wenn er ihn beim ersten Mal nicht mitgeschickt hat — und
+ * das tut kein Browser beim allerersten Aufruf einer Domain. Jeder Erstbesuch
+ * kostet damit eine komplette zusätzliche Runde: Verbindung, Anfrage, Antwort,
+ * verworfen, alles noch einmal.
+ *
+ * Gemessen mit Lighthouse (Mobil) auf der Startseite: **612 ms**, ausgewiesen
+ * unter „Avoid multiple page redirects" — vor dem ersten Byte, das jemand zu
+ * sehen bekommt, und damit direkt in FCP und LCP.
+ *
+ * Payload braucht den Hint wirklich, aber nur für sich: `getRequestTheme`
+ * (`@payloadcms/next`) entscheidet damit, ob das Admin-Panel hell oder dunkel
+ * serverseitig gerendert wird. Das ist eine Frage über `/admin` — nicht über
+ * die 267 öffentlichen Seiten, die ihre Themenwahl ohnehin über `next-themes`
+ * im Browser treffen.
+ *
+ * Deshalb wird der von Payload erzeugte Block hier nicht entfernt, sondern
+ * umgehängt: derselbe Header, nur auf `/admin/:path*` beschränkt. Erkannt wird
+ * er am `Critical-CH`-Schlüssel, damit der eigene Sicherheits-Header-Block
+ * oben (gleiche `source`, aber ohne diesen Schlüssel) unangetastet bleibt.
+ */
+const payloadHeaders = withPayloadConfig.headers;
+
+withPayloadConfig.headers = async () => {
+  const entries = payloadHeaders ? await payloadHeaders() : [];
+
+  return entries.map((entry) =>
+    entry.source === '/:path*' && entry.headers.some((header) => header.key === 'Critical-CH')
+      ? { ...entry, source: '/admin/:path*' }
+      : entry
+  );
+};
+
+export default withPayloadConfig;

@@ -71,13 +71,29 @@
 
 /**
  * `inline` because the source value is itself a CSS variable that next/font
- * sets on the <html> element (via fontDisplay.variable / fontSans.variable in
- * src/lib/fonts.ts), not a literal — see Tailwind v4 docs on theme variables
- * that reference existing custom properties.
+ * sets on the <html> element (via fontDisplay.variable in src/lib/fonts.ts),
+ * not a literal — see Tailwind v4 docs on theme variables that reference
+ * existing custom properties.
+ *
+ * ── Warum `--font-sans` einen Ersatzwert *im* `var()` braucht ───────────────
+ *
+ * Seit dem Wegfall von Inter (Begründung in `src/lib/fonts.ts`) ist
+ * `--font-sans` auf lateinischen Seiten **gar nicht gesetzt** — nur `/ar`
+ * belegt es noch, über `fontSansArabic`.
+ *
+ * Ein `var(--font-sans)` ohne Ersatzwert wäre dann nicht etwa „übersprungen",
+ * sodass die dahinter aufgezählten Familien greifen: Eine `var()`-Referenz auf
+ * eine nicht gesetzte Eigenschaft macht die **gesamte Deklaration** ungültig
+ * („invalid at computed-value time"), die Schriftfamilie fiele auf den
+ * ererbten Wert zurück. Die Liste hinter dem Komma ist dagegen kein
+ * Sicherheitsnetz — sie wird nie erreicht.
+ *
+ * Deshalb steht der Systemstapel als zweites Argument *innerhalb* von `var()`.
+ * Auf `/ar` gewinnt weiterhin der gesetzte Wert.
  */
 @theme inline {
   --font-display: var(--font-display);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
 }
 
 @layer base {
@@ -247,7 +263,8 @@
   body {
     background-color: var(--color-bg);
     color: var(--color-ink);
-    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    /* Ersatzwert innerhalb von `var()` — siehe die Begründung am `@theme`-Block. */
+    font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
   }
 
   h1,
@@ -414,7 +431,8 @@
  * serif, so section labels read as typography rather than as UI chrome.
  */
 @utility text-label {
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  /* Ersatzwert innerhalb von `var()` — siehe die Begründung am `@theme`-Block. */
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.24em;

@@ -135,11 +135,33 @@ COPY --from=builder --chown=node:node /app/public ./public
 #
 #   ERR_DLOPEN_FAILED: Error loading shared library libvips-cpp.so.8.18.3
 #
-# The public pages survive that — they never touch sharp — so the failure
-# surfaced only on /admin, as a 500 with a healthy container and a green
-# healthcheck. Copying the whole `@img` scope plus `sharp` is a few MB and
-# removes the entire class of problem, rather than naming the one .so that
-# happened to be missing on this architecture.
+# Damals stand hier: „The public pages survive that — they never touch sharp",
+# weil der Fehler nur auf /admin als 500 sichtbar wurde, bei gesundem Container
+# und grünem Healthcheck. Der erste Halbsatz war falsch, und die Art, wie er
+# falsch war, ist der Grund für diesen Absatz:
+#
+# **Jede** `next/image`-Anfrage geht durch sharp. Die öffentlichen Seiten haben
+# nicht überlebt — sie sind nur nicht umgefallen. Der Bildoptimierer von Next
+# fängt jeden Fehler aus sharp ab und liefert daraufhin *das Originalbild* aus
+# (`image-optimizer.js`, `catch (error) { … fallback to the original image }`,
+# ohne Logzeile). Sichtbar ist davon nichts: Das Bild erscheint, nur eben als
+# unskaliertes JPEG in voller Auflösung statt als AVIF in Anzeigegröße.
+#
+# Gemessen an einem Bild dieser Site: 130 KB JPEG statt 10 KB AVIF — auf jedem
+# Foto jeder Seite. Ein 500er auf /admin ist ein Fehler, den man am selben Tag
+# bemerkt; das hier war einer, den nur Lighthouse bemerkt.
+#
+# Zweite Hälfte derselben Ursache und inzwischen behoben: `sharp` stand in
+# package.json auf `^0.35.3`, Next deklariert `optionalDependencies.sharp` als
+# `^0.34.5`. npm legte deshalb eine **zweite** Kopie unter
+# `node_modules/next/node_modules/sharp` an — und genau die lud Next. Seit die
+# Version im Bereich von Next liegt, gibt es nur noch eine Kopie (`npm ls sharp`
+# muss `deduped` zeigen), und diese beiden COPY-Zeilen decken damit auch den
+# Bildoptimierer ab, nicht mehr nur das Admin-Panel.
+#
+# Copying the whole `@img` scope plus `sharp` is a few MB and removes the entire
+# class of problem, rather than naming the one .so that happened to be missing
+# on this architecture.
 COPY --from=builder --chown=node:node /app/node_modules/sharp ./node_modules/sharp
 COPY --from=builder --chown=node:node /app/node_modules/@img ./node_modules/@img
 

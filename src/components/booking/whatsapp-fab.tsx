@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useAudio } from '@/components/audio';
 import { useWhatsappModal } from '@/components/whatsapp/whatsapp-modal-provider';
 import { WhatsAppIcon } from '@/components/ui/social-icons';
 import { cn } from '@/lib/utils';
@@ -15,22 +14,20 @@ import { cn } from '@/lib/utils';
  *
  * Stacking: on screens where `StickyCtaBar` can be visible (below `lg`) the
  * FAB sits above it via the same `--mobile-cta-height` custom property that
- * bar publishes; when the global audio player is also mounted (a track has
- * been started), the FAB is pushed up further so it never overlaps the
- * player's controls, using its approximate collapsed/expanded heights. From
- * `lg` up, `StickyCtaBar` is never rendered, so the FAB drops back to a
- * simple corner offset (`GlobalPlayer` sits at `bottom-0` full-width there
- * instead, clear of the right-aligned FAB by z-index only — acceptable
- * since the widths rarely fully coincide with the corner and this keeps the
- * fix scoped to this component; flag to the layout/audio agents if a real
- * collision is spotted in review).
+ * bar publishes. From `lg` up, `StickyCtaBar` is never rendered, so the FAB
+ * drops back to a simple corner offset.
+ *
+ * Hier stand zusätzlich eine Ausweichlogik für den globalen Audio-Player
+ * (`useAudio()` → drei weitere `bottom`-Varianten). Sie ist mit dem Player
+ * entfallen: `<AudioDock>` hängt seit der Abschaltung der Musik-Seite nicht
+ * mehr im Layout (Begründung dort), es gibt also nichts mehr, dem dieser Knopf
+ * ausweichen müsste — und dieser eine Hook-Aufruf war der Grund, warum der
+ * gesamte Audio-Kontext auch dann noch in jede Seite hydriert wurde, wenn sonst
+ * nichts davon gerendert wurde.
  */
 export function WhatsAppFab() {
   const t = useTranslations('cta');
-  const { current, expanded } = useAudio();
   const { openWhatsappModal } = useWhatsappModal();
-
-  const hasPlayer = Boolean(current);
 
   return (
     <button
@@ -62,13 +59,9 @@ export function WhatsAppFab() {
         // see src/app/globals.css — so it covers the safe area below `lg`
         // (where StickyCtaBar can be visible) without double-counting it.
         'bottom-[calc(var(--mobile-cta-height,4rem)+0.75rem)]',
-        hasPlayer && !expanded && 'bottom-[calc(var(--mobile-cta-height,4rem)+7rem)]',
-        hasPlayer && expanded && 'bottom-[calc(var(--mobile-cta-height,4rem)+17rem)]',
         // From `lg` up StickyCtaBar never renders, so fall back to a plain
         // corner offset plus the safe area directly.
-        'lg:bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))]',
-        hasPlayer && !expanded && 'lg:bottom-[calc(6rem+env(safe-area-inset-bottom,0px))]',
-        hasPlayer && expanded && 'lg:bottom-[calc(17rem+env(safe-area-inset-bottom,0px))]'
+        'lg:bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))]'
       )}
     >
       <WhatsAppIcon className="size-7" />
