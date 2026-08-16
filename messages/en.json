@@ -649,7 +649,7 @@
     "intro": {
       "eyebrow": "At home across the state",
       "title": "Why a Turkish wedding here is not a question of the city",
-      "body": "Turkish families in Baden-Württemberg don't only live in Stuttgart — celebrations happen in Mannheim and Karlsruhe just as much as in Heilbronn, Reutlingen or Ulm. What changes with the city is the venue and the travel; what stays the same is the standard: the grand entrance, halay circles spanning three generations, a kına moment with goosebumps, and guests who expect German and international music alongside. Veysel covers the whole state from Stuttgart — as a DJ, live musician on saz and guitar, and with a live orchestra including horns, for over {years} years."
+      "body": "Turkish families in Baden-Württemberg don't only live in Stuttgart — celebrations happen in Mannheim and Karlsruhe just as much as in Heilbronn, Reutlingen or Pforzheim. What changes with the city is the venue and the travel; what stays the same is the standard: the grand entrance, halay circles spanning three generations, a kına moment with goosebumps, and guests who expect German and international music alongside. Veysel covers the whole state from Stuttgart — as a DJ, live musician on saz and guitar, and with a live orchestra including horns, for over {years} years."
     },
     "pillars": {
       "eyebrow": "True statewide",
@@ -676,13 +676,45 @@
       "stuttgartLink": "Turkish DJ Stuttgart — see the dedicated page",
       "note": "Your town not listed? It isn't too far — just ask about the date directly."
     },
+    "regions": {
+      "eyebrow": "All of Baden-Württemberg",
+      "title": "Even without a dedicated page: a Turkish DJ in every region of the state",
+      "lead": "Not every town has its own page — bookings still cover the whole state. An overview by region, with example towns:",
+      "items": [
+        {
+          "region": "Stuttgart region & Middle Neckar",
+          "towns": "Sindelfingen, Waiblingen, Fellbach, Nürtingen, Kirchheim unter Teck"
+        },
+        {
+          "region": "Schwarzwald-Baar & Upper Danube",
+          "towns": "Rottweil, Tuttlingen, Donaueschingen, Balingen, Albstadt"
+        },
+        {
+          "region": "Ortenau & South Baden",
+          "towns": "Kehl, Achern, Emmendingen, Ettenheim, Lörrach"
+        },
+        {
+          "region": "North Baden & Rhine-Neckar",
+          "towns": "Rastatt, Bruchsal, Ettlingen, Sinsheim, Weinheim"
+        },
+        {
+          "region": "Heilbronn-Franken",
+          "towns": "Schwäbisch Hall, Neckarsulm, Crailsheim, Öhringen, Bad Mergentheim"
+        },
+        {
+          "region": "Lake Constance & Upper Swabia",
+          "towns": "Ravensburg, Singen, Radolfzell, Überlingen, Weingarten"
+        }
+      ],
+      "note": "Your town not named? The list is examples, not a boundary — what matters is the distance, and that is always in the quote up front."
+    },
     "faq": {
       "eyebrow": "Frequently asked questions",
       "title": "A Turkish DJ statewide — what couples ask",
       "items": [
         {
-          "q": "Does a Turkish DJ from Stuttgart also come to Mannheim, Karlsruhe or Ulm?",
-          "a": "Yes — bookings cover all of Baden-Württemberg. Within 50 km of Stuttgart travel is included; beyond that it appears as its own visible line in the quote before you sign. The distance changes nothing about the programme itself."
+          "q": "What makes a Turkish DJ different — isn't a regular wedding DJ enough?",
+          "a": "The difference is repertoire and dramaturgy: halay circles, gelin çıkarma and kına moments call for their own musical knowledge and their own timing, and the hosting has to move between Turkish and German. A DJ who brings both has nothing to improvise on the night — which is why this offer stands as its own page next to the classic wedding DJ."
         },
         {
           "q": "Kına gecesi and the wedding are in different cities — does that work?",

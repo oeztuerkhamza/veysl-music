@@ -744,7 +744,7 @@
   "turkishDjBw": {
     "meta": {
       "title": "Baden-Württemberg'de Türk DJ – düğün & kına | DJ Veys",
-      "description": "Baden-Württemberg genelinde Türk DJ: Stuttgart'tan Mannheim, Karlsruhe ve Ulm'a Türk düğünü, kına ve nişan. Türkçe-Almanca sunum, ulaşım şeffaf."
+      "description": "Baden-Württemberg genelinde Türk DJ: Stuttgart'tan Mannheim, Karlsruhe ve Ulm'a Türk düğünü, kına ve nişan. Türkçe-Almanca sunum, ulaşım önceden teklifte."
     },
     "hero": {
       "eyebrow": "Türk DJ · Baden-Württemberg",
@@ -754,7 +754,7 @@
     "intro": {
       "eyebrow": "Eyaletin her yerinde evinde",
       "title": "Türk düğünü neden şehre göre değişmez",
-      "body": "Baden-Württemberg'de Türk kökenli aileler yalnızca Stuttgart'ta yaşamıyor — Mannheim ve Karlsruhe'de de, Heilbronn, Reutlingen ya da Ulm'da da düğün yapılıyor. Şehirle birlikte değişen şey mekân ve ulaşım; aynı kalan şey beklenti: büyük giriş, üç kuşağı aynı anda oynatan halay, tüyleri diken diken eden kına anı ve yanında Almanca ve uluslararası müzik bekleyen davetliler. Veysel bunun için Stuttgart'tan yola çıkıp eyaletin tamamına gidiyor — DJ, sazda ve gitarda canlı müzisyen ve nefesli çalgılı orkestrasıyla, {years} yılı aşkın süredir."
+      "body": "Baden-Württemberg'de Türk kökenli aileler yalnızca Stuttgart'ta yaşamıyor — Mannheim ve Karlsruhe'de de, Heilbronn, Reutlingen ya da Pforzheim'da da düğün yapılıyor. Şehirle birlikte değişen şey mekân ve ulaşım; aynı kalan şey beklenti: büyük giriş, üç kuşağı aynı anda oynatan halay, tüyleri diken diken eden kına anı ve yanında Almanca ve uluslararası müzik bekleyen davetliler. Veysel bunun için Stuttgart'tan yola çıkıp eyaletin tamamına gidiyor — DJ, sazda ve gitarda canlı müzisyen ve nefesli çalgılı orkestrasıyla, {years} yılı aşkın süredir."
     },
     "pillars": {
       "eyebrow": "Eyalet genelinde geçerli",
@@ -781,13 +781,45 @@
       "stuttgartLink": "Stuttgart'ta Türk DJ — ayrıntılı sayfaya git",
       "note": "Şehriniz listede yok mu? Çok uzak olduğundan değil — tarihi doğrudan sorabilirsiniz."
     },
+    "regions": {
+      "eyebrow": "Baden-Württemberg’in tamamı",
+      "title": "Ayrı sayfası olmasa da: eyaletin her bölgesinde Türk DJ",
+      "lead": "Her şehrin kendi sayfası yok — ama rezervasyon eyaletin tamamı için yapılıyor. Bölgelere göre, örnek yerleşimlerle bir genel bakış:",
+      "items": [
+        {
+          "region": "Stuttgart Bölgesi & Orta Neckar",
+          "towns": "Sindelfingen, Waiblingen, Fellbach, Nürtingen, Kirchheim unter Teck"
+        },
+        {
+          "region": "Schwarzwald-Baar & Yukarı Tuna",
+          "towns": "Rottweil, Tuttlingen, Donaueschingen, Balingen, Albstadt"
+        },
+        {
+          "region": "Ortenau & Güney Baden",
+          "towns": "Kehl, Achern, Emmendingen, Ettenheim, Lörrach"
+        },
+        {
+          "region": "Kuzey Baden & Rhein-Neckar",
+          "towns": "Rastatt, Bruchsal, Ettlingen, Sinsheim, Weinheim"
+        },
+        {
+          "region": "Heilbronn-Franken",
+          "towns": "Schwäbisch Hall, Neckarsulm, Crailsheim, Öhringen, Bad Mergentheim"
+        },
+        {
+          "region": "Bodensee & Yukarı Şvabya",
+          "towns": "Ravensburg, Singen, Radolfzell, Überlingen, Weingarten"
+        }
+      ],
+      "note": "Yaşadığınız yer burada geçmiyor mu? Bu liste örnektir, sınır değil — belirleyici olan mesafedir ve o her zaman önceden teklifte yazılıdır."
+    },
     "faq": {
       "eyebrow": "Sık sorulan sorular",
       "title": "Eyalet genelinde Türk DJ — çiftler ne soruyor",
       "items": [
         {
-          "q": "Stuttgart'tan bir Türk DJ Mannheim, Karlsruhe ya da Ulm'a da gelir mi?",
-          "a": "Evet — rezervasyon Baden-Württemberg'in tamamı için yapılır. Stuttgart çevresinde 50 km içinde ulaşım dahildir; ötesinde imzadan önce teklifte ayrı bir kalem olarak görünür. Mesafe programın kendisini değiştirmez."
+          "q": "Türk DJ'i farklı kılan ne — normal bir düğün DJ'i yetmez mi?",
+          "a": "Fark repertuvarda ve kurguda: halay halkaları, gelin çıkarma ve kına anları kendi müzik bilgisini ve kendi zamanlamasını ister; sunumun da Türkçe ile Almanca arasında geçebilmesi gerekir. İkisini birden getiren bir DJ'in akşam doğaçlama yapmasına gerek kalmaz — bu hizmetin klasik düğün DJ'liğinin yanında ayrı bir sayfa olmasının nedeni bu."
         },
         {
           "q": "Kına gecesi ve düğün farklı şehirlerde — olur mu?",

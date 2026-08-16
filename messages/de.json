@@ -639,7 +639,7 @@
   "turkishDjBw": {
     "meta": {
       "title": "Türkischer DJ Baden-Württemberg – Hochzeit & Kına | DJ Veys",
-      "description": "Türkischer DJ für ganz Baden-Württemberg: Hochzeit, Kına & Nişan von Stuttgart bis Mannheim, Karlsruhe & Ulm. Moderation auf Türkisch & Deutsch."
+      "description": "Türkischer DJ für ganz Baden-Württemberg: Hochzeit, Kına & Nişan von Stuttgart bis Mannheim & Ulm. Moderation auf Türkisch & Deutsch, Anfahrt transparent."
     },
     "hero": {
       "eyebrow": "Türkischer DJ · Baden-Württemberg",
@@ -649,7 +649,7 @@
     "intro": {
       "eyebrow": "Landesweit zu Hause",
       "title": "Warum türkische Hochzeiten hier keine Frage der Stadt sind",
-      "body": "In Baden-Württemberg leben türkischstämmige Familien nicht nur in Stuttgart — gefeiert wird in Mannheim und Karlsruhe genauso wie in Heilbronn, Reutlingen oder Ulm. Was sich mit der Stadt ändert, sind Location und Anfahrt; was gleich bleibt, ist der Anspruch: der große Einzug, Halay-Runden über drei Generationen, ein Kına-Moment mit Gänsehaut und Gäste, die daneben deutsche und internationale Musik erwarten. Veysel fährt dafür von Stuttgart aus ins ganze Land — als DJ, Live-Musiker an Saz und Gitarre und mit Live-Orchester inklusive Bläsern, seit über {years} Jahren."
+      "body": "In Baden-Württemberg leben türkischstämmige Familien nicht nur in Stuttgart — gefeiert wird in Mannheim und Karlsruhe genauso wie in Heilbronn, Reutlingen oder Pforzheim. Was sich mit der Stadt ändert, sind Location und Anfahrt; was gleich bleibt, ist der Anspruch: der große Einzug, Halay-Runden über drei Generationen, ein Kına-Moment mit Gänsehaut und Gäste, die daneben deutsche und internationale Musik erwarten. Veysel fährt dafür von Stuttgart aus ins ganze Land — als DJ, Live-Musiker an Saz und Gitarre und mit Live-Orchester inklusive Bläsern, seit über {years} Jahren."
     },
     "pillars": {
       "eyebrow": "Was landesweit gilt",
@@ -676,13 +676,45 @@
       "stuttgartLink": "Türkischer DJ Stuttgart — zur ausführlichen Seite",
       "note": "Ihre Stadt fehlt? Sie ist deshalb nicht zu weit weg — fragen Sie das Datum einfach direkt an."
     },
+    "regions": {
+      "eyebrow": "Ganz Baden-Württemberg",
+      "title": "Auch ohne eigene Stadtseite: türkischer DJ in jeder Region des Landes",
+      "lead": "Nicht jede Stadt hat eine eigene Seite — gebucht wird trotzdem im ganzen Land. Ein Überblick nach Regionen, mit Beispielorten:",
+      "items": [
+        {
+          "region": "Region Stuttgart & Mittlerer Neckar",
+          "towns": "Sindelfingen, Waiblingen, Fellbach, Nürtingen, Kirchheim unter Teck"
+        },
+        {
+          "region": "Schwarzwald-Baar & Obere Donau",
+          "towns": "Rottweil, Tuttlingen, Donaueschingen, Balingen, Albstadt"
+        },
+        {
+          "region": "Ortenau & Südbaden",
+          "towns": "Kehl, Achern, Emmendingen, Ettenheim, Lörrach"
+        },
+        {
+          "region": "Nordbaden & Rhein-Neckar",
+          "towns": "Rastatt, Bruchsal, Ettlingen, Sinsheim, Weinheim"
+        },
+        {
+          "region": "Heilbronn-Franken",
+          "towns": "Schwäbisch Hall, Neckarsulm, Crailsheim, Öhringen, Bad Mergentheim"
+        },
+        {
+          "region": "Bodensee & Oberschwaben",
+          "towns": "Ravensburg, Singen, Radolfzell, Überlingen, Weingarten"
+        }
+      ],
+      "note": "Ihr Ort ist nicht genannt? Die Liste sind Beispiele, keine Grenze — entscheidend ist die Strecke, und die steht immer vorab im Angebot."
+    },
     "faq": {
       "eyebrow": "Häufige Fragen",
       "title": "Türkischer DJ im ganzen Land — was Paare wissen wollen",
       "items": [
         {
-          "q": "Kommt ein türkischer DJ aus Stuttgart auch nach Mannheim, Karlsruhe oder Ulm?",
-          "a": "Ja — gebucht wird in ganz Baden-Württemberg. Innerhalb von 50 km um Stuttgart ist die Anfahrt enthalten, darüber hinaus wird sie im Angebot als eigene Position ausgewiesen, bevor Sie unterschreiben. Am Programm selbst ändert die Entfernung nichts."
+          "q": "Was macht einen türkischen DJ aus — reicht nicht ein normaler Hochzeits-DJ?",
+          "a": "Der Unterschied liegt im Repertoire und in der Dramaturgie: Halay-Runden, Gelin Çıkarma und Kına-Momente verlangen eigenes Musikwissen und eigenes Timing, und die Moderation muss zwischen Türkisch und Deutsch wechseln können. Ein DJ, der beides mitbringt, muss am Abend nichts improvisieren — deshalb steht dieses Angebot als eigene Seite neben dem klassischen Hochzeits-DJ."
         },
         {
           "q": "Kına Gecesi und Hochzeit finden in verschiedenen Städten statt — geht das?",

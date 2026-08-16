@@ -24,7 +24,7 @@ interface RouteSeoConfig {
  * so a new route added to routing.ts fails to compile here until it's
  * classified — the sitemap can't silently miss it.
  *
- * Five routes are excluded, all on purpose:
+ * The excluded routes below are each excluded on purpose:
  * - `/hochzeits-dj-europa` (the Europe reach hub): NOT available in all eight
  *   locales, unlike every other entry here — see `HUB_ROUTE_CONFIG` and
  *   `loadRegionsData()` below.

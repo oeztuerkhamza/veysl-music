@@ -783,7 +783,7 @@ export const allCityEntries: City[] = [
     population: 93615,
     priority: 1,
     turkishCommunity: false,
-    nearby: ['reutlingen', 'boeblingen', 'esslingen'],
+    nearby: ['reutlingen', 'boeblingen', 'esslingen', 'villingen-schwenningen'],
     travel: { included: true },
     // TODO(kunde): keine Hochzeitslocation im Recherche-Pass verifiziert —
     // siehe docs/SEO-CITY-STRATEGY.md. Lieber leer als erfunden.
@@ -1220,7 +1220,7 @@ export const allCityEntries: City[] = [
     population: 56738,
     priority: 2,
     turkishCommunity: false,
-    nearby: ['karlsruhe', 'pforzheim', 'offenburg'],
+    nearby: ['karlsruhe', 'pforzheim', 'offenburg', 'lahr'],
     travel: {
       included: false,
       note: {
@@ -1278,7 +1278,7 @@ export const allCityEntries: City[] = [
     population: 62994,
     priority: 2,
     turkishCommunity: false,
-    nearby: ['baden-baden', 'freiburg', 'karlsruhe'],
+    nearby: ['lahr', 'baden-baden', 'freiburg', 'karlsruhe'],
     travel: {
       included: false,
       note: {
@@ -1348,7 +1348,7 @@ export const allCityEntries: City[] = [
     population: 236182,
     priority: 1,
     turkishCommunity: false,
-    nearby: ['offenburg', 'baden-baden', 'karlsruhe'],
+    nearby: ['offenburg', 'lahr', 'baden-baden', 'karlsruhe'],
     travel: {
       included: false,
       note: {
@@ -1444,7 +1444,7 @@ export const allCityEntries: City[] = [
     population: 86845,
     priority: 2,
     turkishCommunity: false,
-    nearby: ['friedrichshafen', 'ulm'],
+    nearby: ['friedrichshafen', 'villingen-schwenningen', 'ulm'],
     travel: {
       included: false,
       note: {
@@ -1579,6 +1579,161 @@ export const allCityEntries: City[] = [
           de: 'Ja. Ton- und Lichttechnik, Aufbau und Moderation sind dieselben wie bei einer Hochzeit, nur der Ablauf ist ein anderer – Begrüßung, Programmpunkte und Musik richten sich nach dem Zeitplan des Unternehmens. Fällt der Abend in eine Messewoche, wird der Aufbau so gelegt, dass er dem Tagesprogramm nicht in die Quere kommt.',
           en: 'Yes. The sound and lighting, the setup and the hosting are the same as at a wedding — only the running order differs, with the welcome, programme slots and music built around the company schedule. If the evening falls in a trade-fair week, setup is scheduled so it does not collide with the daytime programme.',
           tr: 'Evet. Ses ve ışık ekipmanı, kurulum ve sunum bir düğündekiyle aynı; yalnızca akış farklı — karşılama, program başlıkları ve müzik şirketin zaman planına göre kurgulanır. Akşam bir fuar haftasına denk geliyorsa kurulum, gündüz programıyla çakışmayacak şekilde planlanır.',
+        },
+      },
+    ],
+  },
+  {
+    /**
+     * Batch August 2026, Nachtrag (2026-08-16): vom Kunden ausdrücklich
+     * angefragte Abdeckung — „auch wer in Villingen-Schwenningen sucht,
+     * soll fündig werden". `distanceKm` per Haversine (48.0606, 8.4594),
+     * dieselbe Rechnung wie beim übrigen Batch.
+     */
+    slug: 'villingen-schwenningen',
+    name: 'Villingen-Schwenningen',
+    region: 'Baden-Württemberg',
+    distanceKm: 96,
+    // TODO(kunde): Einwohnerzahl (~85–90 Tsd. laut Stadtverwaltung) vor
+    // Veröffentlichung einer konkreten Zahl verifizieren — bis dahin null,
+    // dieselbe Regel wie bei Böblingen.
+    population: null,
+    priority: 2,
+    turkishCommunity: false,
+    nearby: ['tuebingen', 'konstanz', 'freiburg', 'offenburg'],
+    travel: {
+      included: false,
+      note: {
+        de: 'Villingen-Schwenningen liegt mit rund 96 Kilometern Luftlinie außerhalb der anfahrtskostenfreien 50-km-Zone. Die Strecke über die A81 wird im schriftlichen Angebot als eigener Posten ausgewiesen. Bei Feiern bis in die frühen Morgenstunden steht eine Übernachtung ebenfalls vorab im Angebot – nicht hinterher auf der Rechnung.',
+        en: 'At roughly 96 kilometres as the crow flies, Villingen-Schwenningen is outside the 50 km travel-included zone. The drive down the A81 is itemised as its own line in the written quote. For celebrations running into the early hours, an overnight stay is likewise quoted up front — not added to the invoice afterwards.',
+        tr: 'Villingen-Schwenningen, kuş uçuşu yaklaşık 96 kilometreyle ücretsiz ulaşımın geçerli olduğu 50 km’lik bölgenin dışında. A81 üzerinden yol, yazılı teklifte ayrı bir kalem olarak gösterilir. Sabahın erken saatlerine uzayan kutlamalarda konaklama da önceden teklifte yer alır – sonradan faturada değil.',
+      },
+    },
+    // TODO(kunde): keine Hochzeitslocation verifiziert — lieber leer als
+    // erfunden, dieselbe Regel wie bei Offenburg und Friedrichshafen.
+    venues: [],
+    intro: {
+      de: 'Villingen-Schwenningen ist eine Stadt mit zwei Kernen: das badische Villingen mit seiner mittelalterlichen Altstadt und das württembergische Schwenningen, das mit der Uhrenindustrie groß wurde – erst 1972 wurden beide eine Stadt. Für Hochzeiten heißt das: Gefeiert wird mal auf der einen, mal auf der anderen Seite, oft auch in den Gemeinden der Baar dazwischen. Die größte Stadt des Schwarzwald-Baar-Kreises liegt dabei auf gut 700 Metern – die Abende sind hier auch im Sommer spürbar kühler als im Neckartal.',
+      en: 'Villingen-Schwenningen is a city with two centres: Villingen on the Baden side with its medieval old town, and Schwenningen on the Württemberg side, which grew up with the clock industry — the two only became one city in 1972. For weddings that means celebrations happen sometimes on one side, sometimes on the other, and often in the villages of the Baar plateau in between. The largest city of the Schwarzwald-Baar district also sits at a good 700 metres — evenings here are noticeably cooler than in the Neckar valley, even in summer.',
+      tr: 'Villingen-Schwenningen iki çekirdekli bir şehir: Baden tarafında ortaçağdan kalma eski merkeziyle Villingen, Württemberg tarafında ise saat sanayisiyle büyüyen Schwenningen – ikisi ancak 1972’de tek şehir oldu. Düğünler için bunun anlamı şu: kutlama bazen bir yakada, bazen öbüründe, çoğu zaman da aradaki Baar platosunun beldelerinde yapılıyor. Schwarzwald-Baar ilçesinin en büyük şehri üstelik 700 metrenin üzerinde kurulu – akşamlar burada yazın bile Neckar vadisinden hissedilir ölçüde serin geçiyor.',
+    },
+    angle: {
+      de: 'Die erste Planungsfrage lautet hier oft: Villingen oder Schwenningen? Zwei Zentren, zwei Sorten Säle, dazwischen die Hallen der Baar-Gemeinden – welcher Raum es wird, ändert an Anlage, Aufbau und Person nichts, denn die Technik reist komplett mit und hängt nicht davon ab, was der Saal vor Ort hergibt. Die rund 96 Kilometer ab Stuttgart stehen offen im Angebot; geplant wird die Feier mit denselben Vorgesprächen wie eine im Kessel.',
+      en: 'The first planning question here is often: Villingen or Schwenningen? Two centres, two kinds of hall, plus the venues of the Baar villages in between — whichever room it ends up being changes nothing about the rig, the setup or the person, because the equipment travels along in full and does not depend on what the hall happens to own. The roughly 96 kilometres from Stuttgart are itemised openly in the quote; the celebration is planned with the same preparatory calls as one in Stuttgart itself.',
+      tr: 'Buradaki ilk planlama sorusu çoğu zaman şu: Villingen mi, Schwenningen mi? İki merkez, iki tür salon, arada da Baar beldelerinin düğün salonları – hangisi seçilirse seçilsin ses sistemi, kurulum ve kişi değişmez; çünkü ekipman eksiksiz birlikte gelir, salonun kendi imkânlarına bağlı kalmaz. Stuttgart’tan yaklaşık 96 kilometre teklifte açıkça yazılıdır; kutlama, Stuttgart’taki bir düğünle aynı ön görüşmelerle planlanır.',
+    },
+    faq: [
+      {
+        question: {
+          de: 'Kommen Sie aus Stuttgart nach Villingen-Schwenningen – und was kostet die Anfahrt?',
+          en: 'Do you come from Stuttgart to Villingen-Schwenningen — and what does the travel cost?',
+          tr: 'Stuttgart’tan Villingen-Schwenningen’e geliyor musunuz – yol ücreti ne kadar tutuyor?',
+        },
+        answer: {
+          de: 'Ja, die Strecke über die A81 gehört zum Einzugsgebiet. Die rund 96 Kilometer Luftlinie liegen außerhalb der 50-km-Inklusivzone, deshalb wird die Anfahrt im schriftlichen Angebot als eigener Posten ausgewiesen – vor der Zusage, nicht danach. Am Programm selbst ändert die Entfernung nichts.',
+          en: 'Yes — the run down the A81 is part of the service area. The roughly 96 kilometres as the crow flies fall outside the 50 km included zone, so travel is itemised as its own line in the written quote — before you commit, not after. The distance changes nothing about the programme itself.',
+          tr: 'Evet, A81 üzerinden bu güzergâh hizmet bölgesine dahil. Kuş uçuşu yaklaşık 96 kilometre, ücretsiz ulaşımın geçerli olduğu 50 km’lik bölgenin dışında kaldığı için yol, yazılı teklifte ayrı bir kalem olarak gösterilir – onay vermeden önce, sonradan değil. Mesafe programın kendisini değiştirmez.',
+        },
+      },
+      {
+        question: {
+          de: 'Villingen oder Schwenningen – macht das für Technik und Ablauf einen Unterschied?',
+          en: 'Villingen or Schwenningen — does it make a difference for the equipment and the running order?',
+          tr: 'Villingen mi, Schwenningen mi – teknik ve akış açısından fark eder mi?',
+        },
+        answer: {
+          de: 'Für die Feier selbst nicht, für die Vorbereitung schon. Die Anlage ist in beiden Stadtbezirken dieselbe, weil sie komplett mitgebracht wird. Was sich unterscheidet, sind die Räume: Altstadtnahe Säle in Villingen stellen andere Fragen an Zufahrt und Aufbauzeit als Hallen in Schwenningen oder in den Baar-Gemeinden. Genau das wird im Vorgespräch mit der Location geklärt – nicht am Abend selbst.',
+          en: 'Not for the celebration itself, but yes for the preparation. The rig is the same in both districts, because it is brought along in full. What differs is the rooms: halls near Villingen’s old town ask different questions about access and setup time than venues in Schwenningen or the Baar villages. Exactly that is settled with the venue in the planning call — not on the night.',
+          tr: 'Kutlamanın kendisi için değil, hazırlık için eder. Ses sistemi iki yakada da aynıdır, çünkü eksiksiz olarak birlikte getirilir. Farklılaşan şey mekânlar: Villingen’in eski şehrine yakın salonlar, giriş ve kurulum süresi konusunda Schwenningen’deki ya da Baar beldelerindeki salonlardan farklı sorular sorar. İşte tam bu, akşamın kendisinde değil, mekânla yapılan ön görüşmede netleştirilir.',
+        },
+      },
+      {
+        question: {
+          de: 'Auf der Baar kann es früh im Jahr und spät im Herbst schneien – ändert das etwas an der Planung?',
+          en: 'On the Baar plateau it can snow early and late in the year — does that change the planning?',
+          tr: 'Baar platosunda yılın erken ve geç aylarında kar yağabiliyor – bu planlamayı değiştirir mi?',
+        },
+        answer: {
+          de: 'An der Feier nichts, an der Anreise ja: Die Hochebene gehört zu den kältesten Siedlungsräumen Deutschlands, und dorthin wird mit größerem Zeitpuffer gefahren als ins Neckartal. Aufbau und Soundcheck sind ohnehin lange vor dem ersten Gast abgeschlossen – ein früherer Start ist eine Planungsnotiz, keine Zusatzkosten.',
+          en: 'Nothing about the celebration, but yes about the journey: the plateau is one of the coldest inhabited areas in Germany, and the drive up is scheduled with a bigger time buffer than a run into the Neckar valley. Setup and soundcheck are finished long before the first guest arrives anyway — an earlier start is a planning note, not an extra cost.',
+          tr: 'Kutlamada hiçbir şeyi, yolculukta ise evet: Bu plato Almanya’nın en soğuk yerleşim bölgelerinden biridir ve oraya Neckar vadisine göre daha büyük bir zaman payıyla yola çıkılır. Kurulum ve ses denemesi zaten ilk misafirden çok önce bitmiş olur – daha erken yola çıkmak bir planlama notudur, ek bir masraf değil.',
+        },
+      },
+    ],
+  },
+  {
+    /**
+     * Batch August 2026, Nachtrag (2026-08-16): vom Kunden ausdrücklich
+     * angefragte Abdeckung — „auch wer in Lahr sucht, soll fündig werden".
+     * Amtlich „Lahr/Schwarzwald"; Anzeigename bewusst kurz, der volle Name
+     * steht in der Prosa. `distanceKm` per Haversine (48.3403, 7.8712).
+     */
+    slug: 'lahr',
+    name: 'Lahr',
+    region: 'Baden-Württemberg',
+    distanceKm: 108,
+    // TODO(kunde): Einwohnerzahl (~47–49 Tsd. laut Stadtverwaltung) vor
+    // Veröffentlichung einer konkreten Zahl verifizieren — bis dahin null.
+    population: null,
+    priority: 2,
+    turkishCommunity: false,
+    nearby: ['offenburg', 'freiburg', 'baden-baden', 'karlsruhe'],
+    travel: {
+      included: false,
+      note: {
+        de: 'Lahr liegt mit rund 108 Kilometern Luftlinie außerhalb der anfahrtskostenfreien 50-km-Zone. Über die A5 ist die Stadt gut erreichbar; die Strecke wird im schriftlichen Angebot einzeln ausgewiesen. Endet die Feier spät, steht eine Übernachtung ebenfalls vorab im Angebot – kein Posten davon taucht erst auf der Rechnung auf.',
+        en: 'At roughly 108 kilometres as the crow flies, Lahr is outside the 50 km travel-included zone. The city is easy to reach via the A5; the distance is itemised separately in the written quote. If the celebration ends late, an overnight stay is likewise quoted up front — none of it first appears on the invoice.',
+        tr: 'Lahr, kuş uçuşu yaklaşık 108 kilometreyle ücretsiz ulaşımın geçerli olduğu 50 km’lik bölgenin dışında. A5 üzerinden şehre ulaşım kolay; mesafe yazılı teklifte ayrı olarak gösterilir. Kutlama geç bitiyorsa konaklama da önceden teklifte yer alır – hiçbir kalem ilk kez faturada ortaya çıkmaz.',
+      },
+    },
+    // TODO(kunde): keine Hochzeitslocation verifiziert — lieber leer als
+    // erfunden, dieselbe Regel wie bei Offenburg und Friedrichshafen.
+    venues: [],
+    intro: {
+      de: 'Lahr – amtlich Lahr/Schwarzwald – liegt in der südlichen Ortenau zwischen Rheinebene und Schwarzwaldrand, direkt an der A5 zwischen Offenburg und Freiburg. Überregional bekannt ist die Stadt für die Chrysanthema, die den Herbst in ein Blumenfest verwandelt. Gefeiert wird hier oft nicht im Zentrum selbst, sondern in den Hallen und Höfen der umliegenden Gemeinden zwischen Reben und Waldrand – Räume, die selten eine eigene Veranstaltungstechnik haben.',
+      en: 'Lahr — officially Lahr/Schwarzwald — sits in the southern Ortenau between the Rhine plain and the edge of the Black Forest, right on the A5 between Offenburg and Freiburg. Beyond the region the town is known for the Chrysanthema, which turns its autumn into a flower festival. Celebrations here often happen not in the centre itself but in the halls and courtyards of the surrounding villages between vineyards and forest edge — rooms that rarely come with their own event equipment.',
+      tr: 'Lahr – resmî adıyla Lahr/Schwarzwald – güney Ortenau’da, Ren ovasıyla Karaorman eteği arasında, Offenburg ile Freiburg arasındaki A5 otoyolunun hemen üzerinde yer alıyor. Şehir, sonbaharı bir çiçek festivaline çeviren Chrysanthema ile bölge dışında da tanınıyor. Buradaki kutlamalar çoğu zaman merkezde değil, bağlarla orman kenarı arasındaki çevre beldelerin salonlarında ve avlularında yapılıyor – kendi etkinlik teknolojisi nadiren bulunan mekânlar.',
+    },
+    angle: {
+      de: 'Wer rund um Lahr feiert, bucht selten einen Saal mit fest installierter Technik – die Halle im Ortsteil, der Winzerhof, das Bürgerhaus bringen Charme mit, aber keine Anlage. Genau dafür ist dieses Setup gebaut: Ton, Licht und Mikrofone reisen komplett aus Stuttgart mit und werden auf den Raum eingemessen, statt zu hoffen, was vor Ort steht. Die rund 108 Kilometer stehen als eigener Posten im Angebot – zusammen mit allem anderen, bevor Sie zusagen.',
+      en: 'Around Lahr, couples rarely book a hall with fixed installed equipment — the village hall, the winegrower’s courtyard or the community house bring charm, but no rig. This setup is built for exactly that: sound, lighting and microphones travel along in full from Stuttgart and are tuned to the room, instead of hoping for whatever is on site. The roughly 108 kilometres appear as their own line in the quote — together with everything else, before you say yes.',
+      tr: 'Lahr çevresinde kutlama yapanlar nadiren sabit ses düzeni olan bir salon kiralar – beldedeki salon, bağcı avlusu ya da halk evi kendine has bir hava taşır ama ses sistemi getirmez. Bu düzen tam bunun için kurulu: ses, ışık ve mikrofonlar Stuttgart’tan eksiksiz gelir ve mekâna göre ayarlanır; yerinde ne bulunacağına bel bağlanmaz. Yaklaşık 108 kilometre de teklifte ayrı bir kalem olarak yazılıdır – onay vermeden önce, diğer her şeyle birlikte.',
+    },
+    faq: [
+      {
+        question: {
+          de: 'Lohnt sich ein DJ aus Stuttgart für eine Feier in Lahr – oder wird die Anfahrt zu teuer?',
+          en: 'Is a DJ from Stuttgart worth it for a celebration in Lahr — or does the travel get too expensive?',
+          tr: 'Lahr’daki bir kutlama için Stuttgart’tan DJ getirmeye değer mi – yol masrafı çok mu tutar?',
+        },
+        answer: {
+          de: 'Die Anfahrt ist eine klar bezifferte Position, kein Kostenrisiko: Die rund 108 Kilometer liegen außerhalb der 50-km-Inklusivzone und stehen als eigener Posten im schriftlichen Angebot, bei sehr späten Feiern zusammen mit einer Übernachtung. Was Sie dafür bekommen, ist an jedem Ort gleich – dieselbe Anlage, dieselbe Vorbereitung, dieselbe Person am Pult.',
+          en: 'Travel is a clearly priced line item, not a cost risk: the roughly 108 kilometres fall outside the 50 km included zone and appear as their own position in the written quote — together with an overnight stay for very late celebrations. What you get for it is the same in every town: the same rig, the same preparation, the same person behind the booth.',
+          tr: 'Yol, bir maliyet riski değil, net rakamla yazılmış bir kalemdir: yaklaşık 108 kilometre, 50 km’lik ücretsiz bölgenin dışında kalır ve yazılı teklifte ayrı bir kalem olarak yer alır – çok geç biten kutlamalarda konaklamayla birlikte. Karşılığında aldığınız şey her yerde aynıdır: aynı ses sistemi, aynı hazırlık, kabinin başında aynı kişi.',
+        },
+      },
+      {
+        question: {
+          de: 'Unsere Halle im Umland hat keine eigene Technik – reicht Ihre Anlage für den Raum?',
+          en: 'Our hall outside town has no equipment of its own — is your rig enough for the room?',
+          tr: 'Çevre beldedeki salonumuzun kendi ses düzeni yok – sizin sisteminiz salona yeter mi?',
+        },
+        answer: {
+          de: 'Dafür ist sie da. Ton, Licht und Funkmikrofone kommen komplett mit und werden auf Größe und Akustik des Raums abgestimmt – vom Bürgerhaus bis zur Weinguthalle. Vorab werden mit der Location nur zwei Dinge geklärt: Strom und Zufahrt. Eine Anlage vor Ort ist nie Voraussetzung.',
+          en: 'That is what it is for. Sound, lighting and wireless microphones all come along and are matched to the size and acoustics of the room — from a community house to a winery hall. Only two things are clarified with the venue in advance: power and access. Equipment on site is never a requirement.',
+          tr: 'Zaten bunun için var. Ses, ışık ve telsiz mikrofonlar eksiksiz gelir ve salonun büyüklüğüyle akustiğine göre ayarlanır – halk evinden bağ evi salonuna kadar. Mekânla önceden yalnızca iki şey netleştirilir: elektrik ve araç girişi. Mekânda hazır bir ses düzeni hiçbir zaman şart değildir.',
+        },
+      },
+      {
+        question: {
+          de: 'Kommen Sie auch in die Gemeinden rund um Lahr – etwa Friesenheim, Seelbach oder Ettenheim?',
+          en: 'Do you also come to the villages around Lahr — Friesenheim, Seelbach or Ettenheim, say?',
+          tr: 'Lahr çevresindeki beldelere de geliyor musunuz – örneğin Friesenheim, Seelbach ya da Ettenheim’a?',
+        },
+        answer: {
+          de: 'Ja – für die Anfahrt zählt die Strecke, nicht der Ortsname. Ob die Feier in Lahr selbst, in Friesenheim oder weiter Richtung Ettenheim stattfindet, verschiebt das Angebot um wenige Kilometer, mehr nicht. Geben Sie bei der Anfrage einfach den Ort der Location an, dann steht die genaue Strecke im Angebot.',
+          en: 'Yes — for travel it is the distance that counts, not the place name. Whether the celebration is in Lahr itself, in Friesenheim or further towards Ettenheim shifts the quote by a few kilometres, nothing more. Just name the venue’s village in your enquiry and the exact distance appears in the quote.',
+          tr: 'Evet – yol için önemli olan mesafedir, yer adı değil. Kutlamanın Lahr’ın kendisinde, Friesenheim’da ya da Ettenheim yönünde olması teklifi yalnızca birkaç kilometre oynatır, o kadar. Talebinizde mekânın bulunduğu beldeyi yazmanız yeterli; kesin mesafe teklifte yer alır.',
         },
       },
     ],

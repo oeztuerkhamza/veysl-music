@@ -56,6 +56,9 @@ Spanisch verfügbar.
   die Landesseite der Türkisch-Nische — türkische und deutsch-türkische
   Hochzeiten, Kına und Nişan im ganzen Bundesland, mit Anfahrtsmodell
   (bis 50 km um Stuttgart inklusive) und der Übersicht aller Stadtseiten.
+  Gebucht wird auch in Orten ohne eigene Stadtseite — etwa Rottweil,
+  Tuttlingen, Kehl, Ravensburg, Singen oder Schwäbisch Hall; maßgeblich ist
+  allein die Strecke ab Stuttgart, die vorab im Angebot steht.
   Türkische Fassung: [Baden-Württemberg'de Türk DJ](https://dj-veys.de/tr/turk-dj-baden-wuerttemberg).
 - Eigene Seite je Stadt im Einzugsgebiet um Stuttgart — mit Anfahrt,
   örtlichen Gegebenheiten und Fragen je Stadt, jeweils auf Deutsch, Türkisch
@@ -76,9 +79,11 @@ Spanisch verfügbar.
   - [Heidelberg](https://dj-veys.de/hochzeits-dj/heidelberg)
   - [Mannheim](https://dj-veys.de/hochzeits-dj/mannheim)
   - [Offenburg](https://dj-veys.de/hochzeits-dj/offenburg)
+  - [Lahr](https://dj-veys.de/hochzeits-dj/lahr)
+  - [Villingen-Schwenningen](https://dj-veys.de/hochzeits-dj/villingen-schwenningen)
   - [Konstanz](https://dj-veys.de/hochzeits-dj/konstanz)
   - [Friedrichshafen](https://dj-veys.de/hochzeits-dj/friedrichshafen)
-  - [Freiburg](https://dj-veys.de/hochzeits-dj/freiburg)
+  - [Freiburg im Breisgau](https://dj-veys.de/hochzeits-dj/freiburg)
 - [Hochzeits-DJ in Europa](https://dj-veys.de/hochzeits-dj-europa):
   Buchbarkeit für Destination Weddings auf Länderebene, mit je einer Seite für
   [Österreich](https://dj-veys.de/hochzeits-dj-europa/oesterreich),

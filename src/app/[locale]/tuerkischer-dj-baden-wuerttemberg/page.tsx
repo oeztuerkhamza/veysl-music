@@ -55,6 +55,11 @@ interface FaqItem {
   a: string;
 }
 
+interface RegionItem {
+  region: string;
+  towns: string;
+}
+
 /**
  * Landesseite „Türkischer DJ Baden-Württemberg".
  *
@@ -87,6 +92,7 @@ export default async function TurkishDjBwPage({ params }: PageProps) {
   const cities = getAllCities().filter((city) => hasCityProse(city, locale));
   const pageUrl = absoluteUrl('/tuerkischer-dj-baden-wuerttemberg', locale);
   const faqItems = t.raw('faq.items') as FaqItem[];
+  const regionItems = t.raw('regions.items') as RegionItem[];
 
   const statValues = {
     years: site.stats.yearsExperience,
@@ -187,6 +193,27 @@ export default async function TurkishDjBwPage({ params }: PageProps) {
             </Link>
           </p>
           <p className="mt-3 text-sm text-ink-faint">{t('cities.note')}</p>
+        </Container>
+      </Section>
+
+      {/* Long-Tail-Träger: Die Regionen des Landes mit Beispielorten, als
+          Text statt Links — für „türkischer dj rottweil/kehl/ravensburg …"
+          gibt es bewusst keine eigenen Seiten (Doorway-Regel), aber diese
+          eine Seite nennt die Orte, für die die landesweite Zusage gilt. */}
+      <Section>
+        <Container>
+          <Reveal>
+            <SectionHeading eyebrow={t('regions.eyebrow')} title={t('regions.title')} lead={t('regions.lead')} />
+          </Reveal>
+          <dl className="mt-10 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+            {regionItems.map((item) => (
+              <div key={item.region} className="rounded-lg border border-line bg-surface p-5">
+                <dt className="font-display text-lg text-ink">{item.region}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-ink-muted">{item.towns}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-6 text-sm text-ink-faint">{t('regions.note')}</p>
         </Container>
       </Section>
 
