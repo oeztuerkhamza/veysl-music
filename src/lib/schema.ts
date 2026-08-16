@@ -720,14 +720,6 @@ export interface ServiceInput {
   serviceType?: string;
   /** Absolute URL of the page/section describing this service, if it has one. */
   url?: string;
-  /**
-   * Seitenbezogenes Einzugsgebiet dieses EINEN Angebots. Ohne Angabe gilt das
-   * volle Unternehmens-Gebiet aus `areaServed()` (Städte + Bundesland) — die
-   * Landesseiten nutzen genau das; eine Stadtseite kann hier enger zuschneiden
-   * (siehe `buildCityJsonLd`, das aus demselben Grund einen eigenen
-   * Service-Knoten baut).
-   */
-  areaServed?: AreaServedArea[];
 }
 
 export interface ServiceSchema {
@@ -748,7 +740,10 @@ export interface ServiceSchema {
  * calls this — see the report for the exact shape). Never invents service copy.
  */
 export function serviceSchema(items: ServiceInput[], locale: Locale = defaultLocale): ServiceSchema[] {
-  const defaultAreaServed = areaServed();
+  // Städte + Bundesland-Knoten — siehe `areaServed()`. Ein Service, der ein
+  // engeres Gebiet behaupten will (Stadtseiten), baut seinen Knoten selbst,
+  // wie `buildCityJsonLd` es tut.
+  const sharedAreaServed = areaServed();
   const provider = { '@id': entityId(BUSINESS_ID_FRAGMENT) };
   return items.map((item) => ({
     '@context': 'https://schema.org' as const,
@@ -759,7 +754,7 @@ export function serviceSchema(items: ServiceInput[], locale: Locale = defaultLoc
     description: item.description,
     ...(item.url && { url: item.url }),
     provider,
-    areaServed: item.areaServed ?? defaultAreaServed,
+    areaServed: sharedAreaServed,
   }));
 }
 
