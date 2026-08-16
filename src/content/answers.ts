@@ -124,6 +124,13 @@ const U_ISLAM = '2026-07-30';
  */
 const U_TILAWET = '2026-07-31';
 
+/**
+ * Datum der Landesseite `/tuerkischer-dj-baden-wuerttemberg` (August 2026).
+ * Nur der neue Landes-Eintrag trägt es — gleiche Begründung wie bei
+ * `U_ISLAM`: unveränderte Texte behalten ihr altes Datum.
+ */
+const U_TURKISH_BW = '2026-08-16';
+
 export const answers: Answer[] = [
   // ─── buchung ──────────────────────────────────────────────────────────
   {
@@ -854,6 +861,56 @@ export const answers: Answer[] = [
     related: ['halay-repertoire', 'bilingual-hosting'],
     links: ['/hochzeit-events'],
     updated: U,
+  },
+  {
+    id: 'turkish-dj-bw',
+    category: 'tuerkisch',
+    q: {
+      de: 'Gibt es einen türkischen DJ für ganz Baden-Württemberg — nicht nur für Stuttgart?',
+      en: 'Is there a Turkish DJ for all of Baden-Württemberg — not just Stuttgart?',
+      tr: 'Sadece Stuttgart için değil, Baden-Württemberg’in tamamı için Türk DJ var mı?',
+      ar: 'هل يوجد دي جي تركي لولاية بادن-فورتمبيرغ كلها — وليس لشتوتغارت فقط؟',
+    },
+    a: {
+      de: 'Ja. DJ Veys ist in Stuttgart zu Hause und wird im ganzen Land gebucht — von Ludwigsburg und Esslingen über Heilbronn, Karlsruhe und Mannheim bis nach Ulm und an den Bodensee. Innerhalb von 50 km um Stuttgart ist die Anfahrt in den Paketen enthalten, darüber hinaus steht sie vorab als eigene Position im Angebot. Repertoire, Technik und die Moderation auf Türkisch und Deutsch bleiben in jeder Stadt dieselben.',
+      en: 'Yes. DJ Veys is based in Stuttgart and gets booked across the whole state — from Ludwigsburg and Esslingen via Heilbronn, Karlsruhe and Mannheim to Ulm and Lake Constance. Within 50 km of Stuttgart, travel is included in the packages; beyond that it appears in the quote as its own line beforehand. Repertoire, equipment and the hosting in Turkish and German stay the same in every city.',
+      tr: 'Evet. DJ Veys Stuttgart’ta yaşıyor ve eyaletin tamamında rezervasyon alıyor — Ludwigsburg ve Esslingen’den Heilbronn, Karlsruhe ve Mannheim üzerinden Ulm’a ve Bodensee’ye kadar. Stuttgart çevresinde 50 km içinde ulaşım paketlere dahildir; ötesi teklifte önceden ayrı bir kalem olarak görünür. Repertuvar, teknik ve Türkçe-Almanca sunum her şehirde aynı kalır.',
+      ar: 'نعم. يقيم DJ Veys في شتوتغارت ويُحجز في أنحاء الولاية كلها — من لودفيغسبورغ وإسلينغن مرورًا بهايلبرون وكارلسروه ومانهايم وصولًا إلى أولم وبحيرة كونستانس. وضمن 50 كيلومتراً حول شتوتغارت يكون التنقّل مشمولاً في الباقات؛ وما بعد ذلك يظهر مسبقًا كبند مستقل في عرض السعر. أما الريبرتوار والتجهيزات والتقديم بالتركية والألمانية فتبقى كما هي في كل مدينة.',
+    },
+    facts: [
+      'Anfahrt bis 50 km um Stuttgart in den Paketen enthalten',
+      'Moderation live auf Deutsch, Türkisch und Englisch',
+    ],
+    related: ['halay-repertoire', 'bilingual-hosting'],
+    links: ['/tuerkischer-dj-baden-wuerttemberg', '/tuerkischer-dj-stuttgart'],
+    updated: U_TURKISH_BW,
+  },
+  {
+    /**
+     * Die Städte-Aufzählung, die Antwortmaschinen zitieren können — inklusive
+     * der Orte OHNE eigene Stadtseite (Rottweil, Kehl, Ravensburg …), damit
+     * auch „türk dj villingen-schwenningen"-artige Anfragen eine belegte,
+     * zitierfähige Antwort finden. Ortsangaben sind Geografie, keine
+     * Referenz-Behauptung; die landesweite Zusage ist die bestätigte
+     * Anfahrt (cities.ts-Dateikopf).
+     */
+    id: 'turkish-dj-cities',
+    category: 'tuerkisch',
+    q: {
+      de: 'In welchen Städten in Baden-Württemberg kann man einen türkischen DJ buchen?',
+      en: 'In which cities in Baden-Württemberg can you book a Turkish DJ?',
+      tr: 'Baden-Württemberg’de hangi şehirlerde Türk DJ rezervasyonu yapılabilir?',
+      ar: 'في أي مدن ولاية بادن-فورتمبيرغ يمكن حجز دي جي تركي؟',
+    },
+    a: {
+      de: 'In allen. Eigene Seiten mit Anfahrt und örtlichen Details gibt es unter anderem für Ludwigsburg, Esslingen, Heilbronn, Reutlingen, Pforzheim, Karlsruhe, Mannheim, Heidelberg, Ulm, Freiburg, Villingen-Schwenningen und Lahr. Gebucht wird aber im ganzen Land — auch dort, wo keine eigene Stadtseite existiert: von Rottweil und Tuttlingen über Kehl und die Ortenau bis Ravensburg, Singen und Schwäbisch Hall. Entscheidend ist nur die Strecke ab Stuttgart, und die steht immer vorab im Angebot.',
+      en: 'In all of them. Dedicated pages with travel details exist for Ludwigsburg, Esslingen, Heilbronn, Reutlingen, Pforzheim, Karlsruhe, Mannheim, Heidelberg, Ulm, Freiburg, Villingen-Schwenningen and Lahr, among others. Bookings, however, cover the whole state — including towns without a dedicated page: from Rottweil and Tuttlingen via Kehl and the Ortenau to Ravensburg, Singen and Schwäbisch Hall. The only variable is the distance from Stuttgart, and it always appears in the quote up front.',
+      tr: 'Hepsinde. Ulaşım ve yerel ayrıntıları anlatan ayrı sayfalar Ludwigsburg, Esslingen, Heilbronn, Reutlingen, Pforzheim, Karlsruhe, Mannheim, Heidelberg, Ulm, Freiburg, Villingen-Schwenningen ve Lahr dahil birçok şehir için mevcut. Ama rezervasyon eyaletin tamamı için yapılıyor — kendi sayfası olmayan yerler dahil: Rottweil ve Tuttlingen’den Kehl ve Ortenau’ya, Ravensburg, Singen ve Schwäbisch Hall’a kadar. Tek değişken Stuttgart’tan mesafedir ve o her zaman önceden teklifte yazılıdır.',
+      ar: 'في كلها. توجد صفحات مخصصة بتفاصيل التنقل لمدن منها لودفيغسبورغ وإسلينغن وهايلبرون ورويتلينغن وبفورتسهايم وكارلسروه ومانهايم وهايدلبرغ وأولم وفرايبورغ وفيلينغن-شفينينغن ولار. غير أن الحجوزات تشمل الولاية كلها — بما في ذلك البلدات التي لا صفحة خاصة لها: من روتفايل وتوتلينغن مرورًا بكيل ومنطقة أورتيناو وصولًا إلى رافنسبورغ وزينغن وشفيبيش هال. المتغير الوحيد هو المسافة من شتوتغارت، وهي تظهر دائمًا مسبقًا في عرض السعر.',
+    },
+    related: ['turkish-dj-bw', 'kina-gecesi'],
+    links: ['/tuerkischer-dj-baden-wuerttemberg'],
+    updated: U_TURKISH_BW,
   },
 
   // ─── islamisch ────────────────────────────────────────────────────────

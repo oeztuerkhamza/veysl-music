@@ -149,6 +149,19 @@ const nextConfig: NextConfig = {
     ];
 
     /**
+     * Dieselbe geratene-Eltern-URL-Logik für die Türkisch-Nische: Wer
+     * `/tuerkischer-dj` tippt oder verlinkt (die naheliegendste Kurzform der
+     * beiden Turkish-Slugs), landet auf der Landesseite der Nische statt im
+     * 404. Nur die drei Sprachen mit Seite (TURKISH_DJ_SUPPORTED_LOCALES) —
+     * gleiche Begründung wie bei `clusterParents` oben.
+     */
+    const turkishClusterParents = [
+      { source: '/tuerkischer-dj', destination: '/tuerkischer-dj-baden-wuerttemberg' },
+      { source: '/tr/turk-dj', destination: '/tr/turk-dj-baden-wuerttemberg' },
+      { source: '/en/turkish-dj', destination: '/en/turkish-dj-baden-wuerttemberg' },
+    ];
+
+    /**
      * Die Musik-/Sets-Seite ist entfallen (Kundenentscheidung, August 2026).
      * Sie war zu diesem Zeitpunkt eine leere Hülle — alle sieben Sets in
      * `src/content/mixes.ts` haben `src: null`, alle drei Streaming-Profile in
@@ -181,6 +194,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       })),
       ...clusterParents.map((entry) => ({ ...entry, permanent: true })),
+      ...turkishClusterParents.map((entry) => ({ ...entry, permanent: true })),
       ...retiredMusicRoutes.map((entry) => ({ ...entry, permanent: true })),
     ];
   },

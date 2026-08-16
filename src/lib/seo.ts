@@ -46,6 +46,10 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
   // Nischen-Landingpage „Türkischer DJ Stuttgart" — de/tr/en, siehe
   // TURKISH_DJ_SUPPORTED_LOCALES in src/content/turkish-dj.ts.
   '/tuerkischer-dj-stuttgart': 'turkishDj.meta',
+  // Landesseite der Türkisch-Nische — gleicher Sprachumfang wie die
+  // Stuttgart-Seite, eigener Namespace (die Stuttgart-Texte sind ortsgebunden
+  // und dürfen nicht für die Landes-Abfrage recycelt werden).
+  '/tuerkischer-dj-baden-wuerttemberg': 'turkishDjBw.meta',
   // Europe reach cluster — owned by the regions agent (src/content/regions.ts).
   '/hochzeits-dj-europa': 'regions.hub.meta',
   '/hochzeits-dj-europa/[land]': 'regions.country.meta',

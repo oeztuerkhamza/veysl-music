@@ -4,7 +4,9 @@ import { Section } from '@/components/ui/section';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { Reveal } from '@/components/motion/reveal';
 import { resolveLocalized, type City } from '@/content/cities';
+import { isTurkishDjLocale } from '@/content/turkish-dj';
 import { site } from '@/content/site';
+import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 
 /**
@@ -66,6 +68,24 @@ export function CityAngle({ city, locale }: { city: City; locale: Locale }) {
               ))}
             </ul>
           </div>
+          {/* Nur unter der bikulturellen Rahmung, und nur in den Sprachen der
+              Türkisch-Nische: Der Verweis führt auf die Landesseite
+              „Türkischer DJ Baden-Württemberg" — die eine Aussage, die von
+              JEDER Stadt mit belegter Community aus stimmt. Die neutrale
+              `localAngle`-Variante bekommt ihn bewusst nicht: Ein
+              Türkisch-Link unter einer Überschrift, die gerade keine
+              türkische Community behauptet, wäre genau die unbelegte
+              Behauptung, die der Dateikopf oben ausschließt. */}
+          {city.turkishCommunity && isTurkishDjLocale(locale) ? (
+            <p className="mt-6 text-sm text-ink-faint">
+              <Link
+                href="/tuerkischer-dj-baden-wuerttemberg"
+                className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold"
+              >
+                {t('bicultural.stateLink')}
+              </Link>
+            </p>
+          ) : null}
         </Reveal>
       </Container>
     </Section>

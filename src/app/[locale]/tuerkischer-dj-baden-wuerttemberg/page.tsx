@@ -1,15 +1,21 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Drum, Mic, Music, type LucideIcon } from 'lucide-react';
+import { Drum, Route, Users, type LucideIcon } from 'lucide-react';
 import { absoluteUrl, buildMetadata } from '@/lib/seo';
 import { JsonLd } from '@/lib/json-ld';
-import { breadcrumbSchema, faqPageSchema, localBusinessSchema, localizedTurkishServiceType, serviceSchema } from '@/lib/schema';
+import {
+  breadcrumbSchema,
+  faqPageSchema,
+  localBusinessSchema,
+  localizedTurkishServiceType,
+  serviceSchema,
+} from '@/lib/schema';
 import {
   TURKISH_DJ_SUPPORTED_LOCALES,
   isTurkishDjLocale,
-  turkishDjPillars,
-  type TurkishDjPillarIcon,
+  turkishDjBwPillars,
+  type TurkishDjBwPillarIcon,
 } from '@/content/turkish-dj';
 import { getAllCities, hasCityProse } from '@/content/cities';
 import { site } from '@/content/site';
@@ -37,63 +43,56 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return buildMetadata({
     locale,
-    pathname: '/tuerkischer-dj-stuttgart',
+    pathname: '/tuerkischer-dj-baden-wuerttemberg',
     availableLocales: [...TURKISH_DJ_SUPPORTED_LOCALES],
   });
 }
 
-const ICONS: Record<TurkishDjPillarIcon, LucideIcon> = { Music, Drum, Mic };
+const ICONS: Record<TurkishDjBwPillarIcon, LucideIcon> = { Route, Drum, Users };
 
 interface FaqItem {
   q: string;
   a: string;
 }
 
+interface RegionItem {
+  region: string;
+  towns: string;
+}
+
 /**
- * Nischen-Landingpage „Türkischer DJ Stuttgart".
+ * Landesseite „Türkischer DJ Baden-Württemberg".
  *
- * Warum es sie gibt, steht bei der Route in `src/i18n/routing.ts` und im
- * Dateikopf von `src/content/turkish-dj.ts`. Kurz: Die Abfragegruppe
- * „türkischer dj (stuttgart)" ist ein dokumentiertes Keyword-Map-Ziel, kam
- * aber in keinem Titel und keiner H1 der Website vor — während sie das
- * Kerngeschäft beschreibt.
+ * Warum es sie gibt, steht bei der Route in `src/i18n/routing.ts`. Kurz: Die
+ * Stuttgart-Seite trägt die Stadt-Abfrage, sagt in ihrer eigenen FAQ aber
+ * landesweite Buchbarkeit zu — die Landes-Abfrage („türkischer dj
+ * baden-württemberg", tr „baden-württemberg türk dj") hatte trotzdem keine
+ * Seite. Kein `/tuerkischer-dj/[stadt]`-Cluster daneben, mit Absicht: Die
+ * Stadtseiten `/hochzeits-dj/[stadt]` behalten „türkischer dj {stadt}" als
+ * Sekundärziel, und 19 Türkisch-Dubletten ohne eigenständigen Inhalt wären
+ * die Doorway-Falle aus docs/SEO-CITY-STRATEGY.md §5.
  *
- * Inhaltlich bewusst NICHT die Startseite mit ausgetauschtem Adjektiv: Hier
- * geht es ausschließlich um das, was an türkisch und deutsch-türkisch
- * geprägten Feiern anders ist — doppeltes Repertoire, Traditionen mit eigener
- * Dramaturgie (Gelin Çıkarma, Davul Zurna, Kına Gecesi), zweisprachige
- * Moderation. Alle Fakten stammen aus `site.ts`/BRAND-FACTS.md
- * (`capabilities`, `stats`), nichts ist erfunden.
+ * Die Städteliste ist die VOLLE `getAllCities()` — anders als auf der
+ * Stuttgart-Seite (dort Radius ≤ 100 km, weil deren Überschrift „Stuttgart
+ * und die Region" verspricht). Hier IST die landesweite Reichweite die
+ * Aussage der Seite, und sie ist belegt: Der Betreiber hat die Anfahrt in
+ * alle gelisteten Städte am 2026-08-07 bestätigt (src/content/cities.ts,
+ * Dateikopf). `hasCityProse` steht trotzdem davor — eine nur deutsch
+ * geschriebene Stadt darf auf tr/en nicht in einen 404 verlinken.
  */
-export default async function TurkishDjPage({ params }: PageProps) {
+export default async function TurkishDjBwPage({ params }: PageProps) {
   const { locale } = await params;
   if (!isTurkishDjLocale(locale)) notFound();
 
   setRequestLocale(locale);
 
-  const t = await getTranslations('turkishDj');
+  const t = await getTranslations('turkishDjBw');
   const tNav = await getTranslations('nav');
 
-  // Zwei Filter, zwei Gründe.
-  //
-  // `hasCityProse`: Nur Städte, deren Seite es in DIESER Sprache gibt — die
-  // Stadtroute liefert sonst `notFound()`. `cities.ts` verlangt nur die
-  // deutsche Prosa; ohne den Filter würde die erste nur deutsch geschriebene
-  // Stadt hier tr/en-seitig in einen 404 verlinken.
-  //
-  // `distanceKm`: Die Überschrift dieses Abschnitts verspricht „Stuttgart und
-  // die Region". Seit das Städte-Cluster bis an den Bodensee und in den
-  // Breisgau reicht, wäre eine ungefilterte Liste eine andere Aussage —
-  // Freiburg (131 km) oder Konstanz (124 km) unter dieser Überschrift
-  // behaupten einen regionalen Türkisch-DJ-Fußabdruck, den die verlinkten
-  // Seiten selbst bewusst nicht erheben. Die Grenze liegt beim Radius, den
-  // `site.serviceAreas` als Kernregion führt.
-  const REGION_RADIUS_KM = 100;
-  const cities = getAllCities().filter(
-    (city) => hasCityProse(city, locale) && city.distanceKm <= REGION_RADIUS_KM,
-  );
-  const pageUrl = absoluteUrl('/tuerkischer-dj-stuttgart', locale);
+  const cities = getAllCities().filter((city) => hasCityProse(city, locale));
+  const pageUrl = absoluteUrl('/tuerkischer-dj-baden-wuerttemberg', locale);
   const faqItems = t.raw('faq.items') as FaqItem[];
+  const regionItems = t.raw('regions.items') as RegionItem[];
 
   const statValues = {
     years: site.stats.yearsExperience,
@@ -107,11 +106,10 @@ export default async function TurkishDjPage({ params }: PageProps) {
       { name: tNav('home'), url: absoluteUrl('/', locale) },
       { name: t('hero.title'), url: pageUrl },
     ]),
-    // `serviceType` bleibt die kurze Kategorie; die H1 ist der `name`. Ein
-    // ganzer Überschriftensatz im Kategorie-Feld dupliziert nur den Namen.
-    // Seit August 2026 die Türkisch-Kategorie statt des generischen
-    // Hochzeits-Typs: Die Seite, deren URL und H1 „Türkischer DJ" sagen, soll
-    // das auch im maschinenlesbaren Feld sagen.
+    // Kurze Kategorie im `serviceType` — hier die Türkisch-Nische, nicht der
+    // generische Hochzeits-Typ; das Einzugsgebiet (Städte + Bundesland) kommt
+    // aus dem Default von `serviceSchema()` und ist genau die Aussage dieser
+    // Seite.
     ...serviceSchema(
       [
         {
@@ -149,7 +147,7 @@ export default async function TurkishDjPage({ params }: PageProps) {
             <SectionHeading eyebrow={t('pillars.eyebrow')} title={t('pillars.title')} />
           </Reveal>
           <ul className="mt-12 grid gap-8 sm:grid-cols-3">
-            {turkishDjPillars.map((pillar) => {
+            {turkishDjBwPillars.map((pillar) => {
               const Icon = ICONS[pillar.icon];
               return (
                 <li key={pillar.id} className="rounded-lg border border-line bg-surface p-6">
@@ -183,14 +181,39 @@ export default async function TurkishDjPage({ params }: PageProps) {
               </li>
             ))}
           </ul>
-          {/* Cluster-Elternseite: von hier aus geht es eine Ebene hoch zur
-              Landesseite DERSELBEN Nische — „Türkischer DJ Baden-Württemberg",
-              nicht die Hochzeits-Landesseite (die erreicht man von dort). */}
+          {/* Stuttgart hat keine Stadtseite (priority 3, siehe cities.ts) —
+              sein Platz im Cluster ist die eigene Türkisch-Seite, eine Ebene
+              tiefer als diese. */}
           <p className="mt-6 text-sm text-ink-faint">
-            <Link href="/tuerkischer-dj-baden-wuerttemberg" className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold">
-              {t('cities.bwLink')}
+            <Link
+              href="/tuerkischer-dj-stuttgart"
+              className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold"
+            >
+              {t('cities.stuttgartLink')}
             </Link>
           </p>
+          <p className="mt-3 text-sm text-ink-faint">{t('cities.note')}</p>
+        </Container>
+      </Section>
+
+      {/* Long-Tail-Träger: Die Regionen des Landes mit Beispielorten, als
+          Text statt Links — für „türkischer dj rottweil/kehl/ravensburg …"
+          gibt es bewusst keine eigenen Seiten (Doorway-Regel), aber diese
+          eine Seite nennt die Orte, für die die landesweite Zusage gilt. */}
+      <Section>
+        <Container>
+          <Reveal>
+            <SectionHeading eyebrow={t('regions.eyebrow')} title={t('regions.title')} lead={t('regions.lead')} />
+          </Reveal>
+          <dl className="mt-10 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+            {regionItems.map((item) => (
+              <div key={item.region} className="rounded-lg border border-line bg-surface p-5">
+                <dt className="font-display text-lg text-ink">{item.region}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-ink-muted">{item.towns}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-6 text-sm text-ink-faint">{t('regions.note')}</p>
         </Container>
       </Section>
 
@@ -201,7 +224,7 @@ export default async function TurkishDjPage({ params }: PageProps) {
           </Reveal>
           <div className="mt-8">
             {faqItems.map((item, index) => (
-              <AnswerBlock key={item.q} id={`turkish-dj-faq-${index + 1}`} question={item.q} answer={item.a} />
+              <AnswerBlock key={item.q} id={`turkish-dj-bw-faq-${index + 1}`} question={item.q} answer={item.a} />
             ))}
           </div>
         </Container>

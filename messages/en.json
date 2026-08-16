@@ -4,6 +4,7 @@
     "services": "Weddings & Events",
     "badenWuerttemberg": "Wedding DJ Baden-Württemberg",
     "turkishDj": "Turkish DJ Stuttgart",
+    "turkishDjBw": "Turkish DJ Baden-Württemberg",
     "packages": "Packages",
     "weddings": "Real Weddings",
     "music": "Music",
@@ -500,7 +501,7 @@
   },
   "bw": {
     "meta": {
-      "title": "Wedding DJ Baden-Württemberg — German & Turkish | DJ Veys",
+      "title": "Wedding DJ Baden-Württemberg – DJ & Live Music | DJ Veys",
       "description": "Wedding DJ across Baden-Württemberg: Stuttgart, Ludwigsburg, Karlsruhe, Mannheim and more. Hosted in German, Turkish and English, travel costed transparently."
     },
     "hero": {
@@ -535,7 +536,8 @@
       "eyebrow": "Cities",
       "title": "Detailed pages for the core region",
       "lead": "These cities have their own page covering venues, travel and the questions that actually come up there — not a template with the place name swapped out.",
-      "note": "Your town not listed? That does not mean it is too far — only that it does not have its own page yet. Just ask about the date."
+      "note": "Your town not listed? That does not mean it is too far — only that it does not have its own page yet. Just ask about the date.",
+      "turkishLink": "Turkish DJ across Baden-Württemberg — see the dedicated page"
     },
     "faq": {
       "eyebrow": "Common questions",
@@ -603,7 +605,7 @@
       "eyebrow": "Service area",
       "title": "Turkish DJ for Stuttgart and the region",
       "lead": "Stuttgart is home base — plus the cities of the region, many with their own page covering venues and travel.",
-      "bwLink": "Wedding DJ across Baden-Württemberg — see the overview page"
+      "bwLink": "Turkish DJ across Baden-Württemberg — see the state page"
     },
     "faq": {
       "eyebrow": "Frequently asked questions",
@@ -631,6 +633,107 @@
       "eyebrow": "Date",
       "title": "Düğün, kına or nişan — is your date still free?",
       "subtitle": "The date, the venue and a rough guest count are enough to start. Languages, traditions and the running order are settled in the planning call.",
+      "button": "Check availability"
+    }
+  },
+  "turkishDjBw": {
+    "meta": {
+      "title": "Turkish DJ Baden-Württemberg – Weddings & Kına | DJ Veys",
+      "description": "Turkish DJ across Baden-Württemberg: Turkish & German-Turkish weddings, kına and nişan from Stuttgart to Mannheim and Ulm. Hosted in Turkish and German."
+    },
+    "hero": {
+      "eyebrow": "Turkish DJ · Baden-Württemberg",
+      "title": "Turkish DJ across Baden-Württemberg",
+      "subtitle": "Halay in Karlsruhe, kına gecesi in Heilbronn, a German-Turkish wedding by Lake Constance: the same repertoire, the same equipment and hosting that moves between Turkish and German — in every city of the state. {years}+ years, {events}+ celebrations."
+    },
+    "intro": {
+      "eyebrow": "At home across the state",
+      "title": "Why a Turkish wedding here doesn't depend on the city",
+      "body": "Turkish families in Baden-Württemberg don't only live in Stuttgart — celebrations happen in Mannheim and Karlsruhe just as much as in Heilbronn, Reutlingen or Pforzheim. What changes with the city is the venue and the travel; what stays the same is the standard: the grand entrance, halay circles spanning three generations, a kına moment that gives you goosebumps, and guests who expect German and international music alongside. Veysel covers the whole state from Stuttgart — as a DJ, as a live musician on saz and guitar, and with a live orchestra including horns, for over {years} years."
+    },
+    "pillars": {
+      "eyebrow": "What holds across the state",
+      "title": "The same Turkish programme, whatever the city",
+      "items": {
+        "reach": {
+          "title": "Travel across the state",
+          "text": "Within 50 km of Stuttgart, travel is included in the packages; beyond that it appears as its own line in the quote before you sign. Bookings run from Ludwigsburg to Lake Constance — the commitment covers the whole state, not just the neighbouring towns."
+        },
+        "program": {
+          "title": "Traditions travel along",
+          "text": "Gelin çıkarma, davul-zurna moments, the kına ceremony: the dramaturgy of a Turkish celebration depends on preparation, not on the city. The running order is planned to the minute in the planning call — in Mannheim as in Esslingen, with live orchestra if you wish."
+        },
+        "families": {
+          "title": "Both families, one evening",
+          "text": "When one family arrives from the Stuttgart region and the other from Karlsruhe, the room still ends the night dancing together. Hosting switches fluently between Turkish and German — English on request — and carries both halves through every part of the programme."
+        }
+      }
+    },
+    "cities": {
+      "eyebrow": "Cities",
+      "title": "A Turkish DJ in your city",
+      "lead": "Each of these cities has its own wedding page covering venues, travel and the questions that come up there — and Stuttgart has a dedicated page on the Turkish offer.",
+      "stuttgartLink": "Turkish DJ Stuttgart — see the dedicated page",
+      "note": "Your town not listed? That doesn't mean it's too far — just ask about the date directly."
+    },
+    "regions": {
+      "eyebrow": "All of Baden-Württemberg",
+      "title": "Even without a dedicated page: a Turkish DJ in every region of the state",
+      "lead": "Not every town has its own page — bookings still cover the whole state. An overview by region, with example towns:",
+      "items": [
+        {
+          "region": "Stuttgart region & Middle Neckar",
+          "towns": "Sindelfingen, Waiblingen, Fellbach, Nürtingen, Kirchheim unter Teck"
+        },
+        {
+          "region": "Schwarzwald-Baar & Upper Danube",
+          "towns": "Rottweil, Tuttlingen, Donaueschingen, Balingen, Albstadt"
+        },
+        {
+          "region": "Ortenau & South Baden",
+          "towns": "Kehl, Achern, Emmendingen, Ettenheim, Lörrach"
+        },
+        {
+          "region": "North Baden & Rhine-Neckar",
+          "towns": "Rastatt, Bruchsal, Ettlingen, Sinsheim, Weinheim"
+        },
+        {
+          "region": "Heilbronn-Franken",
+          "towns": "Schwäbisch Hall, Neckarsulm, Crailsheim, Öhringen, Bad Mergentheim"
+        },
+        {
+          "region": "Lake Constance & Upper Swabia",
+          "towns": "Ravensburg, Singen, Radolfzell, Überlingen, Weingarten"
+        }
+      ],
+      "note": "Your town not named? The list is examples, not a boundary — what matters is the distance, and that is always in the quote up front."
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "A Turkish DJ statewide — what couples ask",
+      "items": [
+        {
+          "q": "What makes a Turkish DJ different — isn't a regular wedding DJ enough?",
+          "a": "The difference is repertoire and dramaturgy: halay circles, gelin çıkarma and kına moments call for their own musical knowledge and their own timing, and the hosting has to move between Turkish and German. A DJ who brings both has nothing to improvise on the night — which is why this offer stands as its own page next to the classic wedding DJ."
+        },
+        {
+          "q": "Kına gecesi and the wedding are in different cities — does that work?",
+          "a": "Yes. The henna night in one city, the wedding in another — for the planning that is simply two dates and two journeys, and both appear in the quote up front. Music, equipment and hosting stay in one hand on both evenings, planned in the same call."
+        },
+        {
+          "q": "Our town doesn't have its own page on this site — is it outside the service area?",
+          "a": "No. Dedicated pages exist for the largest cities; bookings cover the whole state. Without its own page, a town only lacks the local detail — the process and the quote work exactly the same: name the place, and the exact distance appears in the written quote."
+        },
+        {
+          "q": "How early should you book a Turkish DJ in Baden-Württemberg?",
+          "a": "Popular summer Saturdays go early — the sooner the date is fixed, the better. The date, the city and a rough guest count are enough for the enquiry; you usually hear back on availability within 24 hours."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Date",
+      "title": "From Stuttgart to Lake Constance — is your date still free?",
+      "subtitle": "The date, the city and a rough guest count are enough to start. Languages, traditions and the running order are settled in the planning call.",
       "button": "Check availability"
     }
   },
@@ -879,7 +982,8 @@
     "bicultural": {
       "eyebrow": "Two cultures, one evening",
       "title": "Turkish DJ in {city} — the German-Turkish strength",
-      "languagesTitle": "Hosting languages"
+      "languagesTitle": "Hosting languages",
+      "stateLink": "Turkish DJ across Baden-Württemberg — learn more"
     },
     "localAngle": {
       "eyebrow": "Why here",

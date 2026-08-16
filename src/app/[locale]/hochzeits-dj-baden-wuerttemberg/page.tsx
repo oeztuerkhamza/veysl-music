@@ -6,7 +6,7 @@ import { absoluteUrl, buildMetadata } from '@/lib/seo';
 import { JsonLd } from '@/lib/json-ld';
 import { breadcrumbSchema, faqPageSchema, localBusinessSchema, localizedServiceType, serviceSchema } from '@/lib/schema';
 import { BW_SUPPORTED_LOCALES, bwPillars, isBwLocale, type BwPillarIcon } from '@/content/region-bw';
-import { getAllCities } from '@/content/cities';
+import { getAllCities, hasCityProse } from '@/content/cities';
 import { site } from '@/content/site';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
@@ -76,7 +76,12 @@ export default async function BadenWuerttembergPage({ params }: PageProps) {
   const t = await getTranslations('bw');
   const tNav = await getTranslations('nav');
 
-  const cities = getAllCities();
+  // `hasCityProse`, aus demselben Grund wie auf den beiden Türkisch-Seiten:
+  // Die Stadtroute liefert `notFound()` für Sprachen ohne echte Prosa. Heute
+  // haben alle 19 Städte de/tr/en — aber die erste nur deutsch geschriebene
+  // Stadt hätte hier tr/en-seitig in einen 404 verlinkt, auf der Elternseite
+  // des gesamten Clusters.
+  const cities = getAllCities().filter((city) => hasCityProse(city, locale));
   const pageUrl = absoluteUrl('/hochzeits-dj-baden-wuerttemberg', locale);
   const faqItems = t.raw('faq.items') as FaqItem[];
 
@@ -160,6 +165,14 @@ export default async function BadenWuerttembergPage({ params }: PageProps) {
             ))}
           </ul>
           <p className="mt-6 text-sm text-ink-faint">{t('cities.note')}</p>
+          {/* Querverweis in die Türkisch-Nische: gleiche Landes-Ebene, andere
+              Suchintention — das Gegenstück zum bwLink auf den beiden
+              Türkisch-Seiten. */}
+          <p className="mt-3 text-sm text-ink-faint">
+            <Link href="/tuerkischer-dj-baden-wuerttemberg" className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold">
+              {t('cities.turkishLink')}
+            </Link>
+          </p>
         </Container>
       </Section>
 

@@ -273,6 +273,29 @@ export function localizedServiceType(locale: Locale): string {
   return SERVICE_TYPE_BY_LOCALE[locale] ?? SERVICE_TYPE_BY_LOCALE[defaultLocale] ?? 'Hochzeits-DJ';
 }
 
+/**
+ * Kategorie der Türkisch-Nische — für die Service-Knoten von
+ * `/tuerkischer-dj-stuttgart` und `/tuerkischer-dj-baden-wuerttemberg`.
+ *
+ * Bis August 2026 trugen beide Turkish-Seiten den generischen Hochzeits-Typ
+ * aus `SERVICE_TYPE_BY_LOCALE`: Die Seite, deren Titel, H1 und URL
+ * „Türkischer DJ" sagen, kategorisierte ihre eigene Leistung als
+ * „Hochzeits-DJ" — das eine maschinenlesbare Feld, das die Nische benennen
+ * könnte, tat es nicht. Nur die drei Sprachen der Nische
+ * (TURKISH_DJ_SUPPORTED_LOCALES), Rest fällt auf Deutsch zurück.
+ */
+const TURKISH_SERVICE_TYPE_BY_LOCALE: Partial<Record<Locale, string>> = {
+  de: 'Türkischer DJ',
+  tr: 'Türk DJ',
+  en: 'Turkish DJ',
+};
+
+export function localizedTurkishServiceType(locale: Locale): string {
+  return (
+    TURKISH_SERVICE_TYPE_BY_LOCALE[locale] ?? TURKISH_SERVICE_TYPE_BY_LOCALE[defaultLocale] ?? 'Türkischer DJ'
+  );
+}
+
 export interface PostalAddressSchema {
   '@type': 'PostalAddress';
   streetAddress?: string;
@@ -323,8 +346,38 @@ export interface AreaServedCity {
   name: string;
 }
 
+/**
+ * `State` neben `City`: schema.org erlaubt für `areaServed` jede
+ * `AdministrativeArea`-Unterklasse. Der einzige State-Knoten, den diese Seite
+ * behauptet, ist Baden-Württemberg — siehe `areaServed()` unten.
+ */
+export interface AreaServedState {
+  '@type': 'State';
+  name: string;
+}
+
+export type AreaServedArea = AreaServedCity | AreaServedState;
+
 function areaServedCities(): AreaServedCity[] {
   return site.serviceAreas.map((name) => ({ '@type': 'City', name }));
+}
+
+/**
+ * Das vollständige Einzugsgebiet des Unternehmens: die acht regelmäßig
+ * bespielten Städte aus `site.serviceAreas` PLUS das Bundesland als
+ * `State`-Knoten.
+ *
+ * Der State-Knoten fehlte bis August 2026 komplett — die Entität behauptete
+ * acht Städte, während die sichtbare Website an mehreren Stellen landesweite
+ * Buchbarkeit zusagt („Gebucht wird in ganz Baden-Württemberg", turkishDj-FAQ;
+ * die BW-Landesseite; die 19 Stadtseiten bis Bodensee und Breisgau, deren
+ * Anfahrt der Betreiber am 2026-08-07 bestätigt hat). Für das Ziel, bei
+ * „türkischer DJ"-Anfragen im ganzen Land gefunden zu werden, ist das die
+ * eine maschinenlesbare Flächenaussage — und sie ist belegt, nicht erfunden:
+ * `site.region` ist die Quelle, kein Freitext.
+ */
+function areaServed(): AreaServedArea[] {
+  return [...areaServedCities(), { '@type': 'State', name: site.region }];
 }
 
 export interface ContactPointSchema {
@@ -401,7 +454,7 @@ export interface LocalBusinessSchema {
   telephone?: string;
   email?: string;
   address: PostalAddressSchema;
-  areaServed: AreaServedCity[];
+  areaServed: AreaServedArea[];
   contactPoint: ContactPointSchema;
   /** Sprachen, in denen live moderiert wird — `site.stats.hostingLanguages`. */
   knowsLanguage: string[];
@@ -453,7 +506,7 @@ export function localBusinessSchema(
     telephone: telephoneE164(),
     email: site.contact.email || undefined,
     address: businessAddress(),
-    areaServed: areaServedCities(),
+    areaServed: areaServed(),
     contactPoint: contactPointSchema(),
     /**
      * Stand bisher nur auf der Person, nicht auf dem Unternehmen — dabei ist
@@ -678,7 +731,7 @@ export interface ServiceSchema {
   description: string;
   url?: string;
   provider: { '@id': string };
-  areaServed: AreaServedCity[];
+  areaServed: AreaServedArea[];
 }
 
 /**
@@ -687,7 +740,10 @@ export interface ServiceSchema {
  * calls this — see the report for the exact shape). Never invents service copy.
  */
 export function serviceSchema(items: ServiceInput[], locale: Locale = defaultLocale): ServiceSchema[] {
-  const areaServed = areaServedCities();
+  // Städte + Bundesland-Knoten — siehe `areaServed()`. Ein Service, der ein
+  // engeres Gebiet behaupten will (Stadtseiten), baut seinen Knoten selbst,
+  // wie `buildCityJsonLd` es tut.
+  const sharedAreaServed = areaServed();
   const provider = { '@id': entityId(BUSINESS_ID_FRAGMENT) };
   return items.map((item) => ({
     '@context': 'https://schema.org' as const,
@@ -698,7 +754,7 @@ export function serviceSchema(items: ServiceInput[], locale: Locale = defaultLoc
     description: item.description,
     ...(item.url && { url: item.url }),
     provider,
-    areaServed,
+    areaServed: sharedAreaServed,
   }));
 }
 

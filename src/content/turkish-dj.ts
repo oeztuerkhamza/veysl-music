@@ -52,3 +52,27 @@ export const turkishDjPillars = [
 ] as const;
 
 export type TurkishDjPillarIcon = (typeof turkishDjPillars)[number]['icon'];
+
+/**
+ * Struktur der Landesseite `/tuerkischer-dj-baden-wuerttemberg` — Texte in
+ * `messages/*.json` → Namespace `turkishDjBw`, Sprachumfang derselbe wie bei
+ * der Stuttgart-Seite (TURKISH_DJ_SUPPORTED_LOCALES oben; eine Nische, ein
+ * Schalter).
+ *
+ * Drei bewusst ANDERE Säulen als auf der Stuttgart-Seite (Repertoire /
+ * Traditionen / Moderation) und als auf der Hochzeits-Landesseite (Anfahrt /
+ * Technik / Ansprechpartner): Hier geht es um das, was nur auf Landesebene
+ * UND nur für die türkische Nische eine Frage ist — ob die Zusage wirklich
+ * fürs ganze Land gilt, ob die Traditions-Dramaturgie die Reise übersteht
+ * und wie zwei Familien aus verschiedenen Städten durch einen Abend kommen.
+ * Fakten dahinter: `site.stats`, das 50-km-Anfahrtsmodell aus `packages`
+ * und die vom Betreiber am 2026-08-07 bestätigte landesweite Anfahrt
+ * (src/content/cities.ts, Dateikopf).
+ */
+export const turkishDjBwPillars = [
+  { id: 'reach', icon: 'Route' },
+  { id: 'program', icon: 'Drum' },
+  { id: 'families', icon: 'Users' },
+] as const;
+
+export type TurkishDjBwPillarIcon = (typeof turkishDjBwPillars)[number]['icon'];
