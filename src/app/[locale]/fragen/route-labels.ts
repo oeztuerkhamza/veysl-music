@@ -14,6 +14,10 @@ export const ROUTE_LABEL_KEY: Partial<Record<StaticPathname, string>> = {
   // Sprachen fehlt der Key, `t()` würde die Rohbezeichnung ausgeben — deshalb
   // filtert die Fragen-Seite diesen Link dort heraus, statt ihn zu übersetzen.
   '/islamische-hochzeit': 'nav.islamicWedding',
+  // Nur in de/tr/en (TURKISH_DJ_SUPPORTED_LOCALES) — gleiche Filter-Mechanik
+  // in der Fragen-Seite wie beim islamischen Eintrag darüber.
+  '/tuerkischer-dj-stuttgart': 'nav.turkishDj',
+  '/tuerkischer-dj-baden-wuerttemberg': 'nav.turkishDjBw',
   '/pakete': 'nav.packages',
   '/echte-hochzeiten': 'nav.weddings',
   '/ablauf': 'nav.process',

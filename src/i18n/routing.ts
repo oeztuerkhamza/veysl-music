@@ -239,6 +239,44 @@ export const pathnames = {
     es: '/dj-turco-stuttgart',
   },
   /**
+   * Landes-Ebene der Türkisch-Nische: „Türkischer DJ Baden-Württemberg".
+   *
+   * Dieselbe Lücke, die `/hochzeits-dj-baden-wuerttemberg` für die
+   * Hochzeits-Abfrage geschlossen hat, bestand für die Türkisch-Abfrage
+   * weiter: `/tuerkischer-dj-stuttgart` trägt „türkischer dj (stuttgart)",
+   * aber „türkischer dj baden-württemberg" bzw. „baden-württemberg türk dj"
+   * hatte keine Seite — obwohl die Stuttgart-Seite selbst in ihrer FAQ
+   * landesweite Buchbarkeit zusagt. Der stärkste Wettbewerber
+   * (tuerkischerdj.com) nennt ~35 Städte auf einer einzigen Seite; eine
+   * echte Landesseite mit Städte-Cluster dahinter ist der strukturelle
+   * Vorteil, den docs/SEO-COMPETITIVE-ANALYSIS.md §2 beschreibt.
+   *
+   * Abgrenzung gegen Kannibalisierung, gleiche Logik wie beim Geschwister:
+   * - /tuerkischer-dj-stuttgart → Stadt-Abfrage („türkischer dj stuttgart")
+   * - diese Seite → Landes-Abfrage („türkischer dj baden-württemberg",
+   *   tr „baden-württemberg türk dj") und die städteoffene Kurzform
+   *   („türkischer dj" aus Karlsruhe, Heilbronn, Ulm …)
+   * - die Stadtseiten `/hochzeits-dj/[stadt]` behalten „türkischer dj
+   *   {stadt}" als dokumentiertes Sekundärziel (SEO-KEYWORD-MAP.md §2) —
+   *   bewusst KEIN eigenes `/tuerkischer-dj/[stadt]`-Cluster: 19 weitere
+   *   Seiten ohne eigenständig belegbaren Inhalt wären genau die
+   *   Doorway-Falle aus docs/SEO-CITY-STRATEGY.md §5.
+   *
+   * **Nur de/tr/en** — TURKISH_DJ_SUPPORTED_LOCALES gilt für beide Seiten
+   * der Nische (src/content/turkish-dj.ts), die übrigen Sprachen liefern
+   * `notFound()`.
+   */
+  '/tuerkischer-dj-baden-wuerttemberg': {
+    de: '/tuerkischer-dj-baden-wuerttemberg',
+    tr: '/turk-dj-baden-wuerttemberg',
+    ku: '/dj-tirki-baden-wuerttemberg',
+    ar: '/dj-turki-baden-wuerttemberg',
+    en: '/turkish-dj-baden-wuerttemberg',
+    nl: '/turkse-dj-baden-wuerttemberg',
+    fr: '/dj-turc-baden-wuerttemberg',
+    es: '/dj-turco-baden-wuerttemberg',
+  },
+  /**
    * Reichweiten-Ebene: europaweite Buchbarkeit auf **Länder**-Ebene, bewusst
    * nicht auf Städte-Ebene. Städteseiten außerhalb der Kernregion wären
    * Doorway Pages und würden das lokale Cluster gefährden, das tatsächlich

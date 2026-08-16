@@ -13,6 +13,7 @@ import { type Locale } from '@/i18n/routing';
 import { formatDate } from '@/lib/utils';
 import { absoluteUrl, type StaticPathname } from '@/lib/seo';
 import { isIslamicLocale } from '@/content/islamic';
+import { isTurkishDjLocale } from '@/content/turkish-dj';
 import { breadcrumbSchema, faqPageSchema, localBusinessSchema, websiteSchema } from '@/lib/schema';
 import {
   ANSWER_CATEGORIES,
@@ -54,9 +55,21 @@ export default async function FragenPage({ params }: FragenPageProps) {
    * diesen Link trägt, sitzt in `technik` und ist selbst religiös markiert —
    * aber ein späterer, nicht-religiöser Eintrag darf jederzeit dorthin
    * verlinken, ohne dass die deutsche Seite einen toten Link bekommt.
+   *
+   * Dieselbe Mechanik für die beiden Turkish-Seiten: Es gibt sie nur in
+   * de/tr/en (TURKISH_DJ_SUPPORTED_LOCALES), in den übrigen Sprachen fehlen
+   * Seite UND Label gleichermaßen.
    */
+  const TURKISH_DJ_ROUTES: readonly StaticPathname[] = [
+    '/tuerkischer-dj-stuttgart',
+    '/tuerkischer-dj-baden-wuerttemberg',
+  ];
   const reachableLinks = (links: readonly StaticPathname[] | undefined): StaticPathname[] =>
-    (links ?? []).filter((href) => href !== '/islamische-hochzeit' || isIslamicLocale(locale));
+    (links ?? []).filter((href) => {
+      if (href === '/islamische-hochzeit') return isIslamicLocale(locale);
+      if (TURKISH_DJ_ROUTES.includes(href)) return isTurkishDjLocale(locale);
+      return true;
+    });
 
   const t = await getTranslations('answers');
   // Root-level translator (no namespace) so this page can resolve labels that

@@ -44,6 +44,10 @@ interface RouteSeoConfig {
  * - `/tuerkischer-dj-stuttgart`: same shape, de/tr/en only
  *   (`TURKISH_DJ_SUPPORTED_LOCALES`) — the niche landing page for the
  *   "türkischer DJ (Stuttgart)" query group. Emitted per-locale below.
+ * - `/tuerkischer-dj-baden-wuerttemberg`: same shape and same locale
+ *   constant — the state-level page of the same niche ("türkischer DJ
+ *   Baden-Württemberg" / "baden-württemberg türk dj"). Emitted per-locale
+ *   below, right next to its Stuttgart sibling.
  * - `/impressum` + `/datenschutz`: both pages set `noIndex: true` in their own
  *   `generateMetadata`. A sitemap entry is a request to index; pairing it with
  *   a `noindex` page is a direct contradiction that Search Console reports as
@@ -60,6 +64,7 @@ const staticRoutes: Record<
     | '/islamische-hochzeit'
     | '/hochzeits-dj-baden-wuerttemberg'
     | '/tuerkischer-dj-stuttgart'
+    | '/tuerkischer-dj-baden-wuerttemberg'
     | '/impressum'
     | '/datenschutz'
   >,
@@ -363,6 +368,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of TURKISH_DJ_SUPPORTED_LOCALES) {
       entries.push({
         url: absoluteUrl('/tuerkischer-dj-stuttgart', locale),
+        changeFrequency: 'monthly',
+        priority: 0.9,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // Landesseite der Türkisch-Nische — de/tr/en, gleiche Priorität wie ihr
+  // Stuttgart-Geschwister und die Hochzeits-Landesseite: Sie zielt auf die
+  // Landes-Variante derselben Kernabfrage-Gruppe („türkischer dj
+  // baden-württemberg", „baden-württemberg türk dj") und ist die Elternseite,
+  // über die die Türkisch-Absicht das gesamte Städte-Cluster erreicht.
+  {
+    const languages = buildLanguages(
+      (locale) => absoluteUrl('/tuerkischer-dj-baden-wuerttemberg', locale),
+      TURKISH_DJ_SUPPORTED_LOCALES,
+    );
+    for (const locale of TURKISH_DJ_SUPPORTED_LOCALES) {
+      entries.push({
+        url: absoluteUrl('/tuerkischer-dj-baden-wuerttemberg', locale),
         changeFrequency: 'monthly',
         priority: 0.9,
         alternates: { languages },

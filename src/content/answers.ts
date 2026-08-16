@@ -124,6 +124,13 @@ const U_ISLAM = '2026-07-30';
  */
 const U_TILAWET = '2026-07-31';
 
+/**
+ * Datum der Landesseite `/tuerkischer-dj-baden-wuerttemberg` (August 2026).
+ * Nur der neue Landes-Eintrag trägt es — gleiche Begründung wie bei
+ * `U_ISLAM`: unveränderte Texte behalten ihr altes Datum.
+ */
+const U_TURKISH_BW = '2026-08-16';
+
 export const answers: Answer[] = [
   // ─── buchung ──────────────────────────────────────────────────────────
   {
@@ -854,6 +861,29 @@ export const answers: Answer[] = [
     related: ['halay-repertoire', 'bilingual-hosting'],
     links: ['/hochzeit-events'],
     updated: U,
+  },
+  {
+    id: 'turkish-dj-bw',
+    category: 'tuerkisch',
+    q: {
+      de: 'Gibt es einen türkischen DJ für ganz Baden-Württemberg — nicht nur für Stuttgart?',
+      en: 'Is there a Turkish DJ for all of Baden-Württemberg — not just Stuttgart?',
+      tr: 'Sadece Stuttgart için değil, Baden-Württemberg’in tamamı için Türk DJ var mı?',
+      ar: 'هل يوجد دي جي تركي لولاية بادن-فورتمبيرغ كلها — وليس لشتوتغارت فقط؟',
+    },
+    a: {
+      de: 'Ja. DJ Veys ist in Stuttgart zu Hause und wird im ganzen Land gebucht — von Ludwigsburg und Esslingen über Heilbronn, Karlsruhe und Mannheim bis nach Ulm und an den Bodensee. Innerhalb von 50 km um Stuttgart ist die Anfahrt in den Paketen enthalten, darüber hinaus steht sie vorab als eigene Position im Angebot. Repertoire, Technik und die Moderation auf Türkisch und Deutsch bleiben in jeder Stadt dieselben.',
+      en: 'Yes. DJ Veys is based in Stuttgart and gets booked across the whole state — from Ludwigsburg and Esslingen via Heilbronn, Karlsruhe and Mannheim to Ulm and Lake Constance. Within 50 km of Stuttgart, travel is included in the packages; beyond that it appears in the quote as its own line beforehand. Repertoire, equipment and the hosting in Turkish and German stay the same in every city.',
+      tr: 'Evet. DJ Veys Stuttgart’ta yaşıyor ve eyaletin tamamında rezervasyon alıyor — Ludwigsburg ve Esslingen’den Heilbronn, Karlsruhe ve Mannheim üzerinden Ulm’a ve Bodensee’ye kadar. Stuttgart çevresinde 50 km içinde ulaşım paketlere dahildir; ötesi teklifte önceden ayrı bir kalem olarak görünür. Repertuvar, teknik ve Türkçe-Almanca sunum her şehirde aynı kalır.',
+      ar: 'نعم. يقيم DJ Veys في شتوتغارت ويُحجز في أنحاء الولاية كلها — من لودفيغسبورغ وإسلينغن مرورًا بهايلبرون وكارلسروه ومانهايم وصولًا إلى أولم وبحيرة كونستانس. ضمن 50 كم حول شتوتغارت يكون التنقل مشمولًا في الباقات؛ وما بعد ذلك يظهر مسبقًا كبند مستقل في عرض السعر. أما الريبرتوار والتجهيزات والتقديم بالتركية والألمانية فتبقى كما هي في كل مدينة.',
+    },
+    facts: [
+      'Anfahrt bis 50 km um Stuttgart in den Paketen enthalten',
+      'Moderation live auf Deutsch, Türkisch und Englisch',
+    ],
+    related: ['halay-repertoire', 'bilingual-hosting'],
+    links: ['/tuerkischer-dj-baden-wuerttemberg', '/tuerkischer-dj-stuttgart'],
+    updated: U_TURKISH_BW,
   },
 
   // ─── islamisch ────────────────────────────────────────────────────────
