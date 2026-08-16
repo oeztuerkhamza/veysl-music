@@ -754,7 +754,7 @@
     "intro": {
       "eyebrow": "Eyaletin her yerinde evinde",
       "title": "Türk düğünü neden şehre göre değişmez",
-      "body": "Baden-Württemberg'de Türk kökenli aileler yalnızca Stuttgart'ta yaşamıyor — Mannheim ve Karlsruhe'de de, Heilbronn, Reutlingen ya da Pforzheim'da da düğün yapılıyor. Şehirle birlikte değişen şey mekân ve ulaşım; aynı kalan şey beklenti: büyük giriş, üç kuşağı aynı anda oynatan halay, tüyleri diken diken eden kına anı ve yanında Almanca ve uluslararası müzik bekleyen davetliler. Veysel bunun için Stuttgart'tan yola çıkıp eyaletin tamamına gidiyor — DJ, sazda ve gitarda canlı müzisyen ve nefesli çalgılı orkestrasıyla, {years} yılı aşkın süredir."
+      "body": "Baden-Württemberg'de Türk kökenli aileler yalnızca Stuttgart'ta yaşamıyor — Mannheim ve Karlsruhe'de de, Heilbronn, Reutlingen ya da Pforzheim'da da düğün yapılıyor. Şehirle birlikte değişen şey mekân ve ulaşım; aynı kalan şey beklenti: büyük giriş, üç kuşağı aynı anda oynatan halay, tüyleri diken diken eden kına anı ve arada Almanca ve uluslararası müzik bekleyen davetliler. Veysel bunun için Stuttgart'tan yola çıkıp eyaletin tamamına gidiyor — DJ olarak, sazda ve gitarda canlı müzisyen olarak ve nefesli çalgılı orkestrasıyla, {years} yılı aşkın süredir."
     },
     "pillars": {
       "eyebrow": "Eyalet genelinde geçerli",
@@ -770,7 +770,7 @@
         },
         "families": {
           "title": "İki aile, tek gece",
-          "text": "Bir aile Stuttgart bölgesinden, diğeri Karlsruhe'den gelse de akşamın sonunda tek bir salon birlikte oynar. Sunum Türkçe ile Almanca arasında akıcı geçer — istenirse İngilizce de — ve her programda iki tarafı birden taşır."
+          "text": "Bir aile Stuttgart bölgesinden, diğeri Karlsruhe'den gelse de akşamın sonunda tek bir salon birlikte oynar. Sunum Türkçe ile Almanca arasında akıcı geçer — istenirse İngilizce de — ve programın her adımında iki tarafı birden taşır."
         }
       }
     },
@@ -823,11 +823,11 @@
         },
         {
           "q": "Kına gecesi ve düğün farklı şehirlerde — olur mu?",
-          "a": "Olur. Kına, nişan ve düğün kendi kurgusu olan ayrı geceler; tek tek ya da birlikte rezerve edilebilir — kına gecesi düğünden başka bir şehirde yapılsa bile. İkisini de aynı ön görüşme planlar."
+          "a": "Olur. Kına gecesi bir şehirde, düğün başka bir şehirde — planlama için bunlar iki ayrı tarih ve iki ayrı yol demektir; ikisi de önceden teklifte yazılıdır. Müzik, teknik ve sunum iki gecede de aynı elde kalır ve aynı ön görüşmede planlanır."
         },
         {
-          "q": "Davetlilerin yalnızca bir kısmı Türkçe konuşuyorsa iki dilli sunum yine işe yarar mı?",
-          "a": "Tam da bunun için var. Sunum hiçbir programı iki kez anlatmadan Türkçe ile Almanca arasında geçer ve pisti iki yöne birden okur. İsterseniz uluslararası davetliler için İngilizce de eklenir."
+          "q": "Şehrimizin bu sitede kendi sayfası yok — hizmet bölgesinin dışında mı kalıyor?",
+          "a": "Hayır. Ayrı sayfalar en büyük şehirler için var; rezervasyon eyaletin tamamı için yapılıyor. Kendi sayfası olmayan yerlerde yalnızca yerel ayrıntı bilgisi eksik — akış ve teklif aynı şekilde işliyor: yeri söylersiniz, kesin mesafe yazılı teklifte yer alır."
         },
         {
           "q": "Baden-Württemberg'de Türk DJ için ne kadar erken rezervasyon yapmalı?",
