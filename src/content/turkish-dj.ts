@@ -76,3 +76,24 @@ export const turkishDjBwPillars = [
 ] as const;
 
 export type TurkishDjBwPillarIcon = (typeof turkishDjBwPillars)[number]['icon'];
+
+/**
+ * Struktur der Bundes-Seite `/tuerkischer-dj-deutschland` — Texte in
+ * `messages/*.json` → Namespace `turkishDjDe`, Sprachumfang wie die ganze
+ * Nische (TURKISH_DJ_SUPPORTED_LOCALES oben).
+ *
+ * Drei Säulen, die nur auf Bundes-Ebene die Frage sind: wie Anfahrt und
+ * Übernachtung über große Distanz kalkuliert werden (`logistics`), dass das
+ * türkische Programm mit der Entfernung nicht schrumpft (`program`) und
+ * warum ein Anbieter für DJ + Live-Musik + Moderation + Technik die
+ * überregionale Buchung überhaupt praktikabel macht (`oneSupplier` — die
+ * vier belegten `site.capabilities`). Städteliste: `site.germanyCities`
+ * (Buchbarkeits-, keine Referenzliste — siehe Kommentar dort).
+ */
+export const turkishDjDePillars = [
+  { id: 'logistics', icon: 'Route' },
+  { id: 'program', icon: 'Music' },
+  { id: 'oneSupplier', icon: 'Mic' },
+] as const;
+
+export type TurkishDjDePillarIcon = (typeof turkishDjDePillars)[number]['icon'];

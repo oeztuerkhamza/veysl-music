@@ -151,14 +151,16 @@ const nextConfig: NextConfig = {
     /**
      * Dieselbe geratene-Eltern-URL-Logik für die Türkisch-Nische: Wer
      * `/tuerkischer-dj` tippt oder verlinkt (die naheliegendste Kurzform der
-     * beiden Turkish-Slugs), landet auf der Landesseite der Nische statt im
-     * 404. Nur die drei Sprachen mit Seite (TURKISH_DJ_SUPPORTED_LOCALES) —
-     * gleiche Begründung wie bei `clusterParents` oben.
+     * Turkish-Slugs), landet auf der obersten Ebene der Nische statt im 404 —
+     * seit es die Bundes-Seite gibt, ist DIE der semantische Elternknoten,
+     * nicht mehr die BW-Landesseite. Nur die drei Sprachen mit Seite
+     * (TURKISH_DJ_SUPPORTED_LOCALES) — gleiche Begründung wie bei
+     * `clusterParents` oben.
      */
     const turkishClusterParents = [
-      { source: '/tuerkischer-dj', destination: '/tuerkischer-dj-baden-wuerttemberg' },
-      { source: '/tr/turk-dj', destination: '/tr/turk-dj-baden-wuerttemberg' },
-      { source: '/en/turkish-dj', destination: '/en/turkish-dj-baden-wuerttemberg' },
+      { source: '/tuerkischer-dj', destination: '/tuerkischer-dj-deutschland' },
+      { source: '/tr/turk-dj', destination: '/tr/turk-dj-almanya' },
+      { source: '/en/turkish-dj', destination: '/en/turkish-dj-germany' },
     ];
 
     /**

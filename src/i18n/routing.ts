@@ -277,6 +277,39 @@ export const pathnames = {
     es: '/dj-turco-baden-wuerttemberg',
   },
   /**
+   * Bundes-Ebene der Türkisch-Nische: „Türkischer DJ" ohne Ortszusatz und
+   * „türk dj almanya".
+   *
+   * Die nackte Kopfabfrage „türkischer dj" hatte keine eigene Seite — die
+   * Stuttgart-Seite trägt die Stadt-, die BW-Seite die Landes-Variante; wer
+   * aus München oder Köln sucht, fand keine passende Ebene. Der türkische
+   * Slug ist bewusst die exakte Abfrage `türk dj almanya`
+   * (SEO-KEYWORD-MAP.md §3 führt sie, geroutet bis dahin nur auf
+   * Startseiten-Fließtext).
+   *
+   * Faktenrahmen wie beim Europa-Cluster: `site.germanyCities` ist eine
+   * „deutschlandweit **buchbar**"-Aussage („Schwerpunkt Ballungsräume",
+   * site.ts) — KEINE Auftritts-Referenz. Die Seite formuliert durchgehend
+   * Buchbarkeit + Anfahrtsmodell und behauptet keinen Auftritt, den
+   * `verifiedInternational`/BRAND-FACTS nicht deckt. Und bewusst KEINE
+   * `/tuerkischer-dj/muenchen`-Stadtseiten: ohne belegbare lokale Substanz
+   * wären das Doorway-Pages (dieselbe Entscheidung, mit derselben
+   * Begründung, wie beim Europa-Cluster eine Ebene tiefer zu bleiben).
+   *
+   * **Nur de/tr/en** — TURKISH_DJ_SUPPORTED_LOCALES, wie die beiden
+   * Geschwister der Nische.
+   */
+  '/tuerkischer-dj-deutschland': {
+    de: '/tuerkischer-dj-deutschland',
+    tr: '/turk-dj-almanya',
+    ku: '/dj-tirki-almanya',
+    ar: '/dj-turki-almanya',
+    en: '/turkish-dj-germany',
+    nl: '/turkse-dj-duitsland',
+    fr: '/dj-turc-allemagne',
+    es: '/dj-turco-alemania',
+  },
+  /**
    * Reichweiten-Ebene: europaweite Buchbarkeit auf **Länder**-Ebene, bewusst
    * nicht auf Städte-Ebene. Städteseiten außerhalb der Kernregion wären
    * Doorway Pages und würden das lokale Cluster gefährden, das tatsächlich

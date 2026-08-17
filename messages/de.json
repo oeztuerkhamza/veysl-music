@@ -5,6 +5,7 @@
     "badenWuerttemberg": "Hochzeits-DJ Baden-Württemberg",
     "turkishDj": "Türkischer DJ Stuttgart",
     "turkishDjBw": "Türkischer DJ Baden-Württemberg",
+    "turkishDjDe": "Türkischer DJ Deutschland",
     "packages": "Pakete",
     "weddings": "Echte Hochzeiten",
     "music": "Musik",
@@ -706,7 +707,8 @@
           "towns": "Ravensburg, Singen, Radolfzell, Überlingen, Weingarten"
         }
       ],
-      "note": "Ihr Ort ist nicht genannt? Die Liste sind Beispiele, keine Grenze — entscheidend ist die Strecke, und die steht immer vorab im Angebot."
+      "note": "Ihr Ort ist nicht genannt? Die Liste sind Beispiele, keine Grenze — entscheidend ist die Strecke, und die steht immer vorab im Angebot.",
+      "deLink": "Auch außerhalb Baden-Württembergs — zur Deutschland-Seite"
     },
     "faq": {
       "eyebrow": "Häufige Fragen",
@@ -734,6 +736,102 @@
       "eyebrow": "Termin",
       "title": "Von Stuttgart bis zum Bodensee — ist Ihr Datum noch frei?",
       "subtitle": "Datum, Stadt und ungefähre Gästezahl genügen für den ersten Schritt. Sprachen, Traditionen und Ablauf klärt das Vorgespräch.",
+      "button": "Termin anfragen"
+    }
+  },
+  "turkishDjDe": {
+    "meta": {
+      "title": "Türkischer DJ deutschlandweit – Hochzeit & Kına | DJ Veys",
+      "description": "Türkischer DJ für ganz Deutschland: türkische und deutsch-türkische Hochzeiten, Kına und Nişan – buchbar von München und Frankfurt bis Köln, Hamburg und Berlin."
+    },
+    "hero": {
+      "eyebrow": "Türkischer DJ · deutschlandweit",
+      "title": "Türkischer DJ für ganz Deutschland",
+      "subtitle": "Ob München oder Berlin, Frankfurt oder Hamburg: Halay, Gelin Çıkarma und eine Moderation auf Türkisch und Deutsch reisen komplett mit — aus Stuttgart, mit über {years} Jahren Erfahrung und mehr als {events} Feiern im Rücken."
+    },
+    "intro": {
+      "eyebrow": "Eine Nische, ein ganzes Land",
+      "title": "Warum für einen türkischen DJ überregional gebucht wird",
+      "body": "Türkische und deutsch-türkische Hochzeiten werden überall in Deutschland gefeiert — von Berlin über Köln und das Ruhrgebiet bis nach Frankfurt und München. Wer dafür einen DJ sucht, sucht selten „irgendeinen aus der Stadt\", sondern jemanden, der Halay-Runden lesen kann, die Kına-Dramaturgie kennt und eine Moderation liefert, die zwischen Türkisch und Deutsch wechselt. Genau dafür wird auch über Stadtgrenzen hinweg gebucht: Veysel lebt in Stuttgart und ist deutschlandweit buchbar — als DJ, Live-Musiker an Saz und Gitarre und mit Live-Orchester, seit über {years} Jahren."
+    },
+    "pillars": {
+      "eyebrow": "Über große Distanz",
+      "title": "Was eine überregionale Buchung praktikabel macht",
+      "items": {
+        "logistics": {
+          "title": "Anfahrt und Übernachtung stehen im Angebot",
+          "text": "Ob München oder Berlin: Die Strecke steht als eigene Position im schriftlichen Angebot, bei Feiern bis in die Nacht zusammen mit der Übernachtung. Bei sehr weiten Terminen kann Technik vor Ort gemietet werden, statt die eigene Anlage quer durchs Land zu fahren — auch das entscheidet sich vor der Zusage, nicht danach."
+        },
+        "program": {
+          "title": "Das Programm schrumpft nicht mit der Entfernung",
+          "text": "Halay neben den Charts, Gelin Çıkarma vor dem Eröffnungstanz, die Kına-Zeremonie mit eigener Dramaturgie: Der Ablauf wird im Vorgespräch minutengenau geplant und ist in Hamburg derselbe wie in Stuttgart — auf Wunsch mit Live-Orchester und Bläsern."
+        },
+        "oneSupplier": {
+          "title": "Ein Anbieter statt drei Gewerke",
+          "text": "DJ, Live-Musik an Saz und Gitarre, Moderation auf Deutsch, Türkisch und Englisch und die Veranstaltungstechnik kommen aus einer Hand. Für eine Feier fern der eigenen Stadt heißt das: ein Vorgespräch, ein Vertrag, ein Ansprechpartner — statt drei Gewerke über Distanz zu koordinieren."
+        }
+      }
+    },
+    "metros": {
+      "eyebrow": "Städte",
+      "title": "Türkischer DJ in München, Berlin, Hamburg oder Köln",
+      "lead": "Buchbar in allen großen Ballungsräumen — ein Überblick mit Beispielstädten:",
+      "items": [
+        {
+          "metro": "München & Südbayern",
+          "towns": "Augsburg, Ingolstadt, Rosenheim"
+        },
+        {
+          "metro": "Nürnberg & Franken",
+          "towns": "Fürth, Erlangen, Würzburg"
+        },
+        {
+          "metro": "Frankfurt & Rhein-Main",
+          "towns": "Wiesbaden, Mainz, Darmstadt, Offenbach"
+        },
+        {
+          "metro": "Köln, Düsseldorf & Ruhrgebiet",
+          "towns": "Duisburg, Essen, Dortmund, Bonn"
+        },
+        {
+          "metro": "Hamburg & Norden",
+          "towns": "Bremen, Hannover, Kiel"
+        },
+        {
+          "metro": "Berlin & Osten",
+          "towns": "Potsdam, Leipzig, Dresden"
+        }
+      ],
+      "note": "Ihre Stadt ist nicht genannt? Die Liste sind Beispiele — entscheidend ist der Termin, nicht die Postleitzahl.",
+      "bwLink": "Baden-Württemberg mit allen Stadtseiten — zur Landesseite",
+      "stuttgartLink": "Türkischer DJ Stuttgart — zur Seite der Heimatstadt"
+    },
+    "faq": {
+      "eyebrow": "Häufige Fragen",
+      "title": "Überregional buchen — was Paare wissen wollen",
+      "items": [
+        {
+          "q": "Wie läuft eine Buchung in München oder Berlin ab, wenn der DJ in Stuttgart sitzt?",
+          "a": "Genauso wie eine in Stuttgart — nur die Logistik kommt dazu. Das Vorgespräch läuft ohnehin per Video oder Telefon; Anfahrt, gegebenenfalls Übernachtung und bei sehr weiten Strecken eine Technikmiete vor Ort stehen als eigene Positionen im schriftlichen Angebot, bevor Sie zusagen."
+        },
+        {
+          "q": "Was kostet ein türkischer DJ außerhalb von Baden-Württemberg?",
+          "a": "Der DJ-Teil selbst — Spielzeit, Programm, Moderation — kostet überall dasselbe; mit der Entfernung ändern sich nur Anfahrt und Übernachtung, und beide stehen offen im Angebot statt versteckt im Preis. Das individuelle Angebot kommt in der Regel innerhalb von 24 Stunden."
+        },
+        {
+          "q": "Gibt es das volle türkische Programm auch in Hamburg oder Köln?",
+          "a": "Ja — das ist der Sinn einer überregionalen Buchung. Halay, Gelin Çıkarma, Kına-Dramaturgie und die Moderation auf Türkisch und Deutsch hängen an der Vorbereitung, nicht an der Stadt. Was wo gespielt wird, legt das Vorgespräch fest; die Entfernung ändert daran nichts."
+        },
+        {
+          "q": "Warum einen DJ aus Stuttgart buchen statt einen aus der eigenen Stadt?",
+          "a": "Wenn ein lokaler DJ das Programm abdeckt, das Sie wollen, ist das eine gute Wahl. Überregional gebucht wird, wenn die Kombination zählt: türkisches und internationales Repertoire, Live-Musik an Saz und Gitarre, Live-Orchester und dreisprachige Moderation aus einer Hand — mit einer Anfahrt, die transparent im Angebot steht."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Termin",
+      "title": "Von Stuttgart bis in Ihre Stadt — ist Ihr Datum noch frei?",
+      "subtitle": "Datum, Stadt und ungefähre Gästezahl genügen für den ersten Schritt. Logistik, Sprachen und Ablauf klärt das Vorgespräch.",
       "button": "Termin anfragen"
     }
   },

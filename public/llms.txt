@@ -52,6 +52,12 @@ Spanisch verfügbar.
   die Landesseite und Elternseite des Städte-Clusters — was sich über Distanz
   ändert (Anfahrt, Übernachtung) und was gleich bleibt (Technik, ein
   Ansprechpartner), plus die Übersicht aller Stadtseiten.
+- [Türkischer DJ Deutschland](https://dj-veys.de/tuerkischer-dj-deutschland):
+  die Bundes-Seite der Türkisch-Nische — deutschlandweit buchbar mit
+  Schwerpunkt auf den Ballungsräumen München, Frankfurt, Köln, Düsseldorf,
+  Hamburg, Nürnberg und Berlin; Anfahrt, Übernachtung und gegebenenfalls
+  Technikmiete vor Ort stehen vorab im Angebot. Türkische Fassung:
+  [Almanya'da Türk DJ](https://dj-veys.de/tr/turk-dj-almanya).
 - [Türkischer DJ Baden-Württemberg](https://dj-veys.de/tuerkischer-dj-baden-wuerttemberg):
   die Landesseite der Türkisch-Nische — türkische und deutsch-türkische
   Hochzeiten, Kına und Nişan im ganzen Bundesland, mit Anfahrtsmodell

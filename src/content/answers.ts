@@ -912,6 +912,31 @@ export const answers: Answer[] = [
     links: ['/tuerkischer-dj-baden-wuerttemberg'],
     updated: U_TURKISH_BW,
   },
+  {
+    /**
+     * Die Bundes-Variante — Faktenrahmen wie überall: `site.germanyCities`
+     * ist eine Buchbarkeits-, keine Referenzliste; formuliert wird
+     * „buchbar", nie „gespielt in". Nachweislich international ist bisher
+     * nur Wien (`site.verifiedInternational`).
+     */
+    id: 'turkish-dj-germany',
+    category: 'tuerkisch',
+    q: {
+      de: 'Kommt ein türkischer DJ aus Stuttgart auch nach München, Köln oder Berlin?',
+      en: 'Does a Turkish DJ from Stuttgart also come to Munich, Cologne or Berlin?',
+      tr: "Stuttgart'tan bir Türk DJ Münih, Köln ya da Berlin'e de gelir mi?",
+      ar: 'هل يأتي دي جي تركي من شتوتغارت أيضًا إلى ميونيخ أو كولونيا أو برلين؟',
+    },
+    a: {
+      de: 'Ja — gebucht werden kann deutschlandweit, mit Schwerpunkt auf den Ballungsräumen von München und Frankfurt über Köln, Düsseldorf und Hamburg bis Berlin. Anfahrt und gegebenenfalls Übernachtung stehen als eigene Positionen im schriftlichen Angebot; bei sehr weiten Strecken kann Technik vor Ort gemietet werden. Das Programm — Halay bis Charts, Moderation auf Türkisch und Deutsch — bleibt dasselbe wie in Stuttgart.',
+      en: 'Yes — bookings are possible Germany-wide, focused on the metropolitan areas from Munich and Frankfurt via Cologne, Düsseldorf and Hamburg to Berlin. Travel and, where needed, an overnight stay appear as their own lines in the written quote; for very long distances, equipment can be hired locally. The programme — halay to charts, hosting in Turkish and German — stays the same as in Stuttgart.',
+      tr: "Evet — Almanya genelinde rezervasyon yapılabilir; ağırlık Münih ve Frankfurt'tan Köln, Düsseldorf ve Hamburg üzerinden Berlin'e uzanan metropol bölgelerindedir. Ulaşım ve gerekiyorsa konaklama, yazılı teklifte ayrı kalemler olarak yer alır; çok uzak mesafelerde teknik yerinde kiralanabilir. Program — halaydan chart'lara, Türkçe-Almanca sunum — Stuttgart'takiyle aynı kalır.",
+      ar: 'نعم — يمكن الحجز في جميع أنحاء ألمانيا، مع التركيز على المناطق الحضرية من ميونيخ وفرانكفورت مرورًا بكولونيا ودوسلدورف وهامبورغ وصولًا إلى برلين. يظهر التنقّل، وعند الحاجة المبيت، كبنود مستقلة في عرض السعر المكتوب؛ وفي المسافات البعيدة جدًا يمكن استئجار التجهيزات محليًا. أما البرنامج — من الهالاي إلى أحدث الأغاني، مع التقديم بالتركية والألمانية — فيبقى كما هو في شتوتغارت.',
+    },
+    related: ['turkish-dj-bw', 'turkish-dj-cities'],
+    links: ['/tuerkischer-dj-deutschland'],
+    updated: U_TURKISH_BW,
+  },
 
   // ─── islamisch ────────────────────────────────────────────────────────
   // Eigene Kategorie statt Anhängsel von `tuerkisch`: die Suchanfragen

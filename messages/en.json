@@ -5,6 +5,7 @@
     "badenWuerttemberg": "Wedding DJ Baden-Württemberg",
     "turkishDj": "Turkish DJ Stuttgart",
     "turkishDjBw": "Turkish DJ Baden-Württemberg",
+    "turkishDjDe": "Turkish DJ Germany",
     "packages": "Packages",
     "weddings": "Real Weddings",
     "music": "Music",
@@ -706,7 +707,8 @@
           "towns": "Ravensburg, Singen, Radolfzell, Überlingen, Weingarten"
         }
       ],
-      "note": "Your town not named? The list is examples, not a boundary — what matters is the distance, and that is always in the quote up front."
+      "note": "Your town not named? The list is examples, not a boundary — what matters is the distance, and that is always in the quote up front.",
+      "deLink": "Outside Baden-Württemberg too — see the Germany page"
     },
     "faq": {
       "eyebrow": "Frequently asked questions",
@@ -734,6 +736,102 @@
       "eyebrow": "Date",
       "title": "From Stuttgart to Lake Constance — is your date still free?",
       "subtitle": "The date, the city and a rough guest count are enough to start. Languages, traditions and the running order are settled in the planning call.",
+      "button": "Check availability"
+    }
+  },
+  "turkishDjDe": {
+    "meta": {
+      "title": "Turkish DJ Germany – Weddings, Kına & Events | DJ Veys",
+      "description": "Turkish DJ across Germany: Turkish and German-Turkish weddings, kına and nişan — bookable from Munich and Frankfurt to Cologne, Hamburg and Berlin."
+    },
+    "hero": {
+      "eyebrow": "Turkish DJ · Germany-wide",
+      "title": "Turkish DJ for all of Germany",
+      "subtitle": "Munich or Berlin, Frankfurt or Hamburg: halay, gelin çıkarma and hosting in Turkish and German all travel along — from Stuttgart, backed by {years}+ years and {events}+ celebrations."
+    },
+    "intro": {
+      "eyebrow": "One niche, a whole country",
+      "title": "Why couples book a Turkish DJ from another city",
+      "body": "Turkish and German-Turkish weddings are celebrated all over Germany — from Berlin via Cologne and the Ruhr to Frankfurt and Munich. Couples looking for a DJ for one rarely want \"whoever is local\"; they want someone who can read a halay circle, knows the kına dramaturgy and hosts fluently in Turkish and German. That is exactly what gets booked across city limits: Veysel lives in Stuttgart and is bookable Germany-wide — as a DJ, live musician on saz and guitar, and with a live orchestra, for over {years} years."
+    },
+    "pillars": {
+      "eyebrow": "Across long distances",
+      "title": "What makes booking from afar practical",
+      "items": {
+        "logistics": {
+          "title": "Travel and overnight stay are in the quote",
+          "text": "Whether Munich or Berlin: the journey appears as its own line in the written quote — together with an overnight stay when the party runs into the night. For very distant dates, equipment can be hired locally instead of driving the own rig across the country; that too is decided before you sign, not after."
+        },
+        "program": {
+          "title": "The programme doesn't shrink with distance",
+          "text": "Halay alongside the charts, gelin çıkarma before the first dance, the kına ceremony with its own dramaturgy: the running order is planned to the minute in the planning call and is the same in Hamburg as in Stuttgart — with live orchestra and horns if you wish."
+        },
+        "oneSupplier": {
+          "title": "One supplier instead of three trades",
+          "text": "DJ, live music on saz and guitar, hosting in German, Turkish and English, and the event equipment come from one supplier. For a celebration far from home that means one planning call, one contract, one point of contact — instead of coordinating three trades from a distance."
+        }
+      }
+    },
+    "metros": {
+      "eyebrow": "Cities",
+      "title": "A Turkish DJ in Munich, Berlin, Hamburg or Cologne",
+      "lead": "Bookable in every major metropolitan area — an overview with example cities:",
+      "items": [
+        {
+          "metro": "Munich & southern Bavaria",
+          "towns": "Augsburg, Ingolstadt, Rosenheim"
+        },
+        {
+          "metro": "Nuremberg & Franconia",
+          "towns": "Fürth, Erlangen, Würzburg"
+        },
+        {
+          "metro": "Frankfurt & Rhine-Main",
+          "towns": "Wiesbaden, Mainz, Darmstadt, Offenbach"
+        },
+        {
+          "metro": "Cologne, Düsseldorf & the Ruhr",
+          "towns": "Duisburg, Essen, Dortmund, Bonn"
+        },
+        {
+          "metro": "Hamburg & the north",
+          "towns": "Bremen, Hanover, Kiel"
+        },
+        {
+          "metro": "Berlin & the east",
+          "towns": "Potsdam, Leipzig, Dresden"
+        }
+      ],
+      "note": "Your city not named? The list is examples — what matters is the date, not the postcode.",
+      "bwLink": "Baden-Württemberg with all its city pages — see the state page",
+      "stuttgartLink": "Turkish DJ Stuttgart — see the home-base page"
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "Booking from another city — what couples ask",
+      "items": [
+        {
+          "q": "How does a booking in Munich or Berlin work when the DJ is based in Stuttgart?",
+          "a": "Exactly like one in Stuttgart — only the logistics are added. The planning call happens by video or phone anyway; travel, an overnight stay where needed, and local equipment hire for very long distances all appear as their own lines in the written quote before you commit."
+        },
+        {
+          "q": "What does a Turkish DJ cost outside Baden-Württemberg?",
+          "a": "The DJ part itself — playing time, programme, hosting — costs the same everywhere; only travel and accommodation change with distance, and both are itemised openly in the quote rather than hidden in the price. Your individual quote usually arrives within 24 hours."
+        },
+        {
+          "q": "Is the full Turkish programme available in Hamburg or Cologne too?",
+          "a": "Yes — that is the point of booking across city limits. Halay, gelin çıkarma, the kına dramaturgy and hosting in Turkish and German depend on preparation, not on the city. What gets played where is set in the planning call; distance changes none of it."
+        },
+        {
+          "q": "Why book a DJ from Stuttgart instead of a local one?",
+          "a": "If a local DJ covers the programme you want, that is a fine choice. Booking from afar makes sense when the combination counts: Turkish and international repertoire, live music on saz and guitar, a live orchestra and trilingual hosting from one supplier — with travel that sits transparently in the quote."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Date",
+      "title": "From Stuttgart to your city — is your date still free?",
+      "subtitle": "The date, the city and a rough guest count are enough to start. Logistics, languages and the running order are settled in the planning call.",
       "button": "Check availability"
     }
   },

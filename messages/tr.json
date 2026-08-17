@@ -5,6 +5,7 @@
     "badenWuerttemberg": "Baden-Württemberg düğün DJ'i",
     "turkishDj": "Stuttgart'ta Türk DJ",
     "turkishDjBw": "Baden-Württemberg'de Türk DJ",
+    "turkishDjDe": "Almanya'da Türk DJ",
     "packages": "Paketler",
     "weddings": "Gerçek Düğünler",
     "music": "Müzik",
@@ -811,7 +812,8 @@
           "towns": "Ravensburg, Singen, Radolfzell, Überlingen, Weingarten"
         }
       ],
-      "note": "Yaşadığınız yer burada geçmiyor mu? Bu liste örnektir, sınır değil — belirleyici olan mesafedir ve o her zaman önceden teklifte yazılıdır."
+      "note": "Yaşadığınız yer burada geçmiyor mu? Bu liste örnektir, sınır değil — belirleyici olan mesafedir ve o her zaman önceden teklifte yazılıdır.",
+      "deLink": "Baden-Württemberg dışında mı? — Almanya sayfasına git"
     },
     "faq": {
       "eyebrow": "Sık sorulan sorular",
@@ -839,6 +841,102 @@
       "eyebrow": "Tarih",
       "title": "Stuttgart'tan Bodensee'ye — tarihiniz hâlâ boş mu?",
       "subtitle": "İlk adım için tarih, şehir ve yaklaşık davetli sayısı yeterli. Diller, gelenekler ve akış ön görüşmede netleşir.",
+      "button": "Teklif al"
+    }
+  },
+  "turkishDjDe": {
+    "meta": {
+      "title": "Almanya'da Türk DJ – düğün, kına & nişan | DJ Veys",
+      "description": "Almanya genelinde Türk DJ: Türk ve Alman-Türk düğünleri, kına ve nişan – Münih ve Frankfurt'tan Köln, Hamburg ve Berlin'e kadar rezervasyon yapılabilir."
+    },
+    "hero": {
+      "eyebrow": "Türk DJ · Almanya geneli",
+      "title": "Almanya genelinde Türk DJ",
+      "subtitle": "Münih ya da Berlin, Frankfurt ya da Hamburg: halay, gelin çıkarma ve Türkçe-Almanca sunum Stuttgart'tan eksiksiz yola çıkar — {years} yılı aşkın deneyim ve {events}'den fazla kutlamayla."
+    },
+    "intro": {
+      "eyebrow": "Bir niş, koca bir ülke",
+      "title": "Türk DJ için neden şehir dışından rezervasyon yapılır",
+      "body": "Türk ve Alman-Türk düğünleri Almanya'nın her yerinde yapılıyor — Berlin'den Köln ve Ruhr bölgesine, Frankfurt'tan Münih'e. Bunun için DJ arayan, nadiren \"şehirden herhangi biri\"ni arar; halay halkasını okuyabilen, kına kurgusunu bilen ve Türkçe ile Almanca arasında geçen bir sunum yapabilen birini arar. Tam da bu yüzden şehir sınırlarının ötesinden rezervasyon yapılır: Veysel Stuttgart'ta yaşıyor ve Almanya genelinde rezerve edilebiliyor — DJ olarak, sazda ve gitarda canlı müzisyen olarak ve canlı orkestrasıyla, {years} yılı aşkın süredir."
+    },
+    "pillars": {
+      "eyebrow": "Uzun mesafede",
+      "title": "Şehir dışı rezervasyonu pratik kılan şey",
+      "items": {
+        "logistics": {
+          "title": "Ulaşım ve konaklama teklifte yazılı",
+          "text": "Münih de olsa Berlin de olsa: yol, yazılı teklifte ayrı bir kalem olarak durur; geceye uzayan kutlamalarda konaklamayla birlikte. Çok uzak tarihlerde kendi sistemi ülkenin bir ucuna taşımak yerine yerinde teknik kiralanabilir — bu da imzadan önce netleşir, sonra değil."
+        },
+        "program": {
+          "title": "Program mesafeyle küçülmez",
+          "text": "Chart'ların yanında halay, ilk danstan önce gelin çıkarma, kendi kurgusuyla kına töreni: akış ön görüşmede dakikası dakikasına planlanır ve Hamburg'da da Stuttgart'takiyle aynıdır — istenirse canlı orkestra ve nefesli çalgılarla."
+        },
+        "oneSupplier": {
+          "title": "Üç ayrı tedarikçi yerine tek muhatap",
+          "text": "DJ, sazda ve gitarda canlı müzik, Almanca-Türkçe-İngilizce sunum ve etkinlik teknolojisi tek elden gelir. Kendi şehrinizden uzaktaki bir kutlama için bunun anlamı şu: tek ön görüşme, tek sözleşme, tek muhatap — üç ayrı tedarikçiyi uzaktan koordine etmek yerine."
+        }
+      }
+    },
+    "metros": {
+      "eyebrow": "Şehirler",
+      "title": "Münih'te, Berlin'de, Hamburg'da ya da Köln'de Türk DJ",
+      "lead": "Bütün büyük metropol bölgelerinde rezervasyon yapılabilir — örnek şehirlerle bir genel bakış:",
+      "items": [
+        {
+          "metro": "Münih & Güney Bavyera",
+          "towns": "Augsburg, Ingolstadt, Rosenheim"
+        },
+        {
+          "metro": "Nürnberg & Franken",
+          "towns": "Fürth, Erlangen, Würzburg"
+        },
+        {
+          "metro": "Frankfurt & Rhein-Main",
+          "towns": "Wiesbaden, Mainz, Darmstadt, Offenbach"
+        },
+        {
+          "metro": "Köln, Düsseldorf & Ruhr bölgesi",
+          "towns": "Duisburg, Essen, Dortmund, Bonn"
+        },
+        {
+          "metro": "Hamburg & Kuzey",
+          "towns": "Bremen, Hannover, Kiel"
+        },
+        {
+          "metro": "Berlin & Doğu",
+          "towns": "Potsdam, Leipzig, Dresden"
+        }
+      ],
+      "note": "Şehriniz geçmiyor mu? Bu liste örnektir — belirleyici olan posta kodu değil, tarihtir.",
+      "bwLink": "Tüm şehir sayfalarıyla Baden-Württemberg — eyalet sayfasına git",
+      "stuttgartLink": "Stuttgart'ta Türk DJ — memleket sayfasına git"
+    },
+    "faq": {
+      "eyebrow": "Sık sorulan sorular",
+      "title": "Şehir dışından rezervasyon — çiftler ne soruyor",
+      "items": [
+        {
+          "q": "DJ Stuttgart'taysa Münih ya da Berlin'deki rezervasyon nasıl işler?",
+          "a": "Stuttgart'taki gibi — yalnızca lojistik eklenir. Ön görüşme zaten görüntülü ya da telefonla yapılır; ulaşım, gerekiyorsa konaklama ve çok uzak mesafelerde yerinde teknik kiralama, siz onay vermeden önce yazılı teklifte ayrı kalemler olarak durur."
+        },
+        {
+          "q": "Baden-Württemberg dışında Türk DJ ne kadar tutar?",
+          "a": "DJ hizmetinin kendisi — çalma süresi, program, sunum — her yerde aynı fiyattır; mesafeyle yalnızca ulaşım ve konaklama değişir, ikisi de fiyatın içine gizlenmek yerine teklifte açıkça yazılır. Size özel teklif genellikle 24 saat içinde gelir."
+        },
+        {
+          "q": "Halayıyla, kınasıyla tam Türk programı Hamburg'da ya da Köln'de de olur mu?",
+          "a": "Olur — şehir dışından rezervasyonun anlamı zaten bu. Halay, gelin çıkarma, kına kurgusu ve Türkçe-Almanca sunum şehre değil, hazırlığa bağlıdır. Nerede neyin çalınacağını ön görüşme belirler; mesafe bunu değiştirmez."
+        },
+        {
+          "q": "Kendi şehrimizden bir DJ yerine neden Stuttgart'tan?",
+          "a": "İstediğiniz programı karşılayan yerel bir DJ varsa, o da iyi bir seçimdir. Şehir dışından rezervasyon, kombinasyon önemliyse yapılır: Türkçe ve uluslararası repertuvar, sazda ve gitarda canlı müzik, canlı orkestra ve üç dilli sunum tek elden — ve teklifte şeffaf duran bir ulaşım kalemiyle."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Tarih",
+      "title": "Stuttgart'tan sizin şehrinize — tarihiniz hâlâ boş mu?",
+      "subtitle": "İlk adım için tarih, şehir ve yaklaşık davetli sayısı yeterli. Lojistik, diller ve akış ön görüşmede netleşir.",
       "button": "Teklif al"
     }
   },

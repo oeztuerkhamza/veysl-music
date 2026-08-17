@@ -63,6 +63,7 @@ export default async function FragenPage({ params }: FragenPageProps) {
   const TURKISH_DJ_ROUTES: readonly StaticPathname[] = [
     '/tuerkischer-dj-stuttgart',
     '/tuerkischer-dj-baden-wuerttemberg',
+    '/tuerkischer-dj-deutschland',
   ];
   const reachableLinks = (links: readonly StaticPathname[] | undefined): StaticPathname[] =>
     (links ?? []).filter((href) => {
