@@ -131,6 +131,14 @@ export interface City {
   population: number | null;
   /** 0–4 ECHTE, verifizierbare Hochzeitslocations. Niemals erfunden. */
   venues: CityVenue[];
+  /**
+   * Kompletter Meta-Titel-Ersatz, NUR für Städte, deren Name das
+   * `city.meta.title`-Template über die ~60-Zeichen-Grenze schiebt
+   * (docs/SEO-KEYWORD-MAP.md §2 verlangt genau diese Prüfung je Stadt).
+   * Ungesetzt gilt das Template; H1, Beschreibung und Fließtext behalten
+   * immer den vollen Anzeigenamen.
+   */
+  metaTitle?: LocalizedProse;
   /** Einzigartige Prosa je Stadt — keine Textbausteine. */
   intro: LocalizedProse;
   /** Warum Paare in dieser Stadt speziell ihn buchen — lokaler Winkel. */
@@ -1344,6 +1352,14 @@ export const allCityEntries: City[] = [
     slug: 'freiburg',
     name: 'Freiburg im Breisgau',
     region: 'Baden-Württemberg',
+    // „im Breisgau" sprengt das Template (de 69 Zeichen); gesucht wird
+    // ohnehin „hochzeits dj freiburg" — der Kurzname trägt die Abfrage,
+    // Anzeigename und H1 behalten die amtliche Form.
+    metaTitle: {
+      de: 'Hochzeits-DJ Freiburg – DJ, Musiker & Moderator | DJ Veys',
+      tr: "Düğün DJ'i Freiburg – DJ, müzisyen & sunucu | DJ Veys",
+      en: 'Wedding DJ Freiburg – DJ, Musician & Host | DJ Veys',
+    },
     distanceKm: 131,
     population: 236182,
     priority: 1,
@@ -1593,6 +1609,13 @@ export const allCityEntries: City[] = [
     slug: 'villingen-schwenningen',
     name: 'Villingen-Schwenningen',
     region: 'Baden-Württemberg',
+    // Der Doppelname sprengt das Titel-Template (de 71 Zeichen — Google
+    // kappt bei ~60): kurzer Ersatz ohne den Zusatz, Keyword vorn.
+    metaTitle: {
+      de: 'Hochzeits-DJ Villingen-Schwenningen | DJ Veys',
+      tr: "Düğün DJ'i Villingen-Schwenningen | DJ Veys",
+      en: 'Wedding DJ Villingen-Schwenningen | DJ Veys',
+    },
     distanceKm: 96,
     // TODO(kunde): Einwohnerzahl (~85–90 Tsd. laut Stadtverwaltung) vor
     // Veröffentlichung einer konkreten Zahl verifizieren — bis dahin null,
