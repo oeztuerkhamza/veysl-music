@@ -865,7 +865,7 @@
       "items": {
         "logistics": {
           "title": "Ulaşım ve konaklama teklifte yazılı",
-          "text": "Münih de olsa Berlin de olsa: yol, yazılı teklifte ayrı bir kalem olarak durur; geceye uzayan kutlamalarda konaklamayla birlikte. Çok uzak tarihlerde kendi sistemi ülkenin bir ucuna taşımak yerine yerinde teknik kiralanabilir — bu da imzadan önce netleşir, sonra değil."
+          "text": "Münih de olsa Berlin de olsa: yol, yazılı teklifte ayrı bir kalem olarak durur; geceye uzayan kutlamalarda konaklamayla birlikte. Çok uzun mesafelerde kendi sistemini ülkenin bir ucuna taşımak yerine yerinde teknik kiralanabilir — bu da imzadan önce netleşir, sonra değil."
         },
         "program": {
           "title": "Program mesafeyle küçülmez",
@@ -913,7 +913,7 @@
       ],
       "note": "Şehriniz geçmiyor mu? Bu liste örnektir — belirleyici olan posta kodu değil, tarihtir.",
       "bwLink": "Tüm şehir sayfalarıyla Baden-Württemberg — eyalet sayfasına git",
-      "stuttgartLink": "Stuttgart'ta Türk DJ — memleket sayfasına git"
+      "stuttgartLink": "Stuttgart'ta Türk DJ — ayrıntılı sayfaya git"
     },
     "faq": {
       "eyebrow": "Sık sorulan sorular",
@@ -922,10 +922,6 @@
         {
           "q": "DJ Stuttgart'taysa Münih ya da Berlin'deki rezervasyon nasıl işler?",
           "a": "Stuttgart'taki gibi — yalnızca lojistik eklenir. Ön görüşme zaten görüntülü ya da telefonla yapılır; ulaşım, gerekiyorsa konaklama ve çok uzak mesafelerde yerinde teknik kiralama, siz onay vermeden önce yazılı teklifte ayrı kalemler olarak durur."
-        },
-        {
-          "q": "Baden-Württemberg dışında Türk DJ ne kadar tutar?",
-          "a": "DJ hizmetinin kendisi — çalma süresi, program, sunum — her yerde aynı fiyattır; mesafeyle yalnızca ulaşım ve konaklama değişir, ikisi de fiyatın içine gizlenmek yerine teklifte açıkça yazılır. Size özel teklif genellikle 24 saat içinde gelir."
         },
         {
           "q": "Halayıyla, kınasıyla tam Türk programı Hamburg'da ya da Köln'de de olur mu?",
