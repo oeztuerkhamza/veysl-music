@@ -905,6 +905,10 @@
         {
           "metro": "Berlin & Doğu",
           "towns": "Potsdam, Leipzig, Dresden"
+        },
+        {
+          "metro": "Sınırın hemen ötesi: Alsace & İsviçre",
+          "towns": "Strasbourg, Colmar, Basel, Zürih"
         }
       ],
       "note": "Şehriniz geçmiyor mu? Bu liste örnektir — belirleyici olan posta kodu değil, tarihtir.",

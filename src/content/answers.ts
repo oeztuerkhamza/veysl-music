@@ -937,6 +937,36 @@ export const answers: Answer[] = [
     links: ['/tuerkischer-dj-deutschland'],
     updated: U_TURKISH_BW,
   },
+  {
+    /**
+     * Grenznähe — Straßburg/Elsass und Zürich/Basel liegen im
+     * Zwei-Stunden-Radius um Stuttgart. Alle Fakten hier sind bereits auf
+     * den Länderseiten veröffentlicht (src/content/regions.ts: Straßburg
+     * ~110 km — näher als Mannheim; Zürich ~200 km Luftlinie, oft ohne
+     * Übernachtung; Technik-Grenzübertritt als Planungsnotiz; türkische
+     * Communities im Raum Zürich/Basel und im Elsass). Formuliert als
+     * Buchbarkeit — belegt international ist bisher nur Wien.
+     */
+    id: 'turkish-dj-border',
+    category: 'tuerkisch',
+    q: {
+      de: 'Kommt ein türkischer DJ aus Stuttgart auch nach Zürich, Basel oder Straßburg?',
+      en: 'Does a Turkish DJ from Stuttgart also come to Zurich, Basel or Strasbourg?',
+      tr: "Stuttgart'tan bir Türk DJ Zürih, Basel ya da Strasbourg'a da gelir mi?",
+      fr: 'Un DJ turc de Stuttgart se déplace-t-il aussi à Strasbourg, Bâle ou Zurich ?',
+      ar: 'هل يأتي دي جي تركي من شتوتغارت أيضًا إلى زيورخ أو بازل أو ستراسبورغ؟',
+    },
+    a: {
+      de: 'Ja — die Grenznähe macht es sogar einfach: Straßburg liegt rund 110 Kilometer von Stuttgart entfernt, näher als Mannheim, und Zürich rund 200 Kilometer Luftlinie, oft ohne zwingende Übernachtung machbar. Beide Regionen haben gewachsene türkische Communities. Anfahrt und ein eventueller Zeitpuffer für den Grenzübertritt der Technik stehen vorab im Angebot; Halay, Kına-Dramaturgie und die Moderation auf Türkisch und Deutsch bleiben dieselben wie in Stuttgart.',
+      en: 'Yes — being close to the border actually makes it easy: Strasbourg is roughly 110 kilometres from Stuttgart, closer than Mannheim, and Zurich about 200 kilometres as the crow flies, often manageable without a mandatory overnight stay. Both regions have well-established Turkish communities. Travel and any buffer for taking the equipment across the border are in the quote up front; halay, the kına dramaturgy and hosting in Turkish and German stay the same as in Stuttgart.',
+      tr: "Evet — sınıra yakınlık işi kolaylaştırıyor bile: Strasbourg, Stuttgart'a yaklaşık 110 kilometre uzaklıkta, Mannheim'dan bile yakın; Zürih ise kuş uçuşu yaklaşık 200 kilometre, çoğu zaman zorunlu konaklama olmadan yapılabiliyor. İki bölgede de köklü Türk toplulukları var. Ulaşım ve ekipmanın sınır geçişi için olası zaman payı önceden teklifte yazılıdır; halay, kına kurgusu ve Türkçe-Almanca sunum Stuttgart'takiyle aynı kalır.",
+      fr: "Oui — la proximité de la frontière rend même les choses simples : Strasbourg n'est qu'à environ 110 kilomètres de Stuttgart, plus près que Mannheim, et Zurich à environ 200 kilomètres à vol d'oiseau, souvent faisable sans nuitée obligatoire. Les deux régions comptent des communautés turques bien établies. Le déplacement et une éventuelle marge pour le passage de la frontière avec le matériel figurent d'avance dans le devis ; le halay, la dramaturgie du kına et l'animation en turc et en allemand restent les mêmes qu'à Stuttgart.",
+      ar: 'نعم — بل إن قرب الحدود يجعل الأمر سهلًا: تبعد ستراسبورغ نحو 110 كيلومترات عن شتوتغارت، أي أقرب من مانهايم، وتبعد زيورخ نحو 200 كيلومتر بخط مستقيم، وغالبًا ما يمكن إنجازها دون مبيت إلزامي. وفي كلتا المنطقتين جاليات تركية راسخة. يظهر التنقّل وأي هامش زمني لعبور التجهيزات الحدود مسبقًا في عرض السعر؛ أما الهالاي ودراما الحنّة والتقديم بالتركية والألمانية فتبقى كما هي في شتوتغارت.',
+    },
+    related: ['turkish-dj-germany', 'turkish-dj-bw'],
+    links: ['/hochzeits-dj-europa'],
+    updated: U_TURKISH_BW,
+  },
 
   // ─── islamisch ────────────────────────────────────────────────────────
   // Eigene Kategorie statt Anhängsel von `tuerkisch`: die Suchanfragen
