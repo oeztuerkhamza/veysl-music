@@ -214,6 +214,15 @@ export default async function TurkishDjBwPage({ params }: PageProps) {
             ))}
           </dl>
           <p className="mt-6 text-sm text-ink-faint">{t('regions.note')}</p>
+          {/* Eine Ebene hinauf: die Bundes-Seite derselben Nische. */}
+          <p className="mt-3 text-sm text-ink-faint">
+            <Link
+              href="/tuerkischer-dj-deutschland"
+              className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold"
+            >
+              {t('regions.deLink')}
+            </Link>
+          </p>
         </Container>
       </Section>
 

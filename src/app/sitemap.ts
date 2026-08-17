@@ -48,6 +48,9 @@ interface RouteSeoConfig {
  *   constant — the state-level page of the same niche ("türkischer DJ
  *   Baden-Württemberg" / "baden-württemberg türk dj"). Emitted per-locale
  *   below, right next to its Stuttgart sibling.
+ * - `/tuerkischer-dj-deutschland`: same shape and same locale constant —
+ *   the national page of the niche (bare "türkischer dj" /
+ *   "türk dj almanya"). Emitted per-locale below.
  * - `/impressum` + `/datenschutz`: both pages set `noIndex: true` in their own
  *   `generateMetadata`. A sitemap entry is a request to index; pairing it with
  *   a `noindex` page is a direct contradiction that Search Console reports as
@@ -65,6 +68,7 @@ const staticRoutes: Record<
     | '/hochzeits-dj-baden-wuerttemberg'
     | '/tuerkischer-dj-stuttgart'
     | '/tuerkischer-dj-baden-wuerttemberg'
+    | '/tuerkischer-dj-deutschland'
     | '/impressum'
     | '/datenschutz'
   >,
@@ -388,6 +392,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of TURKISH_DJ_SUPPORTED_LOCALES) {
       entries.push({
         url: absoluteUrl('/tuerkischer-dj-baden-wuerttemberg', locale),
+        changeFrequency: 'monthly',
+        priority: 0.9,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // Bundes-Seite der Türkisch-Nische — de/tr/en. Ziel der nackten
+  // Kopfabfrage („türkischer dj", tr „türk dj almanya"); gleiche Priorität
+  // wie die übrigen Kernabfrage-Seiten der Nische.
+  {
+    const languages = buildLanguages(
+      (locale) => absoluteUrl('/tuerkischer-dj-deutschland', locale),
+      TURKISH_DJ_SUPPORTED_LOCALES,
+    );
+    for (const locale of TURKISH_DJ_SUPPORTED_LOCALES) {
+      entries.push({
+        url: absoluteUrl('/tuerkischer-dj-deutschland', locale),
         changeFrequency: 'monthly',
         priority: 0.9,
         alternates: { languages },

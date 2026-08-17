@@ -50,6 +50,9 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
   // Stuttgart-Seite, eigener Namespace (die Stuttgart-Texte sind ortsgebunden
   // und dürfen nicht für die Landes-Abfrage recycelt werden).
   '/tuerkischer-dj-baden-wuerttemberg': 'turkishDjBw.meta',
+  // Bundes-Seite derselben Nische — Kopfabfrage „türkischer dj" /
+  // „türk dj almanya", eigener Namespace aus demselben Grund.
+  '/tuerkischer-dj-deutschland': 'turkishDjDe.meta',
   // Europe reach cluster — owned by the regions agent (src/content/regions.ts).
   '/hochzeits-dj-europa': 'regions.hub.meta',
   '/hochzeits-dj-europa/[land]': 'regions.country.meta',

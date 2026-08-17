@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { absoluteUrl, buildMetadata } from '@/lib/seo';
 import { JsonLd } from '@/lib/json-ld';
-import { cities, getCityBySlug } from '@/content/cities';
+import { cities, getCityBySlug, resolveLocalized } from '@/content/cities';
 import type { Locale } from '@/i18n/routing';
 import { CityHero } from '@/components/city/city-hero';
 import { CityOffer } from '@/components/city/city-offer';
@@ -34,13 +34,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const city = getCityBySlug(stadt);
   if (!city || !city.locales.includes(locale)) return {};
 
-  return buildMetadata({
+  const metadata = await buildMetadata({
     locale,
     pathname: '/hochzeits-dj/[stadt]',
     params: { stadt: city.slug },
     values: { city: city.name },
     availableLocales: city.locales,
   });
+
+  // Titel-Ersatz für Städte mit langem Namen (`City.metaTitle`) — dem
+  // Blog-Muster folgend, das seine Titel genauso über das
+  // `buildMetadata`-Ergebnis legt. OG/Twitter ziehen mit, damit Head und
+  // Share-Karten nicht auseinanderlaufen; H1 und Beschreibung behalten den
+  // vollen Namen.
+  const titleOverride = resolveLocalized(city.metaTitle, locale);
+  if (!titleOverride) return metadata;
+  return {
+    ...metadata,
+    title: { absolute: titleOverride },
+    openGraph: { ...metadata.openGraph, title: titleOverride },
+    twitter: { ...metadata.twitter, title: titleOverride },
+  };
 }
 
 export default async function CityPage({ params }: PageProps) {

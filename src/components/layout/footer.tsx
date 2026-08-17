@@ -28,10 +28,12 @@ const NAV_LINKS = [
   // sitewide (SEO-Audit); der Footer ist ihr garantierter Einstiegspunkt.
   { href: '/hochzeits-dj-baden-wuerttemberg', key: 'badenWuerttemberg', locales: BW_SUPPORTED_LOCALES },
   { href: '/tuerkischer-dj-stuttgart', key: 'turkishDj', locales: TURKISH_DJ_SUPPORTED_LOCALES },
-  // Landesseite der Türkisch-Nische — gleicher Sprachschalter wie ihr
-  // Stuttgart-Geschwister, gleiche Begründung wie bei der BW-Zeile darüber:
-  // Der Footer ist der garantierte sitewide Einstiegspunkt der Landesseiten.
+  // Landes- und Bundes-Seite der Türkisch-Nische — gleicher Sprachschalter
+  // wie ihr Stuttgart-Geschwister, gleiche Begründung wie bei der BW-Zeile
+  // darüber: Der Footer ist der garantierte sitewide Einstiegspunkt der
+  // Ebenen-Seiten.
   { href: '/tuerkischer-dj-baden-wuerttemberg', key: 'turkishDjBw', locales: TURKISH_DJ_SUPPORTED_LOCALES },
+  { href: '/tuerkischer-dj-deutschland', key: 'turkishDjDe', locales: TURKISH_DJ_SUPPORTED_LOCALES },
   { href: '/islamische-hochzeit', key: 'islamicWedding', locales: ISLAMIC_SUPPORTED_LOCALES },
   { href: '/pakete', key: 'packages' },
   { href: '/echte-hochzeiten', key: 'weddings' },

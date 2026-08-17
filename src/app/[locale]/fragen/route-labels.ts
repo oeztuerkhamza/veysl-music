@@ -18,6 +18,7 @@ export const ROUTE_LABEL_KEY: Partial<Record<StaticPathname, string>> = {
   // in der Fragen-Seite wie beim islamischen Eintrag darüber.
   '/tuerkischer-dj-stuttgart': 'nav.turkishDj',
   '/tuerkischer-dj-baden-wuerttemberg': 'nav.turkishDjBw',
+  '/tuerkischer-dj-deutschland': 'nav.turkishDjDe',
   '/pakete': 'nav.packages',
   '/echte-hochzeiten': 'nav.weddings',
   '/ablauf': 'nav.process',
