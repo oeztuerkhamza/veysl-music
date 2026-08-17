@@ -747,12 +747,12 @@
     "hero": {
       "eyebrow": "Turkish DJ · Germany-wide",
       "title": "Turkish DJ for all of Germany",
-      "subtitle": "Munich or Berlin, Frankfurt or Hamburg: halay, gelin çıkarma and hosting in Turkish and German all travel along — from Stuttgart, backed by {years}+ years and {events}+ celebrations."
+      "subtitle": "Munich or Berlin, Frankfurt or Hamburg: halay, gelin çıkarma and hosting in Turkish and German all travel with him — from Stuttgart, backed by {years}+ years and {events}+ celebrations."
     },
     "intro": {
       "eyebrow": "One niche, a whole country",
       "title": "Why couples book a Turkish DJ from another city",
-      "body": "Turkish and German-Turkish weddings are celebrated all over Germany — from Berlin via Cologne and the Ruhr to Frankfurt and Munich. Couples looking for a DJ for one rarely want \"whoever is local\"; they want someone who can read a halay circle, knows the kına dramaturgy and hosts fluently in Turkish and German. That is exactly what gets booked across city limits: Veysel lives in Stuttgart and is bookable Germany-wide — as a DJ, live musician on saz and guitar, and with a live orchestra, for over {years} years."
+      "body": "Turkish and German-Turkish weddings are celebrated all over Germany — from Berlin via Cologne and the Ruhr to Frankfurt and Munich. Couples searching for that kind of DJ rarely want \"whoever is local\"; they want someone who can read a halay circle, knows the kına dramaturgy and hosts fluently in Turkish and German. That is exactly what gets booked across city limits: Veysel lives in Stuttgart and is bookable Germany-wide — as a DJ, live musician on saz and guitar, and with a live orchestra, for over {years} years."
     },
     "pillars": {
       "eyebrow": "Across long distances",
@@ -760,15 +760,15 @@
       "items": {
         "logistics": {
           "title": "Travel and overnight stay are in the quote",
-          "text": "Whether Munich or Berlin: the journey appears as its own line in the written quote — together with an overnight stay when the party runs into the night. For very distant dates, equipment can be hired locally instead of driving the own rig across the country; that too is decided before you sign, not after."
+          "text": "Whether Munich or Berlin: the journey appears as its own line in the written quote — together with an overnight stay when the party runs into the night. For very long distances, equipment can be hired locally instead of hauling the rig across the country; that too is decided before you sign, not after."
         },
         "program": {
           "title": "The programme doesn't shrink with distance",
           "text": "Halay alongside the charts, gelin çıkarma before the first dance, the kına ceremony with its own dramaturgy: the running order is planned to the minute in the planning call and is the same in Hamburg as in Stuttgart — with live orchestra and horns if you wish."
         },
         "oneSupplier": {
-          "title": "One supplier instead of three trades",
-          "text": "DJ, live music on saz and guitar, hosting in German, Turkish and English, and the event equipment come from one supplier. For a celebration far from home that means one planning call, one contract, one point of contact — instead of coordinating three trades from a distance."
+          "title": "One supplier instead of three",
+          "text": "DJ, live music on saz and guitar, hosting in German, Turkish and English, and the event equipment come from one supplier. For a celebration far from home that means one planning call, one contract, one point of contact — instead of coordinating three separate vendors from a distance."
         }
       }
     },
@@ -817,10 +817,6 @@
         {
           "q": "How does a booking in Munich or Berlin work when the DJ is based in Stuttgart?",
           "a": "Exactly like one in Stuttgart — only the logistics are added. The planning call happens by video or phone anyway; travel, an overnight stay where needed, and local equipment hire for very long distances all appear as their own lines in the written quote before you commit."
-        },
-        {
-          "q": "What does a Turkish DJ cost outside Baden-Württemberg?",
-          "a": "The DJ part itself — playing time, programme, hosting — costs the same everywhere; only travel and accommodation change with distance, and both are itemised openly in the quote rather than hidden in the price. Your individual quote usually arrives within 24 hours."
         },
         {
           "q": "Is the full Turkish programme available in Hamburg or Cologne too?",

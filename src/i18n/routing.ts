@@ -283,9 +283,10 @@ export const pathnames = {
    * Die nackte Kopfabfrage „türkischer dj" hatte keine eigene Seite — die
    * Stuttgart-Seite trägt die Stadt-, die BW-Seite die Landes-Variante; wer
    * aus München oder Köln sucht, fand keine passende Ebene. Der türkische
-   * Slug ist bewusst die exakte Abfrage `türk dj almanya`
-   * (SEO-KEYWORD-MAP.md §3 führt sie, geroutet bis dahin nur auf
-   * Startseiten-Fließtext).
+   * Slug `turk-dj-almanya` ist aus den beiden Varianten extrapoliert, die
+   * SEO-KEYWORD-MAP.md §3 tatsächlich führt (`türk düğün dj almanya`,
+   * `almanya düğün dj` — beide bis dahin nur auf Startseiten-Fließtext
+   * geroutet); die kürzeste Form beider ist genau diese Wortgruppe.
    *
    * Faktenrahmen wie beim Europa-Cluster: `site.germanyCities` ist eine
    * „deutschlandweit **buchbar**"-Aussage („Schwerpunkt Ballungsräume",
