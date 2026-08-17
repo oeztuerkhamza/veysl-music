@@ -800,6 +800,10 @@
         {
           "metro": "Berlin & Osten",
           "towns": "Potsdam, Leipzig, Dresden"
+        },
+        {
+          "metro": "Grenznah: Elsass & Schweiz",
+          "towns": "Straßburg, Colmar, Basel, Zürich"
         }
       ],
       "note": "Ihre Stadt ist nicht genannt? Die Liste sind Beispiele — entscheidend ist der Termin, nicht die Postleitzahl.",

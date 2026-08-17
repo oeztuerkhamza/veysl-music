@@ -800,6 +800,10 @@
         {
           "metro": "Berlin & the east",
           "towns": "Potsdam, Leipzig, Dresden"
+        },
+        {
+          "metro": "Just across the border: Alsace & Switzerland",
+          "towns": "Strasbourg, Colmar, Basel, Zurich"
         }
       ],
       "note": "Your city not named? The list is examples — what matters is the date, not the postcode.",
