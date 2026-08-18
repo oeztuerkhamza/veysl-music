@@ -362,6 +362,72 @@
       }
     }
   },
+  "upload":   {
+    "metaTitle": "Wêneyan bar bike — DJ Veys",
+    "eyebrow": "Wêneyên we",
+    "title": "Wêneyên {couple}",
+    "intro": "Spas ku hûn wêneyên xwe parve dikin. Li vir wêne û vîdyoyên kurt ên şeva xwe bar bikin — Veysel li wan dinêre û berî ku tiştek li ser malperê xuya bibe bi we re dipeyive.",
+    "photos": {
+      "title": "Wêne",
+      "hint": "Herî zêde {max} wêne, her yek herî zêde {size}.",
+      "choose": "Wêneyan hilbijêre",
+      "addMore": "Wêneyên din"
+    },
+    "clips": {
+      "title": "Vîdyo",
+      "hint": "Beşên kurt, herî zêde {max} heb, her yek herî zêde {size}. Ji bo fîlmên dirêj ji kerema xwe girêdana YouTube ya jêrîn bikar bînin.",
+      "choose": "Vîdyoyê hilbijêre"
+    },
+    "youtube": {
+      "hint": "Vîdyoya dawetê jixwe li YouTube ye? Wê demê girêdan bes e.",
+      "add": "Girêdana YouTube zêde bike"
+    },
+    "name": {
+      "label": "Navê we",
+      "placeholder": "mînak Ayşe & Mehmet"
+    },
+    "note": {
+      "label": "Hûn dixwazin tiştekî binivîsin?",
+      "placeholder": "Şev ji bo we çawa bû?"
+    },
+    "consent": "Em razî ne ku DJ Veys van dîmenan li ser malpera xwe û di kanalên xwe de nîşan bide. Me ji mêvanên ku têne naskirin pirsî. Em dikarin vê razîbûnê her dem paşve bikişînin.",
+    "send": "Bişîne",
+    "sending": "Tê şandin …",
+    "sendingHint": "Ji kerema xwe rûpelê negirin — bi gelek wêneyan ev dikare çend deqîqeyan bidome.",
+    "total": "Bi tevahî {size}",
+    "remove": "Rake",
+    "done": {
+      "title": "Gihîşt — gelek spas!",
+      "text": "Gihîştin: {photos, plural, =0 {tu wêne} other {# wêne}} û {clips, plural, =0 {tu vîdyo} other {# vîdyo}}. Veysel berî weşandinê bi we re dipeyive.",
+      "again": "Hîn zêdetir bar bike"
+    },
+    "invalid": {
+      "title": "Ev girêdan êdî naxebite",
+      "text": "Girêdan qediyaye an hatiye vekişandin. Kurt bi Veysel re bipeyivin — ew ê ya nû bişîne."
+    },
+    "errors": {
+      "photoType": "{name} formatek wêneyê ya piştgirîkirî nîne (JPG, PNG, WebP).",
+      "photoSize": "{name} ji {max} mezintir e.",
+      "photoCount": "Herî zêde {max} wêne bi carekê — yên mayî di gera duyemîn de.",
+      "clipType": "{name} formatek vîdyoyê ya piştgirîkirî nîne (MP4, MOV, WebM).",
+      "clipSize": "{name} ji {max} mezintir e. Ji bo fîlmên dirêj girêdana YouTube bikar bînin.",
+      "clipCount": "Herî zêde {max} vîdyo bi carekê.",
+      "total": "Bi hev re pir mezin (herî zêde {max}). Ji kerema xwe di du geran de bişînin.",
+      "empty": "Ji kerema xwe herî kêm wêneyek an vîdyoyek hilbijêrin, an tiştekî binivîsin.",
+      "server": {
+        "invalid_token": "Ev girêdan êdî naxebite.",
+        "rate_limited": "Di demeke kurt de gelek hewldan. Ji kerema xwe piştî çend deqîqeyan dîsa biceribînin.",
+        "too_large": "Pel bi hev re pir mezin in. Ji kerema xwe di du geran de bişînin.",
+        "too_many_files": "Bi carekê pir pel.",
+        "bad_photo": "Wêneyek nehat qebûlkirin.",
+        "bad_clip": "Vîdyoyek nehat qebûlkirin.",
+        "bad_youtube": "Yek ji girêdanên YouTube nehat naskirin.",
+        "invalid_body": "Barkirin qut bû. Ji kerema xwe dîsa biceribînin.",
+        "empty": "Tiştek ji bo şandinê tunebû.",
+        "server_error": "Tiştek çewt çû. Ji kerema xwe dîsa biceribînin."
+      }
+    }
+  },
   "weddings": {
     "hero": {
       "eyebrow": "Referans",

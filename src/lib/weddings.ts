@@ -2,7 +2,7 @@ import 'server-only';
 
 import type { Locale } from '@/i18n/routing';
 import { toSameOriginMediaPath } from '@/lib/media-url';
-import { readFromCms } from '@/lib/payload';
+import { getPayloadClient, readFromCms } from '@/lib/payload';
 import { extractYouTubeVideoId, youTubeEmbedUrl, youTubeThumbnailUrl } from '@/lib/social/embed';
 import { cacheRemoteImage } from '@/lib/social/media-cache';
 
@@ -45,6 +45,13 @@ export interface WeddingVideo {
   title?: string;
 }
 
+export interface WeddingClip {
+  /** Pfad auf den eigenen Server — die Datei liegt im `veysl-media`-Volume. */
+  src: string;
+  type: string;
+  title?: string;
+}
+
 export interface WeddingReference {
   id: string;
   coupleLabel: string;
@@ -56,6 +63,8 @@ export interface WeddingReference {
   /** Titelbild — ohne eigenes Titelbild das erste Galeriefoto. */
   cover?: WeddingPhoto;
   gallery: WeddingPhoto[];
+  /** Selbst gehostete kurze Videodateien (meist vom Paar hochgeladen). */
+  clips: WeddingClip[];
   videos: WeddingVideo[];
   /** Markdown-Fließtext in der angefragten Sprache (Payload fällt auf Deutsch zurück). */
   story?: string;
@@ -68,6 +77,12 @@ interface MediaDoc {
   height?: number | null;
 }
 
+interface ClipDoc {
+  url?: string | null;
+  mimeType?: string | null;
+  title?: string | null;
+}
+
 interface WeddingDoc {
   id: string | number;
   coupleLabel?: string | null;
@@ -77,6 +92,7 @@ interface WeddingDoc {
   date?: string | null;
   coverImage?: MediaDoc | string | number | null;
   gallery?: { image?: MediaDoc | string | number | null }[] | null;
+  clips?: { clip?: ClipDoc | string | number | null }[] | null;
   videos?: { url?: string | null; title?: string | null }[] | null;
   story?: string | null;
 }
@@ -95,6 +111,17 @@ function toPhoto(value: MediaDoc | string | number | null | undefined): WeddingP
     alt: typeof value.alt === 'string' ? value.alt : '',
     width: typeof value.width === 'number' ? value.width : undefined,
     height: typeof value.height === 'number' ? value.height : undefined,
+  };
+}
+
+function toClip(value: ClipDoc | string | number | null | undefined): WeddingClip | null {
+  if (!value || typeof value !== 'object' || !value.url) return null;
+  return {
+    src: toSameOriginMediaPath(value.url),
+    // Ohne korrekten `type` am <source> rät der Browser anhand der Endung —
+    // bei einer iPhone-.mov geht das regelmäßig schief.
+    type: value.mimeType || 'video/mp4',
+    title: value.title?.trim() || undefined,
   };
 }
 
@@ -126,6 +153,10 @@ function toWedding(doc: WeddingDoc): WeddingReference | null {
     .map(toVideo)
     .filter((video): video is WeddingVideo => video !== null);
 
+  const clips = (doc.clips ?? [])
+    .map((entry) => toClip(entry?.clip))
+    .filter((clip): clip is WeddingClip => clip !== null);
+
   const cover = toPhoto(doc.coverImage) ?? gallery[0];
 
   return {
@@ -143,6 +174,7 @@ function toWedding(doc: WeddingDoc): WeddingReference | null {
     // beide Felder legt. Verglichen wird über die Datei, nicht über die
     // Position.
     gallery: gallery.filter((photo) => photo.src !== cover?.src),
+    clips,
     videos,
     story: doc.story?.trim() || undefined,
   };
@@ -216,4 +248,40 @@ export async function getPublishedWeddings(locale: Locale, limit = 24): Promise<
   );
 
   return resolveVideoPosters(weddings);
+}
+
+/**
+ * Die Hochzeit hinter einem Upload-Token — für `/fotos/<token>`.
+ *
+ * Bewusst **nicht** über `readFromCms`: Hier ist ein Fallback die falsche
+ * Antwort. Fällt die Datenbank aus, würde „keine Hochzeit gefunden“ dem Paar
+ * sagen, sein Link sei ungültig — und ein gültiger Link, den jemand für
+ * kaputt hält, wird kein zweites Mal geöffnet. Ein Fehler darf hier nach oben
+ * durchschlagen und die Fehlerseite zeigen: „gerade kaputt, versuch es
+ * gleich nochmal“ ist die ehrliche Auskunft.
+ *
+ * Der Statusfilter fehlt mit Absicht — ein Entwurf ist genau der Normalfall.
+ * Der Betreiber legt die Hochzeit nach dem Fest an, schickt den Link und
+ * veröffentlicht erst, wenn das Material da und freigegeben ist.
+ */
+export async function getWeddingByUploadToken(
+  token: string
+): Promise<{ id: string; coupleLabel: string } | null> {
+  if (!token || token.length > 128) return null;
+
+  const payload = await getPayloadClient();
+  const result = await payload.find({
+    collection: 'weddings',
+    where: { uploadToken: { equals: token } },
+    limit: 1,
+    depth: 0,
+    pagination: false,
+  });
+
+  const doc = result.docs[0];
+  // Abgeschaltet wird wie unbekannt behandelt, damit ein zurückgezogener Link
+  // nicht verrät, dass es ihn einmal gab (gleiche Regel wie in der Route).
+  if (!doc || doc.uploadEnabled === false) return null;
+
+  return { id: String(doc.id), coupleLabel: doc.coupleLabel ?? '' };
 }

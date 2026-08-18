@@ -361,6 +361,72 @@
       }
     }
   },
+  "upload":   {
+    "metaTitle": "Subir fotos — DJ Veys",
+    "eyebrow": "Vuestras fotos",
+    "title": "Fotos de {couple}",
+    "intro": "Gracias por compartir vuestras fotos. Subid aquí las fotos y los vídeos cortos de vuestra noche — Veysel los revisa y os escribe antes de que aparezca nada en la web.",
+    "photos": {
+      "title": "Fotos",
+      "hint": "Hasta {max} fotos, cada una de {size} como máximo.",
+      "choose": "Elegir fotos",
+      "addMore": "Añadir más fotos"
+    },
+    "clips": {
+      "title": "Vídeos",
+      "hint": "Clips cortos, hasta {max}, cada uno de {size} como máximo. Para películas largas usad el enlace de YouTube de abajo.",
+      "choose": "Elegir un vídeo"
+    },
+    "youtube": {
+      "hint": "¿Vuestro vídeo de boda ya está en YouTube? Entonces basta con el enlace.",
+      "add": "Añadir enlace de YouTube"
+    },
+    "name": {
+      "label": "Vuestro nombre",
+      "placeholder": "p. ej. Ayşe & Mehmet"
+    },
+    "note": {
+      "label": "¿Queréis escribir algo?",
+      "placeholder": "¿Cómo fue la noche para vosotros?"
+    },
+    "consent": "Aceptamos que DJ Veys muestre estas imágenes en su web y en sus canales. Hemos preguntado a los invitados reconocibles. Podemos retirar este consentimiento en cualquier momento y sin formalidades.",
+    "send": "Enviar",
+    "sending": "Enviando …",
+    "sendingHint": "Por favor, no cerréis esta ventana — con muchas fotos puede tardar unos minutos.",
+    "total": "{size} en total",
+    "remove": "Quitar",
+    "done": {
+      "title": "Recibido, ¡muchas gracias!",
+      "text": "Recibido: {photos, plural, =0 {ninguna foto} one {una foto} other {# fotos}} y {clips, plural, =0 {ningún vídeo} one {un vídeo} other {# vídeos}}. Veysel os escribirá antes de publicar nada.",
+      "again": "Subir más"
+    },
+    "invalid": {
+      "title": "Este enlace ya no funciona",
+      "text": "El enlace ha caducado o se ha retirado. Escribid a Veysel y os enviará uno nuevo."
+    },
+    "errors": {
+      "photoType": "{name} no es un formato de imagen compatible (JPG, PNG, WebP).",
+      "photoSize": "{name} supera {max}.",
+      "photoCount": "Como máximo {max} fotos a la vez — el resto cabe en una segunda tanda.",
+      "clipType": "{name} no es un formato de vídeo compatible (MP4, MOV, WebM).",
+      "clipSize": "{name} supera {max}. Para películas largas usad el enlace de YouTube.",
+      "clipCount": "Como máximo {max} vídeos a la vez.",
+      "total": "Demasiado grande en total ({max} como máximo). Enviadlo en dos tandas.",
+      "empty": "Elegid al menos una foto o un vídeo, o escribidnos algo.",
+      "server": {
+        "invalid_token": "Este enlace ya no funciona.",
+        "rate_limited": "Demasiados intentos en poco tiempo. Probad de nuevo en unos minutos.",
+        "too_large": "Los archivos son demasiado grandes en total. Enviadlo en dos tandas.",
+        "too_many_files": "Demasiados archivos a la vez.",
+        "bad_photo": "Una de las fotos no se aceptó.",
+        "bad_clip": "Uno de los vídeos no se aceptó.",
+        "bad_youtube": "Uno de los enlaces de YouTube no se reconoce.",
+        "invalid_body": "La subida se interrumpió. Probad de nuevo.",
+        "empty": "No había nada que enviar.",
+        "server_error": "Algo ha salido mal. Probad de nuevo."
+      }
+    }
+  },
   "weddings": {
     "hero": {
       "eyebrow": "Referencias",

@@ -1,6 +1,7 @@
-import type { Access, CollectionConfig } from 'payload';
+import { randomBytes } from 'node:crypto';
+import type { Access, CollectionConfig, CollectionBeforeChangeHook } from 'payload';
 import { parseSocialPermalink } from '@/lib/social/permalink';
-import { isAdmin } from '../access/is-admin';
+import { isAdmin, isAdminField } from '../access/is-admin';
 import { isIsoDateString } from '../utils/iso-date';
 import { revalidateAfterChange, revalidateAfterDelete } from '../revalidate';
 
@@ -8,6 +9,29 @@ import { revalidateAfterChange, revalidateAfterDelete } from '../revalidate';
 const readPublishedOrAdmin: Access = ({ req }) => {
   if (req.user) return true;
   return { status: { equals: 'published' } };
+};
+
+/**
+ * Vergibt den Upload-Token, sobald einer fehlt — beim Anlegen automatisch,
+ * und wieder, wenn der Betreiber ihn im Editor bewusst leert („Link
+ * erneuern“). Der alte Link ist damit tot; das ist der einzige Weg, einen
+ * einmal verschickten Link zurückzuziehen.
+ *
+ * `randomBytes(24)` statt `Math.random()` oder einer laufenden Nummer: Der
+ * Token IST die Zugangsberechtigung zu dieser Hochzeit. 192 zufällige Bit
+ * sind nicht zu raten; eine ID oder ein Zeitstempel wäre in Minuten
+ * durchprobiert, und wer ihn hätte, könnte Bilder an eine fremde Hochzeit
+ * hängen.
+ *
+ * `base64url` statt `hex`: gleiche Entropie auf 32 statt 48 Zeichen, und das
+ * Alphabet enthält weder `+` noch `/` noch `=`, überlebt also das Kopieren
+ * in WhatsApp ohne Prozentkodierung.
+ */
+const ensureUploadToken: CollectionBeforeChangeHook = ({ data }) => {
+  if (!data.uploadToken) {
+    data.uploadToken = randomBytes(24).toString('base64url');
+  }
+  return data;
 };
 
 /**
@@ -51,6 +75,7 @@ export const Weddings: CollectionConfig = {
   // angelegte Hochzeit erst beim nächsten Deploy, weil `/echte-hochzeiten`
   // statisch vorgerendert wird (siehe src/payload/revalidate.ts).
   hooks: {
+    beforeChange: [ensureUploadToken],
     afterChange: [revalidateAfterChange],
     afterDelete: [revalidateAfterDelete],
   },
@@ -162,6 +187,30 @@ export const Weddings: CollectionConfig = {
       ],
     },
     {
+      name: 'clips',
+      label: { de: 'Hochgeladene Videos', tr: 'Yüklenen videolar' },
+      type: 'array',
+      labels: {
+        singular: { de: 'Video-Datei', tr: 'Video dosyası' },
+        plural: { de: 'Video-Dateien', tr: 'Video dosyaları' },
+      },
+      admin: {
+        description: {
+          de: 'Kurze Videodateien, die direkt hier liegen (meist vom Paar hochgeladen). Für lange Filme bitte stattdessen unten einen YouTube-Link eintragen — der belastet weder Speicher noch Ladezeit.',
+          tr: 'Doğrudan burada duran kısa video dosyaları (çoğunlukla çiftin yüklediği). Uzun filmler için aşağıya YouTube bağlantısı girin — depolamayı da yükleme süresini de yormaz.',
+        },
+      },
+      fields: [
+        {
+          name: 'clip',
+          label: { de: 'Video-Datei', tr: 'Video dosyası' },
+          type: 'upload',
+          relationTo: 'wedding-clips',
+          required: true,
+        },
+      ],
+    },
+    {
       name: 'videos',
       label: { de: 'Videos', tr: 'Videolar' },
       type: 'array',
@@ -227,6 +276,45 @@ export const Weddings: CollectionConfig = {
         description: {
           de: 'Erst „Veröffentlicht“ macht die Hochzeit auf der Website sichtbar.',
           tr: 'Düğün ancak "Yayında" seçilince web sitesinde görünür.',
+        },
+      },
+    },
+
+    // --- Upload-Link für das Brautpaar -----------------------------------
+    {
+      name: 'uploadToken',
+      label: { de: 'Upload-Token', tr: 'Yükleme anahtarı' },
+      type: 'text',
+      unique: true,
+      index: true,
+      /**
+       * Feldbezogene Leseregel, und die ist hier nicht optional.
+       *
+       * `weddings` ist für veröffentlichte Datensätze öffentlich lesbar —
+       * ohne diese Zeile stünde der Token in der Antwort von
+       * `GET /api/weddings` für jeden im Netz, und damit dürfte jeder
+       * Dateien an jede Hochzeit hängen. Der Token ist die
+       * Zugangsberechtigung; er darf die Serverseite nur in dem Link
+       * verlassen, den der Betreiber selbst verschickt.
+       */
+      access: { read: isAdminField, update: isAdminField },
+      admin: {
+        readOnly: true,
+        description: {
+          de: 'Der geheime Teil des Upload-Links. Wird automatisch vergeben. Zum Zurückziehen eines verschickten Links auf der Seite „Link erneuern“ drücken — der alte Link führt dann ins Leere.',
+          tr: 'Yükleme bağlantısının gizli kısmı. Otomatik atanır. Gönderilmiş bir bağlantıyı iptal etmek için sayfadaki "Link erneuern" düğmesini kullanın — eski bağlantı çalışmaz olur.',
+        },
+      },
+    },
+    {
+      name: 'uploadEnabled',
+      label: { de: 'Upload-Link aktiv', tr: 'Yükleme bağlantısı açık' },
+      type: 'checkbox',
+      defaultValue: true,
+      admin: {
+        description: {
+          de: 'Abschalten, wenn das Paar alles geschickt hat. Der Link antwortet dann freundlich, dass der Upload geschlossen ist — ohne dass der Token neu vergeben werden muss.',
+          tr: 'Çift her şeyi gönderdiyse kapatın. Bağlantı o zaman yüklemenin kapandığını nazikçe bildirir — anahtarı yenilemeye gerek kalmaz.',
         },
       },
     },

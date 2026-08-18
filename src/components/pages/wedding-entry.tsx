@@ -117,6 +117,38 @@ export function WeddingEntry({ wedding, localeTag, labels }: WeddingEntryProps) 
         </section>
       ) : null}
 
+      {wedding.clips.length > 0 ? (
+        <section className="mt-10" aria-label={labels.videos}>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {wedding.clips.map((clip) => (
+              <Reveal key={clip.src}>
+                <figure>
+                  {/*
+                    Selbst gehostete Datei, deshalb ein echtes <video> statt der
+                    Klick-Fassade — die schützt vor einem Drittanbieter-Embed, und
+                    hier gibt es keinen Dritten. `preload="metadata"` lädt nur den
+                    Dateikopf und das erste Bild, nicht das Video: Bei mehreren
+                    Clips auf einer Seite ist der Unterschied zwischen ein paar
+                    Kilobyte und hundert Megabyte beim Seitenaufbau.
+                  */}
+                  <video
+                    controls
+                    preload="metadata"
+                    playsInline
+                    className="w-full rounded-lg bg-black"
+                  >
+                    <source src={clip.src} type={clip.type} />
+                  </video>
+                  {clip.title ? (
+                    <figcaption className="mt-2 text-sm text-ink-muted">{clip.title}</figcaption>
+                  ) : null}
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       {wedding.videos.length > 0 ? (
         <section className="mt-10" aria-label={labels.videos}>
           <div className="grid gap-6 sm:grid-cols-2">

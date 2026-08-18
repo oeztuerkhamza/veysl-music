@@ -17,6 +17,8 @@ import { Media } from './src/payload/collections/media';
 import { SiteImageSlots } from './src/payload/collections/site-image-slots';
 import { Testimonials } from './src/payload/collections/testimonials';
 import { Users } from './src/payload/collections/users';
+import { WeddingClips } from './src/payload/collections/wedding-clips';
+import { WeddingSubmissions } from './src/payload/collections/wedding-submissions';
 import { Weddings } from './src/payload/collections/weddings';
 import { WhatsappLeads } from './src/payload/collections/whatsapp-leads';
 import { SiteSettings } from './src/payload/globals/site-settings';
@@ -164,6 +166,8 @@ export default buildConfig({
     BlogPosts,
     Testimonials,
     Weddings,
+    WeddingClips,
+    WeddingSubmissions,
   ],
   globals: [SiteSettings],
   /**

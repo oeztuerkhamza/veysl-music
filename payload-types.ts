@@ -79,6 +79,8 @@ export interface Config {
     'blog-posts': BlogPost;
     testimonials: Testimonial;
     weddings: Wedding;
+    'wedding-clips': WeddingClip;
+    'wedding-submissions': WeddingSubmission;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -98,6 +100,8 @@ export interface Config {
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     weddings: WeddingsSelect<false> | WeddingsSelect<true>;
+    'wedding-clips': WeddingClipsSelect<false> | WeddingClipsSelect<true>;
+    'wedding-submissions': WeddingSubmissionsSelect<false> | WeddingSubmissionsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -582,6 +586,15 @@ export interface Wedding {
       }[]
     | null;
   /**
+   * Kurze Videodateien, die direkt hier liegen (meist vom Paar hochgeladen). Für lange Filme bitte stattdessen unten einen YouTube-Link eintragen — der belastet weder Speicher noch Ladezeit.
+   */
+  clips?:
+    | {
+        clip: number | WeddingClip;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * YouTube-Links dieses Abends. Das Vorschaubild kommt automatisch von YouTube — nichts hochzuladen. Abgespielt wird erst nach Klick.
    */
   videos?:
@@ -601,6 +614,80 @@ export interface Wedding {
    * Erst „Veröffentlicht“ macht die Hochzeit auf der Website sichtbar.
    */
   status: 'draft' | 'published';
+  /**
+   * Der geheime Teil des Upload-Links. Wird automatisch vergeben. Zum Zurückziehen eines verschickten Links auf der Seite „Link erneuern“ drücken — der alte Link führt dann ins Leere.
+   */
+  uploadToken?: string | null;
+  /**
+   * Abschalten, wenn das Paar alles geschickt hat. Der Link antwortet dann freundlich, dass der Upload geschlossen ist — ohne dass der Token neu vergeben werden muss.
+   */
+  uploadEnabled?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Kurze Videoausschnitte von Hochzeiten (Handy-Clips). Für lange Filme bitte einen YouTube-Link an der Hochzeit selbst hinterlegen.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "wedding-clips".
+ */
+export interface WeddingClip {
+  id: number;
+  /**
+   * Optional — z. B. „Einzug“. Wird unter dem Video angezeigt.
+   */
+  title?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * Was Paare über ihren Upload-Link geschickt haben. Nichts davon ist öffentlich sichtbar, bevor es auf der Seite „Echte Hochzeiten“ übernommen wurde.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "wedding-submissions".
+ */
+export interface WeddingSubmission {
+  id: number;
+  /**
+   * Ergibt sich aus dem Upload-Link — das Paar wählt nichts aus.
+   */
+  wedding: number | Wedding;
+  /**
+   * Wie sich die Person im Formular genannt hat. Ungeprüft — jeder mit dem Link kann hier alles eintragen.
+   */
+  submitterName?: string | null;
+  /**
+   * Was das Paar zum Abend geschrieben hat. Nicht automatisch öffentlich — taugt aber oft als Kundenstimme (mit Rückfrage).
+   */
+  note?: string | null;
+  photos?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  clips?:
+    | {
+        clip: number | WeddingClip;
+        id?: string | null;
+      }[]
+    | null;
+  youtubeUrls?:
+    | {
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  status: 'pending' | 'handled';
   updatedAt: string;
   createdAt: string;
 }
@@ -675,6 +762,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'weddings';
         value: number | Wedding;
+      } | null)
+    | ({
+        relationTo: 'wedding-clips';
+        value: number | WeddingClip;
+      } | null)
+    | ({
+        relationTo: 'wedding-submissions';
+        value: number | WeddingSubmission;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -967,11 +1062,67 @@ export interface WeddingsSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  clips?:
+    | T
+    | {
+        clip?: T;
+        id?: T;
+      };
   videos?:
     | T
     | {
         url?: T;
         title?: T;
+        id?: T;
+      };
+  status?: T;
+  uploadToken?: T;
+  uploadEnabled?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "wedding-clips_select".
+ */
+export interface WeddingClipsSelect<T extends boolean = true> {
+  title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "wedding-submissions_select".
+ */
+export interface WeddingSubmissionsSelect<T extends boolean = true> {
+  wedding?: T;
+  submitterName?: T;
+  note?: T;
+  photos?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  clips?:
+    | T
+    | {
+        clip?: T;
+        id?: T;
+      };
+  youtubeUrls?:
+    | T
+    | {
+        url?: T;
         id?: T;
       };
   status?: T;

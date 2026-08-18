@@ -111,6 +111,41 @@ Zwei Dinge dabei beachten:
   türkische Fassung die Seite auf Türkisch aufrufen und dort erneut eintragen —
   Eckdaten und Fotos gelten automatisch für alle Sprachen.
 
+### Das Paar lädt selbst hoch — der schnellste Weg an echte Bilder
+
+Punkt 1 dieser Liste ist der größte Hebel der ganzen Website, und der Engpass war
+nie der gute Wille der Paare, sondern der Weg: „schick mir mal die Fotos" endet in
+WhatsApp-Kompression, verstreuten Nachrichten und Bildern, die niemand mehr
+zuordnen kann.
+
+Deshalb hat jede Hochzeit einen **eigenen Upload-Link**. Im Bearbeiten-Formular
+steht er oben, mit einem Knopf „Kopieren" — direkt an das Paar schicken (WhatsApp,
+SMS, E-Mail). Das Paar öffnet ihn auf dem Handy, wählt Fotos aus der Kamerarolle,
+kann kurze Videos und YouTube-Links mitschicken und etwas dazu schreiben.
+
+Was dabei zu wissen ist:
+
+- **Nichts erscheint automatisch.** Alles landet im Posteingang. Auf
+  `/echte-hochzeiten` taucht dann unten rechts „Neue Fotos (N)" auf; dort steht
+  „Übernehmen" (hängt alles an die Hochzeit) und „Verwerfen" (löscht es endgültig).
+- **Der Link ist das Passwort.** Wer ihn hat, kann hochladen — er ist nicht zu
+  erraten, aber er wird weitergeleitet. Ist er in der falschen Gruppe gelandet:
+  „Link erneuern" im Formular, der alte funktioniert sofort nicht mehr.
+- **Die Einwilligung holt die Seite selbst ein.** Das Paar muss bestätigen, dass
+  die Bilder gezeigt werden dürfen und erkennbare Gäste gefragt wurden. Das ersetzt
+  keine schriftliche Freigabe für Zweifelsfälle, aber es dokumentiert den
+  Normalfall — und die Notiz des Paares taugt oft direkt als Kundenstimme
+  (Punkt 6 oben), wenn man kurz nachfragt.
+- **Videos: kurz ja, Hochzeitsfilm nein.** Bis 100 MB pro Clip (etwa eine Minute
+  Handyvideo), höchstens drei auf einmal. Der komplette Film gehört auf YouTube —
+  dafür ist das Linkfeld da. Ein 2-GB-Upload würde den Server ausbremsen, für alle
+  Besucher gleichzeitig.
+- **Fotos: bis 30 auf einmal**, je 20 MB. Mehr geht, nur in zwei Durchgängen.
+
+> Praktisch: Die Hochzeit gleich nach dem Fest als **Entwurf** anlegen (Paar, Stadt,
+> Datum), den Link mitschicken, solange der Abend noch frisch ist — und erst
+> veröffentlichen, wenn Material und Freigabe da sind.
+
 ## 🟢 7. Musik und Inhalte
 
 - [ ] **Mix-Dateien** (MP3) für den Player — Empfang, Dinner, Peaktime, Halay/Arabesk,

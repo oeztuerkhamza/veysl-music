@@ -361,6 +361,72 @@
       }
     }
   },
+  "upload":   {
+    "metaTitle": "Foto's uploaden — DJ Veys",
+    "eyebrow": "Jullie foto’s",
+    "title": "Foto's van {couple}",
+    "intro": "Fijn dat jullie je foto’s delen. Upload hier foto’s en korte video’s van jullie avond — Veysel bekijkt ze en neemt contact op voordat er iets op de website verschijnt.",
+    "photos": {
+      "title": "Foto's",
+      "hint": "Tot {max} foto’s, elk maximaal {size}.",
+      "choose": "Foto’s kiezen",
+      "addMore": "Meer foto’s"
+    },
+    "clips": {
+      "title": "Video's",
+      "hint": "Korte fragmenten, tot {max} stuks, elk maximaal {size}. Gebruik voor langere films de YouTube-link hieronder.",
+      "choose": "Video kiezen"
+    },
+    "youtube": {
+      "hint": "Staat jullie trouwvideo al op YouTube? Dan is de link genoeg.",
+      "add": "YouTube-link toevoegen"
+    },
+    "name": {
+      "label": "Jullie naam",
+      "placeholder": "bijv. Ayşe & Mehmet"
+    },
+    "note": {
+      "label": "Willen jullie er iets bij schrijven?",
+      "placeholder": "Hoe was de avond voor jullie?"
+    },
+    "consent": "Wij gaan ermee akkoord dat DJ Veys deze beelden op zijn website en kanalen toont. Herkenbare gasten hebben wij gevraagd. Wij kunnen deze toestemming op elk moment vormvrij intrekken.",
+    "send": "Versturen",
+    "sending": "Bezig met versturen …",
+    "sendingHint": "Laat dit venster open staan — bij veel foto’s kan dit een paar minuten duren.",
+    "total": "In totaal {size}",
+    "remove": "Verwijderen",
+    "done": {
+      "title": "Aangekomen — hartelijk dank!",
+      "text": "Aangekomen: {photos, plural, =0 {geen foto’s} one {één foto} other {# foto’s}} en {clips, plural, =0 {geen video’s} one {één video} other {# video’s}}. Veysel neemt contact op voordat er iets wordt gepubliceerd.",
+      "again": "Meer uploaden"
+    },
+    "invalid": {
+      "title": "Deze link werkt niet meer",
+      "text": "De link is verlopen of ingetrokken. Stuur Veysel even een bericht, dan krijgen jullie een nieuwe."
+    },
+    "errors": {
+      "photoType": "{name} is geen ondersteund beeldformaat (JPG, PNG, WebP).",
+      "photoSize": "{name} is groter dan {max}.",
+      "photoCount": "Maximaal {max} foto’s tegelijk — de rest past in een tweede ronde.",
+      "clipType": "{name} is geen ondersteund videoformaat (MP4, MOV, WebM).",
+      "clipSize": "{name} is groter dan {max}. Gebruik voor langere films de YouTube-link.",
+      "clipCount": "Maximaal {max} video’s tegelijk.",
+      "total": "Samen te groot (maximaal {max}). Stuur het in twee rondes.",
+      "empty": "Kies minstens één foto of video, of schrijf ons iets.",
+      "server": {
+        "invalid_token": "Deze link werkt niet meer.",
+        "rate_limited": "Te veel pogingen kort na elkaar. Probeer het over een paar minuten opnieuw.",
+        "too_large": "De bestanden zijn samen te groot. Stuur het in twee rondes.",
+        "too_many_files": "Te veel bestanden tegelijk.",
+        "bad_photo": "Een van de foto’s is niet geaccepteerd.",
+        "bad_clip": "Een van de video’s is niet geaccepteerd.",
+        "bad_youtube": "Een van de YouTube-links wordt niet herkend.",
+        "invalid_body": "De upload is onderbroken. Probeer het opnieuw.",
+        "empty": "Er was niets om te versturen.",
+        "server_error": "Er ging iets mis. Probeer het opnieuw."
+      }
+    }
+  },
   "weddings": {
     "hero": {
       "eyebrow": "Referenties",

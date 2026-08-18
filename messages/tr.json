@@ -371,6 +371,72 @@
       }
     }
   },
+  "upload":   {
+    "metaTitle": "Fotoğraf yükleme — DJ Veys",
+    "eyebrow": "Sizin kareleriniz",
+    "title": "{couple} fotoğrafları",
+    "intro": "Fotoğraflarınızı paylaştığınız için teşekkürler. Gecenize ait fotoğrafları ve kısa videoları buradan yükleyebilirsiniz — Veysel hepsine bakar ve web sitesinde bir şey yayınlanmadan önce sizinle konuşur.",
+    "photos": {
+      "title": "Fotoğraflar",
+      "hint": "En fazla {max} fotoğraf, her biri en çok {size}.",
+      "choose": "Fotoğraf seç",
+      "addMore": "Daha fazla fotoğraf"
+    },
+    "clips": {
+      "title": "Videolar",
+      "hint": "Kısa kesitler, en fazla {max} adet, her biri en çok {size}. Uzun filmler için aşağıdaki YouTube bağlantısını kullanın.",
+      "choose": "Video seç"
+    },
+    "youtube": {
+      "hint": "Düğün videonuz YouTube’da mı? O zaman bağlantı yeterli.",
+      "add": "YouTube bağlantısı ekle"
+    },
+    "name": {
+      "label": "Adınız",
+      "placeholder": "örn. Ayşe & Mehmet"
+    },
+    "note": {
+      "label": "Bir şeyler yazmak ister misiniz?",
+      "placeholder": "Gece sizin için nasıldı?"
+    },
+    "consent": "DJ Veys’in bu kayıtları web sitesinde ve kanallarında kullanmasına izin veriyoruz. Görüntüde tanınan misafirlere sorduk. Bu izni istediğimiz zaman, herhangi bir şekle bağlı olmadan geri alabiliriz.",
+    "send": "Gönder",
+    "sending": "Gönderiliyor …",
+    "sendingHint": "Lütfen sayfayı kapatmayın — çok fotoğraf varsa birkaç dakika sürebilir.",
+    "total": "Toplam {size}",
+    "remove": "Kaldır",
+    "done": {
+      "title": "Ulaştı — çok teşekkürler!",
+      "text": "Ulaşanlar: {photos, plural, =0 {fotoğraf yok} other {# fotoğraf}} ve {clips, plural, =0 {video yok} other {# video}}. Veysel yayınlamadan önce sizinle iletişime geçecek.",
+      "again": "Daha fazla yükle"
+    },
+    "invalid": {
+      "title": "Bu bağlantı artık çalışmıyor",
+      "text": "Bağlantının süresi dolmuş ya da geri alınmış. Veysel’e kısaca yazın, size yenisini göndersin."
+    },
+    "errors": {
+      "photoType": "{name} desteklenen bir görsel biçimi değil (JPG, PNG, WebP).",
+      "photoSize": "{name} dosyası {max} sınırından büyük.",
+      "photoCount": "Bir seferde en fazla {max} fotoğraf — gerisini ikinci turda gönderebilirsiniz.",
+      "clipType": "{name} desteklenen bir video biçimi değil (MP4, MOV, WebM).",
+      "clipSize": "{name} dosyası {max} sınırından büyük. Uzun filmler için YouTube bağlantısını kullanın.",
+      "clipCount": "Bir seferde en fazla {max} video.",
+      "total": "Hepsi birlikte çok büyük (en fazla {max}). Lütfen iki turda gönderin.",
+      "empty": "Lütfen en az bir fotoğraf ya da video seçin veya bize bir şeyler yazın.",
+      "server": {
+        "invalid_token": "Bu bağlantı artık çalışmıyor.",
+        "rate_limited": "Kısa sürede çok fazla deneme oldu. Lütfen birkaç dakika sonra tekrar deneyin.",
+        "too_large": "Dosyalar birlikte çok büyük. Lütfen iki turda gönderin.",
+        "too_many_files": "Bir seferde çok fazla dosya.",
+        "bad_photo": "Bir görsel kabul edilmedi.",
+        "bad_clip": "Bir video kabul edilmedi.",
+        "bad_youtube": "YouTube bağlantılarından biri tanınmadı.",
+        "invalid_body": "Yükleme yarıda kesildi. Lütfen tekrar deneyin.",
+        "empty": "Gönderilecek bir şey yoktu.",
+        "server_error": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
+      }
+    }
+  },
   "weddings": {
     "hero": {
       "eyebrow": "Referanslar",
