@@ -29,6 +29,7 @@
  */
 import 'server-only';
 
+import { toSameOriginMediaPath } from '@/lib/media-url';
 import { readFromCms } from '@/lib/payload';
 
 /** The five aspect ratios used across the whole site — deliberately small and closed, so every mounted photo (real or placeholder) reads as part of one system. */
@@ -135,7 +136,7 @@ export const imageSlots: ImageSlot[] = [
     page: 'Echte Hochzeiten — Hero',
     label: 'Atmosphäre „Echte Hochzeiten“',
     purpose:
-      'Stimmungsbild einer echten Hochzeit — Tanzfläche, Lichter, Bewegung, gerne leicht von oben oder seitlich. Kein Einzelpaar-Porträt (das kommt später in die Referenz-Galerie selbst, siehe src/content/weddings.ts), sondern die Atmosphäre des ganzen Abends als Auftakt der Seite.',
+      'Stimmungsbild einer echten Hochzeit — Tanzfläche, Lichter, Bewegung, gerne leicht von oben oder seitlich. Kein Einzelpaar-Porträt (das kommt später in die Referenz-Galerie selbst, siehe die Payload-Collection „Referenz-Hochzeiten“), sondern die Atmosphäre des ganzen Abends als Auftakt der Seite.',
     aspect: '21/9',
     priority: 1,
     // Aus der Kundenlieferung 08/2026: echte Abendhochzeit, Blütenbogen und
@@ -657,20 +658,14 @@ export function getSlotFallback(key: string): ResolvedImage | null {
  * Fremde Hosts bleiben unangetastet — falls Uploads später auf S3 oder einen
  * CDN wandern, fällt der Wert unverändert durch und die Freigabeliste greift
  * wie vorgesehen.
+ *
+ * Die Umsetzung liegt inzwischen in `@/lib/media-url` — dieselbe Umrechnung
+ * braucht auch `@/lib/weddings` für Titelbilder und Galeriefotos, und zwei
+ * Kopien einer Regel, die einen 500er verhindert, driften auseinander. Sie
+ * vergleicht dort zusätzlich gegen `PAYLOAD_SERVER_URL`: genau diesen Wert
+ * hat Payload beim Bauen der URL benutzt, und lokal ist er der einzige
+ * gesetzte von beiden.
  */
-function toSameOriginPath(url: string): string {
-  if (url.startsWith('/')) return url;
-
-  const base = process.env.NEXT_PUBLIC_SITE_URL;
-  if (!base) return url;
-
-  try {
-    const parsed = new URL(url);
-    return parsed.origin === new URL(base).origin ? `${parsed.pathname}${parsed.search}` : url;
-  } catch {
-    return url;
-  }
-}
 
 export async function resolveSlot(key: string): Promise<ResolvedImage | null> {
   // Läuft im Render-Pfad jeder Seite mit Bild-Slot, deshalb über `readFromCms`
@@ -691,7 +686,7 @@ export async function resolveSlot(key: string): Promise<ResolvedImage | null> {
       const image = result.docs[0]?.image;
       if (!image || typeof image !== 'object' || !('url' in image) || !image.url) return null;
 
-      return { src: toSameOriginPath(image.url as string), alt: typeof image.alt === 'string' ? image.alt : '' };
+      return { src: toSameOriginMediaPath(image.url as string), alt: typeof image.alt === 'string' ? image.alt : '' };
     },
     null,
     `site-image "${key}"`

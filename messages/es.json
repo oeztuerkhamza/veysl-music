@@ -371,7 +371,10 @@
     "venuesSubtitle": "Espacios que pisamos con frecuencia y cuya técnica, accesos y acústica ya conocemos.",
     "empty": "La galería de referencias se está completando. Pregúntennos por ejemplos en su finca.",
     "guests": "invitados",
-    "venue": "Finca"
+    "venue": "Finca",
+    "story": "Sobre esta noche",
+    "photos": "Fotos",
+    "videos": "Vídeos"
   },
   "music": {
     "hero": {

@@ -381,7 +381,10 @@
     "venuesSubtitle": "Tekniğini, yollarını ve akustiğini önceden bildiğimiz, sık çalıştığımız mekânlar.",
     "empty": "Referans galerisi şu anda hazırlanıyor. Kendi mekânınıza ait örnekleri bize sorabilirsiniz.",
     "guests": "davetli",
-    "venue": "Mekân"
+    "venue": "Mekân",
+    "story": "Bu düğün hakkında",
+    "photos": "Fotoğraflar",
+    "videos": "Videolar"
   },
   "music": {
     "hero": {

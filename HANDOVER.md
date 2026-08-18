@@ -95,6 +95,22 @@ Diese Bereiche sind bewusst leer und zeigen einen gestalteten Leerzustand.
 - [ ] Liste der **Locations**, in denen schon gespielt wurde
 - [ ] Partner: Hochzeitsplaner, Fotografen, Caterer, Säle
 
+**Referenz-Hochzeiten pflegt Veysel selbst — kein Entwickler nötig.** Sobald
+Material aus Punkt 1 vorliegt: angemeldet auf `/echte-hochzeiten` gehen und unten
+rechts auf „Hochzeit hinzufügen“ drücken. In einem Formular stehen Paar, Stadt,
+Location, Datum, Gästezahl, das Titelbild, beliebig viele weitere Fotos, YouTube-
+Links (Vorschaubild kommt automatisch) und der Text zum Abend. „Bearbeiten“ und
+„Löschen“ sitzen direkt an der jeweiligen Referenz. Wer lieber im Adminpanel
+arbeitet, findet dieselben Felder unter *Referenz-Hochzeiten*.
+
+Zwei Dinge dabei beachten:
+
+- **„Entwurf“ statt „Veröffentlicht“** wählen, solange die Freigabe des Paares
+  nicht schriftlich vorliegt. Entwürfe sieht nur Veysel selbst.
+- Der **Text** und die **Video-Bildunterschriften** gelten je Sprache. Für die
+  türkische Fassung die Seite auf Türkisch aufrufen und dort erneut eintragen —
+  Eckdaten und Fotos gelten automatisch für alle Sprachen.
+
 ## 🟢 7. Musik und Inhalte
 
 - [ ] **Mix-Dateien** (MP3) für den Player — Empfang, Dinner, Peaktime, Halay/Arabesk,

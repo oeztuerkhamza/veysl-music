@@ -371,7 +371,10 @@
     "venuesSubtitle": "Vaak geboekte huizen waar techniek, looproutes en akoestiek al bekend zijn.",
     "empty": "De referentiegalerij wordt op dit moment gevuld. Vraag gerust naar voorbeelden bij uw locatie.",
     "guests": "gasten",
-    "venue": "Locatie"
+    "venue": "Locatie",
+    "story": "Over deze avond",
+    "photos": "Foto's",
+    "videos": "Video's"
   },
   "music": {
     "hero": {

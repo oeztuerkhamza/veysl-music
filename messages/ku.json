@@ -372,7 +372,10 @@
     "venuesSubtitle": "Mekanên ku pir tên rezervekirin, ku teknîk, rê û akustîka wan ji berê ve tê zanîn.",
     "empty": "Galeriya referansê niha tê tijîkirin. Hûn dikarin ji bo mekanê xwe nimûneyan bipirsin.",
     "guests": "mêvan",
-    "venue": "Mekan"
+    "venue": "Mekan",
+    "story": "Derbarê vê şevê",
+    "photos": "Wêne",
+    "videos": "Vîdyo"
   },
   "music": {
     "hero": {

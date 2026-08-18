@@ -1,9 +1,9 @@
 import { HeartHandshake } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import type { Locale } from '@/i18n/routing';
+import { localeTags, type Locale } from '@/i18n/routing';
 import { buildMetadata } from '@/lib/seo';
-import { weddings } from '@/content/weddings';
+import { getPublishedWeddings } from '@/lib/weddings';
 import { venues } from '@/content/venues';
 import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
@@ -11,8 +11,9 @@ import { SectionHeading } from '@/components/ui/section-heading';
 import { Reveal } from '@/components/motion/reveal';
 import { PageHero } from '@/components/pages/page-hero';
 import { EmptyState } from '@/components/pages/empty-state';
-import { WeddingCard } from '@/components/pages/wedding-card';
+import { WeddingEntry } from '@/components/pages/wedding-entry';
 import { FinalCta } from '@/components/pages/final-cta';
+import { WeddingEditorLayer } from '@/components/cms/wedding-editor-layer';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -31,7 +32,18 @@ export default async function EchteHochzeitenPage({ params }: PageProps) {
   const tCta = await getTranslations('cta');
   const tMusicPlayer = await getTranslations('music.player');
 
-  const venueById = new Map(venues.map((venue) => [venue.id, venue]));
+  // Aus der Payload-Collection `weddings` (siehe src/lib/weddings.ts) — bis
+  // hierher stand an dieser Stelle eine leere Konstante aus
+  // `src/content/weddings.ts`, die nur ein Deploy hätte füllen können.
+  const weddings = await getPublishedWeddings(locale);
+
+  const entryLabels = {
+    guests: t('guests'),
+    story: t('story'),
+    photos: t('photos'),
+    videos: t('videos'),
+    play: tMusicPlayer('play'),
+  };
 
   return (
     <>
@@ -47,14 +59,13 @@ export default async function EchteHochzeitenPage({ params }: PageProps) {
           {weddings.length === 0 ? (
             <EmptyState message={t('empty')} icon={HeartHandshake} ctaLabel={tCta('short')} ctaHref="/anfrage" />
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="space-y-16">
               {weddings.map((wedding) => (
-                <WeddingCard
+                <WeddingEntry
                   key={wedding.id}
                   wedding={wedding}
-                  venue={wedding.venueId ? venueById.get(wedding.venueId) : undefined}
-                  guestsLabel={t('guests')}
-                  playLabel={tMusicPlayer('play')}
+                  localeTag={localeTags[locale]}
+                  labels={entryLabels}
                 />
               ))}
             </div>
@@ -83,6 +94,14 @@ export default async function EchteHochzeitenPage({ params }: PageProps) {
       ) : null}
 
       <FinalCta />
+
+      {/*
+        Anlegen/Bearbeiten/Löschen direkt auf dieser Seite — lädt nur, wenn ein
+        Payload-Hinweis-Cookie da ist, und prüft dann die Sitzung serverseitig.
+        Für alle anderen rendert die Komponente `null` und ihr Chunk wird nie
+        angefordert (siehe wedding-editor-layer.tsx).
+      */}
+      <WeddingEditorLayer locale={locale} />
     </>
   );
 }

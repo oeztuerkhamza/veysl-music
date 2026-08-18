@@ -17,6 +17,7 @@ import { Media } from './src/payload/collections/media';
 import { SiteImageSlots } from './src/payload/collections/site-image-slots';
 import { Testimonials } from './src/payload/collections/testimonials';
 import { Users } from './src/payload/collections/users';
+import { Weddings } from './src/payload/collections/weddings';
 import { WhatsappLeads } from './src/payload/collections/whatsapp-leads';
 import { SiteSettings } from './src/payload/globals/site-settings';
 import { migrations } from './src/migrations';
@@ -162,6 +163,7 @@ export default buildConfig({
     CuratedPosts,
     BlogPosts,
     Testimonials,
+    Weddings,
   ],
   globals: [SiteSettings],
   /**

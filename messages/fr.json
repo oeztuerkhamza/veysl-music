@@ -371,7 +371,10 @@
     "venuesSubtitle": "Des lieux de réception souvent réservés, dont la technique, les accès et l’acoustique sont déjà connus.",
     "empty": "La galerie de références est en cours de constitution. N’hésitez pas à demander des exemples pour votre lieu de réception.",
     "guests": "invités",
-    "venue": "Lieu de réception"
+    "venue": "Lieu de réception",
+    "story": "À propos de cette soirée",
+    "photos": "Photos",
+    "videos": "Vidéos"
   },
   "music": {
     "hero": {

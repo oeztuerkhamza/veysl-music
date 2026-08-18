@@ -380,7 +380,10 @@
     "venuesSubtitle": "Häufig gebuchte Häuser, in denen Technik, Wege und Akustik bereits bekannt sind.",
     "empty": "Die Referenz-Galerie wird gerade befüllt. Fragen Sie gerne nach Beispielen zu Ihrer Location.",
     "guests": "Gäste",
-    "venue": "Location"
+    "venue": "Location",
+    "story": "Über diesen Abend",
+    "photos": "Fotos",
+    "videos": "Videos"
   },
   "music": {
     "hero": {

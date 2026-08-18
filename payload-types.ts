@@ -78,6 +78,7 @@ export interface Config {
     'curated-posts': CuratedPost;
     'blog-posts': BlogPost;
     testimonials: Testimonial;
+    weddings: Wedding;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -96,6 +97,7 @@ export interface Config {
     'curated-posts': CuratedPostsSelect<false> | CuratedPostsSelect<true>;
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    weddings: WeddingsSelect<false> | WeddingsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -535,6 +537,74 @@ export interface Testimonial {
   createdAt: string;
 }
 /**
+ * Echte Hochzeiten für die Seite „Echte Hochzeiten“ — Titelbild, Fotogalerie, YouTube-Videos und ein Text pro Abend. Nur „Veröffentlicht“ ist öffentlich sichtbar. Bitte nur echtes, vom Paar freigegebenes Material.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "weddings".
+ */
+export interface Wedding {
+  id: number;
+  /**
+   * Wie das Paar genannt werden möchte — z. B. „A. & B.“ oder „Ayşe & Mehmet“. Nur mit ausdrücklichem Einverständnis ausschreiben.
+   */
+  coupleLabel: string;
+  /**
+   * z. B. „Stuttgart“.
+   */
+  city?: string | null;
+  /**
+   * Name der Location — nur nennen, wenn die Location damit einverstanden ist.
+   */
+  venue?: string | null;
+  /**
+   * Ungefähre Gästezahl. Leer lassen, wenn unbekannt.
+   */
+  guestCount?: number | null;
+  /**
+   * JJJJ-MM-TT, z. B. 2026-06-14. Bestimmt zugleich die Reihenfolge auf der Seite (neueste zuerst).
+   */
+  date?: string | null;
+  /**
+   * Das große Bild oben in der Referenz. Ohne Titelbild wird die erste Aufnahme aus der Galerie genommen.
+   */
+  coverImage?: (number | null) | Media;
+  /**
+   * Der Text unter den Bildern. Einfache Formatierung: Leerzeile = neuer Absatz, „## “ am Zeilenanfang = Zwischenüberschrift, „- “ = Aufzählung, **fett**.
+   */
+  story?: string | null;
+  /**
+   * Weitere Fotos dieses Abends. Reihenfolge per Ziehen änderbar. Der Alt-Text kommt aus dem jeweiligen Medium.
+   */
+  gallery?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * YouTube-Links dieses Abends. Das Vorschaubild kommt automatisch von YouTube — nichts hochzuladen. Abgespielt wird erst nach Klick.
+   */
+  videos?:
+    | {
+        /**
+         * z. B. https://www.youtube.com/watch?v=… — Shorts und youtu.be-Kurzlinks gehen auch.
+         */
+        url: string;
+        /**
+         * Optional — z. B. „Einzug“ oder „Halay“. Wird unter dem Video angezeigt.
+         */
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Erst „Veröffentlicht“ macht die Hochzeit auf der Website sichtbar.
+   */
+  status: 'draft' | 'published';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -601,6 +671,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'testimonials';
         value: number | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'weddings';
+        value: number | Wedding;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -871,6 +945,35 @@ export interface TestimonialsSelect<T extends boolean = true> {
   quote?: T;
   rating?: T;
   coverImage?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "weddings_select".
+ */
+export interface WeddingsSelect<T extends boolean = true> {
+  coupleLabel?: T;
+  city?: T;
+  venue?: T;
+  guestCount?: T;
+  date?: T;
+  coverImage?: T;
+  story?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  videos?:
+    | T
+    | {
+        url?: T;
+        title?: T;
+        id?: T;
+      };
   status?: T;
   updatedAt?: T;
   createdAt?: T;
