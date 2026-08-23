@@ -216,7 +216,10 @@ const nextConfig: NextConfig = {
       { de: 'freie-trauung-beschallung-mikrofone-wetter', tr: 'acik-hava-toreni-ses-mikrofon', en: 'outdoor-ceremony-sound-microphones' },
       { de: 'hochzeits-dj-checkliste', tr: 'dugun-dj-kontrol-listesi', en: 'wedding-dj-checklist' },
       { de: 'hochzeits-timeline-musterablauf', tr: 'dugun-zaman-cizelgesi-ornek-akis', en: 'wedding-timeline-example' },
-      { de: 'islamische-hochzeit-planen', tr: 'islami-dugun-planlama', en: 'planning-an-islamic-wedding' },
+      // en bewusst null: der islamische Artikel ist auf tr/ku/ar begrenzt
+      // (ISLAMIC_SUPPORTED_LOCALES) — /en/guide/planning-an-islamic-wedding
+      // liefert notFound(), ein Redirect dorthin wäre 404-zu-404.
+      { de: 'islamische-hochzeit-planen', tr: 'islami-dugun-planlama', en: null },
       { de: 'kina-gecesi-henna-abend-planen', tr: 'kina-gecesi-planlama', en: 'kina-gecesi-henna-night-guide' },
       { de: 'laermschutz-sperrzeiten-baden-wuerttemberg', tr: 'gurultu-yonetmeligi-baden-wuerttemberg', en: 'noise-rules-baden-wuerttemberg' },
       { de: 'location-akustik-checkliste', tr: 'mekan-akustigi-kontrol-listesi', en: 'venue-acoustics-checklist' },
