@@ -189,6 +189,49 @@ const nextConfig: NextConfig = {
       { source: '/es/musica', destination: '/es/galeria' },
     ];
 
+
+    /**
+     * Alt-URLs der Ratgeber-Artikel vor der Slug-Lokalisierung (August 2026).
+     *
+     * Bis dahin emittierten Sitemap und hreflang die tr/en-Artikel unter ihrem
+     * DEUTSCHEN Slug (`/tr/rehber/<de-slug>`, `/en/guide/<de-slug>`) — Google
+     * hat diese URLs gelernt, und seit die lokalisierten Slugs live sind,
+     * meldet die Search Console sie als 404 („Not found", Coverage-Export
+     * 2026-08-23: Teil der 128). Ein 301 auf den heutigen lokalisierten Slug
+     * gibt jeder dieser bekannten Adressen ihr Ziel zurück, statt sie
+     * auslaufen zu lassen. Quelle der Paare: `src/content/blog/*.ts`
+     * (kanonischer `slug` + tr/en-Overrides) — `null` heißt: Slug ist in
+     * dieser Sprache identisch, kein Redirect nötig. Die Phantom-Stadt-URLs
+     * der nie ausgespielten Sprachen (ku/ar/nl/fr/es) bekommen dagegen
+     * bewusst KEINEN Redirect: Dort gibt es kein gleichwertiges Ziel, und
+     * ein 404 für nie existierende Inhalte ist die korrekte Antwort.
+     */
+    const legacyBlogSlugs: Array<{ de: string; tr: string | null; en: string | null }> = [
+      { de: 'davul-zurna-halay-roman-havasi', tr: null, en: 'turkish-wedding-music-davul-zurna-halay' },
+      { de: 'destination-wedding-dj-buchen', tr: 'yurt-disinda-dugun-dj', en: 'destination-wedding-dj-booking' },
+      { de: 'deutsch-tuerkische-hochzeit-zwei-familien', tr: 'alman-turk-dugunu-iki-aile', en: 'german-turkish-wedding-two-families' },
+      { de: 'dj-live-band-oder-beides', tr: 'dj-mi-canli-grup-mu', en: 'dj-live-band-or-both' },
+      { de: 'dramaturgie-hochzeitsabend', tr: 'dugun-aksami-dramaturjisi', en: 'wedding-evening-dramaturgy' },
+      { de: 'eroeffnungstanz-songauswahl', tr: 'acilis-dansi-sarki-secimi', en: 'first-dance-song-choice' },
+      { de: 'freie-trauung-beschallung-mikrofone-wetter', tr: 'acik-hava-toreni-ses-mikrofon', en: 'outdoor-ceremony-sound-microphones' },
+      { de: 'hochzeits-dj-checkliste', tr: 'dugun-dj-kontrol-listesi', en: 'wedding-dj-checklist' },
+      { de: 'hochzeits-timeline-musterablauf', tr: 'dugun-zaman-cizelgesi-ornek-akis', en: 'wedding-timeline-example' },
+      // en bewusst null: der islamische Artikel ist auf tr/ku/ar begrenzt
+      // (ISLAMIC_SUPPORTED_LOCALES) — /en/guide/planning-an-islamic-wedding
+      // liefert notFound(), ein Redirect dorthin wäre 404-zu-404.
+      { de: 'islamische-hochzeit-planen', tr: 'islami-dugun-planlama', en: null },
+      { de: 'kina-gecesi-henna-abend-planen', tr: 'kina-gecesi-planlama', en: 'kina-gecesi-henna-night-guide' },
+      { de: 'laermschutz-sperrzeiten-baden-wuerttemberg', tr: 'gurultu-yonetmeligi-baden-wuerttemberg', en: 'noise-rules-baden-wuerttemberg' },
+      { de: 'location-akustik-checkliste', tr: 'mekan-akustigi-kontrol-listesi', en: 'venue-acoustics-checklist' },
+      { de: 'musikwuensche-no-go-liste', tr: 'muzik-istekleri-no-go-listesi', en: 'music-requests-no-go-list' },
+      { de: 'tuerkische-hochzeit-ablauf-musik-timing', tr: 'turk-dugunu-akis-muzik-zamanlama', en: 'turkish-wedding-running-order-music' },
+      { de: 'was-kostet-ein-hochzeits-dj', tr: 'dugun-dj-fiyatlari', en: 'wedding-dj-cost' },
+    ];
+    const legacyBlogRedirects = legacyBlogSlugs.flatMap((post) => [
+      ...(post.tr ? [{ source: `/tr/rehber/${post.de}`, destination: `/tr/rehber/${post.tr}` }] : []),
+      ...(post.en ? [{ source: `/en/guide/${post.de}`, destination: `/en/guide/${post.en}` }] : []),
+    ]);
+
     return [
       ...cityRoutes.map(({ prefix, home }) => ({
         source: `${prefix}/stuttgart`,
@@ -198,6 +241,7 @@ const nextConfig: NextConfig = {
       ...clusterParents.map((entry) => ({ ...entry, permanent: true })),
       ...turkishClusterParents.map((entry) => ({ ...entry, permanent: true })),
       ...retiredMusicRoutes.map((entry) => ({ ...entry, permanent: true })),
+      ...legacyBlogRedirects.map((entry) => ({ ...entry, permanent: true })),
     ];
   },
 
