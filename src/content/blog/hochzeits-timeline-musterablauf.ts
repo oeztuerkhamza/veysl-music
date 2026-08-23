@@ -65,7 +65,7 @@ Gäste bewegen sich zur Bar, die Tanzfläche wird frei. Wird dafür kein eigenes
 eingeplant, wirkt der Übergang abrupt, und die musikalisch bewusst aufgebaute
 Peaktime verpufft, weil noch nicht alle Gäste bereit sind.
 
-## Wie die eigene Timeline entsteht
+## Den Ablauf mit dem DJ planen: wie die eigene Timeline entsteht
 
 Eine belastbare Timeline entsteht nicht am Schreibtisch allein, sondern im Austausch
 mit allen Beteiligten — Location, Fotograf, Caterer und DJ. Im Planungsgespräch werden
@@ -646,7 +646,7 @@ export const timelinePost: BlogPost = {
   type: 'guide',
   status: 'published',
   publishedAt: '2026-09-08',
-  updatedAt: '2026-07-25',
+  updatedAt: '2026-08-23',
   tags: ['planung', 'timeline', 'zeitplan', 'ablauf'],
   readingTimeMinutes: 6,
   links: ['/ablauf', '/pakete'],
@@ -655,36 +655,36 @@ export const timelinePost: BlogPost = {
   relatedPosts: ['dramaturgie-hochzeitsabend', 'tuerkische-hochzeit-ablauf-musik-timing'],
   translations: {
     de: {
-      title: 'Die Hochzeits-Timeline: ein realistischer Musterablauf',
+      title: 'Ablauf einer DJ-begleiteten Hochzeit: die realistische Timeline',
       excerpt:
         'Eine belastbare Hochzeits-Timeline lebt von bewussten Zeitpuffern, nicht von minutengenauer Planung. Dieser Guide zeigt eine Beispiel-Timeline von 13 bis 2 Uhr, die drei häufigsten Timing-Fehler und wie sich der Ablauf bei türkischen Hochzeiten verschiebt.',
       body: timelineDe,
       seo: {
-        metaTitle: 'Hochzeits-Timeline: Musterablauf & Zeitplan | DJ Veys',
+        metaTitle: 'Ablauf einer DJ-begleiteten Hochzeit – Timeline | DJ Veys',
         metaDescription:
-          'Wie sieht ein realistischer Zeitplan für den Hochzeitstag aus? Beispiel-Timeline, die häufigsten Timing-Fehler und Puffer-Empfehlungen.',
+          'Wie läuft eine DJ-begleitete Hochzeit ab, und wie plant man den Ablauf? Beispiel-Timeline von 13 bis 2 Uhr, die häufigsten Timing-Fehler und Puffer-Tipps.',
       },
     },
     tr: {
       slug: 'dugun-zaman-cizelgesi-ornek-akis',
-      title: 'Düğün zaman çizelgesi: gerçekçi bir örnek akış',
+      title: 'DJ eşliğinde bir düğünün akışı: gerçekçi zaman çizelgesi',
       excerpt:
         'Sağlam bir düğün zaman çizelgesi, dakikası dakikasına planlamadan değil, bilinçli zaman paylarından oluşur. Bu rehber, 13:00\'ten 02:00\'a örnek bir zaman çizelgesi, en sık yapılan üç zamanlama hatası ve Türk düğünlerinde akışın nasıl kaydığını gösteriyor.',
       body: timelineTr,
       seo: {
-        metaTitle: 'Düğün Zaman Çizelgesi: Örnek Akış | DJ Veys',
+        metaTitle: 'DJ Eşliğinde Düğün Akışı – Zaman Çizelgesi | DJ Veys',
         metaDescription:
           'Düğün günü için gerçekçi bir zaman planı nasıl olmalı? Örnek zaman çizelgesi, en sık yapılan zamanlama hataları ve zaman payı önerileri.',
       },
     },
     en: {
       slug: 'wedding-timeline-example',
-      title: 'The wedding timeline: a realistic example running order',
+      title: 'How a DJ-led wedding runs: a realistic timeline',
       excerpt:
         'A reliable wedding timeline lives on deliberate buffers, not minute-by-minute planning. This guide shows an example timeline from 1pm to 2am, the three most common timing mistakes, and how the running order shifts for Turkish weddings.',
       body: timelineEn,
       seo: {
-        metaTitle: 'Wedding Timeline: A Realistic Example | DJ Veys',
+        metaTitle: 'How a DJ-Led Wedding Runs – Timeline | DJ Veys',
         metaDescription:
           'What does a realistic timeline for the wedding day look like? An example timeline, the most common timing mistakes, and buffer recommendations.',
       },
