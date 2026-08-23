@@ -1,7 +1,8 @@
 /**
  * Blog content index — the single import surface for `src/content/blog/`.
  *
- * 17 posts total: 15 evergreen `type: 'guide'` articles (Part 1 of the brief) plus 2
+ * 22 posts total: 20 evergreen `type: 'guide'` articles (18 aus Part 1 plus vier aus der
+ * Recherche-Welle vom 23.08.2026) plus 2
  * `type: 'recap'` / `status: 'template'` fill-in-the-blank posts (Part 1, "Additionally
  * provide 2 Real Wedding templates"). See `docs/BLOG-PLAN.md` for the editorial plan —
  * primary/secondary keywords, publishing cadence, internal-linking map, and the ku/fr/es
@@ -36,6 +37,14 @@ import { davulZurnaPost } from './davul-zurna-halay-roman-havasi';
 import { destinationPost } from './destination-wedding-dj-buchen';
 import { echteHochzeitGrosseFeierPost } from './echte-hochzeit-vorlage-grosse-feier';
 import { echteHochzeitKinaAbendPost } from './echte-hochzeit-vorlage-kina-abend';
+// Recherche-Welle 2026-08-23 (Live-Keyword-Recherche, fünf Suchwinkel): vier
+// Beiträge zu Fragen, die Paare nachweislich stellen, für die dieser Korpus aber
+// keine Seite hatte — Playlist-statt-DJ, Gast auf einer türkischen Hochzeit,
+// Musikanteil am Budget und Locationwahl aus DJ-Sicht.
+import { hochzeitOhneDjSpotifyPlaylistPost } from './hochzeit-ohne-dj-spotify-playlist';
+import { tuerkischeHochzeitAlsGastPost } from './tuerkische-hochzeit-als-gast';
+import { hochzeitsbudgetMusikAnteilPost } from './hochzeitsbudget-musik-anteil';
+import { hochzeitslocationStuttgartPost } from './hochzeitslocation-stuttgart-dj-perspektive';
 
 export type {
   BlogPost,
@@ -72,6 +81,10 @@ export const blogPosts: BlogPost[] = [
   akustikPost,
   davulZurnaPost,
   destinationPost,
+  hochzeitOhneDjSpotifyPlaylistPost,
+  tuerkischeHochzeitAlsGastPost,
+  hochzeitsbudgetMusikAnteilPost,
+  hochzeitslocationStuttgartPost,
   // Recap templates — status: 'template', excluded from getPublishedGuides().
   echteHochzeitGrosseFeierPost,
   echteHochzeitKinaAbendPost,
