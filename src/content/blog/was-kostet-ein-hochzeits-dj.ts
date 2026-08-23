@@ -80,6 +80,16 @@ nachvollziehbar aufgeschlüsselt ist.
 Das günstigste Angebot ist selten das beste, wenn zentrale Punkte wie Technikumfang oder
 Anfahrt erst nachträglich auftauchen.
 
+## Günstiger Hochzeits-DJ — Chance oder Risiko?
+
+Ein niedriger Preis ist kein Fehler — er verlangt nur eine zweite Frage: Was ist dafür im
+Umfang enthalten? Der Markt reicht vom Hobby-DJ über nebenberufliche bis zu professionellen
+Anbietern, und die Leistungsumfänge dieser Stufen unterscheiden sich stärker als ihre
+Preise. Prüfbare Warnsignale sind unabhängig vom Preis dieselben: kein schriftlicher
+Vertrag, keine eigene Technik mit Backup, keine klare Antwort auf die Frage, wer am Abend
+tatsächlich auflegt. Wer drei Angebote nebeneinanderlegt, vergleicht deshalb am besten
+nicht die Endsummen, sondern Spielzeit, Technikumfang und die Person dahinter.
+
 ## Versteckte Kostenpunkte, die häufig übersehen werden
 
 Neben den vier großen Preistreibern gibt es eine Reihe kleinerer Posten, die in einem
@@ -182,6 +192,16 @@ verip vermediği değil, teklifin sonrasında anlaşılır şekilde ayrıştır�
 - Teknik kapsam misafir sayısına gerçekten yetiyor mu?
 - Hizmetleri, süreleri ve fiyatı sabitleyen yazılı bir sözleşme var mı?
 
+## Ucuz düğün DJ'i — fırsat mı, risk mi?
+
+Düşük fiyat bir hata değildir — yalnızca ikinci bir soruyu zorunlu kılar: Bu fiyata kapsam
+olarak ne dahil? Pazar, hobi olarak çalanlardan yarı zamanlılara ve profesyonel
+sağlayıcılara uzanır ve bu basamakların hizmet kapsamları, fiyatlarından daha fazla
+farklılaşır. Denetlenebilir uyarı işaretleri fiyattan bağımsız olarak aynıdır: yazılı
+sözleşme yok, yedekli kendi ekipmanı yok, akşam gerçekte kimin çalacağı sorusuna net yanıt
+yok. Üç teklifi yan yana koyan, bu yüzden en iyisi toplam rakamları değil çalma süresini,
+teknik kapsamı ve arkasındaki kişiyi karşılaştırır.
+
 ## Sık gözden kaçan gizli maliyet kalemleri
 
 Dört büyük fiyat etkeninin yanında, eksik bir teklifte sıkça yer almayan ve sonradan
@@ -273,6 +293,16 @@ quoted upfront, but whether the quote is itemised clearly afterwards.
 - Is hosting, and any live music, included or a line item on top?
 - Does the technical scope genuinely match your guest count?
 - Is there a written contract fixing services, times and price?
+
+## A cheap wedding DJ — bargain or risk?
+
+A low price is not a mistake — it just demands a second question: what exactly is included
+for it? The market runs from hobby DJs through part-timers to professional providers, and
+what separates those tiers is scope far more than price. The checkable warning signs are
+the same at any price point: no written contract, no own equipment with backup, no clear
+answer to who will actually be behind the booth that night. So when you put three quotes
+side by side, compare playing time, equipment scope and the person behind it — not the
+bottom lines.
 
 ## Hidden costs that often get overlooked
 
@@ -670,7 +700,7 @@ export const wasKostetEinHochzeitsDjPost: BlogPost = {
   type: 'guide',
   status: 'published',
   publishedAt: '2026-08-04',
-  updatedAt: '2026-07-25',
+  updatedAt: '2026-08-23',
   tags: ['kosten', 'preise', 'planung', 'budget'],
   readingTimeMinutes: 6,
   links: ['/pakete', '/anfrage', '/fragen'],
@@ -679,36 +709,36 @@ export const wasKostetEinHochzeitsDjPost: BlogPost = {
   relatedPosts: ['hochzeits-dj-checkliste', 'dj-live-band-oder-beides'],
   translations: {
     de: {
-      title: 'Was kostet ein Hochzeits-DJ in Baden-Württemberg?',
+      title: 'Was kostet ein Hochzeits-DJ in Baden-Württemberg? (2026)',
       excerpt:
         'Eine seriöse Einheitszahl für "was kostet ein Hochzeits-DJ" gibt es nicht — wohl aber nachvollziehbare Preistreiber und eine grobe Marktorientierung. Dieser Artikel erklärt beides, ohne DJ Veys’ eigene Preise zu erfinden: Die bleiben "Preis auf Anfrage", bis echte Zahlen vorliegen.',
       body: wasKostetDe,
       seo: {
-        metaTitle: 'Was kostet ein Hochzeits-DJ? Marktüberblick | DJ Veys',
+        metaTitle: 'Was kostet ein Hochzeits-DJ? Preise 2026 | DJ Veys',
         metaDescription:
           'Was kostet ein Hochzeits-DJ wirklich? Preistreiber, Marktspannen aus mehreren Quellen und eine Checkliste zum Angebotsvergleich, unabhängig eingeordnet.',
       },
     },
     tr: {
       slug: 'dugun-dj-fiyatlari',
-      title: 'Baden-Württemberg\'de bir düğün DJ\'i ne kadara mal olur?',
+      title: 'Baden-Württemberg\'de bir düğün DJ\'i ne kadara mal olur? (2026)',
       excerpt:
         '"Bir düğün DJ\'i ne kadara mal olur" sorusunun tek bir ciddi cevabı yok — ama somut fiyat etkenleri ve kabaca bir pazar aralığı var. Bu yazı ikisini de DJ Veys\'in kendi fiyatlarını uydurmadan açıklıyor: onlar gerçek rakamlar gelene kadar "talep üzerine" kalıyor.',
       body: wasKostetTr,
       seo: {
-        metaTitle: 'Düğün DJ\'i Fiyatları: Pazar Genel Bakışı | DJ Veys',
+        metaTitle: 'Düğün DJ\'i Fiyatları 2026: Pazar Genel Bakışı | DJ Veys',
         metaDescription:
           'Bir düğün DJ\'i gerçekte ne kadara mal olur? Fiyatı belirleyen etkenler, birden fazla kaynaktan pazar aralıkları ve teklif karşılaştırma kontrol listesi.',
       },
     },
     en: {
       slug: 'wedding-dj-cost',
-      title: 'How much does a wedding DJ cost in Baden-Württemberg?',
+      title: 'How much does a wedding DJ cost in Baden-Württemberg? (2026)',
       excerpt:
         'There is no single honest number for "how much does a wedding DJ cost" — but there are real price drivers and a rough market range. This article explains both without inventing DJ Veys\'s own pricing: that stays "on request" until real figures exist.',
       body: wasKostetEn,
       seo: {
-        metaTitle: 'Wedding DJ Cost: An Honest Market Overview | DJ Veys',
+        metaTitle: 'Wedding DJ Cost 2026: An Honest Overview | DJ Veys',
         metaDescription:
           'What does a wedding DJ actually cost? Price drivers, market ranges from multiple sources, and a checklist for comparing quotes fairly.',
       },
