@@ -24,6 +24,14 @@ meisten Fällen erstaunlich ähnlich.
 | 21:00–24:00 | Peaktime, Haupttanzprogramm | Der energetische Kern des Abends |
 | 24:00–ca. 02:00 | Ausklang, After-Hours | Tempo sinkt, aber Tanzfläche bleibt offen |
 
+## Ab wann sollte der DJ am Hochzeitstag starten?
+
+Drei Startpunkte sind üblich: zur freien Trauung, wenn Zeremonie-Beschallung gebraucht
+wird; zum Sektempfang mit ruhiger Hintergrundmusik; oder erst zum Dinner. Je früher der
+Start, desto mehr trägt derselbe Ansprechpartner durch den Tag — je später, desto
+schlanker das gebuchte Paket. Aufbau und Soundcheck liegen in jedem Fall vor dem ersten
+Gast; welche Startzeit zu Ihrem Ablauf passt, entscheidet das Planungsgespräch.
+
 ## Warum Zeitpuffer wichtiger sind als exakte Uhrzeiten
 
 Der größte Fehler bei selbst erstellten Timelines: Programmpunkte werden minutengenau
@@ -135,6 +143,14 @@ alınabilecek bir şablon değildir.
 | 21:00–24:00 | Zirve zamanı, ana dans programı | Akşamın enerjik çekirdeği |
 | 24:00–yakl. 02:00 | Kapanış, gece sonrası | Tempo düşer ama dans pisti açık kalır |
 
+## Düğün günü DJ ne zaman başlamalı?
+
+Üç başlangıç noktası yaygındır: tören için ses gerekiyorsa nikâh anında; sakin fon
+müziğiyle kokteyl karşılamasında; ya da doğrudan yemekte. Başlangıç ne kadar erkense aynı
+muhatap günün o kadar büyük bölümünü taşır — ne kadar geçse paket o kadar yalın olur.
+Kurulum ve ses denemesi her durumda ilk misafirden önce biter; akışınıza uyan başlangıç
+saatine ön görüşmede karar verilir.
+
 ## Neden zaman payı, kesin saatlerden daha önemli
 
 Kendi hazırlanan zaman çizelgelerindeki en büyük hata: program noktaları, aralarında pay
@@ -231,6 +247,14 @@ venue, guest count and family tradition shifts individual blocks.
 | 8:00–9:00pm | Cake cutting, first dance, first rounds of dancing | Design the shift from sitting to dancing deliberately |
 | 9:00pm–midnight | Peak time, main dance programme | The energetic core of the evening |
 | Midnight–approx. 2:00am | Wind-down, after-hours | Tempo drops but the dance floor stays open |
+
+## When should the DJ start on the wedding day?
+
+Three starting points are common: at the ceremony, when it needs sound; at the drinks
+reception with calm background music; or straight at dinner. The earlier the start, the
+more of the day one point of contact carries — the later, the leaner the booked package.
+Setup and soundcheck are finished before the first guest either way; which start time
+fits your running order is decided in the planning call.
 
 ## Why buffers matter more than exact times
 

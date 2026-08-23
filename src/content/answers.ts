@@ -134,6 +134,14 @@ const U_TURKISH_BW = '2026-08-16';
 /** Ein Tag später: Bundes-Seite `/tuerkischer-dj-deutschland` und Grenzregionen. */
 const U_TURKISH_DE = '2026-08-17';
 
+/**
+ * Keyword-Recherche-Welle vom 2026-08-23: vier Einträge, deren Fragen aus
+ * live geernteten Nutzer-Formulierungen stammen (Wettbewerber-Titel,
+ * Foren-Threads — Belege im Sitzungsprotokoll). Nur die vier neuen Einträge
+ * tragen dieses Datum.
+ */
+const U_RESEARCH = '2026-08-23';
+
 export const answers: Answer[] = [
   // ─── buchung ──────────────────────────────────────────────────────────
   {
@@ -244,6 +252,28 @@ export const answers: Answer[] = [
     related: ['contract-content', 'planning-call'],
     links: ['/anfrage', '/pakete'],
     updated: U,
+  },
+  {
+    /** Keyword-Recherche 2026-08-23: die Agentur-vs-direkt-Entscheidung
+     *  besetzen bisher nur Agenturen — der Direktbuchungs-Vorteil ist hier
+     *  belegter Markenfakt (ein Ansprechpartner), keine neue Behauptung. */
+    id: 'direct-vs-agency',
+    category: 'buchung',
+    q: {
+      de: 'DJ direkt buchen oder über eine Agentur — was ist der Unterschied?',
+      en: 'Booking a DJ directly or through an agency — what is the difference?',
+      tr: "DJ'i doğrudan mı yoksa ajans üzerinden mi tutmalı — fark nedir?",
+      ar: 'حجز الدي جي مباشرة أم عبر وكالة — ما الفرق؟',
+    },
+    a: {
+      de: 'Bei einer Direktbuchung ist die Person aus dem ersten Gespräch dieselbe, die am Hochzeitstag am Pult steht — Vertrag, Planungsgespräch und Musikabstimmung laufen ohne Zwischenstufe. Bei Agenturen wird häufig eine Marke gebucht, und wer tatsächlich auflegt, entscheidet sich später. Beides kann funktionieren; man sollte nur vor der Unterschrift wissen, mit wem man den Abend plant. DJ Veys ist ausschließlich direkt buchbar — ein Ansprechpartner vom ersten Gespräch bis zum letzten Song.',
+      en: 'With a direct booking, the person from the first call is the same person behind the booth on the wedding day — contract, planning call and music briefing run without an intermediary. With agencies you often book a brand, and who actually plays is decided later. Both can work; you should simply know before signing who you are planning the evening with. DJ Veys is bookable directly only — one point of contact from the first call to the last song.',
+      tr: 'Doğrudan rezervasyonda ilk görüşmedeki kişiyle düğün günü kabinde duran kişi aynıdır — sözleşme, planlama görüşmesi ve müzik uyumu aracı olmadan yürür. Ajanslarda ise çoğu zaman bir marka rezerve edilir; gerçekte kimin çalacağı sonradan belli olur. İkisi de işleyebilir; yalnızca imzadan önce akşamı kiminle planladığınızı bilmeniz gerekir. DJ Veys yalnızca doğrudan rezerve edilebilir — ilk görüşmeden son şarkıya kadar tek muhatap.',
+      ar: 'في الحجز المباشر يكون الشخص من المكالمة الأولى هو نفسه من يقف خلف المنصة يوم الزفاف — فالعقد وجلسة التخطيط وتنسيق الموسيقى تجري دون وسيط. أما لدى الوكالات فغالبًا ما تُحجز علامة تجارية، ويتقرر لاحقًا من سيعزف فعلًا. وكلاهما قد ينجح؛ لكن ينبغي أن تعرفوا قبل التوقيع مع من تخططون الأمسية. DJ Veys يُحجز مباشرة فقط — شخص واحد للتواصل من أول مكالمة حتى آخر أغنية.',
+    },
+    related: ['who-is-veysl', 'illness-backup'],
+    links: ['/anfrage'],
+    updated: U_RESEARCH,
   },
   {
     id: 'change-after-signing',
@@ -365,6 +395,28 @@ export const answers: Answer[] = [
     updated: U,
   },
   {
+    /** Frage-Formulierung aus der Keyword-Recherche 2026-08-23 — die
+     *  Inklusiv-Fakten standen verstreut in drei Einträgen, aber die
+     *  wörtliche Paketfrage hatte keine Antwort. */
+    id: 'package-inclusions',
+    category: 'preis',
+    q: {
+      de: 'Was ist im Paketpreis eines Hochzeits-DJs alles enthalten?',
+      en: "What exactly is included in a wedding DJ's package price?",
+      tr: "Bir düğün DJ'inin paket fiyatına neler dahildir?",
+      ar: 'ما الذي يشمله سعر باقة دي جي الزفاف بالضبط؟',
+    },
+    a: {
+      de: 'Bei DJ Veys enthält jedes Paket die komplette eigene Ton- und Lichttechnik samt Auf- und Abbau, die Anfahrt bis 50 Kilometer rund um Stuttgart und das Planungsgespräch vor der Feier — nichts davon kostet extra. Moderation und Live-Musik an Saz und Gitarre kommen ebenfalls aus einer Hand und werden im Angebot ausgewiesen statt pauschal aufgeschlagen. Alles, was über den Paketrahmen hinausgeht — etwa eine längere Spielzeit oder eine weite Anfahrt —, steht vorab als eigene Position im Angebot.',
+      en: "With DJ Veys, every package includes the complete own sound and lighting rig with setup and teardown, travel within 50 kilometres of Stuttgart, and the planning call before the celebration — none of it costs extra. Hosting and live music on saz and guitar come from the same person and are itemised in the quote rather than added as a flat surcharge. Anything beyond the package scope — say, longer playing time or a long journey — appears in the quote as its own line beforehand.",
+      tr: "DJ Veys'te her paket, kurulum ve söküm dahil eksiksiz kendi ses ve ışık sistemini, Stuttgart çevresinde 50 kilometreye kadar ulaşımı ve kutlama öncesi planlama görüşmesini kapsar — hiçbiri ek ücret değildir. Sunum ve sazla gitarda canlı müzik de aynı kişiden gelir ve götürü zam yerine teklifte kalem kalem gösterilir. Paket kapsamını aşan her şey — örneğin daha uzun çalma süresi ya da uzak bir yol — önceden teklifte ayrı bir satır olarak yer alır.",
+      ar: 'لدى DJ Veys تشمل كل باقة نظام الصوت والإضاءة الخاص الكامل مع التركيب والفك، والتنقّل حتى 50 كيلومتراً حول شتوتغارت، وجلسة التخطيط قبل الحفل — ولا شيء من ذلك بتكلفة إضافية. كما يأتي التقديم والموسيقى الحية على الساز والغيتار من الشخص نفسه وتُفصَّل في عرض السعر بدل إضافتها كزيادة جزافية. وكل ما يتجاوز إطار الباقة — كمدة عزف أطول أو مسافة بعيدة — يظهر مسبقًا كبند مستقل في عرض السعر.',
+    },
+    related: ['extras-included', 'travel-included', 'cost-drivers'],
+    links: ['/pakete'],
+    updated: U_RESEARCH,
+  },
+  {
     id: 'invoice-vat',
     category: 'preis',
     q: {
@@ -461,6 +513,31 @@ export const answers: Answer[] = [
     related: ['planning-call', 'photographer-planner'],
     links: ['/ablauf'],
     updated: U,
+  },
+  {
+    /**
+     * Frage-Formulierung aus der Keyword-Recherche 2026-08-23: vier
+     * Wettbewerber-Blogtitel stellen exakt diese Wann-Frage; die Substanz
+     * (Startvarianten, Aufbau vor dem ersten Gast) stand bereits im
+     * Timeline-Guide, aber in keiner direkt zitierbaren Antwort.
+     */
+    id: 'dj-start-time',
+    category: 'ablauf',
+    q: {
+      de: 'Ab wann sollte der DJ am Hochzeitstag dabei sein — schon zur Trauung, zum Sektempfang oder erst am Abend?',
+      en: 'From when should the DJ be there on the wedding day — the ceremony, the drinks reception, or only the evening?',
+      tr: 'Düğün günü DJ ne zamandan itibaren orada olmalı — nikâhta mı, kokteyl karşılamasında mı, yoksa sadece akşam mı?',
+      ar: 'منذ متى ينبغي أن يكون الدي جي حاضرًا يوم الزفاف — من مراسم العقد، أم من استقبال الضيوف، أم في المساء فقط؟',
+    },
+    a: {
+      de: 'Alle drei Varianten kommen vor, und die Wahl hängt am Programm: Wer die freie Trauung oder den Sektempfang musikalisch begleiten lassen will, bucht den Start am Nachmittag; wer nur den Abend braucht, startet zum Dinner. Aufbau und Soundcheck sind in jedem Fall vor dem ersten Programmpunkt abgeschlossen, und die Tanzfläche öffnet klassisch nach Dinner und Programm. Welche Startzeit zu Ihrem Ablauf passt, wird im Planungsgespräch festgelegt und bestimmt die gebuchte Spielzeit.',
+      en: 'All three happen, and the choice follows the programme: couples who want the ceremony or the drinks reception accompanied musically book an afternoon start; those who only need the evening start at dinner. Setup and soundcheck are finished before the first item either way, and the dance floor classically opens after dinner and the programme. Which start time fits your running order is set in the planning call and determines the booked playing time.',
+      tr: 'Üçü de olur ve seçim programa bağlıdır: Nikâh törenini ya da kokteyl karşılamasını müzikle taşıtmak isteyen, öğleden sonra başlangıcı seçer; yalnızca akşama ihtiyacı olan yemekte başlar. Kurulum ve ses denemesi her durumda ilk program noktasından önce bitmiş olur; dans pisti de klasik olarak yemek ve programın ardından açılır. Akışınıza uyan başlangıç saati ön görüşmede belirlenir ve rezerve edilen çalma süresini belirler.',
+      ar: 'الخيارات الثلاثة واردة، والاختيار يتبع البرنامج: من يريد مرافقة موسيقية لمراسم العقد أو لاستقبال الضيوف يحجز بداية بعد الظهر؛ ومن يحتاج المساء فقط يبدأ مع العشاء. وفي كل الأحوال يكتمل التركيب واختبار الصوت قبل أول فقرة، وتُفتح حلبة الرقص كالعادة بعد العشاء والبرنامج. أما وقت البداية المناسب لسير حفلكم فيُحدَّد في جلسة التخطيط ويحدِّد مدة العزف المحجوزة.',
+    },
+    related: ['run-of-show', 'planning-call'],
+    links: ['/ablauf', '/pakete'],
+    updated: U_RESEARCH,
   },
   {
     id: 'outdoor-ceremony-power',
@@ -969,6 +1046,29 @@ export const answers: Answer[] = [
     related: ['turkish-dj-germany', 'turkish-dj-bw'],
     links: ['/hochzeits-dj-europa'],
     updated: U_TURKISH_DE,
+  },
+  {
+    /** Keyword-Recherche 2026-08-23: für türkische Hochzeiten mit mehreren
+     *  hundert Gästen liefert der Markt keine redaktionelle Preisantwort —
+     *  hier bewusst der MECHANISMUS, keine Zahl (Preise sind laut
+     *  BRAND-FACTS unbestätigt und bleiben es auch hier). */
+    id: 'turkish-wedding-size-cost',
+    category: 'tuerkisch',
+    q: {
+      de: 'Was kostet ein DJ für eine große türkische Hochzeit mit mehreren hundert Gästen?',
+      en: 'What does a DJ cost for a big Turkish wedding with several hundred guests?',
+      tr: 'Birkaç yüz davetlili büyük bir Türk düğünü için DJ ne kadar tutar?',
+      ar: 'كم يكلّف الدي جي لعرس تركي كبير بعدة مئات من الضيوف؟',
+    },
+    a: {
+      de: 'Eine feste Zahl wäre unseriös — der Mechanismus dahinter ist aber transparent: Die Gästezahl bestimmt die zu beschallende Fläche, die nötige Anlage und die Aufbauzeit. Ein Saal mit mehreren hundert Gästen braucht mehr Technik als eine Feier im kleinen Kreis, keinen anderen DJ. Spielzeit, Technikumfang und Anfahrt stehen einzeln im individuellen Angebot, das innerhalb von 24 Stunden nach der Anfrage kommt — Halay-Repertoire und die Moderation auf Türkisch und Deutsch sind darin Teil der Leistung, kein Aufpreis.',
+      en: 'A fixed number would be dishonest — but the mechanism behind it is transparent: the guest count determines the area to cover with sound, the rig required and the setup time. A hall with several hundred guests needs more equipment than a small celebration, not a different DJ. Playing time, equipment scope and travel appear individually in the personal quote, which arrives within 24 hours of the enquiry — the halay repertoire and hosting in Turkish and German are part of the service in it, not a surcharge.',
+      tr: 'Sabit bir rakam vermek dürüst olmazdı — ama arkasındaki mekanizma şeffaf: Davetli sayısı, seslendirilecek alanı, gereken sistemi ve kurulum süresini belirler. Birkaç yüz davetlili bir salon, küçük bir kutlamadan daha fazla ekipman ister; farklı bir DJ değil. Çalma süresi, teknik kapsam ve ulaşım, talepten sonra 24 saat içinde gelen kişiye özel teklifte tek tek yer alır — halay repertuvarı ve Türkçe-Almanca sunum bu teklifte hizmetin parçasıdır, ek ücret değil.',
+      ar: 'إعطاء رقم ثابت لن يكون نزيهًا — لكن الآلية وراءه شفافة: عدد الضيوف يحدد المساحة المراد تغطيتها بالصوت والنظام المطلوب ومدة التركيب. فقاعة بعدة مئات من الضيوف تحتاج تجهيزات أكثر من حفل صغير، لا دي جي مختلفًا. وتظهر مدة العزف ونطاق التجهيزات والتنقّل بنودًا مستقلة في عرض السعر الشخصي الذي يصل خلال 24 ساعة من الطلب — ويكون ريبرتوار الهالاي والتقديم بالتركية والألمانية جزءًا من الخدمة فيه، لا زيادة في السعر.',
+    },
+    related: ['cost-drivers', 'halay-repertoire'],
+    links: ['/tuerkischer-dj-baden-wuerttemberg', '/pakete'],
+    updated: U_RESEARCH,
   },
 
   // ─── islamisch ────────────────────────────────────────────────────────
