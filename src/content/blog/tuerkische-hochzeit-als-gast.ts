@@ -24,7 +24,7 @@ import type { BlogPost } from './types';
 export const tuerkischeHochzeitAlsGastDe = `
 ## Warum sich eine türkische Hochzeit anders anfühlt
 
-Wer zum ersten Mal auf einer türkischen oder deutsch-türkischen Hochzeit eingeladen ist,
+Wer zum ersten Mal zu einer türkischen oder deutsch-türkischen Hochzeit eingeladen ist,
 merkt schon beim Betreten des Saals, dass der Abend einer anderen Dramaturgie folgt als
 eine rein deutsche Feier: mehr Gäste, mehr Zeremonie, deutlich mehr Tanz und ein Ablauf,
 der sich an Momenten orientiert statt an festen Uhrzeiten. Vorwissen erwartet niemand. Es
@@ -88,7 +88,7 @@ nicht dem einzelnen Umschlag.
 
 Türkische Hochzeiten sind meist festlicher als eine durchschnittliche deutsche Feier.
 Anzug oder dunkler Zweiteiler, Kleid oder festlicher Zweiteiler sind die sichere Wahl.
-Zwei Punkte werden immer wieder gefragt:
+Zwei Fragen tauchen immer wieder auf:
 
 - **Weiß bleibt der Braut vorbehalten** — dieselbe Regel wie auf einer deutschen Hochzeit.
 - **Wie zurückhaltend die Kleidung ausfällt, unterscheidet sich von Familie zu Familie.**
@@ -146,7 +146,7 @@ Geschenk üblich ist, klärt am einfachsten die Person, über die Sie eingeladen
 
 ## Fazit
 
-Als deutscher Gast braucht es kein Spezialwissen, sondern drei Dinge: rechtzeitig da
+Als deutscher Gast brauchen Sie kein Spezialwissen, sondern drei Dinge: rechtzeitig da
 sein, das Geschenk für den Taki-Moment vorbereiten und die Tanzfläche nicht vermeiden.
 Alles Weitere erklärt sich im Lauf des Abends — nicht zuletzt durch eine Moderation, die
 jeden Programmpunkt in beiden Sprachen ansagt. Wer selbst eine solche Feier plant, findet
@@ -155,7 +155,7 @@ Stuttgart den passenden Einstieg.
 `.trim();
 
 export const tuerkischeHochzeitAlsGastTr = `
-## Neden önceden anlatmakta fayda var
+## Türk düğünü neden farklı hissettirir
 
 Karma bir davetli listesinde Alman misafirler genellikle iyi niyetle gelir ama akışı
 bilmez: ne zaman ayağa kalkılır, hediye ne zaman ve nasıl verilir, halaya girmek şart mı.
@@ -163,8 +163,9 @@ Bu belirsizlik çoğu zaman akşamı salonun kenarında geçiren bir masayla son
 istemediği hâlde. Düğünden önce birkaç cümlelik bir bilgilendirme, davetiyeye eklenen kısa
 bir not ya da bir mesaj, bunu büyük ölçüde çözer.
 
-Aşağıdaki başlıklar, Alman misafirlerinize aktarabileceğiniz konuları sırayla ele alıyor.
-Hepsini anlatmak gerekmez; ilk üçü çoğu misafir için yeterli.
+Aşağıdaki başlıklar, bir Alman misafirin akşam boyunca karşılaşacağı her şeyi sırayla ele
+alıyor — misafir olarak okumak için de, davetlilere önceden iletmek için de. Hepsi
+gerekmez; ilk üç başlık çoğu durumda yeterli.
 
 ## Akşamın akışı: misafirin gözünden
 
@@ -173,25 +174,25 @@ Hepsini anlatmak gerekmez; ilk üçü çoğu misafir için yeterli.
 | Geliş | Ailenin karşılaması, salonun uzun bir süreye yayılarak dolması |
 | Çiftin girişi | Kendine ait müzik, çoğunlukla canlı bir an, herkes ayakta ve alkışta |
 | Törensel bölüm | Konuşmalar, yüzük töreni, kırmızı kuşak — akşamın en sakin bölümü |
-| Takı | Misafirler öne çıkar ve hediyesini görünür şekilde takdim eder |
+| Takı | Misafirler öne çıkar ve hediyelerini görünür şekilde takdim eder |
 | Yemek | Alman akışına alışkın biri için genellikle beklenenden geç |
 | Dans programı | Halay, Roman havası, Türkçe ve uluslararası parçalar dönüşümlü |
 | Kapanış | Ortalama bir Alman kutlamasından belirgin şekilde geç |
 
-Bu sıralama aileden aileye değişir. Bunu misafirlerinize söylemek bile başlı başına
+Bu sıralama aileden aileye değişir. Bunu önceden bilmek bile başlı başına
 rahatlatıcı: "saat kaçta ne olacak" listesi yerine "şu anlar olacak" çerçevesi vermek daha
 gerçekçi. Karma davetli listelerinde sunumun Almanca ve Türkçe yapılması da bu boşluğu
 akşam boyunca kapatır.
 
-## Girişi kaçırmasınlar
+## Giriş: kaçırılmaması gereken an
 
 Çiftin girişi akşamın ilk büyük anıdır ve bilinçli olarak sahnelenir: kendine ait müzik,
 sık sık canlı bir unsur, sahneye ya da baş masaya giden yolda ışık. Birçok ailede bunun
 öncesinde ayrı bir program noktası vardır — gelin çıkarma, yani gelinin baba evinden
 alındığı ya da salona getirildiği an.
 
-Misafire söylenecek somut şey şudur: zamanında salonda olun, ayağa kalkın, orta koridoru
-boş bırakın ve fotoğrafçının önüne geçmeyin. Telefonla fotoğraf çekmek hemen her yerde hoş
+Pratikte şu kadarı yeterli: zamanında salonda olun, ayağa kalkın, orta koridoru boş
+bırakın ve fotoğrafçının önüne geçmeyin. Telefonla fotoğraf çekmek hemen her yerde hoş
 karşılanır, ama ikinci sıradan.
 
 ## Takı: en çok sorulan konu
@@ -200,9 +201,9 @@ Alman düğünlerinde zarf genellikle bir kutuya sessizce bırakılır. Türk d�
 hediyenin verilmesi başlı başına bir program noktasıdır: takı. Çift önde durur, misafirler
 tek tek, çift olarak ya da aile olarak öne çıkar ve hediye görünür biçimde takdim edilir —
 geleneksel olarak para ya da gelinliğe ve damatlığa takılan bir kurdeleye iliştirilen altın.
-Sunum çoğu zaman bu bölüme eşlik eder ve öne çıkanı anons eder.
+Sunum çoğu zaman bu bölüme eşlik eder ve öne çıkan misafiri anons eder.
 
-Misafirinize aktarılacak pratik noktalar:
+Pratik noktalar:
 
 - **Zarf içinde para da altın da olağandır.** Klasik bir eşya hediyesi birçok düğünde
   istisnadır.
@@ -211,18 +212,18 @@ Misafirinize aktarılacak pratik noktalar:
   davranıyorlarsa öyle.
 - **Zarfın üzerine isim yazılmalı.** Kalabalık bir davetli listesinde çiftin sonradan
   teşekkür edebilmesinin tek yolu budur.
-- **Ana beklenmeli.** Hediyeyi ara sırada masada vermek iyi niyetlidir ama program
+- **Sırası beklenmeli.** Hediyeyi program dışında masada vermek iyi niyetlidir ama program
   noktasının anlamını ortadan kaldırır.
 
-Takı anı halka açıktır ama sıcaktır. Bir sınav değildir; dikkat zarfa değil çifte
-yöneliktir. Misafirin bu cümleyi önceden duymuş olması, öne çıkarken duyduğu tereddüdü
-tamamen ortadan kaldırır.
+Takı anı herkesin gözü önünde yaşanır ama sıcaktır. Bir sınav değildir; dikkat zarfa değil çifte
+yöneliktir. Bunu önceden bilmek, öne çıkarken duyulan tereddüdü büyük ölçüde
+ortadan kaldırır.
 
 ## Kıyafet
 
 Türk düğünleri genellikle ortalama bir Alman kutlamasından daha şık geçer. Takım elbise ya
-da koyu renk bir ikili, elbise ya da şık bir ikili güvenli tercihtir. Düzenli olarak sorulan
-iki nokta:
+da koyu renk bir ikili takım, elbise ya da şık bir ceket-etek takımı güvenli tercihtir.
+En çok sorulan iki konu:
 
 - **Beyaz geline aittir** — Alman düğünlerindeki kuralın aynısı.
 - **Kıyafetin ne kadar kapalı olacağı aileden aileye belirgin şekilde değişir.** Aileyi iyi
@@ -231,18 +232,17 @@ iki nokta:
 Elbisenin kesiminden daha çok işe yarayan bir uyarı: rahat ayakkabı. Dans bölümü uzundur ve
 Alman misafirlerin beklediğinden erken başlar.
 
-## Halayın temeli: nasıl anlatılır
+## Halayın temeli: yeni başlayanlar için
 
 Halay, katılanların serçe parmaklarından tutuştuğu ya da bir mendil tuttuğu, bir sıra veya
 açık daire hâlinde ilerleyen bir zincir dansıdır. Zincirin başındaki kişi tempoyu ve
-figürleri belirler. Ortak bir danstır — bu yüzden er ya da geç birisi misafirinizin elini
-tutacaktır. Bunun bir davet olduğunu, bir cesaret sınavı olmadığını önceden söylemek işe
-yarar.
+figürleri belirler. Ortak bir danstır — bu yüzden er ya da geç birisi elinizi tutacaktır.
+Bu bir davettir, bir cesaret sınavı değil — ve önceden bilmek işe yarar.
 
 Temel adım için dürüst bir hayatta kalma planı:
 
-1. **Zincirin sonuna girin**, ortasına değil. Orada adım en basittir ve kimse size
-   asılmaz.
+1. **Zincirin sonuna girin**, ortasına değil. Orada adım en basittir ve kimse
+   kolunuzu çekiştirmez.
 2. **İki sıra öndeki kişinin ayaklarına bakın**, kendi ayaklarınıza değil.
 3. **Küçük adımlar atın.** Temel örüntü çoğunlukla yana doğru ilerler, ritimde bir vurgu
    taşır ve sürekli tekrar eder.
@@ -251,7 +251,7 @@ Temel adım için dürüst bir hayatta kalma planı:
    oturur.
 
 Tek bir halay adımı yoktur: bölgesel varyantlar adım dizilimi ve tempo bakımından farklıdır
-ve her aile kendi alışık olduğu versiyonu getirir. Bu, acemi misafir için bir rahatlamadır —
+ve her aile kendi alışık olduğu versiyonu getirir. Bu, ilk kez katılan biri için bir rahatlamadır —
 Türk misafirler de her varyantı gözü kapalı oynamaz.
 
 ## Görgü kuralları: neyin iyi karşılandığı
@@ -260,7 +260,7 @@ Türk misafirler de her varyantı gözü kapalı oynamaz.
 |---|---|
 | Duyurulan saatte gelmek | Yemeğe yakın ortaya çıkmak |
 | Her iki tarafın ebeveynlerini kısaca selamlamak | Yalnızca çifti selamlayıp geçmek |
-| Takıda sıranın gelmesini beklemek | Zarfı ara sırada masada vermek |
+| Takıda sıranın gelmesini beklemek | Zarfı sırası gelmeden masada vermek |
 | Adımları bilmeden de dansa katılmak | Gösterişli biçimde masada oturmaya devam etmek |
 | İkinci sıradan fotoğraf çekmek | Giriş sırasında orta koridora çıkmak |
 | Müzik isteğini bir kez nazikçe iletmek | Defalarca sormak ya da tören sırasında kabine gitmek |
@@ -277,13 +277,13 @@ Bazı davetler ikinci bir akşamı da kapsar: kına gecesi, genellikle düğünd
 geleneksel olarak kadınların gecesi ve bugün birçok ailede tüm davetlilere açık. Başlangıcı
 düğünün kendisinden daha duygusal ve daha yavaştır — gelinin girişi ve kına ritüeli
 merkezdedir, ardından akşam bir partiye dönüşür. Kendi karakteri olan bağımsız bir kutlama
-olduğunu, düğünün küçük bir ön versiyonu olmadığını misafirinize söylemek yerinde olur.
+olduğunu, düğünün küçük bir provası olmadığını bilmek yerinde olur.
 Orada ayrı bir hediye âdeti olup olmadığını en kolay, daveti ileten kişi açıklığa
 kavuşturur.
 
 ## Sonuç
 
-Alman misafirlerinize anlatılacaklar üç cümleye sığar: zamanında gelin, takı anı için
+Bir Alman misafirin bilmesi gerekenler üç cümleye sığar: zamanında gelin, takı anı için
 hediyeyi hazır bulundurun, dans pistinden kaçmayın. Gerisi akşam boyunca kendiliğinden
 anlaşılır — özellikle program noktalarını her iki dilde de anons eden bir sunum varsa.
 Kendi düğününü planlayan ve davetli listesinin her iki tarafını da yanına almak isteyenler
@@ -356,12 +356,12 @@ individual envelope.
 ## Dress code: what people actually wear
 
 Turkish weddings are usually more formal than an average German celebration. A suit or a
-dark two-piece, a dress or a formal two-piece, are the safe choice. Two points come up
+dark jacket-and-trousers, a dress or a smart trouser suit are the safe choice. Two points come up
 again and again:
 
 - **White stays reserved for the bride** — the same rule as at a German wedding.
-- **How conservative the dress code is varies considerably from family to family.** If you
-  do not know the family well, a classically formal choice always lands right.
+- **Just how conservative the dress code is will vary considerably from family to family.**
+  If you do not know the family well, a classically formal choice is always a safe bet.
 
 More important than the cut of a dress: comfortable shoes. The dancing runs long and
 starts earlier than German guests tend to expect.
@@ -449,19 +449,19 @@ export const tuerkischeHochzeitAlsGastPost: BlogPost = {
       seo: {
         metaTitle: 'Türkische Hochzeit als Gast: Etikette | DJ Veys',
         metaDescription:
-          'Eingeladen auf eine türkische Hochzeit? Ablauf, Taki und Geschenk, Dresscode, Halay-Grundschritt und Etikette — was Gäste vorher wissen sollten.',
+          'Zu einer türkischen Hochzeit eingeladen? Ablauf, Taki und Geschenk, Dresscode, Halay-Grundschritt und Etikette — was Gäste vorher wissen sollten.',
       },
     },
     tr: {
       slug: 'turk-dugunune-katilan-alman-misafirler',
-      title: 'Alman misafirlerinize Türk düğünü hakkında ne anlatmalısınız',
+      title: 'Türk düğününe giden Alman misafirler: bilinmesi gerekenler',
       excerpt:
-        'Karma bir davetli listesinde Alman misafirler akışı bilmedikleri için çekingen kalır: takının ne zaman ve nasıl yapıldığı, kıyafetin ne kadar şık olması gerektiği, halaya girmenin şart olup olmadığı. Bu rehber, düğünden önce onlara aktarabileceğiniz her şeyi sırayla topluyor.',
+        'Karma bir davetli listesinde Alman misafirler akışı bilmedikleri için çekingen kalır: takının ne zaman ve nasıl yapıldığı, kıyafetin ne kadar şık olması gerektiği, halaya girmenin şart olup olmadığı. Bu rehber akşamı sırayla anlatıyor — okumak ya da davetlilere iletmek için.',
       body: tuerkischeHochzeitAlsGastTr,
       seo: {
         metaTitle: 'Alman Misafirlere Türk Düğünü Rehberi | DJ Veys',
         metaDescription:
-          'Alman misafirlerinize Türk düğününü nasıl anlatırsınız? Akış, takı, kıyafet, halayın temel adımı ve görgü kuralları tek tek açıklanıyor.',
+          'Türk düğününe giden bir Alman misafir neyi bilmeli? Akış, takı, kıyafet, halayın temel adımı ve görgü kuralları tek tek açıklanıyor.',
       },
     },
     en: {

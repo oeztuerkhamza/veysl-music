@@ -31,7 +31,7 @@ Dieser Artikel nennt keine konkrete Location — weder als Empfehlung noch als W
 hat einen sachlichen Grund: Partnerschaften mit Sälen werden hier nicht behauptet, und ein
 Raum, der für eine Feier genau richtig ist, kann für die nächste der falsche sein. Was
 sich dagegen ehrlich weitergeben lässt, sind die Kriterien, die unabhängig vom Haus immer
-gelten. Aus zwölf Jahren und über 200 Veranstaltungen ist daraus eine Prüfliste geworden,
+gelten. Aus zwölf Jahren und über 200 Veranstaltungen ist eine Prüfliste geworden,
 die sich bei einer Besichtigung in etwa zwanzig Minuten abarbeiten lässt.
 
 ## Kapazität ist nicht gleich Tanzfläche
@@ -97,7 +97,7 @@ der Besichtigung zu klären, ob die Küche feste Ausgabezeiten hat oder flexibel
 ob eine Abstimmung zwischen Service und Musik vorgesehen ist. Ein Haus, das diese Frage
 routiniert beantwortet, hat sie schon oft gelöst.
 
-## Was bei türkischen Hochzeiten in großer Besetzung dazukommt
+## Was bei großen türkischen Hochzeiten dazukommt
 
 Bei türkischen und deutsch-türkischen Feiern verschieben sich einige Kriterien deutlich.
 Halay wird im Kreis oder in der Kette getanzt, und eine Kette wächst nach außen — sie
@@ -191,7 +191,7 @@ saat kaça kadar kutlanabilir, dışarıda ne zaman sessizlik başlar, ses seviy
 bir cihaz kurulu mu ve istisnalara binada kim karar veriyor? Hukuki çerçeve için
 "Baden-Württemberg'de gürültü koruması ve kapanış saatleri" yazısına bakılabilir.
 
-## Binanın kendi sistemi mi, kendi ekipman mı
+## Binanın kendi sistemi mi, kendi ekipmanımız mı
 
 Burada iki tür bina ayrışır. Belediye ve mahalle salonlarında çoğu zaman konuşmalara yeten
 ama dans alanına yetmeyen basit bir ses düzeni bulunur. Büyük otel balo salonlarında ise
@@ -207,7 +207,7 @@ olduğunu yoksa esnek kalıp kalmadığını ve servis ile müzik arasında bir 
 öngörülüp öngörülmediğini netleştirmek gerekir. Bu soruyu rahatlıkla yanıtlayan bir bina,
 onu daha önce defalarca çözmüştür.
 
-## Kalabalık türk düğünlerinde ek olarak neye bakılır
+## Kalabalık Türk düğünlerinde ek olarak neye bakılır
 
 Türk ve Alman-Türk düğünlerinde bazı ölçütler belirgin biçimde değişir. Halay daire ya da
 zincir hâlinde oynanır ve zincir dışa doğru büyür — ortasında kolon, basamak ya da podyum
@@ -216,8 +216,8 @@ bir güzergâh gerekir; canlı unsurlar eklendiğinde aynı güzergâhı başka 
 kullanır, bu da oturma planında hesaba katılır ve önceden koordine edilir. Aynı anda
 birden fazla kuşak kutladığı için oturma düzeni ile dans alanı arasındaki denge önem
 kazanır: yaşlı akrabalar olan biteni görmek ister ama doğrudan bir hoparlörün yanında
-oturmak istemez. Bunun ikisine birden izin veren bir salon, bu imkânı sunmayan daha
-gösterişli bir salondan değerlidir.
+oturmak istemez. Bu ikisine birden izin veren bir salon, bu imkânı sunmayan, daha
+gösterişli bir salondan daha değerlidir.
 
 ## Keşif ziyareti için soru listesi
 

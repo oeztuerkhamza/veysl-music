@@ -203,7 +203,7 @@ Son madde karşılaştırmalarda düzenli olarak gözden kaçar. Kâğıt üzeri
 bütçeden biri tek bir muhatap, diğeri üç muhatap içerebilir — üç sözleşme, üç ulaşım ve
 birinin yürütmesi gereken üç ayrı koordinasyon ile.
 
-## Tasarruf neden en pahalıya tam da burada mal olur
+## Tasarruf tam da burada neden en pahalıya mal olur
 
 Düğün forumlarında dikkat çekici sıklıkta dile getirilen bir endişe var ve bu asla yemek
 değil: dans pistinin boş kalması. Bu bir reklam iddiası değil, çiftlerin önceden neyden
@@ -248,8 +248,8 @@ dürüst olmaz:
 - **Bilinçli olarak dans edilmeyecektir.** Bazı çiftler bir karşılama, uzun bir yemek ve
   sohbet planlar. O zaman temiz bir fon sesi ve konuşmalar için çalışan mikrofonlar
   yeter, fazlası değil.
-- **Az davetli, uysal bir salon.** Akustiğin sorunsuz olduğu ve az kişinin seslendirildiği
-  yerde teknik ihtiyaç gerçekten daha düşüktür.
+- **Az davetli, uysal bir salon.** Akustiğin sorunsuz olduğu ve az sayıda kişinin bulunduğu
+  salonlarda teknik ihtiyaç gerçekten daha düşüktür.
 - **Mekân sabit bir ses sistemi sağlıyor.** O zaman teknik kapsamın bir bölümü ortadan
   kalkar — yeter ki mevcut sistemin planlanan akşam için gerçekten yeterli olup olmadığı
   önceden kontrol edilsin.
@@ -285,7 +285,7 @@ The music budget question is almost always asked as a share question: a fixed sl
 the total that can be applied to any wedding. That is exactly what doesn't work, and the
 reason lies not in the music but in how the budget itself is built. The big line items of
 a wedding behave completely differently when the wedding changes. Once that mechanism is
-clear, no rule of thumb is needed — the decision can be made against your own celebration
+clear, no rule of thumb is needed — the decision can be made from your own celebration outwards
 instead.
 
 ## Fixed costs and guest-scaling costs
@@ -319,7 +319,7 @@ There are essentially four things:
   the reception through dinner and into the night. The difference isn't quality, it's
   hours.
 - **Technical scope.** Sound matched to the room and the guest count, lighting,
-  additional zones, microphones for speeches. This is the only position that genuinely
+  additional zones, microphones for speeches. This is the only item that genuinely
   grows with guest numbers, and it does so in steps rather than smoothly.
 - **Live elements.** Whether anything is played live alongside the DJ set, whether a live
   line-up joins, whether hosting is needed, and in which languages.
@@ -339,7 +339,7 @@ that the dance floor stays empty. That isn't a marketing claim, it's an observat
 what couples fear beforehand and what they remember afterwards. There's a structural
 reason behind it.
 
-Almost every item in a wedding budget acts on a bounded part of the day: the dress on
+Almost every item in a wedding budget affects only a bounded part of the day: the dress on
 arrival and in the photographs, catering at dinner, decoration in the room. Music, by
 contrast, runs across the whole timeline and also shapes its curve — when things stay
 calm, when the mood turns, when the evening peaks and how it winds down. It's the only
@@ -362,7 +362,7 @@ best as a couple, with a sheet of paper:
 4. **Name two items nobody listed.** That's where the room to move is — the budget for
    your priorities comes from there, and almost always from items that grow per head.
 5. **Only then request quotes**, and do it in order of priority. Asking first about what
-   matters most means knowing the real frame before the rest is already committed.
+   matters most means knowing the real scope before the rest is already committed.
 
 The value of the exercise isn't the result, it's the sequence: priorities first, numbers
 second. Done the other way round, the budget gets allocated in whatever order the quotes
@@ -374,12 +374,12 @@ There are celebrations where a larger music budget simply adds nothing, and it w
 dishonest to leave that out:
 
 - **The evening ends early.** If the celebration winds down after dinner, a full evening
-  programme has no function.
+  programme serves no purpose.
 - **There will deliberately be no dancing.** Some couples plan a reception, a long meal
   and conversation. That calls for clean background sound and working microphones for the
   speeches, and nothing beyond it.
 - **A small guest count in a forgiving room.** Where the acoustics are uncomplicated and
-  few guests need covering, the technical requirement really is lower.
+  few guests to reach with sound, the technical requirement really is lower.
 - **The venue provides an installed system.** Part of the technical scope then falls away
   — provided somebody checks in advance whether the existing system is actually up to the
   evening as planned.

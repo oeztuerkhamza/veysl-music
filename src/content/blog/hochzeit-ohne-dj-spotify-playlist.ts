@@ -106,9 +106,9 @@ Wer den ganzen Abend am Pult steht, sitzt nicht beim Essen, tanzt nicht mit und 
 an. Diese Rolle sollte er bewusst wählen, nicht aus Gefälligkeit übernehmen. Zweitens: Es
 fehlt meist die Technik. Ein Laptop und ein Controller sind keine Beschallung für einen
 vollen Saal, und die Hausanlage einer Location ist nicht automatisch dafür ausgelegt.
-Drittens: Es gibt keinen Ersatz. Fällt ein gebuchter Dienstleister aus, greift ein Vertrag
-mit einer Vertretungsregelung; fällt ein Freund kurzfristig aus, steht die Feier ohne Musik
-da.
+Drittens: Es gibt keinen Ersatz. Bei einem gebuchten Dienstleister ist vorab besprochen
+und schriftlich festgehalten, wie in einem solchen Fall vorgegangen wird; fällt ein Freund
+kurzfristig aus, steht die Feier ohne Musik da.
 
 Ein fairer Kompromiss ist die Aufteilung: Der Freund übernimmt einen klar abgegrenzten Teil
 des Abends — den Empfang, die Dinner-Musik oder die letzte Stunde —, während Technik und
@@ -168,7 +168,7 @@ taşıyabilir:
 - **Kutlama küçük ve derli toplu kalıyor**, dar aile ya da arkadaş çevresinde.
 - **Akşam sohbet üzerine kurulu**, sürekli dolu bir dans pisti üzerine değil. Müzik fonda
   çalıyor ve orada kalması isteniyor.
-- **Zamanlaması tam oturması gereken program anları neredeyse yok** — gösterişli bir giriş,
+- **Zamanlamasının tam oturması gereken program anları neredeyse yok** — gösterişli bir giriş,
   müzikle desteklenen bir konuşma ya da etkisi saniyeye bağlı bir sürpriz yok.
 - **Mekân çalışan bir ses sistemi sağlıyor** ve buna bir kaynak cihaz güvenle
   bağlanabiliyor.
@@ -177,7 +177,7 @@ taşıyabilir:
 
 Nikah sonrası öğlen karşılaması, dar çevreyle bir yemek, fon müzikli bir bahçe kutlaması:
 Böyle kutlamalarda DJ nadiren gereklidir. Burada çalma listesi planlayan kişi, canını
-yakmayacak bir yerden tasarruf eder. Soru asıl, gerçekten dans edilecekse ilginçleşir.
+yakmayacak bir yerden tasarruf eder. Asıl mesele, gerçekten dans edilecekse başlar.
 
 ## Bir çalma listesinin yapamadıkları
 
@@ -235,7 +235,7 @@ konsolun başında geçiren kişi yemekte oturmaz, dans etmez, kadeh kaldırmaz.
 gönülsüz bir nezaketle değil, bilinçli seçmelidir. İkincisi: Genellikle teknik eksiktir. Bir
 dizüstü bilgisayar ve bir kontrol ünitesi, dolu bir salonun seslendirmesi değildir ve
 mekânın kendi sistemi buna otomatik olarak uygun değildir. Üçüncüsü: Yedeği yoktur. Tutulan
-bir hizmet sağlayıcı gelemezse yerine geçme maddesi olan bir sözleşme devreye girer; bir
+bir hizmet sağlayıcı gelemezse böyle bir durumda nasıl ilerleneceği önceden konuşulmuş ve yazılı hâle getirilmiştir; bir
 arkadaş son anda gelemezse kutlama müziksiz kalır.
 
 Adil bir orta yol paylaştırmaktır: Arkadaş, akşamın net biçimde sınırlanmış bir bölümünü
@@ -368,8 +368,8 @@ dancing, not raising a glass. That role should be chosen deliberately, not accep
 politeness. Second: the equipment is usually missing. A laptop and a controller are not
 sound reinforcement for a full hall, and a venue's house system is not automatically built
 for it. Third: there is no substitute. If a booked supplier drops out, a contract with a
-stand-in clause applies; if a friend drops out at short notice, the celebration is left
-without music.
+procedure for such a case has been agreed in advance and put in writing; if a friend drops
+out at short notice, the celebration is left without music.
 
 A fair compromise is to split it: the friend takes a clearly bounded part of the evening —
 the reception, the dinner music or the last hour — while the equipment and the programme
@@ -394,10 +394,10 @@ compromise.
 
 ## If the decision goes towards a DJ
 
-The question then shifts from "whether" to "what exactly is included". Own sound and
-lighting equipment including set-up and tear-down, hosting in German, Turkish and English,
-a planning call before the celebration and travel within a defined radius around Stuttgart
-are part of the frame with DJ Veys; which scope suits which celebration is laid out on the
+The question then shifts from "whether" to "what exactly is included". With DJ Veys the
+standard scope covers his own sound and lighting equipment including set-up and tear-down,
+hosting in German, Turkish and English, a planning call before the celebration, and travel
+within a defined radius around Stuttgart; which scope suits which celebration is laid out on the
 packages page, and how the planning call runs is described on the how-it-works page. The
 weddings and events page shows which building blocks are available at all — from plain
 sound reinforcement through to live music with horns.
@@ -423,7 +423,10 @@ export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
   readingTimeMinutes: 5,
   links: ['/hochzeit-events', '/pakete', '/ablauf'],
   relatedAnswers: ['illness-backup', 'equipment-brought', 'guest-requests-night', 'genre-range'],
-  relatedCities: ['stuttgart', 'ludwigsburg'],
+  // Stuttgart hat bewusst keine Stadtseite (cities.ts, priority 3) — ein
+  // Verweis darauf ließe sich nicht auflösen. Deshalb zwei veröffentlichte
+  // Städte aus der Kernregion.
+  relatedCities: ['esslingen', 'ludwigsburg'],
   relatedPosts: ['dj-live-band-oder-beides', 'dramaturgie-hochzeitsabend'],
   translations: {
     de: {
