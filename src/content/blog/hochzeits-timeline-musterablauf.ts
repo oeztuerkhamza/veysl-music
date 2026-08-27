@@ -9,7 +9,8 @@ Zeitplan für den Hochzeitstag aus?" — und kaum eine Antwort wird so oft missv
 Die folgende Timeline ist ein Beispiel, orientiert an einem typischen Ablauf, keine
 Vorlage, die sich unverändert übernehmen lässt. Jede Location, jede Gästezahl und jede
 Familientradition verschiebt einzelne Blöcke — die Struktur dahinter bleibt aber in den
-meisten Fällen erstaunlich ähnlich.
+meisten Fällen erstaunlich ähnlich. Wer lieber direkt selbst plant: Am Ende dieses
+Beitrags steht ein leeres Raster zum Ausfüllen.
 
 ## Beispiel-Timeline für einen Hochzeitstag
 
@@ -112,6 +113,32 @@ nicht nur einen Teil davon.
 - Sind Zeitpuffer nach Zeremonie und vor dem Dinner tatsächlich eingeplant?
 - Ist bekannt, bis wann die Location oder eine Sperrzeitregelung ein Ende setzt?
 - Gibt es eine Ansprechperson vor Ort, die bei Verzögerungen schnell informiert werden kann?
+
+## Ablaufplan-Vorlage zum Ausfüllen
+
+Die Timeline oben zeigt, wie ein Tag aussehen kann. Der eigene Ablaufplan entsteht
+aber erst, wenn Uhrzeiten, Programmpunkte und Zuständigkeiten nebeneinanderstehen.
+Dieses Raster lässt sich abtippen oder in ein Dokument kopieren und Zeile für Zeile
+füllen — vier Spalten reichen, mehr macht den Plan am Hochzeitstag unlesbar.
+
+| Uhrzeit | Programmpunkt | Verantwortlich | Notiz |
+|---|---|---|---|
+|  | Getting Ready |  |  |
+|  | Zeremonie |  |  |
+|  | Empfang und Fotos |  |  |
+|  | Einzug ins Fest |  |  |
+|  | Dinner |  |  |
+|  | Reden |  |  |
+|  | Anschnitt |  |  |
+|  | Eröffnungstanz |  |  |
+|  | Peaktime |  |  |
+|  | Ende / Sperrzeit |  |  |
+
+Zwei Hinweise aus der Praxis: In die Spalte "Verantwortlich" gehört pro Zeile genau
+ein Name — steht dort niemand, passiert der Programmpunkt am Tag selbst
+erfahrungsgemäß zu spät oder gar nicht. Und die letzte Zeile ist keine Formalie: Wer
+den Endzeitpunkt vorher kennt, plant die Peaktime davor anders als jemand, der um
+Mitternacht überrascht wird.
 
 ## Fazit
 
@@ -219,6 +246,31 @@ değişirse, bu değişiklik sadece bir kısmına değil, tüm taraflara aynı a
 - Mekânın ya da bir kapanış saati düzenlemesinin ne zaman bitiş getirdiği biliniyor mu?
 - Gecikme durumunda hızla bilgilendirilebilecek, yerinde bir irtibat kişisi var mı?
 
+## Doldurulabilir akış planı şablonu
+
+Yukarıdaki zaman çizelgesi bir günün nasıl görünebileceğini gösteriyor. Kendi akış
+planınız ise ancak saatler, program noktaları ve sorumlular yan yana geldiğinde
+ortaya çıkar. Bu tabloyu bir belgeye kopyalayıp satır satır doldurabilirsiniz — dört
+sütun yeter; fazlası düğün günü planı okunmaz hâle getirir.
+
+| Saat | Program noktası | Sorumlu | Not |
+|---|---|---|---|
+|  | Hazırlık |  |  |
+|  | Tören |  |  |
+|  | Karşılama ve fotoğraflar |  |  |
+|  | Salona giriş |  |  |
+|  | Yemek |  |  |
+|  | Konuşmalar |  |  |
+|  | Pasta kesimi |  |  |
+|  | İlk dans |  |  |
+|  | Zirve saatleri |  |  |
+|  | Bitiş / gürültü saati |  |  |
+
+Uygulamadan iki not: "Sorumlu" sütununa her satır için tek bir isim yazılmalı — orası
+boşsa o program noktası düğün gününde ya geç olur ya hiç olmaz. Son satır da formalite
+değil: Bitiş saatini önceden bilen, zirve saatlerini gece yarısı sürprizle karşılaşan
+birinden farklı planlar.
+
 ## Sonuç
 
 Yukarıdaki zaman çizelgesi gerçekçi bir başlangıç noktasıdır, katı bir şablon değil. Her
@@ -324,6 +376,30 @@ team.
 - Are real buffers built in after the ceremony and before dinner?
 - Is it clear when the venue or a closing-time rule sets an end point?
 - Is there an on-site contact who can be reached quickly if something runs late?
+
+## A fill-in running-order template
+
+The timeline above shows how a day can look. Your own running order only takes shape
+once times, programme items and responsibilities sit side by side. Copy this grid into
+a document and fill it in row by row — four columns are enough; more makes the plan
+unreadable on the day itself.
+
+| Time | Programme item | Responsible | Note |
+|---|---|---|---|
+|  | Getting ready |  |  |
+|  | Ceremony |  |  |
+|  | Reception and photos |  |  |
+|  | Entrance |  |  |
+|  | Dinner |  |  |
+|  | Speeches |  |  |
+|  | Cake |  |  |
+|  | First dance |  |  |
+|  | Peak time |  |  |
+|  | End / closing time |  |  |
+
+Two notes from practice: the "Responsible" column needs exactly one name per row — where
+nobody is named, that item tends to happen late or not at all. And the last row is not a
+formality: knowing the end time in advance changes how you plan the peak time before it.
 
 ## Conclusion
 
@@ -672,7 +748,7 @@ export const timelinePost: BlogPost = {
   publishedAt: '2026-09-08',
   updatedAt: '2026-08-23',
   tags: ['planung', 'timeline', 'zeitplan', 'ablauf'],
-  readingTimeMinutes: 6,
+  readingTimeMinutes: 8,
   links: ['/ablauf', '/pakete'],
   relatedAnswers: ['run-of-show', 'planning-call', 'first-dance'],
   relatedCities: ['heilbronn', 'esslingen'],
@@ -686,7 +762,7 @@ export const timelinePost: BlogPost = {
       seo: {
         metaTitle: 'Ablauf einer DJ-begleiteten Hochzeit – Timeline | DJ Veys',
         metaDescription:
-          'Wie läuft eine DJ-begleitete Hochzeit ab, und wie plant man den Ablauf? Beispiel-Timeline von 13 bis 2 Uhr, die häufigsten Timing-Fehler und Puffer-Tipps.',
+          'Wie läuft eine DJ-begleitete Hochzeit ab? Beispiel-Timeline von 13 bis 2 Uhr, die häufigsten Timing-Fehler und ein Ablaufplan zum Ausfüllen.',
       },
     },
     tr: {
