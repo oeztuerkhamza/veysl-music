@@ -16,9 +16,10 @@ import { defineRouting } from 'next-intl/routing';
  * Wallonien über fr und die Ostkantone über de abgedeckt.
  *
  * `ar` steht direkt hinter `tr`/`ku`, weil diese drei zusammen die religiös
- * geprägte Zielgruppe tragen: sie sind die einzigen Sprachen, in denen
- * `/islamische-hochzeit` überhaupt erscheint (siehe
- * ISLAMIC_SUPPORTED_LOCALES in src/content/islamic.ts).
+ * geprägte Zielgruppe tragen. `/islamische-hochzeit` erscheint seit dem
+ * 2026-08-27 wieder in allen acht Sprachen (ISLAMIC_SUPPORTED_LOCALES in
+ * src/content/islamic.ts) — für diese drei ist die Seite der Kern, für die
+ * übrigen eine Ebene neben dem Hochzeits-Angebot.
  */
 export const locales = ['de', 'tr', 'ku', 'ar', 'en', 'nl', 'fr', 'es'] as const;
 export type Locale = (typeof locales)[number];
@@ -355,16 +356,12 @@ export const pathnames = {
    * "islamic", Fragen aus src/content/answers.ts (Kategorie `islamisch`),
    * Begründung in docs/SEO-KEYWORD-MAP.md §5.
    *
-   * **Nur tr/ku/ar** — siehe ISLAMIC_SUPPORTED_LOCALES in
-   * src/content/islamic.ts. Die übrigen fünf Sprachen, Deutsch eingeschlossen,
-   * liefern hier `notFound()`.
-   *
-   * Die Slugs der gesperrten Sprachen bleiben trotzdem stehen: `pathnames`
-   * verlangt für jede Route einen Eintrag pro Locale, und der Sperrmechanismus
-   * sitzt bewusst an einer Stelle (der Konstante), nicht verteilt über
-   * Routing, Navigation und Sitemap. Ein Slug, den keine Seite bedient, kostet
-   * nichts; eine halb entfernte Route, die in einer Sprache doch noch
-   * auftaucht, kostet genau das, was diese Änderung verhindern soll.
+   * **Alle acht Sprachen** — der Kunde hat die religiös geprägte Ebene am
+   * 2026-08-27 wieder für jede Sprache freigegeben (siehe
+   * ISLAMIC_SUPPORTED_LOCALES in src/content/islamic.ts). Zwischen dem
+   * 2026-08-05 und diesem Datum war sie auf tr/ku/ar begrenzt; dass die Slugs
+   * aller acht Sprachen in dieser Zeit stehen blieben, ist der Grund, warum
+   * die Öffnung eine Zeile Code war und keine Routing-Änderung.
    */
   '/islamische-hochzeit': {
     de: '/islamische-hochzeit',

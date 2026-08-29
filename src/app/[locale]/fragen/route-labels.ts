@@ -10,9 +10,9 @@ import type { StaticPathname } from '@/lib/seo';
  */
 export const ROUTE_LABEL_KEY: Partial<Record<StaticPathname, string>> = {
   '/hochzeit-events': 'nav.services',
-  // Nur in tr/ku/ar vorhanden (ISLAMIC_SUPPORTED_LOCALES). In den übrigen fünf
-  // Sprachen fehlt der Key, `t()` würde die Rohbezeichnung ausgeben — deshalb
-  // filtert die Fragen-Seite diesen Link dort heraus, statt ihn zu übersetzen.
+  // Seit dem 2026-08-27 wieder in allen acht Sprachen vorhanden
+  // (ISLAMIC_SUPPORTED_LOCALES); der Filter in der Fragen-Seite greift damit
+  // nicht mehr, bleibt aber als Mechanik stehen.
   '/islamische-hochzeit': 'nav.islamicWedding',
   // Nur in de/tr/en (TURKISH_DJ_SUPPORTED_LOCALES) — gleiche Filter-Mechanik
   // in der Fragen-Seite wie beim islamischen Eintrag darüber.

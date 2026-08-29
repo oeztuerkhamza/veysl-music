@@ -34,10 +34,12 @@ interface RouteSeoConfig {
  * - `/fragen` (GEO answer hub): same shape — the corpus is authored in de/tr/en
  *   and falls back to German elsewhere, so `buildFragenMetadata()` marks the
  *   other four `noindex`. Emitted per-locale below, not here.
- * - `/islamische-hochzeit`: published in tr/ku/ar only (`ISLAMIC_SUPPORTED_LOCALES`);
- *   the page itself `notFound()`s for the other five — German included —
- *   because the religiously framed layer is deliberately not part of those
- *   sites at all. Emitted per-locale below, not here.
+ * - `/islamische-hochzeit`: published in all eight locales again since
+ *   2026-08-27 (`ISLAMIC_SUPPORTED_LOCALES` — the client reopened the
+ *   religiously framed layer that had been limited to tr/ku/ar). It is still
+ *   emitted per-locale below rather than here, because the constant, not this
+ *   map, stays the single switch: if the scope ever narrows again, the sitemap
+ *   follows without an edit.
  * - `/hochzeits-dj-baden-wuerttemberg`: same shape, de/tr/en only
  *   (`BW_SUPPORTED_LOCALES`). A state-level page exists to rank for a
  *   German-language query; a French edition of it competes for nothing.
@@ -417,7 +419,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Islamische Hochzeit — tr/ku/ar only, same rule as the answer hub above.
+  // Islamische Hochzeit — seit 2026-08-27 wieder alle acht Sprachen; die
+  // Konstante bleibt der einzige Schalter.
   {
     const languages = buildLanguages(
       (locale) => absoluteUrl('/islamische-hochzeit', locale),

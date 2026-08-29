@@ -223,18 +223,18 @@ export interface BlogPost {
    * the right default. This field exists for the one case where the two come
    * apart: a post whose translation exists but must not be shown.
    *
-   * Today that is `islamische-hochzeit-planen`. The client's decision of
-   * 2026-08-05 (reasoned through in `src/content/islamic.ts`) keeps the
-   * religiously framed layer to tr/ku/ar, and the German, English, Dutch,
-   * French and Spanish bodies of that article were already written. Deleting
-   * them was the obvious alternative and the wrong one: `BlogTranslations`
-   * makes `de`/`tr`/`en` mandatory, so deletion would mean weakening the type
-   * for every post to encode a decision about one — and it would throw away
-   * ~3.000 Wörter fertigen Text that comes back the moment the decision does.
+   * No post uses it right now, and the reason it exists is worth keeping:
+   * between 2026-08-05 and 2026-08-27 it held `islamische-hochzeit-planen` to
+   * tr/ku/ar while its German, English, Dutch, French and Spanish bodies sat
+   * finished in the file. Deleting those bodies was the obvious alternative
+   * and the wrong one — when the client reopened the religiously framed layer
+   * for every language, the article came back the same day, without a word of
+   * new text. That is the case this field is for: a translation that exists
+   * but must not be shown *yet*.
    *
-   * So the text stays and the gate sits here, in one place, where
-   * `getReadyLocalesForPost()` and `resolveBlogLocale()` both read it. Index,
-   * hreflang, sitemap and the article route all narrow together.
+   * The gate sits here, in one place, where `getReadyLocalesForPost()` and
+   * `resolveBlogLocale()` both read it. Index, hreflang, sitemap and the
+   * article route all narrow together.
    */
   restrictToLocales?: readonly BlogLocale[];
   translations: BlogTranslations;

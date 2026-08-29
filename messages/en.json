@@ -10,6 +10,7 @@
     "weddings": "Real Weddings",
     "music": "Music",
     "process": "How It Works",
+    "islamicWedding": "Islamic wedding",
     "questions": "Questions & Answers",
     "guide": "Guide",
     "europe": "DJ in Europe",
@@ -499,6 +500,110 @@
         "a": "Typically a deposit on signing to reserve the date, with the balance due before or on the event day. All terms are set out in the contract."
       }
     ]
+  },
+  "islamic": {
+    "meta": {
+      "title": "Islamic Wedding With a DJ — Dua, Ilahi & Party | DJ Veys",
+      "description": "Quran recitation, dua and live ilahi — then a full dance floor. One running order, one PA, one point of contact. Stuttgart and across Germany."
+    },
+    "hero": {
+      "eyebrow": "Islamic & faith-based weddings",
+      "title": "The dua and the dance floor, same evening",
+      "subtitle": "Quran recitation, dua and ilahi belong in the running order here, not in a separate booking. The celebration starts afterwards — both from one supplier, hosted in German, Turkish and English."
+    },
+    "intro": {
+      "eyebrow": "The real question",
+      "title": "Can the two actually go together?",
+      "body": "Almost every couple is handed two separate quotes at this point — one for the religious part, one for the party — and has to organise the transitions themselves. That is exactly where the evening tips over: the music is cut mid-track, nobody knows when guests are meant to sit down, and after the dua the room simply stalls. Here both are a single running order, written by the person who also runs it on the night."
+    },
+    "recitation": {
+      "eyebrow": "The difference",
+      "title": "I recite the tilawet myself",
+      "body": "The Quran recitation does not come from a recording, and not from an outside guest squeezed in between two other bookings: Veysel Durmuş recites it himself. In practice that means recitation, dua, ilahi, hosting and the DJ set all sit with one person — so the transition from the last word to the first announcement stops being a risk and becomes part of the plan."
+    },
+    "program": {
+      "eyebrow": "Building blocks",
+      "title": "What the evening is made of",
+      "lead": "Freely combinable. In the planning call we decide which of these belong to your celebration — and which explicitly do not.",
+      "optionalLabel": "Optional",
+      "items": {
+        "tilawet": {
+          "title": "Quran recitation",
+          "text": "Recited live, on its own microphone, without reverb or effects and at a markedly lower level than the dance set. Intelligibility everywhere in the room is the only goal."
+        },
+        "dua": {
+          "title": "Dua",
+          "text": "Given a fixed slot in the running order, usually before dinner or before the first dance. A bilingual announcement first, so every guest knows what is about to happen."
+        },
+        "ilahi": {
+          "title": "Ilahi — live",
+          "text": "Performed live, with saz accompaniment on request. No playback, no playlist."
+        },
+        "tsm": {
+          "title": "Türk Sanat Müziği",
+          "text": "Usually during dinner or as a calmer block between two dance rounds — also possible live on the saz rather than only off a laptop."
+        },
+        "djset": {
+          "title": "DJ set & hosting",
+          "text": "Turkish, German and international music blended rather than played in separate blocks. Hosting live in German, Turkish and English."
+        },
+        "afterparty": {
+          "title": "After-wedding party",
+          "text": "The more informal part once the official programme is over — or a separate date in a smaller circle, before or after."
+        }
+      }
+    },
+    "timeline": {
+      "eyebrow": "Example running order",
+      "title": "How an evening like this actually runs",
+      "lead": "A pattern from practice. Times, order and the length of each block shift with your venue and your guest count.",
+      "note": "This running order is an example, not an offer. Your real one comes out of the planning call and is then written into the contract.",
+      "steps": {
+        "welcome": {
+          "title": "Reception",
+          "text": "Quiet background music, guests arriving. The equipment has been up since the soundcheck."
+        },
+        "tilawet": {
+          "title": "Quran recitation",
+          "text": "The music is faded out, not cut. A bilingual announcement, then the recitation."
+        },
+        "dua": {
+          "title": "Dua",
+          "text": "Directly afterwards — same microphone, same level."
+        },
+        "dinner": {
+          "title": "Dinner",
+          "text": "Türk Sanat Müziği and calm instrumental music, kept at conversation volume."
+        },
+        "ilahi": {
+          "title": "Ilahi, live",
+          "text": "Performed live, with saz on request — this is where the evening moves from the religious part into the celebration."
+        },
+        "entrance": {
+          "title": "The couple’s entrance",
+          "text": "Announced in German and Turkish, lighting on the couple, music of your choosing."
+        },
+        "dance": {
+          "title": "Dance floor",
+          "text": "Halay, Roman Havası, current Turkish and international sets — blended, not in blocks."
+        },
+        "close": {
+          "title": "Closing",
+          "text": "Last song agreed in advance, then teardown. The time depends on the venue."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Common questions",
+      "title": "What couples ask at this point",
+      "more": "See all questions & answers"
+    },
+    "cta": {
+      "eyebrow": "Date",
+      "title": "Is your date still free?",
+      "subtitle": "Send us the date, the venue and a rough guest count. An answer on availability usually comes within 24 hours.",
+      "button": "Check availability"
+    }
   },
   "bw": {
     "meta": {
