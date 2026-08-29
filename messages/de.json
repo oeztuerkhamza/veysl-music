@@ -516,6 +516,18 @@
       "title": "Geht das überhaupt zusammen?",
       "body": "Fast jedes Paar bekommt an dieser Stelle zwei getrennte Angebote — eines für den religiösen Teil, eines für die Party — und muss die Übergänge selbst organisieren. Genau dort kippt der Abend: Die Musik wird mitten im Stück abgewürgt, niemand weiß, wann die Gäste sitzen sollen, und nach der Dua steht der Saal still. Hier ist beides ein einziger Ablaufplan, geschrieben von der Person, die ihn am Abend auch durchführt."
     },
+    "verse": {
+      "eyebrow": "Worauf der Abend gründet",
+      "title": "Ein Vers und ein Dua, die zu diesem Abend gehören",
+      "arabic": "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ",
+      "source": "Koran, Sure ar-Rūm 30:21",
+      "duaLead": "Und das Dua, das dem Brautpaar traditionell zugesprochen wird:",
+      "duaArabic": "بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+      "duaTranslit": "Bârakallâhu leke, ve bâreke aleyke, ve cemea beynekumâ fî hayr.",
+      "duaSource": "Überliefert bei Abū Dāwūd und at-Tirmidhī",
+      "text": "Und es gehört zu Seinen Zeichen, dass Er euch aus euch selbst Gattinnen erschaffen hat, damit ihr bei ihnen Ruhe findet; und Er hat Zuneigung und Barmherzigkeit zwischen euch gesetzt. Darin sind wahrlich Zeichen für Leute, die nachdenken.",
+      "duaText": "Möge Allah dich segnen, Seinen Segen auf dich herabsenden und euch beide in Gutem vereinen."
+    },
     "recitation": {
       "eyebrow": "Der Unterschied",
       "title": "Die Tilawet lese ich selbst",

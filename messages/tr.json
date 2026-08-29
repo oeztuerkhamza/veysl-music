@@ -516,6 +516,18 @@
       "title": "Bu ikisi gerçekten bir arada olur mu?",
       "body": "Çiftlerin çoğu bu noktada iki ayrı teklif alıyor — biri dinî bölüm, diğeri kutlama için — ve geçişleri kendileri ayarlamak zorunda kalıyor. Akşam tam orada bozuluyor: Müzik şarkının ortasında kesiliyor, misafirlerin ne zaman oturacağını kimse bilmiyor ve duadan sonra salon donup kalıyor. Burada ikisi tek bir akış planı; üstelik o planı akşam sahnede uygulayan kişi yazıyor."
     },
+    "verse": {
+      "eyebrow": "Bu akşamın dayandığı yer",
+      "title": "Bu geceye ait bir ayet ve bir dua",
+      "arabic": "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ",
+      "source": "Kur’ân-ı Kerîm, Rûm sûresi, 30:21",
+      "duaLead": "Ve geleneksel olarak yeni evlilere okunan dua:",
+      "duaArabic": "بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+      "duaTranslit": "Bârakallâhu leke, ve bâreke aleyke, ve cemea beynekumâ fî hayr.",
+      "duaSource": "Ebû Dâvûd ve Tirmizî rivayet etmiştir",
+      "text": "Kendileri ile huzur bulasınız diye sizin için türünüzden eşler yaratması ve aranızda bir sevgi ve merhamet var etmesi de O’nun (varlığının ve kudretinin) delillerindendir. Şüphesiz bunda düşünen bir toplum için elbette ibretler vardır.",
+      "duaText": "Allah seni mübarek kılsın, sana bereket versin ve ikinizi hayırda birleştirsin."
+    },
     "recitation": {
       "eyebrow": "Farkı yaratan şey",
       "title": "Tilaveti kendim okuyorum",

@@ -156,6 +156,58 @@ export default async function IslamischeHochzeitPage({ params }: PageProps) {
         </Container>
       </Section>
 
+      {/*
+        Ein Koranvers und das überlieferte Dua für das Brautpaar — auf
+        Kundenwunsch (2026-08-27).
+
+        Drei Dinge sind hier bewusst so gebaut:
+
+        1. Der arabische Wortlaut trägt IMMER `dir="rtl"` und `lang="ar"`,
+           unabhängig von der Sprache der Seite. Ohne beides rendert der Vers
+           auf der deutschen (LTR-)Seite in falscher Laufrichtung — und
+           Screenreader lesen ihn in der Stimme der Seitensprache vor.
+        2. Die Übersetzung entfällt auf der arabischen Fassung: dort IST der
+           Wortlaut der Text, eine Rückübersetzung wäre sinnlos. Deshalb
+           existiert `verse.text` in ar.json nicht und wird hier auch nicht
+           abgefragt.
+        3. Die Quellenangabe steht sichtbar an beiden Zitaten. Ein Vers ohne
+           Sure/Vers-Nummer und eine Überlieferung ohne Sammlung sind auf
+           einer kommerziellen Seite nicht zitierfähig — und dieselbe Regel,
+           die für Zahlen gilt (CONTRACT.md §3), gilt hier erst recht.
+      */}
+      <Section>
+        <Container size="narrow">
+          <Reveal>
+            <figure className="rounded-lg border border-line bg-surface px-6 py-10 text-center sm:px-10">
+              <p className="text-xs uppercase tracking-[0.2em] text-gold">{t('verse.eyebrow')}</p>
+              <h2 className="mt-4 font-display text-2xl leading-snug text-ink sm:text-3xl">{t('verse.title')}</h2>
+
+              <blockquote className="mt-8">
+                <p dir="rtl" lang="ar" className="font-display text-2xl leading-[2] text-ink sm:text-3xl">
+                  {t('verse.arabic')}
+                </p>
+                {locale === 'ar' ? null : (
+                  <p className="mt-6 leading-relaxed text-ink-muted">{t('verse.text')}</p>
+                )}
+              </blockquote>
+              <figcaption className="mt-4 text-sm text-ink-faint">{t('verse.source')}</figcaption>
+
+              <p className="mt-10 text-sm text-ink-muted">{t('verse.duaLead')}</p>
+              <blockquote className="mt-4">
+                <p dir="rtl" lang="ar" className="font-display text-xl leading-[2] text-ink sm:text-2xl">
+                  {t('verse.duaArabic')}
+                </p>
+                <p className="mt-3 text-sm italic text-ink-faint">{t('verse.duaTranslit')}</p>
+                {locale === 'ar' ? null : (
+                  <p className="mt-4 leading-relaxed text-ink-muted">{t('verse.duaText')}</p>
+                )}
+              </blockquote>
+              <figcaption className="mt-4 text-sm text-ink-faint">{t('verse.duaSource')}</figcaption>
+            </figure>
+          </Reveal>
+        </Container>
+      </Section>
+
       {/* Der eine Absatz, der diese Seite von jedem Wettbewerber trennt —
           deshalb steht er allein, oberhalb der Bausteinliste, und nicht als
           sechster Punkt unter „Programm". */}
