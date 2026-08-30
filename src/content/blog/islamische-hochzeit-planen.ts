@@ -964,17 +964,17 @@ export const islamischeHochzeitPost: BlogPost = {
   type: 'guide',
   status: 'published',
   publishedAt: '2026-07-31',
-  updatedAt: '2026-07-31',
+  updatedAt: '2026-08-27',
   tags: ['islamische-hochzeit', 'ablauf', 'dua', 'ilahi', 'planung'],
   readingTimeMinutes: 7,
   /**
-   * The religiously framed layer is a tr/ku/ar-only part of this site — see
-   * `ISLAMIC_SUPPORTED_LOCALES` in `src/content/islamic.ts` for the client
-   * decision behind it. The German, English, Dutch, French and Spanish bodies
-   * below stay written and stay unpublished; see `restrictToLocales` in
-   * `./types.ts` for why they are kept rather than deleted.
+   * Kein `restrictToLocales` mehr: Der Kunde hat die religiös geprägte Ebene
+   * am 2026-08-27 für alle acht Sprachen freigegeben (Begründung bei
+   * `ISLAMIC_SUPPORTED_LOCALES` in `src/content/islamic.ts`). Die deutschen,
+   * englischen, niederländischen, französischen und spanischen Bodies unten
+   * standen die ganze Zeit geschrieben da — genau dafür wurden sie behalten
+   * statt gelöscht.
    */
-  restrictToLocales: ['tr', 'ku', 'ar'],
   links: ['/islamische-hochzeit', '/ablauf', '/anfrage'],
   relatedAnswers: ['islamic-wedding-dj', 'who-recites', 'quran-and-modern-party', 'dua-in-program'],
   relatedPosts: ['tuerkische-hochzeit-ablauf-musik-timing', 'hochzeits-timeline-musterablauf'],

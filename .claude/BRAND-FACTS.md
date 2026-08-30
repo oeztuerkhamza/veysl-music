@@ -66,8 +66,15 @@ two suppliers — recitation, dua, İlahi, hosting and the DJ set are one person
 
 Published as a direct, first-person claim in the answer `who-recites`, in the sharpened
 `quran-and-modern-party`, and as its own section on `/islamische-hochzeit`
-(`islamic.recitation` in `messages/{de,tr,en}.json`). Everywhere else the wording stays on
+(`islamic.recitation` in every `messages/*.json`). Everywhere else the wording stays on
 the running order and the microphone, which was already true before this confirmation.
+
+**Language scope — RESOLVED twice, current state 2026-08-27: all eight languages.**
+On 2026-08-05 the client limited this whole layer to Turkish, Kurdish and Arabic; on
+2026-08-27 he reopened it for every language the site speaks. `ISLAMIC_SUPPORTED_LOCALES`
+in `src/content/islamic.ts` is the single switch — landing page, nav entry, `islamisch`
+answer category and the Ratgeber article follow it together. Anyone reading the older
+note in an earlier commit should treat this line as the newer one.
 
 ## Target audience (confirmed by his own copy)
 

@@ -14,47 +14,43 @@
  * geht darüber hinaus.
  */
 
-import type { Locale } from '@/i18n/routing';
+import { locales, type Locale } from '@/i18n/routing';
 
 /**
- * Die Sprachen, in denen die religiös geprägte Ebene der Website überhaupt
- * erscheint — die Landingpage `/islamische-hochzeit`, ihr Navigationseintrag,
- * die Antwortkategorie `islamisch` auf `/fragen` und der Ratgeber-Artikel
+ * Die Sprachen, in denen die religiös geprägte Ebene der Website erscheint —
+ * die Landingpage `/islamische-hochzeit`, ihr Navigationseintrag, die
+ * Antwortkategorie `islamisch` auf `/fragen` und der Ratgeber-Artikel
  * `islamische-hochzeit-planen`.
  *
- * **Türkisch, Kurdisch, Arabisch. Sonst nichts.**
+ * **Alle acht Sprachen** — Kundenentscheidung vom 2026-08-27.
  *
- * Das ist eine Kundenentscheidung vom 2026-08-05 und kehrt die vorherige
- * Richtung um: Die Liste stand auf allen sieben Sprachen, Deutsch als
- * Hauptmarkt eingeschlossen. Der Kunde will die religiöse Positionierung
- * ausdrücklich **nicht** in den deutschen Auftritt mischen — und in derselben
- * Begründung auch nicht in die englische, niederländische, französische oder
- * spanische. Die Zielgruppe dieser Seite spricht Türkisch, Kurdisch oder
- * Arabisch; für alle anderen bleibt die Website ein reiner Hochzeits-DJ ohne
- * religiöses Profil.
+ * Damit ist die Einschränkung vom 2026-08-05 aufgehoben, die diese Ebene auf
+ * Türkisch, Kurdisch und Arabisch begrenzt hatte. Die damalige Begründung
+ * (die religiöse Positionierung nicht in den deutschen Auftritt mischen) gilt
+ * nicht mehr; der Kunde hat die Öffnung für jede Sprache ausdrücklich
+ * verlangt.
  *
- * Was das kostet, ist bewusst in Kauf genommen und soll hier nicht beschönigt
- * werden: Die deutschsprachige Suchintention „islamische Hochzeit DJ“ war laut
- * docs/SEO-KEYWORD-MAP.md §5 die einzige im ganzen Keyword-Map, für die es im
- * deutschen Markt praktisch kein Angebot gibt — ein unbesetztes Feld, das
- * dieses Projekt hätte besetzen können. Diese Chance wird hier abgegeben. Der
- * Text dafür bleibt vollständig im Repository (`messages/de.json` behält den
- * `islamic`-Namensraum nicht, wohl aber der Ratgeber-Artikel seinen deutschen
- * Body), sodass die Entscheidung ohne Neuschreiben rückgängig zu machen ist:
- * Es genügt, hier ein Locale wieder einzutragen.
+ * Möglich war das ohne eine Zeile neuen Text, weil die damalige Umsetzung
+ * genau darauf ausgelegt war: Der `islamic`-Namensraum in messages/{de,en,nl,
+ * fr,es}.json wurde aus der Historie zurückgeholt (Stand f7c398b^, Schema
+ * unverändert, tr/ku/ar seither wortgleich), die Antworten in
+ * `src/content/answers.ts` und die Bodies des Ratgeber-Artikels lagen ohnehin
+ * in allen acht Sprachen vor und waren nur gesperrt.
  *
- * ⚠️ `ku` steht auf ausdrücklichen Kundenwunsch hier und trägt denselben
- * Vorbehalt wie die kurdischen Slugs in `src/i18n/routing.ts`: **zur Prüfung
- * durch einen Muttersprachler markiert.** Die religiösen Begriffe selbst
- * (Tilawet, Dua, Îlahî) sind arabische Lehnwörter und in kurdischsprachigen
- * muslimischen Gemeinden identisch gebräuchlich — das Risiko liegt im Satzbau,
- * nicht in der Terminologie.
+ * Was die Öffnung inhaltlich zurückholt, steht in docs/SEO-KEYWORD-MAP.md §5:
+ * „islamische Hochzeit DJ“ ist die einzige Suchintention im ganzen Keyword-Map,
+ * für die es im deutschsprachigen Markt praktisch kein Angebot gibt — und die
+ * Kombination aus religiösem Teil und Tanzfläche aus einer Hand ist genau das
+ * Produkt.
  *
- * ⚠️ `ar` ist mit derselben Entscheidung neu dazugekommen und trägt den
- * Vorbehalt ebenfalls. Für Arabisch ist diese Seite nicht eine Seite unter
- * vielen, sondern der Grund, warum es das Locale gibt.
+ * ⚠️ `ku` und `ar` tragen weiterhin den Vorbehalt aus den kurdischen und
+ * arabischen Slugs in `src/i18n/routing.ts`: **zur Prüfung durch einen
+ * Muttersprachler markiert.** Die religiösen Begriffe selbst (Tilawet, Dua,
+ * Îlahî) sind arabische Lehnwörter und in kurdischsprachigen muslimischen
+ * Gemeinden identisch gebräuchlich — das Risiko liegt im Satzbau, nicht in
+ * der Terminologie.
  */
-export const ISLAMIC_SUPPORTED_LOCALES: readonly Locale[] = ['tr', 'ku', 'ar'];
+export const ISLAMIC_SUPPORTED_LOCALES: readonly Locale[] = [...locales];
 
 export function isIslamicLocale(locale: Locale): boolean {
   return ISLAMIC_SUPPORTED_LOCALES.includes(locale);

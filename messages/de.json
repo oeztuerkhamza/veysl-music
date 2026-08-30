@@ -10,6 +10,7 @@
     "weddings": "Echte Hochzeiten",
     "music": "Musik",
     "process": "Ablauf & FAQ",
+    "islamicWedding": "Islamische Hochzeit",
     "questions": "Fragen & Antworten",
     "guide": "Ratgeber",
     "europe": "DJ in Europa",
@@ -568,6 +569,122 @@
         "a": "Üblich sind eine Anzahlung bei Vertragsabschluss zur Terminreservierung und der Restbetrag vor oder am Veranstaltungstag. Alle Konditionen stehen im Vertrag."
       }
     ]
+  },
+  "islamic": {
+    "meta": {
+      "title": "Islamische Hochzeit mit DJ — Dua, İlahi & Feier | DJ Veys",
+      "description": "Kur’an-Rezitation, Dua und İlahi live — und danach eine volle Tanzfläche. Ein Ablaufplan, eine Anlage, ein Ansprechpartner. Stuttgart & deutschlandweit."
+    },
+    "hero": {
+      "eyebrow": "Islamische & religiös geprägte Hochzeiten",
+      "title": "Dua und Tanzfläche am selben Abend",
+      "subtitle": "Kur’an-Rezitation, Dua und İlahi gehören hier in den Ablaufplan, nicht in einen separaten Termin. Danach beginnt die Feier — beides aus einer Hand, moderiert auf Deutsch, Türkisch und Englisch."
+    },
+    "intro": {
+      "eyebrow": "Die eigentliche Frage",
+      "title": "Geht das überhaupt zusammen?",
+      "body": "Fast jedes Paar bekommt an dieser Stelle zwei getrennte Angebote — eines für den religiösen Teil, eines für die Party — und muss die Übergänge selbst organisieren. Genau dort kippt der Abend: Die Musik wird mitten im Stück abgewürgt, niemand weiß, wann die Gäste sitzen sollen, und nach der Dua steht der Saal still. Hier ist beides ein einziger Ablaufplan, geschrieben von der Person, die ihn am Abend auch durchführt."
+    },
+    "verse": {
+      "eyebrow": "Worauf der Abend gründet",
+      "title": "Ein Vers und ein Dua, die zu diesem Abend gehören",
+      "arabic": "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ",
+      "source": "Koran, Sure ar-Rūm 30:21",
+      "duaLead": "Und das Dua, das dem Brautpaar traditionell zugesprochen wird:",
+      "duaArabic": "بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+      "duaTranslit": "Bârakallâhu leke, ve bâreke aleyke, ve cemea beynekumâ fî hayr.",
+      "duaSource": "Überliefert bei Abū Dāwūd und at-Tirmidhī",
+      "text": "Und es gehört zu Seinen Zeichen, dass Er euch aus euch selbst Gattinnen erschaffen hat, damit ihr bei ihnen Ruhe findet; und Er hat Zuneigung und Barmherzigkeit zwischen euch gesetzt. Darin sind wahrlich Zeichen für Leute, die nachdenken.",
+      "duaText": "Möge Allah dich segnen, Seinen Segen auf dich herabsenden und euch beide in Gutem vereinen."
+    },
+    "recitation": {
+      "eyebrow": "Der Unterschied",
+      "title": "Die Tilawet lese ich selbst",
+      "body": "Die Kur’an-Rezitation kommt nicht von einer Aufnahme und nicht von einem externen Gast, der zwischen zwei Terminen vorbeischaut: Veysel Durmuş rezitiert selbst. Praktisch heißt das, dass Rezitation, Dua, İlahi, Moderation und DJ-Set in einer Hand liegen — der Übergang vom letzten Wort zur ersten Ansage ist damit kein Risiko mehr, sondern geplant."
+    },
+    "program": {
+      "eyebrow": "Bausteine",
+      "title": "Woraus der Abend besteht",
+      "lead": "Frei kombinierbar. Im Planungsgespräch legen wir fest, was davon zu eurer Feier gehört — und was ausdrücklich nicht.",
+      "optionalLabel": "Optional",
+      "items": {
+        "tilawet": {
+          "title": "Kur’an Tilaveti",
+          "text": "Live rezitiert, über ein eigenes Mikrofon, ohne Hall und ohne Effekte, mit deutlich niedrigerem Pegel als das Tanzset. Sprachverständlichkeit im ganzen Saal ist hier das einzige Ziel."
+        },
+        "dua": {
+          "title": "Dua",
+          "text": "Bekommt einen festen Zeitpunkt im Ablauf, meist vor dem Essen oder vor dem Eröffnungstanz. Zweisprachige Ansage vorher, damit jeder Gast weiß, was gleich passiert."
+        },
+        "ilahi": {
+          "title": "İlahi — live",
+          "text": "Live vorgetragen, auf Wunsch mit Saz-Begleitung. Kein Playback, keine Playlist."
+        },
+        "tsm": {
+          "title": "Türk Sanat Müziği",
+          "text": "Meist während des Essens oder als ruhiger Block zwischen zwei Tanzrunden — ebenfalls live mit Saz möglich statt nur vom Laptop."
+        },
+        "djset": {
+          "title": "DJ-Set & Moderation",
+          "text": "Türkisch, deutsch und international gemischt statt in getrennten Blöcken. Moderation live auf Deutsch, Türkisch und Englisch."
+        },
+        "afterparty": {
+          "title": "After-Wedding-Party",
+          "text": "Der freiere Teil nach dem offiziellen Programm — oder ein eigener Termin im kleineren Kreis, davor oder danach."
+        }
+      }
+    },
+    "timeline": {
+      "eyebrow": "Beispielablauf",
+      "title": "Wie so ein Abend tatsächlich läuft",
+      "lead": "Ein Muster aus der Praxis. Uhrzeiten, Reihenfolge und Länge jedes Blocks verschieben sich mit eurer Location und eurer Gästezahl.",
+      "note": "Dieser Ablauf ist ein Beispiel, kein Angebot. Euer echter Ablaufplan entsteht im Planungsgespräch und steht danach schriftlich im Vertrag.",
+      "steps": {
+        "welcome": {
+          "title": "Empfang",
+          "text": "Ruhige Hintergrundmusik, die Gäste kommen an. Die Technik steht seit dem Soundcheck."
+        },
+        "tilawet": {
+          "title": "Kur’an Tilaveti",
+          "text": "Die Musik wird ausgeblendet, nicht abgebrochen. Zweisprachige Ansage, dann die Rezitation."
+        },
+        "dua": {
+          "title": "Dua",
+          "text": "Direkt im Anschluss, dasselbe Mikrofon, derselbe Pegel."
+        },
+        "dinner": {
+          "title": "Essen",
+          "text": "Türk Sanat Müziği und ruhige Instrumentalmusik, Lautstärke auf Gesprächsniveau."
+        },
+        "ilahi": {
+          "title": "İlahi live",
+          "text": "Live vorgetragen, auf Wunsch mit Saz — der Übergang vom religiösen in den festlichen Teil des Abends."
+        },
+        "entrance": {
+          "title": "Einzug des Paares",
+          "text": "Ansage auf Deutsch und Türkisch, Licht auf das Paar, Musik nach eurer Wahl."
+        },
+        "dance": {
+          "title": "Tanzfläche",
+          "text": "Halay, Roman Havası, aktuelle türkische und internationale Sets — gemischt, nicht in Blöcken."
+        },
+        "close": {
+          "title": "Abschluss",
+          "text": "Letztes Lied nach Absprache, danach Abbau. Die Uhrzeit richtet sich nach der Location."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Häufige Fragen",
+      "title": "Was Paare an dieser Stelle fragen",
+      "more": "Alle Fragen & Antworten ansehen"
+    },
+    "cta": {
+      "eyebrow": "Termin",
+      "title": "Ist euer Datum noch frei?",
+      "subtitle": "Schickt uns Datum, Ort und ungefähre Gästezahl. Die Rückmeldung zur Verfügbarkeit kommt in der Regel innerhalb von 24 Stunden.",
+      "button": "Termin anfragen"
+    }
   },
   "bw": {
     "meta": {

@@ -244,35 +244,32 @@ GSC data exists for the EN pages (28+ days post-launch, per the GSC-analysis ref
 
 ## 5. Religiös geprägte Hochzeiten — the cluster with no landing page yet
 
-> **⚠️ Superseded in part, 2026-08-05 — read this before acting on anything below.**
+> **⚠️ Reopened 2026-08-27 — the 2026-08-05 restriction is lifted.**
 >
-> The client decided that the religiously framed layer must **not** appear in the
-> German-language site at all, nor in English, Dutch, French or Spanish. It is
-> published in **Turkish, Kurdish and Arabic only** (`ISLAMIC_SUPPORTED_LOCALES`
-> in `src/content/islamic.ts`, which is the single switch governing the landing
-> page, the nav entry, the `islamisch` answer category and the Ratgeber article).
+> Timeline of this section, so nobody re-litigates it from half the story:
 >
-> What that means for this section:
-> - The **German keyword table below is no longer a target.** `islamische
->   hochzeit dj`, `hochzeit mit dua`, `koranrezitation hochzeit` and
->   `dj für alkoholfreie hochzeit` are German queries this site now deliberately
->   does not compete for. The same applies to the English row
->   (`muslim wedding dj germany`).
-> - The Turkish rows (`ilahili düğün`, `kuran tilaveti düğün`,
->   `türk sanat müziği canlı düğün`) **remain live targets**, and Kurdish and
->   Arabic are new ones the table never covered.
-> - The "strongest content-market fit in the whole map" argument below still
->   holds on the merits — it is simply not being acted on in German. That is a
->   positioning decision, not a correction of the analysis, and it is recorded
->   as such so nobody later reads the gap as an oversight and "fixes" it.
-> - Items 1–3 under "Not shipped" have since **shipped** (landing page, blog
->   post, nav placement) and then been narrowed to the three locales above.
->   Item 4 was answered on 2026-07-31: Veysel recites the Tilawet himself.
+> 1. **2026-08-05:** the client limited the religiously framed layer to
+>    Turkish, Kurdish and Arabic — explicitly not German, English, Dutch,
+>    French or Spanish. The German keyword rows below stopped being targets.
+> 2. **2026-08-27:** the client reopened it for **all eight languages**.
+>    `ISLAMIC_SUPPORTED_LOCALES` in `src/content/islamic.ts` is still the
+>    single switch (landing page, nav entry, `islamisch` answer category,
+>    Ratgeber article) and now contains every locale.
 >
-> The analysis below is left intact and unedited. If the decision is ever
-> reversed, re-adding a locale to `ISLAMIC_SUPPORTED_LOCALES` restores every
-> surface at once — the German, English, Dutch, French and Spanish article
-> bodies were kept rather than deleted for exactly that reason.
+> What that means for this section **today**: the whole table below is live
+> again, German rows included — `islamische hochzeit dj`, `hochzeit mit dua`,
+> `koranrezitation hochzeit`, `dj für alkoholfreie hochzeit` and the English
+> `muslim wedding dj germany`, alongside the Turkish, Kurdish and Arabic rows.
+>
+> The reopening cost no new copy. The 2026-08-05 pass deliberately kept every
+> body it withheld: the `islamic` namespace was recoverable verbatim from git
+> (`f7c398b^`, schema unchanged and tr/ku/ar untouched since), the answer
+> corpus carried all eight languages throughout, and the Ratgeber article's
+> German, English, Dutch, French and Spanish bodies never left the file.
+>
+> Items 1–3 under "Not shipped" have long since **shipped** (landing page, blog
+> post, nav placement). Item 4 was answered on 2026-07-31: Veysel recites the
+> Tilawet himself.
 
 Added 2026-07-30, after the client confirmed that Kur'an-Rezitation, Dua, İlahi (live),
 Türk Sanat Müziği and an optional After-Wedding-Party are part of what he already
