@@ -351,9 +351,13 @@ async function main() {
       });
   const ctx = { state, telegram, config, dryRun: args.dryRun };
 
-  log(`${config.watches.length} Suche(n) geladen${args.dryRun ? ' (dry-run)' : ''}.`);
-  for (const w of config.watches) {
-    log(`  · ${w.label} — alle ${w.intervalSeconds}s`);
+  if (config.watches.length === 0) {
+    log('Keine Suche eingerichtet — der Watcher wartet auf eine URL per Telegram.');
+  } else {
+    log(`${config.watches.length} Suche(n) geladen${args.dryRun ? ' (dry-run)' : ''}.`);
+    for (const w of config.watches) {
+      log(`  · ${w.label} — alle ${w.intervalSeconds}s`);
+    }
   }
 
   if (args.once) {

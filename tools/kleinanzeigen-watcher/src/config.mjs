@@ -125,7 +125,12 @@ export async function loadConfig(path) {
     throw new Error(`${path} ist kein gueltiges JSON: ${err.message}`);
   }
 
-  assert(Array.isArray(raw.watches) && raw.watches.length > 0, '"watches" ist leer.');
+  // Eine leere Liste ist ausdruecklich erlaubt. Sie war frueher ein Fehler, und
+  // das war eine Falle: wer seine letzte Suche per Telegram loescht, brachte
+  // damit den Watcher zum Absturz — und konnte danach vom Telefon aus keine
+  // neue mehr anlegen, weil der Bot mit gestorben war. Ohne Suchen laeuft er
+  // jetzt einfach im Leerlauf weiter und hoert auf Befehle.
+  assert(Array.isArray(raw.watches), '"watches" muss eine Liste sein.');
 
   const watches = raw.watches.map(normalizeWatch);
   const ids = new Set();
