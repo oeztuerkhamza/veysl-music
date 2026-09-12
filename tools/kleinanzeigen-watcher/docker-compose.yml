@@ -1,0 +1,36 @@
+# Eigener Stack, absichtlich getrennt von der Website.
+#
+# Der Watcher teilt sich mit veysl-app nur den Server, kein Netzwerk und keine
+# Volumes. Faellt er aus oder wird er neu gebaut, merkt die Website davon
+# nichts — und umgekehrt.
+
+services:
+  watcher:
+    build: .
+    image: kleinanzeigen-watcher:latest
+    container_name: kleinanzeigen-watcher
+    restart: unless-stopped
+
+    # Enthaelt nur TELEGRAM_BOT_TOKEN. Liegt neben dieser Datei auf dem Server
+    # und wird nie ins Repo committet.
+    env_file:
+      - .env
+
+    # watches.json (Suchen) und state.json (welche Anzeigen schon gemeldet
+    # sind) liegen hier. Bind-Mount statt Named Volume, damit die Suchen mit
+    # einem normalen Editor bearbeitet werden koennen.
+    volumes:
+      - ./data:/data
+
+    # Der Watcher schreibt pro Runde hoechstens ein paar Zeilen, aber er laeuft
+    # monatelang. Ohne Deckel fuellt das irgendwann die Platte.
+    logging:
+      driver: json-file
+      options:
+        max-size: '10m'
+        max-file: '3'
+
+    # Ein Node-Prozess, der alle 60 Sekunden eine Seite abruft, braucht sehr
+    # wenig. Die Grenze ist eine Sicherung gegen ein Speicherleck, damit der
+    # Watcher niemals der Website den Arbeitsspeicher wegnimmt.
+    mem_limit: 256m

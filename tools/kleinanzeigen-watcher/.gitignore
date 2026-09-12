@@ -1,0 +1,6 @@
+# Laufzeitdaten und Geheimnisse — nur die *.example-Dateien gehoeren ins Repo.
+state.json
+data/
+state.json.tmp
+watches.json
+.env
