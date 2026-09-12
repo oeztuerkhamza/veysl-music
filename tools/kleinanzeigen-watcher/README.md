@@ -122,27 +122,53 @@ Durdurmak için `Ctrl+C` — kaldığı yeri kaydeder.
 - İlanlar eskiden yeniye sıralı gönderilir, böylece sohbetteki sıra gerçek
   sırayla aynı olur.
 
-## İlanı uygulamada açmak
+## İlanı doğrudan uygulamada açmak
 
-Kleinanzeigen hem Android App Links (`assetlinks.json`, `handle_all_urls`) hem
-iOS Universal Links (`/s-*`) yayınlıyor. Yani alarmdaki normal `https://` linki
-**zaten uygulamayı açacak** biçimde — yeter ki Telegram linki işletim
-sistemine devretsin.
+Her alarmda iki link var: **📱 In der App** ve **🌐 Browser**.
 
-Devretmiyor: Telegram linkleri kendi gömülü tarayıcısında açıyor, o yüzden
-uygulama hiç devreye girmiyor. Bir kez kapat, bütün linkler düzelir (sadece
-bu bottan gelenler değil):
+İlki kendi domainimizdeki bir köprü sayfasına gider
+([src/app/api/ka/[...path]/route.ts](../../src/app/api/ka/%5B...path%5D/route.ts)),
+o sayfa da `ebayk://` şemasına atlayarak Kleinanzeigen uygulamasını açar.
 
-> Telegram → Ayarlar → **"browser" diye ara** → In-App Browser'ı kapat
-> (iOS'ta genelde *Data and Storage*, Android'de *Chats* altında; menü yolu
-> sürüme göre oynuyor)
+**Neden bu dolambaç gerekiyor:**
 
-Tek seferlik: linke **basılı tut** → "Safari'de aç" / "Aç…".
+- Mesaja doğrudan `ebayk://` linki koymak olmuyor — Bot API kabul ediyor ama
+  iOS istemcisi onu tıklanabilir yapmıyor (cihazda denendi).
+- Normal `https://` linki de uygulamayı açmıyor. Telegram onu
+  `[WKWebView loadRequest:]` ile yüklüyor, WebKit bu yola
+  `ShouldAllowExternalSchemesButNotAppLinks` veriyor — yani iOS Universal
+  Links bu yükleme için tanımı gereği kapalı.
+- Ama Telegram'ın gömülü tarayıcısı, şeması `http/https/tonsite/about`
+  **dışında** olan her navigasyonu iptal edip
+  `openExternalUrl(…, forceExternal: true)` → `UIApplication.shared.open()`
+  çağırıyor (`BrowserWebContent.swift`). Sayfanın *içinden* `ebayk://`
+  çağırmak bu yüzden işe yarıyor.
 
-> Bir ara mesaja ikinci bir link (`ebayk://…`, ilan sayfasının kendi
-> `al:ios:url` etiketinden) eklenmişti. Geri alındı: Bot API şemayı kabul
-> ediyor, ama Telegram'ın iOS istemcisi onu tıklanabilir yapmıyor — her
-> alarmda ölü bir link duruyordu.
+Köprü sayfası üç katmanlı, çünkü ilk katman her yerde tutmayabilir:
+
+1. Gövdenin sonunda çalışan script hemen `ebayk://` adresine gider — **sıfır
+   dokunuş**, tuttuğunda.
+2. Tutmazsa ekranı kaplayan bir düğme duruyor; ona dokunmak gerçek bir kullanıcı
+   hareketi, yani en güvenilir yol.
+3. En altta normal `https://` linki — uygulama kurulu değilse tek çalışan yol.
+
+> Script `<head>`'de değil, gövdenin sonunda. `<head>`'de denendiğinde sayfa
+> hiç çizilmeden bekleyen bir navigasyonda asılı kalıyor; uygulama kurulu
+> olmayan bir cihazda sonuç boş ekran olurdu.
+
+Köprü, `watches.json` içindeki `bridgeBaseUrl` ile açılır:
+
+```json
+"telegram": { "chatId": "...", "bridgeBaseUrl": "https://dj-veys.de" }
+```
+
+Boş bırakırsan watcher aynen çalışır, sadece mesajda tek bir normal link olur.
+
+**Alternatif (kod gerektirmez):** Telegram'ın gömülü tarayıcısını kapatırsan
+normal `https://` linki de uygulamayı açar — Kleinanzeigen hem iOS Universal
+Links hem Android App Links yayınlıyor. Telegram → Ayarlar → "browser" diye
+ara → In-App Browser'ı kapat. Bu, sadece bottan gelenleri değil bütün
+linkleri düzeltir.
 
 ## Filtreler
 

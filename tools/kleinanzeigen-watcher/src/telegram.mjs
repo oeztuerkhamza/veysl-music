@@ -18,27 +18,50 @@ export function escapeHtml(s) {
     .replace(/>/g, '&gt;');
 }
 
-// Hier stand ein zweiter Link im `ebayk://`-Schema, um die Anzeige direkt in
-// der Kleinanzeigen-App zu oeffnen. Er ist wieder raus: die Bot-API nimmt das
-// Schema zwar an, aber der iOS-Client macht daraus keinen antippbaren Link —
-// in jeder Meldung stand also ein toter Link.
-//
-// Der Weg in die App fuehrt ohnehin ueber den gewoehnlichen https-Link.
-// Kleinanzeigen veroeffentlicht Android App Links und iOS Universal Links;
-// die Adresse oeffnet die App von selbst, sobald Telegram sie ans
-// Betriebssystem weiterreicht statt sie im eingebauten Browser zu oeffnen.
-// Das ist eine Einstellung im Telegram-Client, siehe README.
+/**
+ * Baut den Link auf die eigene Brueckenseite, die von sich aus in die
+ * Kleinanzeigen-App springt (src/app/api/ka/[...path]/route.ts).
+ *
+ * Ein `ebayk://`-Link direkt in der Nachricht geht nicht — die Bot-API nimmt
+ * ihn an, der iOS-Client macht daraus aber keinen antippbaren Link. Und der
+ * nackte https-Link oeffnet die App auch nicht, weil Telegram ihn in seinem
+ * eingebauten Browser laedt, wo iOS Universal Links abgeschaltet sind. Der
+ * Umweg ueber eine eigene Seite ist der einzige Weg, der beides umgeht.
+ *
+ * Ohne konfigurierte `bridgeBaseUrl` gibt es keinen Bruecken-Link; dann bleibt
+ * es beim gewoehnlichen https-Link.
+ */
+export function bridgeLink(adUrl, baseUrl, title) {
+  if (!baseUrl) return null;
+  try {
+    const ad = new URL(adUrl);
+    if (!ad.hostname.endsWith('kleinanzeigen.de')) return null;
+
+    const match = ad.pathname.match(/^\/s-anzeige\/([^/]+)\/([^/]+)\/?$/);
+    if (!match) return null;
+
+    const bridge = new URL(`api/ka/${match[1]}/${match[2]}`, `${baseUrl.replace(/\/+$/, '')}/`);
+    // Nur fuer die Ueberschrift der Zwischenseite — das Sprungziel steht
+    // vollstaendig im Pfad und haengt an keinem Parameter.
+    if (title) bridge.searchParams.set('t', title.slice(0, 120));
+    return bridge.toString();
+  } catch {
+    return null;
+  }
+}
 
 export class Telegram {
   #token;
   #chatId;
+  #bridgeBaseUrl;
   #nextSlot = 0;
 
-  constructor(token, chatId) {
+  constructor(token, chatId, { bridgeBaseUrl = null } = {}) {
     if (!token) throw new Error('TELEGRAM_BOT_TOKEN fehlt.');
     if (!chatId) throw new Error('Keine chatId konfiguriert.');
     this.#token = token;
     this.#chatId = String(chatId);
+    this.#bridgeBaseUrl = bridgeBaseUrl;
   }
 
   get chatId() {
@@ -95,7 +118,15 @@ export class Telegram {
     // und das geht in der App mit einem Tipp statt ueber einen Login im
     // Browser. Der https-Link bleibt daneben stehen — er ist der einzige, der
     // sicher irgendwo landet, falls die App nicht installiert ist.
-    lines.push('', `<a href="${escapeHtml(ad.url)}">Anzeige oeffnen</a>`);
+    // Der Brueckenlink zuerst: er landet in der App, und dort ist Schreiben ein
+    // Tipp statt eines Logins. Der direkte Link bleibt daneben stehen — faellt
+    // die eigene Website aus, ist er der einzige, der noch irgendwo hinfuehrt.
+    const bridge = bridgeLink(ad.url, this.#bridgeBaseUrl, ad.title);
+    const links = [];
+    if (bridge) links.push(`📱 <a href="${escapeHtml(bridge)}">In der App</a>`);
+    links.push(`🌐 <a href="${escapeHtml(ad.url)}">${bridge ? 'Browser' : 'Anzeige oeffnen'}</a>`);
+
+    lines.push('', links.join('  ·  '));
     lines.push(`<i>${escapeHtml(watchLabel)}</i>`);
 
     return this.sendText(lines.join('\n'));
