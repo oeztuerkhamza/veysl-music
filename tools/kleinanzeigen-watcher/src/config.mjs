@@ -138,7 +138,13 @@ export async function loadConfig(path) {
   assert(chatId, 'telegram.chatId fehlt (oder Umgebungsvariable TELEGRAM_CHAT_ID).');
 
   return {
-    telegram: { chatId: String(chatId) },
+    telegram: {
+      chatId: String(chatId),
+      // Basis der eigenen Brueckenseite, z.B. "https://dj-veys.de". Fehlt sie,
+      // enthaelt die Meldung nur den gewoehnlichen Link — der Watcher laeuft
+      // dann genauso, nur oeffnet ein Tipp den Browser statt der App.
+      bridgeBaseUrl: raw.telegram?.bridgeBaseUrl ?? null,
+    },
     requestTimeoutMs: raw.requestTimeoutMs ?? DEFAULTS.requestTimeoutMs,
     userAgent: raw.userAgent,
     watches,
