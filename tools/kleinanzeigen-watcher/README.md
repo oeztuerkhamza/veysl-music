@@ -124,27 +124,25 @@ Durdurmak için `Ctrl+C` — kaldığı yeri kaydeder.
 
 ## İlanı uygulamada açmak
 
-Her alarmda iki link var: **📱 In der App** ve **🌐 Im Browser**.
+Kleinanzeigen hem Android App Links (`assetlinks.json`, `handle_all_urls`) hem
+iOS Universal Links (`/s-*`) yayınlıyor. Yani alarmdaki normal `https://` linki
+**zaten uygulamayı açacak** biçimde — yeter ki Telegram linki işletim
+sistemine devretsin.
 
-App linki iOS'un `ebayk://` şeması — tahmin değil, ilan sayfasının kendi
-`al:ios:url` etiketinden alınıyor. Telegram bu şemayı mesaj metninde kabul
-ediyor (inline düğmede etmiyor, "Unsupported URL protocol" der).
+Devretmiyor: Telegram linkleri kendi gömülü tarayıcısında açıyor, o yüzden
+uygulama hiç devreye girmiyor. Bir kez kapat, bütün linkler düzelir (sadece
+bu bottan gelenler değil):
 
-**Ama asıl mesele Telegram'ın kendi tarayıcısı.** Kleinanzeigen hem Android
-App Links (`assetlinks.json`) hem iOS Universal Links yayınlıyor, yani normal
-`https://` linki de uygulamayı açar — Telegram araya girip linki kendi
-açmasa. Bir kez kapat, bütün linkler düzelir:
-
-> Telegram → Ayarlar → "browser" diye ara → **In-App Browser'ı kapat**
+> Telegram → Ayarlar → **"browser" diye ara** → In-App Browser'ı kapat
 > (iOS'ta genelde *Data and Storage*, Android'de *Chats* altında; menü yolu
 > sürüme göre oynuyor)
 
-Android'e geçersen app linkini kapatabilirsin — orada `ebayk://` ölü link
-olur, `https://` zaten uygulamayı açar:
+Tek seferlik: linke **basılı tut** → "Safari'de aç" / "Aç…".
 
-```json
-"telegram": { "chatId": "...", "appLinks": false }
-```
+> Bir ara mesaja ikinci bir link (`ebayk://…`, ilan sayfasının kendi
+> `al:ios:url` etiketinden) eklenmişti. Geri alındı: Bot API şemayı kabul
+> ediyor, ama Telegram'ın iOS istemcisi onu tıklanabilir yapmıyor — her
+> alarmda ölü bir link duruyordu.
 
 ## Filtreler
 

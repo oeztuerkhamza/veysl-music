@@ -29,21 +29,37 @@ async function writeRaw(path, data) {
 
 /**
  * Zerlegt den Pfad einer Such-URL in seine sprechenden Teile.
- * Aus `/s-fahrraeder/freiburg-im-breisgau/bulls/k0c217l9354r20` wird
- * `{ category: 'fahrraeder', terms: ['freiburg-im-breisgau', 'bulls'] }`.
+ * Aus `/s-fahrraeder/79268/preis::300/c217l8903r50` wird
+ * `{ category: 'fahrraeder', terms: ['79268'], priceHint: 'bis 300 €' }`.
  */
 function describeUrl(url) {
   const segments = new URL(url).pathname.split('/').filter(Boolean);
   const first = segments[0] ?? '';
   const category = first.startsWith('s-') ? first.slice(2) : null;
 
-  // Das letzte Segment ist der Kategorie-/Ortscode (k0c217l9354r20) und sagt
-  // einem Menschen nichts.
+  // Das letzte Segment ist der Kategorie-/Ortscode und sagt einem Menschen
+  // nichts. Er kommt in zwei Formen vor — `k0c217l9354r20` und, ohne das
+  // fuehrende k, `c217l8903r50`. Die zweite fehlte hier und landete deshalb
+  // mitten im Namen der Suche.
   const last = segments.at(-1) ?? '';
-  const end = /^k\d/.test(last) ? -1 : undefined;
-  const terms = segments.slice(1, end);
+  const end = /^[kc]\d/.test(last) ? -1 : undefined;
+  const rest = segments.slice(1, end);
 
-  return { category, terms };
+  // Segmente wie `preis::300` oder `anzeige:angebote` sind Filter, keine
+  // Bezeichnung. Der Preis ist aber das Einzige, was zwei sonst gleiche
+  // Suchen unterscheidet, also wandert er in den Namen.
+  const terms = rest.filter((s) => !s.includes(':'));
+  const price = rest.find((s) => s.startsWith('preis:'));
+
+  let priceHint = null;
+  if (price) {
+    const [, min, max] = price.split(':');
+    if (min && max) priceHint = `${min}–${max} €`;
+    else if (max) priceHint = `bis ${max} €`;
+    else if (min) priceHint = `ab ${min} €`;
+  }
+
+  return { category, terms, priceHint };
 }
 
 function slugify(s) {
@@ -65,11 +81,9 @@ function deriveId(url, taken) {
 }
 
 function deriveLabel(url) {
-  const { category, terms } = describeUrl(url);
-  const parts = [...terms, category].filter(Boolean);
-  return parts.length > 0
-    ? parts.map((p) => p.replace(/-/g, ' ')).join(' · ')
-    : 'Kleinanzeigen-Suche';
+  const { category, terms, priceHint } = describeUrl(url);
+  const parts = [...terms.map((p) => p.replace(/-/g, ' ')), priceHint, category].filter(Boolean);
+  return parts.length > 0 ? parts.join(' · ') : 'Kleinanzeigen-Suche';
 }
 
 /** Haengt eine neue Suche an watches.json an. */

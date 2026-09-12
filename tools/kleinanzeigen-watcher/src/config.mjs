@@ -138,13 +138,7 @@ export async function loadConfig(path) {
   assert(chatId, 'telegram.chatId fehlt (oder Umgebungsvariable TELEGRAM_CHAT_ID).');
 
   return {
-    telegram: {
-      chatId: String(chatId),
-      // Der Deep Link in die App ist das iOS-Schema. Auf Android oeffnet
-      // bereits die https-Adresse die App, dort waere der Zusatzlink ein
-      // toter Link in jeder Meldung — deswegen abschaltbar.
-      appLinks: raw.telegram?.appLinks ?? true,
-    },
+    telegram: { chatId: String(chatId) },
     requestTimeoutMs: raw.requestTimeoutMs ?? DEFAULTS.requestTimeoutMs,
     userAgent: raw.userAgent,
     watches,
