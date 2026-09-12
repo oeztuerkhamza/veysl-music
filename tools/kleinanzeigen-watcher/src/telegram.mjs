@@ -18,16 +18,40 @@ export function escapeHtml(s) {
     .replace(/>/g, '&gt;');
 }
 
+/**
+ * Baut aus der Anzeigen-URL den Deep Link in die Kleinanzeigen-App.
+ *
+ * Das Schema stammt nicht aus einer Vermutung, sondern von der Anzeigenseite
+ * selbst: sie traegt `<meta property="al:ios:url" content="ebayk://s-anzeige/…">`.
+ * Es ist ausdruecklich das iOS-Schema — fuer Android veroeffentlicht
+ * Kleinanzeigen keins, dort oeffnet bereits die https-Adresse die App
+ * (assetlinks.json, `handle_all_urls`).
+ *
+ * Telegram nimmt fremde Schemata nur im Nachrichtentext an; als Inline-Taste
+ * werden sie mit "Unsupported URL protocol" abgelehnt.
+ */
+export function appLink(url) {
+  try {
+    const parsed = new URL(url);
+    if (!parsed.hostname.endsWith('kleinanzeigen.de')) return null;
+    return `ebayk://${parsed.pathname.replace(/^\//, '')}`;
+  } catch {
+    return null;
+  }
+}
+
 export class Telegram {
   #token;
   #chatId;
+  #appLinks;
   #nextSlot = 0;
 
-  constructor(token, chatId) {
+  constructor(token, chatId, { appLinks = true } = {}) {
     if (!token) throw new Error('TELEGRAM_BOT_TOKEN fehlt.');
     if (!chatId) throw new Error('Keine chatId konfiguriert.');
     this.#token = token;
     this.#chatId = String(chatId);
+    this.#appLinks = appLinks;
   }
 
   get chatId() {
@@ -80,7 +104,16 @@ export class Telegram {
     if (ad.shipping) facts.push('📦 Versand');
     lines.push(facts.join('  ·  '));
 
-    lines.push('', `<a href="${escapeHtml(ad.url)}">Anzeige oeffnen</a>`);
+    // Der App-Link zuerst: wer eine frische Anzeige sieht, will schreiben,
+    // und das geht in der App mit einem Tipp statt ueber einen Login im
+    // Browser. Der https-Link bleibt daneben stehen — er ist der einzige, der
+    // sicher irgendwo landet, falls die App nicht installiert ist.
+    const deep = this.#appLinks ? appLink(ad.url) : null;
+    const links = [];
+    if (deep) links.push(`📱 <a href="${escapeHtml(deep)}">In der App</a>`);
+    links.push(`🌐 <a href="${escapeHtml(ad.url)}">Im Browser</a>`);
+
+    lines.push('', links.join('  ·  '));
     lines.push(`<i>${escapeHtml(watchLabel)}</i>`);
 
     return this.sendText(lines.join('\n'));

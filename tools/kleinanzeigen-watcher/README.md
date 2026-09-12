@@ -122,6 +122,30 @@ Durdurmak için `Ctrl+C` — kaldığı yeri kaydeder.
 - İlanlar eskiden yeniye sıralı gönderilir, böylece sohbetteki sıra gerçek
   sırayla aynı olur.
 
+## İlanı uygulamada açmak
+
+Her alarmda iki link var: **📱 In der App** ve **🌐 Im Browser**.
+
+App linki iOS'un `ebayk://` şeması — tahmin değil, ilan sayfasının kendi
+`al:ios:url` etiketinden alınıyor. Telegram bu şemayı mesaj metninde kabul
+ediyor (inline düğmede etmiyor, "Unsupported URL protocol" der).
+
+**Ama asıl mesele Telegram'ın kendi tarayıcısı.** Kleinanzeigen hem Android
+App Links (`assetlinks.json`) hem iOS Universal Links yayınlıyor, yani normal
+`https://` linki de uygulamayı açar — Telegram araya girip linki kendi
+açmasa. Bir kez kapat, bütün linkler düzelir:
+
+> Telegram → Ayarlar → "browser" diye ara → **In-App Browser'ı kapat**
+> (iOS'ta genelde *Data and Storage*, Android'de *Chats* altında; menü yolu
+> sürüme göre oynuyor)
+
+Android'e geçersen app linkini kapatabilirsin — orada `ebayk://` ölü link
+olur, `https://` zaten uygulamayı açar:
+
+```json
+"telegram": { "chatId": "...", "appLinks": false }
+```
+
 ## Filtreler
 
 Her arama kendi `filters` bloğuna sahip. Hepsi isteğe bağlı:
