@@ -135,7 +135,38 @@ Her arama kendi `filters` bloğuna sahip. Hepsi isteğe bağlı:
 | `skipTopAds` | Parayla üste sabitlenmiş "Top-Anzeige"leri atla. Varsayılan `true` — bunlar eskidir. |
 | `allowMissingPrice` | Fiyatı yazmayan ("VB") ilanlar fiyat filtresine takılmasın. Varsayılan `true`. |
 
-## Birden fazla arama
+## Bot üzerinden yönetim (en pratik yol)
+
+Sunucuya hiç girmeden, doğrudan Telegram'dan yönetebilirsin.
+
+**Arama eklemek:** Kleinanzeigen'de aramanı yap, adres çubuğundaki URL'yi
+kopyala ve **bota gönder.** Hepsi bu. Bot aramayı ekler, hemen bir deneme
+çekimi yapıp kaç ilan bulduğunu söyler ve izlemeye başlar.
+
+URL'nin arkasına isteğe bağlı olarak şunları yazabilirsin (telefonda kolay
+olsun diye kelimelerle, tire tire seçeneklerle değil):
+
+```
+https://www.kleinanzeigen.de/s-fahrraeder/... max 300 privat ohne defekt,bastler
+```
+
+| Ek | Anlamı |
+| --- | --- |
+| `max 300` | En fazla 300 € |
+| `min 50` | En az 50 € |
+| `privat` | Mağaza/PRO satıcıları atla |
+| `ohne defekt,bastler` | Başlıkta bu kelimeler geçerse atla |
+
+**Aramaları görmek ve silmek:** `/list` yaz. Her arama kendi mesajında gelir,
+altında 🗑 **Löschen** düğmesiyle — dokununca silinir.
+
+`/help` her zaman bu özeti verir.
+
+Değişiklikler **anında** geçerli olur; container'ı yeniden başlatmana gerek
+yok. Bot yalnızca senin sohbetinden gelen komutları kabul eder — botun adını
+bilen bir yabancı ne aramalarını görebilir ne de değiştirebilir.
+
+## Birden fazla arama (komut satırından)
 
 İstediğin kadar arama ekleyebilirsin — her biri **kendi aralığında, kendi
 filtreleriyle ve kendi hafızasıyla** bağımsız döner. Biri engellenirse veya

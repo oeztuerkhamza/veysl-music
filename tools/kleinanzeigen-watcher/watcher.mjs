@@ -16,6 +16,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
 
+import { pollCommands } from './src/commands.mjs';
 import { loadConfig, matchesFilters, withFilterDefaults } from './src/config.mjs';
 import { fetchAds, BlockedError } from './src/kleinanzeigen.mjs';
 import { addWatch, listWatches, removeWatch } from './src/manage.mjs';
@@ -152,40 +153,82 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
   return capped.length;
 }
 
-/** Endlosschleife fuer eine einzelne Suche. */
-async function watchLoop(watch, ctx, abortSignal) {
-  let backoff = 1;
-  let blockedNotified = false;
+/**
+ * Fuehrt eine faellige Suche aus und bestimmt, wann sie das naechste Mal dran
+ * ist. `runtime` haelt Sperr- und Laufzustand ueber die Runden hinweg fest.
+ */
+async function tickWatch(watch, runtime, ctx) {
+  try {
+    await runCycle(watch, ctx);
+    if (runtime.backoff > 1) {
+      log(`${watch.label}: wieder erreichbar, normaler Takt.`);
+      runtime.backoff = 1;
+      runtime.blockedNotified = false;
+    }
+  } catch (err) {
+    if (err instanceof BlockedError) {
+      runtime.backoff = Math.min(runtime.backoff * 2, MAX_BACKOFF_MULTIPLIER);
+      log(`${watch.label}: ${err.message} — Takt x${runtime.backoff}.`);
+      // Nur einmal pro Sperrphase melden, nicht bei jedem Fehlversuch.
+      if (runtime.backoff >= 8 && !runtime.blockedNotified && !ctx.dryRun) {
+        runtime.blockedNotified = true;
+        await ctx.telegram
+          .sendText(
+            `⚠️ ${watch.label}: Kleinanzeigen blockt die Abfragen (HTTP ${err.status}). Der Watcher versucht es weiter in groesseren Abstaenden.`,
+          )
+          .catch(() => {});
+      }
+    } else {
+      log(`${watch.label}: Fehler — ${err.message}`);
+    }
+  }
+
+  const jitter = Math.random() * watch.jitterSeconds * 1000;
+  runtime.nextRunAt = Date.now() + watch.intervalSeconds * 1000 * runtime.backoff + jitter;
+}
+
+/**
+ * Der Taktgeber. Eine Schleife fuer alle Suchen statt einer je Suche — nur so
+ * kann eine per Telegram hinzugefuegte Suche sofort mitlaufen und eine
+ * geloeschte sofort verschwinden, ohne den Prozess neu zu starten.
+ */
+async function scheduler(ctx, abortSignal) {
+  const runtimes = new Map();
+  let stagger = 0;
 
   while (!abortSignal.aborted) {
-    try {
-      await runCycle(watch, ctx);
-      if (backoff > 1) {
-        log(`${watch.label}: wieder erreichbar, normaler Takt.`);
-        backoff = 1;
-        blockedNotified = false;
-      }
-    } catch (err) {
-      if (err instanceof BlockedError) {
-        backoff = Math.min(backoff * 2, MAX_BACKOFF_MULTIPLIER);
-        log(`${watch.label}: ${err.message} — Takt x${backoff}.`);
-        // Nur einmal pro Sperrphase melden, nicht bei jedem Fehlversuch.
-        if (backoff >= 8 && !blockedNotified && !ctx.dryRun) {
-          blockedNotified = true;
-          await ctx.telegram
-            .sendText(
-              `⚠️ ${watch.label}: Kleinanzeigen blockt die Abfragen (HTTP ${err.status}). Der Watcher versucht es weiter in groesseren Abstaenden.`,
-            )
-            .catch(() => {});
-        }
-      } else {
-        log(`${watch.label}: Fehler — ${err.message}`);
-      }
+    const watches = ctx.getWatches();
+
+    // Verschwundene Suchen nicht mitschleppen: sonst waechst die Map, und
+    // eine spaeter gleichnamige Suche erbte den alten Sperrzustand.
+    for (const id of runtimes.keys()) {
+      if (!watches.some((w) => w.id === id)) runtimes.delete(id);
     }
 
-    const jitter = Math.random() * watch.jitterSeconds * 1000;
-    const waitMs = watch.intervalSeconds * 1000 * backoff + jitter;
-    await sleep(waitMs);
+    const due = [];
+    for (const watch of watches) {
+      let runtime = runtimes.get(watch.id);
+      if (!runtime) {
+        // Neue Suchen leicht versetzt starten, damit nicht alle gleichzeitig
+        // abfragen.
+        runtime = { backoff: 1, blockedNotified: false, nextRunAt: Date.now() + stagger, running: false };
+        stagger += 2000;
+        runtimes.set(watch.id, runtime);
+      }
+      if (!runtime.running && Date.now() >= runtime.nextRunAt) due.push([watch, runtime]);
+    }
+    stagger = 0;
+
+    // Faellige Suchen nebeneinander laufen lassen, aber nicht auf sie warten:
+    // eine haengende Abfrage darf die anderen nicht aufhalten.
+    for (const [watch, runtime] of due) {
+      runtime.running = true;
+      tickWatch(watch, runtime, ctx).finally(() => {
+        runtime.running = false;
+      });
+    }
+
+    await sleep(1000);
   }
 }
 
@@ -334,13 +377,40 @@ async function main() {
   process.on('SIGINT', shutdown);
   process.on('SIGTERM', shutdown);
 
-  // Die Suchen leicht versetzt starten, damit nicht alle gleichzeitig abfragen.
-  await Promise.all(
-    config.watches.map(async (watch, i) => {
-      await sleep(i * 2000);
-      return watchLoop(watch, ctx, controller.signal);
-    }),
-  );
+  // Die Suchen liegen ab hier hinter einem Getter statt in einer festen Liste:
+  // per Telegram angelegte Suchen sollen sofort mitlaufen, geloeschte sofort
+  // verstummen — ohne den Container neu zu starten.
+  let current = config.watches;
+  ctx.getWatches = () => current;
+
+  const reload = async () => {
+    try {
+      const fresh = await loadConfig(configPath);
+      const before = current.map((w) => w.id).join(',');
+      current = fresh.watches;
+      if (before !== current.map((w) => w.id).join(',')) {
+        log(`Suchen neu geladen: ${current.length} aktiv.`);
+      }
+    } catch (err) {
+      // Eine kaputte Datei darf den laufenden Watcher nicht umbringen; er
+      // arbeitet mit dem letzten funktionierenden Stand weiter.
+      log(`Neu laden fehlgeschlagen, behalte den bisherigen Stand: ${err.message}`);
+    }
+  };
+
+  const tasks = [scheduler(ctx, controller.signal)];
+
+  if (!args.dryRun) {
+    log('Botbefehle aktiv — schick eine Such-URL an den Bot.');
+    tasks.push(
+      pollCommands(
+        { telegram, configPath, timeoutMs: config.requestTimeoutMs, log, onConfigChanged: reload },
+        controller.signal,
+      ),
+    );
+  }
+
+  await Promise.all(tasks);
 }
 
 main().catch((err) => {

@@ -1,4 +1,4 @@
-// Versand der Treffer ueber die Telegram-Bot-API.
+// Versand der Treffer und Empfang der Befehle ueber die Telegram-Bot-API.
 
 const API = 'https://api.telegram.org';
 
@@ -7,7 +7,11 @@ const API = 'https://api.telegram.org';
 // die es hier geht.
 const MIN_GAP_MS = 1100;
 
-function escapeHtml(s) {
+// Long Polling: die Anfrage bleibt so lange offen, bis etwas ankommt. Das
+// spart Abfragen und laesst einen Befehl trotzdem sofort ankommen.
+const POLL_TIMEOUT_S = 30;
+
+export function escapeHtml(s) {
   return String(s)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -26,12 +30,16 @@ export class Telegram {
     this.#chatId = String(chatId);
   }
 
-  async #call(method, payload) {
+  get chatId() {
+    return this.#chatId;
+  }
+
+  async #call(method, payload, { timeoutMs = 20_000 } = {}) {
     const res = await fetch(`${API}/bot${this.#token}/${method}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(20_000),
+      signal: AbortSignal.timeout(timeoutMs),
     });
     const body = await res.json().catch(() => ({}));
     if (!body.ok) {
@@ -47,7 +55,7 @@ export class Telegram {
     this.#nextSlot = Date.now() + MIN_GAP_MS;
   }
 
-  async sendText(text) {
+  async sendText(text, { buttons } = {}) {
     await this.#throttle();
     return this.#call('sendMessage', {
       chat_id: this.#chatId,
@@ -56,6 +64,7 @@ export class Telegram {
       // Die Vorschau wuerde die Nachricht um ein grosses Bild verlaengern und
       // das Antippen des Links nach unten schieben.
       link_preview_options: { is_disabled: true },
+      ...(buttons ? { reply_markup: { inline_keyboard: buttons } } : {}),
     });
   }
 
@@ -78,8 +87,55 @@ export class Telegram {
   }
 
   /**
-   * Liest wartende Updates aus. Wird nur von `--chat-id` benutzt, um die
-   * eigene Chat-ID zu ermitteln, ohne sie irgendwo abtippen zu muessen.
+   * Holt wartende Updates ab. `offset` ist die naechste unbestaetigte
+   * update_id — Telegram loescht damit alles Aeltere.
+   */
+  async getUpdates(offset, { signal } = {}) {
+    const res = await fetch(`${API}/bot${this.#token}/getUpdates`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        offset,
+        timeout: POLL_TIMEOUT_S,
+        allowed_updates: ['message', 'callback_query'],
+      }),
+      // Grosszuegiger als das Long-Polling-Fenster, sonst bricht jede
+      // ereignislose Runde als Timeout ab.
+      signal: signal ?? AbortSignal.timeout((POLL_TIMEOUT_S + 15) * 1000),
+    });
+    const body = await res.json().catch(() => ({}));
+    if (!body.ok) {
+      throw new Error(`Telegram getUpdates: ${body.description ?? `HTTP ${res.status}`}`);
+    }
+    return body.result ?? [];
+  }
+
+  /**
+   * Bestaetigt einen Tastendruck. Ohne diesen Aufruf dreht sich im Chat
+   * sekundenlang ein Ladekringel, obwohl die Aktion laengst gelaufen ist.
+   */
+  async answerCallback(id, text) {
+    return this.#call('answerCallbackQuery', {
+      callback_query_id: id,
+      ...(text ? { text } : {}),
+    }).catch(() => {});
+  }
+
+  /** Ersetzt den Text einer bereits gesendeten Nachricht. */
+  async editText(messageId, text, { buttons } = {}) {
+    return this.#call('editMessageText', {
+      chat_id: this.#chatId,
+      message_id: messageId,
+      text,
+      parse_mode: 'HTML',
+      link_preview_options: { is_disabled: true },
+      ...(buttons ? { reply_markup: { inline_keyboard: buttons } } : {}),
+    }).catch(() => {});
+  }
+
+  /**
+   * Liest wartende Updates aus, ohne sie zu bestaetigen. Wird von `--chat-id`
+   * benutzt, um die eigene Chat-ID zu ermitteln.
    */
   static async discoverChats(token) {
     const res = await fetch(`${API}/bot${token}/getUpdates`, {
