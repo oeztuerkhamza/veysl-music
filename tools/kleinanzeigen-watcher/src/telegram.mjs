@@ -18,40 +18,27 @@ export function escapeHtml(s) {
     .replace(/>/g, '&gt;');
 }
 
-/**
- * Baut aus der Anzeigen-URL den Deep Link in die Kleinanzeigen-App.
- *
- * Das Schema stammt nicht aus einer Vermutung, sondern von der Anzeigenseite
- * selbst: sie traegt `<meta property="al:ios:url" content="ebayk://s-anzeige/…">`.
- * Es ist ausdruecklich das iOS-Schema — fuer Android veroeffentlicht
- * Kleinanzeigen keins, dort oeffnet bereits die https-Adresse die App
- * (assetlinks.json, `handle_all_urls`).
- *
- * Telegram nimmt fremde Schemata nur im Nachrichtentext an; als Inline-Taste
- * werden sie mit "Unsupported URL protocol" abgelehnt.
- */
-export function appLink(url) {
-  try {
-    const parsed = new URL(url);
-    if (!parsed.hostname.endsWith('kleinanzeigen.de')) return null;
-    return `ebayk://${parsed.pathname.replace(/^\//, '')}`;
-  } catch {
-    return null;
-  }
-}
+// Hier stand ein zweiter Link im `ebayk://`-Schema, um die Anzeige direkt in
+// der Kleinanzeigen-App zu oeffnen. Er ist wieder raus: die Bot-API nimmt das
+// Schema zwar an, aber der iOS-Client macht daraus keinen antippbaren Link —
+// in jeder Meldung stand also ein toter Link.
+//
+// Der Weg in die App fuehrt ohnehin ueber den gewoehnlichen https-Link.
+// Kleinanzeigen veroeffentlicht Android App Links und iOS Universal Links;
+// die Adresse oeffnet die App von selbst, sobald Telegram sie ans
+// Betriebssystem weiterreicht statt sie im eingebauten Browser zu oeffnen.
+// Das ist eine Einstellung im Telegram-Client, siehe README.
 
 export class Telegram {
   #token;
   #chatId;
-  #appLinks;
   #nextSlot = 0;
 
-  constructor(token, chatId, { appLinks = true } = {}) {
+  constructor(token, chatId) {
     if (!token) throw new Error('TELEGRAM_BOT_TOKEN fehlt.');
     if (!chatId) throw new Error('Keine chatId konfiguriert.');
     this.#token = token;
     this.#chatId = String(chatId);
-    this.#appLinks = appLinks;
   }
 
   get chatId() {
@@ -108,12 +95,7 @@ export class Telegram {
     // und das geht in der App mit einem Tipp statt ueber einen Login im
     // Browser. Der https-Link bleibt daneben stehen — er ist der einzige, der
     // sicher irgendwo landet, falls die App nicht installiert ist.
-    const deep = this.#appLinks ? appLink(ad.url) : null;
-    const links = [];
-    if (deep) links.push(`📱 <a href="${escapeHtml(deep)}">In der App</a>`);
-    links.push(`🌐 <a href="${escapeHtml(ad.url)}">Im Browser</a>`);
-
-    lines.push('', links.join('  ·  '));
+    lines.push('', `<a href="${escapeHtml(ad.url)}">Anzeige oeffnen</a>`);
     lines.push(`<i>${escapeHtml(watchLabel)}</i>`);
 
     return this.sendText(lines.join('\n'));

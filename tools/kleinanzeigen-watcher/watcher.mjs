@@ -344,9 +344,7 @@ async function main() {
   // ueberlebt das Gedaechtnis einen Rebuild des Images.
   const state = await State.load(resolve(dirname(configPath), 'state.json'));
 
-  const telegram = args.dryRun
-    ? null
-    : new Telegram(token, config.telegram.chatId, { appLinks: config.telegram.appLinks });
+  const telegram = args.dryRun ? null : new Telegram(token, config.telegram.chatId);
   const ctx = { state, telegram, config, dryRun: args.dryRun };
 
   log(`${config.watches.length} Suche(n) geladen${args.dryRun ? ' (dry-run)' : ''}.`);
