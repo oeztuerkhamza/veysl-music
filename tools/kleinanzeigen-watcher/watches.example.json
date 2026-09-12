@@ -1,0 +1,23 @@
+{
+  "telegram": {
+    "chatId": "HIER_DEINE_CHAT_ID"
+  },
+
+  "watches": [
+    {
+      "id": "bulls-freiburg",
+      "label": "Bulls Fahrräder Freiburg (20 km)",
+      "url": "https://www.kleinanzeigen.de/s-fahrraeder/freiburg-im-breisgau/bulls/k0c217l9354r20",
+      "intervalSeconds": 60,
+
+      "filters": {
+        "maxPrice": 400,
+        "minPrice": null,
+        "titleMustInclude": [],
+        "titleExclude": ["defekt", "bastler", "ersatzteil"],
+        "skipCommercial": true,
+        "skipTopAds": true
+      }
+    }
+  ]
+}
