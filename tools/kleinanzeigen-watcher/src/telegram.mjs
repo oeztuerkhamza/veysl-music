@@ -31,7 +31,7 @@ export function escapeHtml(s) {
  * Ohne konfigurierte `bridgeBaseUrl` gibt es keinen Bruecken-Link; dann bleibt
  * es beim gewoehnlichen https-Link.
  */
-export function bridgeLink(adUrl, baseUrl, title) {
+export function bridgeLink(adUrl, baseUrl, title, message) {
   if (!baseUrl) return null;
   try {
     const ad = new URL(adUrl);
@@ -41,13 +41,31 @@ export function bridgeLink(adUrl, baseUrl, title) {
     if (!match) return null;
 
     const bridge = new URL(`api/ka/${match[1]}/${match[2]}`, `${baseUrl.replace(/\/+$/, '')}/`);
-    // Nur fuer die Ueberschrift der Zwischenseite — das Sprungziel steht
-    // vollstaendig im Pfad und haengt an keinem Parameter.
+    // Beides ist reiner Anzeigetext — das Sprungziel steht vollstaendig im Pfad
+    // und haengt an keinem Parameter.
     if (title) bridge.searchParams.set('t', title.slice(0, 120));
+    if (message) bridge.searchParams.set('m', message.slice(0, 600));
     return bridge.toString();
   } catch {
     return null;
   }
+}
+
+/**
+ * Setzt die Platzhalter der Nachrichtenvorlage. Unbekannte Platzhalter bleiben
+ * stehen, damit ein Tippfehler in der Vorlage sichtbar wird, statt still eine
+ * Luecke in die Nachricht an den Verkaeufer zu reissen.
+ */
+export function renderMessage(template, ad) {
+  if (!template) return null;
+  const values = {
+    title: ad.title ?? '',
+    price: ad.price ?? '',
+    location: ad.location ?? '',
+    url: ad.url ?? '',
+  };
+  const text = template.replace(/\{(title|price|location|url)\}/g, (_, key) => values[key]);
+  return text.trim() || null;
 }
 
 export class Telegram {
@@ -103,7 +121,7 @@ export class Telegram {
   }
 
   /** Formatiert eine Anzeige als Alarmnachricht. */
-  async sendAd(ad, watchLabel) {
+  async sendAd(ad, watchLabel, messageTemplate = null) {
     const lines = [`🆕 <b>${escapeHtml(ad.title || 'Ohne Titel')}</b>`];
 
     const facts = [];
@@ -121,9 +139,16 @@ export class Telegram {
     // Der Brueckenlink zuerst: er landet in der App, und dort ist Schreiben ein
     // Tipp statt eines Logins. Der direkte Link bleibt daneben stehen — faellt
     // die eigene Website aus, ist er der einzige, der noch irgendwo hinfuehrt.
-    const bridge = bridgeLink(ad.url, this.#bridgeBaseUrl, ad.title);
+    const message = renderMessage(messageTemplate, ad);
+    const bridge = bridgeLink(ad.url, this.#bridgeBaseUrl, ad.title, message);
     const links = [];
-    if (bridge) links.push(`📱 <a href="${escapeHtml(bridge)}">In der App</a>`);
+    if (bridge) {
+      // `&amp;` statt `&`: im HTML-Modus lehnt Telegram eine Nachricht mit
+      // nacktem Ampersand mit "can't parse entities" ab — und zwar die ganze,
+      // nicht nur den Link.
+      const label = message ? 'Text kopieren &amp; App' : 'In der App';
+      links.push(`📱 <a href="${escapeHtml(bridge)}">${label}</a>`);
+    }
     links.push(`🌐 <a href="${escapeHtml(ad.url)}">${bridge ? 'Browser' : 'Anzeige oeffnen'}</a>`);
 
     lines.push('', links.join('  ·  '));

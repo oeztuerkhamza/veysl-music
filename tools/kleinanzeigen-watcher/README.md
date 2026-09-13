@@ -164,6 +164,30 @@ Köprü, `watches.json` içindeki `bridgeBaseUrl` ile açılır:
 
 Boş bırakırsan watcher aynen çalışır, sadece mesajda tek bir normal link olur.
 
+### Hazır ilk mesaj
+
+Bir şablon tanımlarsan köprüye dokunmak **hem metni panoya kopyalar hem
+uygulamayı açar**. Uygulamada mesaj kutusuna basılı tutup Yapıştır demen yeter.
+
+```json
+"messageTemplate": "Hallo, ist \"{title}\" noch verfügbar? Ich hätte Interesse und könnte es kurzfristig abholen. Viele Grüße"
+```
+
+Yer tutucular: `{title}`, `{price}`, `{location}`, `{url}`. Bilinmeyen bir yer
+tutucu olduğu gibi kalır — yazım hatası sessizce boşluk bırakmasın diye.
+
+Varsayılan şablon bilerek **pazarlıksız**. İlk mesajda fiyat kırmak, "ilk yazan"
+avantajını yer: satıcı düşünür, başka teklifleri bekler, geç cevap verir. İki
+cümle — müsait mi, hızlı alırım — en hızlı cevabı getiren biçim.
+
+Her aramaya ayrı şablon verebilirsin (`watches[].messageTemplate`). Boş string
+(`""`) o arama için şablonu kapatır; alanı hiç yazmazsan genel şablon geçerli
+olur.
+
+> Şablon varken köprü sayfası **otomatik atlamaz.** Panoya yazmak bir kullanıcı
+> hareketi gerektiriyor; otomatik atlasaydı uygulamaya boş panoyla düşerdin.
+> Bir dokunuş ikisini birden yapar.
+
 **Alternatif (kod gerektirmez):** Telegram'ın gömülü tarayıcısını kapatırsan
 normal `https://` linki de uygulamayı açar — Kleinanzeigen hem iOS Universal
 Links hem Android App Links yayınlıyor. Telegram → Ayarlar → "browser" diye
