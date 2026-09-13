@@ -134,7 +134,7 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
     if (dryRun) {
       log(`  [dry-run] ${ad.price || '—'} · ${ad.title} · ${ad.url}`);
     } else {
-      await telegram.sendAd(ad, watch.label);
+      await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate);
     }
   }
   if (dropped > 0) {

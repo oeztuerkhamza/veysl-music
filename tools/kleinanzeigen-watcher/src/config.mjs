@@ -18,6 +18,18 @@ const DEFAULTS = {
   requestTimeoutMs: 20_000,
 };
 
+/**
+ * Vorlage fuer die erste Nachricht an den Verkaeufer.
+ *
+ * Bewusst kurz und ohne Preisverhandlung. Wer als Erster schreibt, gewinnt den
+ * Artikel meist mit genau diesen zwei Saetzen: die Frage nach der
+ * Verfuegbarkeit und die Zusage, schnell abzuholen. Ein Preisvorschlag in der
+ * Erstnachricht kostet den Startvorteil wieder — der Verkaeufer denkt nach,
+ * vergleicht mit anderen Anfragen und antwortet spaeter.
+ */
+const DEFAULT_MESSAGE_TEMPLATE =
+  'Hallo, ist "{title}" noch verfügbar? Ich hätte Interesse und könnte es kurzfristig abholen. Viele Grüße';
+
 const DEFAULT_FILTERS = {
   minPrice: null,
   maxPrice: null,
@@ -105,6 +117,9 @@ function normalizeWatch(raw, index) {
     id: raw.id.trim(),
     label: raw.label?.trim() || raw.id.trim(),
     url: normalizeSearchUrl(raw.url.trim()),
+    // Leerer String heisst ausdruecklich "keine Vorlage"; undefined heisst
+    // "nimm die allgemeine". Deshalb ?? und nicht ||.
+    messageTemplate: raw.messageTemplate ?? null,
     intervalSeconds: interval,
     jitterSeconds: raw.jitterSeconds ?? DEFAULTS.jitterSeconds,
     maxAlertsPerCycle: raw.maxAlertsPerCycle ?? DEFAULTS.maxAlertsPerCycle,
@@ -150,6 +165,7 @@ export async function loadConfig(path) {
       // dann genauso, nur oeffnet ein Tipp den Browser statt der App.
       bridgeBaseUrl: raw.telegram?.bridgeBaseUrl ?? null,
     },
+    messageTemplate: raw.messageTemplate ?? DEFAULT_MESSAGE_TEMPLATE,
     requestTimeoutMs: raw.requestTimeoutMs ?? DEFAULTS.requestTimeoutMs,
     userAgent: raw.userAgent,
     watches,
