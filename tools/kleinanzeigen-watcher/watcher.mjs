@@ -15,6 +15,7 @@
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
+import { writeFile } from 'node:fs/promises';
 
 import { pollCommands } from './src/commands.mjs';
 import { loadConfig, matchesFilters, withFilterDefaults } from './src/config.mjs';
@@ -28,6 +29,14 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 // Nach einer Sperre wird der Abstand verdoppelt, bis zu dieser Obergrenze.
 // Weiter hochzugehen bringt nichts — dann ist die Suche ohnehin blind.
 const MAX_BACKOFF_MULTIPLIER = 16;
+
+// Untergrenze fuer die Stille-Warnung; bei kurzen Intervallen zaehlt das
+// Zehnfache des Intervalls, damit ein einzelner Aussetzer nicht schon meldet.
+const STALE_AFTER_MS = 15 * 60 * 1000;
+const HEARTBEAT_EVERY_MS = 15 * 1000;
+
+/** Telegram-HTML im Meldetext; Suchnamen kommen aus einer URL des Nutzers. */
+const escapeForLog = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 /** Liest einen Zahlenwert und weist eine fehlende Angabe frueh zurueck. */
 function numberArg(value, flag) {
@@ -160,6 +169,13 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
 async function tickWatch(watch, runtime, ctx) {
   try {
     await runCycle(watch, ctx);
+    runtime.lastSuccessAt = Date.now();
+    if (runtime.staleNotified) {
+      runtime.staleNotified = false;
+      await ctx.telegram
+        ?.sendText(`✅ ${escapeForLog(watch.label)}: liefert wieder Ergebnisse.`)
+        .catch(() => {});
+    }
     if (runtime.backoff > 1) {
       log(`${watch.label}: wieder erreichbar, normaler Takt.`);
       runtime.backoff = 1;
@@ -192,12 +208,48 @@ async function tickWatch(watch, runtime, ctx) {
  * kann eine per Telegram hinzugefuegte Suche sofort mitlaufen und eine
  * geloeschte sofort verschwinden, ohne den Prozess neu zu starten.
  */
+/**
+ * Meldet einmal, wenn eine Suche zu lange nichts Brauchbares geliefert hat.
+ *
+ * Das ist die einzige Warnung, die es geben kann: ein stiller Watcher sieht
+ * von aussen genauso aus wie ein ruhiger Markt. Ohne diese Pruefung faellt ein
+ * kaputter Parser oder eine dauerhafte Sperre erst dann auf, wenn man eine
+ * Anzeige verpasst hat — also zu spaet.
+ *
+ * Die Schwelle haengt am Intervall, nicht an einer festen Zahl: eine Suche
+ * alle 60 s ist nach 15 Minuten auffaellig still, eine alle 10 Minuten nicht.
+ */
+async function checkStale(watch, runtime, ctx) {
+  const limit = Math.max(watch.intervalSeconds * 1000 * 10, STALE_AFTER_MS);
+  const quietFor = Date.now() - runtime.lastSuccessAt;
+  if (quietFor < limit || runtime.staleNotified || ctx.dryRun) return;
+
+  runtime.staleNotified = true;
+  const minutes = Math.round(quietFor / 60000);
+  log(`${watch.label}: seit ${minutes} min kein erfolgreicher Abruf.`);
+  await ctx.telegram
+    ?.sendText(
+      `⚠️ <b>${escapeForLog(watch.label)}</b>\nSeit ${minutes} Minuten kein erfolgreicher Abruf. ` +
+        `Entweder blockt Kleinanzeigen, oder die Seite hat sich geaendert. ` +
+        `Es kommen gerade keine Meldungen — auch wenn es neue Anzeigen gibt.`,
+    )
+    .catch(() => {});
+}
+
 async function scheduler(ctx, abortSignal) {
   const runtimes = new Map();
   let stagger = 0;
+  let lastBeat = 0;
 
   while (!abortSignal.aborted) {
     const watches = ctx.getWatches();
+
+    // Lebenszeichen fuer den Docker-Healthcheck. Es sagt nur "der Prozess
+    // dreht sich noch" — ob die Abrufe gelingen, steht in checkStale.
+    if (ctx.heartbeatPath && Date.now() - lastBeat > HEARTBEAT_EVERY_MS) {
+      lastBeat = Date.now();
+      writeFile(ctx.heartbeatPath, new Date().toISOString(), 'utf8').catch(() => {});
+    }
 
     // Verschwundene Suchen nicht mitschleppen: sonst waechst die Map, und
     // eine spaeter gleichnamige Suche erbte den alten Sperrzustand.
@@ -211,11 +263,21 @@ async function scheduler(ctx, abortSignal) {
       if (!runtime) {
         // Neue Suchen leicht versetzt starten, damit nicht alle gleichzeitig
         // abfragen.
-        runtime = { backoff: 1, blockedNotified: false, nextRunAt: Date.now() + stagger, running: false };
+        runtime = {
+          backoff: 1,
+          blockedNotified: false,
+          staleNotified: false,
+          // Ab jetzt zaehlen, nicht ab 1970 — sonst gilt jede frisch angelegte
+          // Suche sofort als verstummt.
+          lastSuccessAt: Date.now(),
+          nextRunAt: Date.now() + stagger,
+          running: false,
+        };
         stagger += 2000;
         runtimes.set(watch.id, runtime);
       }
       if (!runtime.running && Date.now() >= runtime.nextRunAt) due.push([watch, runtime]);
+      if (!runtime.running) checkStale(watch, runtime, ctx);
     }
     stagger = 0;
 
@@ -342,14 +404,23 @@ async function main() {
   // Der Zustand gehoert neben die Konfiguration, nicht neben das Skript. Im
   // Container liegt watches.json auf einem gemounteten Volume — nur so
   // ueberlebt das Gedaechtnis einen Rebuild des Images.
-  const state = await State.load(resolve(dirname(configPath), 'state.json'));
+  const dataDir = dirname(configPath);
+  const state = await State.load(resolve(dataDir, 'state.json'), log);
 
   const telegram = args.dryRun
     ? null
     : new Telegram(token, config.telegram.chatId, {
         bridgeBaseUrl: config.telegram.bridgeBaseUrl,
       });
-  const ctx = { state, telegram, config, dryRun: args.dryRun };
+  const ctx = {
+    state,
+    telegram,
+    config,
+    dryRun: args.dryRun,
+    // Nur im Dauerbetrieb: ein --once-Lauf soll den Healthcheck des laufenden
+    // Containers nicht faelschlich auf "gesund" setzen.
+    heartbeatPath: args.once || args.dryRun ? null : resolve(dataDir, 'heartbeat'),
+  };
 
   if (config.watches.length === 0) {
     log('Keine Suche eingerichtet — der Watcher wartet auf eine URL per Telegram.');
