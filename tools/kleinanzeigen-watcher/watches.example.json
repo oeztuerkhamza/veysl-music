@@ -1,6 +1,11 @@
 {
   "telegram": {
-    "chatId": "HIER_DEINE_CHAT_ID"
+    "chatId": "HIER_DEINE_CHAT_ID",
+
+    "_users": "Wer den Bot ausser dir bedienen darf. Rechte: list (ansehen), add (anlegen), remove (loeschen). Am einfachsten per /user im Chat zu pflegen.",
+    "users": [
+      { "id": "123456789", "name": "Beispiel", "rights": ["list"] }
+    ]
   },
 
   "watches": [

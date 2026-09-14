@@ -107,10 +107,15 @@ export class Telegram {
     this.#nextSlot = Date.now() + MIN_GAP_MS;
   }
 
-  async sendText(text, { buttons } = {}) {
+  /**
+   * `chatId` gibt die Antwort an einen anderen erlaubten Chat statt an den
+   * Besitzer — ein Helfer bekommt die Antwort auf seinen eigenen Befehl dort,
+   * wo er ihn getippt hat. Ohne Angabe geht alles an den Besitzer.
+   */
+  async sendText(text, { buttons, chatId } = {}) {
     await this.#throttle();
     return this.#call('sendMessage', {
-      chat_id: this.#chatId,
+      chat_id: String(chatId ?? this.#chatId),
       text,
       parse_mode: 'HTML',
       // Die Vorschau wuerde die Nachricht um ein grosses Bild verlaengern und
@@ -132,13 +137,14 @@ export class Telegram {
     if (ad.shipping) facts.push('📦 Versand');
     lines.push(facts.join('  ·  '));
 
-    // Der App-Link zuerst: wer eine frische Anzeige sieht, will schreiben,
-    // und das geht in der App mit einem Tipp statt ueber einen Login im
-    // Browser. Der https-Link bleibt daneben stehen — er ist der einzige, der
-    // sicher irgendwo landet, falls die App nicht installiert ist.
-    // Der Brueckenlink zuerst: er landet in der App, und dort ist Schreiben ein
-    // Tipp statt eines Logins. Der direkte Link bleibt daneben stehen — faellt
-    // die eigene Website aus, ist er der einzige, der noch irgendwo hinfuehrt.
+    // Nur der Brueckenlink: er landet in der App, und dort ist Schreiben ein
+    // Tipp statt eines Logins. Der zweite Link daneben fuehrte in Telegrams
+    // eingebauten Browser — also genau dorthin, wo man sich erst einloggen
+    // muss, und wo ein Fehltipp die schnelle Antwort kostet.
+    //
+    // Ohne konfigurierte `bridgeBaseUrl` gibt es keine Bruecke; dann bleibt
+    // der gewoehnliche Link als einziger Weg zur Anzeige stehen — eine Meldung
+    // ganz ohne Link waere nutzlos.
     const message = renderMessage(messageTemplate, ad);
     const bridge = bridgeLink(ad.url, this.#bridgeBaseUrl, ad.title, message);
     const links = [];
@@ -146,10 +152,11 @@ export class Telegram {
       // `&amp;` statt `&`: im HTML-Modus lehnt Telegram eine Nachricht mit
       // nacktem Ampersand mit "can't parse entities" ab — und zwar die ganze,
       // nicht nur den Link.
-      const label = message ? 'Text kopieren &amp; App' : 'In der App';
+      const label = message ? 'Text kopieren &amp; in der App oeffnen' : 'In der App oeffnen';
       links.push(`📱 <a href="${escapeHtml(bridge)}">${label}</a>`);
+    } else {
+      links.push(`🔗 <a href="${escapeHtml(ad.url)}">Anzeige oeffnen</a>`);
     }
-    links.push(`🌐 <a href="${escapeHtml(ad.url)}">${bridge ? 'Browser' : 'Anzeige oeffnen'}</a>`);
 
     lines.push('', links.join('  ·  '));
     lines.push(`<i>${escapeHtml(watchLabel)}</i>`);
@@ -193,9 +200,9 @@ export class Telegram {
   }
 
   /** Ersetzt den Text einer bereits gesendeten Nachricht. */
-  async editText(messageId, text, { buttons } = {}) {
+  async editText(messageId, text, { buttons, chatId } = {}) {
     return this.#call('editMessageText', {
-      chat_id: this.#chatId,
+      chat_id: String(chatId ?? this.#chatId),
       message_id: messageId,
       text,
       parse_mode: 'HTML',

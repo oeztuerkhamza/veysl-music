@@ -124,9 +124,11 @@ Durdurmak için `Ctrl+C` — kaldığı yeri kaydeder.
 
 ## İlanı doğrudan uygulamada açmak
 
-Her alarmda iki link var: **📱 In der App** ve **🌐 Browser**.
+Her alarmda tek bir link var: **📱 In der App oeffnen**. Tarayıcı linki bilerek
+kaldırıldı — Telegram onu kendi gömülü tarayıcısında açıyordu, yani tam da giriş
+yapman gereken yerde. Yanlış linke dokunmak en hızlı cevabı kaçırtıyordu.
 
-İlki kendi domainimizdeki bir köprü sayfasına gider
+Link kendi domainimizdeki bir köprü sayfasına gider
 ([src/app/api/ka/[...path]/route.ts](../../src/app/api/ka/%5B...path%5D/route.ts)),
 o sayfa da `ebayk://` şemasına atlayarak Kleinanzeigen uygulamasını açar.
 
@@ -162,7 +164,8 @@ Köprü, `watches.json` içindeki `bridgeBaseUrl` ile açılır:
 "telegram": { "chatId": "...", "bridgeBaseUrl": "https://dj-veys.de" }
 ```
 
-Boş bırakırsan watcher aynen çalışır, sadece mesajda tek bir normal link olur.
+Boş bırakırsan watcher aynen çalışır; köprü olmadığı için mesajda tek bir normal
+`https://` link kalır — linksiz bir alarmın hiçbir faydası olmazdı.
 
 ### Hazır ilk mesaj
 
@@ -234,9 +237,40 @@ altında 🗑 **Löschen** düğmesiyle — dokununca silinir.
 
 `/help` her zaman bu özeti verir.
 
-Değişiklikler **anında** geçerli olur; container'ı yeniden başlatmana gerek
-yok. Bot yalnızca senin sohbetinden gelen komutları kabul eder — botun adını
-bilen bir yabancı ne aramalarını görebilir ne de değiştirebilir.
+Değişiklikler **anında** geçerli olur; container'ı yeniden başlatmana gerek yok.
+
+### Kimler kullanabilir — `/user`
+
+Bot varsayılan olarak **yalnızca seni** dinler (`telegram.chatId`). Başkası
+yazarsa hiç cevap almaz; botun adını bilen bir yabancı ne aramalarını görebilir
+ne de değiştirebilir. İstersen yanına başkalarını da alabilirsin — ve herkese
+ne kadar yetki vereceğine sen karar verirsin.
+
+| Yetki | Ne yapabilir |
+| --- | --- |
+| `ansehen` (`list`) | `/list` ile aramaları görür |
+| `anlegen` (`add`) | URL gönderip yeni arama ekler |
+| `loeschen` (`remove`) | 🗑 düğmesiyle arama siler |
+
+```
+/user                                          listeyi göster (🚫 kaldır düğmesiyle)
+/user add 123456789 Ali                        ekle — başlangıçta sadece "ansehen"
+/user add 123456789 Ali rechte: ansehen,anlegen  ekle, yetkileriyle birlikte
+/user rechte 123456789 alle                    yetkileri değiştir
+/user del 123456789                            listeden çıkar
+```
+
+Birinin Telegram kimliğini öğrenmek için ona bota bir şey yazdır: denemesi
+log'a düşer (`Nicht erlaubt: Kennung 123456789 … /user add 123456789`) ve
+kimliği orada yazar.
+
+`/user` komutunu **sadece sen** kullanabilirsin — listeye aldığın kişi başkasını
+ekleyemez, kendi yetkisini yükseltemez. Yetkisi olmayan birine 🗑 düğmesi hiç
+gösterilmez. Liste `watches.json` içinde `telegram.users` altında durur ve elle
+de düzenlenebilir; değişiklik anında geçerli olur.
+
+İlan alarmları her zaman **yalnızca sana** gider — listeye aldığın kişiler botu
+yönetebilir, alarm kopyası almaz.
 
 ## Birden fazla arama (komut satırından)
 
