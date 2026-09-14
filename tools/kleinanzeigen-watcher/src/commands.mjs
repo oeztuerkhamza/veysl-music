@@ -4,7 +4,7 @@
 // seinen Namen oeffentlich auffindbar, und ohne diese Pruefung koennte jeder
 // Fremde die Suchen lesen, aendern und loeschen.
 
-import { addWatch, listWatches, removeWatch } from './manage.mjs';
+import { addWatch, listWatches, removeWatch, updateWatch } from './manage.mjs';
 import { fetchAds } from './kleinanzeigen.mjs';
 import { matchesFilters, withFilterDefaults } from './config.mjs';
 import { escapeHtml } from './telegram.mjs';
@@ -20,10 +20,16 @@ const HELP = [
   '  <code>min 50</code> — mindestens 50 €',
   '  <code>privat</code> — keine gewerblichen Anbieter',
   '  <code>ohne defekt,bastler</code> — Titel-Stoppwoerter',
+  '  <code>takt 30</code> — alle 30 s statt 60 (min. 30)',
   '',
   '<b>Befehle</b>',
-  '  /list — meine Suchen, mit Loeschtaste',
+  '  /list — meine Suchen, mit Tasten für Takt, Text und Löschen',
+  '  /takt &lt;id&gt; 30 — Abstand aendern',
+  '  /text &lt;id&gt; …  — Erstnachricht fuer diese Suche',
   '  /help — diese Hilfe',
+  '',
+  'Am schnellsten geht alles ueber /list: unter jeder Suche stehen',
+  '⏱ Takt, ✏️ Text und 🗑 Löschen.',
 ].join('\n');
 
 /** Findet die erste Kleinanzeigen-URL in einem Text. */
@@ -47,6 +53,10 @@ export function parseOptions(text) {
   if (min) options.minPrice = Number(min[1]);
 
   if (/\bprivat\b/.test(rest)) options.privateOnly = true;
+
+  // "takt 30" oder "alle 30" direkt beim Anlegen — spart den Umweg ueber /list.
+  const takt = rest.match(/\b(?:takt|alle)\s+(\d+)\s*(?:s|sek|sekunden)?\b/);
+  if (takt) options.intervalSeconds = Number(takt[1]);
 
   const without = rest.match(/\bohne\s+([a-z0-9äöüß,\s-]+)/);
   if (without) {
@@ -103,6 +113,32 @@ async function handleAdd(text, { configPath, telegram, timeoutMs }) {
   return true;
 }
 
+/** Auswahl fuer den Takt. Bewusst Tasten statt Tippen — das hier passiert am Telefon. */
+const TAKTE = [30, 60, 120, 300, 900];
+
+function watchCard(w) {
+  const vorlage = w.messageTemplate
+    ? `\n✏️ <i>${escapeHtml(w.messageTemplate.slice(0, 90))}${w.messageTemplate.length > 90 ? '…' : ''}</i>`
+    : w.messageTemplate === ''
+      ? '\n✏️ <i>keine Vorlage (Kopiertext aus)</i>'
+      : '';
+  return [
+    `<b>${escapeHtml(w.label ?? w.id)}</b>`,
+    `${escapeHtml(describeFilters(w.filters))}  ·  alle ${w.intervalSeconds ?? 60}s`,
+    `<a href="${escapeHtml(w.url)}">Suche oeffnen</a>${vorlage}`,
+  ].join('\n');
+}
+
+function watchButtons(id) {
+  return [
+    [
+      { text: '⏱ Takt', callback_data: `takt:${id}` },
+      { text: '✏️ Text', callback_data: `text:${id}` },
+      { text: '🗑 Löschen', callback_data: `rm:${id}` },
+    ],
+  ];
+}
+
 async function handleList(configPath, telegram) {
   const watches = await listWatches(configPath);
   if (watches.length === 0) {
@@ -110,17 +146,165 @@ async function handleList(configPath, telegram) {
     return;
   }
 
-  // Eine Nachricht je Suche, damit die Loeschtaste eindeutig dazugehoert.
+  // Eine Nachricht je Suche, damit die Tasten eindeutig dazugehoeren.
   await telegram.sendText(`<b>${watches.length} Suche(n)</b>`);
   for (const w of watches) {
-    const text = [
-      `<b>${escapeHtml(w.label ?? w.id)}</b>`,
-      `${escapeHtml(describeFilters(w.filters))}  ·  alle ${w.intervalSeconds ?? 60}s`,
-      `<a href="${escapeHtml(w.url)}">Suche oeffnen</a>`,
-    ].join('\n');
-    await telegram.sendText(text, {
-      buttons: [[{ text: '🗑 Löschen', callback_data: `rm:${w.id}` }]],
-    });
+    await telegram.sendText(watchCard(w), { buttons: watchButtons(w.id) });
+  }
+}
+
+/**
+ * Zeigt die Taktauswahl in derselben Nachricht.
+ *
+ * Der Umweg ueber Tasten statt einer Eingabe ist Absicht: eine Zahl auf einer
+ * Telefontastatur zu tippen, um dann die id danebenzuschreiben, ist genau die
+ * Art Reibung, wegen der man sich sonst doch wieder einloggt.
+ */
+async function showTaktChoices(id, { configPath, telegram, callbackId, messageId }) {
+  const watch = (await listWatches(configPath)).find((w) => w.id === id);
+  if (!watch) {
+    await telegram.answerCallback(callbackId, 'Suche gibt es nicht mehr');
+    return false;
+  }
+  await telegram.answerCallback(callbackId);
+  await telegram.editText(messageId, watchCard(watch), {
+    buttons: [
+      TAKTE.map((s) => ({
+        text: (s === (watch.intervalSeconds ?? 60) ? '• ' : '') + (s < 60 ? `${s}s` : `${s / 60}min`),
+        callback_data: `takt:${id}:${s}`,
+      })),
+      [{ text: '‹ zurück', callback_data: `card:${id}` }],
+    ],
+  });
+  return false;
+}
+
+async function setTakt(id, sekunden, { configPath, telegram, callbackId, messageId }) {
+  try {
+    const watch = await updateWatch(configPath, id, { intervalSeconds: Number(sekunden) });
+    await telegram.answerCallback(callbackId, `alle ${sekunden}s`);
+    await telegram.editText(messageId, watchCard(watch), { buttons: watchButtons(id) });
+    return true;
+  } catch (err) {
+    await telegram.answerCallback(callbackId, 'Ging nicht');
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
+    return false;
+  }
+}
+
+async function showCard(id, { configPath, telegram, callbackId, messageId }) {
+  const watch = (await listWatches(configPath)).find((w) => w.id === id);
+  await telegram.answerCallback(callbackId);
+  if (watch) await telegram.editText(messageId, watchCard(watch), { buttons: watchButtons(id) });
+  return false;
+}
+
+/**
+ * Fragt die neue Vorlage per Antwort ab.
+ *
+ * Die id steht am Ende der Frage (`#<id>`) und wird aus der zitierten
+ * Nachricht zurueckgelesen. Ein Merkzettel im Arbeitsspeicher waere kuerzer,
+ * ginge aber bei jedem Neustart verloren — und dann liefe die Antwort des
+ * Nutzers ins Leere, ohne dass er versteht, warum.
+ */
+async function askForTemplate(id, { configPath, telegram, callbackId }) {
+  const watch = (await listWatches(configPath)).find((w) => w.id === id);
+  if (!watch) {
+    await telegram.answerCallback(callbackId, 'Suche gibt es nicht mehr');
+    return false;
+  }
+  await telegram.answerCallback(callbackId);
+  await telegram.sendText(
+    [
+      `✏️ <b>Neuer Text für „${escapeHtml(watch.label ?? id)}"</b>`,
+      '',
+      'Antworte auf diese Nachricht mit dem Text.',
+      'Platzhalter: <code>{title}</code> <code>{price}</code> <code>{location}</code>',
+      '',
+      '<code>-</code> schaltet den Kopiertext für diese Suche ab,',
+      '<code>*</code> stellt den allgemeinen wieder her.',
+      '',
+      `<i>#${escapeHtml(id)}</i>`,
+    ].join('\n'),
+    { forceReply: true },
+  );
+  return false;
+}
+
+/** Liest die id aus der zitierten Frage zurueck. */
+function watchIdFromReply(message) {
+  const zitiert = message.reply_to_message?.text ?? '';
+  return zitiert.match(/#([A-Za-z0-9_.~:@+-]{1,200})\s*$/)?.[1] ?? null;
+}
+
+async function applyTemplateReply(message, { configPath, telegram }) {
+  const id = watchIdFromReply(message);
+  if (!id) return false;
+
+  const eingabe = message.text.trim();
+  const patch =
+    eingabe === '-' ? { messageTemplate: '' } : eingabe === '*' ? { messageTemplate: null } : { messageTemplate: eingabe };
+
+  try {
+    const watch = await updateWatch(configPath, id, patch);
+    const wie =
+      eingabe === '-'
+        ? 'Kopiertext für diese Suche aus.'
+        : eingabe === '*'
+          ? 'Wieder der allgemeine Text.'
+          : 'Text gesetzt.';
+    await telegram.sendText(`✅ ${wie}`);
+    await telegram.sendText(watchCard(watch), { buttons: watchButtons(id) });
+    return true;
+  } catch (err) {
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
+    return false;
+  }
+}
+
+/**
+ * `/takt <id> <sekunden>` und `/text <id> <vorlage>` — der getippte Weg.
+ *
+ * Die Tasten aus /list sind bequemer, aber ohne diesen Weg gaebe es keinen,
+ * einer Suche einen Text zu geben, ohne vorher /list aufzurufen.
+ */
+async function handleEditCommand(command, text, { configPath, telegram }) {
+  const [, id, ...rest] = text.split(/\s+/);
+  const wert = text.slice(text.indexOf(id) + (id?.length ?? 0)).trim();
+
+  if (!id) {
+    const ids = (await listWatches(configPath)).map((w) => w.id);
+    await telegram.sendText(
+      [
+        command === '/takt'
+          ? 'So: <code>/takt &lt;id&gt; 60</code>'
+          : 'So: <code>/text &lt;id&gt; Hallo, ist {title} noch da?</code>',
+        '',
+        ids.length ? 'Deine Suchen:\n' + ids.map((i) => '<code>' + escapeHtml(i) + '</code>').join('\n') : 'Noch keine Suche.',
+        '',
+        'Bequemer geht es mit /list und den Tasten darunter.',
+      ].join('\n'),
+    );
+    return false;
+  }
+
+  try {
+    if (command === '/takt') {
+      if (!rest.length) throw new Error('Es fehlt die Anzahl Sekunden.');
+      const watch = await updateWatch(configPath, id, { intervalSeconds: rest[0] });
+      await telegram.sendText(`✅ <b>${escapeHtml(watch.label ?? id)}</b> läuft jetzt alle ${watch.intervalSeconds}s.`);
+    } else {
+      const vorlage = wert === '-' ? '' : wert === '*' ? null : wert;
+      if (vorlage !== null && vorlage !== '' && vorlage.length < 5) {
+        throw new Error('Das ist sehr kurz für eine Erstnachricht — sicher? Sonst „-" zum Abschalten.');
+      }
+      const watch = await updateWatch(configPath, id, { messageTemplate: vorlage });
+      await telegram.sendText(`✅ Text für <b>${escapeHtml(watch.label ?? id)}</b> gesetzt.`);
+    }
+    return true;
+  } catch (err) {
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
+    return false;
   }
 }
 
@@ -154,14 +338,25 @@ export async function handleUpdate(update, ctx) {
       return false;
     }
     const data = String(callback.data ?? '');
-    if (data.startsWith('rm:')) {
-      return handleRemove(data.slice(3), {
-        configPath,
-        telegram,
-        callbackId: callback.id,
-        messageId: callback.message?.message_id,
-      });
+    const ctx2 = {
+      configPath,
+      telegram,
+      callbackId: callback.id,
+      messageId: callback.message?.message_id,
+    };
+
+    if (data.startsWith('rm:')) return handleRemove(data.slice(3), ctx2);
+    if (data.startsWith('card:')) return showCard(data.slice(5), ctx2);
+    if (data.startsWith('text:')) return askForTemplate(data.slice(5), ctx2);
+    if (data.startsWith('takt:')) {
+      // takt:<id>            -> Auswahl zeigen
+      // takt:<id>:<sekunden> -> setzen
+      const rest = data.slice(5);
+      const trenner = rest.lastIndexOf(':');
+      if (trenner === -1) return showTaktChoices(rest, ctx2);
+      return setTakt(rest.slice(0, trenner), rest.slice(trenner + 1), ctx2);
     }
+
     await telegram.answerCallback(callback.id);
     return false;
   }
@@ -176,6 +371,12 @@ export async function handleUpdate(update, ctx) {
   const text = message.text.trim();
   const command = text.split(/\s+/)[0].toLowerCase().replace(/@.*$/, '');
 
+  // Antwort auf die Vorlagen-Frage? Muss vor allem anderen geprueft werden,
+  // sonst landet ein Vorlagentext mit einer URL darin beim Anlegen einer Suche.
+  if (message.reply_to_message && watchIdFromReply(message)) {
+    return applyTemplateReply(message, { configPath, telegram });
+  }
+
   if (command === '/start' || command === '/help') {
     await telegram.sendText(HELP);
     return false;
@@ -183,6 +384,9 @@ export async function handleUpdate(update, ctx) {
   if (command === '/list') {
     await handleList(configPath, telegram);
     return false;
+  }
+  if (command === '/takt' || command === '/text') {
+    return handleEditCommand(command, text, { configPath, telegram });
   }
   if (extractUrl(text)) {
     return handleAdd(text, { configPath, telegram, timeoutMs });

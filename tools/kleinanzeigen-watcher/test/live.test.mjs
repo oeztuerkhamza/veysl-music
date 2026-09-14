@@ -40,4 +40,4 @@ check('das JSON der Seite wird noch gefunden', () =>
   assert.ok(ads.some((a) => a.postedAt && a.location), 'Rueckfall-Parser aktiv?'));
 
 console.log(`\n  (${ads.length} Anzeigen gelesen)`);
-check.summary();
+await check.summary();

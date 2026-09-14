@@ -229,10 +229,33 @@ https://www.kleinanzeigen.de/s-fahrraeder/... max 300 privat ohne defekt,bastler
 | `privat` | Mağaza/PRO satıcıları atla |
 | `ohne defekt,bastler` | Başlıkta bu kelimeler geçerse atla |
 
-**Aramaları görmek ve silmek:** `/list` yaz. Her arama kendi mesajında gelir,
-altında 🗑 **Löschen** düğmesiyle — dokununca silinir.
+| `takt 30` | 60 yerine 30 saniyede bir tara (en az 30) |
+
+**Aramaları yönetmek:** `/list` yaz. Her arama kendi mesajında gelir, altında
+üç düğmeyle:
+
+| Düğme | Ne yapar |
+| --- | --- |
+| ⏱ **Takt** | Tarama aralığını değiştirir — 30s / 60s / 2dk / 5dk / 15dk arasından dokunarak seç |
+| ✏️ **Text** | O aramaya özel ilk mesaj metnini ayarlar |
+| 🗑 **Löschen** | Aramayı siler |
+
+**✏️ Text**'e dokununca bot metni sorar; **o mesajı yanıtlayarak** gönderirsin.
+`{title}` `{price}` `{location}` yer tutucuları kullanılabilir. Yanıt olarak
+`-` yazarsan o arama için kopyalama kapanır, `*` yazarsan genel şablona döner.
+
+Yazarak da olur (id'leri `/list` gösterir):
+
+```
+/takt freiburg-im-breisgau 30
+/text freiburg-im-breisgau Moin, ist {title} noch zu haben?
+```
 
 `/help` her zaman bu özeti verir.
+
+> Aralık en az **30 saniye**. Daha sık tarama engellenmeyi davet eder ve
+> engellenmenin maliyeti, kazandığın saniyelerden fazladır. Bot 30'un altını
+> kabul etmez ve nedenini söyler.
 
 Değişiklikler **anında** geçerli olur; container'ı yeniden başlatmana gerek
 yok. Bot yalnızca senin sohbetinden gelen komutları kabul eder — botun adını

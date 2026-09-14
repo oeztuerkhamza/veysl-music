@@ -126,18 +126,26 @@ console.log('\n== Dieselbe URL zweimal ==');
   check('keine zweite Suche', async () => assert.equal((await listWatches(configPath)).length, 1));
 }
 
-console.log('\n== /list mit Loeschtaste ==');
+console.log('\n== /list mit Tasten ==');
 {
   const tg = fakeTelegram();
   await handleUpdate(msg('/list'), { telegram: tg, configPath, log: () => {} });
   check('Kopfzeile plus eine Nachricht je Suche', () => assert.equal(tg.sent.length, 2));
   const entry = tg.sent[1];
-  check('Loeschtaste vorhanden', () => {
+  check('drei Tasten', () => {
     assert.ok(entry.buttons, 'keine Tasten');
-    assert.match(entry.buttons[0][0].callback_data, /^rm:/);
+    assert.equal(entry.buttons[0].length, 3);
   });
-  check('Taste zeigt auf die richtige Suche', () =>
-    assert.equal(entry.buttons[0][0].callback_data, 'rm:freiburg-im-breisgau-bulls'));
+  check('alle drei zeigen auf dieselbe Suche', () =>
+    assert.deepEqual(
+      entry.buttons[0].map((b) => b.callback_data),
+      [
+        'takt:freiburg-im-breisgau-bulls',
+        'text:freiburg-im-breisgau-bulls',
+        'rm:freiburg-im-breisgau-bulls',
+      ],
+    ));
+  check('der Takt steht in der Karte', () => assert.match(entry.text, /alle 60s/));
 }
 
 console.log('\n== Loeschen per Taste ==');
