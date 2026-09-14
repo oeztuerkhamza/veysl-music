@@ -100,11 +100,24 @@ export class Telegram {
     return body.result;
   }
 
-  /** Haelt den Mindestabstand zwischen zwei Nachrichten ein. */
+  /**
+   * Haelt den Mindestabstand zwischen zwei Nachrichten ein.
+   *
+   * Der Platz wird VOR dem Warten reserviert. Vorher wurde er danach gesetzt,
+   * und damit half die Bremse ausgerechnet dann nicht, wenn man sie braucht:
+   * mehrere gleichzeitige Sender lasen alle denselben Wert, warteten alle
+   * gleich lang und feuerten dann zusammen los. Nachgemessen gingen von fuenf
+   * parallelen Sendungen vier in derselben Millisekunde raus — worauf Telegram
+   * mit 429 antwortet und die Meldung eben doch verspaetet ankommt.
+   *
+   * Genau dieser Fall ist der Normalfall: mehrere neue Anzeigen in einer Runde,
+   * oder eine Meldung, die mit der Antwort auf /list zusammenfaellt.
+   */
   async #throttle() {
-    const wait = this.#nextSlot - Date.now();
-    if (wait > 0) await new Promise((r) => setTimeout(r, wait));
-    this.#nextSlot = Date.now() + MIN_GAP_MS;
+    const now = Date.now();
+    const slot = Math.max(now, this.#nextSlot);
+    this.#nextSlot = slot + MIN_GAP_MS;
+    if (slot > now) await new Promise((r) => setTimeout(r, slot - now));
   }
 
   async sendText(text, { buttons } = {}) {
