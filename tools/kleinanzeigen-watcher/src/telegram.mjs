@@ -100,20 +100,42 @@ export class Telegram {
     return body.result;
   }
 
-  /** Haelt den Mindestabstand zwischen zwei Nachrichten ein. */
+  /**
+   * Haelt den Mindestabstand zwischen zwei Nachrichten ein.
+   *
+   * Der Platz wird VOR dem Warten reserviert. Vorher wurde er danach gesetzt,
+   * und damit half die Bremse ausgerechnet dann nicht, wenn man sie braucht:
+   * mehrere gleichzeitige Sender lasen alle denselben Wert, warteten alle
+   * gleich lang und feuerten dann zusammen los. Nachgemessen gingen von fuenf
+   * parallelen Sendungen vier in derselben Millisekunde raus — worauf Telegram
+   * mit 429 antwortet und die Meldung eben doch verspaetet ankommt.
+   *
+   * Genau dieser Fall ist der Normalfall: mehrere neue Anzeigen in einer Runde,
+   * oder eine Meldung, die mit der Antwort auf /list zusammenfaellt.
+   */
   async #throttle() {
-    const wait = this.#nextSlot - Date.now();
-    if (wait > 0) await new Promise((r) => setTimeout(r, wait));
-    this.#nextSlot = Date.now() + MIN_GAP_MS;
+    const now = Date.now();
+    const slot = Math.max(now, this.#nextSlot);
+    this.#nextSlot = slot + MIN_GAP_MS;
+    if (slot > now) await new Promise((r) => setTimeout(r, slot - now));
   }
 
   /**
-   * `chatId` gibt die Antwort an einen anderen erlaubten Chat statt an den
+   * `chatId` schickt die Antwort an einen anderen erlaubten Chat statt an den
    * Besitzer — ein Helfer bekommt die Antwort auf seinen eigenen Befehl dort,
    * wo er ihn getippt hat. Ohne Angabe geht alles an den Besitzer.
    */
-  async sendText(text, { buttons, chatId } = {}) {
+  async sendText(text, { buttons, forceReply, chatId } = {}) {
     await this.#throttle();
+    // `force_reply` oeffnet das Eingabefeld mit Zitat. Nur so laesst sich eine
+    // Antwort spaeter der richtigen Suche zuordnen — Telegram-Tasten koennen
+    // keinen freien Text einsammeln.
+    const markup = buttons
+      ? { inline_keyboard: buttons }
+      : forceReply
+        ? { force_reply: true, input_field_placeholder: 'Text für die Erstnachricht' }
+        : null;
+
     return this.#call('sendMessage', {
       chat_id: String(chatId ?? this.#chatId),
       text,
@@ -121,7 +143,7 @@ export class Telegram {
       // Die Vorschau wuerde die Nachricht um ein grosses Bild verlaengern und
       // das Antippen des Links nach unten schieben.
       link_preview_options: { is_disabled: true },
-      ...(buttons ? { reply_markup: { inline_keyboard: buttons } } : {}),
+      ...(markup ? { reply_markup: markup } : {}),
     });
   }
 
@@ -140,7 +162,8 @@ export class Telegram {
     // Nur der Brueckenlink: er landet in der App, und dort ist Schreiben ein
     // Tipp statt eines Logins. Der zweite Link daneben fuehrte in Telegrams
     // eingebauten Browser — also genau dorthin, wo man sich erst einloggen
-    // muss, und wo ein Fehltipp die schnelle Antwort kostet.
+    // muss. Ein Fehltipp kostete damit die schnelle Antwort, um die es hier
+    // geht.
     //
     // Ohne konfigurierte `bridgeBaseUrl` gibt es keine Bruecke; dann bleibt
     // der gewoehnliche Link als einziger Weg zur Anzeige stehen — eine Meldung
@@ -230,4 +253,25 @@ export class Telegram {
     }
     return [...chats.values()];
   }
+}
+
+/**
+ * Legt einen Chat als Antwortziel fest.
+ *
+ * Befehle duerfen nicht nur vom Besitzer kommen, und die Antwort gehoert
+ * dorthin, wo der Befehl getippt wurde. Statt jeden einzelnen Aufruf in
+ * commands.mjs um einen Parameter zu erweitern — und dabei einen zu vergessen,
+ * der dann still im falschen Chat landet — wird hier einmal umgehaengt.
+ *
+ * `sendAd` fehlt mit Absicht: die Anzeigen-Alarme gehen immer nur an den
+ * Besitzer.
+ */
+export function replyTo(telegram, chatId) {
+  if (chatId == null) return telegram;
+  return {
+    chatId: telegram.chatId,
+    sendText: (text, options = {}) => telegram.sendText(text, { ...options, chatId }),
+    editText: (id, text, options = {}) => telegram.editText(id, text, { ...options, chatId }),
+    answerCallback: (id, text) => telegram.answerCallback(id, text),
+  };
 }

@@ -14,17 +14,12 @@ import {
   removeUser,
   removeWatch,
   setUserRights,
+  updateWatch,
 } from './manage.mjs';
 import { fetchAds } from './kleinanzeigen.mjs';
 import { matchesFilters, withFilterDefaults } from './config.mjs';
-import { escapeHtml } from './telegram.mjs';
-import {
-  DEFAULT_RIGHTS,
-  describeRights,
-  may,
-  parseRights,
-  resolveActor,
-} from './users.mjs';
+import { escapeHtml, replyTo } from './telegram.mjs';
+import { DEFAULT_RIGHTS, describeRights, may, parseRights, resolveActor } from './users.mjs';
 
 const HELP = [
   '<b>Kleinanzeigen-Watcher</b>',
@@ -37,10 +32,16 @@ const HELP = [
   '  <code>min 50</code> — mindestens 50 €',
   '  <code>privat</code> — keine gewerblichen Anbieter',
   '  <code>ohne defekt,bastler</code> — Titel-Stoppwoerter',
+  '  <code>takt 30</code> — alle 30 s statt 60 (min. 30)',
   '',
   '<b>Befehle</b>',
-  '  /list — meine Suchen, mit Loeschtaste',
+  '  /list — meine Suchen, mit Tasten für Takt, Text und Löschen',
+  '  /takt &lt;id&gt; 30 — Abstand aendern',
+  '  /text &lt;id&gt; …  — Erstnachricht fuer diese Suche',
   '  /help — diese Hilfe',
+  '',
+  'Am schnellsten geht alles ueber /list: unter jeder Suche stehen',
+  '⏱ Takt, ✏️ Text und 🗑 Löschen.',
 ].join('\n');
 
 const OWNER_HELP = [
@@ -48,12 +49,14 @@ const OWNER_HELP = [
   '<b>Nur fuer dich: wer darf mitreden</b>',
   '  /user — die Liste, mit Entfernentaste',
   '  /user add 123456789 Name — aufnehmen (darf erstmal nur ansehen)',
-  '  /user add 123456789 Name rechte: ansehen,anlegen — gleich mit Rechten',
-  '  /user rechte 123456789 ansehen,anlegen,loeschen — Rechte aendern',
+  '  /user add 123456789 Name rechte: ansehen,aendern — gleich mit Rechten',
+  '  /user rechte 123456789 alle — Rechte aendern',
   '  /user del 123456789 — wieder entfernen',
   '',
-  'Die Kennung sieht man, sobald jemand dem Bot schreibt — der Versuch steht',
-  'im Log. Wer nicht auf der Liste steht, bekommt keine Antwort.',
+  'Rechte: <code>ansehen</code> (/list), <code>aendern</code> (Suche anlegen,',
+  'Takt und Text setzen), <code>loeschen</code> (🗑). Die Kennung eines',
+  'Fremden steht im Log, sobald er dem Bot schreibt — wer nicht auf der Liste',
+  'steht, bekommt keine Antwort.',
 ].join('\n');
 
 /** Findet die erste Kleinanzeigen-URL in einem Text. */
@@ -78,6 +81,10 @@ export function parseOptions(text) {
 
   if (/\bprivat\b/.test(rest)) options.privateOnly = true;
 
+  // "takt 30" oder "alle 30" direkt beim Anlegen — spart den Umweg ueber /list.
+  const takt = rest.match(/\b(?:takt|alle)\s+(\d+)\s*(?:s|sek|sekunden)?\b/);
+  if (takt) options.intervalSeconds = Number(takt[1]);
+
   const without = rest.match(/\bohne\s+([a-z0-9äöüß,\s-]+)/);
   if (without) {
     options.exclude = without[1]
@@ -98,7 +105,7 @@ function describeFilters(filters = {}) {
   return parts.length > 0 ? parts.join(', ') : 'keine Filter';
 }
 
-async function handleAdd(text, { configPath, telegram, timeoutMs, reply }) {
+async function handleAdd(text, { configPath, telegram, timeoutMs }) {
   const url = extractUrl(text);
   const options = parseOptions(text);
 
@@ -106,7 +113,7 @@ async function handleAdd(text, { configPath, telegram, timeoutMs, reply }) {
   try {
     ({ watch } = await addWatch(configPath, url, options));
   } catch (err) {
-    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`, reply);
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
     return false;
   }
 
@@ -129,52 +136,227 @@ async function handleAdd(text, { configPath, telegram, timeoutMs, reply }) {
   }
 
   lines.push('', 'Die vorhandenen Anzeigen melde ich nicht — nur, was ab jetzt neu dazukommt.');
-  await telegram.sendText(lines.join('\n'), reply);
+  await telegram.sendText(lines.join('\n'));
   return true;
 }
 
-async function handleList(configPath, telegram, actor, reply) {
+/** Auswahl fuer den Takt. Bewusst Tasten statt Tippen — das hier passiert am Telefon. */
+const TAKTE = [30, 60, 120, 300, 900];
+
+function watchCard(w) {
+  const vorlage = w.messageTemplate
+    ? `\n✏️ <i>${escapeHtml(w.messageTemplate.slice(0, 90))}${w.messageTemplate.length > 90 ? '…' : ''}</i>`
+    : w.messageTemplate === ''
+      ? '\n✏️ <i>keine Vorlage (Kopiertext aus)</i>'
+      : '';
+  return [
+    `<b>${escapeHtml(w.label ?? w.id)}</b>`,
+    `${escapeHtml(describeFilters(w.filters))}  ·  alle ${w.intervalSeconds ?? 60}s`,
+    `<a href="${escapeHtml(w.url)}">Suche oeffnen</a>${vorlage}`,
+  ].join('\n');
+}
+
+/**
+ * Die Tastenreihe unter einer Suche — nur, was der Absender auch darf. Eine
+ * Taste anzubieten und den Druck darauf gleich darauf abzulehnen waere die
+ * schlechtere Antwort.
+ */
+function watchButtons(id, actor) {
+  const row = [];
+  if (may(actor, 'edit')) {
+    row.push({ text: '⏱ Takt', callback_data: `takt:${id}` });
+    row.push({ text: '✏️ Text', callback_data: `text:${id}` });
+  }
+  if (may(actor, 'remove')) row.push({ text: '🗑 Löschen', callback_data: `rm:${id}` });
+  return row.length > 0 ? [row] : undefined;
+}
+
+async function handleList(configPath, telegram, actor) {
   const watches = await listWatches(configPath);
   if (watches.length === 0) {
     await telegram.sendText(
-      may(actor, 'add')
+      may(actor, 'edit')
         ? 'Noch keine Suche. Schick mir eine Such-URL von kleinanzeigen.de.'
         : 'Noch keine Suche eingerichtet.',
-      reply,
     );
     return;
   }
 
-  // Eine Nachricht je Suche, damit die Loeschtaste eindeutig dazugehoert.
-  await telegram.sendText(`<b>${watches.length} Suche(n)</b>`, reply);
+  // Eine Nachricht je Suche, damit die Tasten eindeutig dazugehoeren.
+  await telegram.sendText(`<b>${watches.length} Suche(n)</b>`);
   for (const w of watches) {
-    const text = [
-      `<b>${escapeHtml(w.label ?? w.id)}</b>`,
-      `${escapeHtml(describeFilters(w.filters))}  ·  alle ${w.intervalSeconds ?? 60}s`,
-      `<a href="${escapeHtml(w.url)}">Suche oeffnen</a>`,
-    ].join('\n');
-    // Die Loeschtaste nur, wer auch loeschen darf — sonst bietet der Bot etwas
-    // an, das er gleich darauf verweigert.
-    await telegram.sendText(text, {
-      ...reply,
-      ...(may(actor, 'remove')
-        ? { buttons: [[{ text: '🗑 Löschen', callback_data: `rm:${w.id}` }]] }
-        : {}),
-    });
+    await telegram.sendText(watchCard(w), { buttons: watchButtons(w.id, actor) });
   }
 }
 
-async function handleRemove(id, { configPath, telegram, callbackId, messageId, reply }) {
+/**
+ * Zeigt die Taktauswahl in derselben Nachricht.
+ *
+ * Der Umweg ueber Tasten statt einer Eingabe ist Absicht: eine Zahl auf einer
+ * Telefontastatur zu tippen, um dann die id danebenzuschreiben, ist genau die
+ * Art Reibung, wegen der man sich sonst doch wieder einloggt.
+ */
+async function showTaktChoices(id, { configPath, telegram, callbackId, messageId }) {
+  const watch = (await listWatches(configPath)).find((w) => w.id === id);
+  if (!watch) {
+    await telegram.answerCallback(callbackId, 'Suche gibt es nicht mehr');
+    return false;
+  }
+  await telegram.answerCallback(callbackId);
+  await telegram.editText(messageId, watchCard(watch), {
+    buttons: [
+      TAKTE.map((s) => ({
+        text: (s === (watch.intervalSeconds ?? 60) ? '• ' : '') + (s < 60 ? `${s}s` : `${s / 60}min`),
+        callback_data: `takt:${id}:${s}`,
+      })),
+      [{ text: '‹ zurück', callback_data: `card:${id}` }],
+    ],
+  });
+  return false;
+}
+
+async function setTakt(id, sekunden, { configPath, telegram, callbackId, messageId, actor }) {
+  try {
+    const watch = await updateWatch(configPath, id, { intervalSeconds: Number(sekunden) });
+    await telegram.answerCallback(callbackId, `alle ${sekunden}s`);
+    await telegram.editText(messageId, watchCard(watch), { buttons: watchButtons(id, actor) });
+    return true;
+  } catch (err) {
+    await telegram.answerCallback(callbackId, 'Ging nicht');
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
+    return false;
+  }
+}
+
+async function showCard(id, { configPath, telegram, callbackId, messageId, actor }) {
+  const watch = (await listWatches(configPath)).find((w) => w.id === id);
+  await telegram.answerCallback(callbackId);
+  if (watch) {
+    await telegram.editText(messageId, watchCard(watch), { buttons: watchButtons(id, actor) });
+  }
+  return false;
+}
+
+/**
+ * Fragt die neue Vorlage per Antwort ab.
+ *
+ * Die id steht am Ende der Frage (`#<id>`) und wird aus der zitierten
+ * Nachricht zurueckgelesen. Ein Merkzettel im Arbeitsspeicher waere kuerzer,
+ * ginge aber bei jedem Neustart verloren — und dann liefe die Antwort des
+ * Nutzers ins Leere, ohne dass er versteht, warum.
+ */
+async function askForTemplate(id, { configPath, telegram, callbackId }) {
+  const watch = (await listWatches(configPath)).find((w) => w.id === id);
+  if (!watch) {
+    await telegram.answerCallback(callbackId, 'Suche gibt es nicht mehr');
+    return false;
+  }
+  await telegram.answerCallback(callbackId);
+  await telegram.sendText(
+    [
+      `✏️ <b>Neuer Text für „${escapeHtml(watch.label ?? id)}"</b>`,
+      '',
+      'Antworte auf diese Nachricht mit dem Text.',
+      'Platzhalter: <code>{title}</code> <code>{price}</code> <code>{location}</code>',
+      '',
+      '<code>-</code> schaltet den Kopiertext für diese Suche ab,',
+      '<code>*</code> stellt den allgemeinen wieder her.',
+      '',
+      `<i>#${escapeHtml(id)}</i>`,
+    ].join('\n'),
+    { forceReply: true },
+  );
+  return false;
+}
+
+/** Liest die id aus der zitierten Frage zurueck. */
+function watchIdFromReply(message) {
+  const zitiert = message.reply_to_message?.text ?? '';
+  return zitiert.match(/#([A-Za-z0-9_.~:@+-]{1,200})\s*$/)?.[1] ?? null;
+}
+
+async function applyTemplateReply(message, { configPath, telegram, actor }) {
+  const id = watchIdFromReply(message);
+  if (!id) return false;
+
+  const eingabe = message.text.trim();
+  const patch =
+    eingabe === '-' ? { messageTemplate: '' } : eingabe === '*' ? { messageTemplate: null } : { messageTemplate: eingabe };
+
+  try {
+    const watch = await updateWatch(configPath, id, patch);
+    const wie =
+      eingabe === '-'
+        ? 'Kopiertext für diese Suche aus.'
+        : eingabe === '*'
+          ? 'Wieder der allgemeine Text.'
+          : 'Text gesetzt.';
+    await telegram.sendText(`✅ ${wie}`);
+    await telegram.sendText(watchCard(watch), { buttons: watchButtons(id, actor) });
+    return true;
+  } catch (err) {
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
+    return false;
+  }
+}
+
+/**
+ * `/takt <id> <sekunden>` und `/text <id> <vorlage>` — der getippte Weg.
+ *
+ * Die Tasten aus /list sind bequemer, aber ohne diesen Weg gaebe es keinen,
+ * einer Suche einen Text zu geben, ohne vorher /list aufzurufen.
+ */
+async function handleEditCommand(command, text, { configPath, telegram }) {
+  const [, id, ...rest] = text.split(/\s+/);
+  const wert = text.slice(text.indexOf(id) + (id?.length ?? 0)).trim();
+
+  if (!id) {
+    const ids = (await listWatches(configPath)).map((w) => w.id);
+    await telegram.sendText(
+      [
+        command === '/takt'
+          ? 'So: <code>/takt &lt;id&gt; 60</code>'
+          : 'So: <code>/text &lt;id&gt; Hallo, ist {title} noch da?</code>',
+        '',
+        ids.length ? 'Deine Suchen:\n' + ids.map((i) => '<code>' + escapeHtml(i) + '</code>').join('\n') : 'Noch keine Suche.',
+        '',
+        'Bequemer geht es mit /list und den Tasten darunter.',
+      ].join('\n'),
+    );
+    return false;
+  }
+
+  try {
+    if (command === '/takt') {
+      if (!rest.length) throw new Error('Es fehlt die Anzahl Sekunden.');
+      const watch = await updateWatch(configPath, id, { intervalSeconds: rest[0] });
+      await telegram.sendText(`✅ <b>${escapeHtml(watch.label ?? id)}</b> läuft jetzt alle ${watch.intervalSeconds}s.`);
+    } else {
+      const vorlage = wert === '-' ? '' : wert === '*' ? null : wert;
+      if (vorlage !== null && vorlage !== '' && vorlage.length < 5) {
+        throw new Error('Das ist sehr kurz für eine Erstnachricht — sicher? Sonst „-" zum Abschalten.');
+      }
+      const watch = await updateWatch(configPath, id, { messageTemplate: vorlage });
+      await telegram.sendText(`✅ Text für <b>${escapeHtml(watch.label ?? id)}</b> gesetzt.`);
+    }
+    return true;
+  } catch (err) {
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
+    return false;
+  }
+}
+
+async function handleRemove(id, { configPath, telegram, callbackId, messageId }) {
   try {
     const removed = await removeWatch(configPath, id);
     await telegram.answerCallback(callbackId, 'Gelöscht');
     if (messageId) {
-      await telegram.editText(messageId, `🗑 <s>${escapeHtml(removed.label ?? removed.id)}</s>`, reply);
+      await telegram.editText(messageId, `🗑 <s>${escapeHtml(removed.label ?? removed.id)}</s>`);
     }
     return true;
   } catch (err) {
     await telegram.answerCallback(callbackId, 'Ging nicht');
-    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`, reply);
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
     return false;
   }
 }
@@ -184,83 +366,98 @@ function describeUser(user) {
   return `<b>${name}<code>${escapeHtml(user.id)}</code></b>\n${escapeHtml(describeRights(user.rights))}`;
 }
 
+const RECHTE_HILFE = 'Moeglich: ansehen, aendern, loeschen — oder alle.';
+
 /**
  * /user — die Erlaubnisliste. Nur der Besitzer kommt hier herein; wer selbst
- * aufgenommen wurde, soll nicht weitere Leute nachholen koennen.
+ * aufgenommen wurde, soll weder weitere Leute nachholen noch sich die eigenen
+ * Rechte hochsetzen koennen.
  *
- *   /user                                 die Liste
- *   /user add 123456789 Ali               aufnehmen, Grundrechte
- *   /user add 123456789 Ali rechte: alle  aufnehmen, mit Rechten
- *   /user rechte 123456789 ansehen,anlegen
+ *   /user                                  die Liste
+ *   /user add 123456789 Ali                aufnehmen, erstmal nur ansehen
+ *   /user add 123456789 Ali rechte: alle   aufnehmen, mit Rechten
+ *   /user rechte 123456789 ansehen,aendern
  *   /user del 123456789
  */
-async function handleUsers(text, { configPath, telegram, reply }) {
-  const [, action, rawId, ...rest] = text.split(/\s+/);
-  const verb = (action ?? '').toLowerCase();
+async function handleUsers(text, { configPath, telegram }) {
+  const [, aktion, rohId, ...rest] = text.split(/\s+/);
+  const verb = (aktion ?? '').toLowerCase();
 
   if (!verb || verb === 'list' || verb === 'liste') {
     const users = await listUsers(configPath);
     if (users.length === 0) {
       await telegram.sendText(
         ['Ausser dir darf niemand.', '', 'Aufnehmen: <code>/user add 123456789 Name</code>'].join('\n'),
-        reply,
       );
       return false;
     }
-    await telegram.sendText(`<b>${users.length} weitere(r) Berechtigte(r)</b>`, reply);
+    await telegram.sendText(`<b>${users.length} weitere(r) Berechtigte(r)</b>`);
     for (const user of users) {
       await telegram.sendText(describeUser(user), {
-        ...reply,
         buttons: [[{ text: '🚫 Entfernen', callback_data: `urm:${user.id}` }]],
       });
     }
     return false;
   }
 
-  // Rechte stehen hinter "rechte:" bzw. "rights:"; alles davor ist der Name.
-  const tail = rest.join(' ');
-  const split = tail.match(/^(.*?)(?:\b(?:rechte|rights|recht)\s*:?\s*(.+))?$/is) ?? [];
-  const name = (split[1] ?? '').trim() || null;
-  const rightsWords = split[2]?.trim() ?? null;
+  // Die Rechte stehen hinter "rechte:"; alles davor ist der Name. Beides in
+  // einem Befehl, weil sonst jedes Aufnehmen zwei Nachrichten braucht.
+  const schwanz = rest.join(' ');
+  const geteilt = schwanz.match(/^(.*?)(?:\b(?:rechte|rights|recht)\s*:?\s*(.+))?$/is) ?? [];
+  const name = (geteilt[1] ?? '').trim() || null;
+  const rechteWorte = geteilt[2]?.trim() ?? null;
 
   try {
     if (verb === 'add' || verb === 'neu') {
       let rights = DEFAULT_RIGHTS;
-      if (rightsWords) {
-        rights = parseRights(rightsWords);
-        if (!rights) throw new Error(`Unbekannte Rechte: "${rightsWords}". Moeglich: ansehen, anlegen, loeschen, alle.`);
+      if (rechteWorte) {
+        rights = parseRights(rechteWorte);
+        if (!rights) throw new Error(`Unbekannte Rechte: "${rechteWorte}". ${RECHTE_HILFE}`);
       }
-      const user = await addUser(configPath, rawId, { name, rights });
-      await telegram.sendText(`✅ Aufgenommen\n${describeUser(user)}`, reply);
+      const user = await addUser(configPath, rohId, { name, rights });
+      await telegram.sendText(`✅ Aufgenommen\n${describeUser(user)}`);
       return false;
     }
 
     if (verb === 'del' || verb === 'remove' || verb === 'raus') {
-      const removed = await removeUser(configPath, rawId);
+      const entfernt = await removeUser(configPath, rohId);
       await telegram.sendText(
-        `🚫 Entfernt: <code>${escapeHtml(removed.id)}</code>${removed.name ? ` (${escapeHtml(removed.name)})` : ''}`,
-        reply,
+        `🚫 Entfernt: <code>${escapeHtml(entfernt.id)}</code>` +
+          (entfernt.name ? ` (${escapeHtml(entfernt.name)})` : ''),
       );
       return false;
     }
 
     if (verb === 'rechte' || verb === 'rights' || verb === 'recht') {
-      // Hier ist alles hinter der Kennung eine Rechteangabe — ein Name stuende
-      // beim Aendern nur im Weg.
-      const rights = parseRights(tail);
-      if (!rights) {
-        throw new Error(`Unbekannte Rechte: "${tail}". Moeglich: ansehen, anlegen, loeschen, alle.`);
-      }
-      const user = await setUserRights(configPath, rawId, rights);
-      await telegram.sendText(`✅ Geaendert\n${describeUser(user)}`, reply);
+      // Hier ist alles hinter der Kennung Rechteangabe — ein Name stuende beim
+      // Aendern nur im Weg.
+      const rights = parseRights(schwanz);
+      if (!rights) throw new Error(`Unbekannte Rechte: "${schwanz}". ${RECHTE_HILFE}`);
+      const user = await setUserRights(configPath, rohId, rights);
+      await telegram.sendText(`✅ Geaendert\n${describeUser(user)}`);
       return false;
     }
   } catch (err) {
-    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`, reply);
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
     return false;
   }
 
-  await telegram.sendText(OWNER_HELP, reply);
+  await telegram.sendText(OWNER_HELP);
+  return false;
+}
+
+/** Entfernt jemanden ueber die Taste unter seinem Eintrag. */
+async function removeUserByButton(id, { configPath, telegram, callbackId, messageId }) {
+  try {
+    const entfernt = await removeUser(configPath, id);
+    await telegram.answerCallback(callbackId, 'Entfernt');
+    if (messageId) {
+      await telegram.editText(messageId, `🚫 <s><code>${escapeHtml(entfernt.id)}</code></s>`);
+    }
+  } catch (err) {
+    await telegram.answerCallback(callbackId, 'Ging nicht');
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
+  }
   return false;
 }
 
@@ -269,68 +466,73 @@ async function handleUsers(text, { configPath, telegram, reply }) {
  * Gibt true zurueck, wenn sich die Konfiguration geaendert hat.
  */
 export async function handleUpdate(update, ctx) {
-  const { telegram, configPath, timeoutMs, log } = ctx;
+  const { configPath, timeoutMs, log } = ctx;
 
-  const source = update.callback_query ?? update.message;
+  const quelle = update.callback_query ?? update.message;
   const chatId = (update.callback_query?.message ?? update.message)?.chat?.id;
+
   const actor = resolveActor({
-    ownerChatId: telegram.chatId,
-    // Frisch aus der Datei: eine gerade vergebene Erlaubnis soll sofort
-    // gelten, nicht erst nach einem Neustart des Watchers.
+    ownerChatId: ctx.telegram.chatId,
+    // Frisch aus der Datei gelesen: eine gerade vergebene Erlaubnis soll
+    // sofort gelten, nicht erst nach einem Neustart des Watchers.
     users: await listUsers(configPath),
-    fromId: source?.from?.id,
+    fromId: quelle?.from?.id,
     chatId,
   });
 
   if (!actor) {
-    // Keine Antwort an Fremde: sie wuerde nur verraten, dass hier jemand
-    // zuhoert. Ins Log gehoert es trotzdem — dort steht die Kennung, die der
-    // Besitzer braucht, um jemanden aufzunehmen.
-    const who = source?.from?.id ?? chatId;
-    const name = [source?.from?.first_name, source?.from?.username].filter(Boolean).join(' @');
-    log?.(`Nicht erlaubt: Kennung ${who}${name ? ` (${name})` : ''} — aufnehmen mit: /user add ${who}`);
+    // Fremde bekommen keine Antwort — sie wuerde nur verraten, dass hier
+    // jemand zuhoert. Ins Log gehoert der Versuch trotzdem: dort steht die
+    // Kennung, die der Besitzer zum Aufnehmen braucht.
+    const wer = quelle?.from?.id ?? chatId;
+    const name = [quelle?.from?.first_name, quelle?.from?.username].filter(Boolean).join(' @');
+    log?.(`Nicht erlaubt: Kennung ${wer}${name ? ` (${name})` : ''} — aufnehmen mit: /user add ${wer}`);
     return false;
   }
 
-  const reply = { chatId };
+  // Ab hier geht jede Antwort in den Chat, aus dem der Befehl kam.
+  const telegram = replyTo(ctx.telegram, chatId);
 
   const callback = update.callback_query;
   if (callback) {
     const data = String(callback.data ?? '');
-    if (data.startsWith('rm:')) {
-      if (!may(actor, 'remove')) {
-        await telegram.answerCallback(callback.id, 'Dafuer fehlt dir das Recht.');
-        return false;
-      }
-      return handleRemove(data.slice(3), {
-        configPath,
-        telegram,
-        callbackId: callback.id,
-        messageId: callback.message?.message_id,
-        reply,
-      });
-    }
+    const ctx2 = {
+      configPath,
+      telegram,
+      actor,
+      callbackId: callback.id,
+      messageId: callback.message?.message_id,
+    };
+
     if (data.startsWith('urm:')) {
       if (!actor.isOwner) {
         await telegram.answerCallback(callback.id, 'Das darf nur der Besitzer.');
         return false;
       }
-      try {
-        const removed = await removeUser(configPath, data.slice(4));
-        await telegram.answerCallback(callback.id, 'Entfernt');
-        if (callback.message?.message_id) {
-          await telegram.editText(
-            callback.message.message_id,
-            `🚫 <s><code>${escapeHtml(removed.id)}</code></s>`,
-            reply,
-          );
-        }
-      } catch (err) {
-        await telegram.answerCallback(callback.id, 'Ging nicht');
-        await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`, reply);
-      }
-      return false;
+      return removeUserByButton(data.slice(4), ctx2);
     }
+    if (data.startsWith('rm:')) {
+      if (!may(actor, 'remove')) {
+        await telegram.answerCallback(callback.id, 'Dafuer fehlt dir das Recht.');
+        return false;
+      }
+      return handleRemove(data.slice(3), ctx2);
+    }
+    if (data.startsWith('card:')) return showCard(data.slice(5), ctx2);
+    if (data.startsWith('text:') || data.startsWith('takt:')) {
+      if (!may(actor, 'edit')) {
+        await telegram.answerCallback(callback.id, 'Dafuer fehlt dir das Recht.');
+        return false;
+      }
+      if (data.startsWith('text:')) return askForTemplate(data.slice(5), ctx2);
+      // takt:<id>            -> Auswahl zeigen
+      // takt:<id>:<sekunden> -> setzen
+      const rest = data.slice(5);
+      const trenner = rest.lastIndexOf(':');
+      if (trenner === -1) return showTaktChoices(rest, ctx2);
+      return setTakt(rest.slice(0, trenner), rest.slice(trenner + 1), ctx2);
+    }
+
     await telegram.answerCallback(callback.id);
     return false;
   }
@@ -341,36 +543,52 @@ export async function handleUpdate(update, ctx) {
   const text = message.text.trim();
   const command = text.split(/\s+/)[0].toLowerCase().replace(/@.*$/, '');
 
+  // Antwort auf die Vorlagen-Frage? Muss vor allem anderen geprueft werden,
+  // sonst landet ein Vorlagentext mit einer URL darin beim Anlegen einer Suche.
+  if (message.reply_to_message && watchIdFromReply(message)) {
+    if (!may(actor, 'edit')) {
+      await telegram.sendText('Dafuer fehlt dir das Recht.');
+      return false;
+    }
+    return applyTemplateReply(message, { configPath, telegram, actor });
+  }
+
   if (command === '/start' || command === '/help') {
-    await telegram.sendText(actor.isOwner ? `${HELP}\n${OWNER_HELP}` : HELP, reply);
+    await telegram.sendText(actor.isOwner ? `${HELP}\n${OWNER_HELP}` : HELP);
     return false;
   }
   if (command === '/user' || command === '/users') {
     if (!actor.isOwner) {
-      await telegram.sendText('Wer mitmachen darf, entscheidet nur der Besitzer.', reply);
+      await telegram.sendText('Wer mitmachen darf, entscheidet nur der Besitzer.');
       return false;
     }
-    return handleUsers(text, { configPath, telegram, reply });
+    return handleUsers(text, { configPath, telegram });
   }
   if (command === '/list') {
     if (!may(actor, 'list')) {
-      await telegram.sendText('Dafuer fehlt dir das Recht.', reply);
+      await telegram.sendText('Dafuer fehlt dir das Recht.');
       return false;
     }
-    await handleList(configPath, telegram, actor, reply);
+    await handleList(configPath, telegram, actor);
     return false;
   }
-  if (extractUrl(text)) {
-    if (!may(actor, 'add')) {
-      await telegram.sendText('Du darfst keine Suchen anlegen.', reply);
+  if (command === '/takt' || command === '/text') {
+    if (!may(actor, 'edit')) {
+      await telegram.sendText('Dafuer fehlt dir das Recht.');
       return false;
     }
-    return handleAdd(text, { configPath, telegram, timeoutMs, reply });
+    return handleEditCommand(command, text, { configPath, telegram });
+  }
+  if (extractUrl(text)) {
+    if (!may(actor, 'edit')) {
+      await telegram.sendText('Du darfst keine Suchen anlegen.');
+      return false;
+    }
+    return handleAdd(text, { configPath, telegram, timeoutMs });
   }
 
   await telegram.sendText(
     'Damit kann ich nichts anfangen. Schick mir eine Such-URL von kleinanzeigen.de, oder /help.',
-    reply,
   );
   return false;
 }

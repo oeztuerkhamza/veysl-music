@@ -15,6 +15,7 @@
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
+import { writeFile } from 'node:fs/promises';
 
 import { pollCommands } from './src/commands.mjs';
 import { loadConfig, matchesFilters, withFilterDefaults } from './src/config.mjs';
@@ -28,6 +29,23 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 // Nach einer Sperre wird der Abstand verdoppelt, bis zu dieser Obergrenze.
 // Weiter hochzugehen bringt nichts — dann ist die Suche ohnehin blind.
 const MAX_BACKOFF_MULTIPLIER = 16;
+
+// Untergrenze fuer die Stille-Warnung; bei kurzen Intervallen zaehlt das
+// Zehnfache des Intervalls, damit ein einzelner Aussetzer nicht schon meldet.
+const STALE_AFTER_MS = 15 * 60 * 1000;
+const HEARTBEAT_EVERY_MS = 15 * 1000;
+
+// Wie oft eine einzelne Anzeige erneut gesendet werden darf, bevor sie als
+// erledigt gilt. Ohne Deckel haengt eine Anzeige, die Telegram dauerhaft
+// ablehnt, jede weitere Runde auf.
+const MAX_SEND_ATTEMPTS = 3;
+
+/** watchId:adId -> Fehlversuche. Absichtlich nur im Speicher: nach einem
+ *  Neustart ist ein neuer Versuch ohnehin richtig. */
+const sendFailures = new Map();
+
+/** Telegram-HTML im Meldetext; Suchnamen kommen aus einer URL des Nutzers. */
+const escapeForLog = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 /** Liest einen Zahlenwert und weist eine fehlende Angabe frueh zurueck. */
 function numberArg(value, flag) {
@@ -112,17 +130,10 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
     );
     await state.flush();
     log(`${watch.label}: ${ads.length} vorhandene Anzeigen gemerkt, ab jetzt nur noch neue.`);
-    return 0;
+    return { gesendet: 0, uebergelaufen: false };
   }
 
   const fresh = ads.filter((ad) => !state.hasSeen(watch.id, ad.id));
-  // Alles Gesehene wird gemerkt, auch was die Filter aussortieren. Sonst
-  // wuerde dieselbe Anzeige bei jeder Runde erneut geprueft.
-  state.remember(
-    watch.id,
-    ads.map((a) => a.id),
-  );
-
   const hits = fresh.filter((ad) => matchesFilters(ad, watch.filters));
   // Aelteste zuerst, damit die Reihenfolge im Chat der Realitaet entspricht.
   hits.reverse();
@@ -130,27 +141,66 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
   const capped = hits.slice(0, watch.maxAlertsPerCycle);
   const dropped = hits.length - capped.length;
 
+  // Alles, was diese Runde ohnehin nicht verschickt, wird sofort gemerkt: die
+  // schon bekannten, die Ausgefilterten und die ueber dem Rundenlimit. Nur die
+  // tatsaechlich zu sendenden bleiben offen — sie werden erst nach dem Senden
+  // eingetragen. Vorher stand hier ein pauschales remember() ueber ALLE
+  // Anzeigen, noch vor dem ersten sendAd: ein einzelner Netzfehler beim Senden
+  // liess die Anzeige damit als "gesehen" gelten und sie wurde nie wieder
+  // versucht — die Meldung, auf die man gewartet hat, verschwand still.
+  const zuSenden = new Set(capped.map((a) => a.id));
+  state.remember(
+    watch.id,
+    ads.map((a) => a.id).filter((id) => !zuSenden.has(id)),
+  );
+
+  let gesendet = 0;
   for (const ad of capped) {
     if (dryRun) {
       log(`  [dry-run] ${ad.price || '—'} · ${ad.title} · ${ad.url}`);
-    } else {
+      state.remember(watch.id, [ad.id]);
+      gesendet++;
+      continue;
+    }
+
+    const key = `${watch.id}:${ad.id}`;
+    try {
       await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate);
+      state.remember(watch.id, [ad.id]);
+      sendFailures.delete(key);
+      gesendet++;
+    } catch (err) {
+      const versuche = (sendFailures.get(key) ?? 0) + 1;
+      if (versuche >= MAX_SEND_ATTEMPTS) {
+        // Nach mehreren Anlaeufen aufgeben, sonst haengt eine einzelne Anzeige,
+        // die Telegram dauerhaft ablehnt, jede weitere Runde auf.
+        sendFailures.delete(key);
+        state.remember(watch.id, [ad.id]);
+        log(`${watch.label}: "${ad.title}" nach ${versuche} Versuchen aufgegeben — ${err.message}`);
+      } else {
+        sendFailures.set(key, versuche);
+        log(`${watch.label}: Senden fehlgeschlagen (Versuch ${versuche}) — ${err.message}`);
+      }
     }
   }
+
   if (dropped > 0) {
     const note = `⚠️ ${watch.label}: ${dropped} weitere neue Anzeigen unterdrueckt (Limit ${watch.maxAlertsPerCycle}/Runde). Suche enger fassen.`;
     if (dryRun) log(note);
-    else await telegram.sendText(note);
+    else await telegram.sendText(note).catch(() => {});
   }
 
   await state.flush();
 
   if (fresh.length > 0) {
-    log(
-      `${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter, ${capped.length} gesendet.`,
-    );
+    log(`${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter, ${gesendet} gesendet.`);
   }
-  return capped.length;
+
+  // Waren ALLE Anzeigen der Seite neu, ist die Seite zwischen zwei Runden
+  // vermutlich komplett durchgelaufen — dann liegen die aelteren schon auf
+  // Seite 2, die dieser Watcher nicht liest, und sind fuer immer weg.
+  const uebergelaufen = ads.length > 0 && fresh.length === ads.length;
+  return { gesendet, uebergelaufen };
 }
 
 /**
@@ -159,7 +209,30 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
  */
 async function tickWatch(watch, runtime, ctx) {
   try {
-    await runCycle(watch, ctx);
+    const { uebergelaufen } = await runCycle(watch, ctx);
+    runtime.lastSuccessAt = Date.now();
+
+    // Einmal warnen, nicht bei jeder Runde: bei einer zu weit gefassten Suche
+    // waere das sonst Dauerlaerm.
+    if (uebergelaufen && !runtime.overflowNotified && !ctx.dryRun) {
+      runtime.overflowNotified = true;
+      log(`${watch.label}: Seite war zwischen zwei Runden komplett neu.`);
+      await ctx.telegram
+        ?.sendText(
+          `⚠️ <b>${escapeForLog(watch.label)}</b>\nAuf Seite 1 war eben <i>alles</i> neu. ` +
+            `Zwischen zwei Abrufen sind mehr Anzeigen erschienen, als auf eine Seite passen — ` +
+            `die aelteren davon liegen schon auf Seite 2 und werden nie gemeldet. ` +
+            `Kuerzeres Intervall oder engere Suche.`,
+        )
+        .catch(() => {});
+    }
+
+    if (runtime.staleNotified) {
+      runtime.staleNotified = false;
+      await ctx.telegram
+        ?.sendText(`✅ ${escapeForLog(watch.label)}: liefert wieder Ergebnisse.`)
+        .catch(() => {});
+    }
     if (runtime.backoff > 1) {
       log(`${watch.label}: wieder erreichbar, normaler Takt.`);
       runtime.backoff = 1;
@@ -192,12 +265,48 @@ async function tickWatch(watch, runtime, ctx) {
  * kann eine per Telegram hinzugefuegte Suche sofort mitlaufen und eine
  * geloeschte sofort verschwinden, ohne den Prozess neu zu starten.
  */
+/**
+ * Meldet einmal, wenn eine Suche zu lange nichts Brauchbares geliefert hat.
+ *
+ * Das ist die einzige Warnung, die es geben kann: ein stiller Watcher sieht
+ * von aussen genauso aus wie ein ruhiger Markt. Ohne diese Pruefung faellt ein
+ * kaputter Parser oder eine dauerhafte Sperre erst dann auf, wenn man eine
+ * Anzeige verpasst hat — also zu spaet.
+ *
+ * Die Schwelle haengt am Intervall, nicht an einer festen Zahl: eine Suche
+ * alle 60 s ist nach 15 Minuten auffaellig still, eine alle 10 Minuten nicht.
+ */
+async function checkStale(watch, runtime, ctx) {
+  const limit = Math.max(watch.intervalSeconds * 1000 * 10, STALE_AFTER_MS);
+  const quietFor = Date.now() - runtime.lastSuccessAt;
+  if (quietFor < limit || runtime.staleNotified || ctx.dryRun) return;
+
+  runtime.staleNotified = true;
+  const minutes = Math.round(quietFor / 60000);
+  log(`${watch.label}: seit ${minutes} min kein erfolgreicher Abruf.`);
+  await ctx.telegram
+    ?.sendText(
+      `⚠️ <b>${escapeForLog(watch.label)}</b>\nSeit ${minutes} Minuten kein erfolgreicher Abruf. ` +
+        `Entweder blockt Kleinanzeigen, oder die Seite hat sich geaendert. ` +
+        `Es kommen gerade keine Meldungen — auch wenn es neue Anzeigen gibt.`,
+    )
+    .catch(() => {});
+}
+
 async function scheduler(ctx, abortSignal) {
   const runtimes = new Map();
   let stagger = 0;
+  let lastBeat = 0;
 
   while (!abortSignal.aborted) {
     const watches = ctx.getWatches();
+
+    // Lebenszeichen fuer den Docker-Healthcheck. Es sagt nur "der Prozess
+    // dreht sich noch" — ob die Abrufe gelingen, steht in checkStale.
+    if (ctx.heartbeatPath && Date.now() - lastBeat > HEARTBEAT_EVERY_MS) {
+      lastBeat = Date.now();
+      writeFile(ctx.heartbeatPath, new Date().toISOString(), 'utf8').catch(() => {});
+    }
 
     // Verschwundene Suchen nicht mitschleppen: sonst waechst die Map, und
     // eine spaeter gleichnamige Suche erbte den alten Sperrzustand.
@@ -211,11 +320,21 @@ async function scheduler(ctx, abortSignal) {
       if (!runtime) {
         // Neue Suchen leicht versetzt starten, damit nicht alle gleichzeitig
         // abfragen.
-        runtime = { backoff: 1, blockedNotified: false, nextRunAt: Date.now() + stagger, running: false };
+        runtime = {
+          backoff: 1,
+          blockedNotified: false,
+          staleNotified: false,
+          // Ab jetzt zaehlen, nicht ab 1970 — sonst gilt jede frisch angelegte
+          // Suche sofort als verstummt.
+          lastSuccessAt: Date.now(),
+          nextRunAt: Date.now() + stagger,
+          running: false,
+        };
         stagger += 2000;
         runtimes.set(watch.id, runtime);
       }
       if (!runtime.running && Date.now() >= runtime.nextRunAt) due.push([watch, runtime]);
+      if (!runtime.running) checkStale(watch, runtime, ctx);
     }
     stagger = 0;
 
@@ -342,14 +461,23 @@ async function main() {
   // Der Zustand gehoert neben die Konfiguration, nicht neben das Skript. Im
   // Container liegt watches.json auf einem gemounteten Volume — nur so
   // ueberlebt das Gedaechtnis einen Rebuild des Images.
-  const state = await State.load(resolve(dirname(configPath), 'state.json'));
+  const dataDir = dirname(configPath);
+  const state = await State.load(resolve(dataDir, 'state.json'), log);
 
   const telegram = args.dryRun
     ? null
     : new Telegram(token, config.telegram.chatId, {
         bridgeBaseUrl: config.telegram.bridgeBaseUrl,
       });
-  const ctx = { state, telegram, config, dryRun: args.dryRun };
+  const ctx = {
+    state,
+    telegram,
+    config,
+    dryRun: args.dryRun,
+    // Nur im Dauerbetrieb: ein --once-Lauf soll den Healthcheck des laufenden
+    // Containers nicht faelschlich auf "gesund" setzen.
+    heartbeatPath: args.once || args.dryRun ? null : resolve(dataDir, 'heartbeat'),
+  };
 
   if (config.watches.length === 0) {
     log('Keine Suche eingerichtet — der Watcher wartet auf eine URL per Telegram.');
@@ -396,8 +524,16 @@ async function main() {
       const fresh = await loadConfig(configPath);
       const before = current.map((w) => w.id).join(',');
       current = fresh.watches;
+      // Das Gedaechtnis geloeschter Suchen mit wegraeumen, sonst bleiben je
+      // Eintrag bis zu 3000 IDs fuer immer in der Datei stehen.
+      const entfernt = state.forget(current.map((w) => w.id));
       if (before !== current.map((w) => w.id).join(',')) {
-        log(`Suchen neu geladen: ${current.length} aktiv.`);
+        log(
+          `Suchen neu geladen: ${current.length} aktiv` +
+            (entfernt > 0 ? `, ${entfernt} verwaiste Gedaechtnisse entfernt` : '') +
+            '.',
+        );
+        if (entfernt > 0) await state.flush().catch(() => {});
       }
     } catch (err) {
       // Eine kaputte Datei darf den laufenden Watcher nicht umbringen; er

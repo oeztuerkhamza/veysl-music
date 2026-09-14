@@ -87,6 +87,30 @@ function deriveLabel(url) {
   return parts.length > 0 ? parts.join(' · ') : 'Kleinanzeigen-Suche';
 }
 
+/** Kleinster erlaubter Abstand — dieselbe Grenze, die loadConfig durchsetzt. */
+export const MIN_INTERVAL_SECONDS = 30;
+
+/**
+ * Prueft den Abstand schon beim Anlegen.
+ *
+ * Ohne diese Pruefung schriebe ein „takt 5" eine Datei, die loadConfig danach
+ * ablehnt — der Watcher liefe mit dem alten Stand weiter und meldete den
+ * Fehler nur ins Log, wo ihn niemand sieht. Besser gleich hier sagen.
+ */
+function normalizeInterval(value) {
+  if (value === undefined || value === null) return 60;
+  const n = Number(value);
+  if (!Number.isInteger(n)) throw new Error(`"${value}" ist keine ganze Zahl Sekunden.`);
+  if (n < MIN_INTERVAL_SECONDS) {
+    throw new Error(
+      `${n} s ist zu kurz. Mindestens ${MIN_INTERVAL_SECONDS} s — haeufiger abzufragen ` +
+        `provoziert eine Sperre, und die kostet mehr Zeit, als der schnellere Takt einbringt.`,
+    );
+  }
+  if (n > 86400) throw new Error(`${n} s ist mehr als ein Tag.`);
+  return n;
+}
+
 /** Haengt eine neue Suche an watches.json an. */
 export async function addWatch(path, rawUrl, options = {}) {
   const url = normalizeSearchUrl(rawUrl);
@@ -114,7 +138,7 @@ export async function addWatch(path, rawUrl, options = {}) {
     id,
     label: options.label ?? deriveLabel(url),
     url,
-    intervalSeconds: options.intervalSeconds ?? 60,
+    intervalSeconds: normalizeInterval(options.intervalSeconds),
   };
   if (Object.keys(filters).length > 0) watch.filters = filters;
 
@@ -141,16 +165,57 @@ export async function listWatches(path) {
   return (await readRaw(path)).watches;
 }
 
+/**
+ * Aendert eine vorhandene Suche.
+ *
+ * Prueft dieselben Grenzen wie loadConfig, damit ein Tippfehler per Telegram
+ * eine gueltige Datei hinterlaesst statt einer, an der der Watcher beim
+ * naechsten Neuladen scheitert.
+ */
+export async function updateWatch(path, id, patch) {
+  const config = await readRaw(path);
+  const watch = config.watches.find((w) => w.id === id);
+  if (!watch) {
+    const known = config.watches.map((w) => w.id).join(', ') || '(keine)';
+    throw new Error(`Keine Suche mit der id "${id}". Vorhanden: ${known}`);
+  }
+
+  if (patch.intervalSeconds !== undefined) {
+    const n = Number(patch.intervalSeconds);
+    if (!Number.isFinite(n) || !Number.isInteger(n)) {
+      throw new Error(`"${patch.intervalSeconds}" ist keine ganze Zahl.`);
+    }
+    if (n < MIN_INTERVAL_SECONDS) {
+      throw new Error(
+        `${n} s ist zu kurz. Mindestens ${MIN_INTERVAL_SECONDS} s — haeufiger abzufragen ` +
+          `provoziert eine Sperre, und die kostet mehr Zeit, als der schnellere Takt einbringt.`,
+      );
+    }
+    if (n > 86400) throw new Error(`${n} s ist mehr als ein Tag.`);
+    watch.intervalSeconds = n;
+  }
+
+  if (patch.messageTemplate !== undefined) {
+    // Leerer String heisst ausdruecklich "keine Vorlage fuer diese Suche" und
+    // ist etwas anderes als "nimm die allgemeine" (dafuer das Feld loeschen).
+    const text = patch.messageTemplate === null ? null : String(patch.messageTemplate).trim();
+    if (text === null) delete watch.messageTemplate;
+    else if (text.length > 600) throw new Error(`Die Vorlage ist ${text.length} Zeichen lang, erlaubt sind 600.`);
+    else watch.messageTemplate = text;
+  }
+
+  if (patch.label !== undefined) watch.label = String(patch.label).trim() || watch.label;
+
+  await writeRaw(path, config);
+  return watch;
+}
+
 // --- Erlaubte Nutzer -------------------------------------------------------
 //
 // Dieselbe Datei, derselbe Stil: `telegram.users` ist eine Liste, die auch von
 // Hand lesbar bleibt. Der Besitzer (`telegram.chatId`) steht bewusst nicht
 // darin — er ergibt sich aus der Konfiguration und kann sich nicht selbst
 // aussperren.
-
-export async function listUsers(path) {
-  return readUsersRaw(await readRaw(path));
-}
 
 function readUsersRaw(config) {
   const list = config.telegram?.users;
@@ -162,8 +227,18 @@ function normalizeStoredUser(raw) {
     return { id: String(raw).trim(), rights: [...DEFAULT_RIGHTS] };
   }
   if (!raw || typeof raw !== 'object' || !raw.id) return null;
-  const rights = Array.isArray(raw.rights) ? RIGHTS.filter((r) => raw.rights.includes(r)) : [...DEFAULT_RIGHTS];
-  return { id: String(raw.id).trim(), ...(raw.name ? { name: String(raw.name).trim() } : {}), rights };
+  const rights = Array.isArray(raw.rights)
+    ? RIGHTS.filter((r) => raw.rights.includes(r))
+    : [...DEFAULT_RIGHTS];
+  return {
+    id: String(raw.id).trim(),
+    ...(raw.name ? { name: String(raw.name).trim() } : {}),
+    rights,
+  };
+}
+
+export async function listUsers(path) {
+  return readUsersRaw(await readRaw(path));
 }
 
 function assertNotOwner(config, id) {
@@ -182,12 +257,12 @@ export async function addUser(path, rawId, { name = null, rights = DEFAULT_RIGHT
   const config = await readRaw(path);
   assertNotOwner(config, id);
 
-  config.telegram ??= {};
   const users = readUsersRaw(config);
   if (users.some((u) => u.id === id)) throw new Error(`${id} steht schon auf der Liste.`);
 
   const user = { id, ...(name ? { name } : {}), rights: RIGHTS.filter((r) => rights.includes(r)) };
   users.push(user);
+  config.telegram ??= {};
   config.telegram.users = users;
   await writeRaw(path, config);
   return user;

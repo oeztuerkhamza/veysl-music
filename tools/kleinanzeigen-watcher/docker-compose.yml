@@ -34,3 +34,26 @@ services:
     # wenig. Die Grenze ist eine Sicherung gegen ein Speicherleck, damit der
     # Watcher niemals der Website den Arbeitsspeicher wegnimmt.
     mem_limit: 256m
+
+    # Der Taktgeber schreibt alle 15 Sekunden in /data/heartbeat. Bleibt die
+    # Datei stehen, dreht sich die Schleife nicht mehr — der Prozess lebt dann
+    # zwar noch, tut aber nichts, und genau das sieht man sonst nirgends.
+    #
+    # Das macht den Zustand in `docker ps` sichtbar; es startet den Container
+    # NICHT neu (`restart: unless-stopped` reagiert nicht auf "unhealthy").
+    # Fuer die Meldung an den Nutzer sorgt der Watcher selbst: bleibt ein Abruf
+    # zu lange aus, schickt er eine Warnung per Telegram.
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - |
+          const { statSync } = require('node:fs');
+          const age = Date.now() - statSync('/data/heartbeat').mtimeMs;
+          if (age > 120000) throw new Error('Heartbeat ist ' + Math.round(age / 1000) + 's alt');
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      # Erst nach dem ersten Schlag pruefen, sonst ist der Start immer krank.
+      start_period: 45s

@@ -232,10 +232,33 @@ https://www.kleinanzeigen.de/s-fahrraeder/... max 300 privat ohne defekt,bastler
 | `privat` | Mağaza/PRO satıcıları atla |
 | `ohne defekt,bastler` | Başlıkta bu kelimeler geçerse atla |
 
-**Aramaları görmek ve silmek:** `/list` yaz. Her arama kendi mesajında gelir,
-altında 🗑 **Löschen** düğmesiyle — dokununca silinir.
+| `takt 30` | 60 yerine 30 saniyede bir tara (en az 30) |
+
+**Aramaları yönetmek:** `/list` yaz. Her arama kendi mesajında gelir, altında
+üç düğmeyle:
+
+| Düğme | Ne yapar |
+| --- | --- |
+| ⏱ **Takt** | Tarama aralığını değiştirir — 30s / 60s / 2dk / 5dk / 15dk arasından dokunarak seç |
+| ✏️ **Text** | O aramaya özel ilk mesaj metnini ayarlar |
+| 🗑 **Löschen** | Aramayı siler |
+
+**✏️ Text**'e dokununca bot metni sorar; **o mesajı yanıtlayarak** gönderirsin.
+`{title}` `{price}` `{location}` yer tutucuları kullanılabilir. Yanıt olarak
+`-` yazarsan o arama için kopyalama kapanır, `*` yazarsan genel şablona döner.
+
+Yazarak da olur (id'leri `/list` gösterir):
+
+```
+/takt freiburg-im-breisgau 30
+/text freiburg-im-breisgau Moin, ist {title} noch zu haben?
+```
 
 `/help` her zaman bu özeti verir.
+
+> Aralık en az **30 saniye**. Daha sık tarama engellenmeyi davet eder ve
+> engellenmenin maliyeti, kazandığın saniyelerden fazladır. Bot 30'un altını
+> kabul etmez ve nedenini söyler.
 
 Değişiklikler **anında** geçerli olur; container'ı yeniden başlatmana gerek yok.
 
@@ -243,19 +266,19 @@ Değişiklikler **anında** geçerli olur; container'ı yeniden başlatmana gere
 
 Bot varsayılan olarak **yalnızca seni** dinler (`telegram.chatId`). Başkası
 yazarsa hiç cevap almaz; botun adını bilen bir yabancı ne aramalarını görebilir
-ne de değiştirebilir. İstersen yanına başkalarını da alabilirsin — ve herkese
-ne kadar yetki vereceğine sen karar verirsin.
+ne de değiştirebilir. İstersen yanına başkalarını da alabilirsin — ve kime ne
+kadar yetki vereceğine sen karar verirsin.
 
 | Yetki | Ne yapabilir |
 | --- | --- |
-| `ansehen` (`list`) | `/list` ile aramaları görür |
-| `anlegen` (`add`) | URL gönderip yeni arama ekler |
-| `loeschen` (`remove`) | 🗑 düğmesiyle arama siler |
+| `ansehen` | `/list` ile aramaları görür |
+| `aendern` | Arama ekler, `⏱ Takt` ve `✏️ Text` düğmelerini kullanır |
+| `loeschen` | `🗑` ile arama siler |
 
 ```
 /user                                          listeyi göster (🚫 kaldır düğmesiyle)
-/user add 123456789 Ali                        ekle — başlangıçta sadece "ansehen"
-/user add 123456789 Ali rechte: ansehen,anlegen  ekle, yetkileriyle birlikte
+/user add 123456789 Ali                        ekle — başta sadece "ansehen"
+/user add 123456789 Ali rechte: ansehen,aendern  yetkileriyle birlikte ekle
 /user rechte 123456789 alle                    yetkileri değiştir
 /user del 123456789                            listeden çıkar
 ```
@@ -265,12 +288,12 @@ log'a düşer (`Nicht erlaubt: Kennung 123456789 … /user add 123456789`) ve
 kimliği orada yazar.
 
 `/user` komutunu **sadece sen** kullanabilirsin — listeye aldığın kişi başkasını
-ekleyemez, kendi yetkisini yükseltemez. Yetkisi olmayan birine 🗑 düğmesi hiç
-gösterilmez. Liste `watches.json` içinde `telegram.users` altında durur ve elle
-de düzenlenebilir; değişiklik anında geçerli olur.
+ekleyemez, kendi yetkisini yükseltemez. Yetkisi olmayana o düğme hiç
+gösterilmez. Liste `watches.json` içinde `telegram.users` altında durur, elle de
+düzenlenebilir ve değişiklik anında geçerli olur.
 
-İlan alarmları her zaman **yalnızca sana** gider — listeye aldığın kişiler botu
-yönetebilir, alarm kopyası almaz.
+Cevaplar komutun yazıldığı sohbete gider; **ilan alarmları her zaman yalnızca
+sana** gelir — listeye aldığın kişiler botu yönetir, alarm kopyası almaz.
 
 ## Birden fazla arama (komut satırından)
 
@@ -430,6 +453,50 @@ docker compose build && docker compose up -d
 
 `data/` dizini bind-mount: `watches.json` ve `state.json` sunucuda normal
 dosyalar, editörle düzenlenebilir ve image yeniden derlense de silinmez.
+
+## Testler
+
+```bash
+cd tools/kleinanzeigen-watcher
+node test/run.mjs
+```
+
+161 kontrol, **tamamen çevrimdışı** — Kleinanzeigen'e tek istek gitmez. Parser,
+kaydedilmiş bir sayfa parçasına karşı sınanır
+([test/fixture-suchseite.html](test/fixture-suchseite.html), gerçek bir arama
+sayfasından üç ilana kısaltılmış). CI'da her PR'da çalışır.
+
+Gerçek sayfayı da denemek istersen:
+
+```bash
+node test/run.mjs --live
+```
+
+Bu tek bir gerçek istek atar ve Kleinanzeigen'in sayfa yapısını değiştirip
+değiştirmediğini söyler. Bilerek CI'da çalışmıyor: her commit'te başkasının
+sunucusuna istek atmak kimseye fayda sağlamaz — üstelik bu proje tam da
+engellenmemeye bağlı.
+
+## Sağlık kontrolü
+
+İki ayrı sinyal var, çünkü iki ayrı şey bozulabilir:
+
+| Sinyal | Neyi söyler | Nerede görünür |
+| --- | --- | --- |
+| `data/heartbeat` (15 sn'de bir) | Süreç dönüyor mu | `docker ps` → healthy/unhealthy |
+| Başarılı çekim zamanı | Kleinanzeigen'e erişim var mı | Telegram'dan uyarı |
+
+Uzun süre başarılı çekim gelmezse (aralığın 10 katı, en az 15 dakika) bot bir
+kez uyarır, düzelince de haber verir. Bu, en tehlikeli açığı kapatır: bozuk bir
+watcher, sessiz bir pazardan ayırt edilemez.
+
+Healthcheck durumu **görünür kılar**, kendiliğinden yeniden başlatmaz —
+`restart: unless-stopped` "unhealthy" durumuna tepki vermez. Haber vermek
+Telegram uyarısının işi.
+
+```bash
+docker inspect -f '{{.State.Health.Status}}' kleinanzeigen-watcher
+```
 
 ## Sıfırlama
 

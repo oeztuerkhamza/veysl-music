@@ -10,11 +10,11 @@
 // Rechte und kann als Einziger weitere Leute aufnehmen (/user).
 
 /** Die vergebbaren Rechte, in der Reihenfolge, in der sie angezeigt werden. */
-export const RIGHTS = ['list', 'add', 'remove'];
+export const RIGHTS = ['list', 'edit', 'remove'];
 
 const RIGHT_LABELS = {
   list: 'ansehen',
-  add: 'anlegen',
+  edit: 'aendern',
   remove: 'loeschen',
 };
 
@@ -30,7 +30,7 @@ export function describeRights(rights) {
 }
 
 /**
- * Liest eine Rechteangabe wie "anlegen,loeschen" oder "add remove".
+ * Liest eine Rechteangabe wie "aendern,loeschen" oder "edit remove".
  * Akzeptiert beide Schreibweisen, weil das hier auf einem Telefon getippt wird.
  * Gibt `null` zurueck, wenn etwas Unbekanntes dabei ist — dann ist ein
  * Tippfehler im Spiel, und stumm weniger Rechte zu vergeben waere die
@@ -48,10 +48,13 @@ export function parseRights(raw) {
     list: 'list',
     ansehen: 'list',
     lesen: 'list',
-    add: 'add',
-    anlegen: 'add',
-    hinzufuegen: 'add',
-    hinzufügen: 'add',
+    edit: 'edit',
+    add: 'edit',
+    aendern: 'edit',
+    ändern: 'edit',
+    anlegen: 'edit',
+    hinzufuegen: 'edit',
+    hinzufügen: 'edit',
     remove: 'remove',
     loeschen: 'remove',
     löschen: 'remove',
