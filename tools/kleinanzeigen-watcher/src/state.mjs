@@ -51,6 +51,26 @@ export class State {
     return this.#data.watches[watchId] === undefined;
   }
 
+  /**
+   * Wirft das Gedaechtnis geloeschter Suchen weg.
+   *
+   * Ohne das wuchs die Datei bei jedem Loeschen und Neuanlegen weiter — 3000
+   * IDs je verwaister Eintrag, die nie wieder jemand liest, aber bei jedem
+   * Speichern mitgeschrieben werden.
+   */
+  forget(keepIds) {
+    const keep = new Set(keepIds);
+    let entfernt = 0;
+    for (const id of Object.keys(this.#data.watches)) {
+      if (!keep.has(id)) {
+        delete this.#data.watches[id];
+        entfernt++;
+      }
+    }
+    if (entfernt > 0) this.#dirty = true;
+    return entfernt;
+  }
+
   hasSeen(watchId, adId) {
     return Boolean(this.#data.watches[watchId]?.seen?.includes(adId));
   }

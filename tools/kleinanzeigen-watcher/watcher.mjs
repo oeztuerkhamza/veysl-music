@@ -35,6 +35,15 @@ const MAX_BACKOFF_MULTIPLIER = 16;
 const STALE_AFTER_MS = 15 * 60 * 1000;
 const HEARTBEAT_EVERY_MS = 15 * 1000;
 
+// Wie oft eine einzelne Anzeige erneut gesendet werden darf, bevor sie als
+// erledigt gilt. Ohne Deckel haengt eine Anzeige, die Telegram dauerhaft
+// ablehnt, jede weitere Runde auf.
+const MAX_SEND_ATTEMPTS = 3;
+
+/** watchId:adId -> Fehlversuche. Absichtlich nur im Speicher: nach einem
+ *  Neustart ist ein neuer Versuch ohnehin richtig. */
+const sendFailures = new Map();
+
 /** Telegram-HTML im Meldetext; Suchnamen kommen aus einer URL des Nutzers. */
 const escapeForLog = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
@@ -121,17 +130,10 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
     );
     await state.flush();
     log(`${watch.label}: ${ads.length} vorhandene Anzeigen gemerkt, ab jetzt nur noch neue.`);
-    return 0;
+    return { gesendet: 0, uebergelaufen: false };
   }
 
   const fresh = ads.filter((ad) => !state.hasSeen(watch.id, ad.id));
-  // Alles Gesehene wird gemerkt, auch was die Filter aussortieren. Sonst
-  // wuerde dieselbe Anzeige bei jeder Runde erneut geprueft.
-  state.remember(
-    watch.id,
-    ads.map((a) => a.id),
-  );
-
   const hits = fresh.filter((ad) => matchesFilters(ad, watch.filters));
   // Aelteste zuerst, damit die Reihenfolge im Chat der Realitaet entspricht.
   hits.reverse();
@@ -139,27 +141,66 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
   const capped = hits.slice(0, watch.maxAlertsPerCycle);
   const dropped = hits.length - capped.length;
 
+  // Alles, was diese Runde ohnehin nicht verschickt, wird sofort gemerkt: die
+  // schon bekannten, die Ausgefilterten und die ueber dem Rundenlimit. Nur die
+  // tatsaechlich zu sendenden bleiben offen — sie werden erst nach dem Senden
+  // eingetragen. Vorher stand hier ein pauschales remember() ueber ALLE
+  // Anzeigen, noch vor dem ersten sendAd: ein einzelner Netzfehler beim Senden
+  // liess die Anzeige damit als "gesehen" gelten und sie wurde nie wieder
+  // versucht — die Meldung, auf die man gewartet hat, verschwand still.
+  const zuSenden = new Set(capped.map((a) => a.id));
+  state.remember(
+    watch.id,
+    ads.map((a) => a.id).filter((id) => !zuSenden.has(id)),
+  );
+
+  let gesendet = 0;
   for (const ad of capped) {
     if (dryRun) {
       log(`  [dry-run] ${ad.price || '—'} · ${ad.title} · ${ad.url}`);
-    } else {
+      state.remember(watch.id, [ad.id]);
+      gesendet++;
+      continue;
+    }
+
+    const key = `${watch.id}:${ad.id}`;
+    try {
       await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate);
+      state.remember(watch.id, [ad.id]);
+      sendFailures.delete(key);
+      gesendet++;
+    } catch (err) {
+      const versuche = (sendFailures.get(key) ?? 0) + 1;
+      if (versuche >= MAX_SEND_ATTEMPTS) {
+        // Nach mehreren Anlaeufen aufgeben, sonst haengt eine einzelne Anzeige,
+        // die Telegram dauerhaft ablehnt, jede weitere Runde auf.
+        sendFailures.delete(key);
+        state.remember(watch.id, [ad.id]);
+        log(`${watch.label}: "${ad.title}" nach ${versuche} Versuchen aufgegeben — ${err.message}`);
+      } else {
+        sendFailures.set(key, versuche);
+        log(`${watch.label}: Senden fehlgeschlagen (Versuch ${versuche}) — ${err.message}`);
+      }
     }
   }
+
   if (dropped > 0) {
     const note = `⚠️ ${watch.label}: ${dropped} weitere neue Anzeigen unterdrueckt (Limit ${watch.maxAlertsPerCycle}/Runde). Suche enger fassen.`;
     if (dryRun) log(note);
-    else await telegram.sendText(note);
+    else await telegram.sendText(note).catch(() => {});
   }
 
   await state.flush();
 
   if (fresh.length > 0) {
-    log(
-      `${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter, ${capped.length} gesendet.`,
-    );
+    log(`${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter, ${gesendet} gesendet.`);
   }
-  return capped.length;
+
+  // Waren ALLE Anzeigen der Seite neu, ist die Seite zwischen zwei Runden
+  // vermutlich komplett durchgelaufen — dann liegen die aelteren schon auf
+  // Seite 2, die dieser Watcher nicht liest, und sind fuer immer weg.
+  const uebergelaufen = ads.length > 0 && fresh.length === ads.length;
+  return { gesendet, uebergelaufen };
 }
 
 /**
@@ -168,8 +209,24 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
  */
 async function tickWatch(watch, runtime, ctx) {
   try {
-    await runCycle(watch, ctx);
+    const { uebergelaufen } = await runCycle(watch, ctx);
     runtime.lastSuccessAt = Date.now();
+
+    // Einmal warnen, nicht bei jeder Runde: bei einer zu weit gefassten Suche
+    // waere das sonst Dauerlaerm.
+    if (uebergelaufen && !runtime.overflowNotified && !ctx.dryRun) {
+      runtime.overflowNotified = true;
+      log(`${watch.label}: Seite war zwischen zwei Runden komplett neu.`);
+      await ctx.telegram
+        ?.sendText(
+          `⚠️ <b>${escapeForLog(watch.label)}</b>\nAuf Seite 1 war eben <i>alles</i> neu. ` +
+            `Zwischen zwei Abrufen sind mehr Anzeigen erschienen, als auf eine Seite passen — ` +
+            `die aelteren davon liegen schon auf Seite 2 und werden nie gemeldet. ` +
+            `Kuerzeres Intervall oder engere Suche.`,
+        )
+        .catch(() => {});
+    }
+
     if (runtime.staleNotified) {
       runtime.staleNotified = false;
       await ctx.telegram
@@ -467,8 +524,16 @@ async function main() {
       const fresh = await loadConfig(configPath);
       const before = current.map((w) => w.id).join(',');
       current = fresh.watches;
+      // Das Gedaechtnis geloeschter Suchen mit wegraeumen, sonst bleiben je
+      // Eintrag bis zu 3000 IDs fuer immer in der Datei stehen.
+      const entfernt = state.forget(current.map((w) => w.id));
       if (before !== current.map((w) => w.id).join(',')) {
-        log(`Suchen neu geladen: ${current.length} aktiv.`);
+        log(
+          `Suchen neu geladen: ${current.length} aktiv` +
+            (entfernt > 0 ? `, ${entfernt} verwaiste Gedaechtnisse entfernt` : '') +
+            '.',
+        );
+        if (entfernt > 0) await state.flush().catch(() => {});
       }
     } catch (err) {
       // Eine kaputte Datei darf den laufenden Watcher nicht umbringen; er

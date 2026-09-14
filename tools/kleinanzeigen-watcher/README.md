@@ -397,6 +397,50 @@ docker compose build && docker compose up -d
 `data/` dizini bind-mount: `watches.json` ve `state.json` sunucuda normal
 dosyalar, editörle düzenlenebilir ve image yeniden derlense de silinmez.
 
+## Testler
+
+```bash
+cd tools/kleinanzeigen-watcher
+node test/run.mjs
+```
+
+161 kontrol, **tamamen çevrimdışı** — Kleinanzeigen'e tek istek gitmez. Parser,
+kaydedilmiş bir sayfa parçasına karşı sınanır
+([test/fixture-suchseite.html](test/fixture-suchseite.html), gerçek bir arama
+sayfasından üç ilana kısaltılmış). CI'da her PR'da çalışır.
+
+Gerçek sayfayı da denemek istersen:
+
+```bash
+node test/run.mjs --live
+```
+
+Bu tek bir gerçek istek atar ve Kleinanzeigen'in sayfa yapısını değiştirip
+değiştirmediğini söyler. Bilerek CI'da çalışmıyor: her commit'te başkasının
+sunucusuna istek atmak kimseye fayda sağlamaz — üstelik bu proje tam da
+engellenmemeye bağlı.
+
+## Sağlık kontrolü
+
+İki ayrı sinyal var, çünkü iki ayrı şey bozulabilir:
+
+| Sinyal | Neyi söyler | Nerede görünür |
+| --- | --- | --- |
+| `data/heartbeat` (15 sn'de bir) | Süreç dönüyor mu | `docker ps` → healthy/unhealthy |
+| Başarılı çekim zamanı | Kleinanzeigen'e erişim var mı | Telegram'dan uyarı |
+
+Uzun süre başarılı çekim gelmezse (aralığın 10 katı, en az 15 dakika) bot bir
+kez uyarır, düzelince de haber verir. Bu, en tehlikeli açığı kapatır: bozuk bir
+watcher, sessiz bir pazardan ayırt edilemez.
+
+Healthcheck durumu **görünür kılar**, kendiliğinden yeniden başlatmaz —
+`restart: unless-stopped` "unhealthy" durumuna tepki vermez. Haber vermek
+Telegram uyarısının işi.
+
+```bash
+docker inspect -f '{{.State.Health.Status}}' kleinanzeigen-watcher
+```
+
 ## Sıfırlama
 
 Bir aramayı baştan başlatmak (veya "kaçırdım" durumunu düzeltmek) için

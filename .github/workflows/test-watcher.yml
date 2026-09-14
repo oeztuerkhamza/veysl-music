@@ -1,0 +1,52 @@
+name: Test the Kleinanzeigen watcher
+
+# Laeuft bei jeder Aenderung am Watcher — auch im Pull Request, damit ein
+# Fehler auffaellt, bevor er auf dem Server landet.
+#
+# Die Testreihe ruft kleinanzeigen.de NICHT ab. Sie arbeitet gegen einen
+# gespeicherten Seitenausschnitt (test/fixture-suchseite.html). Der echte Abruf
+# steckt in live.test.mjs und laeuft nur von Hand: eine Testreihe, die bei jedem
+# Commit eine fremde Seite besucht, erzeugt Last, die niemandem nuetzt — und
+# dieses Projekt lebt davon, dass Kleinanzeigen es nicht sperrt.
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'tools/kleinanzeigen-watcher/**'
+      - '.github/workflows/test-watcher.yml'
+  pull_request:
+    paths:
+      - 'tools/kleinanzeigen-watcher/**'
+      - '.github/workflows/test-watcher.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Der Watcher benutzt process.loadEnvFile und das eingebaute fetch;
+          # dieselbe Hauptversion wie im Container (node:24-alpine).
+          node-version: 24
+
+      # Kein `npm ci`: das Werkzeug hat bewusst keine Abhaengigkeiten.
+      - name: Testreihe
+        working-directory: tools/kleinanzeigen-watcher
+        run: node test/run.mjs
+
+      - name: Syntax aller Quelldateien
+        working-directory: tools/kleinanzeigen-watcher
+        run: |
+          set -euo pipefail
+          for f in watcher.mjs src/*.mjs; do
+            node --check "$f"
+          done
+          echo "alle Dateien syntaktisch in Ordnung"
