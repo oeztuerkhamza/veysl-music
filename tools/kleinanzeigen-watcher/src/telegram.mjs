@@ -68,6 +68,26 @@ export function renderMessage(template, ad) {
   return text.trim() || null;
 }
 
+/**
+ * Wie alt war die Anzeige, als die Meldung rausging?
+ *
+ * Das ist die einzige Zahl, die beim Tempo weiterhilft. Steht da "20 s", ist
+ * der Watcher schnell und die Konkurrenz einfach frueher dran gewesen; steht
+ * da jedes Mal "2 min", ist der Takt zu lang und ein kuerzerer bringt wirklich
+ * etwas. Ohne die Zahl dreht man blind am Takt und provoziert nur eine Sperre.
+ *
+ * Kleinanzeigen gibt die Einstellzeit nur minutengenau aus — die Angabe ist
+ * also auf etwa eine Minute genau, und das steht bewusst nicht als
+ * Nachkommastelle da.
+ */
+export function describeAge(postedAtMs, now = Date.now()) {
+  if (!postedAtMs) return null;
+  const seconds = Math.round((now - postedAtMs) / 1000);
+  if (seconds < 0 || seconds > 3600) return null;
+  if (seconds < 90) return `${seconds} s alt`;
+  return `${Math.round(seconds / 60)} min alt`;
+}
+
 export class Telegram {
   #token;
   #chatId;
@@ -154,7 +174,11 @@ export class Telegram {
     const facts = [];
     if (ad.price) facts.push(`💶 ${escapeHtml(ad.price)}`);
     if (ad.location) facts.push(`📍 ${escapeHtml(ad.location)}`);
-    if (ad.postedAt) facts.push(`🕒 ${escapeHtml(ad.postedAt)}`);
+    // Lieber das Alter als die Uhrzeit: "vor 25 s" beantwortet die Frage, die
+    // man sich bei einer frischen Anzeige wirklich stellt, "14:34" nicht.
+    const age = describeAge(ad.postedAtMs);
+    if (age) facts.push(`⏱ ${escapeHtml(age)}`);
+    else if (ad.postedAt) facts.push(`🕒 ${escapeHtml(ad.postedAt)}`);
     facts.push(ad.isCommercial ? '🏪 Gewerblich' : '👤 Privat');
     if (ad.shipping) facts.push('📦 Versand');
     lines.push(facts.join('  ·  '));

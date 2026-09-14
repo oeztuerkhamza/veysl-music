@@ -232,7 +232,7 @@ https://www.kleinanzeigen.de/s-fahrraeder/... max 300 privat ohne defekt,bastler
 | `privat` | Mağaza/PRO satıcıları atla |
 | `ohne defekt,bastler` | Başlıkta bu kelimeler geçerse atla |
 
-| `takt 30` | 60 yerine 30 saniyede bir tara (en az 30) |
+| `takt 30` | 60 yerine 30 saniyede bir tara (en az 15) |
 
 **Aramaları yönetmek:** `/list` yaz. Her arama kendi mesajında gelir, altında
 üç düğmeyle:
@@ -256,9 +256,10 @@ Yazarak da olur (id'leri `/list` gösterir):
 
 `/help` her zaman bu özeti verir.
 
-> Aralık en az **30 saniye**. Daha sık tarama engellenmeyi davet eder ve
-> engellenmenin maliyeti, kazandığın saniyelerden fazladır. Bot 30'un altını
-> kabul etmez ve nedenini söyler.
+> Aralık en az **15 saniye**; bot altını kabul etmez ve nedenini söyler.
+> Düğmeler her seçeneğin yanında beklenen gecikmeyi yazar. 15 saniye en hızlısı
+> ama engellenme riskini de en çok artıran seçenek — ayrıntısı
+> [Tarama sıklığı](#tarama-sıklığı--ilk-yazan-olmak) bölümünde.
 
 Değişiklikler **anında** geçerli olur; container'ı yeniden başlatmana gerek yok.
 
@@ -337,18 +338,45 @@ sessizce priming yapar, mevcut ilanlar için sana mesaj yağmaz.
 > Çok sayıda arama eklersen hepsi aynı siteye istek atar. 4–5 aramanın üstüne
 > çıkacaksan aralıkları biraz açmak (`--interval 90`) engellenme riskini düşürür.
 
-## Tarama sıklığı
+## Tarama sıklığı — ilk yazan olmak
 
-Varsayılan **60 saniye**, üstüne rastgele 0–10 sn. sapma. Bu bilerek seçildi:
+Belirleyici tek sayı şu: **ortalama gecikmen taktın yarısıdır.** Yeni bir ilan
+iki tarama arasında bir yerde düşer; ortalama olarak taktın yarısı kadar sonra
+görürsün.
 
-- Kleinanzeigen çok sık isteği captcha ile cezalandırır. Sen sıklığı ikiye
-  katlayıp engel yersen, kazandığın 30 saniyeyi saatlerce geri ödersin.
-- Araç `30` saniyenin altını kabul etmez.
-- Engel gelirse (HTTP 429 vb.) aralık kendiliğinden ikiye katlanarak açılır,
-  düzelince eski hızına döner. Uzun süren engelde Telegram'dan bir kez uyarır.
+| Takt | Ortalama gecikme | En kötü |
+| --- | --- | --- |
+| 60 sn. (eski varsayılan) | ~30 sn. | 70 sn. |
+| 30 sn. | ~15 sn. | 37 sn. |
+| 15 sn. (alt sınır) | ~7 sn. | 19 sn. |
 
-Pratikte 60 sn.'de ortalama 30 saniyelik gecikmeyle haberin olur — popüler
-ilanlarda bu hâlâ ilk yazanlar arasında olmaya fazlasıyla yeter.
+Popüler bir ilanda 30 saniye, önüne birkaç kişinin geçmesine fazlasıyla yeter.
+`⏱ Takt` düğmesi artık her seçeneğin altında bu gecikmeyi yazıyor, ve alt sınır
+30'dan **15 saniyeye** indi.
+
+**Ama gerçekten yavaş olan sen misin?** Tahmin etmene gerek yok: her alarmda
+artık ilanın **yaşı** yazıyor — `⏱ 25 s alt` yani "bot bunu ilan düştükten 25
+saniye sonra gördü".
+
+- Sürekli `20–40 s` görüyorsan bot hızlı; kaybettiğin yer Kleinanzeigen'in
+  ilanı listeye koyma süresi ya da senin telefona bakma sürendir. Taktı daha da
+  kısaltmak buna bir şey yapmaz.
+- Sürekli `1–2 min` görüyorsan gecikme gerçekten takttan geliyor. Kısalt.
+
+> Yaş bilgisi Kleinanzeigen'in dakika hassasiyetindeki zaman damgasından
+> geliyor, yani ±1 dakika yanılma payı var. Saat bilgisi okunamayan ilanlarda
+> eskisi gibi tarih yazar.
+
+Sapma payı da artık taktın **dörtte birini** geçmiyor. Sabit 0–10 sn. sapma,
+15 saniyelik bir taktı ortalamada 20 saniyeye çıkarıyordu — kazandığının üçte
+ikisi geri gidiyordu.
+
+**Karşı taraftaki risk:** Kleinanzeigen çok sık isteği captcha ile cezalandırır.
+15 saniye, saatte 240 istek demek — gerçekten önem verdiğin **tek bir arama**
+için makul, hepsi için değil. Engel gelirse (HTTP 429 vb.) aralık kendiliğinden
+ikiye katlanarak açılır, düzelince eski hızına döner ve uzun süren engelde
+Telegram'dan bir kez uyarır. Yani engel kalıcı değil — ama o sürede zaten kör
+kalırsın.
 
 ## Komutlar
 

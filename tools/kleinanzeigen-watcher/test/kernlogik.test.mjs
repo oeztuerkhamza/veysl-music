@@ -8,7 +8,7 @@ const BASE = new URL('../src/', import.meta.url).href;
 const { normalizeSearchUrl } = await import(BASE + 'kleinanzeigen.mjs');
 const { parsePrice, matchesFilters, withFilterDefaults, loadConfig } = await import(BASE + 'config.mjs');
 const { State } = await import(BASE + 'state.mjs');
-const { addWatch, listWatches, removeWatch } = await import(BASE + 'manage.mjs');
+const { addWatch, listWatches, removeWatch, MIN_INTERVAL_SECONDS } = await import(BASE + 'manage.mjs');
 const { Telegram } = await import(BASE + 'telegram.mjs');
 
 const URL_BULLS =
@@ -127,7 +127,7 @@ await (async () => {
   const p = join(dir, 'bad.json');
   const write = (o) => writeFileSync(p, JSON.stringify(o));
   write({ telegram: { chatId: '1' }, watches: [{ id: 'a', url: URL_BULLS, intervalSeconds: 5 }] });
-  await assert.rejects(() => loadConfig(p), /mindestens 30/);
+  await assert.rejects(() => loadConfig(p), new RegExp(`mindestens ${MIN_INTERVAL_SECONDS}`));
   check('zu kurzes Intervall abgewiesen', () => true);
   write({ telegram: { chatId: '1' }, watches: [{ id: 'a', url: URL_BULLS }, { id: 'a', url: URL_BULLS + '?x=1' }] });
   await assert.rejects(() => loadConfig(p), /doppelt/);

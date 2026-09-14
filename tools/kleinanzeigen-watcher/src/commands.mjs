@@ -32,7 +32,7 @@ const HELP = [
   '  <code>min 50</code> — mindestens 50 €',
   '  <code>privat</code> — keine gewerblichen Anbieter',
   '  <code>ohne defekt,bastler</code> — Titel-Stoppwoerter',
-  '  <code>takt 30</code> — alle 30 s statt 60 (min. 30)',
+  '  <code>takt 30</code> — alle 30 s statt 60 (min. 15)',
   '',
   '<b>Befehle</b>',
   '  /list — meine Suchen, mit Tasten für Takt, Text und Löschen',
@@ -141,7 +141,21 @@ async function handleAdd(text, { configPath, telegram, timeoutMs }) {
 }
 
 /** Auswahl fuer den Takt. Bewusst Tasten statt Tippen — das hier passiert am Telefon. */
-const TAKTE = [30, 60, 120, 300, 900];
+const TAKTE = [15, 30, 60, 300, 900];
+
+/**
+ * Der Rueckstand, mit dem zu rechnen ist: im Mittel vergeht der halbe Takt,
+ * bis eine neue Anzeige ueberhaupt gesehen wird. Genau diese Zahl entscheidet
+ * darueber, ob man der Erste ist — und sie steht nirgends, wenn man sie nicht
+ * hinschreibt.
+ */
+function taktFolgen(sekunden) {
+  const schnitt = Math.round(sekunden / 2);
+  const text = schnitt < 60 ? `${schnitt} s` : `${Math.round(schnitt / 60)} min`;
+  return sekunden <= 15
+    ? `⌀ ${text} Rueckstand — schnellster Takt, erhoeht aber das Sperrrisiko.`
+    : `⌀ ${text} Rueckstand auf eine neue Anzeige.`;
+}
 
 function watchCard(w) {
   const vorlage = w.messageTemplate
@@ -203,7 +217,7 @@ async function showTaktChoices(id, { configPath, telegram, callbackId, messageId
     return false;
   }
   await telegram.answerCallback(callbackId);
-  await telegram.editText(messageId, watchCard(watch), {
+  await telegram.editText(messageId, `${watchCard(watch)}\n\n<i>${taktFolgen(watch.intervalSeconds ?? 60)}</i>`, {
     buttons: [
       TAKTE.map((s) => ({
         text: (s === (watch.intervalSeconds ?? 60) ? '• ' : '') + (s < 60 ? `${s}s` : `${s / 60}min`),
@@ -218,7 +232,7 @@ async function showTaktChoices(id, { configPath, telegram, callbackId, messageId
 async function setTakt(id, sekunden, { configPath, telegram, callbackId, messageId, actor }) {
   try {
     const watch = await updateWatch(configPath, id, { intervalSeconds: Number(sekunden) });
-    await telegram.answerCallback(callbackId, `alle ${sekunden}s`);
+    await telegram.answerCallback(callbackId, `alle ${sekunden}s — ${taktFolgen(Number(sekunden))}`);
     await telegram.editText(messageId, watchCard(watch), { buttons: watchButtons(id, actor) });
     return true;
   } catch (err) {
