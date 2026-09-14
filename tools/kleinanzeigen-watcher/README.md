@@ -124,9 +124,11 @@ Durdurmak için `Ctrl+C` — kaldığı yeri kaydeder.
 
 ## İlanı doğrudan uygulamada açmak
 
-Her alarmda iki link var: **📱 In der App** ve **🌐 Browser**.
+Her alarmda tek bir link var: **📱 In der App oeffnen**. Tarayıcı linki bilerek
+kaldırıldı — Telegram onu kendi gömülü tarayıcısında açıyordu, yani tam da giriş
+yapman gereken yerde. Yanlış linke dokunmak en hızlı cevabı kaçırtıyordu.
 
-İlki kendi domainimizdeki bir köprü sayfasına gider
+Link kendi domainimizdeki bir köprü sayfasına gider
 ([src/app/api/ka/[...path]/route.ts](../../src/app/api/ka/%5B...path%5D/route.ts)),
 o sayfa da `ebayk://` şemasına atlayarak Kleinanzeigen uygulamasını açar.
 
@@ -162,7 +164,8 @@ Köprü, `watches.json` içindeki `bridgeBaseUrl` ile açılır:
 "telegram": { "chatId": "...", "bridgeBaseUrl": "https://dj-veys.de" }
 ```
 
-Boş bırakırsan watcher aynen çalışır, sadece mesajda tek bir normal link olur.
+Boş bırakırsan watcher aynen çalışır; köprü olmadığı için mesajda tek bir normal
+`https://` link kalır — linksiz bir alarmın hiçbir faydası olmazdı.
 
 ### Hazır ilk mesaj
 
@@ -229,7 +232,7 @@ https://www.kleinanzeigen.de/s-fahrraeder/... max 300 privat ohne defekt,bastler
 | `privat` | Mağaza/PRO satıcıları atla |
 | `ohne defekt,bastler` | Başlıkta bu kelimeler geçerse atla |
 
-| `takt 30` | 60 yerine 30 saniyede bir tara (en az 30) |
+| `takt 30` | 60 yerine 30 saniyede bir tara (en az 15) |
 
 **Aramaları yönetmek:** `/list` yaz. Her arama kendi mesajında gelir, altında
 üç düğmeyle:
@@ -253,13 +256,45 @@ Yazarak da olur (id'leri `/list` gösterir):
 
 `/help` her zaman bu özeti verir.
 
-> Aralık en az **30 saniye**. Daha sık tarama engellenmeyi davet eder ve
-> engellenmenin maliyeti, kazandığın saniyelerden fazladır. Bot 30'un altını
-> kabul etmez ve nedenini söyler.
+> Aralık en az **15 saniye**; bot altını kabul etmez ve nedenini söyler.
+> Düğmeler her seçeneğin yanında beklenen gecikmeyi yazar. 15 saniye en hızlısı
+> ama engellenme riskini de en çok artıran seçenek — ayrıntısı
+> [Tarama sıklığı](#tarama-sıklığı--ilk-yazan-olmak) bölümünde.
 
-Değişiklikler **anında** geçerli olur; container'ı yeniden başlatmana gerek
-yok. Bot yalnızca senin sohbetinden gelen komutları kabul eder — botun adını
-bilen bir yabancı ne aramalarını görebilir ne de değiştirebilir.
+Değişiklikler **anında** geçerli olur; container'ı yeniden başlatmana gerek yok.
+
+### Kimler kullanabilir — `/user`
+
+Bot varsayılan olarak **yalnızca seni** dinler (`telegram.chatId`). Başkası
+yazarsa hiç cevap almaz; botun adını bilen bir yabancı ne aramalarını görebilir
+ne de değiştirebilir. İstersen yanına başkalarını da alabilirsin — ve kime ne
+kadar yetki vereceğine sen karar verirsin.
+
+| Yetki | Ne yapabilir |
+| --- | --- |
+| `ansehen` | `/list` ile aramaları görür |
+| `aendern` | Arama ekler, `⏱ Takt` ve `✏️ Text` düğmelerini kullanır |
+| `loeschen` | `🗑` ile arama siler |
+
+```
+/user                                          listeyi göster (🚫 kaldır düğmesiyle)
+/user add 123456789 Ali                        ekle — başta sadece "ansehen"
+/user add 123456789 Ali rechte: ansehen,aendern  yetkileriyle birlikte ekle
+/user rechte 123456789 alle                    yetkileri değiştir
+/user del 123456789                            listeden çıkar
+```
+
+Birinin Telegram kimliğini öğrenmek için ona bota bir şey yazdır: denemesi
+log'a düşer (`Nicht erlaubt: Kennung 123456789 … /user add 123456789`) ve
+kimliği orada yazar.
+
+`/user` komutunu **sadece sen** kullanabilirsin — listeye aldığın kişi başkasını
+ekleyemez, kendi yetkisini yükseltemez. Yetkisi olmayana o düğme hiç
+gösterilmez. Liste `watches.json` içinde `telegram.users` altında durur, elle de
+düzenlenebilir ve değişiklik anında geçerli olur.
+
+Cevaplar komutun yazıldığı sohbete gider; **ilan alarmları her zaman yalnızca
+sana** gelir — listeye aldığın kişiler botu yönetir, alarm kopyası almaz.
 
 ## Birden fazla arama (komut satırından)
 
@@ -303,18 +338,45 @@ sessizce priming yapar, mevcut ilanlar için sana mesaj yağmaz.
 > Çok sayıda arama eklersen hepsi aynı siteye istek atar. 4–5 aramanın üstüne
 > çıkacaksan aralıkları biraz açmak (`--interval 90`) engellenme riskini düşürür.
 
-## Tarama sıklığı
+## Tarama sıklığı — ilk yazan olmak
 
-Varsayılan **60 saniye**, üstüne rastgele 0–10 sn. sapma. Bu bilerek seçildi:
+Belirleyici tek sayı şu: **ortalama gecikmen taktın yarısıdır.** Yeni bir ilan
+iki tarama arasında bir yerde düşer; ortalama olarak taktın yarısı kadar sonra
+görürsün.
 
-- Kleinanzeigen çok sık isteği captcha ile cezalandırır. Sen sıklığı ikiye
-  katlayıp engel yersen, kazandığın 30 saniyeyi saatlerce geri ödersin.
-- Araç `30` saniyenin altını kabul etmez.
-- Engel gelirse (HTTP 429 vb.) aralık kendiliğinden ikiye katlanarak açılır,
-  düzelince eski hızına döner. Uzun süren engelde Telegram'dan bir kez uyarır.
+| Takt | Ortalama gecikme | En kötü |
+| --- | --- | --- |
+| 60 sn. (eski varsayılan) | ~30 sn. | 70 sn. |
+| 30 sn. | ~15 sn. | 37 sn. |
+| 15 sn. (alt sınır) | ~7 sn. | 19 sn. |
 
-Pratikte 60 sn.'de ortalama 30 saniyelik gecikmeyle haberin olur — popüler
-ilanlarda bu hâlâ ilk yazanlar arasında olmaya fazlasıyla yeter.
+Popüler bir ilanda 30 saniye, önüne birkaç kişinin geçmesine fazlasıyla yeter.
+`⏱ Takt` düğmesi artık her seçeneğin altında bu gecikmeyi yazıyor, ve alt sınır
+30'dan **15 saniyeye** indi.
+
+**Ama gerçekten yavaş olan sen misin?** Tahmin etmene gerek yok: her alarmda
+artık ilanın **yaşı** yazıyor — `⏱ 25 s alt` yani "bot bunu ilan düştükten 25
+saniye sonra gördü".
+
+- Sürekli `20–40 s` görüyorsan bot hızlı; kaybettiğin yer Kleinanzeigen'in
+  ilanı listeye koyma süresi ya da senin telefona bakma sürendir. Taktı daha da
+  kısaltmak buna bir şey yapmaz.
+- Sürekli `1–2 min` görüyorsan gecikme gerçekten takttan geliyor. Kısalt.
+
+> Yaş bilgisi Kleinanzeigen'in dakika hassasiyetindeki zaman damgasından
+> geliyor, yani ±1 dakika yanılma payı var. Saat bilgisi okunamayan ilanlarda
+> eskisi gibi tarih yazar.
+
+Sapma payı da artık taktın **dörtte birini** geçmiyor. Sabit 0–10 sn. sapma,
+15 saniyelik bir taktı ortalamada 20 saniyeye çıkarıyordu — kazandığının üçte
+ikisi geri gidiyordu.
+
+**Karşı taraftaki risk:** Kleinanzeigen çok sık isteği captcha ile cezalandırır.
+15 saniye, saatte 240 istek demek — gerçekten önem verdiğin **tek bir arama**
+için makul, hepsi için değil. Engel gelirse (HTTP 429 vb.) aralık kendiliğinden
+ikiye katlanarak açılır, düzelince eski hızına döner ve uzun süren engelde
+Telegram'dan bir kez uyarır. Yani engel kalıcı değil — ama o sürede zaten kör
+kalırsın.
 
 ## Komutlar
 

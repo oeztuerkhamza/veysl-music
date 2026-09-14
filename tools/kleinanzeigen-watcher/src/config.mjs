@@ -3,15 +3,27 @@
 import { readFile } from 'node:fs/promises';
 import { normalizeSearchUrl } from './kleinanzeigen.mjs';
 
-// Kleinanzeigen vertraegt haeufiges Abfragen nicht unbegrenzt. Unter dieser
-// Grenze steigt nur das Risiko einer Captcha-Sperre — und eine Sperre kostet
-// mehr Zeit, als das schnellere Abfragen je einbringt.
-const MIN_INTERVAL_SECONDS = 30;
+// Kleinanzeigen vertraegt haeufiges Abfragen nicht unbegrenzt: unter dieser
+// Grenze steigt das Risiko einer Captcha-Sperre spuerbar, und eine Sperre
+// kostet mehr Zeit, als der schnellere Takt einbringt.
+//
+// 15 s statt frueher 30 s, weil die Rechnung fuer "wer schreibt zuerst" an der
+// halben Taktzeit haengt: im Mittel vergeht genau die Haelfte, bis eine neue
+// Anzeige ueberhaupt gesehen wird. 60 s Takt heisst also 30 s Rueckstand — vier
+// Leute vor einem. Die Sperre bleibt die Gegenrechnung; sie ist nicht
+// endgueltig (der Watcher verdoppelt den Abstand und meldet sich), aber 15 s
+// gehoeren einer einzelnen Suche, die einem wirklich wichtig ist, nicht allen.
+const MIN_INTERVAL_SECONDS = 15;
 
 const DEFAULTS = {
   intervalSeconds: 60,
   // Streuung, damit die Abfragen nicht sekundengenau im Takt laufen.
   jitterSeconds: 10,
+  // ... aber hoechstens ein Viertel des Takts. Feste 10 s Streuung machten aus
+  // einem 15-s-Takt im Mittel 20 s — zwei Drittel des gewonnenen Tempos gingen
+  // fuer eine Massnahme drauf, die bei kurzen Takten ohnehin kaum noch etwas
+  // verschleiert.
+  maxJitterShare: 0.25,
   // Bremse gegen eine zu weit gefasste Suche: lieber ein paar Treffer
   // verpassen als das Telegram-Konto mit hunderten Nachrichten fluten.
   maxAlertsPerCycle: 8,
@@ -121,7 +133,10 @@ function normalizeWatch(raw, index) {
     // "nimm die allgemeine". Deshalb ?? und nicht ||.
     messageTemplate: raw.messageTemplate ?? null,
     intervalSeconds: interval,
-    jitterSeconds: raw.jitterSeconds ?? DEFAULTS.jitterSeconds,
+    jitterSeconds: Math.min(
+      raw.jitterSeconds ?? DEFAULTS.jitterSeconds,
+      interval * DEFAULTS.maxJitterShare,
+    ),
     maxAlertsPerCycle: raw.maxAlertsPerCycle ?? DEFAULTS.maxAlertsPerCycle,
     filters,
   };

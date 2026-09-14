@@ -69,17 +69,20 @@ console.log('\n== Nachricht im Chat ==');
   let text = '';
   tg.sendText = async (s) => { text = s; };
   await tg.sendAd(AD, 'Meine Suche', TPL);
-  check('Link heißt "Text kopieren & App"', () => assert.ok(text.includes('Text kopieren &amp; App')));
+  check('Link heißt "Text kopieren & in der App oeffnen"', () =>
+    assert.ok(text.includes('Text kopieren &amp; in der App oeffnen')));
   check('Brückenlink trägt m=', () => assert.ok(text.includes('m=Hallo')));
-  check('direkter Link bleibt daneben', () => assert.ok(text.includes(`href="${AD.url}"`)));
+  // Der Browser-Link ist weg: er fuehrte in Telegrams eingebauten Browser,
+  // also dorthin, wo man sich erst einloggen muss.
+  check('kein direkter Link daneben', () => assert.ok(!text.includes(`href="${AD.url}"`)));
 }
 {
   const tg = new Telegram('t', '1', { bridgeBaseUrl: SITE });
   let text = '';
   tg.sendText = async (s) => { text = s; };
   await tg.sendAd(AD, 'Meine Suche', null);
-  check('ohne Vorlage heißt der Link wieder "In der App"', () =>
-    assert.ok(text.includes('>In der App</a>')));
+  check('ohne Vorlage heißt der Link wieder "In der App oeffnen"', () =>
+    assert.ok(text.includes('>In der App oeffnen</a>')));
 }
 
 console.log('\n== Konfiguration ==');

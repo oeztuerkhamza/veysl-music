@@ -68,6 +68,26 @@ export function renderMessage(template, ad) {
   return text.trim() || null;
 }
 
+/**
+ * Wie alt war die Anzeige, als die Meldung rausging?
+ *
+ * Das ist die einzige Zahl, die beim Tempo weiterhilft. Steht da "20 s", ist
+ * der Watcher schnell und die Konkurrenz einfach frueher dran gewesen; steht
+ * da jedes Mal "2 min", ist der Takt zu lang und ein kuerzerer bringt wirklich
+ * etwas. Ohne die Zahl dreht man blind am Takt und provoziert nur eine Sperre.
+ *
+ * Kleinanzeigen gibt die Einstellzeit nur minutengenau aus — die Angabe ist
+ * also auf etwa eine Minute genau, und das steht bewusst nicht als
+ * Nachkommastelle da.
+ */
+export function describeAge(postedAtMs, now = Date.now()) {
+  if (!postedAtMs) return null;
+  const seconds = Math.round((now - postedAtMs) / 1000);
+  if (seconds < 0 || seconds > 3600) return null;
+  if (seconds < 90) return `${seconds} s alt`;
+  return `${Math.round(seconds / 60)} min alt`;
+}
+
 export class Telegram {
   #token;
   #chatId;
@@ -120,7 +140,12 @@ export class Telegram {
     if (slot > now) await new Promise((r) => setTimeout(r, slot - now));
   }
 
-  async sendText(text, { buttons, forceReply } = {}) {
+  /**
+   * `chatId` schickt die Antwort an einen anderen erlaubten Chat statt an den
+   * Besitzer — ein Helfer bekommt die Antwort auf seinen eigenen Befehl dort,
+   * wo er ihn getippt hat. Ohne Angabe geht alles an den Besitzer.
+   */
+  async sendText(text, { buttons, forceReply, chatId } = {}) {
     await this.#throttle();
     // `force_reply` oeffnet das Eingabefeld mit Zitat. Nur so laesst sich eine
     // Antwort spaeter der richtigen Suche zuordnen — Telegram-Tasten koennen
@@ -132,7 +157,7 @@ export class Telegram {
         : null;
 
     return this.#call('sendMessage', {
-      chat_id: this.#chatId,
+      chat_id: String(chatId ?? this.#chatId),
       text,
       parse_mode: 'HTML',
       // Die Vorschau wuerde die Nachricht um ein grosses Bild verlaengern und
@@ -149,18 +174,24 @@ export class Telegram {
     const facts = [];
     if (ad.price) facts.push(`💶 ${escapeHtml(ad.price)}`);
     if (ad.location) facts.push(`📍 ${escapeHtml(ad.location)}`);
-    if (ad.postedAt) facts.push(`🕒 ${escapeHtml(ad.postedAt)}`);
+    // Lieber das Alter als die Uhrzeit: "vor 25 s" beantwortet die Frage, die
+    // man sich bei einer frischen Anzeige wirklich stellt, "14:34" nicht.
+    const age = describeAge(ad.postedAtMs);
+    if (age) facts.push(`⏱ ${escapeHtml(age)}`);
+    else if (ad.postedAt) facts.push(`🕒 ${escapeHtml(ad.postedAt)}`);
     facts.push(ad.isCommercial ? '🏪 Gewerblich' : '👤 Privat');
     if (ad.shipping) facts.push('📦 Versand');
     lines.push(facts.join('  ·  '));
 
-    // Der App-Link zuerst: wer eine frische Anzeige sieht, will schreiben,
-    // und das geht in der App mit einem Tipp statt ueber einen Login im
-    // Browser. Der https-Link bleibt daneben stehen — er ist der einzige, der
-    // sicher irgendwo landet, falls die App nicht installiert ist.
-    // Der Brueckenlink zuerst: er landet in der App, und dort ist Schreiben ein
-    // Tipp statt eines Logins. Der direkte Link bleibt daneben stehen — faellt
-    // die eigene Website aus, ist er der einzige, der noch irgendwo hinfuehrt.
+    // Nur der Brueckenlink: er landet in der App, und dort ist Schreiben ein
+    // Tipp statt eines Logins. Der zweite Link daneben fuehrte in Telegrams
+    // eingebauten Browser — also genau dorthin, wo man sich erst einloggen
+    // muss. Ein Fehltipp kostete damit die schnelle Antwort, um die es hier
+    // geht.
+    //
+    // Ohne konfigurierte `bridgeBaseUrl` gibt es keine Bruecke; dann bleibt
+    // der gewoehnliche Link als einziger Weg zur Anzeige stehen — eine Meldung
+    // ganz ohne Link waere nutzlos.
     const message = renderMessage(messageTemplate, ad);
     const bridge = bridgeLink(ad.url, this.#bridgeBaseUrl, ad.title, message);
     const links = [];
@@ -168,10 +199,11 @@ export class Telegram {
       // `&amp;` statt `&`: im HTML-Modus lehnt Telegram eine Nachricht mit
       // nacktem Ampersand mit "can't parse entities" ab — und zwar die ganze,
       // nicht nur den Link.
-      const label = message ? 'Text kopieren &amp; App' : 'In der App';
+      const label = message ? 'Text kopieren &amp; in der App oeffnen' : 'In der App oeffnen';
       links.push(`📱 <a href="${escapeHtml(bridge)}">${label}</a>`);
+    } else {
+      links.push(`🔗 <a href="${escapeHtml(ad.url)}">Anzeige oeffnen</a>`);
     }
-    links.push(`🌐 <a href="${escapeHtml(ad.url)}">${bridge ? 'Browser' : 'Anzeige oeffnen'}</a>`);
 
     lines.push('', links.join('  ·  '));
     lines.push(`<i>${escapeHtml(watchLabel)}</i>`);
@@ -215,9 +247,9 @@ export class Telegram {
   }
 
   /** Ersetzt den Text einer bereits gesendeten Nachricht. */
-  async editText(messageId, text, { buttons } = {}) {
+  async editText(messageId, text, { buttons, chatId } = {}) {
     return this.#call('editMessageText', {
-      chat_id: this.#chatId,
+      chat_id: String(chatId ?? this.#chatId),
       message_id: messageId,
       text,
       parse_mode: 'HTML',
@@ -245,4 +277,25 @@ export class Telegram {
     }
     return [...chats.values()];
   }
+}
+
+/**
+ * Legt einen Chat als Antwortziel fest.
+ *
+ * Befehle duerfen nicht nur vom Besitzer kommen, und die Antwort gehoert
+ * dorthin, wo der Befehl getippt wurde. Statt jeden einzelnen Aufruf in
+ * commands.mjs um einen Parameter zu erweitern — und dabei einen zu vergessen,
+ * der dann still im falschen Chat landet — wird hier einmal umgehaengt.
+ *
+ * `sendAd` fehlt mit Absicht: die Anzeigen-Alarme gehen immer nur an den
+ * Besitzer.
+ */
+export function replyTo(telegram, chatId) {
+  if (chatId == null) return telegram;
+  return {
+    chatId: telegram.chatId,
+    sendText: (text, options = {}) => telegram.sendText(text, { ...options, chatId }),
+    editText: (id, text, options = {}) => telegram.editText(id, text, { ...options, chatId }),
+    answerCallback: (id, text) => telegram.answerCallback(id, text),
+  };
 }

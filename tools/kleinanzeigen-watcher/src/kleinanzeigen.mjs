@@ -13,6 +13,34 @@ const UA =
 
 const BASE = 'https://www.kleinanzeigen.de';
 
+/**
+ * Rechnet `sortingDate` in einen Zeitpunkt um.
+ *
+ * Die Seite schreibt "Heute, 14:34", "Gestern, 09:12" oder "18.08.2026". Die
+ * Uhrzeit ist minutengenau — das reicht, um die eigentliche Frage zu
+ * beantworten: lag die Anzeige schon eine Weile herum, als der Watcher sie
+ * fand, oder war er innerhalb einer Minute dran? Ohne diese Zahl bleibt beim
+ * Tempo nur Raten, und dann dreht man am falschen Knopf.
+ *
+ * Gibt null zurueck, wenn nichts Brauchbares dasteht — ein reines Datum ohne
+ * Uhrzeit ist fuer diese Frage wertlos.
+ */
+export function parsePostedAt(raw, now = new Date()) {
+  const text = String(raw ?? '').trim();
+  const match = text.match(/^(Heute|Gestern),\s*(\d{1,2}):(\d{2})$/i);
+  if (!match) return null;
+
+  const [, tag, stunde, minute] = match;
+  const d = new Date(now);
+  d.setHours(Number(stunde), Number(minute), 0, 0);
+  if (/gestern/i.test(tag)) d.setDate(d.getDate() - 1);
+
+  // Kurz nach Mitternacht kann "Heute, 23:58" von gestern stammen. Ein
+  // Zeitpunkt in der Zukunft ist immer ein solcher Ueberlauf.
+  if (d.getTime() > now.getTime() + 60_000) d.setDate(d.getDate() - 1);
+  return d.getTime();
+}
+
 /** Fehler, der ein wahrscheinliches Rate-Limit vom Netzwerkfehler trennt. */
 export class BlockedError extends Error {
   constructor(status) {
@@ -104,6 +132,7 @@ function parseFromAstroIsland(html) {
       price: String(ad.price ?? '').trim(),
       location: [ad.locationName, ad.parentLocationName].filter(Boolean).join(', '),
       postedAt: String(ad.sortingDate ?? '').trim(),
+      postedAtMs: parsePostedAt(ad.sortingDate),
       // `topAd` sind bezahlte Platzierungen. Sie stehen dauerhaft oben und sind
       // in aller Regel alt — fuer "wer schreibt zuerst" also wertlos.
       isTopAd: Boolean(ad.topAd),
@@ -152,6 +181,7 @@ function parseFromArticles(html) {
       price,
       location,
       postedAt: '',
+      postedAtMs: null,
       isTopAd: false,
       isCommercial: /class="[^"]*bg-accent[^"]*">PRO</.test(body),
       shipping: body.includes('data-dhl-promotion'),

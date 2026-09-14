@@ -55,8 +55,8 @@ console.log('\n== Nachricht mit Brücke ==');
   tg.sendText = async (s) => { text = s; };
   await tg.sendAd(ad, 'Meine Suche');
   check('Brückenlink enthalten', () => assert.ok(text.includes('dj-veys.de/api/ka/'), text));
-  check('direkter Link daneben', () => assert.ok(text.includes(`href="${AD}"`)));
-  check('App zuerst', () => assert.ok(text.indexOf('In der App') < text.indexOf('Browser')));
+  check('kein Browser-Link daneben', () => assert.ok(!text.includes(`href="${AD}"`)));
+  check('kein Browser-Link ueberhaupt', () => assert.ok(!text.includes('Browser')));
   check('Titel und Preis weiterhin da', () =>
     assert.ok(text.includes('Bulls Rad') && text.includes('200 €')));
 }

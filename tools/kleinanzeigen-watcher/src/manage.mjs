@@ -7,6 +7,7 @@
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { normalizeSearchUrl } from './kleinanzeigen.mjs';
+import { DEFAULT_RIGHTS, RIGHTS } from './users.mjs';
 
 const CHAT_ID_PLACEHOLDER = 'HIER_DEINE_CHAT_ID';
 
@@ -87,7 +88,7 @@ function deriveLabel(url) {
 }
 
 /** Kleinster erlaubter Abstand — dieselbe Grenze, die loadConfig durchsetzt. */
-export const MIN_INTERVAL_SECONDS = 30;
+export const MIN_INTERVAL_SECONDS = 15;
 
 /**
  * Prueft den Abstand schon beim Anlegen.
@@ -207,4 +208,94 @@ export async function updateWatch(path, id, patch) {
 
   await writeRaw(path, config);
   return watch;
+}
+
+// --- Erlaubte Nutzer -------------------------------------------------------
+//
+// Dieselbe Datei, derselbe Stil: `telegram.users` ist eine Liste, die auch von
+// Hand lesbar bleibt. Der Besitzer (`telegram.chatId`) steht bewusst nicht
+// darin — er ergibt sich aus der Konfiguration und kann sich nicht selbst
+// aussperren.
+
+function readUsersRaw(config) {
+  const list = config.telegram?.users;
+  return Array.isArray(list) ? list.map(normalizeStoredUser).filter(Boolean) : [];
+}
+
+function normalizeStoredUser(raw) {
+  if (typeof raw === 'number' || typeof raw === 'string') {
+    return { id: String(raw).trim(), rights: [...DEFAULT_RIGHTS] };
+  }
+  if (!raw || typeof raw !== 'object' || !raw.id) return null;
+  const rights = Array.isArray(raw.rights)
+    ? RIGHTS.filter((r) => raw.rights.includes(r))
+    : [...DEFAULT_RIGHTS];
+  return {
+    id: String(raw.id).trim(),
+    ...(raw.name ? { name: String(raw.name).trim() } : {}),
+    rights,
+  };
+}
+
+export async function listUsers(path) {
+  return readUsersRaw(await readRaw(path));
+}
+
+function assertNotOwner(config, id) {
+  if (String(config.telegram?.chatId ?? '') === id) {
+    throw new Error('Das bist du selbst — du hast ohnehin alle Rechte.');
+  }
+}
+
+/** Nimmt eine Telegram-Kennung in die Erlaubnisliste auf. */
+export async function addUser(path, rawId, { name = null, rights = DEFAULT_RIGHTS } = {}) {
+  const id = String(rawId ?? '').trim();
+  if (!/^-?\d+$/.test(id)) {
+    throw new Error(`"${id}" ist keine Telegram-Kennung. Sie besteht nur aus Ziffern.`);
+  }
+
+  const config = await readRaw(path);
+  assertNotOwner(config, id);
+
+  const users = readUsersRaw(config);
+  if (users.some((u) => u.id === id)) throw new Error(`${id} steht schon auf der Liste.`);
+
+  const user = { id, ...(name ? { name } : {}), rights: RIGHTS.filter((r) => rights.includes(r)) };
+  users.push(user);
+  config.telegram ??= {};
+  config.telegram.users = users;
+  await writeRaw(path, config);
+  return user;
+}
+
+/** Nimmt eine Kennung wieder von der Liste. */
+export async function removeUser(path, rawId) {
+  const id = String(rawId ?? '').trim();
+  const config = await readRaw(path);
+  const users = readUsersRaw(config);
+  const index = users.findIndex((u) => u.id === id);
+  if (index === -1) throw new Error(`${id} steht nicht auf der Liste.`);
+
+  const [removed] = users.splice(index, 1);
+  config.telegram ??= {};
+  config.telegram.users = users;
+  await writeRaw(path, config);
+  return removed;
+}
+
+/** Setzt die Rechte eines bereits eingetragenen Nutzers neu. */
+export async function setUserRights(path, rawId, rights) {
+  const id = String(rawId ?? '').trim();
+  const config = await readRaw(path);
+  assertNotOwner(config, id);
+
+  const users = readUsersRaw(config);
+  const user = users.find((u) => u.id === id);
+  if (!user) throw new Error(`${id} steht nicht auf der Liste. Erst aufnehmen: /user add ${id}`);
+
+  user.rights = RIGHTS.filter((r) => rights.includes(r));
+  config.telegram ??= {};
+  config.telegram.users = users;
+  await writeRaw(path, config);
+  return user;
 }

@@ -347,7 +347,10 @@ async function scheduler(ctx, abortSignal) {
       });
     }
 
-    await sleep(1000);
+    // Viermal je Sekunde statt einmal: bei einem 15-s-Takt war die
+    // Schlafphase selbst fuer bis zu einer Sekunde Rueckstand gut. Kosten hat
+    // das keine — abgefragt wird weiterhin nur, was faellig ist.
+    await sleep(250);
   }
 }
 
