@@ -65,21 +65,51 @@ export function stubTelegramApi() {
   return restore;
 }
 
-/** Kleiner Zaehler, damit jede Datei dasselbe Ergebnisformat ausgibt. */
+/**
+ * Kleiner Zaehler, damit jede Datei dasselbe Ergebnisformat ausgibt.
+ *
+ * Nimmt auch asynchrone Pruefungen an. Das ist keine Bequemlichkeit: eine
+ * `async`-Pruefung, die niemand abwartet, gilt sonst als bestanden und die
+ * Ausnahme taucht viel spaeter als unbehandelte Zurueckweisung auf — ein Test,
+ * der gruen meldet und trotzdem nichts geprueft hat, ist schlimmer als keiner.
+ * `summary()` wartet deshalb auf alles Offene.
+ */
 export function createChecker() {
   let pass = 0;
   const fail = [];
-  const check = (name, fn) => {
-    try {
-      fn();
-      pass++;
-      console.log('  ok   ' + name);
-    } catch (err) {
+  const offen = [];
+
+  const merken = (name, err) => {
+    if (err) {
       fail.push(name);
       console.log('  FAIL ' + name + ' -> ' + err.message);
+    } else {
+      pass++;
+      console.log('  ok   ' + name);
     }
   };
-  check.summary = () => {
+
+  const check = (name, fn) => {
+    let ergebnis;
+    try {
+      ergebnis = fn();
+    } catch (err) {
+      merken(name, err);
+      return;
+    }
+    if (ergebnis && typeof ergebnis.then === 'function') {
+      const p = ergebnis.then(
+        () => merken(name, null),
+        (err) => merken(name, err),
+      );
+      offen.push(p);
+      return p;
+    }
+    merken(name, null);
+  };
+
+  check.summary = async () => {
+    await Promise.all(offen);
     console.log(`\n=========  ${pass} ok, ${fail.length} fehlgeschlagen  =========`);
     if (fail.length) {
       console.log(fail.map((f) => '  - ' + f).join('\n'));

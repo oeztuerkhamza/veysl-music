@@ -120,8 +120,17 @@ export class Telegram {
     if (slot > now) await new Promise((r) => setTimeout(r, slot - now));
   }
 
-  async sendText(text, { buttons } = {}) {
+  async sendText(text, { buttons, forceReply } = {}) {
     await this.#throttle();
+    // `force_reply` oeffnet das Eingabefeld mit Zitat. Nur so laesst sich eine
+    // Antwort spaeter der richtigen Suche zuordnen — Telegram-Tasten koennen
+    // keinen freien Text einsammeln.
+    const markup = buttons
+      ? { inline_keyboard: buttons }
+      : forceReply
+        ? { force_reply: true, input_field_placeholder: 'Text für die Erstnachricht' }
+        : null;
+
     return this.#call('sendMessage', {
       chat_id: this.#chatId,
       text,
@@ -129,7 +138,7 @@ export class Telegram {
       // Die Vorschau wuerde die Nachricht um ein grosses Bild verlaengern und
       // das Antippen des Links nach unten schieben.
       link_preview_options: { is_disabled: true },
-      ...(buttons ? { reply_markup: { inline_keyboard: buttons } } : {}),
+      ...(markup ? { reply_markup: markup } : {}),
     });
   }
 

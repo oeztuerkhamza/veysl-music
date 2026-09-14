@@ -76,4 +76,4 @@ console.log('\n== Wenn die Seite nichts Brauchbares liefert ==');
   check('echte Nulltreffer sind kein Fehler', () => assert.deepEqual(ads, []));
 }
 
-check.summary();
+await check.summary();
