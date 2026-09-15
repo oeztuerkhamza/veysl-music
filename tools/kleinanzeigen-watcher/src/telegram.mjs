@@ -88,11 +88,59 @@ export function describeAge(postedAtMs, now = Date.now()) {
   return `${Math.round(seconds / 60)} min alt`;
 }
 
+/**
+ * Zerlegt den Rueckstand in die beiden Teile, die man auseinanderhalten muss.
+ *
+ * Der Trick steckt im Abstand zur vorigen Runde: die Anzeige stand damals noch
+ * nicht auf Seite 1, sonst waere sie schon gemeldet worden. Sie ist also
+ * irgendwann zwischen der vorigen Runde und jetzt dort aufgetaucht. Daraus
+ * folgt beides:
+ *
+ *   - Der eigene Takt kostet hoechstens den Rundenabstand.
+ *   - Alles darueber hinaus lag die Anzeige schon eingestellt herum, ohne auf
+ *     Seite 1 zu erscheinen — das ist Kleinanzeigens eigene Verzoegerung, und
+ *     gegen die hilft kein kuerzerer Takt.
+ *
+ * Diese Unterscheidung ist der ganze Punkt: "3 min alt" allein verleitet dazu,
+ * am Takt zu drehen, obwohl davon vielleicht nur 60 s ueberhaupt dem Takt
+ * gehoeren und der Rest ohnehin nicht einzuholen ist.
+ */
+export function describeDelay(ageMs, pollGapMs) {
+  if (!Number.isFinite(ageMs) || ageMs < 0) return null;
+  // Ohne bekannten Rundenabstand (erste Runde nach einem Start) laesst sich
+  // nichts aufteilen — dann lieber nichts behaupten.
+  if (!Number.isFinite(pollGapMs) || pollGapMs <= 0) return null;
+
+  const seiteMs = Math.max(0, ageMs - pollGapMs);
+  const taktMs = Math.min(ageMs, pollGapMs);
+
+  // Unter einer halben Minute ist die Aufteilung Rauschen: die Einstellzeit
+  // kommt nur minutengenau von der Seite.
+  if (seiteMs < 30_000) return { seiteMs: 0, taktMs, text: null };
+
+  return {
+    seiteMs,
+    taktMs,
+    text:
+      `🐢 ${kurz(seiteMs)} davon lag sie schon eingestellt, bevor sie auf ` +
+      `Seite 1 auftauchte — der eigene Takt kostete hoechstens ${kurz(taktMs)}.`,
+  };
+}
+
+/** Kurze Dauer fuer die Anzeige: Sekunden bis anderthalb Minuten, danach Minuten. */
+function kurz(ms) {
+  const s = Math.round(ms / 1000);
+  return s < 90 ? `${s} s` : `${Math.round(s / 60)} min`;
+}
+
 export class Telegram {
   #token;
   #chatId;
   #bridgeBaseUrl;
   #nextSlot = 0;
+  #queue = [];
+  #draining = false;
+  #seq = 0;
 
   constructor(token, chatId, { bridgeBaseUrl = null } = {}) {
     if (!token) throw new Error('TELEGRAM_BOT_TOKEN fehlt.');
@@ -121,23 +169,51 @@ export class Telegram {
   }
 
   /**
-   * Haelt den Mindestabstand zwischen zwei Nachrichten ein.
+   * Reiht eine Sendung ein und wartet, bis sie dran ist.
    *
-   * Der Platz wird VOR dem Warten reserviert. Vorher wurde er danach gesetzt,
-   * und damit half die Bremse ausgerechnet dann nicht, wenn man sie braucht:
-   * mehrere gleichzeitige Sender lasen alle denselben Wert, warteten alle
-   * gleich lang und feuerten dann zusammen los. Nachgemessen gingen von fuenf
-   * parallelen Sendungen vier in derselben Millisekunde raus — worauf Telegram
-   * mit 429 antwortet und die Meldung eben doch verspaetet ankommt.
+   * Telegram nimmt rund eine Nachricht je Sekunde in denselben Chat an; wer
+   * schneller sendet, kassiert 429 und verliert genau die Zeit, um die es hier
+   * geht. Der Abstand muss also eingehalten werden — die Frage ist nur, wer
+   * zuerst drankommt.
    *
-   * Genau dieser Fall ist der Normalfall: mehrere neue Anzeigen in einer Runde,
-   * oder eine Meldung, die mit der Antwort auf /list zusammenfaellt.
+   * Und das ist nicht die Reihenfolge des Eintreffens. Wer /list schickt,
+   * loest zehn Nachrichten aus; faellt in genau dieses Fenster eine neue
+   * Anzeige, stand sie vorher hinten an und kam gut zehn Sekunden zu spaet.
+   * Eine Antwort auf einen Befehl kann warten, eine frische Anzeige nicht:
+   * `prio` 0 sind die Alarme, 1 alles andere, und bei gleicher Stufe gilt
+   * weiter, wer zuerst kam.
+   *
+   * Der Platz wird VOR dem Warten belegt (`#nextSlot` steht fest, bevor
+   * jemand schlaeft). Vorher wurde er danach gesetzt, und damit half die Bremse
+   * ausgerechnet dann nicht, wenn man sie braucht: mehrere gleichzeitige Sender
+   * lasen denselben Wert, warteten gleich lang und feuerten zusammen los.
    */
-  async #throttle() {
-    const now = Date.now();
-    const slot = Math.max(now, this.#nextSlot);
-    this.#nextSlot = slot + MIN_GAP_MS;
-    if (slot > now) await new Promise((r) => setTimeout(r, slot - now));
+  #slot(prio) {
+    return new Promise((resolve) => {
+      this.#queue.push({ prio, seq: this.#seq++, resolve });
+      // Klein halten statt sortieren waere schneller, aber die Schlange ist
+      // hoechstens ein paar Dutzend lang — Lesbarkeit gewinnt hier.
+      this.#queue.sort((a, b) => a.prio - b.prio || a.seq - b.seq);
+      this.#drain();
+    });
+  }
+
+  async #drain() {
+    if (this.#draining) return;
+    this.#draining = true;
+    try {
+      while (this.#queue.length > 0) {
+        const wait = this.#nextSlot - Date.now();
+        if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+        // Erst nach dem Warten herausnehmen: eine Anzeige, die waehrend der
+        // Wartezeit dazukommt, soll sich noch vordraengeln duerfen.
+        const next = this.#queue.shift();
+        this.#nextSlot = Date.now() + MIN_GAP_MS;
+        next.resolve();
+      }
+    } finally {
+      this.#draining = false;
+    }
   }
 
   /**
@@ -145,8 +221,8 @@ export class Telegram {
    * Besitzer — ein Helfer bekommt die Antwort auf seinen eigenen Befehl dort,
    * wo er ihn getippt hat. Ohne Angabe geht alles an den Besitzer.
    */
-  async sendText(text, { buttons, forceReply, chatId } = {}) {
-    await this.#throttle();
+  async sendText(text, { buttons, forceReply, chatId, prio = 1 } = {}) {
+    await this.#slot(prio);
     // `force_reply` oeffnet das Eingabefeld mit Zitat. Nur so laesst sich eine
     // Antwort spaeter der richtigen Suche zuordnen — Telegram-Tasten koennen
     // keinen freien Text einsammeln.
@@ -168,7 +244,7 @@ export class Telegram {
   }
 
   /** Formatiert eine Anzeige als Alarmnachricht. */
-  async sendAd(ad, watchLabel, messageTemplate = null) {
+  async sendAd(ad, watchLabel, messageTemplate = null, { pollGapMs = null } = {}) {
     const lines = [`🆕 <b>${escapeHtml(ad.title || 'Ohne Titel')}</b>`];
 
     const facts = [];
@@ -206,9 +282,16 @@ export class Telegram {
     }
 
     lines.push('', links.join('  ·  '));
+
+    // Nur wenn die Seite selbst gebremst hat. Bei einer Anzeige, die innerhalb
+    // eines Takts ankam, waere die Zeile blosses Rauschen.
+    const delay = describeDelay(Date.now() - (ad.postedAtMs ?? NaN), pollGapMs);
+    if (delay?.text) lines.push(`<i>${escapeHtml(delay.text)}</i>`);
+
     lines.push(`<i>${escapeHtml(watchLabel)}</i>`);
 
-    return this.sendText(lines.join('\n'));
+    // Stufe 0: eine frische Anzeige draengelt sich vor jede Befehlsantwort.
+    return this.sendText(lines.join('\n'), { prio: 0 });
   }
 
   /**

@@ -88,7 +88,7 @@ function deriveLabel(url) {
 }
 
 /** Kleinster erlaubter Abstand — dieselbe Grenze, die loadConfig durchsetzt. */
-export const MIN_INTERVAL_SECONDS = 15;
+export const MIN_INTERVAL_SECONDS = 10;
 
 /**
  * Prueft den Abstand schon beim Anlegen.

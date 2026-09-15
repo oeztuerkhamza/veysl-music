@@ -7,13 +7,19 @@ import { normalizeSearchUrl } from './kleinanzeigen.mjs';
 // Grenze steigt das Risiko einer Captcha-Sperre spuerbar, und eine Sperre
 // kostet mehr Zeit, als der schnellere Takt einbringt.
 //
-// 15 s statt frueher 30 s, weil die Rechnung fuer "wer schreibt zuerst" an der
-// halben Taktzeit haengt: im Mittel vergeht genau die Haelfte, bis eine neue
-// Anzeige ueberhaupt gesehen wird. 60 s Takt heisst also 30 s Rueckstand — vier
-// Leute vor einem. Die Sperre bleibt die Gegenrechnung; sie ist nicht
-// endgueltig (der Watcher verdoppelt den Abstand und meldet sich), aber 15 s
-// gehoeren einer einzelnen Suche, die einem wirklich wichtig ist, nicht allen.
-const MIN_INTERVAL_SECONDS = 15;
+// 10 s ist die Untergrenze, die dieser Watcher zulaesst. Die Rechnung fuer
+// "wer schreibt zuerst" haengt an der halben Taktzeit: im Mittel vergeht genau
+// die Haelfte, bis eine neue Anzeige ueberhaupt gesehen wird. 60 s Takt heisst
+// also 30 s Rueckstand — vier Leute vor einem; 10 s heissen 5 s.
+//
+// Darunter aufzumachen waere unehrlich: 10 s sind bereits 360 Abrufe je Stunde
+// und Suche, und die Gegenrechnung ist die Captcha-Sperre. Sie ist nicht
+// endgueltig — der Watcher verdoppelt den Abstand, meldet sich und kommt von
+// selbst zurueck — aber waehrend sie laeuft, sieht er gar nichts. Ein Takt
+// unter 10 s verschiebt das Risiko weiter, ohne dass am Rueckstand noch viel
+// zu holen waere: von 5 s auf 2,5 s Mittel gewinnt niemand ein Rennen, das
+// ohnehin die Seite selbst entscheidet (siehe describeDelay).
+const MIN_INTERVAL_SECONDS = 10;
 
 const DEFAULTS = {
   intervalSeconds: 60,

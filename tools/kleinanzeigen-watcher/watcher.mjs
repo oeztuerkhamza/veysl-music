@@ -13,7 +13,7 @@
 // Siehe README.md fuer die Einrichtung.
 
 import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { existsSync } from 'node:fs';
 import { writeFile } from 'node:fs/promises';
 
@@ -115,11 +115,19 @@ function loadEnvFile() {
  * Eine Abfragerunde fuer eine Suche.
  * Gibt die Anzahl gemeldeter Anzeigen zurueck.
  */
-async function runCycle(watch, { state, telegram, config, dryRun }) {
+export async function runCycle(watch, { state, telegram, config, dryRun, runtime }) {
+  // Abstand zur vorigen Runde, gemessen statt gerechnet: er enthaelt damit
+  // auch eine Verdopplung durch den Backoff und einen langsamen Abruf. Genau
+  // dieser Wert trennt spaeter den eigenen Takt von der Verzoegerung der
+  // Seite (siehe describeDelay).
+  const begonnenAm = Date.now();
+  const pollGapMs = runtime?.lastFetchAt ? begonnenAm - runtime.lastFetchAt : null;
+
   const ads = await fetchAds(watch.url, {
     timeoutMs: config.requestTimeoutMs,
     userAgent: config.userAgent,
   });
+  if (runtime) runtime.lastFetchAt = begonnenAm;
 
   // Erster Lauf: der vorhandene Bestand ist nicht "neu", sondern Vergangenheit.
   // Ohne diesen Zweig kaeme beim Start die halbe Suchseite als Alarm an.
@@ -134,12 +142,28 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
   }
 
   const fresh = ads.filter((ad) => !state.hasSeen(watch.id, ad.id));
+  // Seitenreihenfolge ist neueste zuerst (die URL sortiert nach Datum).
   const hits = fresh.filter((ad) => matchesFilters(ad, watch.filters));
-  // Aelteste zuerst, damit die Reihenfolge im Chat der Realitaet entspricht.
-  hits.reverse();
 
+  // Beim Rundenlimit die NEUESTEN behalten. Vorher wurde erst umgedreht und
+  // dann abgeschnitten — damit fielen ausgerechnet die frischesten Anzeigen
+  // weg, also genau die, bei denen man noch eine Chance hat, der Erste zu
+  // sein. Uebrig blieben die aeltesten, bei denen laengst jemand geschrieben
+  // hat.
   const capped = hits.slice(0, watch.maxAlertsPerCycle);
   const dropped = hits.length - capped.length;
+
+  // Bewusst NICHT umgedreht: die Seitenreihenfolge ist neueste zuerst, und
+  // genau so gehen sie raus.
+  //
+  // Telegram nimmt rund eine Nachricht je Sekunde in denselben Chat an; bei
+  // fuenf Treffern in einer Runde liegen zwischen der ersten und der letzten
+  // also gut vier Sekunden. Vorher standen sie aelteste zuerst — "damit die
+  // Reihenfolge im Chat der Wirklichkeit entspricht" —, womit ausgerechnet die
+  // frischeste Anzeige als letzte ankam. Das ist die eine, bei der Sekunden
+  // noch ueber den Zuschlag entscheiden; die aelteste ist ohnehin verloren.
+  // Die schoenere Chronologie kostete also genau dort Zeit, wo sie am meisten
+  // wert ist.
 
   // Alles, was diese Runde ohnehin nicht verschickt, wird sofort gemerkt: die
   // schon bekannten, die Ausgefilterten und die ueber dem Rundenlimit. Nur die
@@ -155,6 +179,7 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
   );
 
   let gesendet = 0;
+  let ersteMeldungNach = null;
   for (const ad of capped) {
     if (dryRun) {
       log(`  [dry-run] ${ad.price || '—'} · ${ad.title} · ${ad.url}`);
@@ -165,7 +190,10 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
 
     const key = `${watch.id}:${ad.id}`;
     try {
-      await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate);
+      await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate, {
+        pollGapMs,
+      });
+      ersteMeldungNach ??= Date.now() - begonnenAm;
       state.remember(watch.id, [ad.id]);
       sendFailures.delete(key);
       gesendet++;
@@ -193,7 +221,10 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
   await state.flush();
 
   if (fresh.length > 0) {
-    log(`${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter, ${gesendet} gesendet.`);
+    // Die Zahl am Ende ist der eigene Anteil, den man wirklich beeinflussen
+    // kann: vom Beginn des Abrufs bis zur ersten abgeschickten Meldung.
+    const eigen = ersteMeldungNach === null ? '' : `, erste Meldung nach ${ersteMeldungNach} ms`;
+    log(`${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter, ${gesendet} gesendet${eigen}.`);
   }
 
   // Waren ALLE Anzeigen der Seite neu, ist die Seite zwischen zwei Runden
@@ -209,7 +240,7 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
  */
 async function tickWatch(watch, runtime, ctx) {
   try {
-    const { uebergelaufen } = await runCycle(watch, ctx);
+    const { uebergelaufen } = await runCycle(watch, { ...ctx, runtime });
     runtime.lastSuccessAt = Date.now();
 
     // Einmal warnen, nicht bei jeder Runde: bei einer zu weit gefassten Suche
@@ -560,7 +591,12 @@ async function main() {
   await Promise.all(tasks);
 }
 
-main().catch((err) => {
-  console.error(`\nFehler: ${err.message}`);
-  process.exit(1);
-});
+// Nur starten, wenn diese Datei wirklich aufgerufen wurde. Ohne den Vergleich
+// liefe beim blossen Importieren aus einem Test der ganze Watcher los —
+// inklusive Telegram-Long-Polling, das nie zurueckkommt.
+if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
+  main().catch((err) => {
+    console.error(`\nFehler: ${err.message}`);
+    process.exit(1);
+  });
+}
