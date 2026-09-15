@@ -123,11 +123,30 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
   const begonnenAm = Date.now();
   const pollGapMs = runtime?.lastFetchAt ? begonnenAm - runtime.lastFetchAt : null;
 
+  let meta = null;
   const ads = await fetchAds(watch.url, {
     timeoutMs: config.requestTimeoutMs,
     userAgent: config.userAgent,
+    cacheBuster: config.cacheBuster,
+    onMeta: (m) => {
+      meta = m;
+    },
   });
   if (runtime) runtime.lastFetchAt = begonnenAm;
+
+  // Eine Seite aus dem Zwischenspeicher ist aelter als der Abruf. Diese
+  // Sekunden gehoeren weder dem eigenen Takt noch dem Index von
+  // Kleinanzeigen — ohne sie herauszurechnen wuerde die Meldung der Seite
+  // etwas anlasten, was in Wahrheit unsere eigene Leitung war.
+  const cacheMs = (meta?.ageSeconds ?? 0) * 1000;
+  if (meta && (meta.ageSeconds > 0 || runtime?.cacheGemeldet !== true)) {
+    if (runtime) runtime.cacheGemeldet = true;
+    log(
+      `${watch.label}: Abruf ${meta.dauerMs} ms` +
+        `, Seite ${meta.ageSeconds} s aus dem Zwischenspeicher` +
+        (meta.cacheStatus ? ` (${meta.cacheStatus})` : ''),
+    );
+  }
 
   // Erster Lauf: der vorhandene Bestand ist nicht "neu", sondern Vergangenheit.
   // Ohne diesen Zweig kaeme beim Start die halbe Suchseite als Alarm an.
@@ -143,7 +162,19 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
 
   const fresh = ads.filter((ad) => !state.hasSeen(watch.id, ad.id));
   // Seitenreihenfolge ist neueste zuerst (die URL sortiert nach Datum).
-  const hits = fresh.filter((ad) => matchesFilters(ad, watch.filters));
+  let hits = fresh.filter((ad) => matchesFilters(ad, watch.filters));
+
+  // Ueberschneiden sich zwei Suchen, faellt dieselbe Anzeige in beide — eine
+  // Anzeige "Bulls cube" trifft sowohl die Suche nach "bulls" als auch die
+  // nach "cube". Die zweite Nachricht sagt nichts Neues und haelt, weil
+  // Telegram nur etwa eine Nachricht je Sekunde annimmt, die naechste echte
+  // Meldung auf.
+  let doppelt = 0;
+  if (config.dedupeAcrossWatches !== false) {
+    const vorher = hits.length;
+    hits = hits.filter((ad) => !state.wurdeGemeldet(ad.id));
+    doppelt = vorher - hits.length;
+  }
 
   // Beim Rundenlimit die NEUESTEN behalten. Vorher wurde erst umgedreht und
   // dann abgeschnitten — damit fielen ausgerechnet die frischesten Anzeigen
@@ -192,9 +223,11 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
     try {
       await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate, {
         pollGapMs,
+        cacheMs,
       });
       ersteMeldungNach ??= Date.now() - begonnenAm;
       state.remember(watch.id, [ad.id]);
+      state.meldungGemerkt(ad.id);
       sendFailures.delete(key);
       gesendet++;
     } catch (err) {
@@ -224,7 +257,11 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
     // Die Zahl am Ende ist der eigene Anteil, den man wirklich beeinflussen
     // kann: vom Beginn des Abrufs bis zur ersten abgeschickten Meldung.
     const eigen = ersteMeldungNach === null ? '' : `, erste Meldung nach ${ersteMeldungNach} ms`;
-    log(`${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter, ${gesendet} gesendet${eigen}.`);
+    const dopplung = doppelt > 0 ? `, ${doppelt} schon ueber eine andere Suche gemeldet` : '';
+    log(
+      `${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter${dopplung}` +
+        `, ${gesendet} gesendet${eigen}.`,
+    );
   }
 
   // Waren ALLE Anzeigen der Seite neu, ist die Seite zwischen zwei Runden
@@ -238,7 +275,7 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
  * Fuehrt eine faellige Suche aus und bestimmt, wann sie das naechste Mal dran
  * ist. `runtime` haelt Sperr- und Laufzustand ueber die Runden hinweg fest.
  */
-async function tickWatch(watch, runtime, ctx) {
+export async function tickWatch(watch, runtime, ctx) {
   try {
     const { uebergelaufen } = await runCycle(watch, { ...ctx, runtime });
     runtime.lastSuccessAt = Date.now();
@@ -287,8 +324,23 @@ async function tickWatch(watch, runtime, ctx) {
     }
   }
 
+  // Der naechste Abruf haengt am Beginn des letzten Abrufs, nicht am Ende des
+  // Sendens.
+  //
+  // Vorher stand hier Date.now(), und das war zu diesem Zeitpunkt bereits um
+  // die Sendedauer weitergerueckt: Telegram nimmt rund eine Nachricht je
+  // Sekunde, fuenf Treffer kosten also gut vier Sekunden — und genau die kamen
+  // oben auf den Takt drauf. Aus 10 s wurden so 15 s, ausgerechnet in der
+  // Runde, in der gerade etwas los war. Das Senden darf den Takt nicht
+  // verschieben; es laeuft neben ihm her.
+  const anker = runtime.lastFetchAt ?? Date.now();
   const jitter = Math.random() * watch.jitterSeconds * 1000;
-  runtime.nextRunAt = Date.now() + watch.intervalSeconds * 1000 * runtime.backoff + jitter;
+  // Nie in die Vergangenheit: hat das Senden laenger gedauert als der Takt,
+  // ist sofort wieder dran — aber nicht rueckwirkend mehrfach.
+  runtime.nextRunAt = Math.max(
+    Date.now(),
+    anker + watch.intervalSeconds * 1000 * runtime.backoff + jitter,
+  );
 }
 
 /**

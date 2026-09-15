@@ -105,25 +105,34 @@ export function describeAge(postedAtMs, now = Date.now()) {
  * am Takt zu drehen, obwohl davon vielleicht nur 60 s ueberhaupt dem Takt
  * gehoeren und der Rest ohnehin nicht einzuholen ist.
  */
-export function describeDelay(ageMs, pollGapMs) {
+export function describeDelay(ageMs, pollGapMs, cacheMs = 0) {
   if (!Number.isFinite(ageMs) || ageMs < 0) return null;
   // Ohne bekannten Rundenabstand (erste Runde nach einem Start) laesst sich
   // nichts aufteilen — dann lieber nichts behaupten.
   if (!Number.isFinite(pollGapMs) || pollGapMs <= 0) return null;
 
-  const seiteMs = Math.max(0, ageMs - pollGapMs);
-  const taktMs = Math.min(ageMs, pollGapMs);
+  // War die Seite aus einem Zwischenspeicher, ist sie schon beim Empfang
+  // veraltet. Diese Sekunden gehoeren dem Zwischenspeicher, nicht dem Index
+  // von Kleinanzeigen — sonst bekommt die Seite die Schuld fuer etwas, das
+  // sich mit einem wechselnden Parameter beheben laesst.
+  const puffer = Math.min(Math.max(0, cacheMs || 0), ageMs);
+  const seiteMs = Math.max(0, ageMs - pollGapMs - puffer);
+  const taktMs = Math.min(ageMs - puffer, pollGapMs);
+
+  const puffertext = puffer >= 5000 ? `, ${kurz(puffer)} kamen aus dem Zwischenspeicher` : '';
 
   // Unter einer halben Minute ist die Aufteilung Rauschen: die Einstellzeit
   // kommt nur minutengenau von der Seite.
-  if (seiteMs < 30_000) return { seiteMs: 0, taktMs, text: null };
+  if (seiteMs < 30_000) return { seiteMs: 0, taktMs, puffer, text: null };
 
   return {
     seiteMs,
     taktMs,
+    puffer,
     text:
       `🐢 ${kurz(seiteMs)} davon lag sie schon eingestellt, bevor sie auf ` +
-      `Seite 1 auftauchte — der eigene Takt kostete hoechstens ${kurz(taktMs)}.`,
+      `Seite 1 auftauchte — der eigene Takt kostete hoechstens ${kurz(taktMs)}` +
+      `${puffertext}.`,
   };
 }
 
@@ -244,7 +253,7 @@ export class Telegram {
   }
 
   /** Formatiert eine Anzeige als Alarmnachricht. */
-  async sendAd(ad, watchLabel, messageTemplate = null, { pollGapMs = null } = {}) {
+  async sendAd(ad, watchLabel, messageTemplate = null, { pollGapMs = null, cacheMs = 0 } = {}) {
     const lines = [`🆕 <b>${escapeHtml(ad.title || 'Ohne Titel')}</b>`];
 
     const facts = [];
@@ -285,7 +294,7 @@ export class Telegram {
 
     // Nur wenn die Seite selbst gebremst hat. Bei einer Anzeige, die innerhalb
     // eines Takts ankam, waere die Zeile blosses Rauschen.
-    const delay = describeDelay(Date.now() - (ad.postedAtMs ?? NaN), pollGapMs);
+    const delay = describeDelay(Date.now() - (ad.postedAtMs ?? NaN), pollGapMs, cacheMs);
     if (delay?.text) lines.push(`<i>${escapeHtml(delay.text)}</i>`);
 
     lines.push(`<i>${escapeHtml(watchLabel)}</i>`);

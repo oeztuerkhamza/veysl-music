@@ -10,6 +10,17 @@ import { readFile, writeFile, rename, unlink } from 'node:fs/promises';
 // zurueck; der Deckel verhindert nur, dass die Datei jahrelang waechst.
 const MAX_IDS_PER_WATCH = 3000;
 
+// So lange gilt eine Anzeige als "schon gemeldet", auch fuer eine andere
+// Suche. Zwei Suchen ueberschneiden sich leicht — "bulls" und "cube" finden
+// beide eine Anzeige mit dem Titel "Bulls cube" —, und dann kam dieselbe
+// Anzeige zweimal an. Einmal ist genug: die zweite Nachricht sagt nichts Neues
+// und haelt, weil Telegram nur etwa eine Nachricht je Sekunde annimmt, die
+// naechste echte Meldung auf.
+//
+// Eine Stunde, weil eine Anzeige danach ohnehin kein Rennen mehr ist; laenger
+// aufzubewahren wuerde nur die Datei aufblaehen.
+const CROSS_WATCH_WINDOW_MS = 60 * 60 * 1000;
+
 export class State {
   #path;
   #data;
@@ -73,6 +84,32 @@ export class State {
 
   hasSeen(watchId, adId) {
     return Boolean(this.#data.watches[watchId]?.seen?.includes(adId));
+  }
+
+  /**
+   * Wurde diese Anzeige gerade erst gemeldet — egal, ueber welche Suche?
+   *
+   * Das Gedaechtnis der Suchen ist je Suche getrennt, und das ist richtig so:
+   * jede hat ihren eigenen Bestand. Fuer die Frage "habe ich das schon
+   * geschickt" ist die Suche aber egal.
+   */
+  wurdeGemeldet(adId, now = Date.now()) {
+    const zeit = this.#data.alerted?.[adId];
+    if (!zeit) return false;
+    return now - Date.parse(zeit) < CROSS_WATCH_WINDOW_MS;
+  }
+
+  /** Haelt fest, dass diese Anzeige rausgegangen ist. */
+  meldungGemerkt(adId, now = Date.now()) {
+    const alerted = (this.#data.alerted ??= {});
+    alerted[adId] = new Date(now).toISOString();
+
+    // Beim Schreiben gleich aufraeumen: sonst waechst der Block mit jeder
+    // Meldung weiter, und niemand kommt je auf die Idee, ihn zu leeren.
+    for (const [id, zeit] of Object.entries(alerted)) {
+      if (now - Date.parse(zeit) >= CROSS_WATCH_WINDOW_MS) delete alerted[id];
+    }
+    this.#dirty = true;
   }
 
   /** Merkt IDs vor und schneidet den aeltesten Ueberhang ab. */

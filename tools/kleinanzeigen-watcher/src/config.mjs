@@ -189,6 +189,13 @@ export async function loadConfig(path) {
     messageTemplate: raw.messageTemplate ?? DEFAULT_MESSAGE_TEMPLATE,
     requestTimeoutMs: raw.requestTimeoutMs ?? DEFAULTS.requestTimeoutMs,
     userAgent: raw.userAgent,
+    // Wechselnder Parameter gegen einen Zwischenspeicher. Standardmaessig an;
+    // `"cacheBuster": false` schaltet ihn ab, falls Kleinanzeigen die Seite
+    // damit anders ausliefert als ohne.
+    cacheBuster: raw.cacheBuster !== false,
+    // Dieselbe Anzeige nur einmal melden, auch wenn mehrere Suchen sie finden.
+    // `"dedupeAcrossWatches": false` schickt sie wieder je Suche einzeln.
+    dedupeAcrossWatches: raw.dedupeAcrossWatches !== false,
     watches,
   };
 }

@@ -19,7 +19,7 @@ export const FIXTURE = readFileSync(
  * Faengt Abrufe von kleinanzeigen.de ab und liefert den Ausschnitt zurueck.
  * Gibt eine Funktion zum Aufraeumen zurueck.
  */
-export function stubKleinanzeigen({ status = 200, body = FIXTURE } = {}) {
+export function stubKleinanzeigen({ status = 200, body = FIXTURE, headers = {} } = {}) {
   const original = globalThis.fetch;
   let aufrufe = 0;
 
@@ -30,6 +30,8 @@ export function stubKleinanzeigen({ status = 200, body = FIXTURE } = {}) {
     return {
       ok: status >= 200 && status < 300,
       status,
+      // Wie eine echte Antwort: die Koepfe sind da, auch wenn sie leer sind.
+      headers: { get: (name) => headers[name.toLowerCase()] ?? null },
       text: async () => body,
       json: async () => ({}),
     };

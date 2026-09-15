@@ -114,6 +114,28 @@ check('ohne Alter auch nicht', () => assert.equal(describeDelay(NaN, 60_000), nu
 check('ein langer Takt schluckt den ganzen Rueckstand', () =>
   assert.equal(describeDelay(180_000, 300_000).seiteMs, 0));
 
+console.log('\n== Eine Seite aus dem Zwischenspeicher zaehlt nicht der Seite an ==');
+{
+  // 3 min alt, 60 s Takt, und die Seite lag 60 s im Zwischenspeicher: dann
+  // gehoeren der Seite nur noch 60 s statt 120 s. Ohne diese Verrechnung
+  // bekaeme Kleinanzeigen die Schuld fuer unsere eigene alte Kopie.
+  const d = describeDelay(180_000, 60_000, 60_000);
+  check('der Zwischenspeicher wird abgezogen', () => assert.equal(d.seiteMs, 60_000));
+  check('und benannt', () => assert.equal(d.puffer, 60_000));
+  check('die Zeile sagt es dazu', () => assert.match(d.text, /Zwischenspeicher/));
+}
+check('ohne Zwischenspeicher bleibt die Rechnung wie vorher', () =>
+  assert.equal(describeDelay(180_000, 60_000, 0).seiteMs, 120_000));
+check('ein Puffer groesser als das Alter wird gedeckelt', () =>
+  assert.equal(describeDelay(60_000, 60_000, 999_000).seiteMs, 0));
+{
+  // Erklaert der Zwischenspeicher alles, bleibt fuer die Seite nichts uebrig
+  // und die 🐢-Zeile verschwindet.
+  const d = describeDelay(150_000, 60_000, 100_000);
+  check('deckt der Zwischenspeicher den Rest, faellt die Zeile weg', () =>
+    assert.equal(d.text, null));
+}
+
 console.log('\n== Die Zusatzzeile in der Meldung ==');
 {
   const tg = new Telegram('t', '1');
