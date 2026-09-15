@@ -76,4 +76,49 @@ console.log('\n== Wenn die Seite nichts Brauchbares liefert ==');
   check('echte Nulltreffer sind kein Fehler', () => assert.deepEqual(ads, []));
 }
 
+
+console.log('\n== Zwischenspeicher: messen und umgehen ==');
+await (async () => {
+  const { fetchAds } = await import(new URL('../src/kleinanzeigen.mjs', import.meta.url).href);
+  const original = globalThis.fetch;
+  const gefragt = [];
+
+  globalThis.fetch = async (url) => {
+    gefragt.push(String(url));
+    return {
+      ok: true,
+      status: 200,
+      headers: { get: (n) => ({ age: '42', 'x-cache': 'HIT' })[n.toLowerCase()] ?? null },
+      text: async () => FIXTURE,
+      json: async () => ({}),
+    };
+  };
+
+  try {
+    let meta = null;
+    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', {
+      onMeta: (m) => {
+        meta = m;
+      },
+    });
+    check('das Alter der Seite wird gemeldet', () => assert.equal(meta.ageSeconds, 42));
+    check('der Zustand des Zwischenspeichers auch', () => assert.equal(meta.cacheStatus, 'HIT'));
+    check('die Dauer des Abrufs ebenfalls', () => assert.ok(meta.dauerMs >= 0));
+    check('die Adresse traegt einen wechselnden Parameter', () => assert.match(gefragt[0], /[?&]_=\d+/));
+
+    gefragt.length = 0;
+    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', { cacheBuster: false });
+    check('abschaltbar', () => assert.ok(!/[?&]_=/.test(gefragt[0])));
+
+    gefragt.length = 0;
+    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', {});
+    const ersterWert = gefragt[0];
+    await new Promise((r) => setTimeout(r, 5));
+    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', {});
+    check('und der Parameter wechselt wirklich', () => assert.notEqual(ersterWert, gefragt[1]));
+  } finally {
+    globalThis.fetch = original;
+  }
+})();
+
 await check.summary();

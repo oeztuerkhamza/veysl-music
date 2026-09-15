@@ -68,8 +68,35 @@ export function normalizeSearchUrl(rawUrl) {
   return url.toString();
 }
 
-async function fetchHtml(url, { timeoutMs, userAgent }) {
-  const res = await fetch(url, {
+/**
+ * Haengt einen wechselnden Parameter an, damit ein Zwischenspeicher die Seite
+ * nicht als dieselbe wiedererkennt.
+ *
+ * `Cache-Control: no-cache` im Anfragekopf reicht dafuer nicht: ein CDN
+ * ignoriert die Bitte anonymer Besucher ueblicherweise, sonst koennte jeder
+ * durch blosses Anfragen den Ursprungsserver belasten. Wechselt dagegen die
+ * Adresse, ist es ein anderer Schluessel — und die Antwort kommt frisch.
+ *
+ * Der Parameter ist bewusst nichtssagend und beeinflusst die Trefferliste
+ * nicht; unbekannte Parameter laesst Kleinanzeigen unbeachtet.
+ */
+function withCacheBuster(url) {
+  const fresh = new URL(url);
+  fresh.searchParams.set('_', String(Date.now()));
+  return fresh.toString();
+}
+
+/**
+ * Laedt die Seite und meldet nebenbei, wie frisch sie war.
+ *
+ * `Age` sagt, wie lange die Antwort schon in einem Zwischenspeicher lag. Genau
+ * diese Sekunden sehen von aussen aus wie eine langsame Kleinanzeigen-Suche,
+ * sind aber keine: die Anzeige stand laengst im Index, nur unsere Kopie der
+ * Seite war alt. Ohne die Zahl ist das nicht auseinanderzuhalten.
+ */
+async function fetchHtml(url, { timeoutMs, userAgent, cacheBuster = true, onMeta }) {
+  const begonnen = Date.now();
+  const res = await fetch(cacheBuster ? withCacheBuster(url) : url, {
     redirect: 'follow',
     signal: AbortSignal.timeout(timeoutMs),
     headers: {
@@ -81,6 +108,18 @@ async function fetchHtml(url, { timeoutMs, userAgent }) {
     },
   });
   if (!res.ok) throw new BlockedError(res.status);
+
+  // `res.headers?.` statt `res.headers.`: eine echte Antwort hat die Koepfe
+  // immer, eine Attrappe in einem Test nicht unbedingt — und daran darf der
+  // Abruf nicht scheitern.
+  const kopf = (name) => res.headers?.get?.(name) ?? null;
+  onMeta?.({
+    // Fehlt der Kopf, ist die Antwort nicht aus einem Zwischenspeicher — 0.
+    ageSeconds: Number(kopf('age')) || 0,
+    cacheStatus: kopf('x-cache') ?? kopf('cf-cache-status') ?? kopf('x-cache-status'),
+    dauerMs: Date.now() - begonnen,
+  });
+
   return res.text();
 }
 
@@ -192,8 +231,8 @@ function parseFromArticles(html) {
 
 /** Laedt eine Suchseite und gibt die Anzeigen in Seitenreihenfolge zurueck. */
 export async function fetchAds(searchUrl, options = {}) {
-  const { timeoutMs = 20_000, userAgent } = options;
-  const html = await fetchHtml(searchUrl, { timeoutMs, userAgent });
+  const { timeoutMs = 20_000, userAgent, cacheBuster = true, onMeta } = options;
+  const html = await fetchHtml(searchUrl, { timeoutMs, userAgent, cacheBuster, onMeta });
 
   const ads = parseFromAstroIsland(html) ?? parseFromArticles(html);
   if (ads.length === 0) {

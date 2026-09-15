@@ -397,10 +397,31 @@ Fark önemliyse alarmın altına şu satır düşer:
    — der eigene Takt kostete hoechstens 60 s.
 ```
 
-Böyle bir satır görüyorsan 3 dakikalık gecikmenin 2 dakikası senin elinde
-değil: 60 sn. taktı 15'e indirsen bile kazancın en fazla 45 saniye, ilan yine
-~2 dk. eski olarak gelir. Satır **hiç çıkmıyorsa** gecikme tamamen taktan
-geliyor demektir — o zaman kısaltmak gerçekten işe yarar.
+Böyle bir satır görüyorsan o kısım senin elinde değil: taktı kısaltmak
+kazandırmaz, ilan yine aynı yaşta gelir. Satır **hiç çıkmıyorsa** gecikme
+tamamen taktan geliyor demektir — o zaman kısaltmak gerçekten işe yarar.
+
+### Üçüncü bir kaynak: önbellek
+
+`Cache-Control: no-cache` göndermek yetmiyor — CDN'ler anonim isteklerde bu
+başlığı genellikle yok sayar, yoksa herkes istek atarak origin'i yorabilirdi.
+Yani sayfayı **dakikalarca eski bir kopyadan** almış olabiliriz; dışarıdan bu
+"Kleinanzeigen yavaş" gibi görünür ama değildir.
+
+Bu yüzden her istek artık adrese değişen bir `_=<zaman>` parametresi ekliyor
+(önbellek için farklı bir anahtar demek) ve yanıtın `Age` başlığını okuyor.
+Log'da şöyle görürsün:
+
+```
+Meine Suche: Abruf 412 ms, Seite 0 s aus dem Zwischenspeicher
+```
+
+`0 s` ise önbellek devre dışı, sayfa taze. Sıfırdan büyükse o saniyeler
+🐢 satırında Kleinanzeigen'in hanesinden **düşülüyor** — ve satır bunu ayrıca
+yazıyor, çünkü o kısım çözülebilir bir sorundur.
+
+Kleinanzeigen bu parametreyle sayfayı farklı döndürürse `watches.json` içine
+`"cacheBuster": false` yazıp kapatabilirsin.
 
 > Yaş bilgisi Kleinanzeigen'in dakika hassasiyetindeki zaman damgasından
 > geliyor, yani ±1 dakika yanılma payı var. Saat bilgisi okunamayan ilanlarda

@@ -20,7 +20,7 @@ const dir = mkdtempSync(join(tmpdir(), 'kaw-runde-'));
  * sortingField=SORTING_DATE sie ausgibt. Die hoechste Nummer ist die juengste
  * Anzeige.
  */
-function stubSeite(anzahl) {
+function stubSeite(anzahl, kopfe = {}) {
   const original = globalThis.fetch;
   const html = Array.from({ length: anzahl }, (_, i) => anzahl - i)
     .map(
@@ -32,7 +32,13 @@ function stubSeite(anzahl) {
 
   globalThis.fetch = async (url, options) => {
     if (!String(url).includes('kleinanzeigen.de')) return original(url, options);
-    return { ok: true, status: 200, text: async () => html, json: async () => ({}) };
+    return {
+      ok: true,
+      status: 200,
+      headers: { get: (name) => kopfe[name.toLowerCase()] ?? null },
+      text: async () => html,
+      json: async () => ({}),
+    };
   };
   return () => {
     globalThis.fetch = original;
@@ -40,7 +46,7 @@ function stubSeite(anzahl) {
 }
 
 /** Eine Runde gegen eine vorgegebene Seite, mit gesammelten Meldungen. */
-async function runde(anzahl, { maxAlertsPerCycle = 3, runtime, datei } = {}) {
+async function runde(anzahl, { maxAlertsPerCycle = 3, runtime, datei, kopfe } = {}) {
   const gesendet = [];
   const state = await State.load(join(dir, datei));
   // Die Suche muss als "schon gelaufen" gelten, sonst merkt sich die erste
@@ -56,7 +62,7 @@ async function runde(anzahl, { maxAlertsPerCycle = 3, runtime, datei } = {}) {
     filters: withFilterDefaults({}),
   };
 
-  const restore = stubSeite(anzahl);
+  const restore = stubSeite(anzahl, kopfe);
   try {
     await runCycle(watch, {
       state,
@@ -65,7 +71,11 @@ async function runde(anzahl, { maxAlertsPerCycle = 3, runtime, datei } = {}) {
       config: { requestTimeoutMs: 5000, messageTemplate: null },
       telegram: {
         async sendAd(ad, label, vorlage, optionen) {
-          gesendet.push({ id: ad.id, pollGapMs: optionen?.pollGapMs ?? null });
+          gesendet.push({
+            id: ad.id,
+            pollGapMs: optionen?.pollGapMs ?? null,
+            cacheMs: optionen?.cacheMs ?? 0,
+          });
         },
         async sendText() {},
       },

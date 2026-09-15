@@ -123,11 +123,30 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
   const begonnenAm = Date.now();
   const pollGapMs = runtime?.lastFetchAt ? begonnenAm - runtime.lastFetchAt : null;
 
+  let meta = null;
   const ads = await fetchAds(watch.url, {
     timeoutMs: config.requestTimeoutMs,
     userAgent: config.userAgent,
+    cacheBuster: config.cacheBuster,
+    onMeta: (m) => {
+      meta = m;
+    },
   });
   if (runtime) runtime.lastFetchAt = begonnenAm;
+
+  // Eine Seite aus dem Zwischenspeicher ist aelter als der Abruf. Diese
+  // Sekunden gehoeren weder dem eigenen Takt noch dem Index von
+  // Kleinanzeigen — ohne sie herauszurechnen wuerde die Meldung der Seite
+  // etwas anlasten, was in Wahrheit unsere eigene Leitung war.
+  const cacheMs = (meta?.ageSeconds ?? 0) * 1000;
+  if (meta && (meta.ageSeconds > 0 || runtime?.cacheGemeldet !== true)) {
+    if (runtime) runtime.cacheGemeldet = true;
+    log(
+      `${watch.label}: Abruf ${meta.dauerMs} ms` +
+        `, Seite ${meta.ageSeconds} s aus dem Zwischenspeicher` +
+        (meta.cacheStatus ? ` (${meta.cacheStatus})` : ''),
+    );
+  }
 
   // Erster Lauf: der vorhandene Bestand ist nicht "neu", sondern Vergangenheit.
   // Ohne diesen Zweig kaeme beim Start die halbe Suchseite als Alarm an.
@@ -192,6 +211,7 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
     try {
       await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate, {
         pollGapMs,
+        cacheMs,
       });
       ersteMeldungNach ??= Date.now() - begonnenAm;
       state.remember(watch.id, [ad.id]);
