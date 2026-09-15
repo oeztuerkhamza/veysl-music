@@ -193,6 +193,9 @@ export async function loadConfig(path) {
     // `"cacheBuster": false` schaltet ihn ab, falls Kleinanzeigen die Seite
     // damit anders ausliefert als ohne.
     cacheBuster: raw.cacheBuster !== false,
+    // Dieselbe Anzeige nur einmal melden, auch wenn mehrere Suchen sie finden.
+    // `"dedupeAcrossWatches": false` schickt sie wieder je Suche einzeln.
+    dedupeAcrossWatches: raw.dedupeAcrossWatches !== false,
     watches,
   };
 }
