@@ -358,10 +358,27 @@ Popüler bir ilanda 30 saniye, önüne birkaç kişinin geçmesine fazlasıyla y
 artık ilanın **yaşı** yazıyor — `⏱ 25 s alt` yani "bot bunu ilan düştükten 25
 saniye sonra gördü".
 
-- Sürekli `20–40 s` görüyorsan bot hızlı; kaybettiğin yer Kleinanzeigen'in
-  ilanı listeye koyma süresi ya da senin telefona bakma sürendir. Taktı daha da
-  kısaltmak buna bir şey yapmaz.
-- Sürekli `1–2 min` görüyorsan gecikme gerçekten takttan geliyor. Kısalt.
+Ve bu yaş **ikiye ayrılıyor.** Anahtar şu: ilan bir önceki turda 1. sayfada
+yoktu, olsaydı zaten o zaman haber verilirdi. Demek ki iki tur arasında bir
+yerde sayfaya düştü. Buradan ikisi birden çıkar:
+
+- Kendi taktın **en fazla iki tur arasındaki süre** kadar gecikmeye sebep olmuş
+  olabilir.
+- Bunun üstündeki her şey, ilanın **yayınlanıp da henüz 1. sayfada
+  görünmediği** süredir — Kleinanzeigen'in kendi gecikmesi. Buna taktı
+  kısaltmak hiçbir şey yapmaz.
+
+Fark önemliyse alarmın altına şu satır düşer:
+
+```
+🐢 2 min davon lag sie schon eingestellt, bevor sie auf Seite 1 auftauchte
+   — der eigene Takt kostete hoechstens 60 s.
+```
+
+Böyle bir satır görüyorsan 3 dakikalık gecikmenin 2 dakikası senin elinde
+değil: 60 sn. taktı 15'e indirsen bile kazancın en fazla 45 saniye, ilan yine
+~2 dk. eski olarak gelir. Satır **hiç çıkmıyorsa** gecikme tamamen taktan
+geliyor demektir — o zaman kısaltmak gerçekten işe yarar.
 
 > Yaş bilgisi Kleinanzeigen'in dakika hassasiyetindeki zaman damgasından
 > geliyor, yani ±1 dakika yanılma payı var. Saat bilgisi okunamayan ilanlarda

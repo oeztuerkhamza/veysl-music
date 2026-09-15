@@ -9,7 +9,7 @@ import { createChecker } from './helpers.mjs';
 
 const BASE = new URL('../src/', import.meta.url).href;
 const { parsePostedAt } = await import(BASE + 'kleinanzeigen.mjs');
-const { describeAge, Telegram } = await import(BASE + 'telegram.mjs');
+const { describeAge, describeDelay, Telegram } = await import(BASE + 'telegram.mjs');
 const { loadConfig } = await import(BASE + 'config.mjs');
 const { MIN_INTERVAL_SECONDS, addWatch, updateWatch } = await import(BASE + 'manage.mjs');
 
@@ -85,6 +85,57 @@ console.log('\n== Die Meldung zeigt das Alter ==');
     'Meine Suche',
   );
   check('faellt auf die Angabe der Seite zurueck', () => assert.match(text, /🕒 18\.08\.2026/));
+}
+
+console.log('\n== Rueckstand aufteilen ==');
+// Die Anzeige stand in der vorigen Runde noch nicht auf Seite 1. Der eigene
+// Takt kann also hoechstens den Rundenabstand gekostet haben; alles darueber
+// gehoert der Seite.
+{
+  const d = describeDelay(180_000, 60_000);
+  check('3 min alt bei 60 s Takt: 2 min gehoeren der Seite', () =>
+    assert.equal(d.seiteMs, 120_000));
+  check('und hoechstens 60 s dem Takt', () => assert.equal(d.taktMs, 60_000));
+  check('und das wird auch gesagt', () => assert.match(d.text, /2 min .*Seite 1.*60 s/s));
+}
+{
+  // Innerhalb eines Takts gefunden: es gibt nichts aufzuteilen, und eine Zeile
+  // darueber waere blosses Rauschen.
+  const d = describeDelay(40_000, 60_000);
+  check('40 s alt bei 60 s Takt: die Seite hat nicht gebremst', () => assert.equal(d.seiteMs, 0));
+  check('der Takt bekommt die vollen 40 s', () => assert.equal(d.taktMs, 40_000));
+  check('keine Zusatzzeile', () => assert.equal(d.text, null));
+}
+check('unter einer halben Minute ist die Aufteilung Rauschen', () =>
+  assert.equal(describeDelay(75_000, 60_000).text, null));
+check('ohne bekannten Rundenabstand wird nichts behauptet', () =>
+  assert.equal(describeDelay(180_000, null), null));
+check('ohne Alter auch nicht', () => assert.equal(describeDelay(NaN, 60_000), null));
+check('ein langer Takt schluckt den ganzen Rueckstand', () =>
+  assert.equal(describeDelay(180_000, 300_000).seiteMs, 0));
+
+console.log('\n== Die Zusatzzeile in der Meldung ==');
+{
+  const tg = new Telegram('t', '1');
+  let text = '';
+  tg.sendText = async (s) => {
+    text = s;
+  };
+  const ad = {
+    id: '1',
+    title: 'Bulls Rad',
+    url: 'https://www.kleinanzeigen.de/s-anzeige/bulls-rad/123-217-45',
+    price: '200 €',
+    postedAtMs: Date.now() - 180_000,
+  };
+  await tg.sendAd(ad, 'Meine Suche', null, { pollGapMs: 60_000 });
+  check('die Meldung erklaert den Rueckstand', () => assert.match(text, /lag sie schon eingestellt/));
+  await tg.sendAd(ad, 'Meine Suche', null, { pollGapMs: 600_000 });
+  check('bei langem Takt erklaert sie nichts — da war der Takt schuld', () =>
+    assert.ok(!/lag sie schon eingestellt/.test(text)));
+  await tg.sendAd(ad, 'Meine Suche', null);
+  check('ohne Rundenabstand ebenfalls nicht', () =>
+    assert.ok(!/lag sie schon eingestellt/.test(text)));
 }
 
 console.log('\n== Takt ==');

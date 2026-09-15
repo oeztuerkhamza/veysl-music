@@ -13,7 +13,7 @@
 // Siehe README.md fuer die Einrichtung.
 
 import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { existsSync } from 'node:fs';
 import { writeFile } from 'node:fs/promises';
 
@@ -115,11 +115,19 @@ function loadEnvFile() {
  * Eine Abfragerunde fuer eine Suche.
  * Gibt die Anzahl gemeldeter Anzeigen zurueck.
  */
-async function runCycle(watch, { state, telegram, config, dryRun }) {
+export async function runCycle(watch, { state, telegram, config, dryRun, runtime }) {
+  // Abstand zur vorigen Runde, gemessen statt gerechnet: er enthaelt damit
+  // auch eine Verdopplung durch den Backoff und einen langsamen Abruf. Genau
+  // dieser Wert trennt spaeter den eigenen Takt von der Verzoegerung der
+  // Seite (siehe describeDelay).
+  const begonnenAm = Date.now();
+  const pollGapMs = runtime?.lastFetchAt ? begonnenAm - runtime.lastFetchAt : null;
+
   const ads = await fetchAds(watch.url, {
     timeoutMs: config.requestTimeoutMs,
     userAgent: config.userAgent,
   });
+  if (runtime) runtime.lastFetchAt = begonnenAm;
 
   // Erster Lauf: der vorhandene Bestand ist nicht "neu", sondern Vergangenheit.
   // Ohne diesen Zweig kaeme beim Start die halbe Suchseite als Alarm an.
@@ -134,12 +142,19 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
   }
 
   const fresh = ads.filter((ad) => !state.hasSeen(watch.id, ad.id));
+  // Seitenreihenfolge ist neueste zuerst (die URL sortiert nach Datum).
   const hits = fresh.filter((ad) => matchesFilters(ad, watch.filters));
-  // Aelteste zuerst, damit die Reihenfolge im Chat der Realitaet entspricht.
-  hits.reverse();
 
+  // Beim Rundenlimit die NEUESTEN behalten. Vorher wurde erst umgedreht und
+  // dann abgeschnitten — damit fielen ausgerechnet die frischesten Anzeigen
+  // weg, also genau die, bei denen man noch eine Chance hat, der Erste zu
+  // sein. Uebrig blieben die aeltesten, bei denen laengst jemand geschrieben
+  // hat.
   const capped = hits.slice(0, watch.maxAlertsPerCycle);
   const dropped = hits.length - capped.length;
+  // Erst jetzt umdrehen: im Chat sollen sie aelteste zuerst stehen, damit die
+  // Reihenfolge der Wirklichkeit entspricht.
+  capped.reverse();
 
   // Alles, was diese Runde ohnehin nicht verschickt, wird sofort gemerkt: die
   // schon bekannten, die Ausgefilterten und die ueber dem Rundenlimit. Nur die
@@ -165,7 +180,9 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
 
     const key = `${watch.id}:${ad.id}`;
     try {
-      await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate);
+      await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate, {
+        pollGapMs,
+      });
       state.remember(watch.id, [ad.id]);
       sendFailures.delete(key);
       gesendet++;
@@ -209,7 +226,7 @@ async function runCycle(watch, { state, telegram, config, dryRun }) {
  */
 async function tickWatch(watch, runtime, ctx) {
   try {
-    const { uebergelaufen } = await runCycle(watch, ctx);
+    const { uebergelaufen } = await runCycle(watch, { ...ctx, runtime });
     runtime.lastSuccessAt = Date.now();
 
     // Einmal warnen, nicht bei jeder Runde: bei einer zu weit gefassten Suche
@@ -560,7 +577,12 @@ async function main() {
   await Promise.all(tasks);
 }
 
-main().catch((err) => {
-  console.error(`\nFehler: ${err.message}`);
-  process.exit(1);
-});
+// Nur starten, wenn diese Datei wirklich aufgerufen wurde. Ohne den Vergleich
+// liefe beim blossen Importieren aus einem Test der ganze Watcher los —
+// inklusive Telegram-Long-Polling, das nie zurueckkommt.
+if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
+  main().catch((err) => {
+    console.error(`\nFehler: ${err.message}`);
+    process.exit(1);
+  });
+}

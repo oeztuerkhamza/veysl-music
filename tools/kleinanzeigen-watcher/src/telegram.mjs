@@ -88,6 +88,51 @@ export function describeAge(postedAtMs, now = Date.now()) {
   return `${Math.round(seconds / 60)} min alt`;
 }
 
+/**
+ * Zerlegt den Rueckstand in die beiden Teile, die man auseinanderhalten muss.
+ *
+ * Der Trick steckt im Abstand zur vorigen Runde: die Anzeige stand damals noch
+ * nicht auf Seite 1, sonst waere sie schon gemeldet worden. Sie ist also
+ * irgendwann zwischen der vorigen Runde und jetzt dort aufgetaucht. Daraus
+ * folgt beides:
+ *
+ *   - Der eigene Takt kostet hoechstens den Rundenabstand.
+ *   - Alles darueber hinaus lag die Anzeige schon eingestellt herum, ohne auf
+ *     Seite 1 zu erscheinen — das ist Kleinanzeigens eigene Verzoegerung, und
+ *     gegen die hilft kein kuerzerer Takt.
+ *
+ * Diese Unterscheidung ist der ganze Punkt: "3 min alt" allein verleitet dazu,
+ * am Takt zu drehen, obwohl davon vielleicht nur 60 s ueberhaupt dem Takt
+ * gehoeren und der Rest ohnehin nicht einzuholen ist.
+ */
+export function describeDelay(ageMs, pollGapMs) {
+  if (!Number.isFinite(ageMs) || ageMs < 0) return null;
+  // Ohne bekannten Rundenabstand (erste Runde nach einem Start) laesst sich
+  // nichts aufteilen — dann lieber nichts behaupten.
+  if (!Number.isFinite(pollGapMs) || pollGapMs <= 0) return null;
+
+  const seiteMs = Math.max(0, ageMs - pollGapMs);
+  const taktMs = Math.min(ageMs, pollGapMs);
+
+  // Unter einer halben Minute ist die Aufteilung Rauschen: die Einstellzeit
+  // kommt nur minutengenau von der Seite.
+  if (seiteMs < 30_000) return { seiteMs: 0, taktMs, text: null };
+
+  return {
+    seiteMs,
+    taktMs,
+    text:
+      `🐢 ${kurz(seiteMs)} davon lag sie schon eingestellt, bevor sie auf ` +
+      `Seite 1 auftauchte — der eigene Takt kostete hoechstens ${kurz(taktMs)}.`,
+  };
+}
+
+/** Kurze Dauer fuer die Anzeige: Sekunden bis anderthalb Minuten, danach Minuten. */
+function kurz(ms) {
+  const s = Math.round(ms / 1000);
+  return s < 90 ? `${s} s` : `${Math.round(s / 60)} min`;
+}
+
 export class Telegram {
   #token;
   #chatId;
@@ -168,7 +213,7 @@ export class Telegram {
   }
 
   /** Formatiert eine Anzeige als Alarmnachricht. */
-  async sendAd(ad, watchLabel, messageTemplate = null) {
+  async sendAd(ad, watchLabel, messageTemplate = null, { pollGapMs = null } = {}) {
     const lines = [`🆕 <b>${escapeHtml(ad.title || 'Ohne Titel')}</b>`];
 
     const facts = [];
@@ -206,6 +251,12 @@ export class Telegram {
     }
 
     lines.push('', links.join('  ·  '));
+
+    // Nur wenn die Seite selbst gebremst hat. Bei einer Anzeige, die innerhalb
+    // eines Takts ankam, waere die Zeile blosses Rauschen.
+    const delay = describeDelay(Date.now() - (ad.postedAtMs ?? NaN), pollGapMs);
+    if (delay?.text) lines.push(`<i>${escapeHtml(delay.text)}</i>`);
+
     lines.push(`<i>${escapeHtml(watchLabel)}</i>`);
 
     return this.sendText(lines.join('\n'));
