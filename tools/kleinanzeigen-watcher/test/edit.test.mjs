@@ -199,6 +199,27 @@ console.log('\n== Vorlage wirkt bis in die Konfiguration ==');
   check('Takt ebenfalls uebernommen', () => assert.equal(c.watches[0].intervalSeconds, 120));
 }
 
+console.log('\n== /schnell setzt alles auf die Untergrenze ==');
+{
+  const { MIN_INTERVAL_SECONDS } = await import('../src/manage.mjs');
+  await addWatch(cfg, 'https://www.kleinanzeigen.de/s-notebooks/k0c278', { intervalSeconds: 300 });
+
+  const tg = fakeTelegram();
+  const geaendert = await handleUpdate(msg('/schnell'), ctx(tg));
+  const liste = await listWatches(cfg);
+
+  check('meldet eine Konfigurationsaenderung', () => assert.equal(geaendert, true));
+  check('jede Suche laeuft jetzt auf der Untergrenze', () =>
+    assert.ok(liste.every((w) => w.intervalSeconds === MIN_INTERVAL_SECONDS)));
+  check('und sagt, wie viele es waren', () => assert.match(tg.last(), /2 Suche\(n\)/));
+  check('mit dem Hinweis auf die Verzoegerung der Seite', () => assert.match(tg.last(), /🐢/));
+
+  const tg2 = fakeTelegram();
+  const nochmal = await handleUpdate(msg('/schnell'), ctx(tg2));
+  check('ein zweiter Aufruf aendert nichts mehr', () => assert.equal(nochmal, false));
+  check('und sagt das auch', () => assert.match(tg2.last(), /schneller geht es nicht/));
+}
+
 restoreFetch();
 rmSync(dir, { recursive: true, force: true });
 await check.summary();

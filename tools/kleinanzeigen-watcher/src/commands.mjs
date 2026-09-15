@@ -7,6 +7,7 @@
 // die der Besitzer ihm gegeben hat.
 
 import {
+  MIN_INTERVAL_SECONDS,
   addUser,
   addWatch,
   listUsers,
@@ -32,10 +33,11 @@ const HELP = [
   '  <code>min 50</code> — mindestens 50 €',
   '  <code>privat</code> — keine gewerblichen Anbieter',
   '  <code>ohne defekt,bastler</code> — Titel-Stoppwoerter',
-  '  <code>takt 30</code> — alle 30 s statt 60 (min. 15)',
+  '  <code>takt 30</code> — alle 30 s statt 60 (min. 10)',
   '',
   '<b>Befehle</b>',
   '  /list — meine Suchen, mit Tasten für Takt, Text und Löschen',
+  '  /schnell — alle Suchen auf den schnellsten Takt',
   '  /takt &lt;id&gt; 30 — Abstand aendern',
   '  /text &lt;id&gt; …  — Erstnachricht fuer diese Suche',
   '  /help — diese Hilfe',
@@ -141,7 +143,7 @@ async function handleAdd(text, { configPath, telegram, timeoutMs }) {
 }
 
 /** Auswahl fuer den Takt. Bewusst Tasten statt Tippen — das hier passiert am Telefon. */
-const TAKTE = [15, 30, 60, 300, 900];
+const TAKTE = [10, 15, 30, 60, 300];
 
 /**
  * Der Rueckstand, mit dem zu rechnen ist: im Mittel vergeht der halbe Takt,
@@ -358,6 +360,55 @@ async function handleEditCommand(command, text, { configPath, telegram }) {
     await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
     return false;
   }
+}
+
+/**
+ * /schnell — jede Suche auf die Untergrenze.
+ *
+ * Ueber die Tasten geht dasselbe, aber je Suche einzeln: antippen, Auswahl
+ * abwarten, Takt waehlen, zurueck. Bei mehreren Suchen ist das genau die
+ * Reibung, wegen der man es dann doch laesst — und der Takt bleibt, wo er war.
+ */
+async function handleSchnell({ configPath, telegram }) {
+  const watches = await listWatches(configPath);
+  if (watches.length === 0) {
+    await telegram.sendText('Noch keine Suche, die schneller werden koennte.');
+    return false;
+  }
+
+  const geaendert = [];
+  const fehler = [];
+  for (const w of watches) {
+    if ((w.intervalSeconds ?? 60) === MIN_INTERVAL_SECONDS) continue;
+    try {
+      geaendert.push(await updateWatch(configPath, w.id, { intervalSeconds: MIN_INTERVAL_SECONDS }));
+    } catch (err) {
+      fehler.push(`${w.label ?? w.id}: ${err.message}`);
+    }
+  }
+
+  const zeilen = [];
+  if (geaendert.length === 0 && fehler.length === 0) {
+    zeilen.push(`Alle Suchen laufen schon alle ${MIN_INTERVAL_SECONDS} s — schneller geht es nicht.`);
+  } else {
+    zeilen.push(`⚡ <b>${geaendert.length} Suche(n) auf ${MIN_INTERVAL_SECONDS} s</b>`);
+    for (const w of geaendert) zeilen.push(`· ${escapeHtml(w.label ?? w.id)}`);
+    zeilen.push('', taktFolgen(MIN_INTERVAL_SECONDS));
+  }
+  for (const f of fehler) zeilen.push(`⚠️ ${escapeHtml(f)}`);
+
+  // Das gehoert dazugesagt, sonst wartet man auf eine Wirkung, die nicht
+  // kommt: der schnellste Takt hilft nur gegen den Teil des Rueckstands, der
+  // uns gehoert. Was die Seite selbst verspaetet, steht in der 🐢-Zeile.
+  zeilen.push(
+    '',
+    'Achte auf die ⏱-Zeile der naechsten Meldungen. Steht darunter eine',
+    '🐢-Zeile, lag die Anzeige schon eingestellt herum, bevor sie auf Seite 1',
+    'kam — dagegen hilft auch dieser Takt nicht.',
+  );
+
+  await telegram.sendText(zeilen.join('\n'));
+  return geaendert.length > 0;
 }
 
 async function handleRemove(id, { configPath, telegram, callbackId, messageId }) {
@@ -585,6 +636,13 @@ export async function handleUpdate(update, ctx) {
     }
     await handleList(configPath, telegram, actor);
     return false;
+  }
+  if (command === '/schnell' || command === '/turbo') {
+    if (!may(actor, 'edit')) {
+      await telegram.sendText('Dafuer fehlt dir das Recht.');
+      return false;
+    }
+    return handleSchnell({ configPath, telegram });
   }
   if (command === '/takt' || command === '/text') {
     if (!may(actor, 'edit')) {

@@ -348,11 +348,33 @@ görürsün.
 | --- | --- | --- |
 | 60 sn. (eski varsayılan) | ~30 sn. | 70 sn. |
 | 30 sn. | ~15 sn. | 37 sn. |
-| 15 sn. (alt sınır) | ~7 sn. | 19 sn. |
+| 15 sn. | ~7 sn. | 19 sn. |
+| 10 sn. (alt sınır) | ~5 sn. | 13 sn. |
+
+**Hepsini tek komutla en hızlıya almak:** bota `/schnell` yaz. Bütün aramaları
+alt sınıra çeker ve kaç tanesini değiştirdiğini söyler. Düğmelerle de olur ama
+her arama için ayrı ayrı — birkaç arama varken zaten yapmadığın iş o.
 
 Popüler bir ilanda 30 saniye, önüne birkaç kişinin geçmesine fazlasıyla yeter.
 `⏱ Takt` düğmesi artık her seçeneğin altında bu gecikmeyi yazıyor, ve alt sınır
-30'dan **15 saniyeye** indi.
+30'dan **10 saniyeye** indi.
+
+### Mesajın kendisi de öne alındı
+
+Takt dışında, ilan görüldükten sonra mesajın sana ulaşmasında da iki yerde
+zaman kaybediliyordu:
+
+- **Bir turda birden fazla ilan varsa** Telegram'a saniyede ~1 mesaj
+  gidebildiği için aralarında ~1'er saniye var. Eskiden **en eskisi ilk**
+  gönderiliyordu ("sohbette kronoloji doğru olsun" diye) — yani en taze ilan,
+  yani kazanma şansın olan tek ilan, **en sona** kalıyordu. Artık en yeni ilk
+  çıkıyor.
+- **`/list` gibi bir komuta cevap verilirken** ilan düşerse, alarm o 10
+  mesajın arkasına giriyordu: ~10 saniye. Artık alarmların önceliği var,
+  komut cevaplarının önüne geçiyorlar. Bekleme en fazla 1 saniye.
+
+Log'da her turun sonunda `erste Meldung nach 480 ms` yazıyor: çekim
+başladığından ilk mesaj gönderilene kadar geçen, tamamen bizim elimizdeki süre.
 
 **Ama gerçekten yavaş olan sen misin?** Tahmin etmene gerek yok: her alarmda
 artık ilanın **yaşı** yazıyor — `⏱ 25 s alt` yani "bot bunu ilan düştükten 25

@@ -138,6 +138,9 @@ export class Telegram {
   #chatId;
   #bridgeBaseUrl;
   #nextSlot = 0;
+  #queue = [];
+  #draining = false;
+  #seq = 0;
 
   constructor(token, chatId, { bridgeBaseUrl = null } = {}) {
     if (!token) throw new Error('TELEGRAM_BOT_TOKEN fehlt.');
@@ -166,23 +169,51 @@ export class Telegram {
   }
 
   /**
-   * Haelt den Mindestabstand zwischen zwei Nachrichten ein.
+   * Reiht eine Sendung ein und wartet, bis sie dran ist.
    *
-   * Der Platz wird VOR dem Warten reserviert. Vorher wurde er danach gesetzt,
-   * und damit half die Bremse ausgerechnet dann nicht, wenn man sie braucht:
-   * mehrere gleichzeitige Sender lasen alle denselben Wert, warteten alle
-   * gleich lang und feuerten dann zusammen los. Nachgemessen gingen von fuenf
-   * parallelen Sendungen vier in derselben Millisekunde raus — worauf Telegram
-   * mit 429 antwortet und die Meldung eben doch verspaetet ankommt.
+   * Telegram nimmt rund eine Nachricht je Sekunde in denselben Chat an; wer
+   * schneller sendet, kassiert 429 und verliert genau die Zeit, um die es hier
+   * geht. Der Abstand muss also eingehalten werden — die Frage ist nur, wer
+   * zuerst drankommt.
    *
-   * Genau dieser Fall ist der Normalfall: mehrere neue Anzeigen in einer Runde,
-   * oder eine Meldung, die mit der Antwort auf /list zusammenfaellt.
+   * Und das ist nicht die Reihenfolge des Eintreffens. Wer /list schickt,
+   * loest zehn Nachrichten aus; faellt in genau dieses Fenster eine neue
+   * Anzeige, stand sie vorher hinten an und kam gut zehn Sekunden zu spaet.
+   * Eine Antwort auf einen Befehl kann warten, eine frische Anzeige nicht:
+   * `prio` 0 sind die Alarme, 1 alles andere, und bei gleicher Stufe gilt
+   * weiter, wer zuerst kam.
+   *
+   * Der Platz wird VOR dem Warten belegt (`#nextSlot` steht fest, bevor
+   * jemand schlaeft). Vorher wurde er danach gesetzt, und damit half die Bremse
+   * ausgerechnet dann nicht, wenn man sie braucht: mehrere gleichzeitige Sender
+   * lasen denselben Wert, warteten gleich lang und feuerten zusammen los.
    */
-  async #throttle() {
-    const now = Date.now();
-    const slot = Math.max(now, this.#nextSlot);
-    this.#nextSlot = slot + MIN_GAP_MS;
-    if (slot > now) await new Promise((r) => setTimeout(r, slot - now));
+  #slot(prio) {
+    return new Promise((resolve) => {
+      this.#queue.push({ prio, seq: this.#seq++, resolve });
+      // Klein halten statt sortieren waere schneller, aber die Schlange ist
+      // hoechstens ein paar Dutzend lang — Lesbarkeit gewinnt hier.
+      this.#queue.sort((a, b) => a.prio - b.prio || a.seq - b.seq);
+      this.#drain();
+    });
+  }
+
+  async #drain() {
+    if (this.#draining) return;
+    this.#draining = true;
+    try {
+      while (this.#queue.length > 0) {
+        const wait = this.#nextSlot - Date.now();
+        if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+        // Erst nach dem Warten herausnehmen: eine Anzeige, die waehrend der
+        // Wartezeit dazukommt, soll sich noch vordraengeln duerfen.
+        const next = this.#queue.shift();
+        this.#nextSlot = Date.now() + MIN_GAP_MS;
+        next.resolve();
+      }
+    } finally {
+      this.#draining = false;
+    }
   }
 
   /**
@@ -190,8 +221,8 @@ export class Telegram {
    * Besitzer — ein Helfer bekommt die Antwort auf seinen eigenen Befehl dort,
    * wo er ihn getippt hat. Ohne Angabe geht alles an den Besitzer.
    */
-  async sendText(text, { buttons, forceReply, chatId } = {}) {
-    await this.#throttle();
+  async sendText(text, { buttons, forceReply, chatId, prio = 1 } = {}) {
+    await this.#slot(prio);
     // `force_reply` oeffnet das Eingabefeld mit Zitat. Nur so laesst sich eine
     // Antwort spaeter der richtigen Suche zuordnen — Telegram-Tasten koennen
     // keinen freien Text einsammeln.
@@ -259,7 +290,8 @@ export class Telegram {
 
     lines.push(`<i>${escapeHtml(watchLabel)}</i>`);
 
-    return this.sendText(lines.join('\n'));
+    // Stufe 0: eine frische Anzeige draengelt sich vor jede Befehlsantwort.
+    return this.sendText(lines.join('\n'), { prio: 0 });
   }
 
   /**

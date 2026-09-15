@@ -142,12 +142,16 @@ console.log('\n== Takt ==');
 const dir = mkdtempSync(join(tmpdir(), 'kaw-tempo-'));
 const pfad = join(dir, 'w.json');
 
-check('die Untergrenze liegt bei 15 s', () => assert.equal(MIN_INTERVAL_SECONDS, 15));
+check('die Untergrenze liegt bei 10 s', () => assert.equal(MIN_INTERVAL_SECONDS, 10));
 await (async () => {
-  const { watch } = await addWatch(pfad, URL_BULLS, { intervalSeconds: 15 });
-  check('15 s werden angenommen', () => assert.equal(watch.intervalSeconds, 15));
-  await assert.rejects(() => updateWatch(pfad, watch.id, { intervalSeconds: 14 }), /zu kurz/);
-  check('14 s nicht mehr', () => true);
+  const { watch } = await addWatch(pfad, URL_BULLS, { intervalSeconds: MIN_INTERVAL_SECONDS });
+  check('die Untergrenze wird angenommen', () =>
+    assert.equal(watch.intervalSeconds, MIN_INTERVAL_SECONDS));
+  await assert.rejects(
+    () => updateWatch(pfad, watch.id, { intervalSeconds: MIN_INTERVAL_SECONDS - 1 }),
+    /zu kurz/,
+  );
+  check('eine Sekunde darunter nicht mehr', () => true);
 })();
 
 console.log('\n== Streuung frisst den kurzen Takt nicht auf ==');
@@ -180,6 +184,51 @@ await (async () => {
   const cfg = await loadConfig(pfad);
   check('eine eigene, kleinere Angabe bleibt unangetastet', () =>
     assert.equal(cfg.watches[0].jitterSeconds, 2));
+})();
+
+console.log('\n== Ein Alarm draengelt sich vor die Befehlsantworten ==');
+await (async () => {
+  const tg = new Telegram('t', '1');
+  const raus = [];
+  // Nur den API-Aufruf ersetzen, damit die echte Warteschlange laeuft.
+  const original = globalThis.fetch;
+  globalThis.fetch = async (url, options) => {
+    if (!String(url).includes('api.telegram.org')) return original(url, options);
+    raus.push(JSON.parse(options.body).text);
+    return { json: async () => ({ ok: true, result: {} }) };
+  };
+
+  try {
+    // Erst eine Antwort auf /list (drei Nachrichten), dann faellt mittendrin
+    // eine Anzeige herein.
+    const offen = [
+      tg.sendText('Liste 1'),
+      tg.sendText('Liste 2'),
+      tg.sendText('Liste 3'),
+    ];
+    // Ein Tick spaeter, damit die drei schon in der Schlange stehen.
+    await new Promise((r) => setTimeout(r, 10));
+    offen.push(
+      tg.sendAd(
+        {
+          id: '1',
+          title: 'Bulls Rad',
+          url: 'https://www.kleinanzeigen.de/s-anzeige/bulls-rad/123-217-45',
+          price: '200 €',
+          postedAtMs: null,
+        },
+        'Meine Suche',
+      ),
+    );
+    await Promise.all(offen);
+
+    check('die erste Nachricht war schon unterwegs', () => assert.match(raus[0], /Liste 1/));
+    check('danach kommt die Anzeige, nicht Liste 2', () => assert.match(raus[1], /Bulls Rad/));
+    check('die restlichen Antworten folgen dahinter', () =>
+      assert.deepEqual(raus.slice(2), ['Liste 2', 'Liste 3']));
+  } finally {
+    globalThis.fetch = original;
+  }
 })();
 
 rmSync(dir, { recursive: true, force: true });

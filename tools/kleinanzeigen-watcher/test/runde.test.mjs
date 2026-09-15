@@ -85,14 +85,17 @@ console.log('== Beim Rundenlimit bleiben die NEUESTEN uebrig ==');
   check('drei Meldungen', () => assert.equal(gesendet.length, 3));
   check('und zwar die drei juengsten', () =>
     assert.deepEqual([...gesendet.map((g) => g.id)].sort((a, b) => a - b), ['8', '9', '10']));
-  check('im Chat aelteste zuerst, damit die Reihenfolge stimmt', () =>
-    assert.deepEqual(gesendet.map((g) => g.id), ['8', '9', '10']));
+  // Neueste zuerst raus: zwischen erster und letzter Nachricht liegt je rund
+  // eine Sekunde, und die frischeste Anzeige ist die einzige, bei der das noch
+  // ueber den Zuschlag entscheidet.
+  check('und die juengste geht als erste raus', () =>
+    assert.deepEqual(gesendet.map((g) => g.id), ['10', '9', '8']));
 }
 {
   const gesendet = await runde(3, { maxAlertsPerCycle: 8, datei: 's2.json' });
   check('unter dem Limit kommt alles durch', () => assert.equal(gesendet.length, 3));
-  check('ebenfalls aelteste zuerst', () =>
-    assert.deepEqual(gesendet.map((g) => g.id), ['1', '2', '3']));
+  check('ebenfalls juengste zuerst', () =>
+    assert.deepEqual(gesendet.map((g) => g.id), ['3', '2', '1']));
 }
 
 console.log('\n== Der Rundenabstand wird gemessen und weitergereicht ==');

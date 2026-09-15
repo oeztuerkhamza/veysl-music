@@ -152,9 +152,18 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
   // hat.
   const capped = hits.slice(0, watch.maxAlertsPerCycle);
   const dropped = hits.length - capped.length;
-  // Erst jetzt umdrehen: im Chat sollen sie aelteste zuerst stehen, damit die
-  // Reihenfolge der Wirklichkeit entspricht.
-  capped.reverse();
+
+  // Bewusst NICHT umgedreht: die Seitenreihenfolge ist neueste zuerst, und
+  // genau so gehen sie raus.
+  //
+  // Telegram nimmt rund eine Nachricht je Sekunde in denselben Chat an; bei
+  // fuenf Treffern in einer Runde liegen zwischen der ersten und der letzten
+  // also gut vier Sekunden. Vorher standen sie aelteste zuerst — "damit die
+  // Reihenfolge im Chat der Wirklichkeit entspricht" —, womit ausgerechnet die
+  // frischeste Anzeige als letzte ankam. Das ist die eine, bei der Sekunden
+  // noch ueber den Zuschlag entscheiden; die aelteste ist ohnehin verloren.
+  // Die schoenere Chronologie kostete also genau dort Zeit, wo sie am meisten
+  // wert ist.
 
   // Alles, was diese Runde ohnehin nicht verschickt, wird sofort gemerkt: die
   // schon bekannten, die Ausgefilterten und die ueber dem Rundenlimit. Nur die
@@ -170,6 +179,7 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
   );
 
   let gesendet = 0;
+  let ersteMeldungNach = null;
   for (const ad of capped) {
     if (dryRun) {
       log(`  [dry-run] ${ad.price || '—'} · ${ad.title} · ${ad.url}`);
@@ -183,6 +193,7 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
       await telegram.sendAd(ad, watch.label, watch.messageTemplate ?? config.messageTemplate, {
         pollGapMs,
       });
+      ersteMeldungNach ??= Date.now() - begonnenAm;
       state.remember(watch.id, [ad.id]);
       sendFailures.delete(key);
       gesendet++;
@@ -210,7 +221,10 @@ export async function runCycle(watch, { state, telegram, config, dryRun, runtime
   await state.flush();
 
   if (fresh.length > 0) {
-    log(`${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter, ${gesendet} gesendet.`);
+    // Die Zahl am Ende ist der eigene Anteil, den man wirklich beeinflussen
+    // kann: vom Beginn des Abrufs bis zur ersten abgeschickten Meldung.
+    const eigen = ersteMeldungNach === null ? '' : `, erste Meldung nach ${ersteMeldungNach} ms`;
+    log(`${watch.label}: ${fresh.length} neu, ${hits.length} nach Filter, ${gesendet} gesendet${eigen}.`);
   }
 
   // Waren ALLE Anzeigen der Seite neu, ist die Seite zwischen zwei Runden
