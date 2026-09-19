@@ -33,11 +33,14 @@ const HELP = [
   '  <code>min 50</code> — mindestens 50 €',
   '  <code>privat</code> — keine gewerblichen Anbieter',
   '  <code>ohne defekt,bastler</code> — Titel-Stoppwoerter',
+  '  <code>plz 79</code> — nur Postleitzahlen, die mit 79 anfangen',
   '  <code>takt 30</code> — alle 30 s statt 60 (min. 10)',
   '',
   '<b>Befehle</b>',
   '  /list — meine Suchen, mit Tasten für Takt, Text und Löschen',
   '  /schnell — alle Suchen auf den schnellsten Takt',
+  '  /plz &lt;id&gt; 79 — oertliche Grenze setzen (leer = aus)',
+  '  /reset — Gedaechtnis leeren und neu beginnen',
   '  /takt &lt;id&gt; 30 — Abstand aendern',
   '  /text &lt;id&gt; …  — Erstnachricht fuer diese Suche',
   '  /help — diese Hilfe',
@@ -87,6 +90,16 @@ export function parseOptions(text) {
   const takt = rest.match(/\b(?:takt|alle)\s+(\d+)\s*(?:s|sek|sekunden)?\b/);
   if (takt) options.intervalSeconds = Number(takt[1]);
 
+  // "plz 79" oder "plz 79,78" — die oertliche Grenze, die nicht von der
+  // Antwort der Seite abhaengt.
+  const plz = rest.match(/\bplz\s+([\d,\s]+)/);
+  if (plz) {
+    options.postalPrefix = plz[1]
+      .split(',')
+      .map((t) => t.trim())
+      .filter((t) => /^\d{1,5}$/.test(t));
+  }
+
   const without = rest.match(/\bohne\s+([a-z0-9äöüß,\s-]+)/);
   if (without) {
     options.exclude = without[1]
@@ -104,6 +117,7 @@ function describeFilters(filters = {}) {
   if (filters.titleMustInclude?.length) parts.push(`nur mit: ${filters.titleMustInclude.join('/')}`);
   if (filters.titleExclude?.length) parts.push(`ohne: ${filters.titleExclude.join('/')}`);
   if (filters.skipCommercial) parts.push('nur privat');
+  if (filters.postalPrefix?.length) parts.push(`nur PLZ ${filters.postalPrefix.join('/')}…`);
   return parts.length > 0 ? parts.join(', ') : 'keine Filter';
 }
 
@@ -411,6 +425,70 @@ async function handleSchnell({ configPath, telegram }) {
   return geaendert.length > 0;
 }
 
+/**
+ * /plz <id> 79   — oertliche Grenze setzen
+ * /plz <id>      — Grenze wieder entfernen
+ */
+async function handlePlz(text, { configPath, telegram }) {
+  const [, id, ...rest] = text.split(/\s+/);
+  if (!id) {
+    const ids = (await listWatches(configPath)).map((w) => w.id);
+    await telegram.sendText(
+      [
+        'So: <code>/plz &lt;id&gt; 79</code> — nur Anzeigen mit Postleitzahl 79…',
+        'Ohne Zahl dahinter faellt die Grenze wieder weg.',
+        '',
+        ids.length
+          ? 'Deine Suchen:\n' + ids.map((i) => '<code>' + escapeHtml(i) + '</code>').join('\n')
+          : 'Noch keine Suche.',
+      ].join('\n'),
+    );
+    return false;
+  }
+
+  const prefixe = rest.join(' ').split(/[,\s]+/).filter(Boolean);
+  try {
+    const watch = await updateWatch(configPath, id, { postalPrefix: prefixe });
+    await telegram.sendText(
+      prefixe.length > 0
+        ? `✅ <b>${escapeHtml(watch.label ?? id)}</b> meldet nur noch PLZ ${escapeHtml(prefixe.join('/'))}…`
+        : `✅ <b>${escapeHtml(watch.label ?? id)}</b> hat keine oertliche Grenze mehr.`,
+    );
+    return true;
+  } catch (err) {
+    await telegram.sendText(`⚠️ ${escapeHtml(err.message)}`);
+    return false;
+  }
+}
+
+/**
+ * /reset — das Gedaechtnis leeren.
+ *
+ * Nach einer Runde mit fremden Anzeigen steckt der halbe Bestand als
+ * "gesehen" in der Datei. Ohne Leeren bleibt der Zustand undurchsichtig; mit
+ * Leeren faengt jede Suche stumm von vorn an und meldet erst, was ab jetzt
+ * wirklich neu ist. Die Suchen selbst bleiben stehen.
+ */
+async function handleReset({ telegram, state, onStateReset }) {
+  if (!state) {
+    await telegram.sendText('⚠️ Das Gedaechtnis ist gerade nicht erreichbar.');
+    return false;
+  }
+  const suchen = state.leeren();
+  await state.flush();
+  await onStateReset?.();
+  await telegram.sendText(
+    [
+      `🧹 <b>Gedaechtnis geleert</b> (${suchen} Suche(n)).`,
+      '',
+      'Die naechste Runde merkt sich den vorhandenen Bestand stumm und meldet',
+      'ab dann nur, was wirklich neu dazukommt. Deine Suchen bleiben, wie sie',
+      'sind — <code>/list</code> zeigt sie.',
+    ].join('\n'),
+  );
+  return false;
+}
+
 async function handleRemove(id, { configPath, telegram, callbackId, messageId }) {
   try {
     const removed = await removeWatch(configPath, id);
@@ -643,6 +721,20 @@ export async function handleUpdate(update, ctx) {
       return false;
     }
     return handleSchnell({ configPath, telegram });
+  }
+  if (command === '/plz' || command === '/ort') {
+    if (!may(actor, 'edit')) {
+      await telegram.sendText('Dafuer fehlt dir das Recht.');
+      return false;
+    }
+    return handlePlz(text, { configPath, telegram });
+  }
+  if (command === '/reset') {
+    if (!may(actor, 'edit')) {
+      await telegram.sendText('Dafuer fehlt dir das Recht.');
+      return false;
+    }
+    return handleReset({ telegram, state: ctx.state, onStateReset: ctx.onStateReset });
   }
   if (command === '/takt' || command === '/text') {
     if (!may(actor, 'edit')) {

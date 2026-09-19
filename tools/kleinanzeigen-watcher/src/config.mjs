@@ -51,6 +51,8 @@ const DEFAULT_MESSAGE_TEMPLATE =
 const DEFAULT_FILTERS = {
   minPrice: null,
   maxPrice: null,
+  // Postleitzahl-Anfaenge, z. B. ["79"]. Leer heisst: keine oertliche Pruefung.
+  postalPrefix: [],
   titleMustInclude: [],
   titleExclude: [],
   skipCommercial: false,
@@ -69,6 +71,14 @@ export function withFilterDefaults(filters) {
 }
 
 /**
+ * Zieht die Postleitzahl aus einer Ortsangabe wie "79114, Freiburg im
+ * Breisgau". Gibt null zurueck, wenn keine dasteht.
+ */
+export function parsePostalCode(location) {
+  return String(location ?? '').match(/\b(\d{5})\b/)?.[1] ?? null;
+}
+
+/**
  * Zieht eine Zahl aus Strings wie "1.234 € VB" oder "Zu verschenken".
  * Gibt null zurueck, wenn kein Preis erkennbar ist.
  */
@@ -83,6 +93,23 @@ export function parsePrice(raw) {
 export function matchesFilters(ad, filters) {
   if (filters.skipTopAds && ad.isTopAd) return false;
   if (filters.skipCommercial && ad.isCommercial) return false;
+
+  // Die oertliche Grenze zuerst und ohne Ausnahme.
+  //
+  // Der Ort steckt sonst nur im Pfad der Such-URL — also in dem, was
+  // Kleinanzeigen daraus macht. Antwortet die Seite einmal anders als
+  // erwartet (eine Weiterleitung, eine geaenderte Adresse, ein Umbau), kommen
+  // Anzeigen aus dem ganzen Land an, und es gibt nichts, was das abfaengt.
+  // Genau das ist passiert. Diese Pruefung steht deshalb hier, im eigenen
+  // Code, und nicht im Vertrauen auf die Gegenseite.
+  if (filters.postalPrefix.length > 0) {
+    const plz = parsePostalCode(ad.location);
+    // Ohne erkennbare Postleitzahl laesst sich die Grenze nicht pruefen — und
+    // wer eine Grenze setzt, will sie eingehalten haben, nicht im Zweifel
+    // umgangen. Im Log ist nachzulesen, wie oft das vorkommt.
+    if (!plz) return false;
+    if (!filters.postalPrefix.some((p) => plz.startsWith(p))) return false;
+  }
 
   const title = ad.title.toLowerCase();
   if (filters.titleExclude.some((w) => title.includes(w.toLowerCase()))) return false;
@@ -121,9 +148,16 @@ function normalizeWatch(raw, index) {
   );
 
   const filters = withFilterDefaults(raw.filters);
-  for (const key of ['titleMustInclude', 'titleExclude']) {
+  for (const key of ['titleMustInclude', 'titleExclude', 'postalPrefix']) {
     assert(Array.isArray(filters[key]), `${where}: filters.${key} muss eine Liste sein.`);
   }
+  for (const p of filters.postalPrefix) {
+    assert(
+      /^\d{1,5}$/.test(String(p)),
+      `${where}: "${p}" ist kein Anfang einer Postleitzahl (1 bis 5 Ziffern).`,
+    );
+  }
+  filters.postalPrefix = filters.postalPrefix.map(String);
   for (const key of ['minPrice', 'maxPrice']) {
     assert(
       filters[key] === null || Number.isFinite(filters[key]),
@@ -189,10 +223,22 @@ export async function loadConfig(path) {
     messageTemplate: raw.messageTemplate ?? DEFAULT_MESSAGE_TEMPLATE,
     requestTimeoutMs: raw.requestTimeoutMs ?? DEFAULTS.requestTimeoutMs,
     userAgent: raw.userAgent,
-    // Wechselnder Parameter gegen einen Zwischenspeicher. Standardmaessig an;
-    // `"cacheBuster": false` schaltet ihn ab, falls Kleinanzeigen die Seite
-    // damit anders ausliefert als ohne.
-    cacheBuster: raw.cacheBuster !== false,
+    // Wechselnder Parameter gegen einen Zwischenspeicher — standardmaessig
+    // AUS.
+    //
+    // Als er anging, kamen ploetzlich Anzeigen aus Orten, die in der Suche gar
+    // nicht vorkommen, und eine enge oertliche Suche lief in einer einzigen
+    // Runde in die Obergrenze von acht Meldungen. Beides passt dazu, dass
+    // Kleinanzeigen eine Adresse mit unbekanntem Parameter anders beantwortet
+    // — etwa mit einer Weiterleitung auf die Kategorie ohne die Ortsangabe aus
+    // dem Pfad, der wir mit `redirect: follow` bereitwillig gefolgt waeren.
+    //
+    // Nachgewiesen ist das nicht (der Abruf laesst sich von hier aus nicht
+    // pruefen), aber die Beweislast liegt beim Parameter, nicht beim Nutzer:
+    // ein paar Sekunden Zwischenspeicher sind den Preis nicht wert, jede Runde
+    // fremde Anzeigen zu bekommen. Das Messen des Age-Kopfs bleibt an, es
+    // kostet nichts.
+    cacheBuster: raw.cacheBuster === true,
     // Dieselbe Anzeige nur einmal melden, auch wenn mehrere Suchen sie finden.
     // `"dedupeAcrossWatches": false` schickt sie wieder je Suche einzeln.
     dedupeAcrossWatches: raw.dedupeAcrossWatches !== false,

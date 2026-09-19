@@ -104,18 +104,21 @@ await (async () => {
     check('das Alter der Seite wird gemeldet', () => assert.equal(meta.ageSeconds, 42));
     check('der Zustand des Zwischenspeichers auch', () => assert.equal(meta.cacheStatus, 'HIT'));
     check('die Dauer des Abrufs ebenfalls', () => assert.ok(meta.dauerMs >= 0));
-    check('die Adresse traegt einen wechselnden Parameter', () => assert.match(gefragt[0], /[?&]_=\d+/));
+    // Standardmaessig AUS: ein unbekannter Parameter hat die Antwort von
+    // Kleinanzeigen veraendert — es kamen Anzeigen aus fremden Orten.
+    check('die Adresse bleibt unangetastet', () => assert.ok(!/[?&]_=/.test(gefragt[0])));
 
     gefragt.length = 0;
-    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', { cacheBuster: false });
-    check('abschaltbar', () => assert.ok(!/[?&]_=/.test(gefragt[0])));
+    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', { cacheBuster: true });
+    check('nur auf ausdrueckliche Bitte kommt der Parameter dazu', () =>
+      assert.match(gefragt[0], /[?&]_=\d+/));
 
     gefragt.length = 0;
-    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', {});
+    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', { cacheBuster: true });
     const ersterWert = gefragt[0];
     await new Promise((r) => setTimeout(r, 5));
-    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', {});
-    check('und der Parameter wechselt wirklich', () => assert.notEqual(ersterWert, gefragt[1]));
+    await fetchAds('https://www.kleinanzeigen.de/s-fahrraeder/k0c217', { cacheBuster: true });
+    check('und wechselt dann wirklich', () => assert.notEqual(ersterWert, gefragt[1]));
   } finally {
     globalThis.fetch = original;
   }

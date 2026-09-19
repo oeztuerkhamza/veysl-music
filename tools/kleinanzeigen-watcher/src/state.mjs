@@ -112,6 +112,21 @@ export class State {
     this.#dirty = true;
   }
 
+  /**
+   * Leert das Gedaechtnis vollstaendig.
+   *
+   * Danach gilt jede Suche wieder als neu: die naechste Runde merkt sich den
+   * vorhandenen Bestand stumm und meldet erst, was danach dazukommt. Genau das
+   * will man nach einer Fehlkonfiguration — sonst kaeme beim Aufraeumen die
+   * halbe Seite als Alarm hinterher.
+   */
+  leeren() {
+    const suchen = Object.keys(this.#data.watches).length;
+    this.#data = { watches: {} };
+    this.#dirty = true;
+    return suchen;
+  }
+
   /** Merkt IDs vor und schneidet den aeltesten Ueberhang ab. */
   remember(watchId, adIds) {
     const entry = (this.#data.watches[watchId] ??= { seen: [] });
