@@ -133,6 +133,7 @@ export async function addWatch(path, rawUrl, options = {}) {
   if (options.exclude?.length) filters.titleExclude = options.exclude;
   if (options.include?.length) filters.titleMustInclude = options.include;
   if (options.privateOnly) filters.skipCommercial = true;
+  if (options.postalPrefix?.length) filters.postalPrefix = options.postalPrefix.map(String);
 
   const watch = {
     id,
@@ -202,6 +203,17 @@ export async function updateWatch(path, id, patch) {
     if (text === null) delete watch.messageTemplate;
     else if (text.length > 600) throw new Error(`Die Vorlage ist ${text.length} Zeichen lang, erlaubt sind 600.`);
     else watch.messageTemplate = text;
+  }
+
+  if (patch.postalPrefix !== undefined) {
+    const liste = (patch.postalPrefix ?? []).map((p) => String(p).trim()).filter(Boolean);
+    for (const p of liste) {
+      if (!/^\d{1,5}$/.test(p)) throw new Error(`"${p}" ist kein Anfang einer Postleitzahl.`);
+    }
+    watch.filters ??= {};
+    if (liste.length === 0) delete watch.filters.postalPrefix;
+    else watch.filters.postalPrefix = liste;
+    if (Object.keys(watch.filters).length === 0) delete watch.filters;
   }
 
   if (patch.label !== undefined) watch.label = String(patch.label).trim() || watch.label;

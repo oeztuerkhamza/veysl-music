@@ -231,6 +231,7 @@ https://www.kleinanzeigen.de/s-fahrraeder/... max 300 privat ohne defekt,bastler
 | `min 50` | En az 50 € |
 | `privat` | Mağaza/PRO satıcıları atla |
 | `ohne defekt,bastler` | Başlıkta bu kelimeler geçerse atla |
+| `plz 79` | **Sadece 79 ile başlayan posta kodları** |
 
 | `takt 30` | 60 yerine 30 saniyede bir tara (en az 15) |
 
@@ -401,6 +402,32 @@ Böyle bir satır görüyorsan o kısım senin elinde değil: taktı kısaltmak
 kazandırmaz, ilan yine aynı yaşta gelir. Satır **hiç çıkmıyorsa** gecikme
 tamamen taktan geliyor demektir — o zaman kısaltmak gerçekten işe yarar.
 
+### Bölge sınırı — `plz`
+
+Aramanın bölgesi normalde sadece **URL'in içinde** durur, yani Kleinanzeigen'in
+o adresten ne anladığına bağlıdır. Site bir gün beklenenden farklı cevap
+verirse (yönlendirme, adres değişikliği, arayüz değişimi) bütün ülkeden ilan
+düşmeye başlar ve bunu durduracak hiçbir şey yoktur. Bu bir kez yaşandı.
+
+Bu yüzden sınır artık **kendi kodumuzda** da var:
+
+```
+/plz freiburg-im-breisgau-ktm 79     sadece 79… posta kodları
+/plz freiburg-im-breisgau-ktm 79,78  birden fazla
+/plz freiburg-im-breisgau-ktm        sınırı kaldır
+```
+
+Arama eklerken de yazabilirsin: `… max 200 privat plz 79`
+
+Posta kodu okunamayan ilan **elenir**. Sınır koyduysan sınır uygulanmalı;
+şüphede bırakıp geçirmek istediğinin tersi olurdu.
+
+### Sıfırlama — `/reset`
+
+Yanlış yapılandırma sonrası yarım liste "görüldü" diye hafızada kalır. `/reset`
+hafızayı temizler: bir sonraki tur mevcut ilanları **sessizce** not eder ve
+ancak ondan sonra gelenleri bildirir. **Aramaların silinmez.**
+
 ### Üçüncü bir kaynak: önbellek
 
 `Cache-Control: no-cache` göndermek yetmiyor — CDN'ler anonim isteklerde bu
@@ -408,8 +435,16 @@ başlığı genellikle yok sayar, yoksa herkes istek atarak origin'i yorabilirdi
 Yani sayfayı **dakikalarca eski bir kopyadan** almış olabiliriz; dışarıdan bu
 "Kleinanzeigen yavaş" gibi görünür ama değildir.
 
-Bu yüzden her istek artık adrese değişen bir `_=<zaman>` parametresi ekliyor
-(önbellek için farklı bir anahtar demek) ve yanıtın `Age` başlığını okuyor.
+> **Bu parametre artık varsayılan olarak KAPALI.** Açıkken, aramada hiç
+> geçmeyen şehirlerden ilanlar gelmeye ve dar bir yerel arama tek turda 8
+> mesaj sınırına dayanmaya başladı. İkisi de Kleinanzeigen'in bilinmeyen
+> parametreli adrese farklı cevap vermesiyle uyuşuyor — muhtemelen yoldaki
+> şehir bilgisini düşüren bir yönlendirmeyle. Kanıtlanmadı (buradan istek
+> atamıyorum), ama birkaç saniyelik önbellek kazancı, her turda yabancı ilan
+> almaya değmez. Denemek istersen `watches.json` içine `"cacheBuster": true`.
+
+Parametre açıkken adrese değişen bir `_=<zaman>` ekleniyor (önbellek için
+farklı bir anahtar demek). `Age` başlığı ise her zaman okunuyor — o bedava.
 Log'da şöyle görürsün:
 
 ```
@@ -420,8 +455,8 @@ Meine Suche: Abruf 412 ms, Seite 0 s aus dem Zwischenspeicher
 🐢 satırında Kleinanzeigen'in hanesinden **düşülüyor** — ve satır bunu ayrıca
 yazıyor, çünkü o kısım çözülebilir bir sorundur.
 
-Kleinanzeigen bu parametreyle sayfayı farklı döndürürse `watches.json` içine
-`"cacheBuster": false` yazıp kapatabilirsin.
+`0 s` ise sayfa taze demektir. Sıfırdan büyükse o saniyeler 🐢 satırında
+Kleinanzeigen'in hanesinden düşülür.
 
 > Yaş bilgisi Kleinanzeigen'in dakika hassasiyetindeki zaman damgasından
 > geliyor, yani ±1 dakika yanılma payı var. Saat bilgisi okunamayan ilanlarda

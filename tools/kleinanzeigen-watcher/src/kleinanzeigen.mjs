@@ -94,7 +94,7 @@ function withCacheBuster(url) {
  * sind aber keine: die Anzeige stand laengst im Index, nur unsere Kopie der
  * Seite war alt. Ohne die Zahl ist das nicht auseinanderzuhalten.
  */
-async function fetchHtml(url, { timeoutMs, userAgent, cacheBuster = true, onMeta }) {
+async function fetchHtml(url, { timeoutMs, userAgent, cacheBuster = false, onMeta }) {
   const begonnen = Date.now();
   const res = await fetch(cacheBuster ? withCacheBuster(url) : url, {
     redirect: 'follow',
@@ -231,7 +231,7 @@ function parseFromArticles(html) {
 
 /** Laedt eine Suchseite und gibt die Anzeigen in Seitenreihenfolge zurueck. */
 export async function fetchAds(searchUrl, options = {}) {
-  const { timeoutMs = 20_000, userAgent, cacheBuster = true, onMeta } = options;
+  const { timeoutMs = 20_000, userAgent, cacheBuster = false, onMeta } = options;
   const html = await fetchHtml(searchUrl, { timeoutMs, userAgent, cacheBuster, onMeta });
 
   const ads = parseFromAstroIsland(html) ?? parseFromArticles(html);

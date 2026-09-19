@@ -634,7 +634,15 @@ async function main() {
     log('Botbefehle aktiv — schick eine Such-URL an den Bot.');
     tasks.push(
       pollCommands(
-        { telegram, configPath, timeoutMs: config.requestTimeoutMs, log, onConfigChanged: reload },
+        {
+          telegram,
+          configPath,
+          timeoutMs: config.requestTimeoutMs,
+          log,
+          onConfigChanged: reload,
+          // /reset braucht das Gedaechtnis, nicht nur die Konfiguration.
+          state,
+        },
         controller.signal,
       ),
     );
