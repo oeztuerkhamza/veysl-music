@@ -173,9 +173,22 @@ export async function Footer() {
           for schema.org alternateName/sameAs and redirects, not visible copy
           (the brand is DJ Veys, full stop — see the note in content/site.ts). */}
       <div className="border-t border-line">
-        <Container className="py-6 text-xs text-ink-faint">
+        <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-6 text-xs text-ink-faint">
           <p>
             © {year} {site.name} · {t('footer.rights')}
+          </p>
+          {/* Urheberhinweis der Agentur — bewusst unübersetzt, „Webdesign“
+              versteht man in allen acht Sprachen. */}
+          <p>
+            Webdesign:{' '}
+            <a
+              href="https://breisgau-digital.de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 transition-colors duration-300 hover:text-ink"
+            >
+              Breisgau Digital
+            </a>
           </p>
         </Container>
       </div>
