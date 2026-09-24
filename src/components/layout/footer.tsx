@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 import { ConsentSettingsLink } from '@/components/analytics';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
@@ -185,8 +186,9 @@ export async function Footer() {
               href="https://breisgau-digital.de"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 transition-colors duration-300 hover:text-ink"
+              className="inline-flex items-center gap-1.5 align-middle underline underline-offset-2 transition-colors duration-300 hover:text-ink"
             >
+              <Image src="/images/breisgau-digital.webp" alt="" width={16} height={20} unoptimized />
               Breisgau Digital
             </a>
           </p>
