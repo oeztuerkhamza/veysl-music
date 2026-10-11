@@ -89,6 +89,11 @@ services:
       # CDN-Umzug nur einen zweiten Deploy.
       - ./nginx/cloudflare-ips.conf:/etc/nginx/cloudflare-ips.conf:ro
       - ./deploy/redirects-legacy.conf:/etc/nginx/redirects-legacy.conf:ro
+      # Zusätzliche Tenants: je eine .conf, plus deren statische Dateien.
+      # Read-only — nginx liest hier nur, geschrieben wird per rsync vom
+      # jeweiligen Projekt aus.
+      - ./nginx/sites-extra:/etc/nginx/sites-extra:ro
+      - /opt/veysl/sites:/srv/sites:ro
       - certbot-conf:/etc/letsencrypt:ro
       - certbot-www:/var/www/certbot:ro
     networks:
