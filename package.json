@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "seo:check": "node scripts/seo-check.mjs",
+    "gsc:triage": "node scripts/gsc-triage.mjs",
     "payload": "payload",
     "payload:migrate:create": "node scripts/payload-migrate-create.mjs",
     "generate:importmap": "payload generate:importmap",
