@@ -82,6 +82,21 @@ const sitemap = new Set(
   [...(await sitemapRes.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => normPath(new URL(m[1]).pathname)),
 );
 
+// Alle Slugs, die irgendeine Sprache für irgendeine Seite hat — aus den
+// hreflang-Alternativen der Sitemap. Eine 404-Adresse, deren letztes Segment
+// hier vorkommt, aber unter dem falschen Sprachpfad steht, ist ein Slug aus
+// einer anderen Sprache (siehe `language-switcher.tsx`).
+const sitemapXml = await get('/sitemap.xml').then((r) => r.text());
+const knownSlugs = new Set(
+  [...sitemapXml.matchAll(/href="([^"]+)"/g)].map((m) => {
+    try {
+      return new URL(m[1]).pathname.split('/').filter(Boolean).pop();
+    } catch {
+      return undefined;
+    }
+  }).filter(Boolean),
+);
+
 const robotsText = await get('/robots.txt').then((r) => r.text()).catch(() => '');
 const rules = [];
 {
@@ -159,9 +174,23 @@ async function triage(raw) {
   if (res.status === 404 || res.status === 410) {
     row.bucket = '404';
     const locale = localeOf(path);
-    if (url.searchParams.has('_rsc')) {
+    if (path.startsWith('/api/')) {
+      row.verdict = 'erwartet';
+      row.note = path.startsWith('/api/social/media/')
+        ? 'Vorschaubild aus dem Server-Cache (inhaltsadressiert); fehlt der Cache-Eintrag, gibt es kein Bild — keine Seite'
+        : 'API-Adresse, keine Seite';
+    } else if (path.startsWith('/_next/static/')) {
+      row.verdict = 'erwartet';
+      row.note = 'Datei eines früheren Builds (Hash im Namen ändert sich bei jedem Deploy)';
+    } else if (url.hostname.endsWith(`.${ORIGIN.hostname}`) && !url.hostname.startsWith('www.')) {
+      row.verdict = 'erwartet';
+      row.note = `Subdomain ${url.hostname} (z. B. mta-sts) — gehört zur Domain-Property, ist keine Seite`;
+    } else if (url.searchParams.has('_rsc')) {
       row.verdict = 'erwartet';
       row.note = 'Next.js-Prefetch-Adresse (?_rsc=), keine echte Seite';
+    } else if (!sitemap.has(path) && knownSlugs.has(path.split('/').filter(Boolean).pop())) {
+      row.verdict = 'erwartet';
+      row.note = `Slug aus einer anderen Sprache unter dem Pfad von „${locale}" — erzeugte der frühere Sprachumschalter (behoben)`;
     } else if (UNSHIPPED_LOCALES.has(locale)) {
       row.verdict = 'erwartet';
       row.note = `diese Seite gibt es in „${locale}" nicht (Stadt-, Regions- und Landesseiten existieren nur in de/tr/en, Ratgeber nur teilweise)`;

@@ -1,174 +1,152 @@
-# Search Console "Seitenindexierung" raporu — ne demek, ne yapılır
+# Search Console "Seitenindexierung" raporu — gerçek verilerle analiz
 
-**Kime:** Veysel · **Tarih:** 15 Ekim 2026
-**Girdi:** Search Console'dan yapıştırdığın altı satırlık özet (Grund · Quelle · Validierung · Seiten).
+**Kime:** Veysel · **Tarih:** 16 Ekim 2026
+**Girdi:** Search Console'dan indirilen dört liste (404: 273 · Weiterleitung: 22 · robots.txt: 16 · "Gecrawlt – nicht indexiert": 31).
 **Ayrıca bak:** [SEO-INCELEME-EKIM-2026.md](SEO-INCELEME-EKIM-2026.md)
+
+> Gönderdiğin beş dosyadan ikisi aynı (robots.txt listesi iki kez). **"noindex" (20) ve
+> "Gefunden – nicht indexiert" (15) listeleri yok**; onları da dışa aktarırsan tamamlarım.
 
 ---
 
 ## Kısa cevap
 
-**Raporun büyük kısmı beklenen gürültü, kodda yeni bir hata bulmadım.** Altı satırın üçü (404,
-Weiterleitung, noindex) bu sitenin bilinçli tasarımının sonucu; biri (robots.txt) büyük olasılıkla
-API adresleri; asıl dikkate değer olanlar **46 sayfalık "indexlenmedi" grubu**. Ve bunların hiçbiri
-"validation'ı tekrar başlat" ile düzelmez.
+Listeleri tek tek canlı sitenin koduna karşı sınadım. **İki gerçek hata buldum ve düzelttim**;
+geri kalanı bilinçli davranışlar ya da Google'ın kalite kararı.
 
-Bunu iki şeyle destekliyorum, ama **Google'ın sana gösterdiği gerçek URL listelerini
-görmediğim için** bazı satırlar için "büyük olasılıkla" diyorum, kesin demiyorum:
-
-1. Canlı sitenin kodunu üretim ayarlarıyla yerelde derleyip **tüm sitemap'i (280 URL) ve içlerindeki
-   301 farklı iç bağlantı hedefini taradım**: hiçbir sayfa 404'e, yönlendirmeye ya da robots'la kapatılmış bir adrese
-   bağlanmıyor. Sitemap'teki her adres 200 veriyor. `hreflang` karşılıklı.
-2. Sitenin ürettiği her URL kombinasyonunu (8 dil × tüm rota ve slug'lar, 1.080 adres) tek tek
-   sorguladım ve sonucu Search Console sayılarıyla karşılaştırdım.
+| Bulgu | Sayfa | Durum |
+|---|---|---|
+| **Dil değiştirici 404'e götürüyordu** (yanlış slug, olmayan dil) | ~266 / 273 | 🔧 Düzeltildi |
+| **`/api/social/media/` görselleri robots.txt ile kapalıydı** | 16 / 16 | 🔧 Düzeltildi |
+| Eski adresler → 301 (guide slug'ları, `/musik`, `www`) | 22 / 22 | ✅ Beklenen |
+| Canlı Türkçe rehber yazıları indexlenmemiş | 13 | ⚠️ Google'ın kararı, aşağıda |
+| `feed.xml`, `woff2`, `manifest` vb. "indexlenmemiş" | 11 | ✅ Gürültü |
+| Eskimiş yönlendirme kayıtları | 7 | ✅ Gürültü |
 
 ---
 
-## Satır satır
+## 1. Nicht gefunden (404) — 273
 
-| Grund | Seiten | Yargı | Neden |
-|---|---|---|---|
-| **Nicht gefunden (404)** | 273 | ✅ Büyük olasılıkla gürültü | Aşağıda §1 |
-| **Seite mit Weiterleitung** | 22 | ✅ Beklenen | §2 |
-| **Durch robots.txt blockiert** | 16 | ✅ Büyük olasılıkla API adresleri | §3 |
-| **Durch "noindex" ausgeschlossen** | 20 | ✅ Birebir doğrulandı | §4 |
-| **Gecrawlt – zurzeit nicht indexiert** | 31 | ⚠️ Gerçek konu | §5 |
-| **Gefunden – zurzeit nicht indexiert** | 15 | ⚠️ Gerçek konu | §5 |
+Her adresi sorguladım ve rota ailesine ayırdım:
 
-### 1. Nicht gefunden (404) — 273
+| Grup | Adet | Neden |
+|---|---|---|
+| ku / ar / nl / fr / es dillerinde | **224** | O dilde bu sayfa yok (şehir, bölge, bazı rehberler) |
+| de / tr / en'de **başka bir dilin slug'ı** | **42** | Örn. `/tr/rehber/wedding-dj-checklist` (İngilizce slug Türkçe yolda) |
+| Eski build'in yazı tipi dosyası | 1 | `/_next/static/media/….woff2`, deploy'dan sonra hash değişir |
+| **Artık 404 değil / sayfa değil** | 6 | 3'ü şimdi 308, 2'si 200 (`/tr/dugun-dj-avrupa…`), 1'i `mta-sts.dj-veys.de` alt alan adı |
 
-Sitenin **şu an** ürettiği hiçbir adres 404 vermiyor (yukarıdaki tarama). Yani bu sayı yeni bir hatadan
-gelmiyor, **geçmişte Google'ın öğrendiği adreslerden** geliyor. Repo geçmişi bunu açıklıyor:
+### Asıl neden: dil değiştirici (🔧 düzeltildi)
 
-- Site başlangıçta sitemap'te ve `hreflang`'da bazı sayfaları **sekiz dilde** duyurdu. Sonra Stadt-,
-  Regions-, Landes- ve Ratgeber-sayfaları yalnızca Almanca, Türkçe ve İngilizce'ye indirildi (çünkü
-  diğer dillerde gerçek metin yok; sahte çeviri sayfası yayınlamamak bilinçli bir karar). Google
-  eski adresleri hâlâ biliyor ve 404 görüyor.
-- 23 Ağustos'ta aynı konu zaten bir kez incelenmişti: o gün 128 adet vardı, 31'i alt slug'lardan
-  kurtarılıp 301'e çevrildi (`next.config.ts`, commit `e4efb4b`); "hiç ulaşılmamış diller" için 404
-  **bilerek** bırakıldı.
+42 yanlış-slug adresinin hepsi tek bir şeyin ürünü: **dil değiştiricinin hedef adresi, mevcut sayfanın
+parametrelerinden kuruluyordu.** İngilizce rehber `/en/guide/wedding-dj-checklist` üzerinde "Türkçe"yi
+seçmek `/tr/rehber/wedding-dj-checklist` üretiyordu, doğrusu `/tr/rehber/dugun-dj-kontrol-listesi`.
+Üstelik her sayfada sekiz dilin hepsi sunuluyordu; şehir, bölge ve Landesseiten yalnızca de/tr/en'de
+olduğu için, bir şehir sayfasında "Français" seçmek kullanıcıyı **404'e** götürüyordu.
 
-Yerel taramada bu aileler görünüyor: **Stadt-Seiten ku/ar/nl/fr/es = 105 adres**, Regions-Seiten
-≈ 21, Landes- ve Nischen-Seiten 5 dilde = 23; bunlara blog yazılarının nl/fr/es/ku/ar'daki
-karşılıkları da eklenince sayı yüzlerce olur. **273'ün tam olarak hangi adreslerden oluştuğunu bilmiyorum**
-çünkü listeyi görmedim; bu bir çıkarım, ölçüm değil.
+Bu, yalnızca bir Search Console sorunu değil, **ziyaretçilerin yaşadığı gerçek bir hataydı**: dil
+değiştiren bir kullanıcı (özellikle Türkçe/Almanca/İngilizce rehber okuyan) hata sayfasına düşüyordu.
 
-**Neden artmış (128 → 273)?** Bunu kesin söyleyemem. En makul açıklama: yeni sayfalar yayınlandıkça
-ve Google daha fazla eski sitemap/hreflang adresini işledikçe sayı büyümüş. Şu an yeni 404 üretilmediğini
-gösteren tarama, sayının **artık büyümemesi** gerektiği anlamına geliyor.
+**Düzeltme** (`src/components/layout/language-switcher.tsx`): Değiştirici artık hedefi sayfanın kendi
+`hreflang` etiketlerinden okuyor. Bu etiketler her sayfada doğru slug'ı ve yalnızca gerçekten var olan
+dilleri içerir, sitemap'le aynı kaynaktır. Sonuç:
 
-**Ne yapılır:** Hiçbir şey. 404 doğru cevap; Google birkaç ay içinde listeyi kendisi küçültür.
-**Ne yapılmaz:** "Validation" düğmesine tekrar basmak; bu adresler hâlâ 404 verdiği için Google her
-seferinde "Fehlgeschlagen" der. **İstisna:** listede Almanca (kök), `/tr/…` veya `/en/…` ile başlayan ve
-**gerçekten var olması gereken** bir sayfa görürsen, o bir hata olabilir; `npm run gsc:triage` (aşağıda)
-bunları ayırır.
+- Şehir sayfasında yalnızca **Deutsch, Türkçe, English** sunuluyor
+- `/en/guide/wedding-dj-checklist` → Türkçe → `/tr/rehber/dugun-dj-kontrol-listesi`
+- `/pakete` hâlâ 8 dili sunuyor, hepsi doğru adrese gidiyor
 
-### 2. Seite mit Weiterleitung — 22
+Gerçek bir tarayıcıda (headless Chromium) denendi: 5 geçiş senaryosu ve menü içerikleri doğru.
 
-Sitenin bilinçli yönlendirmeleri; yerel taramada **45 yönlendirme** var ve hepsi geçerli bir hedefe gidiyor:
+**Bu adresler listeden ne zaman çıkar?** Yeni 404 üretilmiyor; mevcutlar Google'ın yeniden tarama
+hızıyla birkaç hafta/ay içinde düşer. **Tekrar "Validation" başlatma**, adresler hâlâ 404 verdiği için her
+seferinde "fehlgeschlagen" der.
 
-- `/<dil>/` → `/<dil>` (sondaki eğik çizgi, 7 adres)
-- `/hochzeits-dj/stuttgart` ve diller (8) → ana sayfa. Stuttgart için ayrı şehir sayfası yok, ana sayfa
-  o anahtar kelimeyi hedefliyor
-- Eski Ratgeber slug'ları `/tr/rehber/<almanca-slug>` → yeni slug (30)
+### 2. Seite mit Weiterleitung — 22 ✅ beklenen
 
-Bunların dışında `next.config.ts` emekli `/musik` sayfasını galeriye ve üst dizinleri (`/hochzeits-dj`,
-`/tuerkischer-dj`) ilgili Landesseite'ye de yönlendiriyor.
+Hepsi geçerli bir hedefe gidiyor:
 
-Google bunları "indexlenmeyen" sayıyor çünkü yönlendirme **indexlenmez**, hedef indexlenir. Bu hata değil.
-Validation "fehlgeschlagen" çünkü yönlendirme duruyor. Dokunma.
+- 14× eski rehber slug'ı `/en/guide/<almanca-slug>`, `/tr/rehber/<almanca-slug>` → yeni slug
+- 6× emekli `/musik` sayfası (de, en, es, fr, ku, nl) → galeri
+- `http://www.dj-veys.de/` ve `https://www.dj-veys.de/` → ana sayfa (nginx, `www` → apex)
 
-### 3. Durch robots.txt blockiert — 16
+Google bunları "indexlenmemiş" sayar, çünkü yönlendirme indexlenmez, hedef indexlenir. Dokunma.
 
-`robots.txt` yalnızca `/api/` ve `/admin` yollarını kapatıyor, `/api/faq` bilerek açık. Üretim HTML'inde
-bu yollara tek bir bağlantı var (`/api/faq`, izinli). Google ise **JavaScript dosyalarının içindeki**
-adres benzeri metinleri de "keşfedilen URL" sayar; bu 16 adres büyük olasılıkla formların ve CMS'in
-`/api/anfrage`, `/api/kontakt`, `/api/availability`, `/api/users/me` gibi API uçları. Bunlar sayfa değil
-ve kapalı olmaları **doğru**.
+### 3. Durch robots.txt blockiert — 16 🔧 düzeltildi
 
-**Doğrula:** Search Console'da bu satıra tıkla, listeyi dışa aktar. Hepsi `/api/…` veya `/admin…` ise
-tamam. Tek bir normal sayfa varsa bana gönder; bu gerçek bir hata olurdu. (Not: 16, siteyi tamamen
-kapatan bir hata olsaydı 280'e yakın olurdu.)
+Hepsi aynı kalıpta: `/api/social/media/<id>`. Bunlar Instagram/YouTube **önizleme görselleri**: ana
+sayfadaki sosyal şerit bunları kendi sunucundan sunuyor (tarayıcı hiçbir zaman Instagram'a doğrudan
+gitmiyor, gizlilik için). `robots.txt` ise tüm `/api/` yolunu kapatıyordu; yalnızca `/api/faq` açıktı.
+Sonuç: **Googlebot sayfanın görsellerini yükleyemiyordu**, Google Görseller'e de giremiyorlardı.
 
-### 4. Durch "noindex" ausgeschlossen — 20
+**Düzeltme** (`src/app/robots.ts`): `Allow: /api/social/media/` eklendi. Yol yalnızca genel, içerik
+adresli (`immutable`) görselleri sunuyor ve girdi kabul etmiyor. `/api/` altında geri kalan her şey kapalı.
 
-**Birebir doğruladım:** Yerel taramada sitemap dışında, `noindex` taşıyan ve 200 veren **tam 20 sayfa**
-çıkıyor:
+### 4. Gecrawlt – zurzeit nicht indexiert — 31
 
-- Impressum ve Datenschutz × 8 dil = 16
-- SSS sayfası (`/fragen`) ku, nl, fr, es = 4 (bu dillerde henüz tam çeviri yok, bu yüzden indexlenmesi
-  istenmiyor)
+| Grup | Adet | Anlamı |
+|---|---|---|
+| **Canlı Türkçe sayfalar** | 12 | `tr/islami-dugun` ve 11 Türkçe rehber yazısı |
+| Canlı İngilizce rehber | 1 | `en/guide/venue-acoustics-checklist` |
+| Eskimiş kayıtlar (şimdi 308) | 7 | Alt slug'larla taranmış, sonra yönlendirilmiş |
+| HTML olmayan dosyalar | 11 | `feed.xml` ×6, `manifest.webmanifest`, `favicon.ico`, `woff2`, `/api/faq`, `http://dj-veys.de/` |
 
-Hepsi footer/menüden bağlı, hepsi sitemap'te **yok**. Tam istenen durum. Validation "Gestartet" kalabilir;
-bir şey düzeltmen gerekmiyor.
+**Dikkate değer olan 13 canlı sayfa**, ve **12'si Türkçe**: sitenin çekirdek kitlesi. Ne dediğine
+bakalım:
 
-### 5. "Gecrawlt – nicht indexiert" (31) ve "Gefunden – nicht indexiert" (15) — gerçek konu
+- **Teknik hata yok.** Hepsi 200, sitemap'te, canonical kendini gösteriyor, `noindex` yok, hreflang doğru
+  (`npm run seo:check`).
+- "Crawled – not indexed", Google'ın içeriği okuyup **şimdilik** indexe almamayı seçmesi demek. Bu sayfaların
+  çoğu 25–30 Ağustos'ta taranmış: yani yeni adresler. Slug yerelleştirmesinden önce bu Türkçe rehberler
+  Almanca slug'larla (404) duyuruluyordu; yeni adreslerin geçmişi, bağlantısı ve güveni sıfırdan başlıyor.
+- Listedeki 7 kayıt, eski Almanca slug'ların 308 ile yeni adreslere giden hâlleri. Google bunu birkaç
+  haftada kendisi çözer.
 
-Bunlar **teknik hata değil**, Google'ın kalite/öncelik kararı:
+Teknik bir kusur olmadığı için kod tarafında yapılacak bir şey yok. **Yapılacaklar sende:**
 
-- **Gecrawlt – zurzeit nicht indexiert (31):** Google sayfayı gördü, içeriği okudu, **şimdilik** indexe
-  almamaya karar verdi. Yeni ve otoritesi düşük sitelerde en sık görülen sebep: benzer ya da ince içerik,
-  az iç link, az dış link.
-- **Gefunden – zurzeit nicht indexiert (15):** Google adresi biliyor ama **henüz taramadı**. Site yeni olduğu
-  için tarama bütçesi sınırlı; en derindeki sayfalar sona kalıyor.
+1. **"Indexierung beantragen"** — aşağıdaki 12 sayfa için URL-Prüfung'ten tek tek (günde ~10 hak):
+   `/tr/islami-dugun`, `/tr/rehber/kina-gecesi-planlama`, `/tr/rehber/dugun-zaman-cizelgesi-ornek-akis`,
+   `/tr/rehber/turk-dugunune-katilan-alman-misafirler`, `/tr/rehber/dj-mi-canli-grup-mu`,
+   `/tr/rehber/dugunde-dj-yerine-spotify-listesi`, `/tr/rehber/stuttgart-dugun-salonu-secimi`,
+   `/tr/rehber/davul-zurna-halay-roman-havasi`, `/tr/rehber/yurt-disinda-dugun-dj`,
+   `/tr/rehber/dugun-aksami-dramaturjisi`, `/tr/rehber/alman-turk-dugunu-iki-aile`,
+   `/tr/rehber/acilis-dansi-sarki-secimi`.
+2. **Türkçe sayfalara dış bağlantı:** Türk topluluk sitelerinde, Instagram ve YouTube açıklamalarında
+   Türkçe rehberlere link ver. En hızlı güven sinyali bu.
+3. **Sabır:** Yeni adreslerde 4–8 hafta normal.
 
-Toplam 46 sayfa; sitemap'te yaklaşık 280 indexlenebilir sayfa var (yaklaşık %16). **İndexlenmiş sayfa
-sayısını yapıştırmadın**, onu görmeden oranın kötü olup olmadığını söyleyemem; bu rapor yalnızca
-"indexlenmeyenleri" gösteriyor. Raporun üst kısmındaki "Indexiert" sayısını bana yaz.
+### 5. Eksik listeler
 
-Hangi sayfalar olabilir (tahmin; liste yok): ku/ar/nl/fr/es dillerindeki sayfalar (82 adres; Almanca'dan
-çevrilmiş, çok benzer), en alt seviyedeki şehir sayfaları (Lahr, Villingen-Schwenningen, Friedrichshafen…),
-yeni rehber yazıları.
-
-**Ne yapılır (öncelik sırasıyla):**
-
-1. **Listeyi dışa aktar** ve bana gönder: iki satıra da tıkla → *Export*. Hangi sayfaların etkilendiğini
-   görmeden iyi bir karar veremem.
-2. **En önemli 10 sayfa için "Indexierung beantragen":** Search Console → üstteki arama kutusuna adres →
-   URL-Prüfung → *Indexierung beantragen*. Günde yaklaşık 10 istek hakkın var. Sıra: ana sayfa,
-   `/pakete`, `/tuerkischer-dj-stuttgart`, `/islamische-hochzeit`, `/hochzeits-dj-baden-wuerttemberg`,
-   en iyi 3 şehir, en iyi 3 rehber.
-3. **İç linkler** (yapıldı): Rehber yazıları artık ana sayfalardan bağlı (PR #30).
-4. **Dış bağlantı:** `docs/SEO-INCELEME-EKIM-2026.md` Aşama 4. Otorite olmadan "crawled – not indexed" grubu
-   küçülmez; bunun kısayolu yok.
-5. **Sabır:** Yeni sitede bu grubun küçülmesi haftalar sürer.
-
-Düşük değerli dil sayfalarını (ku/ar/nl/fr/es) sitemap'ten çıkarmak da bir seçenek, ama bu pazar
-kararı. Önce listeyi görelim.
+- **"Durch noindex ausgeschlossen" (20):** Önceki taramada birebir doğruladım: Impressum + Datenschutz × 8 dil
+  (16) ve SSS'nin ku/nl/fr/es sürümleri (4). Bilinçli.
+- **"Gefunden – zurzeit nicht indexiert" (15):** Listeyi görmeden yorumlayamam. Google adresi biliyor ama
+  henüz taramadı; muhtemelen en derindeki şehir/blog sayfaları.
 
 ---
 
-## Listeleri otomatik sınıflandırma: `npm run gsc:triage`
-
-Altı satırın her birini Search Console'dan dışa aktar (satıra tıkla → sağ üstte *Exportieren* → CSV),
-sonra:
+## `gsc:triage` ile yeniden sınama
 
 ```bash
-npm run gsc:triage -- indirdigin-dosya.csv --out rapor.csv
+npm run gsc:triage -- liste.csv --out rapor.csv
 ```
 
-Betik her adresi **canlı siteye** sorar ve üç gruba ayırır:
+Bu veriyle çalıştırınca (düzeltmeler uygulanmış yerel derlemeye karşı): 404 listesi **270 `erwartet`,
+3 `offen`, 0 `PRÜFEN`**; yönlendirme listesi 20 `erwartet` (kalan 2'si `www`/`http` varyantı, nginx'te
+yönleniyor, yerelde yok); "crawled – not indexed" listesi 7 `erwartet` (eskimiş yönlendirme) ve 24
+`offen`; robots listesi artık engellenmiyor, 15'i `erwartet` (görseller sunucu önbelleğinden gelir, yerelde
+önbellek boş).
 
-| Verdikt | Anlamı |
-|---|---|
-| `erwartet` | Sitenin cevabı doğru, rapor gürültü (nl/fr/es… dilindeki 404, geçerli yönlendirme, `/api` robots, noindex) |
-| `PRÜFEN` | Gerçek sorun olabilir: Almanca/Türkçe/İngilizce bir adres 404 veriyor, bir yönlendirme zincirleniyor ya da boşa gidiyor, sitemap'teki bir sayfa `noindex`, 5xx |
-| `offen` | Sayfa canlı ve indexlenebilir; Google almadı, bu yukarıdaki §5 |
-
-Çıkış kodu `PRÜFEN` varsa 1. `PRÜFEN` listesini bana gönder, her biri için ya `next.config.ts`'e 301 ya
-da düzeltme yaparım.
-
-Yerel bir derlemeye karşı denemek için `--base http://localhost:3000` ekle.
+Betik bu çalışmada dört şey öğrendi: başka dilin slug'ı, eski build dosyaları, alt alan adları ve
+`/api/` adresleri artık "gürültü" olarak ayrılıyor; geri kalan 404'ler gerçek bir sorun işareti sayılıyor.
 
 ---
 
-## Yaptıklarım ve sınırlar
+## Sınırlar
 
-- **Yaptım:** Yerel üretim derlemesinde 280 sitemap URL'si ve içlerindeki 301 farklı iç bağlantı hedefi tarandı;
-  1.080 olası adres tek tek sorgulandı; `robots.txt`, `noindex`, yönlendirme ve 404 sonuçları Search
-  Console sayılarıyla karşılaştırıldı. `scripts/gsc-triage.mjs` tüm kategori örnekleriyle sınandı.
-- **Yapamadım:** Canlı siteye bu ortamdan erişim yok; Search Console'a erişimim yok. **Gerçek URL
-  listelerini görmedim**, bu yüzden 404, robots ve "indexlenmedi" grupları için kesin değil, çıkarım
-  yapıyorum. Listeleri gönderirsen kesinleştiririm.
-- **Kod değişikliği gerekmedi:** Bu rapor için siteyi değiştirmeye yol gösteren bir bulgu çıkmadı. Eklenen
-  tek şey `gsc-triage` betiği ve bu belge.
+- Canlı siteye ve Search Console'a erişimim yok. Listeleri dosyadan okudum, her adresi **kodun yerel
+  üretim derlemesine** sordum. Bu, canlıda deploy edilmiş sürümle aynı kod olduğu sürece geçerli.
+- **Dil değiştiricinin Google'a nasıl bu adresleri öğrettiği kesin değil:** yanlış-slug adreslerinin
+  (ör. `/en/guide/bruiloft-dj-checklist`) başka bir kaynağı mümkün değil gibi görünüyor, ama Googlebot'un
+  menüleri tıklamadığını da biliyoruz. Ziyaretçilerin, test edenlerin ya da başka tarayıcıların ürettiği
+  adresler olabilir. 224 adreslik ku/ar/nl/fr/es grubunun bir kısmı eski sitemap'lerden de gelmiş olabilir.
+  Sonuç değişmiyor: kaynak kapatıldı, yeni 404 üretilmiyor.
+- Düzeltmeler deploy edilene kadar canlıda geçerli değil.
