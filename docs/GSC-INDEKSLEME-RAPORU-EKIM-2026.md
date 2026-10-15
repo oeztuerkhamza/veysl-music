@@ -17,7 +17,7 @@ Bunu iki şeyle destekliyorum, ama **Google'ın sana gösterdiği gerçek URL li
 görmediğim için** bazı satırlar için "büyük olasılıkla" diyorum, kesin demiyorum:
 
 1. Canlı sitenin kodunu üretim ayarlarıyla yerelde derleyip **tüm sitemap'i (280 URL) ve içlerindeki
-   301 iç bağlantıyı taradım**: hiçbir sayfa 404'e, yönlendirmeye ya da robots'la kapatılmış bir adrese
+   301 farklı iç bağlantı hedefini taradım**: hiçbir sayfa 404'e, yönlendirmeye ya da robots'la kapatılmış bir adrese
    bağlanmıyor. Sitemap'teki her adres 200 veriyor. `hreflang` karşılıklı.
 2. Sitenin ürettiği her URL kombinasyonunu (8 dil × tüm rota ve slug'lar, 1.080 adres) tek tek
    sorguladım ve sonucu Search Console sayılarıyla karşılaştırdım.
@@ -71,7 +71,9 @@ Sitenin bilinçli yönlendirmeleri; yerel taramada **45 yönlendirme** var ve he
 - `/hochzeits-dj/stuttgart` ve diller (8) → ana sayfa. Stuttgart için ayrı şehir sayfası yok, ana sayfa
   o anahtar kelimeyi hedefliyor
 - Eski Ratgeber slug'ları `/tr/rehber/<almanca-slug>` → yeni slug (30)
-- Emekli `/musik` sayfası → galeri
+
+Bunların dışında `next.config.ts` emekli `/musik` sayfasını galeriye ve üst dizinleri (`/hochzeits-dj`,
+`/tuerkischer-dj`) ilgili Landesseite'ye de yönlendiriyor.
 
 Google bunları "indexlenmeyen" sayıyor çünkü yönlendirme **indexlenmez**, hedef indexlenir. Bu hata değil.
 Validation "fehlgeschlagen" çünkü yönlendirme duruyor. Dokunma.
@@ -110,7 +112,7 @@ Bunlar **teknik hata değil**, Google'ın kalite/öncelik kararı:
 - **Gefunden – zurzeit nicht indexiert (15):** Google adresi biliyor ama **henüz taramadı**. Site yeni olduğu
   için tarama bütçesi sınırlı; en derindeki sayfalar sona kalıyor.
 
-Toplam 46 sayfa; sitemap'te yaklaşık 270 indexlenebilir sayfa var (yaklaşık %17). **İndexlenmiş sayfa
+Toplam 46 sayfa; sitemap'te yaklaşık 280 indexlenebilir sayfa var (yaklaşık %16). **İndexlenmiş sayfa
 sayısını yapıştırmadın**, onu görmeden oranın kötü olup olmadığını söyleyemem; bu rapor yalnızca
 "indexlenmeyenleri" gösteriyor. Raporun üst kısmındaki "Indexiert" sayısını bana yaz.
 
@@ -162,7 +164,7 @@ Yerel bir derlemeye karşı denemek için `--base http://localhost:3000` ekle.
 
 ## Yaptıklarım ve sınırlar
 
-- **Yaptım:** Yerel üretim derlemesinde 280 sitemap URL'si ve içlerindeki 301 iç bağlantı tarandı;
+- **Yaptım:** Yerel üretim derlemesinde 280 sitemap URL'si ve içlerindeki 301 farklı iç bağlantı hedefi tarandı;
   1.080 olası adres tek tek sorgulandı; `robots.txt`, `noindex`, yönlendirme ve 404 sonuçları Search
   Console sayılarıyla karşılaştırıldı. `scripts/gsc-triage.mjs` tüm kategori örnekleriyle sınandı.
 - **Yapamadım:** Canlı siteye bu ortamdan erişim yok; Search Console'a erişimim yok. **Gerçek URL
