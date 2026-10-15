@@ -38,6 +38,8 @@ export default async function PaketePage({ params }: PageProps) {
     name: t(`items.${pkg.id}.name`),
     description: t(`items.${pkg.id}.description`),
     url: absoluteUrl('/pakete', locale),
+    // `null` bis der Kunde echte Preise liefert → kein Offer im Schema.
+    priceFrom: pkg.priceFrom,
   }));
 
   return (

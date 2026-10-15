@@ -11,13 +11,18 @@ import { site } from '@/content/site';
  * this file will then fail to compile until the new route is wired up
  * everywhere, which is the point.
  */
-export type DynamicPathname = '/hochzeits-dj/[stadt]' | '/hochzeits-dj-europa/[land]' | '/ratgeber/[slug]';
+export type DynamicPathname =
+  | '/hochzeits-dj/[stadt]'
+  | '/hochzeits-dj-europa/[land]'
+  | '/ratgeber/[slug]'
+  | '/hochzeitslocation/[slug]';
 export type StaticPathname = Exclude<AppPathname, DynamicPathname>;
 
 interface RouteParamsMap {
   '/hochzeits-dj/[stadt]': { stadt: string };
   '/hochzeits-dj-europa/[land]': { land: string };
   '/ratgeber/[slug]': { slug: string };
+  '/hochzeitslocation/[slug]': { slug: string };
 }
 
 /**
@@ -71,6 +76,8 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
   // `blog.meta` here is just a harmless fallback, never the real source.
   '/ratgeber': 'blog.meta',
   '/ratgeber/[slug]': 'blog.meta',
+  // Location-Seiten (CMS) — eigener Namespace `venue.meta`, Titel/Beschreibung mit {venue}/{city}.
+  '/hochzeitslocation/[slug]': 'venue.meta',
   '/epk': 'meta.epk',
   '/kontakt': 'meta.contact',
   '/impressum': 'meta.imprint',

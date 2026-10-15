@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Reveal } from '@/components/motion/reveal';
+import { Link } from '@/i18n/navigation';
 import { PostBody } from '@/components/blog/post-body';
 import { formatDate } from '@/lib/utils';
 import type { WeddingReference } from '@/lib/weddings';
@@ -9,6 +10,8 @@ interface WeddingEntryProps {
   wedding: WeddingReference;
   /** BCP-47-Tag für die Datumsformatierung, z. B. `de-DE`. */
   localeTag: string;
+  /** Slug der Location-Seite, wenn es zu dieser Hochzeit eine veröffentlichte Location gibt. */
+  venueSlug?: string;
   labels: {
     guests: string;
     story: string;
@@ -39,13 +42,24 @@ function aspectRatio(width?: number, height?: number): string {
  * Hochzeiten × mehreren Videos wäre alles andere ein Dutzend YouTube-
  * Einbettungen beim ersten Rendern.
  */
-export function WeddingEntry({ wedding, localeTag, labels }: WeddingEntryProps) {
+export function WeddingEntry({ wedding, localeTag, venueSlug, labels }: WeddingEntryProps) {
+  const venue =
+    wedding.venue && venueSlug ? (
+      <Link
+        href={{ pathname: '/hochzeitslocation/[slug]', params: { slug: venueSlug } }}
+        className="text-gold underline-offset-4 hover:underline"
+      >
+        {wedding.venue}
+      </Link>
+    ) : (
+      wedding.venue
+    );
   const meta = [
     wedding.city,
-    wedding.venue,
+    venue,
     wedding.date ? formatDate(wedding.date, localeTag) : undefined,
     wedding.guestCount ? `${wedding.guestCount} ${labels.guests}` : undefined,
-  ].filter((part): part is string => Boolean(part));
+  ].filter((part) => Boolean(part));
 
   return (
     <article
@@ -54,13 +68,23 @@ export function WeddingEntry({ wedding, localeTag, labels }: WeddingEntryProps) 
       // `[data-cms-slot]`. Es gibt damit keine zweite Liste, die veralten
       // könnte — eine neue Hochzeit ist automatisch bearbeitbar.
       data-wedding-id={wedding.id}
-      className="relative border-t border-line pt-12 first:border-t-0 first:pt-0"
+      // Sprungziel für Verlinkungen von Location- und Stadtseiten
+      // (`/echte-hochzeiten#hochzeit-<id>`).
+      id={`hochzeit-${wedding.id}`}
+      className="relative scroll-mt-28 border-t border-line pt-12 first:border-t-0 first:pt-0"
     >
       <Reveal>
         <header className="max-w-2xl">
           <h2 className="font-display text-3xl text-ink sm:text-4xl">{wedding.coupleLabel}</h2>
           {meta.length > 0 ? (
-            <p className="mt-2 text-sm text-ink-muted">{meta.join(' · ')}</p>
+            <p className="mt-2 text-sm text-ink-muted">
+              {meta.map((part, index) => (
+                <span key={index}>
+                  {index > 0 ? ' · ' : ''}
+                  {part}
+                </span>
+              ))}
+            </p>
           ) : null}
         </header>
       </Reveal>

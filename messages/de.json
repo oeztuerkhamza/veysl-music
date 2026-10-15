@@ -1273,6 +1273,13 @@
       "eyebrow": "Warum hier",
       "title": "Was in {city} den Unterschied macht"
     },
+    "proof": {
+      "eyebrow": "Vor Ort",
+      "weddingsTitle": "Echte Hochzeiten in {city}",
+      "venuesTitle": "Locations in {city}, in denen DJ Veys gespielt hat",
+      "viewWedding": "Zur Hochzeit",
+      "allWeddings": "Alle echten Hochzeiten"
+    },
     "venues": {
       "eyebrow": "Locations",
       "title": "Bekannte Hochzeitslocations in und um {city}",
@@ -1781,6 +1788,42 @@
   "media": {
     "comingSoon": "Foto folgt",
     "placeholderAriaLabel": "Bildplatz – noch kein Foto hinterlegt"
+  },
+  "venue": {
+    "meta": {
+      "title": "Hochzeits-DJ für {venue} in {city} | DJ Veys",
+      "titleShort": "Hochzeits-DJ {venue} | DJ Veys",
+      "description": "Feier in {venue}, {city}? Der Saal aus DJ-Sicht: Technik, Aufbau, Ablauf — von DJ Veys, der dort gespielt hat. Jetzt Termin anfragen.",
+      "descriptionShort": "{venue}, {city}: der Saal aus DJ-Sicht — von DJ Veys, der dort gespielt hat."
+    },
+    "hero": {
+      "eyebrow": "Hochzeitslocation",
+      "title": "Hochzeits-DJ für {venue}",
+      "subtitle": "{city} — der Saal aus der Sicht des DJs, der dort gespielt hat."
+    },
+    "back": "Echte Hochzeiten",
+    "note": {
+      "title": "Der Saal aus DJ-Sicht"
+    },
+    "facts": {
+      "title": "Eckdaten",
+      "address": "Adresse",
+      "website": "Website der Location",
+      "visit": "{venue} besuchen"
+    },
+    "weddings": {
+      "title": "Hochzeiten in dieser Location",
+      "lead": "Echte Abende, die DJ Veys hier begleitet hat.",
+      "link": "Zur Hochzeit"
+    },
+    "city": {
+      "text": "Anfahrt, Einsatzgebiet und Fragen rund um {city}:",
+      "link": "Hochzeits-DJ in {city}"
+    },
+    "cta": {
+      "title": "Ihre Feier in {venue}?",
+      "text": "Datum nennen, Verfügbarkeit prüfen, unverbindliches Angebot erhalten — Antwort innerhalb von 24 Stunden."
+    }
   },
   "blog": {
     "meta": {

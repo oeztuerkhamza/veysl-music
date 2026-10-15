@@ -4,7 +4,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { localeTags, type Locale } from '@/i18n/routing';
 import { buildMetadata } from '@/lib/seo';
 import { getPublishedWeddings } from '@/lib/weddings';
-import { venues } from '@/content/venues';
+import { Link } from '@/i18n/navigation';
+import { getPublishedVenues, venueForWedding } from '@/lib/venues';
+import { isVenueLocale } from '@/content/venues';
 import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
 import { SectionHeading } from '@/components/ui/section-heading';
@@ -39,6 +41,9 @@ export default async function EchteHochzeitenPage({ params }: PageProps) {
   // hierher stand an dieser Stelle eine leere Konstante aus
   // `src/content/weddings.ts`, die nur ein Deploy hätte füllen können.
   const weddings = await getPublishedWeddings(locale);
+  // Locations aus dem CMS (Collection `venues`, nur mit Einverständnis).
+  const venues = await getPublishedVenues(locale);
+  const venuePagesExist = isVenueLocale(locale);
 
   const entryLabels = {
     guests: t('guests'),
@@ -76,6 +81,7 @@ export default async function EchteHochzeitenPage({ params }: PageProps) {
                 <WeddingEntry
                   key={wedding.id}
                   wedding={wedding}
+                  venueSlug={venuePagesExist ? venueForWedding(venues, wedding)?.slug : undefined}
                   localeTag={localeTags[locale]}
                   labels={entryLabels}
                 />
@@ -94,10 +100,22 @@ export default async function EchteHochzeitenPage({ params }: PageProps) {
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {venues.map((venue) => (
                 <Reveal key={venue.id}>
-                  <div className="flex h-full flex-col items-center justify-center gap-2 rounded-lg border border-line bg-surface p-6 text-center">
-                    <p className="font-display text-lg text-ink">{venue.name}</p>
-                    <p className="text-sm text-ink-muted">{venue.city}</p>
-                  </div>
+                  {/* Eigene Seite nur in den Sprachen, in denen es sie gibt;
+                      sonst bleibt es bei der Namenskachel wie bisher. */}
+                  {venuePagesExist ? (
+                    <Link
+                      href={{ pathname: '/hochzeitslocation/[slug]', params: { slug: venue.slug } }}
+                      className="group flex h-full flex-col items-center justify-center gap-2 rounded-lg border border-line bg-surface p-6 text-center transition-colors hover:border-gold"
+                    >
+                      <span className="font-display text-lg text-ink transition-colors group-hover:text-gold">{venue.name}</span>
+                      <span className="text-sm text-ink-muted">{venue.city}</span>
+                    </Link>
+                  ) : (
+                    <div className="flex h-full flex-col items-center justify-center gap-2 rounded-lg border border-line bg-surface p-6 text-center">
+                      <p className="font-display text-lg text-ink">{venue.name}</p>
+                      <p className="text-sm text-ink-muted">{venue.city}</p>
+                    </div>
+                  )}
                 </Reveal>
               ))}
             </div>

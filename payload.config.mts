@@ -17,6 +17,7 @@ import { Media } from './src/payload/collections/media';
 import { SiteImageSlots } from './src/payload/collections/site-image-slots';
 import { Testimonials } from './src/payload/collections/testimonials';
 import { Users } from './src/payload/collections/users';
+import { Venues } from './src/payload/collections/venues';
 import { WeddingClips } from './src/payload/collections/wedding-clips';
 import { WeddingSubmissions } from './src/payload/collections/wedding-submissions';
 import { Weddings } from './src/payload/collections/weddings';
@@ -166,6 +167,7 @@ export default buildConfig({
     BlogPosts,
     Testimonials,
     Weddings,
+    Venues,
     WeddingClips,
     WeddingSubmissions,
   ],

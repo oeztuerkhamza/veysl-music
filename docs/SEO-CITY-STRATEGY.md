@@ -271,3 +271,25 @@ a doorway page. Every `/hochzeits-dj/[stadt]` page must include, at minimum:
 **A city page with none of the above should not ship** — better to launch with 7 genuinely
 distinct Tier-1 pages than 24 templated ones. Quality and distinctness beats coverage
 here, and coverage without distinctness is the exact failure mode Google penalizes.
+
+---
+
+## Update October 2026 — the rule for adding a new town
+
+The pages above exist for 21 towns; more were suggested in the October 2026 audit
+(Fellbach, Waiblingen, Sindelfingen, Kornwestheim, Nürtingen, Kirchheim unter Teck, …).
+**Do not add a town page unless `<CityProof>` has something to show for it.**
+
+`src/components/city/city-proof.tsx` renders, on every city page, the real weddings
+(`weddings` collection) and venues (`venues` collection) whose city matches the page —
+and renders **nothing** when there are none. That makes it the test:
+
+1. Publish at least one real wedding or one venue (with the venue's consent) for that
+   town in the admin panel first.
+2. Open the town's existing page, or the draft of the new one, and check that the proof
+   block appears with that entry.
+3. Only then write the town's unique prose (§5 above) and add it to `src/content/cities.ts`.
+
+A town page whose proof block stays empty is the doorway-page pattern this document
+warns about. Matching is by city name, tolerant to a shortened name ("Freiburg" matches
+"Freiburg im Breisgau"), see `cityMatches()` in `src/lib/venues.ts`.

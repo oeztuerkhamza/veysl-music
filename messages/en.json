@@ -1273,6 +1273,13 @@
       "eyebrow": "Why here",
       "title": "What makes the difference in {city}"
     },
+    "proof": {
+      "eyebrow": "On location",
+      "weddingsTitle": "Real weddings in {city}",
+      "venuesTitle": "Venues in {city} where DJ Veys has played",
+      "viewWedding": "View the wedding",
+      "allWeddings": "All real weddings"
+    },
     "venues": {
       "eyebrow": "Venues",
       "title": "Well-known wedding venues in and around {city}",
@@ -1781,6 +1788,42 @@
   "media": {
     "comingSoon": "Photo coming soon",
     "placeholderAriaLabel": "Image slot – no photo uploaded yet"
+  },
+  "venue": {
+    "meta": {
+      "title": "Wedding DJ for {venue} in {city} | DJ Veys",
+      "titleShort": "Wedding DJ {venue} | DJ Veys",
+      "description": "Celebrating at {venue}, {city}? The venue through a DJ's eyes: sound, setup, timing — from DJ Veys, who has played there. Check your date.",
+      "descriptionShort": "{venue}, {city}: the venue through a DJ's eyes — from DJ Veys, who has played there."
+    },
+    "hero": {
+      "eyebrow": "Wedding venue",
+      "title": "Wedding DJ for {venue}",
+      "subtitle": "{city} — the room as seen by the DJ who has played there."
+    },
+    "back": "Real weddings",
+    "note": {
+      "title": "The venue through a DJ's eyes"
+    },
+    "facts": {
+      "title": "Facts",
+      "address": "Address",
+      "website": "Venue website",
+      "visit": "Visit {venue}"
+    },
+    "weddings": {
+      "title": "Weddings at this venue",
+      "lead": "Real evenings DJ Veys has played here.",
+      "link": "View the wedding"
+    },
+    "city": {
+      "text": "Travel, service area and questions around {city}:",
+      "link": "Wedding DJ in {city}"
+    },
+    "cta": {
+      "title": "Your celebration at {venue}?",
+      "text": "Share your date, check availability, get a no-obligation quote — a reply within 24 hours."
+    }
   },
   "blog": {
     "meta": {

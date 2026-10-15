@@ -143,12 +143,12 @@ export function buildServicesJsonLd({
 /**
  * `/pakete` — one `Service` per package.
  *
- * No `Offer` and no `price`: `src/content/packages.ts` has `priceFrom: null`
- * on all three ("Preis auf Anfrage") until the client supplies real figures.
- * An `Offer` without a price is invalid structured data, and an invented one
- * is worse — so the packages are described as services and priced nowhere,
- * matching what the page itself says. When real prices land, this is where
- * an `offers` property belongs.
+ * `offers` appears per package as soon as `src/content/packages.ts` carries a
+ * real `priceFrom` for it (`serviceSchema()` builds it from the `priceFrom`
+ * passed in); while it is `null` ("Preis auf Anfrage") the package is
+ * described as a service and priced nowhere, matching what the page says. An
+ * `Offer` without a price is invalid structured data, and an invented one is
+ * worse.
  */
 export function buildPackagesJsonLd({
   locale,

@@ -1274,6 +1274,13 @@
       "eyebrow": "Neden burada",
       "title": "{city} bölgesinde farkı yaratan"
     },
+    "proof": {
+      "eyebrow": "Yerinde",
+      "weddingsTitle": "{city} şehrinde gerçek düğünler",
+      "venuesTitle": "{city} şehrinde DJ Veys'in çaldığı mekânlar",
+      "viewWedding": "Düğüne git",
+      "allWeddings": "Tüm gerçek düğünler"
+    },
     "venues": {
       "eyebrow": "Mekânlar",
       "title": "{city} bölgesindeki bilinen düğün mekânları",
@@ -1782,6 +1789,42 @@
   "media": {
     "comingSoon": "Fotoğraf yakında",
     "placeholderAriaLabel": "Görsel alanı – henüz fotoğraf eklenmedi"
+  },
+  "venue": {
+    "meta": {
+      "title": "Düğün DJ'i {venue} ({city}) | DJ Veys",
+      "titleShort": "Düğün DJ'i {venue} | DJ Veys",
+      "description": "{venue} ({city}) mekânında düğün mü? Bir DJ gözüyle salon: teknik, kurulum, akış — orada çalmış DJ Veys'ten. Hemen tarih sorgulayın.",
+      "descriptionShort": "{venue}, {city}: bir DJ gözüyle salon — orada çalmış DJ Veys'ten."
+    },
+    "hero": {
+      "eyebrow": "Düğün mekânı",
+      "title": "{venue} için düğün DJ'i",
+      "subtitle": "{city} — orada çalmış DJ'in gözüyle salon."
+    },
+    "back": "Gerçek düğünler",
+    "note": {
+      "title": "Salon, bir DJ'in gözüyle"
+    },
+    "facts": {
+      "title": "Bilgiler",
+      "address": "Adres",
+      "website": "Mekânın web sitesi",
+      "visit": "{venue} sitesine git"
+    },
+    "weddings": {
+      "title": "Bu mekândaki düğünler",
+      "lead": "DJ Veys'in burada eşlik ettiği gerçek geceler.",
+      "link": "Düğüne git"
+    },
+    "city": {
+      "text": "{city} için ulaşım, hizmet bölgesi ve sorular:",
+      "link": "{city} düğün DJ'i"
+    },
+    "cta": {
+      "title": "{venue} mekânında düğününüz mü var?",
+      "text": "Tarihi yazın, müsaitliği görün, bağlayıcı olmayan teklif alın — 24 saat içinde yanıt."
+    }
   },
   "blog": {
     "meta": {

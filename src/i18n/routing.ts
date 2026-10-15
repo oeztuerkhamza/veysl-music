@@ -415,6 +415,23 @@ export const pathnames = {
     fr: '/conseils/[slug]',
     es: '/consejos/[slug]',
   },
+  /**
+   * Eine Seite je Location, in der DJ Veys gespielt hat (CMS-Collection
+   * `venues`, nur mit Einverständnis der Location veröffentlichbar). Sie trägt
+   * die Suche „DJ <Location-Name>" — die konkreteste Anfrage, die ein Paar
+   * stellt, sobald der Saal feststeht. de/tr/en (VENUE_SUPPORTED_LOCALES in
+   * src/content/venues.ts); die übrigen fünf liefern `notFound()`.
+   */
+  '/hochzeitslocation/[slug]': {
+    de: '/hochzeitslocation/[slug]',
+    tr: '/dugun-salonu/[slug]',
+    ku: '/cihe-dawete/[slug]',
+    ar: '/qaat-afrah/[slug]',
+    en: '/wedding-venue/[slug]',
+    nl: '/trouwlocatie/[slug]',
+    fr: '/salle-mariage/[slug]',
+    es: '/salon-boda/[slug]',
+  },
   '/epk': '/epk',
   '/kontakt': {
     de: '/kontakt',
