@@ -1,0 +1,65 @@
+# Admin-Panel für www.praxis-gueltekin.de (Decap CMS unter /admin).
+#
+# Eigener Stack neben der Website, wie der Kleinanzeigen-Watcher: ein
+# Ausfall hier betrifft dj-veys.de nicht. Zwei Dienste:
+#
+#   praxis-cms-oauth    die GitHub-Anmeldung des Panels (oauth-server.mjs).
+#                       nginx erreicht ihn über das Netzwerk der Website
+#                       unter http://praxis-cms-oauth:8787 (/oauth/ in
+#                       nginx/sites-extra/praxis-gueltekin.conf).
+#   praxis-builder      baut die Seite neu, sobald im Repo (also auch über
+#                       das Panel) etwas veröffentlicht wurde (builder.sh).
+#
+# .env (vom Workflow aus GitHub-Secrets geschrieben, nie im Repo):
+#   GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, ALLOWED_ORIGIN
+
+services:
+  oauth:
+    image: node:22-alpine
+    container_name: praxis-cms-oauth
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      HOST: 0.0.0.0
+      PORT: '8787'
+    volumes:
+      - ./oauth-server.mjs:/app/oauth-server.mjs:ro
+    command: ['node', '/app/oauth-server.mjs']
+    # Nicht nach außen veröffentlicht — nur nginx spricht mit ihm.
+    expose:
+      - '8787'
+    networks:
+      - site
+    mem_limit: 96m
+    logging:
+      driver: json-file
+      options: { max-size: '5m', max-file: '2' }
+
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile.builder
+    image: praxis-builder:latest
+    container_name: praxis-builder
+    restart: unless-stopped
+    volumes:
+      # Deploy-Key, Arbeitskopie, node_modules-Cache, zuletzt gebauter Commit.
+      - ./data:/data
+      # Dasselbe Verzeichnis, das nginx read-only unter /srv/sites einhängt.
+      - /opt/veysl/sites/praxis-gueltekin:/out
+    # Ein Astro-Build mit Bildoptimierung braucht kurz etwas Speicher; die
+    # Grenze sorgt dafür, dass er der Website nie den Arbeitsspeicher nimmt.
+    mem_limit: 1g
+    cpus: 1.0
+    logging:
+      driver: json-file
+      options: { max-size: '10m', max-file: '3' }
+
+networks:
+  # Das Netzwerk der Website (docker-compose.yml im Repo-Root, Projekt "app").
+  site:
+    external: true
+    # Der Deploy liest den Namen vom laufenden nginx-Container ab (SITE_NETWORK),
+    # statt ihn zu raten; app_veysl ist der Name bei /opt/veysl/app.
+    name: ${SITE_NETWORK:-app_veysl}
