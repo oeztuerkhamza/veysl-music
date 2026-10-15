@@ -757,8 +757,8 @@
   },
   "turkishDj": {
     "meta": {
-      "title": "Stuttgart'ta Türk DJ – düğün, kına & nişan | DJ Veys",
-      "description": "Stuttgart'ta Türk düğün DJ'i: Türk ve Alman-Türk düğünleri, kına gecesi ve nişan için DJ & canlı orkestra. Türkçe-Almanca sunum. Tarihinizi sorgulayın."
+      "title": "Stuttgart Türk DJ: Düğün, Kına & Nişan | DJ Veys",
+      "description": "Stuttgart'ta Türk düğün DJ'i: halay, davul zurna ve güncel hitler, Türkçe-Almanca sunum. Tarihinizi sorgulayın, teklif isteyin."
     },
     "hero": {
       "eyebrow": "Türk DJ · Stuttgart & Baden-Württemberg",
@@ -825,8 +825,8 @@
   },
   "turkishDjBw": {
     "meta": {
-      "title": "Baden-Württemberg'de Türk DJ – düğün & kına | DJ Veys",
-      "description": "Baden-Württemberg genelinde Türk DJ: Stuttgart'tan Mannheim, Karlsruhe ve Ulm'a Türk düğünü, kına ve nişan. Türkçe-Almanca sunum, ulaşım önceden teklifte."
+      "title": "Baden-Württemberg Türk DJ: Düğün & Kına | DJ Veys",
+      "description": "Baden-Württemberg genelinde Türk düğün DJ'i: Stuttgart'tan Mannheim ve Ulm'a düğün, kına ve nişan. Türkçe-Almanca sunum, ulaşım önceden teklifte."
     },
     "hero": {
       "eyebrow": "Türk DJ · Baden-Württemberg",
@@ -927,8 +927,8 @@
   },
   "turkishDjDe": {
     "meta": {
-      "title": "Almanya'da Türk DJ – düğün, kına & nişan | DJ Veys",
-      "description": "Almanya genelinde Türk DJ: Türk ve Alman-Türk düğünleri, kına ve nişan – Münih ve Frankfurt'tan Köln, Hamburg ve Berlin'e kadar rezervasyon yapılabilir."
+      "title": "Almanya Türk Düğün DJ'i – Kına & Nişan | DJ Veys",
+      "description": "Almanya genelinde rezerve edilebilen Türk ve Alman-Türk düğün DJ'i: düğün, kına ve nişan, Türkçe-Almanca sunum. Tarihinizi hemen sorgulayın."
     },
     "hero": {
       "eyebrow": "Türk DJ · Almanya geneli",
@@ -1029,8 +1029,8 @@
     },
     "entity": "DJ Veys, {owner} tarafından {city} merkezli olarak yürütülen düğün DJ'i, canlı müzik ve sunuculuk hizmetidir. {years} yılı aşkın süredir Baden-Württemberg'de, Almanya genelinde ve Avrupa'da düğün ve etkinliklere eşlik ediyor; Almanca, Türkçe ve İngilizce canlı sunum yapıyor ve Alman-Türk, Türk ve çok kültürlü düğünlerde uzmanlaştı. Bugüne kadar {events}+ kutlamaya eşlik etti — DJ olarak, sazda ve gitarda canlı müzisyen olarak ve nefesli sazları da olan canlı bir orkestrayla.",
     "meta": {
-      "title": "Sorular & Yanıtlar — Düğün DJ'i Stuttgart | DJ Veys",
-      "description": "DJ Veys ile rezervasyon, fiyatlar, süreç, müzik, teknik donanım ve Türk düğünleri hakkında {count} ayrıntılı yanıt — dolambaçsız, doğrudan okunur."
+      "title": "Düğün DJ'i: Fiyat, Akış & Rezervasyon Soruları | DJ Veys",
+      "description": "Düğün DJ'i hakkında {count} yanıt: ne kadar tutar, akşam nasıl ilerler, hangi müzik ve ekipman dahil, Türk düğünleri için de."
     },
     "updated": "Son güncelleme: {date}",
     "seeAlso": "Süreçle ilgili on kısa soruyu daha şu sayfada yanıtlıyoruz:",
@@ -1246,8 +1246,8 @@
       "ctaNote": "Bağlayıcı olmayan talep – 24 saat içinde yanıt."
     },
     "meta": {
-      "title": "Düğün DJ'i {city} — DJ, müzisyen & sunucu | DJ Veys",
-      "description": "{city} ve çevresinde Türk düğün DJ'i: Alman-Türk ve Türk düğünleri için DJ, müzisyen ve çok dilli sunucu. Hemen tarih sorgulayın."
+      "title": "{city} DJ – Düğün DJ'i & Sunucu | DJ Veys",
+      "description": "{city} ve çevresinde DJ ve sunucu: düğün, kına ve kutlamalar için Türkçe, Almanca ve İngilizce sunum, DJ ve canlı müzik tek elden. Tarih sorgulayın."
     },
     "travel": {
       "eyebrow": "Ulaşım & şeffaflık",
