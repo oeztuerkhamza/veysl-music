@@ -1,0 +1,116 @@
+name: Deploy the praxis-gueltekin admin panel
+
+# Bringt tools/praxis-cms auf den Server: die GitHub-Anmeldung fuer das
+# Admin-Panel von www.praxis-gueltekin.de (/admin) und den Builder, der die
+# Seite nach jeder Veroeffentlichung neu baut. Eigener Workflow aus demselben
+# Grund wie beim Watcher: anderer Lebenszyklus als dj-veys.de, und ein
+# Fehlschlag hier darf die Website nicht mitreissen.
+#
+# Secrets (Settings → Secrets and variables → Actions):
+#   PRAXIS_CMS_GITHUB_CLIENT_ID      aus der GitHub OAuth App
+#   PRAXIS_CMS_GITHUB_CLIENT_SECRET  dito
+# Beide werden bei jedem Lauf frisch in die .env auf dem Server geschrieben.
+#
+# Beim ersten Lauf erzeugt der Server einen eigenen Schluessel und gibt den
+# oeffentlichen Teil in der Zusammenfassung dieses Laufs aus. Der muss einmal
+# im Praxis-Repo als Deploy key (nur Lesen) eingetragen werden.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'tools/praxis-cms/**'
+      - '.github/workflows/deploy-praxis-cms.yml'
+      - '.github/scripts/deploy-praxis-cms-apply.sh'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-praxis-cms
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy and verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy over SSH
+        env:
+          SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+          SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SSH_HOST_KEY: ${{ secrets.DEPLOY_SSH_HOST_KEY }}
+          CLIENT_ID: ${{ secrets.PRAXIS_CMS_GITHUB_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.PRAXIS_CMS_GITHUB_CLIENT_SECRET }}
+        run: |
+          set -uo pipefail
+          if [ -z "${SSH_HOST:-}" ] || [ -z "${SSH_USER:-}" ] || [ -z "${SSH_KEY:-}" ]; then
+            echo "::error::DEPLOY_SSH_HOST / DEPLOY_SSH_USER / DEPLOY_SSH_KEY are not set — see docs/DEPLOYMENT.md."
+            exit 1
+          fi
+          if [ -z "${CLIENT_ID:-}" ] || [ -z "${CLIENT_SECRET:-}" ]; then
+            echo "::error::PRAXIS_CMS_GITHUB_CLIENT_ID / PRAXIS_CMS_GITHUB_CLIENT_SECRET fehlen (Settings → Secrets and variables → Actions)."
+            exit 1
+          fi
+
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/praxis_key
+          chmod 600 ~/.ssh/praxis_key
+          if [ -n "${SSH_HOST_KEY:-}" ]; then
+            printf '%s\n' "$SSH_HOST_KEY" > ~/.ssh/known_hosts
+          else
+            echo "::warning::DEPLOY_SSH_HOST_KEY is not set — accepting the host key on first sight."
+            ssh-keyscan -t rsa,ecdsa,ed25519 "$SSH_HOST" >> ~/.ssh/known_hosts || {
+              echo "::error::ssh-keyscan could not reach $SSH_HOST."
+              exit 1
+            }
+          fi
+          SSH_OPTS="-i $HOME/.ssh/praxis_key -o BatchMode=yes -o ConnectTimeout=20"
+
+          tar -czf praxis-cms-src.tgz -C tools/praxis-cms \
+            docker-compose.yml Dockerfile.builder builder.sh oauth-server.mjs github_known_hosts
+
+          # Das Secret geht als Datei ueber scp, nicht als Argument: eine
+          # SSH-Kommandozeile steht auf dem Server in der Prozessliste.
+          umask 077
+          printf 'GITHUB_CLIENT_ID=%s\nGITHUB_CLIENT_SECRET=%s\nALLOWED_ORIGIN=https://www.praxis-gueltekin.de\n' \
+            "$CLIENT_ID" "$CLIENT_SECRET" > praxis-cms.env
+
+          scp $SSH_OPTS praxis-cms-src.tgz "$SSH_USER@$SSH_HOST:/tmp/praxis-cms-src.tgz"
+          ssh $SSH_OPTS "$SSH_USER@$SSH_HOST" 'mkdir -p /opt/veysl/praxis-cms'
+          scp $SSH_OPTS praxis-cms.env "$SSH_USER@$SSH_HOST:/opt/veysl/praxis-cms/.env"
+          rm -f praxis-cms.env
+
+          ssh $SSH_OPTS "$SSH_USER@$SSH_HOST" \
+            'chmod 600 /opt/veysl/praxis-cms/.env && bash -s' \
+            < .github/scripts/deploy-praxis-cms-apply.sh 2>&1 | tee apply.txt
+          status=${PIPESTATUS[0]}
+
+          {
+            echo "### Praxis admin panel deploy"
+            echo
+            if grep -q 'DEPLOY-KEY: NOCH NICHT' apply.txt; then
+              echo "**Noch ein Schritt:** diesen Schlüssel im Praxis-Repo unter *Settings → Deploy keys → Add deploy key* eintragen (Titel \`dj-veys-server\`, **ohne** Schreibrecht):"
+              echo
+              echo '```'
+              sed -n 's/^PUBLIC KEY: //p' apply.txt
+              echo '```'
+            fi
+            echo '```'
+            cat apply.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$status" -ne 0 ] || ! grep -q 'RESULT: RUNNING' apply.txt; then
+            echo "::error::Der Deploy ist fehlgeschlagen — siehe Ausgabe oben."
+            exit 1
+          fi
+          if grep -q 'DEPLOY-KEY: NOCH NICHT' apply.txt; then
+            echo "::notice::Läuft. Noch offen: Deploy key im Praxis-Repo eintragen — Schlüssel steht in der Zusammenfassung."
+          fi
