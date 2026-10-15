@@ -73,11 +73,11 @@ export async function GuideLinks({ ids, locale }: GuideLinksProps) {
  */
 export const GUIDE_LINKS_BY_PAGE = {
   home: ['was-kostet-ein-hochzeits-dj', 'tuerkische-hochzeit-ablauf-musik-timing', 'hochzeitslocation-stuttgart-dj-perspektive'],
-  packages: ['was-kostet-ein-hochzeits-dj', 'hochzeitsbudget-musik-anteil', 'dj-live-band-oder-beides'],
-  services: ['kina-gecesi-henna-abend-planen', 'dj-live-band-oder-beides', 'hochzeits-dj-checkliste'],
-  process: ['hochzeits-timeline-musterablauf', 'dramaturgie-hochzeitsabend', 'musikwuensche-no-go-liste'],
+  packages: ['was-kostet-ein-hochzeits-dj', 'wann-hochzeits-dj-buchen', 'hochzeitsbudget-musik-anteil'],
+  services: ['kina-gecesi-henna-abend-planen', 'nisan-verlobung-planen', 'dj-live-band-oder-beides'],
+  process: ['wann-hochzeits-dj-buchen', 'hochzeits-timeline-musterablauf', 'dramaturgie-hochzeitsabend'],
   islamic: ['islamische-hochzeit-planen', 'deutsch-tuerkische-hochzeit-zwei-familien', 'tuerkische-hochzeit-als-gast'],
-  turkishDj: ['tuerkische-hochzeit-ablauf-musik-timing', 'kina-gecesi-henna-abend-planen', 'davul-zurna-halay-roman-havasi'],
+  turkishDj: ['tuerkische-hochzeit-ablauf-musik-timing', 'nisan-verlobung-planen', 'gelin-alma-brautabholung-musik'],
   turkishDjBw: ['deutsch-tuerkische-hochzeit-zwei-familien', 'laermschutz-sperrzeiten-baden-wuerttemberg', 'tuerkische-hochzeit-ablauf-musik-timing'],
   turkishDjDe: ['destination-wedding-dj-buchen', 'tuerkische-hochzeit-als-gast', 'was-kostet-ein-hochzeits-dj'],
   bw: ['laermschutz-sperrzeiten-baden-wuerttemberg', 'hochzeitslocation-stuttgart-dj-perspektive', 'location-akustik-checkliste'],

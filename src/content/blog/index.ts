@@ -45,6 +45,9 @@ import { hochzeitOhneDjSpotifyPlaylistPost } from './hochzeit-ohne-dj-spotify-pl
 import { tuerkischeHochzeitAlsGastPost } from './tuerkische-hochzeit-als-gast';
 import { hochzeitsbudgetMusikAnteilPost } from './hochzeitsbudget-musik-anteil';
 import { hochzeitslocationStuttgartPost } from './hochzeitslocation-stuttgart-dj-perspektive';
+import { nisanPost } from './nisan-verlobung-planen';
+import { gelinAlmaPost } from './gelin-alma-brautabholung-musik';
+import { wannBuchenPost } from './wann-hochzeits-dj-buchen';
 
 export type {
   BlogPost,
@@ -85,6 +88,9 @@ export const blogPosts: BlogPost[] = [
   tuerkischeHochzeitAlsGastPost,
   hochzeitsbudgetMusikAnteilPost,
   hochzeitslocationStuttgartPost,
+  nisanPost,
+  gelinAlmaPost,
+  wannBuchenPost,
   // Recap templates — status: 'template', excluded from getPublishedGuides().
   echteHochzeitGrosseFeierPost,
   echteHochzeitKinaAbendPost,

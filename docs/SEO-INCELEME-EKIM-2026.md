@@ -210,6 +210,30 @@ Aşama 2 (🤖 altyapı)    │
 Aşama 3 (🤖 içerik)    ─┘
 ```
 
+### Durum — 15 Ekim akşamı (🤖 aşamaları)
+
+| Aşama | Durum | Not |
+|---|---|---|
+| 1 İç link, meta, şema, llms.txt, `seo:check` | ✅ Bitti | 271 sayfa taraması: 0 hata, 1 not (Kürtçe ana sayfa açıklaması 174 karakter) |
+| 2.1 Mekân koleksiyonu ve sayfası | ✅ Bitti | Admin'de **Locations**. Yayın için "Namensnennung abgestimmt" kutusu ve en az 120 karakterlik "DJ-Blick" metni zorunlu. Test verisiyle derlendi ve doğrulandı (274 URL, 0 hata) |
+| 2.2 Düğünlere ayrı sayfa | ⏸ Bilerek yapılmadı | Kodun kendi gerekçesi (`wedding-entry.tsx`): birkaç düğün için ikinci bir tıklama, görülmesi gereken metni gizler. Bunun yerine her düğüne **bağlantılanabilir bir anker** (`#hochzeit-<id>`) eklendi; mekân ve şehir sayfaları oraya bağlanıyor |
+| 2.3 Şehir sayfalarında "Bu şehirdeki düğünler" | ✅ Bitti | `CityProof`: şehirle eşleşen düğün ya da mekân yoksa **hiçbir şey göstermez** |
+| 2.4 VideoObject şeması | ⏸ Bilerek yapılmadı | Zorunlu `uploadDate` alanının güvenilir verisi yok; tahminle doldurulmuş şema geçersiz olurdu |
+| 2.5 Fiyat → Offer şeması | ✅ Bitti | `packages.ts`'e gerçek fiyat girildiği anda otomatik; `null` iken şema yok |
+| 2.6 İlçe sayfası koruması | ✅ Kural olarak | Derleme engeli yerine kural: `docs/SEO-CITY-STRATEGY.md` → yeni ilçe ancak `CityProof` bir şey gösterebiliyorsa açılır |
+| 3.1 Yeni rehber yazıları | ✅ 3 yazı × 3 dil | Nişan, gelin alma, "düğün DJ'i ne zaman ayırtılır". Mevcut 20 yazıyla anahtar kelime çakışması kontrol edildi |
+| 3.2 SSS | ✅ 2 yeni soru | Nişan ve gelin çıkarma; yalnızca sitede zaten yazan hizmetlere dayanıyor |
+| 3.3–3.4 Kayıt metinleri ve mesaj taslakları | ✅ Bitti | [KAYIT-VE-MESAJ-PAKETI.md](KAYIT-VE-MESAJ-PAKETI.md) |
+
+**Senin için açık kalan:** Aşama 0 ve Aşama 4 (aşağıda).
+
+**Admin'e nasıl girilir (`/admin`):**
+
+- **Locations** → *Create new*: Name, City, (Address, Website), **DJ-Blick** (Almanca en az 120 karakter; Türkçesini ayrıca yaz, üst sağdan dil değiştirerek), Foto (isteğe bağlı), **Namensnennung abgestimmt** ✔ (mekân adını anmana izin verdiyse), Status = *Veröffentlicht*. Kaydedince sayfa `/hochzeitslocation/<ad>` olarak açılır; URL adı addan otomatik oluşur.
+- **Referenz-Hochzeiten** → *Create new*: Paar, Stadt, **Location** (mekânın adı Locations'taki ad ile *aynı* yazılırsa düğün o mekân sayfasında ve mekân sayfası düğünde otomatik bağlanır), Datum, Titelbild, Text, Fotogalerie, Videos, Status.
+- **Kundenstimmen**: Name, Zitat, Bewertung, Status.
+- Yeni rehber yazılarının **kapak fotoğrafı**: **Bild-Slots** (Görsel Alanları) içinde `blog.cover.nisan-verlobung-planen`, `blog.cover.gelin-alma-brautabholung-musik`, `blog.cover.wann-hochzeits-dj-buchen`. Yüklenene kadar tasarlanmış boş görünüm çıkar; stok fotoğraf koymuyoruz.
+
 ### Aşama 0 — 👤 Bu hafta, ~2 saat, kod gerekmez
 
 | # | İş | Neden |
