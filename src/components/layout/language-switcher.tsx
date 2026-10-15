@@ -1,12 +1,49 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useRouter as useRawRouter } from 'next/navigation';
 import { Check, Globe2 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
-import { usePathname, useRouter } from '@/i18n/navigation';
-import { localeNames, routing, type Locale } from '@/i18n/routing';
+import { useRouter } from '@/i18n/navigation';
+import { hreflangTags, localeNames, routing, type Locale } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
+
+/**
+ * Die Sprachvarianten der aktuellen Seite, gelesen aus ihren eigenen
+ * `<link rel="alternate" hreflang>`-Tags: hreflang-Code → Pfad.
+ *
+ * Warum aus dem DOM und nicht aus den Route-Params: Der Umschalter baute die
+ * Ziel-URL früher aus den Params der aktuellen Seite. Das ist falsch, sobald
+ * der Slug sprachabhängig ist — auf `/en/guide/wedding-dj-checklist` ergab
+ * „Türkisch" `/tr/rehber/wedding-dj-checklist` (404, richtig wäre
+ * `/tr/rehber/dugun-dj-kontrol-listesi`). Und er bot jede der acht Sprachen
+ * an, auch dort, wo es die Seite nicht gibt: Stadt-, Regions- und
+ * Landesseiten existieren nur auf de/tr/en. Der Search-Console-Export vom
+ * 2026-10-16 listet 273 Adressen als 404: 224 davon liegen in ku/ar/nl/fr/es,
+ * 42 tragen in de/tr/en den Slug einer anderen Sprache — beides Adressen,
+ * die dieser Umschalter erzeugen konnte. (Ob ein Teil auch aus älteren
+ * Sitemaps stammt, lässt der Export nicht erkennen.)
+ *
+ * Die hreflang-Tags der Seite sind die einzige Stelle, die beides schon
+ * richtig weiß: `buildMetadata()` setzt sie pro Seite mit den
+ * sprachspezifischen Slugs und nur für Sprachen, in denen die Seite wirklich
+ * existiert. Sitemap und Umschalter lesen damit dieselbe Wahrheit.
+ */
+function readAlternates(): Partial<Record<string, string>> {
+  const found: Partial<Record<string, string>> = {};
+  document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((node) => {
+    const code = node.getAttribute('hreflang');
+    const href = node.getAttribute('href');
+    if (!code || !href || code === 'x-default') return;
+    try {
+      const url = new URL(href, window.location.origin);
+      found[code] = url.pathname + url.search;
+    } catch {
+      /* ungültige URL — Sprache bleibt ausgeblendet */
+    }
+  });
+  return found;
+}
 
 /**
  * Accessible menu-button pattern (WAI-ARIA APG "Menu Button" with a radio
@@ -19,10 +56,12 @@ import { cn } from '@/lib/utils';
 export function LanguageSwitcher() {
   const t = useTranslations('nav');
   const locale = useLocale() as Locale;
-  const pathname = usePathname();
-  const params = useParams();
   const router = useRouter();
+  const rawRouter = useRawRouter();
   const [open, setOpen] = useState(false);
+  // Wird beim Öffnen des Menüs neu gelesen, nicht beim Rendern: Nach einer
+  // Client-Navigation tauschen sich die Tags erst mit der neuen Seite aus.
+  const [alternates, setAlternates] = useState<Partial<Record<string, string>>>({});
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const itemRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -50,19 +89,31 @@ export function LanguageSwitcher() {
     };
   }, [open]);
 
+  function toggleMenu() {
+    if (!open) setAlternates(readAlternates());
+    setOpen((value) => !value);
+  }
+
   function selectLocale(nextLocale: Locale) {
     setOpen(false);
     triggerRef.current?.focus();
     if (nextLocale === locale) return;
-    router.replace(
-      // Dynamic routes (e.g. `/hochzeits-dj/[stadt]`) need their params to
-      // rebuild the localized href; they always match the current pathname
-      // at runtime, but next-intl can't statically prove that generically.
-      // @ts-expect-error -- see https://next-intl.dev/docs/routing/navigation#userouter
-      { pathname, params },
-      { locale: nextLocale }
-    );
+    const target = alternates[hreflangTags[nextLocale]];
+    if (target) {
+      rawRouter.replace(target);
+    } else {
+      // Keine Alternativen gefunden (z. B. auf der Fehlerseite): lieber die
+      // Startseite der Sprache als eine geratene URL, die 404 liefern kann.
+      router.replace('/', { locale: nextLocale });
+    }
   }
+
+  // Nur Sprachen anbieten, in denen es diese Seite gibt. Ohne gelesene
+  // Alternativen bleiben alle sichtbar und führen auf die Startseite.
+  const hasAlternates = Object.keys(alternates).length > 0;
+  const available = routing.locales.filter(
+    (item) => item === locale || !hasAlternates || Boolean(alternates[hreflangTags[item]]),
+  );
 
   function onMenuKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     const items = itemRefs.current.filter((item): item is HTMLButtonElement => Boolean(item));
@@ -89,7 +140,7 @@ export function LanguageSwitcher() {
       <button
         ref={triggerRef}
         type="button"
-        onClick={() => setOpen((value) => !value)}
+        onClick={toggleMenu}
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={t('language')}
@@ -106,7 +157,7 @@ export function LanguageSwitcher() {
           onKeyDown={onMenuKeyDown}
           className="absolute end-0 top-full z-50 mt-2 max-h-80 min-w-[10rem] overflow-y-auto rounded-md border border-line bg-surface py-1 shadow-lift"
         >
-          {routing.locales.map((item, index) => {
+          {available.map((item, index) => {
             const isActive = item === locale;
             return (
               <button

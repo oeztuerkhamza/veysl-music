@@ -85,7 +85,21 @@ export default function robots(): MetadataRoute.Robots {
    * (Zugriffsschutz ist das nicht und soll es nicht sein — dafür sorgt die
    * Anmeldung selbst, robots.txt ist eine Crawl-Anweisung.)
    */
-  const apiRule = { allow: ['/', '/api/faq'], disallow: ['/api/', '/admin'] };
+  /**
+   * `/api/social/media/` steht aus demselben Grund neben `/api/faq`: Die
+   * Vorschaubilder des Instagram-/YouTube-Streifens auf der Startseite werden
+   * von dort ausgeliefert (`src/lib/social/media-cache.ts` — der Browser
+   * fragt nie Instagram oder YouTube direkt an). Die Search Console meldete
+   * 16 dieser Adressen unter „Durch robots.txt-Datei blockiert" (Export vom
+   * 2026-10-16, alle `/api/social/media/<id>`): Googlebot konnte die Bilder
+   * der Seite nicht laden, weder beim Rendern noch für die Bildersuche.
+   *
+   * Der Pfad liefert ausschließlich öffentliche, inhaltsadressierte
+   * Vorschaubilder (`Cache-Control: public, immutable`) und nimmt nichts
+   * entgegen. Alles andere unter `/api/` bleibt gesperrt; die längere,
+   * spezifischere Allow-Regel schlägt `Disallow: /api/`.
+   */
+  const apiRule = { allow: ['/', '/api/faq', '/api/social/media/'], disallow: ['/api/', '/admin'] };
 
   return {
     rules: [
