@@ -9,7 +9,7 @@ import { Section } from '@/components/ui/section';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { PageHero } from '@/components/pages/page-hero';
 import { Reveal } from '@/components/motion/reveal';
-import { getPublishedGuides, resolveBlogLocale } from '@/content/blog';
+import { getPublishedGuides, postModifiedAt, resolveBlogLocale } from '@/content/blog';
 import { PostGrid } from '@/components/blog/post-grid';
 import { BlogEmptyState } from '@/components/blog/blog-empty-state';
 import { BlogCta } from '@/components/blog/blog-cta';
@@ -53,7 +53,10 @@ export default async function RatgeberIndexPage({ params }: PageProps) {
   })).filter((group) => group.posts.length > 0);
 
   const latestUpdate = posts.reduce<string | null>(
-    (latest, post) => (latest === null || post.updatedAt > latest ? post.updatedAt : latest),
+    (latest, post) => {
+      const modified = postModifiedAt(post);
+      return latest === null || modified > latest ? modified : latest;
+    },
     null
   );
 

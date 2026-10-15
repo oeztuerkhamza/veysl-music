@@ -167,7 +167,7 @@ function slugFor(entry: LocalizedEntry, locale: Locale): string {
  * exactly this case is to leave the field out rather than guess.
  *
  * Who has a real date today:
- * - blog articles → `post.updatedAt` (per article, the most precise signal here)
+ * - blog articles → `postModifiedAt(post)` (per article, the most precise signal here)
  * - blog index    → `latestBlogUpdate()` — newest article edit in the corpus
  * - `/fragen`     → `latestAnswerUpdate()` — newest edit in the answer corpus
  *
@@ -242,7 +242,7 @@ async function loadRegionsData(): Promise<RegionsData> {
  */
 async function loadPublishedBlogPosts(): Promise<LocalizedEntry[]> {
   try {
-    const { getPublishedGuides, getReadyLocalesForPost, getPostSlug } = await import('@/content/blog');
+    const { getPublishedGuides, getReadyLocalesForPost, getPostSlug, postModifiedAt } = await import('@/content/blog');
     return getPublishedGuides().map((post) => {
       const locales = getReadyLocalesForPost(post);
       return {
@@ -253,7 +253,7 @@ async function loadPublishedBlogPosts(): Promise<LocalizedEntry[]> {
         slugByLocale: Object.fromEntries(locales.map((l) => [l, getPostSlug(post, l)])),
         locales,
         // The one place on this site with a genuine per-URL edit date.
-        lastModified: post.updatedAt,
+        lastModified: postModifiedAt(post),
       };
     });
   } catch {
