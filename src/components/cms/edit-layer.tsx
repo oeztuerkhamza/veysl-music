@@ -26,6 +26,8 @@ import { useSyncExternalStore } from 'react';
  */
 const EditOverlay = dynamic(() => import('./edit-overlay').then((m) => m.EditOverlay), { ssr: false });
 
+const TextEditOverlay = dynamic(() => import('./text-edit-overlay').then((m) => m.TextEditOverlay), { ssr: false });
+
 const ADMIN_HINT_COOKIE = 'dj-cms-hint';
 
 /**
@@ -55,5 +57,10 @@ export function CmsEditLayer() {
 
   if (!enabled) return null;
 
-  return <EditOverlay />;
+  return (
+    <>
+      <EditOverlay />
+      <TextEditOverlay />
+    </>
+  );
 }
