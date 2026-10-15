@@ -12,6 +12,19 @@ Familientradition verschiebt einzelne Blöcke — die Struktur dahinter bleibt a
 meisten Fällen erstaunlich ähnlich. Wer lieber direkt selbst plant: Am Ende dieses
 Beitrags steht ein leeres Raster zum Ausfüllen.
 
+## Kurz erklärt: So läuft eine DJ-begleitete Hochzeit ab
+
+Eine Hochzeit mit DJ folgt in der Regel sieben Phasen. Wie lang jede einzelne ist,
+hängt von Location, Gästezahl und Traditionen ab — die Reihenfolge bleibt meist gleich:
+
+1. **Aufbau und Soundcheck** vor dem ersten Gast
+2. **Zeremonie** (Standesamt oder freie Trauung), bei Bedarf mit Beschallung
+3. **Sektempfang** mit ruhiger Hintergrundmusik
+4. **Einzug ins Fest, Dinner und Reden** mit leiser Musik und klaren Mikrofon-Momenten
+5. **Anschnitt und Eröffnungstanz** als Übergang vom Sitzen zum Tanzen
+6. **Peaktime und Haupttanzprogramm**, der energetische Kern des Abends
+7. **Ausklang** bis zur Sperrzeit oder zum Ende der Location
+
 ## Beispiel-Timeline für einen Hochzeitstag
 
 | Uhrzeit | Programmpunkt | Hinweis |
@@ -24,6 +37,38 @@ Beitrags steht ein leeres Raster zum Ausfüllen.
 | 20:00–21:00 | Anschnitt, Eröffnungstanz, erste Tanzrunden | Übergang von Sitzen zu Tanzen bewusst gestalten |
 | 21:00–24:00 | Peaktime, Haupttanzprogramm | Der energetische Kern des Abends |
 | 24:00–ca. 02:00 | Ausklang, After-Hours | Tempo sinkt, aber Tanzfläche bleibt offen |
+
+## Der Ablauf in Phasen: Musik und Aufgaben des DJs
+
+Die Beispiel-Timeline sagt, *wann* etwas passiert. Für die Planung ist ebenso wichtig,
+*was* in jeder Phase musikalisch und technisch geschieht — und wer dafür zuständig ist.
+
+| Phase | Musik und Stimmung | Aufgabe des DJs |
+|---|---|---|
+| Aufbau | keine | Technik aufbauen, Soundcheck, Mikrofone prüfen |
+| Zeremonie | leise, auf Einsatzpunkte abgestimmt | Einzug, Ringübergabe und Auszug musikalisch begleiten, Mikrofone für Redner |
+| Sektempfang | ruhige Hintergrundmusik | Gespräche tragen, ohne zu übertönen |
+| Dinner und Reden | dezent, Lautstärke nach Tischgesprächen | Mikrofon-Momente koordinieren, Übergänge ankündigen |
+| Anschnitt, Eröffnungstanz | bewusst gewählter Song | Gäste auf die Tanzfläche holen, Stimmung aufbauen |
+| Peaktime | tanzbar, Genre-Mix nach Gästen | Tanzfläche lesen, Musikwünsche einordnen, Energie halten |
+| Ausklang | Tempo sinkt, bekannte Songs | Schlusslied, Ende vor der Sperrzeit |
+
+## Kompakte Variante: Feier ab 18 Uhr
+
+Nicht jede Hochzeit beginnt mit einem Getting Ready am Mittag. Wer standesamtlich
+tagsüber heiratet und abends feiert, kommt mit einem deutlich kürzeren Raster aus:
+
+| Uhrzeit | Programmpunkt | Hinweis |
+|---|---|---|
+| 17:30–18:30 | Ankunft der Gäste, Empfang | Ruhige Hintergrundmusik, Aufbau muss längst fertig sein |
+| 18:30–21:00 | Dinner und Reden | Reden zeitlich grob abstimmen |
+| 21:00–21:30 | Anschnitt und Eröffnungstanz | Übergang bewusst gestalten |
+| 21:30–01:00 | Tanzprogramm und Peaktime | Hauptblock des Abends |
+| 01:00–02:00 | Ausklang | Endzeit der Location beachten |
+
+Die kompakte Variante hat weniger Puffer-Reserve nach vorn: Verzögert sich das Dinner,
+rutscht die Peaktime unmittelbar nach hinten. Deshalb lohnt sich hier der Blick auf die
+Endzeit der Location besonders.
 
 ## Ab wann sollte der DJ am Hochzeitstag starten?
 
@@ -99,6 +144,58 @@ Programmpunkt sollten mindestens 15 bis 20 Minuten realistisch eingeplant werden
 inklusive der Zeit, die Gäste brauchen, um sich neu zu sammeln. Eine Timeline mit zu
 vielen Programmpunkten wirkt am Ende gehetzt statt festlich.
 
+## Wie viele Stunden DJ braucht ein Hochzeitsabend?
+
+Die Stundenzahl ergibt sich aus der Timeline, nicht umgekehrt. Als grobe Orientierung:
+Für Eröffnungstanz, Peaktime und Ausklang sind meist mehrere Stunden Musik am Abend
+nötig. Wer den DJ schon zum Sektempfang oder zur Zeremonie einplant, verlängert die
+Buchung entsprechend um die Stunden davor. Entscheidend ist, die Blöcke einzeln
+zu betrachten: Was soll musikalisch begleitet werden, und wo reicht eine Playlist oder
+Stille? Welche Pakete welche Zeiträume abdecken, steht in der Paketübersicht.
+
+## Aufbau und Soundcheck: Wann der DJ vor Ort sein sollte
+
+Aufbau und Soundcheck gehören vor den ersten Gast, nicht in die Minuten davor. Wie viel
+Vorlauf nötig ist, hängt von Technik, Zugang und Location ab. Drei Fragen klären das
+früh im Planungsgespräch:
+
+- Ab wann ist die Location zugänglich, und wo darf Technik angeliefert werden?
+- Gibt es Strom und Platz an der gewünschten Stelle, oder müssen Kabelwege geplant werden?
+- Wird die Zeremonie am selben Ort beschallt, sodass ein zweiter Aufbau entfällt?
+
+Wer diese Punkte vorab klärt, spart am Hochzeitstag Zeit — genau dort, wo ohnehin
+keine Reserve vorgesehen ist.
+
+## Reden, Spiele und Mikrofon-Momente im Ablauf
+
+Reden und Überraschungen sind für viele Gäste Höhepunkte, für den Zeitplan aber die
+größte Unbekannte. Drei Regeln aus der Praxis helfen:
+
+1. Redner vorab nennen und eine grobe Länge abstimmen, damit das Dinner nicht ausufert.
+2. Reden *vor* dem Hauptgang oder *zwischen* den Gängen platzieren, nicht erst
+   unmittelbar vor der Peaktime.
+3. Das Mikrofon vorher testen und an eine feste Person übergeben, damit niemand auf der
+   Bühne improvisiert.
+
+Spiele und Überraschungen sind sinnvoll, wenn sie als eigener Programmpunkt mit
+Zeitfenster geplant werden, nicht als Einschub zwischen anderen Blöcken.
+
+## Musikwünsche, Eröffnungstanz und No-Go-Liste einplanen
+
+Auch die Musik braucht ihren Platz im Ablauf. Der Eröffnungstanz sollte feststehen,
+bevor der DJ die Peaktime aufbaut — mehr dazu im Beitrag zur Songauswahl für den
+Eröffnungstanz. Musikwünsche der Gäste und eine No-Go-Liste klärt man am besten vorab,
+damit am Abend keine Diskussion entsteht; die praktische Anleitung dazu steht im
+Beitrag zu Musikwünschen und der No-Go-Liste.
+
+## Sperrzeiten und Lärmschutz in Baden-Württemberg
+
+Wie lange gefeiert werden darf, entscheiden Location, Gemeinde und Lärmschutzauflagen.
+Die Regeln unterscheiden sich von Ort zu Ort. Wer in Baden-Württemberg feiert, sollte
+die Endzeit vor der Planung der Peaktime kennen und mit der Location abstimmen.
+Hintergründe und typische Fallstricke bündelt der Beitrag zu Lärmschutz, Sperrstunde und
+Sperrzeiten in Baden-Württemberg.
+
 ## Die Timeline mit allen Dienstleistern teilen
 
 Eine Timeline, die nur beim Brautpaar liegt, nützt wenig. Fotograf, Location, Caterer
@@ -139,6 +236,34 @@ ein Name — steht dort niemand, passiert der Programmpunkt am Tag selbst
 erfahrungsgemäß zu spät oder gar nicht. Und die letzte Zeile ist keine Formalie: Wer
 den Endzeitpunkt vorher kennt, plant die Peaktime davor anders als jemand, der um
 Mitternacht überrascht wird.
+
+## Häufige Fragen zum Ablauf einer Hochzeit mit DJ
+
+### Wann beginnt der DJ am Hochzeitstag?
+
+Das hängt vom Paket ab. Üblich sind drei Startpunkte: zur freien Trauung, zum
+Sektempfang oder erst zum Dinner. Aufbau und Soundcheck liegen immer davor.
+
+### Wie lange dauert der Eröffnungstanz?
+
+Meist ein bis zwei Songs. Wichtig ist, dass der Übergang zu den ersten Tanzrunden
+vorbereitet ist, sodass die Tanzfläche nicht leer bleibt.
+
+### Wann sollte die Timeline an den DJ gehen?
+
+So früh wie möglich, spätestens zusammen mit den anderen Dienstleistern. Im
+Planungsgespräch wird die Timeline gemeinsam durchgegangen und bei Änderungen
+angepasst.
+
+### Was passiert, wenn der Zeitplan verrutscht?
+
+Ein guter DJ plant Puffer ein und kann Übergänge flexibel anpassen. Wichtig ist, dass
+Verzögerungen früh an eine feste Ansprechperson gemeldet werden.
+
+### Muss die Timeline minutengenau sein?
+
+Nein. Zeitfenster mit Puffer sind belastbarer als exakte Uhrzeiten. Entscheidend sind
+die Reihenfolge, die Endzeit und klare Zuständigkeiten.
 
 ## Fazit
 
@@ -746,9 +871,9 @@ export const timelinePost: BlogPost = {
   type: 'guide',
   status: 'published',
   publishedAt: '2026-09-08',
-  updatedAt: '2026-08-23',
+  updatedAt: '2026-10-15',
   tags: ['planung', 'timeline', 'zeitplan', 'ablauf'],
-  readingTimeMinutes: 8,
+  readingTimeMinutes: 10,
   links: ['/ablauf', '/pakete'],
   relatedAnswers: ['run-of-show', 'planning-call', 'first-dance'],
   relatedCities: ['heilbronn', 'esslingen'],
@@ -762,7 +887,7 @@ export const timelinePost: BlogPost = {
       seo: {
         metaTitle: 'Ablauf einer DJ-begleiteten Hochzeit – Timeline | DJ Veys',
         metaDescription:
-          'Wie läuft eine DJ-begleitete Hochzeit ab? Beispiel-Timeline von 13 bis 2 Uhr, die häufigsten Timing-Fehler und ein Ablaufplan zum Ausfüllen.',
+          'Wie läuft eine Hochzeit mit DJ ab? Sieben Phasen, Beispiel-Timeline von 13 bis 2 Uhr, kompakte Abend-Variante, Timing-Fehler und Vorlage zum Ausfüllen.',
       },
     },
     tr: {
