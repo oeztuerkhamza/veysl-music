@@ -79,6 +79,7 @@ export interface Config {
     'blog-posts': BlogPost;
     testimonials: Testimonial;
     weddings: Wedding;
+    venues: Venue;
     'wedding-clips': WeddingClip;
     'wedding-submissions': WeddingSubmission;
     'payload-kv': PayloadKv;
@@ -100,6 +101,7 @@ export interface Config {
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     weddings: WeddingsSelect<false> | WeddingsSelect<true>;
+    venues: VenuesSelect<false> | VenuesSelect<true>;
     'wedding-clips': WeddingClipsSelect<false> | WeddingClipsSelect<true>;
     'wedding-submissions': WeddingSubmissionsSelect<false> | WeddingSubmissionsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -650,6 +652,53 @@ export interface WeddingClip {
   focalY?: number | null;
 }
 /**
+ * Hochzeits-Locations, in denen DJ Veys gespielt hat — jede bekommt eine eigene Seite. „Veröffentlicht" geht nur mit Häkchen bei „Namensnennung abgestimmt" und einem Text im Feld „DJ-Blick".
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "venues".
+ */
+export interface Venue {
+  id: number;
+  /**
+   * So, wie sich die Location selbst schreibt — z. B. „Schloss Karlsburg".
+   */
+  name: string;
+  /**
+   * Wird automatisch aus dem Namen gebildet (nur Kleinbuchstaben, Ziffern, Bindestriche). Nach der Veröffentlichung nicht mehr ändern — der Name ist Teil der Adresse.
+   */
+  slug?: string | null;
+  /**
+   * Postalischer Ort, z. B. „Karlsruhe". Passt der Name zu einer Stadtseite der Website, wird dorthin verlinkt.
+   */
+  city: string;
+  /**
+   * Optional — Straße und Hausnummer, wie auf der Website der Location.
+   */
+  address?: string | null;
+  /**
+   * Optional — mit https://. Wird auf der Location-Seite verlinkt.
+   */
+  website?: string | null;
+  /**
+   * Was ein Paar über diesen Saal aus DJ-Sicht wissen sollte: Akustik, Aufbau und Strom, Sperrzeit, Anfahrt und Parken, Besonderheiten. Nur, was wirklich stimmt. Einfache Formatierung: Leerzeile = neuer Absatz, „## " = Zwischenüberschrift, „- " = Aufzählung, **fett**.
+   */
+  note?: string | null;
+  /**
+   * Optional — ein Foto aus dieser Location, z. B. von einer Hochzeit dort. Nur mit Freigabe von Paar bzw. Fotograf:in.
+   */
+  image?: (number | null) | Media;
+  /**
+   * Nur setzen, wenn die Location einverstanden ist, namentlich genannt zu werden (Nachricht/E-Mail genügt, aufbewahren).
+   */
+  permission?: boolean | null;
+  /**
+   * Erst „Veröffentlicht" macht die Location-Seite sichtbar.
+   */
+  status: 'draft' | 'published';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * Was Paare über ihren Upload-Link geschickt haben. Nichts davon ist öffentlich sichtbar, bevor es auf der Seite „Echte Hochzeiten“ übernommen wurde.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -762,6 +811,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'weddings';
         value: number | Wedding;
+      } | null)
+    | ({
+        relationTo: 'venues';
+        value: number | Venue;
       } | null)
     | ({
         relationTo: 'wedding-clips';
@@ -1078,6 +1131,23 @@ export interface WeddingsSelect<T extends boolean = true> {
   status?: T;
   uploadToken?: T;
   uploadEnabled?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "venues_select".
+ */
+export interface VenuesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  city?: T;
+  address?: T;
+  website?: T;
+  note?: T;
+  image?: T;
+  permission?: T;
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }

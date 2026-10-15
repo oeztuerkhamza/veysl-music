@@ -22,6 +22,7 @@ import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/motion/reveal';
 import { PageHero } from '@/components/pages/page-hero';
 import { AnswerBlock } from '@/components/geo/answer-block';
+import { GuideLinks, GUIDE_LINKS_BY_PAGE } from '@/components/blog/guide-links';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -206,6 +207,8 @@ export default async function TurkishDjPage({ params }: PageProps) {
           </div>
         </Container>
       </Section>
+
+      <GuideLinks ids={GUIDE_LINKS_BY_PAGE.turkishDj} locale={locale} />
 
       <Section>
         <Container>

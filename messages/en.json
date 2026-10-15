@@ -83,11 +83,11 @@
     },
     "epk": {
       "title": "EPK & Partners — Press Kit | DJ Veys",
-      "description": "Biography, press photos, technical rider and partner venues to download."
+      "description": "Biography, press photos, technical rider and partner venues of DJ Veys, wedding DJ, musician and host from Stuttgart — available to download."
     },
     "contact": {
-      "title": "Contact — DJ Veys",
-      "description": "Reach us on WhatsApp, by phone or email. We reply within 24 hours."
+      "title": "Contact — Wedding DJ Stuttgart | DJ Veys",
+      "description": "Reach your Stuttgart wedding DJ directly on WhatsApp, by phone or by email. We reply within 24 hours with an answer for your date."
     },
     "imprint": {
       "title": "Imprint | DJ Veys",
@@ -1273,6 +1273,13 @@
       "eyebrow": "Why here",
       "title": "What makes the difference in {city}"
     },
+    "proof": {
+      "eyebrow": "On location",
+      "weddingsTitle": "Real weddings in {city}",
+      "venuesTitle": "Venues in {city} where DJ Veys has played",
+      "viewWedding": "View the wedding",
+      "allWeddings": "All real weddings"
+    },
     "venues": {
       "eyebrow": "Venues",
       "title": "Well-known wedding venues in and around {city}",
@@ -1634,7 +1641,7 @@
     "hub": {
       "meta": {
         "title": "Wedding DJ for Destination Weddings in Europe | DJ Veys",
-        "description": "German-Turkish wedding DJ for destination weddings in Europe: Austria, Switzerland, the Netherlands, Belgium, France. Live hosting in German, Turkish and English."
+        "description": "German-Turkish wedding DJ for destination weddings in Europe: Austria, Switzerland, the Netherlands, Belgium, France. Hosting in German, Turkish and English."
       },
       "hero": {
         "title": "Wedding DJ for Destination Weddings in Europe",
@@ -1782,6 +1789,42 @@
     "comingSoon": "Photo coming soon",
     "placeholderAriaLabel": "Image slot – no photo uploaded yet"
   },
+  "venue": {
+    "meta": {
+      "title": "Wedding DJ for {venue} in {city} | DJ Veys",
+      "titleShort": "Wedding DJ {venue} | DJ Veys",
+      "description": "Celebrating at {venue}, {city}? The venue through a DJ's eyes: sound, setup, timing — from DJ Veys, who has played there. Check your date.",
+      "descriptionShort": "{venue}, {city}: the venue through a DJ's eyes — from DJ Veys, who has played there."
+    },
+    "hero": {
+      "eyebrow": "Wedding venue",
+      "title": "Wedding DJ for {venue}",
+      "subtitle": "{city} — the room as seen by the DJ who has played there."
+    },
+    "back": "Real weddings",
+    "note": {
+      "title": "The venue through a DJ's eyes"
+    },
+    "facts": {
+      "title": "Facts",
+      "address": "Address",
+      "website": "Venue website",
+      "visit": "Visit {venue}"
+    },
+    "weddings": {
+      "title": "Weddings at this venue",
+      "lead": "Real evenings DJ Veys has played here.",
+      "link": "View the wedding"
+    },
+    "city": {
+      "text": "Travel, service area and questions around {city}:",
+      "link": "Wedding DJ in {city}"
+    },
+    "cta": {
+      "title": "Your celebration at {venue}?",
+      "text": "Share your date, check availability, get a no-obligation quote — a reply within 24 hours."
+    }
+  },
   "blog": {
     "meta": {
       "title": "Wedding Guide: DJ, Music & Planning | DJ Veys",
@@ -1811,6 +1854,10 @@
       "recht": "Legal",
       "international": "International",
       "real-wedding": "Real Wedding"
+    },
+    "guideLinks": {
+      "eyebrow": "Guides",
+      "title": "Related guides"
     },
     "post": {
       "backToOverview": "Back to the guide",

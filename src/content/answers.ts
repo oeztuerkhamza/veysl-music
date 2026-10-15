@@ -102,6 +102,9 @@ export interface Answer {
 
 const U = '2026-07-24';
 
+/** Ergänzung vom Oktober 2026 (SEO-Plan, Aşama 3): zwei Fragen, die Suchende zur türkischen Hochzeit tatsächlich stellen. */
+const U_OKT = '2026-10-15';
+
 /**
  * Zweites Datum für die religiös geprägte Ebene (Kategorie `islamisch` plus
  * die drei Ergänzungen in `musik`/`ablauf`/`technik`), die der Kunde am
@@ -1388,6 +1391,46 @@ export const answers: Answer[] = [
     related: ['contract-content'],
     links: ['/datenschutz'],
     updated: U,
+  },
+
+  // ─── tuerkisch (Ergänzung Oktober 2026) ───────────────────────────────
+  {
+    id: 'nisan-dj',
+    category: 'tuerkisch',
+    q: {
+      de: 'Spielt DJ Veys auch bei einem Nişan (Verlobungsfeier)?',
+      en: 'Does DJ Veys also play at a nişan (engagement celebration)?',
+      tr: 'DJ Veys nişanlarda da çalıyor mu?',
+      ar: 'هل يعزف DJ Veys أيضًا في حفلات الخطوبة (نيشان)؟',
+    },
+    a: {
+      de: 'Ja, Verlobungen gehören ausdrücklich zum Angebot, ebenso Henna-Abende und weitere Events. Beim Nişan geht es meist um Einzug, Ringzeremonie und Takı, danach um den Tanzteil. Mikrofon, Ansagen und Musik werden vorab abgestimmt, auf Wunsch zweisprachig auf Deutsch und Türkisch.',
+      en: 'Yes, engagements are explicitly part of the offering, as are henna nights and other events. A nişan is usually about the entrance, the ring ceremony and takı, followed by the dancing. Microphone, announcements and music are agreed in advance, bilingually in German and Turkish if you wish.',
+      tr: 'Evet, nişanlar hizmetin açıkça bir parçasıdır; kına geceleri ve diğer etkinlikler de öyle. Nişan çoğunlukla giriş, yüzük töreni ve takı ile, ardından dans kısmıyla ilgilidir. Mikrofon, anonslar ve müzik önceden konuşulur; isterseniz Almanca ve Türkçe iki dilli.',
+      ar: 'نعم، حفلات الخطوبة جزء صريح من عرض الخدمات، وكذلك ليالي الحناء وسائر المناسبات. تتمحور الخطوبة عادةً حول دخول العروسين ومراسم الخواتم والتقدمات (تاكي)، ثم فقرة الرقص. يُتَّفَق مسبقًا على الميكروفون والإعلانات والموسيقى، وعند الرغبة بلغتين: الألمانية والتركية.',
+    },
+    related: ['kina-gecesi', 'davul-zurna', 'bilingual-hosting'],
+    links: ['/hochzeit-events'],
+    updated: U_OKT,
+  },
+  {
+    id: 'gelin-cikarma',
+    category: 'tuerkisch',
+    q: {
+      de: 'Begleitet DJ Veys die Brautabholung (Gelin Çıkarma) musikalisch?',
+      en: 'Does DJ Veys provide the music for the bride’s collection (gelin çıkarma)?',
+      tr: 'DJ Veys gelin çıkarmayı müzikle destekliyor mu?',
+      ar: 'هل يرافق DJ Veys مراسم اصطحاب العروس (جلين تشيقارما) بالموسيقى؟',
+    },
+    a: {
+      de: 'Ja, Gelin Çıkarma gehört zu den traditionellen Momenten einer türkischen Hochzeit, die das Angebot ausdrücklich nennt. Der Ablauf, einschließlich des Einsatzes für den Abschied der Braut, wird im Vorgespräch festgelegt — live, per DJ oder in Absprache mit Davul-Zurna.',
+      en: 'Yes, gelin çıkarma is one of the traditional moments of a Turkish wedding that the offering names explicitly. The running order, including the cue for the bride’s farewell, is settled in the planning call — live, via the DJ or in coordination with davul-zurna.',
+      tr: 'Evet, gelin çıkarma, hizmetin açıkça andığı Türk düğününün geleneksel anlarından biridir. Gelinin ayrılışındaki giriş dahil akış, planlama görüşmesinde belirlenir: canlı, DJ ile ya da davul-zurna ile koordineli olarak.',
+      ar: 'نعم، «جلين تشيقارما» من اللحظات التقليدية في العرس التركي التي يذكرها العرض صراحةً. يُحدَّد سير المراسم، بما في ذلك إشارة البدء عند وداع العروس، في جلسة التخطيط: موسيقى حية أو عبر الـ DJ أو بالتنسيق مع الطبل والمزمار.',
+    },
+    related: ['davul-zurna', 'kina-gecesi'],
+    links: ['/tuerkischer-dj-stuttgart'],
+    updated: U_OKT,
   },
 ];
 

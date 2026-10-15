@@ -9,6 +9,7 @@ import { CityHero } from '@/components/city/city-hero';
 import { CityOffer } from '@/components/city/city-offer';
 import { CityAngle } from '@/components/city/city-angle';
 import { CityVenues } from '@/components/city/city-venues';
+import { CityProof } from '@/components/city/city-proof';
 import { CityTravel } from '@/components/city/city-travel';
 import { CityTrust } from '@/components/city/city-trust';
 import { CityFaq } from '@/components/city/city-faq';
@@ -77,6 +78,7 @@ export default async function CityPage({ params }: PageProps) {
       <CityOffer city={city} />
       <CityAngle city={city} locale={locale} />
       <CityVenues city={city} locale={locale} />
+      <CityProof city={city} locale={locale} />
       <CityTravel city={city} locale={locale} />
       <CityTrust city={city} />
       <CityFaq city={city} locale={locale} />

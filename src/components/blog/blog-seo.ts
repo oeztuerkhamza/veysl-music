@@ -4,7 +4,7 @@ import { getPathname } from '@/i18n/navigation';
 import { defaultLocale, type Locale } from '@/i18n/routing';
 import { buildMetadata, siteBaseUrl } from '@/lib/seo';
 import { site } from '@/content/site';
-import { BLOG_LOCALES, getPostSlug, type BlogLocaleContent, type BlogPost } from '@/content/blog';
+import { BLOG_LOCALES, getPostSlug, postModifiedAt, type BlogLocaleContent, type BlogPost } from '@/content/blog';
 
 /**
  * Metadata plumbing for `/ratgeber` and `/ratgeber/[slug]`, built on top of
@@ -135,7 +135,7 @@ export async function buildRatgeberPostMetadata(
       title,
       description,
       publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt,
+      modifiedTime: postModifiedAt(post),
       authors: [site.name],
       tags: post.tags,
     },

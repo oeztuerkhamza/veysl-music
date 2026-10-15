@@ -12,6 +12,7 @@ import { FaqAccordion } from '@/components/pages/faq-accordion';
 import { FinalCta } from '@/components/pages/final-cta';
 import { buildProcessJsonLd } from '@/components/pages/page-json-ld';
 import { JsonLd } from '@/lib/json-ld';
+import { GuideLinks, GUIDE_LINKS_BY_PAGE } from '@/components/blog/guide-links';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -80,6 +81,7 @@ export default async function AblaufPage({ params }: PageProps) {
         </Container>
       </Section>
 
+      <GuideLinks ids={GUIDE_LINKS_BY_PAGE.process} locale={locale} />
       <FinalCta />
     </>
   );

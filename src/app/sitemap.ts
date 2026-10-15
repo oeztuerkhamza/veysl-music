@@ -9,6 +9,7 @@ const CITY_PATHNAME: DynamicPathname = '/hochzeits-dj/[stadt]';
 const REGION_HUB_PATHNAME: StaticPathname = '/hochzeits-dj-europa';
 const REGION_COUNTRY_PATHNAME: DynamicPathname = '/hochzeits-dj-europa/[land]';
 const BLOG_ARTICLE_PATHNAME: DynamicPathname = '/ratgeber/[slug]';
+const VENUE_PATHNAME: DynamicPathname = '/hochzeitslocation/[slug]';
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>;
 
@@ -129,6 +130,9 @@ const HUB_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly', priority:
 /** Five country pages — real substance each, but a smaller cluster than cities/blog. */
 const REGION_COUNTRY_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly', priority: 0.55 };
 
+/** Eine Seite je Location, in der gespielt wurde — konkrete „DJ <Saalname>"-Abfrage, aber kleiner als die Stadtseiten. */
+const VENUE_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly', priority: 0.6 };
+
 /** Long-tail guide articles — real booking-adjacent search intent. */
 const BLOG_ARTICLE_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly', priority: 0.6 };
 
@@ -167,7 +171,7 @@ function slugFor(entry: LocalizedEntry, locale: Locale): string {
  * exactly this case is to leave the field out rather than guess.
  *
  * Who has a real date today:
- * - blog articles → `post.updatedAt` (per article, the most precise signal here)
+ * - blog articles → `postModifiedAt(post)` (per article, the most precise signal here)
  * - blog index    → `latestBlogUpdate()` — newest article edit in the corpus
  * - `/fragen`     → `latestAnswerUpdate()` — newest edit in the answer corpus
  *
@@ -242,7 +246,7 @@ async function loadRegionsData(): Promise<RegionsData> {
  */
 async function loadPublishedBlogPosts(): Promise<LocalizedEntry[]> {
   try {
-    const { getPublishedGuides, getReadyLocalesForPost, getPostSlug } = await import('@/content/blog');
+    const { getPublishedGuides, getReadyLocalesForPost, getPostSlug, postModifiedAt } = await import('@/content/blog');
     return getPublishedGuides().map((post) => {
       const locales = getReadyLocalesForPost(post);
       return {
@@ -253,9 +257,29 @@ async function loadPublishedBlogPosts(): Promise<LocalizedEntry[]> {
         slugByLocale: Object.fromEntries(locales.map((l) => [l, getPostSlug(post, l)])),
         locales,
         // The one place on this site with a genuine per-URL edit date.
-        lastModified: post.updatedAt,
+        lastModified: postModifiedAt(post),
       };
     });
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Veröffentlichte Locations aus dem CMS (Collection `venues`) — eine Seite je
+ * Location in den Sprachen, in denen es sie gibt. Ohne Datenbank (Build im
+ * Docker-Image) liefert `readFromCms` einen leeren Fallback, die Sitemap
+ * enthält dann schlicht keine Location-URLs; sie werden bei der nächsten
+ * Auslieferung der Sitemap sichtbar, nicht erst beim nächsten Build, weil
+ * `sitemap.ts` pro Anfrage neu gerendert wird, sobald das Revalidieren aus
+ * `src/payload/revalidate.ts` den Cache räumt.
+ */
+async function loadPublishedVenues(): Promise<Array<{ slug: string; locales: readonly Locale[] }>> {
+  try {
+    const { getPublishedVenues } = await import('@/lib/venues');
+    const { VENUE_SUPPORTED_LOCALES } = await import('@/content/venues');
+    const venues = await getPublishedVenues('de');
+    return venues.map((venue) => ({ slug: venue.slug, locales: VENUE_SUPPORTED_LOCALES }));
   } catch {
     return [];
   }
@@ -446,6 +470,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: absoluteUrl(CITY_PATHNAME, locale, { stadt: city.slug }),
         changeFrequency: CITY_ROUTE_CONFIG.changeFrequency,
         priority: CITY_ROUTE_CONFIG.priority,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // Location-Seiten (CMS) — nur Sprachen mit echtem „DJ-Blick"-Text.
+  const venueEntries = await loadPublishedVenues();
+  for (const venue of venueEntries) {
+    const languages = buildLanguages(
+      (locale) => absoluteUrl(VENUE_PATHNAME, locale, { slug: venue.slug }),
+      venue.locales,
+    );
+    for (const locale of venue.locales) {
+      entries.push({
+        url: absoluteUrl(VENUE_PATHNAME, locale, { slug: venue.slug }),
+        changeFrequency: VENUE_ROUTE_CONFIG.changeFrequency,
+        priority: VENUE_ROUTE_CONFIG.priority,
         alternates: { languages },
       });
     }

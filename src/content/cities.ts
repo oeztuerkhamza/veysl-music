@@ -913,6 +913,12 @@ export const allCityEntries: City[] = [
     slug: 'schwaebisch-gmuend',
     name: 'Schwäbisch Gmünd',
     region: 'Baden-Württemberg',
+    // Mit Zusatz 65 Zeichen (de) — Google kappt bei ~60: Kurzform, Keyword vorn.
+    metaTitle: {
+      de: 'Hochzeits-DJ Schwäbisch Gmünd – DJ & Moderator | DJ Veys',
+      tr: "Düğün DJ'i Schwäbisch Gmünd – DJ & sunucu | DJ Veys",
+      en: 'Wedding DJ Schwäbisch Gmünd – DJ & Host | DJ Veys',
+    },
     distanceKm: 45,
     population: 64237,
     priority: 1,
@@ -1534,6 +1540,12 @@ export const allCityEntries: City[] = [
     slug: 'friedrichshafen',
     name: 'Friedrichshafen',
     region: 'Baden-Württemberg',
+    // Mit Zusatz 64 Zeichen (de) — Kurzform, Keyword vorn.
+    metaTitle: {
+      de: 'Hochzeits-DJ Friedrichshafen – DJ & Moderator | DJ Veys',
+      tr: "Düğün DJ'i Friedrichshafen – DJ & sunucu | DJ Veys",
+      en: 'Wedding DJ Friedrichshafen – DJ & Host | DJ Veys',
+    },
     distanceKm: 127,
     population: 62798,
     priority: 2,

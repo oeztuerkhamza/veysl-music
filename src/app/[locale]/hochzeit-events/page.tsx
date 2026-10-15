@@ -14,6 +14,7 @@ import { ServiceBlock } from '@/components/pages/service-block';
 import { CapabilityStrip } from '@/components/pages/capability-strip';
 import { FinalCta } from '@/components/pages/final-cta';
 import { buildServicesJsonLd } from '@/components/pages/page-json-ld';
+import { GuideLinks, GUIDE_LINKS_BY_PAGE } from '@/components/blog/guide-links';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -94,6 +95,7 @@ export default async function HochzeitEventsPage({ params }: PageProps) {
         </Container>
       </Section>
 
+      <GuideLinks ids={GUIDE_LINKS_BY_PAGE.services} locale={locale} />
       <FinalCta />
     </>
   );

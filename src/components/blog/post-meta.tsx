@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 import { cn, formatDate } from '@/lib/utils';
 import { site } from '@/content/site';
-import type { BlogPost } from '@/content/blog';
+import { postModifiedAt, type BlogPost } from '@/content/blog';
 
 export interface PostMetaProps {
   post: Pick<BlogPost, 'publishedAt' | 'updatedAt' | 'readingTimeMinutes'>;
@@ -16,7 +16,8 @@ export interface PostMetaProps {
 export async function PostMeta({ post, locale, compact = false, className }: PostMetaProps) {
   const t = await getTranslations({ locale, namespace: 'blog.post' });
   const published = formatDate(post.publishedAt, locale);
-  const updated = post.updatedAt !== post.publishedAt ? formatDate(post.updatedAt, locale) : null;
+  const modified = postModifiedAt(post);
+  const updated = modified !== post.publishedAt ? formatDate(modified, locale) : null;
   const readingTime = t('readingTime', { minutes: post.readingTimeMinutes });
 
   if (compact) {

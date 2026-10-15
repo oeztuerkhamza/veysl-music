@@ -51,7 +51,7 @@
   "meta": {
     "home": {
       "title": "Hochzeits-DJ {city} – DJ, Musiker & Moderator | DJ Veys",
-      "description": "Hochzeits-DJ, Live-Musiker (Saz & Gitarre) und Moderator in {city} — für deutsch-türkische & multikulturelle Hochzeiten. Deutsch, Türkisch, Englisch. Termin prüfen."
+      "description": "Hochzeits-DJ, Musiker (Saz & Gitarre) und Moderator in {city} für deutsch-türkische & multikulturelle Hochzeiten. Deutsch, Türkisch, Englisch. Termin prüfen."
     },
     "services": {
       "title": "DJ für Hochzeit & Events Stuttgart | DJ Veys",
@@ -83,11 +83,11 @@
     },
     "epk": {
       "title": "EPK & Partner — Presskit | DJ Veys",
-      "description": "Biografie, Pressefotos, Technical Rider und Partner-Locations zum Download."
+      "description": "Biografie, Pressefotos, Technical Rider und Partner-Locations von DJ Veys, Hochzeits-DJ, Musiker und Moderator aus Stuttgart — zum Download."
     },
     "contact": {
-      "title": "Kontakt — DJ Veys",
-      "description": "Direkt per WhatsApp, Telefon oder E-Mail. Wir melden uns innerhalb von 24 Stunden."
+      "title": "Kontakt — Hochzeits-DJ Stuttgart | DJ Veys",
+      "description": "Hochzeits-DJ Stuttgart direkt erreichen: per WhatsApp, Telefon oder E-Mail. Wir melden uns innerhalb von 24 Stunden mit einer Antwort zu Ihrem Termin."
     },
     "imprint": {
       "title": "Impressum | DJ Veys",
@@ -1246,7 +1246,7 @@
     },
     "meta": {
       "title": "Hochzeits-DJ {city} — DJ, Musiker & Moderator | DJ Veys",
-      "description": "Türkischer Hochzeits-DJ & mehrsprachiger Moderator in {city} — DJ für deutsch-türkische, türkische und multikulturelle Hochzeiten. Jetzt Termin anfragen."
+      "description": "Türkischer Hochzeits-DJ & Moderator in {city} — für deutsch-türkische, türkische und multikulturelle Hochzeiten. Jetzt Termin anfragen."
     },
     "travel": {
       "eyebrow": "Anfahrt & Transparenz",
@@ -1272,6 +1272,13 @@
     "localAngle": {
       "eyebrow": "Warum hier",
       "title": "Was in {city} den Unterschied macht"
+    },
+    "proof": {
+      "eyebrow": "Vor Ort",
+      "weddingsTitle": "Echte Hochzeiten in {city}",
+      "venuesTitle": "Locations in {city}, in denen DJ Veys gespielt hat",
+      "viewWedding": "Zur Hochzeit",
+      "allWeddings": "Alle echten Hochzeiten"
     },
     "venues": {
       "eyebrow": "Locations",
@@ -1634,7 +1641,7 @@
     "hub": {
       "meta": {
         "title": "Hochzeits-DJ für Destination Weddings in Europa | DJ Veys",
-        "description": "Deutsch-türkischer Hochzeits-DJ für Destination Weddings in Europa: Österreich, Schweiz, Niederlande, Belgien, Frankreich. Live moderiert auf Deutsch, Türkisch und Englisch."
+        "description": "Hochzeits-DJ für Destination Weddings in Europa: Österreich, Schweiz, Niederlande, Belgien, Frankreich. Moderation auf Deutsch, Türkisch und Englisch."
       },
       "hero": {
         "title": "Hochzeits-DJ für Destination Weddings in Europa",
@@ -1782,6 +1789,42 @@
     "comingSoon": "Foto folgt",
     "placeholderAriaLabel": "Bildplatz – noch kein Foto hinterlegt"
   },
+  "venue": {
+    "meta": {
+      "title": "Hochzeits-DJ für {venue} in {city} | DJ Veys",
+      "titleShort": "Hochzeits-DJ {venue} | DJ Veys",
+      "description": "Feier in {venue}, {city}? Der Saal aus DJ-Sicht: Technik, Aufbau, Ablauf — von DJ Veys, der dort gespielt hat. Jetzt Termin anfragen.",
+      "descriptionShort": "{venue}, {city}: der Saal aus DJ-Sicht — von DJ Veys, der dort gespielt hat."
+    },
+    "hero": {
+      "eyebrow": "Hochzeitslocation",
+      "title": "Hochzeits-DJ für {venue}",
+      "subtitle": "{city} — der Saal aus der Sicht des DJs, der dort gespielt hat."
+    },
+    "back": "Echte Hochzeiten",
+    "note": {
+      "title": "Der Saal aus DJ-Sicht"
+    },
+    "facts": {
+      "title": "Eckdaten",
+      "address": "Adresse",
+      "website": "Website der Location",
+      "visit": "{venue} besuchen"
+    },
+    "weddings": {
+      "title": "Hochzeiten in dieser Location",
+      "lead": "Echte Abende, die DJ Veys hier begleitet hat.",
+      "link": "Zur Hochzeit"
+    },
+    "city": {
+      "text": "Anfahrt, Einsatzgebiet und Fragen rund um {city}:",
+      "link": "Hochzeits-DJ in {city}"
+    },
+    "cta": {
+      "title": "Ihre Feier in {venue}?",
+      "text": "Datum nennen, Verfügbarkeit prüfen, unverbindliches Angebot erhalten — Antwort innerhalb von 24 Stunden."
+    }
+  },
   "blog": {
     "meta": {
       "title": "Ratgeber: Hochzeits-DJ, Musik & Planung | DJ Veys",
@@ -1811,6 +1854,10 @@
       "recht": "Recht",
       "international": "International",
       "real-wedding": "Echte Hochzeit"
+    },
+    "guideLinks": {
+      "eyebrow": "Ratgeber",
+      "title": "Passende Ratgeber"
     },
     "post": {
       "backToOverview": "Zurück zum Ratgeber",

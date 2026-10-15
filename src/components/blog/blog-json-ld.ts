@@ -1,7 +1,7 @@
 import { breadcrumbSchema, organizationSchema } from '@/lib/schema';
 import { localeTags, type Locale } from '@/i18n/routing';
 import { site } from '@/content/site';
-import type { BlogLocaleContent, BlogPost } from '@/content/blog';
+import { postModifiedAt, type BlogLocaleContent, type BlogPost } from '@/content/blog';
 
 /**
  * `src/lib/schema.ts` (owned by the SEO agent, outside this task's
@@ -47,7 +47,7 @@ export function buildPostJsonLd({ post, content, locale, pageUrl, indexUrl, inde
     description: content.excerpt,
     inLanguage: localeTags[locale],
     datePublished: post.publishedAt,
-    dateModified: post.updatedAt,
+    dateModified: postModifiedAt(post),
     timeRequired: `PT${post.readingTimeMinutes}M`,
     keywords: post.tags.join(', '),
     url: pageUrl,

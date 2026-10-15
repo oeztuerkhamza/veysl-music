@@ -8,6 +8,8 @@ import { Section } from '@/components/ui/section';
 import { PageHero } from '@/components/pages/page-hero';
 import { GalleryExplorer } from '@/components/pages/gallery-explorer';
 import { FinalCta } from '@/components/pages/final-cta';
+import { buildSimplePageJsonLd } from '@/components/pages/page-json-ld';
+import { JsonLd } from '@/lib/json-ld';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -21,12 +23,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function GaleriePage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const tRootNav = await getTranslations();
   const t = await getTranslations('gallery');
   const tCta = await getTranslations('cta');
   const tMusicPlayer = await getTranslations('music.player');
 
   return (
     <>
+      <JsonLd
+        data={buildSimplePageJsonLd({
+          locale,
+          homeLabel: tRootNav('nav.home'),
+          pageLabel: tRootNav('nav.gallery'),
+          pathname: '/galerie',
+          type: 'ImageGallery',
+        })}
+      />
       <PageHero
         eyebrow={t('hero.eyebrow')}
         title={t('hero.title')}

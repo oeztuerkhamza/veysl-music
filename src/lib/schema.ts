@@ -720,6 +720,20 @@ export interface ServiceInput {
   serviceType?: string;
   /** Absolute URL of the page/section describing this service, if it has one. */
   url?: string;
+  /**
+   * „Ab"-Preis in Euro. `null`/`undefined` = kein öffentlicher Preis: dann
+   * entsteht **kein** `offers`-Knoten. Ein `Offer` ohne Preis ist ungültig
+   * und ein erfundener wäre schlimmer — der Wert kommt allein aus
+   * `src/content/packages.ts`, sobald der Kunde echte Preise liefert.
+   */
+  priceFrom?: number | null;
+}
+
+export interface ServiceOfferSchema {
+  '@type': 'Offer';
+  priceCurrency: 'EUR';
+  priceSpecification: { '@type': 'PriceSpecification'; minPrice: number; priceCurrency: 'EUR' };
+  url?: string;
 }
 
 export interface ServiceSchema {
@@ -732,6 +746,7 @@ export interface ServiceSchema {
   url?: string;
   provider: { '@id': string };
   areaServed: AreaServedArea[];
+  offers?: ServiceOfferSchema;
 }
 
 /**
@@ -755,6 +770,21 @@ export function serviceSchema(items: ServiceInput[], locale: Locale = defaultLoc
     ...(item.url && { url: item.url }),
     provider,
     areaServed: sharedAreaServed,
+    ...(typeof item.priceFrom === 'number' &&
+      item.priceFrom > 0 && {
+        offers: {
+          '@type': 'Offer' as const,
+          priceCurrency: 'EUR' as const,
+          // „ab" → minPrice, nicht `price`: Das Paket hat einen Startpreis,
+          // keinen Festpreis, und `price` würde genau das behaupten.
+          priceSpecification: {
+            '@type': 'PriceSpecification' as const,
+            minPrice: item.priceFrom,
+            priceCurrency: 'EUR' as const,
+          },
+          ...(item.url && { url: item.url }),
+        },
+      }),
   }));
 }
 

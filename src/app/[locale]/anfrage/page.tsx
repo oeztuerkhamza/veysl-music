@@ -10,6 +10,8 @@ import { SectionHeading } from '@/components/ui/section-heading';
 import { Card } from '@/components/ui/card';
 import { Reveal } from '@/components/motion/reveal';
 import { EnquiryForm } from '@/components/booking/enquiry-form';
+import { buildSimplePageJsonLd } from '@/components/pages/page-json-ld';
+import { JsonLd } from '@/lib/json-ld';
 
 interface BookingPageProps {
   params: Promise<{ locale: Locale }>;
@@ -31,6 +33,7 @@ export async function generateMetadata({ params }: BookingPageProps): Promise<Me
 export default async function BookingPage({ params }: BookingPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const tRootNav = await getTranslations();
 
   const t = await getTranslations('booking');
   const tCta = await getTranslations('cta');
@@ -41,6 +44,16 @@ export default async function BookingPage({ params }: BookingPageProps) {
   const whatsappUrl = `https://wa.me/${site.contact.whatsapp}`;
 
   return (
+    <>
+      <JsonLd
+        data={buildSimplePageJsonLd({
+          locale,
+          homeLabel: tRootNav('nav.home'),
+          pageLabel: tRootNav('nav.booking'),
+          pathname: '/anfrage',
+          type: 'WebPage',
+        })}
+      />
     <Section>
       <Container>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.6fr_1fr] lg:items-start">
@@ -86,5 +99,6 @@ export default async function BookingPage({ params }: BookingPageProps) {
         </div>
       </Container>
     </Section>
+    </>
   );
 }

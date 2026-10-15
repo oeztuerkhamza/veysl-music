@@ -15,6 +15,8 @@ import { WhatsappCtaCard } from '@/components/whatsapp/whatsapp-cta-card';
 // lucide-react ships no brand/logo icons — real inline-SVG brand marks live
 // in the layout agent's src/components/ui/social-icons.tsx instead.
 import { InstagramIcon, YouTubeIcon } from '@/components/ui/social-icons';
+import { buildSimplePageJsonLd } from '@/components/pages/page-json-ld';
+import { JsonLd } from '@/lib/json-ld';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -28,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function KontaktPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const tRootNav = await getTranslations();
   const t = await getTranslations('contact');
   const tCta = await getTranslations('cta');
   const tContactForm = await getTranslations('contactForm');
@@ -40,6 +43,15 @@ export default async function KontaktPage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd
+        data={buildSimplePageJsonLd({
+          locale,
+          homeLabel: tRootNav('nav.home'),
+          pageLabel: tRootNav('nav.contact'),
+          pathname: '/kontakt',
+          type: 'ContactPage',
+        })}
+      />
       <PageHero
         eyebrow={t('hero.eyebrow')}
         title={t('hero.title')}

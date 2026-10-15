@@ -45,6 +45,9 @@ import { hochzeitOhneDjSpotifyPlaylistPost } from './hochzeit-ohne-dj-spotify-pl
 import { tuerkischeHochzeitAlsGastPost } from './tuerkische-hochzeit-als-gast';
 import { hochzeitsbudgetMusikAnteilPost } from './hochzeitsbudget-musik-anteil';
 import { hochzeitslocationStuttgartPost } from './hochzeitslocation-stuttgart-dj-perspektive';
+import { nisanPost } from './nisan-verlobung-planen';
+import { gelinAlmaPost } from './gelin-alma-brautabholung-musik';
+import { wannBuchenPost } from './wann-hochzeits-dj-buchen';
 
 export type {
   BlogPost,
@@ -85,6 +88,9 @@ export const blogPosts: BlogPost[] = [
   tuerkischeHochzeitAlsGastPost,
   hochzeitsbudgetMusikAnteilPost,
   hochzeitslocationStuttgartPost,
+  nisanPost,
+  gelinAlmaPost,
+  wannBuchenPost,
   // Recap templates — status: 'template', excluded from getPublishedGuides().
   echteHochzeitGrosseFeierPost,
   echteHochzeitKinaAbendPost,
@@ -184,7 +190,27 @@ export function getReadyLocalesForPost(post: BlogPost): BlogLocale[] {
   );
 }
 
-/** Most recent `updatedAt` across the whole corpus — ISO strings sort lexicographically. */
+/**
+ * The date a post was last changed **as far as a reader can tell** — never
+ * earlier than its publication date.
+ *
+ * Every read of "when was this modified" must go through this, not
+ * `post.updatedAt`. Most articles were written on one day and then released
+ * on the staggered cadence of docs/BLOG-PLAN.md, so their `updatedAt` is the
+ * writing date and lies *before* `publishedAt`. Read raw, that printed
+ * "Veröffentlicht am 15.09.2026 · Aktualisiert am 25.07.2026" under the
+ * headline and shipped `dateModified` < `datePublished` in the BlogPosting
+ * schema and the sitemap — a contradiction Google answers by distrusting
+ * both dates.
+ */
+export function postModifiedAt(post: Pick<BlogPost, 'publishedAt' | 'updatedAt'>): string {
+  return post.updatedAt > post.publishedAt ? post.updatedAt : post.publishedAt;
+}
+
+/** Most recent modification across the whole corpus — ISO strings sort lexicographically. */
 export function latestBlogUpdate(): string {
-  return blogPosts.reduce((latest, post) => (post.updatedAt > latest ? post.updatedAt : latest), blogPosts[0].updatedAt);
+  return blogPosts.reduce((latest, post) => {
+    const modified = postModifiedAt(post);
+    return modified > latest ? modified : latest;
+  }, postModifiedAt(blogPosts[0]));
 }

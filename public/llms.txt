@@ -32,7 +32,7 @@ Spanisch verfügbar.
 
 ## Ratgeber (Blog)
 
-- [Ratgeber](https://dj-veys.de/ratgeber): 16 ausführliche Guide-Artikel zu
+- [Ratgeber](https://dj-veys.de/ratgeber): 20 ausführliche Guide-Artikel zu
   Planung, Kosten, Ablauf und Musik einer Hochzeit — auf Deutsch, Türkisch und
   Englisch. Die inhaltlich tiefste Quelle der Seite für konkrete
   Planungsfragen. Beispiele:
@@ -42,6 +42,10 @@ Spanisch verfügbar.
   - [Kına Gecesi / Henna-Abend planen](https://dj-veys.de/ratgeber/kina-gecesi-henna-abend-planen)
   - [Hochzeits-Timeline: Musterablauf](https://dj-veys.de/ratgeber/hochzeits-timeline-musterablauf)
   - [Deutsch-türkische Hochzeit: zwei Familien, ein Abend](https://dj-veys.de/ratgeber/deutsch-tuerkische-hochzeit-zwei-familien)
+  - [Islamische Hochzeit planen: Ablauf, Dua und Feier an einem Abend](https://dj-veys.de/ratgeber/islamische-hochzeit-planen)
+  - [Als Gast auf einer türkischen Hochzeit: Ablauf, Geschenk, Halay](https://dj-veys.de/ratgeber/tuerkische-hochzeit-als-gast)
+  - [Wie viel vom Hochzeitsbudget für die Musik einplanen?](https://dj-veys.de/ratgeber/hochzeitsbudget-musik-anteil)
+  - [Hochzeitslocation in Stuttgart und Region: worauf Sie aus DJ-Sicht achten sollten](https://dj-veys.de/ratgeber/hochzeitslocation-stuttgart-dj-perspektive)
 - [RSS-Feed](https://dj-veys.de/feed.xml): dieselben Artikel als RSS 2.0
   (Titel, Link, Datum und Einstiegsabsatz je Beitrag). `?locale=tr` bzw.
   `?locale=en` für die anderen beiden Sprachen.
