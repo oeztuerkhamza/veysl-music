@@ -16,6 +16,7 @@ import { Enquiries } from './src/payload/collections/enquiries';
 import { Media } from './src/payload/collections/media';
 import { SiteImageSlots } from './src/payload/collections/site-image-slots';
 import { Testimonials } from './src/payload/collections/testimonials';
+import { TextOverrides } from './src/payload/collections/text-overrides';
 import { Users } from './src/payload/collections/users';
 import { WeddingClips } from './src/payload/collections/wedding-clips';
 import { WeddingSubmissions } from './src/payload/collections/wedding-submissions';
@@ -157,6 +158,7 @@ export default buildConfig({
     Users,
     Media,
     SiteImageSlots,
+    TextOverrides,
     BlockedDates,
     Bookings,
     Enquiries,

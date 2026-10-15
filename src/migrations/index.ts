@@ -3,6 +3,7 @@ import * as migration_20260726_170606_legal_fields from './20260726_170606_legal
 import * as migration_20260801_132727_event_type_optional from './20260801_132727_event_type_optional';
 import * as migration_20260818_113736_add_weddings from './20260818_113736_add_weddings';
 import * as migration_20260818_132529_add_wedding_uploads from './20260818_132529_add_wedding_uploads';
+import * as migration_20261015_065339_add_text_overrides from './20261015_065339_add_text_overrides';
 
 export const migrations = [
   {
@@ -28,6 +29,11 @@ export const migrations = [
   {
     up: migration_20260818_132529_add_wedding_uploads.up,
     down: migration_20260818_132529_add_wedding_uploads.down,
-    name: '20260818_132529_add_wedding_uploads'
+    name: '20260818_132529_add_wedding_uploads',
+  },
+  {
+    up: migration_20261015_065339_add_text_overrides.up,
+    down: migration_20261015_065339_add_text_overrides.down,
+    name: '20261015_065339_add_text_overrides'
   },
 ];

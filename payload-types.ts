@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     'site-images': SiteImage;
+    'text-overrides': TextOverride;
     'blocked-dates': BlockedDate;
     bookings: Booking;
     enquiries: Enquiry;
@@ -91,6 +92,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'site-images': SiteImagesSelect<false> | SiteImagesSelect<true>;
+    'text-overrides': TextOverridesSelect<false> | TextOverridesSelect<true>;
     'blocked-dates': BlockedDatesSelect<false> | BlockedDatesSelect<true>;
     bookings: BookingsSelect<false> | BookingsSelect<true>;
     enquiries: EnquiriesSelect<false> | EnquiriesSelect<true>;
@@ -288,6 +290,27 @@ export interface SiteImage {
    * Alt-Text ist beim Hochladen in der Medien-Sammlung Pflicht.
    */
   image: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Von Hand geänderte Texte der Website. Am einfachsten direkt auf der Seite: angemeldet unten links auf „Texte" tippen und den Text anklicken. Einen Eintrag hier zu löschen stellt den Originaltext wieder her.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "text-overrides".
+ */
+export interface TextOverride {
+  id: number;
+  locale: 'de' | 'tr' | 'ku' | 'ar' | 'en' | 'nl' | 'fr' | 'es';
+  /**
+   * Pfad in messages/<sprache>.json, z. B. home.hero.title.
+   */
+  key: string;
+  /**
+   * Platzhalter wie {name} und Tags wie <b>…</b> unverändert lassen.
+   */
+  value: string;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -728,6 +751,10 @@ export interface PayloadLockedDocument {
         value: number | SiteImage;
       } | null)
     | ({
+        relationTo: 'text-overrides';
+        value: number | TextOverride;
+      } | null)
+    | ({
         relationTo: 'blocked-dates';
         value: number | BlockedDate;
       } | null)
@@ -899,6 +926,18 @@ export interface SiteImagesSelect<T extends boolean = true> {
   key?: T;
   priority?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "text-overrides_select".
+ */
+export interface TextOverridesSelect<T extends boolean = true> {
+  locale?: T;
+  key?: T;
+  value?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
