@@ -23,6 +23,7 @@ import { Reveal } from '@/components/motion/reveal';
 import { PageHero } from '@/components/pages/page-hero';
 import { AnswerBlock } from '@/components/geo/answer-block';
 import { ROUTE_LABEL_KEY } from '../fragen/route-labels';
+import { GuideLinks, GUIDE_LINKS_BY_PAGE } from '@/components/blog/guide-links';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -319,6 +320,8 @@ export default async function IslamischeHochzeitPage({ params }: PageProps) {
           </Container>
         </Section>
       ) : null}
+
+      <GuideLinks ids={GUIDE_LINKS_BY_PAGE.islamic} locale={locale} />
 
       <Section>
         <Container>

@@ -14,6 +14,8 @@ import { EmptyState } from '@/components/pages/empty-state';
 import { WeddingEntry } from '@/components/pages/wedding-entry';
 import { FinalCta } from '@/components/pages/final-cta';
 import { WeddingEditorLayer } from '@/components/cms/wedding-editor-layer';
+import { buildSimplePageJsonLd } from '@/components/pages/page-json-ld';
+import { JsonLd } from '@/lib/json-ld';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -27,6 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function EchteHochzeitenPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const tRootNav = await getTranslations();
 
   const t = await getTranslations('weddings');
   const tCta = await getTranslations('cta');
@@ -47,6 +50,15 @@ export default async function EchteHochzeitenPage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd
+        data={buildSimplePageJsonLd({
+          locale,
+          homeLabel: tRootNav('nav.home'),
+          pageLabel: tRootNav('nav.weddings'),
+          pathname: '/echte-hochzeiten',
+          type: 'CollectionPage',
+        })}
+      />
       <PageHero
         eyebrow={t('hero.eyebrow')}
         title={t('hero.title')}

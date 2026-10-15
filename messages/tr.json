@@ -86,8 +86,8 @@
       "description": "Biyografi, basın fotoğrafları, technical rider ve partner mekânlar — indirmeye hazır."
     },
     "contact": {
-      "title": "İletişim — DJ Veys",
-      "description": "WhatsApp, telefon veya e-posta ile doğrudan ulaşın. 24 saat içinde size dönüyoruz."
+      "title": "İletişim — Stuttgart düğün DJ'i | DJ Veys",
+      "description": "Stuttgart düğün DJ'i ile WhatsApp, telefon veya e-posta üzerinden doğrudan iletişime geçin. Tarihiniz için 24 saat içinde size dönüyoruz."
     },
     "imprint": {
       "title": "Impressum | DJ Veys",
@@ -1813,6 +1813,10 @@
       "recht": "Hukuk",
       "international": "Uluslararası",
       "real-wedding": "Gerçek düğün"
+    },
+    "guideLinks": {
+      "eyebrow": "Rehber",
+      "title": "İlgili rehber yazıları"
     },
     "post": {
       "backToOverview": "Rehbere dönün",

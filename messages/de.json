@@ -51,7 +51,7 @@
   "meta": {
     "home": {
       "title": "Hochzeits-DJ {city} – DJ, Musiker & Moderator | DJ Veys",
-      "description": "Hochzeits-DJ, Live-Musiker (Saz & Gitarre) und Moderator in {city} — für deutsch-türkische & multikulturelle Hochzeiten. Deutsch, Türkisch, Englisch. Termin prüfen."
+      "description": "Hochzeits-DJ, Musiker (Saz & Gitarre) und Moderator in {city} für deutsch-türkische & multikulturelle Hochzeiten. Deutsch, Türkisch, Englisch. Termin prüfen."
     },
     "services": {
       "title": "DJ für Hochzeit & Events Stuttgart | DJ Veys",
@@ -83,11 +83,11 @@
     },
     "epk": {
       "title": "EPK & Partner — Presskit | DJ Veys",
-      "description": "Biografie, Pressefotos, Technical Rider und Partner-Locations zum Download."
+      "description": "Biografie, Pressefotos, Technical Rider und Partner-Locations von DJ Veys, Hochzeits-DJ, Musiker und Moderator aus Stuttgart — zum Download."
     },
     "contact": {
-      "title": "Kontakt — DJ Veys",
-      "description": "Direkt per WhatsApp, Telefon oder E-Mail. Wir melden uns innerhalb von 24 Stunden."
+      "title": "Kontakt — Hochzeits-DJ Stuttgart | DJ Veys",
+      "description": "Hochzeits-DJ Stuttgart direkt erreichen: per WhatsApp, Telefon oder E-Mail. Wir melden uns innerhalb von 24 Stunden mit einer Antwort zu Ihrem Termin."
     },
     "imprint": {
       "title": "Impressum | DJ Veys",
@@ -1246,7 +1246,7 @@
     },
     "meta": {
       "title": "Hochzeits-DJ {city} — DJ, Musiker & Moderator | DJ Veys",
-      "description": "Türkischer Hochzeits-DJ & mehrsprachiger Moderator in {city} — DJ für deutsch-türkische, türkische und multikulturelle Hochzeiten. Jetzt Termin anfragen."
+      "description": "Türkischer Hochzeits-DJ & Moderator in {city} — für deutsch-türkische, türkische und multikulturelle Hochzeiten. Jetzt Termin anfragen."
     },
     "travel": {
       "eyebrow": "Anfahrt & Transparenz",
@@ -1634,7 +1634,7 @@
     "hub": {
       "meta": {
         "title": "Hochzeits-DJ für Destination Weddings in Europa | DJ Veys",
-        "description": "Deutsch-türkischer Hochzeits-DJ für Destination Weddings in Europa: Österreich, Schweiz, Niederlande, Belgien, Frankreich. Live moderiert auf Deutsch, Türkisch und Englisch."
+        "description": "Hochzeits-DJ für Destination Weddings in Europa: Österreich, Schweiz, Niederlande, Belgien, Frankreich. Moderation auf Deutsch, Türkisch und Englisch."
       },
       "hero": {
         "title": "Hochzeits-DJ für Destination Weddings in Europa",
@@ -1811,6 +1811,10 @@
       "recht": "Recht",
       "international": "International",
       "real-wedding": "Echte Hochzeit"
+    },
+    "guideLinks": {
+      "eyebrow": "Ratgeber",
+      "title": "Passende Ratgeber"
     },
     "post": {
       "backToOverview": "Zurück zum Ratgeber",

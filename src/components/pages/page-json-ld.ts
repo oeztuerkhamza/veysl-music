@@ -9,8 +9,8 @@ import {
   type FaqItem,
   type ServiceInput,
 } from '@/lib/schema';
-import { absoluteUrl } from '@/lib/seo';
-import type { Locale } from '@/i18n/routing';
+import { absoluteUrl, type StaticPathname } from '@/lib/seo';
+import { defaultLocale, localeTags, type Locale } from '@/i18n/routing';
 
 /**
  * JSON-LD for the four plain content pages that carried none.
@@ -162,4 +162,43 @@ export function buildPackagesJsonLd({
     ...serviceSchema(services, locale).map(asRecord),
     asRecord(trail(locale, homeLabel, pageLabel, pageUrl)),
   ];
+}
+
+type SimplePageType = 'WebPage' | 'CollectionPage' | 'ImageGallery' | 'ContactPage';
+
+/**
+ * Pages that carried no structured data at all: `/echte-hochzeiten`,
+ * `/galerie`, `/kontakt` and `/anfrage` (32 URLs across eight locales in the
+ * October 2026 audit).
+ *
+ * They need little — what they were missing was not rich results but the
+ * statement „this URL is a gallery / a contact page, and it belongs to *this*
+ * business". The graph is the business entity, one typed `WebPage` node that
+ * points at it with `about`, and the breadcrumb. Nothing is invented: the
+ * name is the page's own navigation label.
+ *
+ * `ItemList` is not added for the wedding collection yet — the list is empty
+ * until the client publishes real weddings, and an empty `ItemList` is
+ * invalid. It belongs here once wedding detail pages exist.
+ */
+export function buildSimplePageJsonLd({
+  locale,
+  homeLabel,
+  pageLabel,
+  pathname,
+  type,
+}: PageJsonLdBase & { pathname: StaticPathname; type: SimplePageType }): Record<string, unknown>[] {
+  const pageUrl = absoluteUrl(pathname, locale);
+  const homeUrl = absoluteUrl('/', defaultLocale);
+  const page = {
+    '@context': 'https://schema.org' as const,
+    '@type': type,
+    '@id': `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: pageLabel,
+    inLanguage: localeTags[locale],
+    isPartOf: { '@id': `${homeUrl}#website` },
+    about: { '@id': `${homeUrl}#business` },
+  };
+  return [asRecord(localBusinessSchema(locale)), page, asRecord(trail(locale, homeLabel, pageLabel, pageUrl))];
 }

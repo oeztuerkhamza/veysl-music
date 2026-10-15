@@ -21,6 +21,7 @@ import { ServiceAreas } from '@/components/home/service-areas';
 import { StuttgartLocal } from '@/components/home/stuttgart-local';
 import { FinalCta } from '@/components/home/final-cta';
 import { InstagramStrip, YouTubeStrip } from '@/components/social';
+import { GuideLinks, GUIDE_LINKS_BY_PAGE } from '@/components/blog/guide-links';
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
@@ -139,6 +140,7 @@ export default async function HomePage({ params }: HomePageProps) {
           ranken soll — siehe Dateikopf von stuttgart-local.tsx. */}
       <StuttgartLocal />
       <ServiceAreas />
+      <GuideLinks ids={GUIDE_LINKS_BY_PAGE.home} locale={locale} />
       <FinalCta />
     </>
   );

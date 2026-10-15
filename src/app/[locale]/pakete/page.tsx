@@ -13,6 +13,7 @@ import { FinalCta } from '@/components/pages/final-cta';
 import { buildPackagesJsonLd } from '@/components/pages/page-json-ld';
 import { JsonLd } from '@/lib/json-ld';
 import { absoluteUrl } from '@/lib/seo';
+import { GuideLinks, GUIDE_LINKS_BY_PAGE } from '@/components/blog/guide-links';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -77,6 +78,7 @@ export default async function PaketePage({ params }: PageProps) {
         </Container>
       </Section>
 
+      <GuideLinks ids={GUIDE_LINKS_BY_PAGE.packages} locale={locale} />
       <FinalCta compact />
     </>
   );
