@@ -41,7 +41,7 @@ yapılan iş Ocak'taki sezonda karşılık bulur.** Plan bu takvime göre kuruld
 - **Google sıralamasını göremedim.** Otomatik Google sorgusu yok; sıra tespiti Search Console'dan
   ya da gizli sekmede elle yapılmalı.
 - **Search Console doğrulamasının canlıda yapılıp yapılmadığını göremedim.** Etiket
-  `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` ile geliyor; yerel derlemede bu değer yok. → Faz 0, madde 1.
+  `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` ile geliyor; yerel derlemede bu değer yok. → Aşama 0, madde 1.
 - Backlink sayısı ölçülmedi (Ahrefs/Semrush erişimi yok).
 
 ---
@@ -197,51 +197,115 @@ hızlı sonuç verir.** Hem doğrudan talep getirir, hem de backlink/citation si
 
 ---
 
-## 5. Plan
+## 5. Plan — aşamalara bölünmüş
 
-### Faz 0 — Bu hafta (toplam ~2 saat, Veysel + geliştirici)
+**İş bölümü:** 🤖 = kod ve metin yazımı, ben yaparım · 👤 = senin elindeki bilgi, izin ve hesaplar.
+Sıra önemli: 🤖 aşamaları senin verini beklemeden başlar, ama bazı sayfalar ancak 👤 aşaması
+bittikten sonra anlam kazanır (örneğin mekân sayfası, mekân listesi olmadan boş kalır).
 
-| # | İş | Kim | Neden |
-|---|---|---|---|
-| 1 | **Search Console doğrulandı mı?** Doğrulanmadıysa: Property `https://dj-veys.de` → HTML etiketi → `.env`'e `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` → deploy → doğrula → `sitemap.xml` gönder | Geliştirici | Bundan sonraki her karar bu veriye dayanıyor |
-| 2 | **Bing Webmaster Tools**: Search Console'dan içe aktar (2 dk) | Geliştirici | ChatGPT araması ve Copilot Bing dizinini kullanıyor; GEO yatırımı ancak böyle karşılık bulur |
-| 3 | Instagram (@dj_veys, 63K) bio linki = `https://dj-veys.de` | Veysel | En büyük trafik kaynağı; marka aramasını besler |
-| 4 | YouTube kanal açıklaması ve son 20 videonun açıklamasına ilgili sayfanın linki | Veysel | 265 video = 265 bağlantı fırsatı |
-| 5 | GBP: web sitesi alanı `dj-veys.de`, birincil kategori "DJ" / "Hochzeits-DJ", hizmet alanı, 10+ yeni fotoğraf | Veysel | Maps'te alaka sinyali |
-| 6 | musiqua.com'daki "DJ-Veys" kaydını kontrol et: kim açtı, fiyat doğru mu, link `dj-veys.de` mi? | Veysel | Yanlış fiyat = yanlış beklenti; doğru kayıt = citation |
+```
+Aşama 0 (👤 bu hafta)  ─┐
+Aşama 1 (🤖 hemen)      ├─►  Aşama 4 (👤 veri girişi)  ─►  Aşama 5 (🤖 veriyle birleştirme)  ─►  Aşama 6 (sezon rutini)
+Aşama 2 (🤖 altyapı)    │
+Aşama 3 (🤖 içerik)    ─┘
+```
 
-### Faz 1 — 15 Ekim – 15 Kasım: kanıt ve temel
+### Aşama 0 — 👤 Bu hafta, ~2 saat, kod gerekmez
 
-| # | İş | Kim | Hedef |
-|---|---|---|---|
-| 1 | **Gerçek "ab" fiyatlar** → `/pakete` (B1) | Veysel → geliştirici | 3 fiyat |
-| 2 | **Yorum sprinti:** 2025–2026 sezonunun bütün çiftlerine kişisel WhatsApp ile yorum linki (`g.page/r/CTlpdnW5VjW4EBM/review`). Her gün 2–3 kişiye, toplu gönderim değil | Veysel | 31 → **45** |
-| 3 | **3 gerçek düğün** `/echte-hochzeiten`'e (B2), izinli fotoğraf ve yorumla | Veysel → geliştirici | 3 kayıt |
-| 4 | İç link düzeltmeleri (B3) | Geliştirici | Her yazıya en az 5 iç link |
-| 5 | **Rehber/portal kayıtları (citation) — 15 adet**, hepsinde aynı NAP (Name/Adresse/Phone): Bridebook, hochzeit.click, eventpeppers, weddyplace, hochzeitsportal-stuttgart.de, ProvenExpert, Gelbe Seiten, Das Örtliche, 11880, Bing Places, Apple Business Connect, Yelp, Cylex, Fixando, musiqua | Veysel (geliştirici yardım) | 15 kayıt |
-| 6 | Meta düzeltmeleri (B5) | Geliştirici | 1 saat |
-
-### Faz 2 — 15 Kasım – 31 Aralık: otorite
-
-| # | İş | Kim | Hedef |
-|---|---|---|---|
-| 1 | **Mekân bağlantıları:** çalıştığı 10 düğün salonuna kısa e-posta/WhatsApp: "Dienstleister/Partner" sayfasına ekleme isteği + kendi sitende mekân sayfası karşılığı. Türk düğün salonları (Stuttgart, Esslingen, Fellbach, Waiblingen, Sindelfingen) önce | Veysel | **5 backlink** |
-| 2 | **Fotoğrafçı/organizatör ağı:** aynı düğünde çalıştığı fotoğrafçılardan fotoğraf (izinli) + karşılıklı tavsiye linki. Partnerler (Liebe Events, Alpina Löwen, ArslanEvent, AuraEvent) **izin alınarak** | Veysel | 5 backlink |
-| 3 | **Mekân sayfaları:** `venues.ts` boş. Her gerçek mekân için kısa "DJ perspektifinden" sayfa (akustik, kurulum, Sperrzeit, park). Mekâna linklenebilir bir sayfa vermek, link istemeyi kolaylaştırır | Geliştirici + Veysel | 5 mekân |
-| 4 | **İlçe sayfaları (B6)** — yalnızca gerçek düğün/mekân varsa: önce Fellbach, Waiblingen, Sindelfingen | Geliştirici | 2–3 sayfa |
-| 5 | **Basın:** "63.000 takipçili Stuttgartlı düğün DJ'i, Kur'an tilaveti de kendisi okuyor" yerel haber değeri taşıyor. Stuttgarter Zeitung/Nachrichten yerel bölüm, Esslinger Zeitung, Türk medyası (Renk Magazin, Hürriyet Avrupa) | Veysel | 1–2 haber |
-| 6 | **Video SEO:** YouTube'daki en iyi 10 düğün klibi ilgili şehir/hizmet sayfasına gömülü (mevcut tıklayınca yüklenen yapı) + VideoObject şeması | Geliştirici | 10 video |
-| 7 | **TrauDich! Stuttgart 9–10 Ocak 2027** (Liederhalle) için karar: stant, ya da en azından ziyaretçi olarak mekân ve fotoğrafçılarla tanışma. Stant açılırsa katılımcı listesinden backlink | Veysel | Karar 15 Kasım'a kadar |
-
-### Faz 3 — Ocak – Mart 2027: sezon, veriyle ilerleme
-
-| # | İş | Kim |
+| # | İş | Neden |
 |---|---|---|
-| 1 | **Search Console "Sorgular" raporu:** 4–15. sıradaki sorgular = en hızlı kazanç. Her biri için ilgili sayfayı güçlendir (bölüm ekle, iç link, başlık) | Geliştirici |
-| 2 | **Gösterimi yüksek, tıklaması düşük sorgular** için başlık/açıklama yeniden yazımı | Geliştirici |
-| 3 | **Ayda 2 yeni rehber yazısı**, konuları Search Console'dan (tahminle değil). Öncelik Türkçe sorgular: "düğün salonu stuttgart", "kına gecesi müzik listesi", "düğün dj fiyatları almanya" | Geliştirici + Veysel |
-| 4 | Her düğünden sonra: 1 yorum isteği + 1 izinli `/echte-hochzeiten` kaydı (rutin) | Veysel |
-| 5 | TrauDich! sonrası: fuarda tanışılan mekân ve tedarikçilerle bağlantı takibi | Veysel |
+| 1 | **Search Console doğrulandı mı?** Doğrulanmadıysa: Property `https://dj-veys.de` → HTML etiketi → verilen `content="…"` değerini bana yaz (ya da sunucudaki `.env`'e `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` olarak ekle) → deploy sonrası "Doğrula" → `sitemap.xml` gönder | Aşama 5'in yarısı bu veriye bağlı |
+| 2 | **Bing Webmaster Tools:** Search Console'dan içe aktar (2 dk) | ChatGPT araması ve Copilot Bing dizinini kullanıyor |
+| 3 | Instagram (@dj_veys, 63K) bio linki = `https://dj-veys.de` | En büyük trafik kaynağı; marka aramasını besler |
+| 4 | YouTube kanal açıklaması ve son 20 videonun açıklamasına ilgili sayfanın linki | 265 video = 265 bağlantı fırsatı |
+| 5 | GBP: web sitesi alanı `dj-veys.de`, birincil kategori, hizmet alanı, 10+ yeni fotoğraf | Maps'te alaka sinyali |
+| 6 | [musiqua.com](https://de.musiqua.com/instrumente/dj/stuttgart)'daki "DJ-Veys" kaydı: kim açtı, 1.300–2.500 € doğru mu, link `dj-veys.de` mi? | Yanlış fiyat = yanlış beklenti |
+| 7 | PageSpeed Insights'ta dj-veys.de → "Gerçek kullanıcı deneyimi" bölümünün ekran görüntüsünü gönder | Aşama 1, madde 6 buna bağlı |
+
+### Aşama 1 — 🤖 Hemen, senden hiçbir şey gerekmeden (~1 gün)
+
+| # | İş | Bulgu | Ölçüm |
+|---|---|---|---|
+| 1 | **İç link ağı:** `/pakete` → fiyat ve bütçe yazıları; `/islamische-hochzeit` → İslami düğün yazısı; `/tuerkischer-dj-*` → Türk düğünü, Kına, Davul-Zurna yazıları; ana sayfa → Stuttgart mekân yazısı. DE, TR ve EN | B3 | Her yazıya en az 5 iç link |
+| 2 | **Meta düzeltmeleri:** 3 uzun şehir başlığı (Schwäbisch Gmünd, Friedrichshafen), 160+ karakterli 9 açıklama, `/kontakt` başlığı, kısa `/epk` ve `/kontakt` açıklamaları | B5 | Başlıkların hepsi ≤ 60 karakter |
+| 3 | **Eksik şema:** `/echte-hochzeiten` (CollectionPage), `/galerie` (ImageGallery), `/kontakt` (ContactPage), `/anfrage`. Şu an JSON-LD'si olmayan 32 sayfa | Bölüm 2 | 0 sayfa şemasız |
+| 4 | **`public/llms.txt` güncelle:** "16 Guide-Artikel" yazıyor, yayında 20 var | Bölüm 2 | Sayılar eşleşir |
+| 5 | **Kalite kapısı:** başlık/açıklama uzunluğu ve şemasız sayfa kontrolü için küçük bir betik (`scripts/seo-check.mjs`). Aynı taramayı bundan sonra tek komutla tekrarlayabilmek için | Bölüm 1 | `npm run seo:check` |
+| 6 | **Hız (yalnızca saha verisi LCP > 2,5 sn gösterirse):** ana sayfada istemci bileşenlerini erteleme (sosyal şeritler, ses oynatıcı, analitik) | B4 | LCP ≤ 2,5 sn |
+
+### Aşama 2 — 🤖 Altyapı: veri girilince kendiliğinden çalışan parçalar (~2–3 gün)
+
+| # | İş | Neden |
+|---|---|---|
+| 1 | **Mekân koleksiyonu + mekân sayfası:** admin panelde `venues` (ad, şehir, web sitesi, "DJ gözüyle" notu, fotoğraf, **yayın izni kutusu**) ve her mekâna ait `de/tr/en` sayfa. `venues.ts` boş ve deploy gerektiriyor; CMS'e taşıyınca sen deploy beklemeden girersin. Yeni rota ve veritabanı migration'ı gerekir | Mekânlar hem iç link hem "buraya link ver" talebinin karşılığı |
+| 2 | **Düğünlere kendi sayfası:** şimdi `/echte-hochzeiten` yalnızca liste. Her yayında düğün için ayrı URL (fotoğraf, video, şehir, mekân). Her biri aranabilir bir sayfa ve her şehir/mekân sayfasından bağlanabilir | Üç düğün = üç yeni, benzersiz sayfa |
+| 3 | **Şehir sayfalarına "Bu şehirdeki düğünler" bloğu:** `weddings` kaydında şehir eşleşirse görünür, eşleşme yoksa hiç görünmez | Şehir sayfalarının "burada gerçekten çalışıyor" kanıtı |
+| 4 | **VideoObject şeması:** düğün kaydında YouTube videosu varsa otomatik | Video sonuçları |
+| 5 | **Fiyat → `Offer` şeması:** `priceFrom` doldurulunca otomatik, boşken hiçbir şey basmaz (şu anki kural: uydurma fiyat şeması yok). Mevcut `package-card.tsx` zaten "ab … €" gösteriyor; şema tarafını kontrol edip bağlarım | Fiyat yayınlanınca zengin sonuç |
+| 6 | **İlçe sayfası koruması:** `cities.ts`'e yeni şehir eklerken "kanıt" (bağlı düğün ya da mekân) alanı zorunlu; yoksa derleme uyarı versin | Doorway-page riskini koddan engeller |
+
+### Aşama 3 — 🤖 İçerik yazımı (seed): metin ve blog
+
+Kural: BRAND-FACTS'te olmayan hiçbir rakam, isim veya iddia yazmam. Bilmediğim yeri `TODO(kunde)` bırakır,
+sana listelerim. Tüm yeni yazılar `status: 'published'` olmadan önce sana okutulur.
+
+| # | İş | Not |
+|---|---|---|
+| 1 | **Yeni rehber yazıları (TR öncelikli, sonra DE/EN):** mevcut 20 yazıyla çakışma kontrolünü yapıp aday konular: nişan töreni, gelin çıkarma ve müzik, Kına gecesi müzik listesi, Standesamt/nikâh müziği (Stuttgart), karma Türk-Alman çalma listesi. Search Console verisi gelince sıra buna göre değişir | Aynı anahtar kelimeyi iki yazıda kullanmam |
+| 2 | **SSS (`answers.ts`) genişletme:** her cevap kısa, doğrudan, tarihli. GEO için | Mevcut ~50 soruya ek |
+| 3 | **Rehber kaydı paket metni:** 15 rehber/portal için kısa (160), orta (500) ve uzun (750 karakter) tanıtım metni, DE ve TR, hepsinde **aynı** ad/adres/telefon | Sen yalnızca kopyalayıp yapıştırırsın (Aşama 4) |
+| 4 | **Mesaj taslakları:** mekân, fotoğrafçı, organizatör ve yerel basın için WhatsApp/e-posta metni; yorum isteği mesajı (Google yorum linkiyle); basın bülteni | Sen gönderirsin |
+| 5 | **Vaka yazısı şablonu:** `echte-hochzeit-vorlage-*` iki şablon hazır; gerçek düğün verisi gelince doldururum | Aşama 5'te |
+
+### Aşama 4 — 👤 Senin gireceğin veriler
+
+Bu tabloyu bitiren her satır Aşama 5'te bir sayfaya dönüşür. **Hiçbirini eksik bilgiyle ya da tahminle
+doldurma;** boş kalan satır, yanlış dolu satırdan iyidir.
+
+| Veri | Nereye | Adet | Dikkat |
+|---|---|---|---|
+| **3 paket için "ab … €" fiyat** | Bana yaz (`src/content/packages.ts`) | 3 | Yaklaşık değil, gerçekten verebileceğin başlangıç fiyatı |
+| **Gerçek düğünler** | `/admin` → *weddings*: Paar (çift adı), Stadt, Location, Gäste, Datum, Titelbild, Text, Fotogalerie, YouTube-Link, Status | **en az 3** | Çift yazılı ya da mesajla izin vermeden `Status` = *Yayında* yapma. Çift adı için "Ayşe & Mehmet" gibi yalnızca ad. DSGVO/Recht am eigenen Bild: [`FOTO-LISTESI.md`](../FOTO-LISTESI.md) |
+| **Çift yorumları** | `/admin` → *testimonials*: Name, eventDate, venue, quote, rating | 3–5 | Yayın izni sözlü değil, yazılı |
+| **Mekân listesi** | Aşama 2.1 bitince `/admin` → *venues*. O zamana dek bana yaz: ad, şehir, web sitesi, 1–2 cümle "orada neler iyi" | 10 | Yalnızca gerçekten çaldığın yerler. Yayın izni kutusu = mekân adının kullanımına onay |
+| **Partner onayı** | Liebe Events, Alpina Löwen, ArslanEvent, AuraEvent ile yazılı onay | 4 | Onay yoksa logo ve isim yok |
+| **Fotoğraf ve video** | Sıra [`IMAGE-SLOTS.md`](IMAGE-SLOTS.md)'de: portre → dolu dans pisti → mikrofonla moderasyon → canlı saz → aftermovie | 5–6 | En önemlisi: **gece dolu dans pisti** |
+| **Search Console doğrulama kodu** | Bkz. Aşama 0.1 | 1 | |
+| **Rehber/portal kayıtlarını aç (15)** | Bridebook, hochzeit.click, eventpeppers, weddyplace, hochzeitsportal-stuttgart.de, ProvenExpert, Gelbe Seiten, Das Örtliche, 11880, Bing Places, Apple Business Connect, Yelp, Cylex, Fixando, musiqua | 15 | Aşama 3.3'teki metni kullan; ad/adres/telefon her yerde aynı |
+| **Yorum isteği** | Google yorum linki (`g.page/r/CTlpdnW5VjW4EBM/review`), her gün 2–3 çifte kişisel WhatsApp | 31 → 45 | Toplu gönderim yok |
+| **Mekân ve fotoğrafçı mesajları** | Aşama 3.4'teki taslakları gönder | 10 + 5 | Hedef: 10 backlink |
+| **TrauDich! Stuttgart (9–10 Ocak 2027)** | Stant ya da ziyaretçi olarak katılım kararı | 1 karar | 15 Kasım'a kadar |
+
+### Aşama 5 — 🤖 Veri geldikten sonra
+
+Her satırın tetikleyicisi, Aşama 4'te hangi veriyi girdiğin:
+
+| Tetikleyici | Ben ne yaparım |
+|---|---|
+| Fiyatlar | `/pakete` "ab … €" + `Offer` şeması; `was-kostet-ein-hochzeits-dj` yazısındaki rakamları hizalarım; fiyat tutarlılığını 3 dilde kontrol |
+| 3 düğün | Her biri için vaka yazısı (şablondan), ilgili şehir ve mekân sayfasından iç link, `VideoObject` |
+| Mekân listesi | Mekân sayfalarını yayınlarım, şehir sayfalarını bağlarım, mekâna gönderilecek "sayfanız yayında" mesajı |
+| Düğün + mekân kanıtı olan ilçe | **Yalnızca kanıtı olan** ilçe sayfası (Fellbach, Waiblingen, Sindelfingen, Nürtingen…), her biri özgün metinle, şehir adı değiştirilmiş kopya değil |
+| Search Console verisi (4 hafta sonra) | 4–15. sıradaki sorgular için sayfa güçlendirme; gösterimi yüksek, tıklaması düşük sorgular için başlık/açıklama yeniden yazımı; yeni yazı konularının sırası |
+| Yeni yorum sayısı | Google yorumları sitede yalnızca görünür kalır, `AggregateRating` şemasına **girmez** (kural, `site.ts`) |
+| Basın/yeni backlink | Hangi sayfaya link geldiğine bakıp o sayfaya iç link ve içerik takviyesi |
+
+### Aşama 6 — Sezon rutini (Ocak sonrası)
+
+| Kim | Her düğünden sonra |
+|---|---|
+| 👤 | 2–3 gün içinde yorum isteği; izin varsa 5 foto + yorum; admin'de *weddings* kaydı taslak olarak |
+| 🤖 | Taslak kaydı göz atıp yayına hazır hale getiririm, vaka yazısı ve iç link; ayda bir Search Console taraması ve düzeltme listesi |
+
+### Takvim
+
+| Dönem | Ne olur |
+|---|---|
+| 15–22 Ekim | 👤 Aşama 0. 🤖 Aşama 1 |
+| 22 Ekim – 10 Kasım | 🤖 Aşama 2 ve 3. 👤 Aşama 4'ün ilk yarısı: fiyatlar, 3 düğün, yorum isteklerine başlama |
+| 10 Kasım – 15 Aralık | 👤 Aşama 4'ün ikinci yarısı: mekân listesi, rehber kayıtları, mesajlar. 🤖 Aşama 5 |
+| 15 Aralık – 31 Aralık | Boşlukları kapatma, TrauDich! hazırlığı |
+| Ocak – Mart 2027 | Sezon. Aşama 6. Search Console verisiyle ince ayar |
 
 ---
 
