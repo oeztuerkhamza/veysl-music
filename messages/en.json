@@ -6,6 +6,9 @@
     "turkishDj": "Turkish DJ Stuttgart",
     "turkishDjBw": "Turkish DJ Baden-Württemberg",
     "turkishDjDe": "Turkish DJ Germany",
+    "germanTurkishWedding": "German-Turkish wedding",
+    "turkishWedding": "Turkish wedding",
+    "kurdishWedding": "Kurdish wedding",
     "packages": "Packages",
     "weddings": "Real Weddings",
     "music": "Music",
@@ -753,6 +756,306 @@
       "title": "Is your date still free?",
       "subtitle": "The date, the place and a rough guest count are enough. An answer on availability usually comes within 24 hours.",
       "button": "Check availability"
+    }
+  },
+  "weddingCulture": {
+    "germanTurkish": {
+      "meta": {
+        "title": "German-Turkish Wedding DJ in Stuttgart | DJ Veys",
+        "description": "German-Turkish wedding DJ: Turkish and German music, bilingual hosting, gelin çıkarma and halay. Check your date and request a quote."
+      },
+      "serviceType": "Wedding DJ for German-Turkish weddings",
+      "hero": {
+        "eyebrow": "German-Turkish wedding · Stuttgart & across Germany",
+        "title": "Wedding DJ for German-Turkish weddings",
+        "subtitle": "Two families, two languages, two musical worlds — and one dance floor where everyone feels at home. Playing for over {years} years, at more than {events} weddings and events."
+      },
+      "intro": {
+        "eyebrow": "Two worlds, one evening",
+        "title": "What makes a German-Turkish wedding different",
+        "body": "At a German-Turkish wedding, guests at one table bring different celebration traditions: some expect a classic first dance and chart hits, others halay, davul zurna and an entrance with gelin çıkarma. Serving both is not a compromise but dramaturgy. Veysel lives in Stuttgart, is at home in both worlds and has played for over {years} years at celebrations where both sides meet — as a DJ, as a live musician on saz and guitar and, on request, with a live orchestra including brass."
+      },
+      "pillars": {
+        "eyebrow": "What sets it apart",
+        "title": "An evening that sees both sides",
+        "items": [
+          {
+            "title": "Two musical worlds, one dance floor",
+            "text": "Turkish pop and halay sit alongside German and international hits as equals. The dance floor is read in both directions, so no family waits for “their” music."
+          },
+          {
+            "title": "Bringing two families together",
+            "text": "Grandparents, parents, friends: who dances when depends on the music. In the planning call we work out which moments matter to which family and build the evening so nobody feels like a second-class guest."
+          },
+          {
+            "title": "Hosting in German & Turkish",
+            "text": "Hosting switches fluidly between German and Turkish, and English on request — so both families understand every part of the programme."
+          }
+        ]
+      },
+      "customs": {
+        "eyebrow": "Typical running order",
+        "title": "What often happens at German-Turkish weddings",
+        "lead": "Every celebration is different. These points come up often and are worth settling in advance — you decide the order and the weight.",
+        "items": [
+          {
+            "title": "Kına Gecesi (henna night)",
+            "text": "Often an evening of its own before the wedding, with the henna ceremony and emotional music. How much weight it carries differs from family to family."
+          },
+          {
+            "title": "Nişan (engagement)",
+            "text": "The Turkish engagement, with ring exchange and a family celebration, can be a party of its own — alongside the civil or free ceremony."
+          },
+          {
+            "title": "Gelin Çıkarma (bride's pick-up)",
+            "text": "Collecting the bride from her parents' home, with music and davul zurna on request. It can be combined with the couple's entrance into the hall."
+          },
+          {
+            "title": "First dance",
+            "text": "A first dance in the German tradition can be combined with a Turkish number or a halay start."
+          },
+          {
+            "title": "Halay and chart hits in turns",
+            "text": "Halay rounds bring several generations onto the dance floor; the music then changes again so guests without halay experience can join in too."
+          }
+        ]
+      },
+      "faq": {
+        "eyebrow": "Frequently asked",
+        "title": "What couples want to know before booking",
+        "items": [
+          {
+            "q": "Do you play both kinds of music at German-Turkish weddings?",
+            "a": "Yes — that is exactly the core of a German-Turkish wedding. The repertoire covers Turkish pop, halay and Roman havası as well as German and international hits. How the mix is weighted is decided together in the planning call."
+          },
+          {
+            "q": "Is the hosting bilingual?",
+            "a": "Yes. Hosting switches between German and Turkish, and English on request, so both families understand every part of the programme."
+          },
+          {
+            "q": "Can Kına Gecesi, engagement and wedding be booked together?",
+            "a": "Yes. Kına Gecesi, engagement (Nişan) and wedding each have their own dramaturgy and are part of the offer — individually or combined."
+          },
+          {
+            "q": "What does a wedding DJ for a German-Turkish wedding cost?",
+            "a": "The same three packages as for any wedding apply, with playing time, equipment and extras on the packages page. Travel is included within 50 km of Stuttgart; your individual quote arrives within 24 hours."
+          },
+          {
+            "q": "How does planning work?",
+            "a": "In the planning call we clarify languages, traditions, running order, music requests and a possible do-not-play list. That way the evening is set before it begins, and both families know what to expect."
+          }
+        ]
+      },
+      "related": {
+        "eyebrow": "More pages",
+        "title": "You may also like"
+      },
+      "cta": {
+        "eyebrow": "Date",
+        "title": "Is your date still free?",
+        "subtitle": "Date, venue and approximate guest count are enough for the first step. The planning call then clarifies languages, traditions and running order.",
+        "button": "Check my date"
+      }
+    },
+    "turkish": {
+      "meta": {
+        "title": "Turkish Wedding DJ: Halay, Davul Zurna | DJ Veys",
+        "description": "Turkish wedding DJ in Stuttgart and across Germany: halay, davul zurna, gelin çıkarma, kına and hosting in Turkish. Check your date now."
+      },
+      "serviceType": "Wedding DJ for Turkish weddings",
+      "hero": {
+        "eyebrow": "Turkish wedding (Düğün) · Stuttgart & across Germany",
+        "title": "Wedding DJ for Turkish weddings",
+        "subtitle": "Gelin çıkarma, davul zurna, halay and an evening hosted in Turkish — with equipment, live music and one point of contact. Playing for over {years} years, at more than {events} weddings and events."
+      },
+      "intro": {
+        "eyebrow": "A düğün with dramaturgy",
+        "title": "What a Turkish wedding asks of the DJ",
+        "body": "A Turkish wedding (düğün) is rarely just one evening: Kına Gecesi, Nişan and the wedding itself each have their own running order, and the guest list can be large. On top come moments that need timing and a microphone — the entrance, the bride's pick-up, the gift ceremony. Veysel has played at Turkish and German-Turkish celebrations for over {years} years, plays saz and guitar live and hosts in Turkish, German and English."
+      },
+      "pillars": {
+        "eyebrow": "What sets it apart",
+        "title": "A Turkish celebration, one point of contact",
+        "items": [
+          {
+            "title": "From Turkish pop to halay",
+            "text": "Turkish pop, halay classics and Roman havası; Turkish art music live on the saz on request. Plus international tracks so guests without Turkish roots dance along too."
+          },
+          {
+            "title": "Gelin çıkarma, bando & davul zurna",
+            "text": "Traditions need timing: the bride's pick-up, davul zurna moments, bando and the couple's entrance are planned in the planning call — with a live orchestra including brass on request."
+          },
+          {
+            "title": "Hosting in Turkish",
+            "text": "Announcements, programme items and transitions in Turkish, and in German or English as well when guests are mixed. That keeps the room together."
+          }
+        ]
+      },
+      "customs": {
+        "eyebrow": "Typical running order",
+        "title": "Building blocks of a Turkish wedding",
+        "lead": "Order and weight differ by region and family. These building blocks come up often and are agreed together in the planning call.",
+        "items": [
+          {
+            "title": "Nişan (engagement)",
+            "text": "The engagement with ring exchange and a family celebration is often a party of its own, with its own music and programme."
+          },
+          {
+            "title": "Kına Gecesi (henna night)",
+            "text": "The henna ceremony with emotional music, usually among family and friends. It has a very different mood from the wedding party."
+          },
+          {
+            "title": "Gelin Çıkarma (bride's pick-up)",
+            "text": "The bride is collected from her parents' home, with davul zurna or bando on request. A moment that gets its effect from music and timing."
+          },
+          {
+            "title": "Entrance and opening",
+            "text": "The couple's entrance and first dance set the tone for the evening. Song, lighting mood and hosting are matched to each other."
+          },
+          {
+            "title": "Takı ceremony",
+            "text": "Guests present gifts to the couple. The moment needs calm, a microphone and a clear announcement to stay dignified."
+          },
+          {
+            "title": "Halay and dance programme",
+            "text": "Halay rounds connect several generations. The dance programme alternates between Turkish and international music so every guest finds a place on the dance floor."
+          }
+        ]
+      },
+      "faq": {
+        "eyebrow": "Frequently asked",
+        "title": "What couples want to know before booking",
+        "items": [
+          {
+            "q": "Do you handle gelin çıkarma and davul zurna?",
+            "a": "Yes. Gelin çıkarma, bando and davul zurna are part of the offer and are timed in the planning call — with a live orchestra including brass on request."
+          },
+          {
+            "q": "Is the hosting in Turkish?",
+            "a": "Yes. Hosting is in Turkish, alternating with German when guests are mixed, and English on request."
+          },
+          {
+            "q": "Do you also play Kına Gecesi and Nişan?",
+            "a": "Yes. Kına Gecesi, engagement (Nişan) and wedding each have their own dramaturgy and are taken on individually or combined."
+          },
+          {
+            "q": "What does a DJ for a Turkish wedding cost?",
+            "a": "The same three packages as for any wedding apply, with playing time, equipment and extras on the packages page. Travel is included within 50 km of Stuttgart; your individual quote arrives within 24 hours."
+          },
+          {
+            "q": "Are you only bookable in Stuttgart or in other cities too?",
+            "a": "Bookings cover all of Baden-Württemberg and beyond, across Germany. Many cities in the region have their own pages with venues and travel details."
+          }
+        ]
+      },
+      "related": {
+        "eyebrow": "More pages",
+        "title": "You may also like"
+      },
+      "cta": {
+        "eyebrow": "Date",
+        "title": "Is your date still free?",
+        "subtitle": "Date, venue and approximate guest count are enough for the first step. The planning call then clarifies languages, traditions and running order.",
+        "button": "Check my date"
+      }
+    },
+    "kurdish": {
+      "meta": {
+        "title": "Kurdish Wedding DJ: Govend & Repertoire | DJ Veys",
+        "description": "Wedding DJ for Kurdish weddings: Kurdish repertoire, govend, engagement and henna night. Hosting in German, Turkish and English. Check your date."
+      },
+      "serviceType": "Wedding DJ for Kurdish weddings",
+      "hero": {
+        "eyebrow": "Kurdish wedding · Stuttgart & across Germany",
+        "title": "Wedding DJ for Kurdish weddings",
+        "subtitle": "Kurdish repertoire, govend rounds and an evening that takes your family seriously — with equipment, live music and one point of contact. Playing for over {years} years, at more than {events} weddings and events."
+      },
+      "intro": {
+        "eyebrow": "Your celebration, your music",
+        "title": "What matters at a Kurdish wedding",
+        "body": "Kurdish weddings are lively, loud and full of dancing — and very different by region and family. That is why Veysel assumes nothing and asks instead. Kurdish repertoire is explicitly part of the offer for engagement, henna night and wedding; which songs, dances and running order matter to your family is settled in the planning call. For over {years} years Veysel has played in Stuttgart at celebrations where several musical worlds meet."
+      },
+      "pillars": {
+        "eyebrow": "What sets it apart",
+        "title": "A conversation instead of assumptions",
+        "items": [
+          {
+            "title": "Kurdish repertoire",
+            "text": "Kurdish music is part of the repertoire — alongside Turkish, German and international tracks for mixed guest lists. Your requests and do-not-plays are noted in advance."
+          },
+          {
+            "title": "Govend and the dance floor",
+            "text": "Govend, the shared circle dance, is at the heart of many Kurdish celebrations. We plan enough space and the right music and don't let the dance floor run empty."
+          },
+          {
+            "title": "Hosting in German, Turkish & English",
+            "text": "Hosting is in German, Turkish and English. What matters to you in the announcements we talk through beforehand, so it is clear what can be done."
+          }
+        ]
+      },
+      "customs": {
+        "eyebrow": "Typical running order",
+        "title": "Building blocks of a Kurdish wedding",
+        "lead": "Customs differ by region and family. These building blocks come up often — which of them belong to your celebration is up to you.",
+        "items": [
+          {
+            "title": "Engagement and henna night",
+            "text": "Engagement and henna night are often celebrations of their own, with their own music and mood. Both are part of the offer, individually or combined with the wedding."
+          },
+          {
+            "title": "Welcoming the couple",
+            "text": "The bride's pick-up and the couple's entrance are accompanied by music in many families — with davul zurna on request."
+          },
+          {
+            "title": "Govend",
+            "text": "The shared dance in a circle or a line connects generations. Music and space need enough reserve for it."
+          },
+          {
+            "title": "Mixed guests",
+            "text": "When guests with different languages and musical tastes celebrate together, the programme alternates between Kurdish, Turkish and international music."
+          },
+          {
+            "title": "The family's requests",
+            "text": "Songs with special meaning for the families are collected in advance and placed at the right moments of the evening."
+          }
+        ]
+      },
+      "faq": {
+        "eyebrow": "Frequently asked",
+        "title": "What couples want to know before booking",
+        "items": [
+          {
+            "q": "Do you play Kurdish music?",
+            "a": "Yes. Kurdish repertoire is explicitly part of the offer for engagement, henna night and wedding. Which genres should take centre stage is discussed individually rather than assumed."
+          },
+          {
+            "q": "Is the hosting in Kurdish?",
+            "a": "Hosting is in German, Turkish and English. If Kurdish announcements matter to you, we talk openly in the planning call about what can be done."
+          },
+          {
+            "q": "Are there davul zurna and govend rounds?",
+            "a": "Davul zurna can be planned in on request. Govend rounds are planned with fitting music and enough dance-floor space; we agree the details with you."
+          },
+          {
+            "q": "Do you also take on engagements and henna nights?",
+            "a": "Yes. Engagement, henna night and wedding are part of the offer — individually or combined."
+          },
+          {
+            "q": "What does a wedding DJ cost and where can I book you?",
+            "a": "The same three packages as for any wedding apply, visible on the packages page. Travel is included within 50 km of Stuttgart, and bookings cover all of Baden-Württemberg and across Germany; your individual quote arrives within 24 hours."
+          }
+        ]
+      },
+      "related": {
+        "eyebrow": "More pages",
+        "title": "You may also like"
+      },
+      "cta": {
+        "eyebrow": "Date",
+        "title": "Is your date still free?",
+        "subtitle": "Date, venue and approximate guest count are enough for the first step. The planning call then clarifies languages, traditions and running order.",
+        "button": "Check my date"
+      }
     }
   },
   "turkishDj": {

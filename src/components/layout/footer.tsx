@@ -12,6 +12,7 @@ import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
 import { BW_SUPPORTED_LOCALES } from '@/content/region-bw';
 import { HUB_SUPPORTED_LOCALES } from '@/content/regions';
 import { TURKISH_DJ_SUPPORTED_LOCALES } from '@/content/turkish-dj';
+import { WEDDING_CULTURE_SUPPORTED_LOCALES } from '@/content/wedding-cultures';
 import { localized } from '@/lib/utils';
 
 /**
@@ -35,6 +36,11 @@ const NAV_LINKS = [
   // Ebenen-Seiten.
   { href: '/tuerkischer-dj-baden-wuerttemberg', key: 'turkishDjBw', locales: TURKISH_DJ_SUPPORTED_LOCALES },
   { href: '/tuerkischer-dj-deutschland', key: 'turkishDjDe', locales: TURKISH_DJ_SUPPORTED_LOCALES },
+  // Kultur-Landingpages (Feierart statt Ort) — de/tr/en, siehe
+  // WEDDING_CULTURE_SUPPORTED_LOCALES.
+  { href: '/deutsch-tuerkische-hochzeit', key: 'germanTurkishWedding', locales: WEDDING_CULTURE_SUPPORTED_LOCALES },
+  { href: '/tuerkische-hochzeit', key: 'turkishWedding', locales: WEDDING_CULTURE_SUPPORTED_LOCALES },
+  { href: '/kurdische-hochzeit', key: 'kurdishWedding', locales: WEDDING_CULTURE_SUPPORTED_LOCALES },
   { href: '/islamische-hochzeit', key: 'islamicWedding', locales: ISLAMIC_SUPPORTED_LOCALES },
   { href: '/pakete', key: 'packages' },
   { href: '/echte-hochzeiten', key: 'weddings' },

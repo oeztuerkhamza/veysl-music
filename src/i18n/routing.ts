@@ -312,6 +312,52 @@ export const pathnames = {
     es: '/dj-turco-alemania',
   },
   /**
+   * Kultur-Landingpages: „Deutsch-türkische Hochzeit", „Türkische Hochzeit"
+   * und „Kurdische Hochzeit" — je eine eigene Seite für die Suchabsicht
+   * „DJ für diese Art von Feier". Abgrenzung zur Türkisch-Nische oben: Dort
+   * geht es um den Ort/die Reichweite („türkischer DJ Stuttgart/Deutschland"),
+   * hier um die Art der Feier und ihre Dramaturgie.
+   *
+   * **Nur de/tr/en** — siehe WEDDING_CULTURE_SUPPORTED_LOCALES in
+   * src/content/wedding-cultures.ts; die übrigen Sprachen liefern
+   * `notFound()` (gleiche Mechanik wie /tuerkischer-dj-stuttgart). Die Slugs
+   * für ku/ar/nl/fr/es stehen trotzdem hier, weil `pathnames` jede Sprache
+   * verlangt.
+   *
+   * ⚠️ Die kurdischen und arabischen Slugs sind — wie alle in dieser Datei —
+   * zur Prüfung durch einen Muttersprachler markiert.
+   */
+  '/deutsch-tuerkische-hochzeit': {
+    de: '/deutsch-tuerkische-hochzeit',
+    tr: '/alman-turk-dugunu',
+    ku: '/daweta-alman-tirki',
+    ar: '/zafaf-almani-turki',
+    en: '/german-turkish-wedding',
+    nl: '/duits-turkse-bruiloft',
+    fr: '/mariage-germano-turc',
+    es: '/boda-germano-turca',
+  },
+  '/tuerkische-hochzeit': {
+    de: '/tuerkische-hochzeit',
+    tr: '/turk-dugunu',
+    ku: '/daweta-tirki',
+    ar: '/zafaf-turki',
+    en: '/turkish-wedding',
+    nl: '/turkse-bruiloft',
+    fr: '/mariage-turc',
+    es: '/boda-turca',
+  },
+  '/kurdische-hochzeit': {
+    de: '/kurdische-hochzeit',
+    tr: '/kurt-dugunu',
+    ku: '/daweta-kurdi',
+    ar: '/zafaf-kurdi',
+    en: '/kurdish-wedding',
+    nl: '/koerdische-bruiloft',
+    fr: '/mariage-kurde',
+    es: '/boda-kurda',
+  },
+  /**
    * Reichweiten-Ebene: europaweite Buchbarkeit auf **Länder**-Ebene, bewusst
    * nicht auf Städte-Ebene. Städteseiten außerhalb der Kernregion wären
    * Doorway Pages und würden das lokale Cluster gefährden, das tatsächlich

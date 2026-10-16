@@ -6,6 +6,9 @@
     "turkishDj": "Türkischer DJ Stuttgart",
     "turkishDjBw": "Türkischer DJ Baden-Württemberg",
     "turkishDjDe": "Türkischer DJ Deutschland",
+    "germanTurkishWedding": "Deutsch-türkische Hochzeit",
+    "turkishWedding": "Türkische Hochzeit",
+    "kurdishWedding": "Kurdische Hochzeit",
     "packages": "Pakete",
     "weddings": "Echte Hochzeiten",
     "music": "Musik",
@@ -753,6 +756,306 @@
       "title": "Ist Ihr Datum noch frei?",
       "subtitle": "Datum, Ort und ungefähre Gästezahl genügen. Rückmeldung zur Verfügbarkeit in der Regel innerhalb von 24 Stunden.",
       "button": "Termin anfragen"
+    }
+  },
+  "weddingCulture": {
+    "germanTurkish": {
+      "meta": {
+        "title": "Deutsch-türkischer Hochzeits-DJ in Stuttgart | DJ Veys",
+        "description": "Deutsch-türkischer Hochzeits-DJ: türkische und deutsche Musik, zweisprachige Moderation, Gelin Çıkarma und Halay. Jetzt Termin prüfen und Angebot anfragen."
+      },
+      "serviceType": "Hochzeits-DJ für deutsch-türkische Hochzeiten",
+      "hero": {
+        "eyebrow": "Deutsch-türkische Hochzeit · Stuttgart & deutschlandweit",
+        "title": "Hochzeits-DJ für deutsch-türkische Hochzeiten",
+        "subtitle": "Zwei Familien, zwei Sprachen, zwei Musikwelten — und eine Tanzfläche, auf der sich alle wiederfinden. Seit über {years} Jahren im Einsatz, auf mehr als {events} Hochzeiten und Events insgesamt."
+      },
+      "intro": {
+        "eyebrow": "Zwei Welten, ein Abend",
+        "title": "Was eine deutsch-türkische Hochzeit ausmacht",
+        "body": "Bei einer deutsch-türkischen Hochzeit sitzen Gäste an einem Tisch, die unterschiedliche Feiertraditionen mitbringen: Die einen erwarten einen klassischen Eröffnungstanz und Charts, die anderen Halay, Davul Zurna und einen Einzug mit Gelin Çıkarma. Beides zu bedienen ist kein Kompromiss, sondern Dramaturgie. Veysel lebt in Stuttgart, ist in beiden Welten zu Hause und legt seit über {years} Jahren auf Feiern auf, bei denen beide Seiten zusammenkommen — als DJ, als Live-Musiker an Saz und Gitarre und auf Wunsch mit Live-Orchester inklusive Bläsern."
+      },
+      "pillars": {
+        "eyebrow": "Was den Unterschied macht",
+        "title": "Beide Seiten im Blick",
+        "items": [
+          {
+            "title": "Zwei Musikwelten, eine Tanzfläche",
+            "text": "Türkischer Pop und Halay stehen gleichberechtigt neben deutschen und internationalen Charts. Die Tanzfläche wird in beide Richtungen gelesen, damit keine Familie auf „ihre“ Musik warten muss."
+          },
+          {
+            "title": "Zwei Familien zusammenbringen",
+            "text": "Großeltern, Eltern, Freunde: Wer wann tanzt, hängt von der Musik ab. Im Vorgespräch klären wir, welche Momente für welche Familie wichtig sind, und bauen den Abend so auf, dass sich niemand als Gast zweiter Klasse fühlt."
+          },
+          {
+            "title": "Moderation auf Deutsch & Türkisch",
+            "text": "Die Moderation wechselt fließend zwischen Deutsch und Türkisch, auf Wunsch auch Englisch — damit beide Familien jeden Programmpunkt verstehen."
+          }
+        ]
+      },
+      "customs": {
+        "eyebrow": "Typischer Ablauf",
+        "title": "Was bei deutsch-türkischen Hochzeiten häufig vorkommt",
+        "lead": "Jede Feier ist anders. Diese Punkte tauchen aber oft auf und sollten vorab geklärt sein — Reihenfolge und Gewichtung legen Sie fest.",
+        "items": [
+          {
+            "title": "Kına Gecesi (Henna-Abend)",
+            "text": "Oft ein eigener Abend vor der Hochzeit, mit Henna-Zeremonie und emotionaler Musik. Wie stark er gewichtet wird, unterscheidet sich von Familie zu Familie."
+          },
+          {
+            "title": "Nişan (Verlobung)",
+            "text": "Die türkische Verlobung kann mit Ringtausch und Familienfeier ein eigenes Fest sein — neben der standesamtlichen oder freien Trauung."
+          },
+          {
+            "title": "Gelin Çıkarma (Brautabholung)",
+            "text": "Das Abholen der Braut aus dem Elternhaus, auf Wunsch mit Musik und Davul Zurna. Es lässt sich mit dem Einzug des Brautpaars in den Saal verbinden."
+          },
+          {
+            "title": "Eröffnungstanz",
+            "text": "Ein Eröffnungstanz nach deutscher Tradition kann mit einer türkischen Einlage oder einem Halay-Einstieg verbunden werden."
+          },
+          {
+            "title": "Halay und Charts im Wechsel",
+            "text": "Halay-Runden holen mehrere Generationen auf die Tanzfläche; danach wechselt die Musik wieder, damit auch Gäste ohne Halay-Erfahrung mitfeiern."
+          }
+        ]
+      },
+      "faq": {
+        "eyebrow": "Häufige Fragen",
+        "title": "Was Paare vor der Buchung wissen wollen",
+        "items": [
+          {
+            "q": "Spielen Sie auf deutsch-türkischen Hochzeiten beide Musikrichtungen?",
+            "a": "Ja — genau das ist der Kern einer deutsch-türkischen Hochzeit. Das Repertoire deckt türkischen Pop, Halay und Roman Havası genauso ab wie deutsche und internationale Charts. Wie die Mischung gewichtet wird, legen wir im Vorgespräch gemeinsam fest."
+          },
+          {
+            "q": "Wird zweisprachig moderiert?",
+            "a": "Ja. Die Moderation wechselt zwischen Deutsch und Türkisch, auf Wunsch auch Englisch, damit beide Familien jeden Programmpunkt verstehen."
+          },
+          {
+            "q": "Können Kına Gecesi, Verlobung und Hochzeit zusammen gebucht werden?",
+            "a": "Ja. Kına Gecesi, Verlobung (Nişan) und Hochzeit haben jeweils eine eigene Dramaturgie und gehören fest zum Angebot — einzeln oder in Kombination."
+          },
+          {
+            "q": "Was kostet ein Hochzeits-DJ für eine deutsch-türkische Hochzeit?",
+            "a": "Es gelten dieselben drei Pakete wie für jede Hochzeit, mit Spielzeit, Technik und Extras auf der Paketseite. Innerhalb von 50 km um Stuttgart ist die Anfahrt enthalten; das individuelle Angebot kommt innerhalb von 24 Stunden."
+          },
+          {
+            "q": "Wie läuft die Planung ab?",
+            "a": "Im Vorgespräch klären wir Sprachen, Traditionen, Ablauf, Musikwünsche und eine mögliche No-Go-Liste. So steht der Abend, bevor er beginnt, und beide Familien wissen, was sie erwartet."
+          }
+        ]
+      },
+      "related": {
+        "eyebrow": "Weitere Seiten",
+        "title": "Auch interessant"
+      },
+      "cta": {
+        "eyebrow": "Termin",
+        "title": "Ist Ihr Datum noch frei?",
+        "subtitle": "Datum, Location und ungefähre Gästezahl genügen für den ersten Schritt. Das Vorgespräch klärt dann Sprachen, Traditionen und Ablauf.",
+        "button": "Termin anfragen"
+      }
+    },
+    "turkish": {
+      "meta": {
+        "title": "DJ für türkische Hochzeit: Halay, Davul Zurna | DJ Veys",
+        "description": "DJ für türkische Hochzeit in Stuttgart und deutschlandweit: Halay, Davul Zurna, Gelin Çıkarma, Kına und Moderation auf Türkisch. Jetzt Termin anfragen."
+      },
+      "serviceType": "Hochzeits-DJ für türkische Hochzeiten",
+      "hero": {
+        "eyebrow": "Türkische Hochzeit (Düğün) · Stuttgart & deutschlandweit",
+        "title": "Hochzeits-DJ für türkische Hochzeiten",
+        "subtitle": "Gelin Çıkarma, Davul Zurna, Halay und ein Abend, der auf Türkisch moderiert wird — mit Technik, Live-Musik und einem Ansprechpartner. Seit über {years} Jahren im Einsatz, auf mehr als {events} Hochzeiten und Events insgesamt."
+      },
+      "intro": {
+        "eyebrow": "Düğün mit Dramaturgie",
+        "title": "Was eine türkische Hochzeit vom DJ verlangt",
+        "body": "Eine türkische Hochzeit (Düğün) ist selten nur ein einzelner Abend: Kına Gecesi, Nişan und die eigentliche Feier haben jeweils eigene Abläufe, und die Gästeliste kann groß sein. Dazu kommen Momente, die Timing und ein Mikrofon brauchen — der Einzug, die Brautabholung, die Geschenkübergabe. Veysel legt seit über {years} Jahren auf türkischen und deutsch-türkischen Feiern auf, spielt Saz und Gitarre live und moderiert auf Türkisch, Deutsch und Englisch."
+      },
+      "pillars": {
+        "eyebrow": "Was den Unterschied macht",
+        "title": "Türkische Feier, ein Ansprechpartner",
+        "items": [
+          {
+            "title": "Von türkischem Pop bis Halay",
+            "text": "Türkischer Pop, Halay-Klassiker und Roman Havası; auf Wunsch Türk Sanat Müziği live an der Saz. Dazu internationale Titel, damit auch Gäste ohne türkische Wurzeln mittanzen."
+          },
+          {
+            "title": "Gelin Çıkarma, Bando & Davul Zurna",
+            "text": "Traditionen brauchen Timing: Brautabholung, Davul-Zurna-Momente, Bando und der Einzug des Brautpaars werden im Vorgespräch geplant — auf Wunsch mit Live-Orchester und Bläsern."
+          },
+          {
+            "title": "Moderation auf Türkisch",
+            "text": "Ansagen, Programmpunkte und Übergänge auf Türkisch, bei gemischten Gästen zusätzlich auf Deutsch oder Englisch. So bleibt der Saal beieinander."
+          }
+        ]
+      },
+      "customs": {
+        "eyebrow": "Typischer Ablauf",
+        "title": "Bausteine einer türkischen Hochzeit",
+        "lead": "Reihenfolge und Gewichtung unterscheiden sich je nach Region und Familie. Diese Bausteine kommen häufig vor und werden im Vorgespräch abgestimmt.",
+        "items": [
+          {
+            "title": "Nişan (Verlobung)",
+            "text": "Die Verlobung mit Ringtausch und Familienfeier ist oft ein eigenes Fest mit eigener Musik und eigenem Programm."
+          },
+          {
+            "title": "Kına Gecesi (Henna-Abend)",
+            "text": "Die Henna-Zeremonie mit emotionaler Musik, meist im Kreis der Familien und Freundinnen. Sie hat eine ganz andere Stimmung als die Hochzeitsfeier."
+          },
+          {
+            "title": "Gelin Çıkarma (Brautabholung)",
+            "text": "Die Braut wird aus dem Elternhaus abgeholt, auf Wunsch mit Davul Zurna oder Bando. Ein Moment, der durch Musik und Timing seine Wirkung bekommt."
+          },
+          {
+            "title": "Einzug und Eröffnung",
+            "text": "Der Einzug des Brautpaars und der erste Tanz geben den Ton für den Abend an. Song, Lichtstimmung und Moderation werden aufeinander abgestimmt."
+          },
+          {
+            "title": "Takı-Zeremonie",
+            "text": "Gäste überreichen dem Brautpaar Geschenke. Der Moment braucht Ruhe, ein Mikrofon und eine klare Ansage, damit er würdevoll bleibt."
+          },
+          {
+            "title": "Halay und Tanzprogramm",
+            "text": "Halay-Runden verbinden mehrere Generationen. Das Tanzprogramm wechselt zwischen türkischer und internationaler Musik, damit alle Gäste einen Platz auf der Tanzfläche finden."
+          }
+        ]
+      },
+      "faq": {
+        "eyebrow": "Häufige Fragen",
+        "title": "Was Paare vor der Buchung wissen wollen",
+        "items": [
+          {
+            "q": "Übernehmen Sie Gelin Çıkarma und Davul Zurna?",
+            "a": "Ja. Gelin Çıkarma, Bando und Davul Zurna gehören zum Angebot und werden im Vorgespräch zeitlich eingeplant — auf Wunsch mit Live-Orchester und Bläsern."
+          },
+          {
+            "q": "Wird auf Türkisch moderiert?",
+            "a": "Ja. Die Moderation läuft auf Türkisch und bei gemischten Gästen im Wechsel mit Deutsch, auf Wunsch auch Englisch."
+          },
+          {
+            "q": "Spielen Sie auch Kına Gecesi und Nişan?",
+            "a": "Ja. Kına Gecesi, Verlobung (Nişan) und Hochzeit haben jeweils eine eigene Dramaturgie und werden einzeln oder in Kombination übernommen."
+          },
+          {
+            "q": "Was kostet ein DJ für eine türkische Hochzeit?",
+            "a": "Es gelten dieselben drei Pakete wie für jede Hochzeit, mit Spielzeit, Technik und Extras auf der Paketseite. Innerhalb von 50 km um Stuttgart ist die Anfahrt enthalten; das individuelle Angebot kommt innerhalb von 24 Stunden."
+          },
+          {
+            "q": "Sind Sie nur in Stuttgart oder auch in anderen Städten buchbar?",
+            "a": "Gebucht wird in ganz Baden-Württemberg und darüber hinaus deutschlandweit. Für viele Städte der Region gibt es eigene Seiten mit Locations und Anfahrt."
+          }
+        ]
+      },
+      "related": {
+        "eyebrow": "Weitere Seiten",
+        "title": "Auch interessant"
+      },
+      "cta": {
+        "eyebrow": "Termin",
+        "title": "Ist Ihr Datum noch frei?",
+        "subtitle": "Datum, Location und ungefähre Gästezahl genügen für den ersten Schritt. Das Vorgespräch klärt dann Sprachen, Traditionen und Ablauf.",
+        "button": "Termin anfragen"
+      }
+    },
+    "kurdish": {
+      "meta": {
+        "title": "DJ für kurdische Hochzeit: Govend & Repertoire | DJ Veys",
+        "description": "Hochzeits-DJ für kurdische Hochzeiten: kurdisches Repertoire, Govend, Verlobung und Henna-Abend. Moderation auf Deutsch, Türkisch & Englisch. Termin anfragen."
+      },
+      "serviceType": "Hochzeits-DJ für kurdische Hochzeiten",
+      "hero": {
+        "eyebrow": "Kurdische Hochzeit · Stuttgart & deutschlandweit",
+        "title": "Hochzeits-DJ für kurdische Hochzeiten",
+        "subtitle": "Kurdisches Repertoire, Govend-Runden und ein Abend, der Ihre Familie ernst nimmt — mit Technik, Live-Musik und einem Ansprechpartner. Seit über {years} Jahren im Einsatz, auf mehr als {events} Hochzeiten und Events insgesamt."
+      },
+      "intro": {
+        "eyebrow": "Ihre Feier, Ihre Musik",
+        "title": "Was bei einer kurdischen Hochzeit zählt",
+        "body": "Kurdische Hochzeiten sind lebendig, laut und tanzintensiv — und je nach Region und Familie sehr unterschiedlich. Deshalb gilt hier: Veysel setzt nichts voraus, sondern fragt nach. Kurdisches Repertoire gehört ausdrücklich zum Angebot für Verlobung, Henna-Abend und Hochzeit; welche Lieder, Tänze und Abläufe für Ihre Familie wichtig sind, klären wir im Vorgespräch. Seit über {years} Jahren legt Veysel in Stuttgart auf Feiern auf, bei denen mehrere Musikwelten zusammenkommen."
+      },
+      "pillars": {
+        "eyebrow": "Was den Unterschied macht",
+        "title": "Absprache statt Annahmen",
+        "items": [
+          {
+            "title": "Kurdisches Repertoire",
+            "text": "Kurdische Musik gehört zum Repertoire — neben türkischen, deutschen und internationalen Titeln für gemischte Gästelisten. Ihre Wunschlieder und No-Gos halten wir vorab fest."
+          },
+          {
+            "title": "Govend und Tanzfläche",
+            "text": "Govend, der gemeinsame Reigentanz, trägt viele kurdische Feiern. Wir planen genug Fläche und die passende Musik ein und lassen die Tanzfläche nicht leerlaufen."
+          },
+          {
+            "title": "Moderation auf Deutsch, Türkisch & Englisch",
+            "text": "Moderiert wird auf Deutsch, Türkisch und Englisch. Was Ihnen an Ansagen wichtig ist, besprechen wir vorher, damit klar ist, was sich umsetzen lässt."
+          }
+        ]
+      },
+      "customs": {
+        "eyebrow": "Typischer Ablauf",
+        "title": "Bausteine einer kurdischen Hochzeit",
+        "lead": "Bräuche unterscheiden sich je nach Region und Familie. Diese Bausteine kommen häufig vor — was davon zu Ihrer Feier gehört, entscheiden Sie.",
+        "items": [
+          {
+            "title": "Verlobung und Henna-Abend",
+            "text": "Verlobung und Henna-Abend sind oft eigene Feiern mit eigener Musik und eigener Stimmung. Beides gehört fest zum Angebot, einzeln oder kombiniert mit der Hochzeit."
+          },
+          {
+            "title": "Begleitung des Brautpaars",
+            "text": "Die Abholung der Braut und der Einzug des Brautpaars werden in vielen Familien musikalisch begleitet — auf Wunsch mit Davul Zurna."
+          },
+          {
+            "title": "Govend",
+            "text": "Der gemeinsame Tanz im Kreis oder in der Reihe verbindet Generationen. Dafür brauchen Musik und Raum genügend Reserve."
+          },
+          {
+            "title": "Gemischte Gäste",
+            "text": "Wenn Gäste mit unterschiedlichen Sprachen und Musikgeschmäckern feiern, wechselt das Programm zwischen kurdischer, türkischer und internationaler Musik."
+          },
+          {
+            "title": "Wunschlieder der Familie",
+            "text": "Lieder mit besonderer Bedeutung für die Familien werden vorab gesammelt und an den passenden Stellen des Abends eingeplant."
+          }
+        ]
+      },
+      "faq": {
+        "eyebrow": "Häufige Fragen",
+        "title": "Was Paare vor der Buchung wissen wollen",
+        "items": [
+          {
+            "q": "Spielen Sie kurdische Musik?",
+            "a": "Ja. Kurdische Repertoires gehören ausdrücklich zum Angebot für Verlobung, Henna-Abend und Hochzeit. Welche Musikrichtungen im Vordergrund stehen sollen, wird individuell besprochen statt pauschal vorausgesetzt."
+          },
+          {
+            "q": "Wird auf Kurdisch moderiert?",
+            "a": "Moderiert wird auf Deutsch, Türkisch und Englisch. Wenn Ihnen kurdische Ansagen wichtig sind, besprechen wir im Vorgespräch offen, was sich umsetzen lässt."
+          },
+          {
+            "q": "Gibt es Davul Zurna und Govend-Runden?",
+            "a": "Davul Zurna lässt sich auf Wunsch einplanen. Govend-Runden werden mit passender Musik und ausreichend Tanzfläche geplant; die Gestaltung stimmen wir mit Ihnen ab."
+          },
+          {
+            "q": "Übernehmen Sie auch Verlobung und Henna-Abend?",
+            "a": "Ja. Verlobung, Henna-Abend und Hochzeit gehören zum Angebot — einzeln oder in Kombination."
+          },
+          {
+            "q": "Was kostet ein Hochzeits-DJ und wo sind Sie buchbar?",
+            "a": "Es gelten dieselben drei Pakete wie für jede Hochzeit, einsehbar auf der Paketseite. Innerhalb von 50 km um Stuttgart ist die Anfahrt enthalten, gebucht wird in ganz Baden-Württemberg und deutschlandweit; das individuelle Angebot kommt innerhalb von 24 Stunden."
+          }
+        ]
+      },
+      "related": {
+        "eyebrow": "Weitere Seiten",
+        "title": "Auch interessant"
+      },
+      "cta": {
+        "eyebrow": "Termin",
+        "title": "Ist Ihr Datum noch frei?",
+        "subtitle": "Datum, Location und ungefähre Gästezahl genügen für den ersten Schritt. Das Vorgespräch klärt dann Sprachen, Traditionen und Ablauf.",
+        "button": "Termin anfragen"
+      }
     }
   },
   "turkishDj": {

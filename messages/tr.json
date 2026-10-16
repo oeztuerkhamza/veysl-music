@@ -6,6 +6,9 @@
     "turkishDj": "Stuttgart'ta Türk DJ",
     "turkishDjBw": "Baden-Württemberg'de Türk DJ",
     "turkishDjDe": "Almanya'da Türk DJ",
+    "germanTurkishWedding": "Alman-Türk düğünü",
+    "turkishWedding": "Türk düğünü",
+    "kurdishWedding": "Kürt düğünü",
     "packages": "Paketler",
     "weddings": "Gerçek Düğünler",
     "music": "Müzik",
@@ -753,6 +756,306 @@
       "title": "Tarihiniz hâlâ boş mu?",
       "subtitle": "Tarih, yer ve yaklaşık misafir sayısı yeterli. Uygunluk yanıtı genellikle 24 saat içinde gelir.",
       "button": "Teklif al"
+    }
+  },
+  "weddingCulture": {
+    "germanTurkish": {
+      "meta": {
+        "title": "Alman-Türk düğün DJ'i Stuttgart | DJ Veys",
+        "description": "Alman-Türk düğünleri için DJ: Türk ve Alman müziği, iki dilli sunum, gelin çıkarma ve halay. Tarihinizi sorgulayın, teklif isteyin."
+      },
+      "serviceType": "Alman-Türk düğünleri için düğün DJ'i",
+      "hero": {
+        "eyebrow": "Alman-Türk düğünü · Stuttgart ve Almanya geneli",
+        "title": "Alman-Türk düğünleri için düğün DJ'i",
+        "subtitle": "İki aile, iki dil, iki müzik dünyası — ve herkesin kendini bulduğu tek bir pist. {years} yılı aşkın süredir sahnede; toplam {events}'den fazla düğün ve etkinlikte."
+      },
+      "intro": {
+        "eyebrow": "İki dünya, tek bir akşam",
+        "title": "Alman-Türk düğününü ne farklı kılar",
+        "body": "Alman-Türk bir düğünde aynı masada farklı kutlama gelenekleri bir araya gelir: Kimi klasik bir açılış dansı ve hit şarkılar bekler, kimi halay, davul zurna ve gelin çıkarmalı bir giriş. İkisini birden karşılamak bir ödün değil, dramaturjidir. Veysel Stuttgart'ta yaşıyor, iki dünyada da evinde ve {years} yılı aşkın süredir iki tarafın buluştuğu kutlamalarda sahne alıyor — DJ olarak, saz ve gitarda canlı müzisyen olarak ve isteğe bağlı olarak üflemelilerle canlı orkestra eşliğinde."
+      },
+      "pillars": {
+        "eyebrow": "Fark yaratan ne",
+        "title": "İki tarafı da gözeten bir akşam",
+        "items": [
+          {
+            "title": "İki müzik dünyası, tek pist",
+            "text": "Türkçe pop ve halay, Almanca ve uluslararası hit şarkılarla eşit ağırlıkta yer alır. Pist iki yönde de okunur; hiçbir aile “kendi” müziği için beklemek zorunda kalmaz."
+          },
+          {
+            "title": "İki aileyi bir araya getirmek",
+            "text": "Büyükanne ve büyükbabalar, anne babalar, arkadaşlar: Kimin ne zaman dans ettiği müziğe bağlı. Ön görüşmede hangi anın hangi aile için önemli olduğunu belirliyor ve akşamı kimse kendini ikinci sınıf misafir hissetmeyecek şekilde kuruyoruz."
+          },
+          {
+            "title": "Almanca ve Türkçe sunum",
+            "text": "Sunum Almanca ile Türkçe arasında akıcı biçimde geçer, isteğe bağlı İngilizce de olur — her iki aile de her program maddesini anlasın diye."
+          }
+        ]
+      },
+      "customs": {
+        "eyebrow": "Tipik akış",
+        "title": "Alman-Türk düğünlerinde sık görülenler",
+        "lead": "Her kutlama farklıdır. Ancak bu maddeler sık karşımıza çıkar ve önceden netleştirilmelidir — sıra ve ağırlığı siz belirlersiniz.",
+        "items": [
+          {
+            "title": "Kına gecesi",
+            "text": "Çoğunlukla düğünden önce ayrı bir akşamdır; kına töreni ve duygusal müzik içerir. Ne kadar ağırlık taşıdığı aileden aileye değişir."
+          },
+          {
+            "title": "Nişan",
+            "text": "Yüzük takma ve aile kutlamasıyla nişan, resmi veya serbest nikâhın yanında kendi başına bir şölen olabilir."
+          },
+          {
+            "title": "Gelin çıkarma",
+            "text": "Gelinin ana baba evinden alınması; isteğe bağlı müzik ve davul zurna eşliğinde yapılır. Çiftin salona girişiyle birleştirilebilir."
+          },
+          {
+            "title": "Açılış dansı",
+            "text": "Alman geleneğine uygun açılış dansı, Türkçe bir parça veya halayla başlayan bir girişle birleştirilebilir."
+          },
+          {
+            "title": "Halay ve hit şarkılar sırayla",
+            "text": "Halay turları birkaç kuşağı piste çıkarır; ardından müzik yeniden değişir, böylece halaya aşina olmayan misafirler de eğlenceye katılır."
+          }
+        ]
+      },
+      "faq": {
+        "eyebrow": "Sık sorulan sorular",
+        "title": "Çiftlerin rezervasyondan önce bilmek istedikleri",
+        "items": [
+          {
+            "q": "Alman-Türk düğünlerinde iki müzik türünü de çalıyor musunuz?",
+            "a": "Evet — Alman-Türk bir düğünün özü tam olarak bu. Repertuvar, Türkçe pop, halay ve Roman havasını Alman ve uluslararası hit şarkılar kadar kapsar. Karışımın ağırlığını ön görüşmede birlikte belirleriz."
+          },
+          {
+            "q": "Sunum iki dilli mi yapılıyor?",
+            "a": "Evet. Sunum Almanca ve Türkçe arasında geçer, isteğe bağlı İngilizce de olur; böylece her iki aile de her program maddesini anlar."
+          },
+          {
+            "q": "Kına gecesi, nişan ve düğün birlikte rezerve edilebilir mi?",
+            "a": "Evet. Kına gecesi, nişan ve düğünün her birinin kendine özgü bir dramaturjisi vardır ve hizmetin sabit parçasıdır — tek tek veya birlikte."
+          },
+          {
+            "q": "Alman-Türk düğünü için düğün DJ'i ne kadar tutar?",
+            "a": "Her düğün için geçerli aynı üç paket geçerlidir; çalma süresi, teknik ve ekstralar paket sayfasında. Stuttgart çevresinde 50 km içinde ulaşım dahildir; size özel teklif 24 saat içinde gelir."
+          },
+          {
+            "q": "Planlama nasıl ilerliyor?",
+            "a": "Ön görüşmede diller, gelenekler, akış, müzik istekleri ve olası bir “çalınmasın” listesini netleştiriyoruz. Böylece akşam başlamadan şekillenir ve iki aile de onları nelerin beklediğini bilir."
+          }
+        ]
+      },
+      "related": {
+        "eyebrow": "Diğer sayfalar",
+        "title": "Bunlar da ilginizi çekebilir"
+      },
+      "cta": {
+        "eyebrow": "Tarih",
+        "title": "Tarihiniz hâlâ boş mu?",
+        "subtitle": "İlk adım için tarih, mekân ve tahmini misafir sayısı yeterli. Ön görüşmede diller, gelenekler ve akış netleşir.",
+        "button": "Tarih sorgula"
+      }
+    },
+    "turkish": {
+      "meta": {
+        "title": "Türk düğünü DJ'i: halay, davul zurna | DJ Veys",
+        "description": "Stuttgart ve Almanya genelinde Türk düğünü DJ'i: halay, davul zurna, gelin çıkarma, kına ve Türkçe sunum. Tarihinizi sorgulayın."
+      },
+      "serviceType": "Türk düğünleri için düğün DJ'i",
+      "hero": {
+        "eyebrow": "Türk düğünü · Stuttgart ve Almanya geneli",
+        "title": "Türk düğünleri için düğün DJ'i",
+        "subtitle": "Gelin çıkarma, davul zurna, halay ve Türkçe sunulan bir akşam — teknik, canlı müzik ve tek bir muhatapla. {years} yılı aşkın süredir sahnede; toplam {events}'den fazla düğün ve etkinlikte."
+      },
+      "intro": {
+        "eyebrow": "Dramaturjisi olan bir düğün",
+        "title": "Türk düğünü DJ'den ne bekler",
+        "body": "Türk düğünü nadiren tek bir akşamdan ibarettir: Kına gecesi, nişan ve asıl düğünün her birinin kendi akışı vardır; davetli listesi de kalabalık olabilir. Buna zamanlama ve mikrofon isteyen anlar eklenir — giriş, gelin çıkarma, takı töreni. Veysel {years} yılı aşkın süredir Türk ve Alman-Türk kutlamalarında çalıyor, saz ve gitarı canlı çalıyor ve Türkçe, Almanca ve İngilizce sunum yapıyor."
+      },
+      "pillars": {
+        "eyebrow": "Fark yaratan ne",
+        "title": "Türk düğünü, tek muhatap",
+        "items": [
+          {
+            "title": "Türkçe popdan halaya",
+            "text": "Türkçe pop, halay klasikleri ve Roman havası; isteğe bağlı olarak sazla canlı Türk Sanat Müziği. Türk kökenli olmayan misafirler de eşlik etsin diye uluslararası parçalar da çalınır."
+          },
+          {
+            "title": "Gelin çıkarma, bando ve davul zurna",
+            "text": "Gelenekler zamanlama ister: gelin çıkarma, davul zurna anları, bando ve çiftin girişi ön görüşmede planlanır — isteğe bağlı olarak üflemelilerle canlı orkestra eşliğinde."
+          },
+          {
+            "title": "Türkçe sunum",
+            "text": "Anonslar, program maddeleri ve geçişler Türkçe; karışık misafirlerde ayrıca Almanca veya İngilizce. Böylece salon bir arada kalır."
+          }
+        ]
+      },
+      "customs": {
+        "eyebrow": "Tipik akış",
+        "title": "Bir Türk düğününün yapı taşları",
+        "lead": "Sıra ve ağırlık bölgeye ve aileye göre değişir. Bu yapı taşları sık görülür ve ön görüşmede birlikte ayarlanır.",
+        "items": [
+          {
+            "title": "Nişan",
+            "text": "Yüzük takma ve aile kutlamasıyla nişan çoğu zaman kendi müziği ve programı olan ayrı bir şölendir."
+          },
+          {
+            "title": "Kına gecesi",
+            "text": "Duygusal müzik eşliğindeki kına töreni, genellikle ailelerin ve arkadaşların çevresinde yapılır. Düğün şölenine göre bambaşka bir atmosferi vardır."
+          },
+          {
+            "title": "Gelin çıkarma",
+            "text": "Gelin ana baba evinden alınır; isteğe bağlı olarak davul zurna veya bando eşliğinde. Müzik ve zamanlamayla etkisini kazanan bir andır."
+          },
+          {
+            "title": "Giriş ve açılış",
+            "text": "Çiftin girişi ve ilk dans akşamın tonunu belirler. Parça, ışık atmosferi ve sunum birbirine uyarlanır."
+          },
+          {
+            "title": "Takı töreni",
+            "text": "Misafirler çifte hediyelerini takdim eder. Bu anın vakur kalması için sakinlik, bir mikrofon ve net bir anons gerekir."
+          },
+          {
+            "title": "Halay ve dans programı",
+            "text": "Halay turları birkaç kuşağı birleştirir. Dans programı Türkçe ve uluslararası müzik arasında geçiş yapar; böylece tüm misafirler pistte yerini bulur."
+          }
+        ]
+      },
+      "faq": {
+        "eyebrow": "Sık sorulan sorular",
+        "title": "Çiftlerin rezervasyondan önce bilmek istedikleri",
+        "items": [
+          {
+            "q": "Gelin çıkarma ve davul zurnayı üstleniyor musunuz?",
+            "a": "Evet. Gelin çıkarma, bando ve davul zurna hizmetin parçasıdır ve ön görüşmede zamanlaması planlanır — isteğe bağlı olarak üflemelilerle canlı orkestra eşliğinde."
+          },
+          {
+            "q": "Sunum Türkçe mi yapılıyor?",
+            "a": "Evet. Sunum Türkçe yapılır; karışık misafirlerde Almanca ile dönüşümlü, isteğe bağlı İngilizce de olur."
+          },
+          {
+            "q": "Kına gecesi ve nişanı da yapıyor musunuz?",
+            "a": "Evet. Kına gecesi, nişan ve düğünün her birinin kendine özgü bir dramaturjisi vardır ve tek tek veya birlikte üstlenilir."
+          },
+          {
+            "q": "Türk düğünü için DJ ne kadar tutar?",
+            "a": "Her düğün için geçerli aynı üç paket geçerlidir; çalma süresi, teknik ve ekstralar paket sayfasında. Stuttgart çevresinde 50 km içinde ulaşım dahildir; size özel teklif 24 saat içinde gelir."
+          },
+          {
+            "q": "Sadece Stuttgart'ta mı, başka şehirlerde de rezerve edilebilir misiniz?",
+            "a": "Tüm Baden-Württemberg'de ve ötesinde Almanya genelinde rezervasyon yapılır. Bölgedeki birçok şehir için mekân ve ulaşım bilgisi içeren ayrı sayfalar var."
+          }
+        ]
+      },
+      "related": {
+        "eyebrow": "Diğer sayfalar",
+        "title": "Bunlar da ilginizi çekebilir"
+      },
+      "cta": {
+        "eyebrow": "Tarih",
+        "title": "Tarihiniz hâlâ boş mu?",
+        "subtitle": "İlk adım için tarih, mekân ve tahmini misafir sayısı yeterli. Ön görüşmede diller, gelenekler ve akış netleşir.",
+        "button": "Tarih sorgula"
+      }
+    },
+    "kurdish": {
+      "meta": {
+        "title": "Kürt düğünü DJ'i: govend ve repertuvar | DJ Veys",
+        "description": "Kürt düğünleri için düğün DJ'i: Kürtçe repertuvar, govend, nişan ve kına. Almanca, Türkçe ve İngilizce sunum. Tarih sorgulayın."
+      },
+      "serviceType": "Kürt düğünleri için düğün DJ'i",
+      "hero": {
+        "eyebrow": "Kürt düğünü · Stuttgart ve Almanya geneli",
+        "title": "Kürt düğünleri için düğün DJ'i",
+        "subtitle": "Kürtçe repertuvar, govend turları ve ailenizi ciddiye alan bir akşam — teknik, canlı müzik ve tek bir muhatapla. {years} yılı aşkın süredir sahnede; toplam {events}'den fazla düğün ve etkinlikte."
+      },
+      "intro": {
+        "eyebrow": "Sizin kutlamanız, sizin müziğiniz",
+        "title": "Kürt düğününde neler önemli",
+        "body": "Kürt düğünleri canlı, gürültülü ve dans dolu olur — ve bölgeye ve aileye göre çok farklıdır. Bu yüzden Veysel hiçbir şeyi varsaymaz, sorar. Kürtçe repertuvar nişan, kına gecesi ve düğün hizmetinin açıkça bir parçasıdır; ailenizde hangi şarkıların, danslarının ve akışın önemli olduğunu ön görüşmede netleştiririz. Veysel {years} yılı aşkın süredir Stuttgart'ta birden çok müzik dünyasının buluştuğu kutlamalarda sahne alıyor."
+      },
+      "pillars": {
+        "eyebrow": "Fark yaratan ne",
+        "title": "Varsayım yerine görüşme",
+        "items": [
+          {
+            "title": "Kürtçe repertuvar",
+            "text": "Kürtçe müzik repertuvarın parçasıdır — karışık misafir listeleri için Türkçe, Almanca ve uluslararası parçaların yanında. İstek şarkılarınızı ve çalınmasını istemedikleri baştan not alırız."
+          },
+          {
+            "title": "Govend ve pist",
+            "text": "Govend, yani hep birlikte oynanan halka dansı, birçok Kürt kutlamasının merkezindedir. Yeterli alanı ve uygun müziği planlar, pistin boşalmasına izin vermeyiz."
+          },
+          {
+            "title": "Almanca, Türkçe ve İngilizce sunum",
+            "text": "Sunum Almanca, Türkçe ve İngilizce yapılır. Anonslarda sizin için neyin önemli olduğunu önceden konuşur, nelerin uygulanabileceğini netleştiririz."
+          }
+        ]
+      },
+      "customs": {
+        "eyebrow": "Tipik akış",
+        "title": "Bir Kürt düğününün yapı taşları",
+        "lead": "Gelenekler bölgeye ve aileye göre değişir. Bu yapı taşları sık görülür — bunlardan hangisinin kutlamanıza ait olduğuna siz karar verirsiniz.",
+        "items": [
+          {
+            "title": "Nişan ve kına gecesi",
+            "text": "Nişan ve kına gecesi çoğu zaman kendi müziği ve atmosferi olan ayrı kutlamalardır. İkisi de hizmetin sabit parçasıdır, tek tek veya düğünle birlikte."
+          },
+          {
+            "title": "Çiftin karşılanması",
+            "text": "Gelinin alınması ve çiftin girişi birçok ailede müzikle karşılanır — isteğe bağlı olarak davul zurna eşliğinde."
+          },
+          {
+            "title": "Govend",
+            "text": "Halka veya sıra halinde birlikte oynanan dans kuşakları birleştirir. Bunun için müziğe ve alana yeterli pay bırakılmalıdır."
+          },
+          {
+            "title": "Karışık misafirler",
+            "text": "Farklı dillerden ve müzik zevklerinden misafirler birlikte kutladığında program Kürtçe, Türkçe ve uluslararası müzik arasında geçiş yapar."
+          },
+          {
+            "title": "Ailenin istek şarkıları",
+            "text": "Ailelere özel anlamı olan şarkılar önceden toplanır ve akşamın uygun yerlerine yerleştirilir."
+          }
+        ]
+      },
+      "faq": {
+        "eyebrow": "Sık sorulan sorular",
+        "title": "Çiftlerin rezervasyondan önce bilmek istedikleri",
+        "items": [
+          {
+            "q": "Kürtçe müzik çalıyor musunuz?",
+            "a": "Evet. Kürtçe repertuvar nişan, kına gecesi ve düğün hizmetinin açıkça bir parçasıdır. Hangi müzik türlerinin öne çıkacağı, genel bir varsayım yerine ayrıca konuşulur."
+          },
+          {
+            "q": "Sunum Kürtçe yapılıyor mu?",
+            "a": "Sunum Almanca, Türkçe ve İngilizce yapılır. Kürtçe anonslar sizin için önemliyse, neyin uygulanabileceğini ön görüşmede açıkça konuşuruz."
+          },
+          {
+            "q": "Davul zurna ve govend turları var mı?",
+            "a": "Davul zurna isteğe bağlı olarak planlanabilir. Govend turları uygun müzik ve yeterli pist alanıyla planlanır; düzenlemeyi sizinle birlikte belirleriz."
+          },
+          {
+            "q": "Nişan ve kına gecesini de üstleniyor musunuz?",
+            "a": "Evet. Nişan, kına gecesi ve düğün hizmetin parçasıdır — tek tek veya birlikte."
+          },
+          {
+            "q": "Düğün DJ'i ne kadar tutar, nerelerde rezerve edilebilirsiniz?",
+            "a": "Her düğün için geçerli aynı üç paket geçerlidir, paket sayfasında görülebilir. Stuttgart çevresinde 50 km içinde ulaşım dahildir; tüm Baden-Württemberg'de ve Almanya genelinde rezervasyon yapılır; size özel teklif 24 saat içinde gelir."
+          }
+        ]
+      },
+      "related": {
+        "eyebrow": "Diğer sayfalar",
+        "title": "Bunlar da ilginizi çekebilir"
+      },
+      "cta": {
+        "eyebrow": "Tarih",
+        "title": "Tarihiniz hâlâ boş mu?",
+        "subtitle": "İlk adım için tarih, mekân ve tahmini misafir sayısı yeterli. Ön görüşmede diller, gelenekler ve akış netleşir.",
+        "button": "Tarih sorgula"
+      }
     }
   },
   "turkishDj": {

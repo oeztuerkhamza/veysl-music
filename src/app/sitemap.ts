@@ -4,6 +4,7 @@ import { absoluteUrl, type StaticPathname, type DynamicPathname } from '@/lib/se
 import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
 import { BW_SUPPORTED_LOCALES } from '@/content/region-bw';
 import { TURKISH_DJ_SUPPORTED_LOCALES } from '@/content/turkish-dj';
+import { WEDDING_CULTURE_SUPPORTED_LOCALES, weddingCultures } from '@/content/wedding-cultures';
 
 const CITY_PATHNAME: DynamicPathname = '/hochzeits-dj/[stadt]';
 const REGION_HUB_PATHNAME: StaticPathname = '/hochzeits-dj-europa';
@@ -54,6 +55,9 @@ interface RouteSeoConfig {
  * - `/tuerkischer-dj-deutschland`: same shape and same locale constant —
  *   the national page of the niche (bare "türkischer dj" /
  *   "türk dj almanya"). Emitted per-locale below.
+ * - `/deutsch-tuerkische-hochzeit`, `/tuerkische-hochzeit`,
+ *   `/kurdische-hochzeit`: the culture landing pages, de/tr/en only
+ *   (`WEDDING_CULTURE_SUPPORTED_LOCALES`). Emitted per-locale below.
  * - `/impressum` + `/datenschutz`: both pages set `noIndex: true` in their own
  *   `generateMetadata`. A sitemap entry is a request to index; pairing it with
  *   a `noindex` page is a direct contradiction that Search Console reports as
@@ -72,6 +76,9 @@ const staticRoutes: Record<
     | '/tuerkischer-dj-stuttgart'
     | '/tuerkischer-dj-baden-wuerttemberg'
     | '/tuerkischer-dj-deutschland'
+    | '/deutsch-tuerkische-hochzeit'
+    | '/tuerkische-hochzeit'
+    | '/kurdische-hochzeit'
     | '/impressum'
     | '/datenschutz'
   >,
@@ -420,6 +427,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: absoluteUrl('/tuerkischer-dj-baden-wuerttemberg', locale),
         changeFrequency: 'monthly',
         priority: 0.9,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // Kultur-Landingpages (Feierart statt Ort) — de/tr/en. Priorität wie die
+  // Türkisch-Nische: Sie zielen auf Abfragen wie „deutsch türkische hochzeit
+  // dj" und „dj türkische hochzeit", für die es bis Oktober 2026 keine eigene
+  // Seite gab.
+  for (const culture of weddingCultures) {
+    const languages = buildLanguages(
+      (locale) => absoluteUrl(culture.pathname, locale),
+      WEDDING_CULTURE_SUPPORTED_LOCALES,
+    );
+    for (const locale of WEDDING_CULTURE_SUPPORTED_LOCALES) {
+      entries.push({
+        url: absoluteUrl(culture.pathname, locale),
+        changeFrequency: 'monthly',
+        priority: 0.8,
         alternates: { languages },
       });
     }

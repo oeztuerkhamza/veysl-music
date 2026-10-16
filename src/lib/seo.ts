@@ -58,6 +58,9 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
   // Bundes-Seite derselben Nische — Kopfabfrage „türkischer dj" /
   // „türk dj almanya", eigener Namespace aus demselben Grund.
   '/tuerkischer-dj-deutschland': 'turkishDjDe.meta',
+  '/deutsch-tuerkische-hochzeit': 'weddingCulture.germanTurkish.meta',
+  '/tuerkische-hochzeit': 'weddingCulture.turkish.meta',
+  '/kurdische-hochzeit': 'weddingCulture.kurdish.meta',
   // Europe reach cluster — owned by the regions agent (src/content/regions.ts).
   '/hochzeits-dj-europa': 'regions.hub.meta',
   '/hochzeits-dj-europa/[land]': 'regions.country.meta',

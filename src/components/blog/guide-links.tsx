@@ -80,5 +80,8 @@ export const GUIDE_LINKS_BY_PAGE = {
   turkishDj: ['tuerkische-hochzeit-ablauf-musik-timing', 'nisan-verlobung-planen', 'gelin-alma-brautabholung-musik'],
   turkishDjBw: ['deutsch-tuerkische-hochzeit-zwei-familien', 'laermschutz-sperrzeiten-baden-wuerttemberg', 'tuerkische-hochzeit-ablauf-musik-timing'],
   turkishDjDe: ['destination-wedding-dj-buchen', 'tuerkische-hochzeit-als-gast', 'was-kostet-ein-hochzeits-dj'],
+  germanTurkish: ['deutsch-tuerkische-hochzeit-zwei-familien', 'hochzeits-timeline-musterablauf', 'musikwuensche-no-go-liste'],
+  turkish: ['tuerkische-hochzeit-ablauf-musik-timing', 'gelin-alma-brautabholung-musik', 'davul-zurna-halay-roman-havasi'],
+  kurdish: ['davul-zurna-halay-roman-havasi', 'kina-gecesi-henna-abend-planen', 'wann-hochzeits-dj-buchen'],
   bw: ['laermschutz-sperrzeiten-baden-wuerttemberg', 'hochzeitslocation-stuttgart-dj-perspektive', 'location-akustik-checkliste'],
 } as const satisfies Record<string, readonly string[]>;
