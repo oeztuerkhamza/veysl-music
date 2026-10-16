@@ -4,8 +4,9 @@
 **Girdi:** Search Console'dan indirilen dört liste (404: 273 · Weiterleitung: 22 · robots.txt: 16 · "Gecrawlt – nicht indexiert": 31).
 **Ayrıca bak:** [SEO-INCELEME-EKIM-2026.md](SEO-INCELEME-EKIM-2026.md)
 
-> Gönderdiğin beş dosyadan ikisi aynı (robots.txt listesi iki kez). **"noindex" (20) ve
-> "Gefunden – nicht indexiert" (15) listeleri yok**; onları da dışa aktarırsan tamamlarım.
+> Gönderdiğin beş dosyadan ikisi aynı (robots.txt listesi iki kez). **"noindex" (20) listesi
+> hâlâ yok**; onu da dışa aktarırsan tamamlarım. "Gefunden – nicht indexiert" (15) listesi
+> sonradan geldi, aşağıda §5'te.
 
 ---
 
@@ -118,8 +119,22 @@ Teknik bir kusur olmadığı için kod tarafında yapılacak bir şey yok. **Yap
 
 - **"Durch noindex ausgeschlossen" (20):** Önceki taramada birebir doğruladım: Impressum + Datenschutz × 8 dil
   (16) ve SSS'nin ku/nl/fr/es sürümleri (4). Bilinçli.
-- **"Gefunden – zurzeit nicht indexiert" (15):** Listeyi görmeden yorumlayamam. Google adresi biliyor ama
-  henüz taramadı; muhtemelen en derindeki şehir/blog sayfaları.
+- **"Gefunden – zurzeit nicht indexiert" (15):** Export liegt seit dem 16. Oktober vor
+  (Validierung „Ausstehend", „Zuletzt gecrawlt" überall leer = nie gecrawlt). Alle 15 URLs
+  geprüft: **15 × live und indexierbar** (`gsc:triage`: 15 `offen`, 0 `PRÜFEN`) — 200, in der
+  Sitemap, kein `noindex`, robots.txt erlaubt sie. Das ist kein Fehler, sondern Warteschlange:
+  Google kennt die Adressen aus der Sitemap und hat sie noch nicht abgerufen.
+
+  | Gruppe | Adressen |
+  |---|---|
+  | Geldseiten (3) | `/tr/turk-dj-almanya`, `/tuerkischer-dj-baden-wuerttemberg`, `/hochzeits-dj/villingen-schwenningen` |
+  | Ratgeber de/tr/en (6) | `hochzeit-ohne-dj-spotify-playlist`, `hochzeitsbudget-musik-anteil` (+ `en`, `tr`), `tuerkische-hochzeit-als-gast`, `hochzeitslocation-stuttgart-dj-perspektive`, `tr/rehber/islami-dugun-planlama` |
+  | Ratgeber nl/fr/es/ku (6) | `nl/gids/dj-liveband-of-allebei`, `nl/gids/wat-kost-een-bruiloft-dj`, `fr/conseils/timeline-mariage-exemple`, `es/consejos/dj-grupo-en-directo-o-ambos`, `ku/reber/plansaziya-daweta-islami` |
+
+  Was hilft: Für die drei Geldseiten **„Indexierung beantragen"** (URL-Prüfung) — sie sind die
+  einzigen, bei denen das Warten Geld kostet. Die Ratgeber-Übersetzungen in nl/fr/es/ku haben
+  die niedrigste Priorität; Google holt sie, wenn die wichtigeren Adressen durch sind. Neue
+  Adressen (seit dem 16. Oktober 84 Zielstadt-Seiten) reihen sich in dieselbe Warteschlange ein.
 
 ---
 
