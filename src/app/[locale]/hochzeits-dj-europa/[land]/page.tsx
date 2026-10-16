@@ -14,6 +14,8 @@ import { RegionFaq } from '@/components/reach/region-faq';
 import { RegionNearby } from '@/components/reach/region-nearby';
 import { RegionCta } from '@/components/reach/region-cta';
 import { buildRegionJsonLd } from '@/components/reach/region-json-ld';
+import { DestinationCityLinks } from '@/components/destination/destination-city-links';
+import { getDestinationCitiesByRegionSlug } from '@/content/destination-cities';
 
 interface PageProps {
   params: Promise<{ locale: Locale; land: string }>;
@@ -79,6 +81,7 @@ export default async function RegionCountryPage({ params }: PageProps) {
       <RegionDiaspora region={region} locale={locale} />
       <RegionLanguages region={region} locale={locale} />
       <RegionFaq region={region} locale={locale} />
+      <DestinationCityLinks cities={getDestinationCitiesByRegionSlug(region.slug)} locale={locale} />
       <RegionNearby region={region} locale={locale} />
       <RegionCta region={region} locale={locale} />
     </>

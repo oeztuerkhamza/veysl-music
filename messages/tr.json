@@ -2093,6 +2093,75 @@
     "comingSoon": "Fotoğraf yakında",
     "placeholderAriaLabel": "Görsel alanı – henüz fotoğraf eklenmedi"
   },
+  "destination": {
+    "meta": {
+      "title": "{city} Türk DJ – Düğün & Kına | DJ Veys",
+      "description": "{city} için Türk ve Alman-Türk düğün DJ’i: halay, gelin çıkarma, Türkçe ve Almanca sunum. Ulaşım Stuttgart’tan – hemen talepte bulunun."
+    },
+    "hero": {
+      "eyebrow": "Türk DJ · {country}",
+      "title": "{city} için Türk DJ",
+      "subtitle": "{city} düğün, kına ve nişan: halay, gelin çıkarma ve Türkçe-Almanca sunum – Stuttgart’tan DJ Veys ile, yaklaşık {km} km uzaktan."
+    },
+    "intro": {
+      "eyebrow": "{country}",
+      "title": "{city} düğünleri"
+    },
+    "status": {
+      "verifiedTitle": "DJ Veys burada daha önce çaldı",
+      "verifiedText": "{city} gösterisi, Instagram’daki “Viyana” öne çıkanında belgelenmiştir.",
+      "openTitle": "Rezervasyona açık – kendine ait referans etkinlik yok",
+      "openText": "{city} için yayımlanmış bir gösteri yok. DJ Veys yine de burada rezerve edilebilir ve ulaşım teklifte açıkça gösterilir."
+    },
+    "travel": {
+      "eyebrow": "Ulaşım",
+      "title": "Stuttgart’tan {city} yolculuğu",
+      "near": "Stuttgart’a kuş uçuşu yaklaşık {km} km: etkinlik günü varış gerçekçi. Yol mesafesi ve – geceye uzayan kutlamalarda – konaklama teklifte ayrı kalemler olarak yer alır.",
+      "far": "Stuttgart’a kuş uçuşu yaklaşık {km} km: araçla bir günlük yolculuk. Yol mesafesi ve konaklama, onaydan önce teklifte tek tek gösterilir, fiyata dahil edilmez.",
+      "flight": "Stuttgart’a kuş uçuşu yaklaşık {km} km: bu bir uçuştur. Gerekli olanlar bagajda gelir, ses ve ışık kural olarak yerinde kiralanır. Uçuş, kira ve konaklama teklifte ayrı yer alır."
+    },
+    "bring": {
+      "eyebrow": "Neler gelir",
+      "title": "Türk kutlaması için program",
+      "items": [
+        "Halay, davul-zurna anları ve Türk klasiklerini güncel hitlerle karıştıran bir repertuvar",
+        "Gelin çıkarma, kına ve nişan için dramaturji – zorunlu program olarak değil, akşamın bir parçası olarak",
+        "Türkçe, Almanca ve İngilizce sunum, bir akşam içinde karışık da olabilir",
+        "İsteğe bağlı olarak sazla canlı müzik ile dini ağırlıklı kutlamalar için Kur’an tilaveti, dua ve ilahi"
+      ],
+      "more": "Türk kutlamaları için teklif hakkında daha fazlası"
+    },
+    "languages": {
+      "title": "Akşamın dilleri",
+      "text": "Canlı sunum Almanca, Türkçe ve İngilizce yapılır – {country} için de Stuttgart’taki gibi. Başka dil sunmuyoruz; bunu siz karar vermeden önce söyleriz."
+    },
+    "faq": {
+      "eyebrow": "Sorular",
+      "title": "{city} hakkında sık sorulanlar",
+      "availabilityQ": "{city} için tarihin boş olup olmadığını ne kadar çabuk öğrenirim?",
+      "availabilityA": "Talebinizden sonra 24 saat içinde. Tarihi kontrol eder, müsaitlik durumu ve bağlayıcı olmayan bir teklifle size dönüş yaparız.",
+      "costQ": "{city} ulaşımı ne kadar tutar?",
+      "costA": "Bu mesafeye ve emeğe bağlıdır ve teklifte ayrı bir kalem olarak yer alır – şeffaf ve onaydan önce. Burada bilerek götürü bir rakam vermiyoruz, çünkü etkinlik mekânınız olmadan doğru olamaz."
+    },
+    "related": {
+      "eyebrow": "Devamı",
+      "title": "Diğer şehirler ve genel bakış",
+      "parentGermany": "Almanya genelinde Türk DJ",
+      "parentEurope": "Avrupa’da düğün DJ’i",
+      "country": "{country} hakkında tüm bilgiler",
+      "city": "{city} Türk DJ"
+    },
+    "list": {
+      "eyebrow": "Şehirler",
+      "title": "Bu şehirlerde Türk DJ",
+      "link": "{city} Türk DJ"
+    },
+    "cta": {
+      "title": "{city} kutlamanız mı?",
+      "text": "Tarih ve yeri belirtin, müsaitliği kontrol ettirin, ulaşımı açıkça gösterilen bağlayıcı olmayan bir teklif alın – 24 saat içinde yanıt.",
+      "button": "Tarih sorun"
+    }
+  },
   "venue": {
     "meta": {
       "title": "Düğün DJ'i {venue} ({city}) | DJ Veys",

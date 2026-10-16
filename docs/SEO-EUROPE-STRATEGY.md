@@ -8,6 +8,33 @@ Stuttgart-region argument.
 
 ---
 
+## ⚠️ Update 2026-10-16 — Betreiber-Entscheidung: Zielstädte kommen doch
+
+Dieses Dokument argumentiert unten gegen Stadtseiten außerhalb der Kernregion. Der Betreiber
+hat am 2026-10-16 anders entschieden: Wer in München, Wien, Amsterdam oder Oslo nach einem
+türkischen DJ sucht, soll ihn finden. Umgesetzt als eigene Seitenfamilie
+**`/tuerkischer-dj/[stadt]`** (de/tr/en, `src/content/destination-cities.ts`): sieben deutsche
+Großstädte aus `site.germanyCities` und im Ausland die Hauptstadt plus eine weitere
+Großstadt je Land — 28 Städte, 84 URLs.
+
+Die Warnung in §1 gilt unverändert (Doorway-Muster, Domain-weite Folgen). Deshalb:
+
+- Eigener Text je Stadt (`intro`, `route`, `faq`), keine Vorlage mit getauschtem Namen.
+- „buchbar" statt „regelmäßig gebucht"; `verified` nur Wien. Jede Seite sagt offen, ob es
+  einen belegten Auftritt gibt.
+- Wo es keine nennenswerte türkische Community gibt (Rom, Madrid, Oslo …), steht das so da.
+- Schalter: `published: false` je Stadt, `hasDestinationProse()` verlangt Mindestlängen.
+- Die Städte hängen an Startseite (Einzugsgebiet), Deutschland-Seite, Europa-Hub und
+  Länderseiten; die Kernregion (`/hochzeits-dj/[stadt]`) wird nicht verlinkt und nicht
+  berührt.
+
+**Beobachten:** In der Search Console unter „Seitenindexierung" prüfen, ob viele dieser URLs
+unter „Gecrawlt – zurzeit nicht indexiert" auftauchen. Dann ist das die Rückzugslinie:
+schwache Städte auf `published: false` setzen (Sitemap und Links verschwinden mit dem
+nächsten Build), starke behalten.
+
+---
+
 ## 1. Why country-level beats city-level here — the honest argument
 
 A Stuttgart-based business cannot rank in Oslo's or Amsterdam's Google local pack. Local

@@ -16,6 +16,8 @@ import { PageHero } from '@/components/pages/page-hero';
 import { RegionIntent } from '@/components/reach/region-intent';
 import { RegionGrid } from '@/components/reach/region-grid';
 import { RegionMoreCountries } from '@/components/reach/region-more-countries';
+import { DestinationCityLinks } from '@/components/destination/destination-city-links';
+import { getDestinationCities } from '@/content/destination-cities';
 import { RegionHubFaq } from '@/components/reach/region-hub-faq';
 import { buildHubJsonLd } from '@/components/reach/hub-json-ld';
 
@@ -90,6 +92,7 @@ export default async function HochzeitsDjEuropaPage({ params }: PageProps) {
       <RegionIntent />
       <RegionGrid locale={locale} />
       <RegionMoreCountries />
+      <DestinationCityLinks cities={getDestinationCities().filter((city) => city.country !== 'de')} locale={locale} />
 
       <Section>
         <Container>
