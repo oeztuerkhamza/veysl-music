@@ -82,6 +82,11 @@ const nextConfig: NextConfig = {
   images: {
     // AVIF zuerst — siehe Projektplan A.9.1 "Ultra Performance"
     formats: ['image/avif', 'image/webp'],
+    // Next-Standard plus 448: Das Startseiten-Porträt ist auf Handys 256 CSS-px
+    // breit (`max-w-[16rem]`), bei Pixeldichte 1,75 also 448 px. Ohne diese
+    // Stufe wählte der Browser die nächstgrößere (640 px) und lud etwa doppelt
+    // so viele Pixel wie nötig (Lighthouse „Bildübermittlung verbessern").
+    imageSizes: [32, 48, 64, 96, 128, 256, 384, 448],
     remotePatterns: [
       { protocol: 'https', hostname: 'i.scdn.co' }, // Spotify Cover
       { protocol: 'https', hostname: 'i1.sndcdn.com' }, // SoundCloud

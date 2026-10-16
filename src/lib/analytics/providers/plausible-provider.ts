@@ -9,6 +9,19 @@ declare global {
   }
 }
 
+/** Führt `callback` aus, sobald die Seite geladen ist und der Browser Luft hat (spätestens nach 2 s Leerlauf-Wartezeit). */
+function afterLoadAndIdle(callback: () => void) {
+  const schedule = () => {
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(callback, { timeout: 2000 });
+    } else {
+      window.setTimeout(callback, 200);
+    }
+  };
+  if (document.readyState === 'complete') schedule();
+  else window.addEventListener('load', schedule, { once: true });
+}
+
 /**
  * Cookieless, no personal data — Plausible needs no consent banner under
  * DSGVO/TTDSG (see `docs/ANALYTICS.md`). Always active whenever
@@ -35,12 +48,20 @@ export function createPlausibleProvider(domain: string, scriptUrl: string): Anal
     init() {
       if (typeof document === 'undefined') return;
       ensureQueue();
-      if (document.querySelector(`script[data-domain="${domain}"]`)) return;
-      const script = document.createElement('script');
-      script.defer = true;
-      script.dataset.domain = domain;
-      script.src = scriptUrl;
-      document.head.appendChild(script);
+      // Erst nach dem Laden und im Leerlauf einhängen: Das Skript misst nur,
+      // es trägt nichts zur Darstellung bei und stand bisher in der
+      // Anfragekette vor dem Largest Contentful Paint (Lighthouse: ~500 ms
+      // geschätzte Einsparung). Ereignisse davor puffert die Warteschlange
+      // aus `ensureQueue()`; die erste Seitenansicht meldet das Skript beim
+      // Start selbst.
+      afterLoadAndIdle(() => {
+        if (document.querySelector(`script[data-domain="${domain}"]`)) return;
+        const script = document.createElement('script');
+        script.defer = true;
+        script.dataset.domain = domain;
+        script.src = scriptUrl;
+        document.head.appendChild(script);
+      });
     },
     track(event, props) {
       window.plausible?.(event, props ? { props } : undefined);

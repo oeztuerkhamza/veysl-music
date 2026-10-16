@@ -43,7 +43,7 @@ export async function Intro() {
               den es belegen soll.
             */}
             <div className="mt-2 max-w-[16rem] lg:col-span-3 lg:mt-0 lg:max-w-none">
-              <SiteImage slot="home.intro.portrait" sizes="(min-width: 1024px) 25vw, 60vw" />
+              <SiteImage slot="home.intro.portrait" sizes="(min-width: 1024px) 25vw, 256px" />
             </div>
           </div>
         </Reveal>
