@@ -2092,6 +2092,75 @@
     "comingSoon": "Foto folgt",
     "placeholderAriaLabel": "Bildplatz – noch kein Foto hinterlegt"
   },
+  "destination": {
+    "meta": {
+      "title": "Türkischer DJ {city} – Hochzeit & Kına | DJ Veys",
+      "description": "Türkischer und deutsch-türkischer Hochzeits-DJ für {city}: Halay, Gelin Çıkarma, Moderation auf Türkisch & Deutsch. Anreise aus Stuttgart – jetzt anfragen."
+    },
+    "hero": {
+      "eyebrow": "Türkischer DJ · {country}",
+      "title": "Türkischer DJ für {city}",
+      "subtitle": "Hochzeit, Kına und Nişan in {city}: Halay, Gelin Çıkarma und eine Moderation auf Türkisch und Deutsch – von DJ Veys aus Stuttgart, rund {km} km entfernt."
+    },
+    "intro": {
+      "eyebrow": "{country}",
+      "title": "Türkisch feiern in {city}"
+    },
+    "status": {
+      "verifiedTitle": "Hier hat DJ Veys bereits gespielt",
+      "verifiedText": "Der Auftritt in {city} ist im Instagram-Highlight „Viyana“ dokumentiert.",
+      "openTitle": "Buchbar – ohne eigenes Referenz-Event",
+      "openText": "Für {city} liegt kein veröffentlichter Auftritt vor. DJ Veys ist hier trotzdem buchbar, und die Anreise wird im Angebot offen ausgewiesen."
+    },
+    "travel": {
+      "eyebrow": "Anreise",
+      "title": "Von Stuttgart nach {city}",
+      "near": "Rund {km} km Luftlinie von Stuttgart: Die Anreise am Veranstaltungstag ist realistisch. Fahrtstrecke und – bei Feiern bis in die Nacht – eine Übernachtung stehen im Angebot als eigene Posten.",
+      "far": "Rund {km} km Luftlinie von Stuttgart: eine Tagesreise mit dem Transporter. Fahrtstrecke und Übernachtung werden im Angebot einzeln und vor der Zusage ausgewiesen, nicht in den Preis eingerechnet.",
+      "flight": "Rund {km} km Luftlinie von Stuttgart: Das ist ein Flug. Das Wesentliche reist im Gepäck, Beschallung und Licht werden in der Regel vor Ort gemietet. Flug, Miete und Übernachtung stehen im Angebot einzeln."
+    },
+    "bring": {
+      "eyebrow": "Was mitreist",
+      "title": "Das Programm für eine türkische Feier",
+      "items": [
+        "Halay, Davul-Zurna-Momente und ein Repertoire, das türkische Klassiker und aktuelle Hits mischt",
+        "Dramaturgie für Gelin Çıkarma, Kına und Nişan – nicht als Pflichtprogramm, sondern als Teil des Abends",
+        "Moderation auf Türkisch, Deutsch und Englisch, auch gemischt innerhalb eines Abends",
+        "Auf Wunsch Live-Musik mit Saz sowie Kur’an-Rezitation, Dua und İlahi für religiös geprägte Feiern"
+      ],
+      "more": "Mehr zum Angebot für türkische Feiern"
+    },
+    "languages": {
+      "title": "Sprachen am Abend",
+      "text": "Live moderiert wird auf Deutsch, Türkisch und Englisch – in {country} wie in Stuttgart. Weitere Sprachen bieten wir nicht an; das sagen wir, bevor Sie sich festlegen."
+    },
+    "faq": {
+      "eyebrow": "Fragen",
+      "title": "Häufige Fragen zu {city}",
+      "availabilityQ": "Wie schnell erfahre ich, ob der Termin in {city} frei ist?",
+      "availabilityA": "Innerhalb von 24 Stunden nach Ihrer Anfrage. Wir prüfen den Termin und melden uns mit der Verfügbarkeit und einem unverbindlichen Angebot.",
+      "costQ": "Was kostet die Anreise nach {city}?",
+      "costA": "Das hängt von Entfernung und Aufwand ab und steht im Angebot als eigener Posten – transparent und vor der Zusage. Eine pauschale Zahl nennen wir hier bewusst nicht, weil sie ohne Ihren Veranstaltungsort nicht stimmen kann."
+    },
+    "related": {
+      "eyebrow": "Weiterlesen",
+      "title": "Weitere Städte und Überblick",
+      "parentGermany": "Türkischer DJ in ganz Deutschland",
+      "parentEurope": "Hochzeits-DJ in Europa",
+      "country": "Alle Informationen zu {country}",
+      "city": "Türkischer DJ {city}"
+    },
+    "list": {
+      "eyebrow": "Städte",
+      "title": "Türkischer DJ in diesen Städten",
+      "link": "Türkischer DJ {city}"
+    },
+    "cta": {
+      "title": "Ihre Feier in {city}?",
+      "text": "Datum und Ort nennen, Verfügbarkeit prüfen lassen, unverbindliches Angebot mit offen ausgewiesener Anreise erhalten – Antwort innerhalb von 24 Stunden.",
+      "button": "Termin anfragen"
+    }
+  },
   "venue": {
     "meta": {
       "title": "Hochzeits-DJ für {venue} in {city} | DJ Veys",

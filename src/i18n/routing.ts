@@ -297,6 +297,8 @@ export const pathnames = {
    * `/tuerkischer-dj/muenchen`-Stadtseiten: ohne belegbare lokale Substanz
    * wären das Doorway-Pages (dieselbe Entscheidung, mit derselben
    * Begründung, wie beim Europa-Cluster eine Ebene tiefer zu bleiben).
+   * ⚠️ Diese Entscheidung hat der Betreiber am 2026-10-16 ausdrücklich
+   * anders getroffen — siehe `/tuerkischer-dj/[stadt]` direkt darunter.
    *
    * **Nur de/tr/en** — TURKISH_DJ_SUPPORTED_LOCALES, wie die beiden
    * Geschwister der Nische.
@@ -310,6 +312,36 @@ export const pathnames = {
     nl: '/turkse-dj-duitsland',
     fr: '/dj-turc-allemagne',
     es: '/dj-turco-alemania',
+  },
+  /**
+   * Zielstädte der Türkisch-Nische: „Türkischer DJ München", „Viyana Türk DJ",
+   * „Turkish DJ Amsterdam" — die großen Städte außerhalb der Kernregion, in
+   * Deutschland und (Hauptstadt + eine weitere Großstadt je Land) im Ausland.
+   * Die Liste und ihre Texte stehen in `src/content/destination-cities.ts`.
+   *
+   * ⚠️ Das ist eine bewusste Abkehr von der früheren Linie (siehe die beiden
+   * Kommentare darüber und docs/SEO-EUROPE-STRATEGY.md §1): Städte ohne
+   * belegbare lokale Substanz galten als Doorway-Risiko. Der Betreiber hat am
+   * 2026-10-16 entschieden, dass türkisch Suchende in diesen Städten ihn
+   * finden sollen. Die Risiken werden deshalb im Inhalt abgefangen — eigener
+   * Text je Stadt, „buchbar" statt „regelmäßig gebucht", ehrliche Aussage
+   * dort, wo es keine nennenswerte Community gibt — und per Schalter
+   * (`published`, `hasDestinationProse()`) begrenzbar. Das Markup trägt `areaServed` und
+   * keine Geschäftsadresse: Es sagt selbst, dass dies keine Local-Pack-Seiten
+   * sind.
+   *
+   * Der Slug ist für alle Sprachen derselbe (ASCII, `muenchen`, `zuerich`).
+   * **Nur de/tr/en** — TURKISH_DJ_SUPPORTED_LOCALES, wie die Geschwister.
+   */
+  '/tuerkischer-dj/[stadt]': {
+    de: '/tuerkischer-dj/[stadt]',
+    tr: '/turk-dj/[stadt]',
+    ku: '/dj-tirki/[stadt]',
+    ar: '/dj-turki/[stadt]',
+    en: '/turkish-dj/[stadt]',
+    nl: '/turkse-dj/[stadt]',
+    fr: '/dj-turc/[stadt]',
+    es: '/dj-turco/[stadt]',
   },
   /**
    * Kultur-Landingpages: „Deutsch-türkische Hochzeit", „Türkische Hochzeit"

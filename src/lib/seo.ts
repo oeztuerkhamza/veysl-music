@@ -15,7 +15,8 @@ export type DynamicPathname =
   | '/hochzeits-dj/[stadt]'
   | '/hochzeits-dj-europa/[land]'
   | '/ratgeber/[slug]'
-  | '/hochzeitslocation/[slug]';
+  | '/hochzeitslocation/[slug]'
+  | '/tuerkischer-dj/[stadt]';
 export type StaticPathname = Exclude<AppPathname, DynamicPathname>;
 
 interface RouteParamsMap {
@@ -23,6 +24,7 @@ interface RouteParamsMap {
   '/hochzeits-dj-europa/[land]': { land: string };
   '/ratgeber/[slug]': { slug: string };
   '/hochzeitslocation/[slug]': { slug: string };
+  '/tuerkischer-dj/[stadt]': { stadt: string };
 }
 
 /**
@@ -81,6 +83,8 @@ const messageNamespaceByPathname: Record<AppPathname, string> = {
   '/ratgeber/[slug]': 'blog.meta',
   // Location-Seiten (CMS) — eigener Namespace `venue.meta`, Titel/Beschreibung mit {venue}/{city}.
   '/hochzeitslocation/[slug]': 'venue.meta',
+  // Zielstädte der Türkisch-Nische — `destination.meta`, Titel/Beschreibung mit {city}/{country}.
+  '/tuerkischer-dj/[stadt]': 'destination.meta',
   '/epk': 'meta.epk',
   '/kontakt': 'meta.contact',
   '/impressum': 'meta.imprint',

@@ -27,6 +27,8 @@ import { Reveal } from '@/components/motion/reveal';
 import { PageHero } from '@/components/pages/page-hero';
 import { AnswerBlock } from '@/components/geo/answer-block';
 import { GuideLinks, GUIDE_LINKS_BY_PAGE } from '@/components/blog/guide-links';
+import { DestinationCityLinks } from '@/components/destination/destination-city-links';
+import { getDestinationCitiesByCountry } from '@/content/destination-cities';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -164,10 +166,9 @@ export default async function TurkishDjGermanyPage({ params }: PageProps) {
         </Container>
       </Section>
 
-      {/* Ballungsraum-Überblick als Text, nicht als Links — es gibt bewusst
-          keine Stadtseiten außerhalb der Kernregion (Doorway-Regel, siehe
-          Routing-Kommentar). Diese eine Seite nennt die Räume, für die die
-          Buchbarkeits-Zusage aus site.germanyCities gilt. */}
+      {/* Ballungsraum-Überblick als Text. Die Stadtseiten dazu
+          (`/tuerkischer-dj/[stadt]`, Betreiber-Entscheidung 2026-10-16, siehe
+          Routing-Kommentar) folgen direkt darunter als Links. */}
       <Section>
         <Container>
           <Reveal>
@@ -203,6 +204,8 @@ export default async function TurkishDjGermanyPage({ params }: PageProps) {
           </p>
         </Container>
       </Section>
+
+      <DestinationCityLinks cities={getDestinationCitiesByCountry('de')} locale={locale} />
 
       <Section>
         <Container size="narrow">

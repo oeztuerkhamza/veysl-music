@@ -2092,6 +2092,75 @@
     "comingSoon": "Photo coming soon",
     "placeholderAriaLabel": "Image slot – no photo uploaded yet"
   },
+  "destination": {
+    "meta": {
+      "title": "Turkish DJ {city} – Wedding & Kına | DJ Veys",
+      "description": "Turkish and German-Turkish wedding DJ for {city}: Halay, Gelin Çıkarma, hosting in Turkish & German. Travel from Stuttgart – enquire now."
+    },
+    "hero": {
+      "eyebrow": "Turkish DJ · {country}",
+      "title": "Turkish DJ for {city}",
+      "subtitle": "Wedding, Kına and Nişan in {city}: Halay, Gelin Çıkarma and hosting in Turkish and German – from DJ Veys in Stuttgart, about {km} km away."
+    },
+    "intro": {
+      "eyebrow": "{country}",
+      "title": "Celebrating Turkish in {city}"
+    },
+    "status": {
+      "verifiedTitle": "DJ Veys has played here before",
+      "verifiedText": "The {city} booking is documented in the Instagram highlight “Viyana”.",
+      "openTitle": "Available to book – without a reference event of its own",
+      "openText": "There is no published booking for {city}. DJ Veys is still available to book here, and travel is itemised openly in the quote."
+    },
+    "travel": {
+      "eyebrow": "Travel",
+      "title": "From Stuttgart to {city}",
+      "near": "About {km} km as the crow flies from Stuttgart: arriving on the day of the event is realistic. Distance and – for celebrations running into the night – an overnight stay appear as separate items in the quote.",
+      "far": "About {km} km as the crow flies from Stuttgart: a day’s journey by van. Distance and overnight stay are itemised individually before you commit, not built into the price.",
+      "flight": "About {km} km as the crow flies from Stuttgart: that is a flight. The essentials travel in luggage, and sound and lighting are usually rented on site. Flight, rental and accommodation appear separately in the quote."
+    },
+    "bring": {
+      "eyebrow": "What travels",
+      "title": "The programme for a Turkish celebration",
+      "items": [
+        "Halay, Davul-Zurna moments and a repertoire that mixes Turkish classics with current hits",
+        "Staging for Gelin Çıkarma, Kına and Nişan – not as an obligation but as part of the evening",
+        "Hosting in Turkish, German and English, mixed within one evening if wanted",
+        "On request live music with Saz, plus Qur’an recitation, Dua and İlahi for religiously shaped celebrations"
+      ],
+      "more": "More about the offer for Turkish celebrations"
+    },
+    "languages": {
+      "title": "Languages on the night",
+      "text": "Live hosting is in German, Turkish and English – in {country} as in Stuttgart. We do not offer other languages, and we say so before you commit."
+    },
+    "faq": {
+      "eyebrow": "Questions",
+      "title": "Frequently asked about {city}",
+      "availabilityQ": "How quickly will I know whether the date in {city} is free?",
+      "availabilityA": "Within 24 hours of your enquiry. We check the date and get back to you with availability and a non-binding quote.",
+      "costQ": "What does travel to {city} cost?",
+      "costA": "That depends on distance and effort and appears in the quote as its own item – transparently and before you commit. We deliberately do not name a flat figure here because it cannot be right without your venue."
+    },
+    "related": {
+      "eyebrow": "Read on",
+      "title": "More cities and overview",
+      "parentGermany": "Turkish DJ across Germany",
+      "parentEurope": "Wedding DJ in Europe",
+      "country": "All information on {country}",
+      "city": "Turkish DJ {city}"
+    },
+    "list": {
+      "eyebrow": "Cities",
+      "title": "Turkish DJ in these cities",
+      "link": "Turkish DJ {city}"
+    },
+    "cta": {
+      "title": "Your celebration in {city}?",
+      "text": "Name the date and place, have availability checked, get a non-binding quote with travel itemised openly – reply within 24 hours.",
+      "button": "Check my date"
+    }
+  },
   "venue": {
     "meta": {
       "title": "Wedding DJ for {venue} in {city} | DJ Veys",

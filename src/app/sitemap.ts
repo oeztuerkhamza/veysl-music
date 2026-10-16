@@ -4,6 +4,7 @@ import { absoluteUrl, type StaticPathname, type DynamicPathname } from '@/lib/se
 import { ISLAMIC_SUPPORTED_LOCALES } from '@/content/islamic';
 import { BW_SUPPORTED_LOCALES } from '@/content/region-bw';
 import { TURKISH_DJ_SUPPORTED_LOCALES } from '@/content/turkish-dj';
+import { DESTINATION_LOCALES, getDestinationCities } from '@/content/destination-cities';
 import { WEDDING_CULTURE_SUPPORTED_LOCALES, weddingCultures } from '@/content/wedding-cultures';
 
 const CITY_PATHNAME: DynamicPathname = '/hochzeits-dj/[stadt]';
@@ -11,6 +12,7 @@ const REGION_HUB_PATHNAME: StaticPathname = '/hochzeits-dj-europa';
 const REGION_COUNTRY_PATHNAME: DynamicPathname = '/hochzeits-dj-europa/[land]';
 const BLOG_ARTICLE_PATHNAME: DynamicPathname = '/ratgeber/[slug]';
 const VENUE_PATHNAME: DynamicPathname = '/hochzeitslocation/[slug]';
+const DESTINATION_PATHNAME: DynamicPathname = '/tuerkischer-dj/[stadt]';
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>;
 
@@ -139,6 +141,9 @@ const REGION_COUNTRY_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly'
 
 /** Eine Seite je Location, in der gespielt wurde — konkrete „DJ <Saalname>"-Abfrage, aber kleiner als die Stadtseiten. */
 const VENUE_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly', priority: 0.6 };
+
+/** Zielstädte der Türkisch-Nische — bewusst unter den Kernregion-Stadtseiten (0.65): keine Local-Pack-Seiten. */
+const DESTINATION_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly', priority: 0.5 };
 
 /** Long-tail guide articles — real booking-adjacent search intent. */
 const BLOG_ARTICLE_ROUTE_CONFIG: RouteSeoConfig = { changeFrequency: 'monthly', priority: 0.6 };
@@ -496,6 +501,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: absoluteUrl(CITY_PATHNAME, locale, { stadt: city.slug }),
         changeFrequency: CITY_ROUTE_CONFIG.changeFrequency,
         priority: CITY_ROUTE_CONFIG.priority,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // Zielstädte der Türkisch-Nische — nur de/tr/en, eine Stadt nur mit vollständigem Text (`hasDestinationProse`).
+  for (const city of getDestinationCities()) {
+    const languages = buildLanguages(
+      (locale) => absoluteUrl(DESTINATION_PATHNAME, locale, { stadt: city.slug }),
+      DESTINATION_LOCALES,
+    );
+    for (const locale of DESTINATION_LOCALES) {
+      entries.push({
+        url: absoluteUrl(DESTINATION_PATHNAME, locale, { stadt: city.slug }),
+        changeFrequency: DESTINATION_ROUTE_CONFIG.changeFrequency,
+        priority: DESTINATION_ROUTE_CONFIG.priority,
         alternates: { languages },
       });
     }
