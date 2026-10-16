@@ -1,15 +1,47 @@
-import { Amiri, Cormorant_Garamond, IBM_Plex_Sans_Arabic } from 'next/font/google';
+import { Amiri, IBM_Plex_Sans_Arabic } from 'next/font/google';
+import localFont from 'next/font/local';
 
 /**
- * Display serif for headings. Loaded as the full variable-weight instance
- * (300–700) so fluid clamp() type can lean on any weight without extra
- * static-weight requests.
+ * Display serif for headings: Cormorant Garamond, **selbst gehostet als
+ * Teilmenge** (`src/assets/fonts/`, Herkunft und Neuerzeugung dort in der
+ * README).
+ *
+ * Vorher `next/font/google`: vier vorgeladene Dateien (latin + latin-ext, je
+ * Normal und Kursiv), ~145 KB in der höchsten Prioritätsklasse. Auf dem
+ * gedrosselten Mobilfunkanschluss von Lighthouse (≈ 1,6 Mbit/s) sind das rund
+ * 0,7 s reine Übertragungszeit, und weil die Überschrift das LCP-Element ist
+ * und der Wechsel von der Ersatz- auf die echte Schrift einen neuen
+ * LCP-Eintrag auslöst (siehe unten), bestimmte die zuletzt eintreffende
+ * Schriftdatei den LCP. Jetzt zwei Dateien, ~45 KB:
+ *
+ * - Normal: variabel, `wght` 400–600. Genutzt werden 400 (Standard), 500
+ *   (`font-medium`) und 600; 300 und 700 kommen im Display-Schriftschnitt
+ *   nirgends vor.
+ * - Kursiv: nur Gewicht 400 — Kursiv gibt es allein in `.accent-phrase`
+ *   (globals.css), und die setzt 400.
+ * - Zeichen: Latein, Latin-1 und die türkischen Zusatzbuchstaben (Ğ ğ İ ı Ş ş),
+ *   dazu Œ œ Ÿ und die Satzzeichen. Latin Extended-A insgesamt entfällt; ein
+ *   Zeichen außerhalb fällt einzeln auf die Ersatzschrift zurück.
+ *
+ * `adjustFontFallback` rechnet die Ersatzschrift auf die Metriken von
+ * Cormorant um, damit der Wechsel von Times auf Cormorant die Zeilen nicht
+ * verschiebt (CLS bleibt 0).
  */
-export const fontDisplay = Cormorant_Garamond({
-  weight: 'variable',
-  style: ['normal', 'italic'],
-  subsets: ['latin', 'latin-ext'], // latin-ext covers German umlauts + Turkish ı/ş/ğ
+export const fontDisplay = localFont({
+  src: [
+    {
+      path: '../assets/fonts/cormorant-garamond-latin.woff2',
+      weight: '400 600',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/cormorant-garamond-latin-italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+  ],
   display: 'swap',
+  adjustFontFallback: 'Times New Roman',
   variable: '--font-display',
 });
 
