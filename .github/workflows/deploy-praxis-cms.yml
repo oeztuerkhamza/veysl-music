@@ -7,8 +7,9 @@ name: Deploy the praxis-gueltekin admin panel
 # Fehlschlag hier darf die Website nicht mitreissen.
 #
 # Secrets (Settings → Secrets and variables → Actions):
-#   PRAXIS_CMS_GITHUB_CLIENT_ID      aus der GitHub OAuth App
-#   PRAXIS_CMS_GITHUB_CLIENT_SECRET  dito
+#   PRAXIS_CMS_USERS         E-Mail-Logins: "mail:hash,mail:hash" (tools/praxis-cms/hash-password.mjs)
+#   PRAXIS_CMS_GITHUB_TOKEN  fine-grained Token, nur Praxis-Repo, Contents: Read and write
+#   PRAXIS_CMS_GITHUB_CLIENT_ID / _CLIENT_SECRET  optional: zusaetzlich "Mit GitHub anmelden"
 # Beide werden bei jedem Lauf frisch in die .env auf dem Server geschrieben.
 #
 # Beim ersten Lauf erzeugt der Server einen eigenen Schluessel und gibt den
@@ -48,14 +49,16 @@ jobs:
           SSH_HOST_KEY: ${{ secrets.DEPLOY_SSH_HOST_KEY }}
           CLIENT_ID: ${{ secrets.PRAXIS_CMS_GITHUB_CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.PRAXIS_CMS_GITHUB_CLIENT_SECRET }}
+          CMS_USERS: ${{ secrets.PRAXIS_CMS_USERS }}
+          CMS_TOKEN: ${{ secrets.PRAXIS_CMS_GITHUB_TOKEN }}
         run: |
           set -uo pipefail
           if [ -z "${SSH_HOST:-}" ] || [ -z "${SSH_USER:-}" ] || [ -z "${SSH_KEY:-}" ]; then
             echo "::error::DEPLOY_SSH_HOST / DEPLOY_SSH_USER / DEPLOY_SSH_KEY are not set — see docs/DEPLOYMENT.md."
             exit 1
           fi
-          if [ -z "${CLIENT_ID:-}" ] || [ -z "${CLIENT_SECRET:-}" ]; then
-            echo "::error::PRAXIS_CMS_GITHUB_CLIENT_ID / PRAXIS_CMS_GITHUB_CLIENT_SECRET fehlen (Settings → Secrets and variables → Actions)."
+          if { [ -z "${CMS_USERS:-}" ] || [ -z "${CMS_TOKEN:-}" ]; } && { [ -z "${CLIENT_ID:-}" ] || [ -z "${CLIENT_SECRET:-}" ]; }; then
+            echo "::error::Es fehlt eine Anmeldung: PRAXIS_CMS_USERS + PRAXIS_CMS_GITHUB_TOKEN (E-Mail) oder PRAXIS_CMS_GITHUB_CLIENT_ID/_SECRET (GitHub)."
             exit 1
           fi
 
@@ -79,8 +82,8 @@ jobs:
           # Das Secret geht als Datei ueber scp, nicht als Argument: eine
           # SSH-Kommandozeile steht auf dem Server in der Prozessliste.
           umask 077
-          printf 'GITHUB_CLIENT_ID=%s\nGITHUB_CLIENT_SECRET=%s\nALLOWED_ORIGIN=https://www.praxis-gueltekin.de\n' \
-            "$CLIENT_ID" "$CLIENT_SECRET" > praxis-cms.env
+          printf 'GITHUB_CLIENT_ID=%s\nGITHUB_CLIENT_SECRET=%s\nCMS_USERS=%s\nCMS_GITHUB_TOKEN=%s\nALLOWED_ORIGIN=https://www.praxis-gueltekin.de\n' \
+            "$CLIENT_ID" "$CLIENT_SECRET" "$CMS_USERS" "$CMS_TOKEN" > praxis-cms.env
 
           scp $SSH_OPTS praxis-cms-src.tgz "$SSH_USER@$SSH_HOST:/tmp/praxis-cms-src.tgz"
           ssh $SSH_OPTS "$SSH_USER@$SSH_HOST" 'mkdir -p /opt/veysl/praxis-cms'
