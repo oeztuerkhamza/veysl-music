@@ -184,20 +184,28 @@ export async function Footer() {
           <p>
             © {year} {site.name} · {t('footer.rights')}
           </p>
-          {/* Urheberhinweis der Agentur — bewusst unübersetzt, „Webdesign“
-              versteht man in allen acht Sprachen. */}
-          <p>
-            Webdesign:{' '}
-            <a
-              href="https://breisgau-digital.de"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 align-middle underline underline-offset-2 transition-colors duration-300 hover:text-ink"
-            >
-              <Image src="/images/breisgau-digital.webp" alt="" width={16} height={20} unoptimized />
-              Breisgau Digital
-            </a>
-          </p>
+        </Container>
+        {/* Urheberhinweis der Agentur — bewusst unübersetzt, „Webdesign“
+            versteht man in allen acht Sprachen. Eigene Zeile, damit er
+            auffällt und nicht im Kleingedruckten untergeht. */}
+        <Container className="flex justify-center pb-8">
+          <a
+            href="https://breisgau-digital.de"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 rounded-full border border-line bg-surface px-5 py-2.5 text-sm text-ink-muted transition-colors duration-300 hover:border-gold hover:text-ink"
+          >
+            <span>Webdesign &amp; Development</span>
+            <Image
+              src="/images/breisgau-digital.webp"
+              alt=""
+              width={20}
+              height={25}
+              unoptimized
+              className="rounded-md bg-white px-1.5 py-1"
+            />
+            <strong className="font-semibold text-ink">Breisgau Digital</strong>
+          </a>
         </Container>
       </div>
     </footer>
