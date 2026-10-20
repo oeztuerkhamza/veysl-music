@@ -41,7 +41,7 @@ Google ohne Einwilligung aufrufen.
 **Tag → Neu → Google Analytics: GA4-Ereignis**
 - Konfigurations-Tag: das Google-Tag von oben
 - Ereignisname: `page_view`
-- Parameter: `page_path` = `{{DLV - page_path}}`, `language` = `{{DLV - locale}}`
+- Parameter: `page_path` = `{{DLV - page_path}}`, `site_locale` = `{{DLV - locale}}`
 - Trigger: `CE - page_view`
 
 ## 4. Ereignisse

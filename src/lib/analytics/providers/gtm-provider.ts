@@ -60,9 +60,9 @@ export function createGtmProvider(containerId: string): AnalyticsProvider {
       if (!loaded) return;
       push({ event, ...props });
     },
-    pageview(path) {
+    pageview(path, locale) {
       if (!loaded) return;
-      push({ event: 'page_view', page_path: path });
+      push({ event: 'page_view', page_path: path, locale });
     },
     teardown() {
       // Like gtag.js, gtm.js can't be unloaded once fetched. Deny analytics

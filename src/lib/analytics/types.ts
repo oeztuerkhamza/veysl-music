@@ -25,7 +25,7 @@ export interface AnalyticsProvider {
   /** Fire a custom event. Must never throw — the caller in `./index.ts` still wraps this defensively either way. */
   track(event: string, props?: EventProps): void;
   /** Record an SPA route change. Providers that already auto-track pageviews via their own script (Plausible, Clarity) can no-op here. */
-  pageview(path: string): void;
+  pageview(path: string, locale?: string): void;
   /**
    * Best-effort teardown when consent is revoked after having been granted.
    * Only meaningful for consent-gated providers — core/cookieless providers

@@ -70,7 +70,7 @@ export function initAnalytics(): void {
       if (gatedProviders.length === 0) gatedProviders = buildGatedProviders();
       gatedProviders.forEach((provider) => {
         provider.init();
-        provider.pageview(currentPath);
+        provider.pageview(currentPath, currentLocale);
       });
     } else {
       gatedProviders.forEach((provider) => provider.teardown?.());
@@ -137,7 +137,7 @@ export function trackPageview(path: string): void {
   currentPath = path;
   for (const provider of activeProviders()) {
     try {
-      provider.pageview(path);
+      provider.pageview(path, currentLocale);
     } catch (err) {
       console.error(`[analytics] provider "${provider.name}" failed to record a pageview`, err);
     }
