@@ -114,6 +114,7 @@ docker build --target builder -t veysl-app:build-tools \
   --build-arg NEXT_PUBLIC_PLAUSIBLE_DOMAIN="$(env_value NEXT_PUBLIC_PLAUSIBLE_DOMAIN)" \
   --build-arg NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL="$(env_value NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL)" \
   --build-arg NEXT_PUBLIC_GA4_MEASUREMENT_ID="$(env_value NEXT_PUBLIC_GA4_MEASUREMENT_ID)" \
+  --build-arg NEXT_PUBLIC_GTM_ID="$(env_value NEXT_PUBLIC_GTM_ID)" \
   --build-arg NEXT_PUBLIC_CLARITY_PROJECT_ID="$(env_value NEXT_PUBLIC_CLARITY_PROJECT_ID)" \
   --build-arg NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION="$(env_value NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION)" \
   . >/dev/null

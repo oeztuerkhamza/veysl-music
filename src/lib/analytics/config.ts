@@ -14,6 +14,8 @@ export interface AnalyticsConfig {
   plausibleScriptUrl: string;
   /** GA4 Measurement ID, e.g. `"G-XXXXXXXXXX"`. Consent-gated — see `src/components/analytics/consent-banner.tsx`. */
   ga4MeasurementId?: string;
+  /** Google Tag Manager container ID, e.g. `"GTM-XXXXXXX"`. Consent-gated. When set it replaces the direct GA4 provider (configure GA4 inside the container instead). */
+  gtmContainerId?: string;
   /** Microsoft Clarity project ID. Consent-gated. Requires Strict masking mode enabled in the Clarity dashboard first — see `docs/ANALYTICS.md`. */
   clarityProjectId?: string;
 }
@@ -23,6 +25,7 @@ export function getAnalyticsConfig(): AnalyticsConfig {
     plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || undefined,
     plausibleScriptUrl: process.env.NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL || 'https://plausible.io/js/script.js',
     ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || undefined,
+    gtmContainerId: process.env.NEXT_PUBLIC_GTM_ID || undefined,
     clarityProjectId: process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || undefined,
   };
 }
@@ -35,5 +38,5 @@ export function getAnalyticsConfig(): AnalyticsConfig {
  * would be pure friction with zero purpose.
  */
 export function hasConsentGatedProviders(config: AnalyticsConfig = getAnalyticsConfig()): boolean {
-  return Boolean(config.ga4MeasurementId || config.clarityProjectId);
+  return Boolean(config.gtmContainerId || config.ga4MeasurementId || config.clarityProjectId);
 }

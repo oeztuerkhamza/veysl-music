@@ -60,7 +60,7 @@ const CONTENT_SECURITY_POLICY = [
   "font-src 'self' data:",
   // Mixe liegen als lokale Dateien unter /audio (src/content/mixes.ts).
   "media-src 'self'",
-  `connect-src 'self' ${plausibleOrigin()} https://www.google-analytics.com https://*.google-analytics.com https://*.clarity.ms https://c.bing.com`,
+  `connect-src 'self' ${plausibleOrigin()} https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.clarity.ms https://c.bing.com`,
   'frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com',
   // three.js/Payload können Worker aus Blobs starten.
   "worker-src 'self' blob:",

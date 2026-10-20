@@ -14,6 +14,7 @@ import { getAnalyticsConfig } from './config';
 import { getStoredConsent, onConsentChange } from './consent';
 import { createClarityProvider } from './providers/clarity-provider';
 import { createGa4Provider } from './providers/ga4-provider';
+import { createGtmProvider } from './providers/gtm-provider';
 import { createNoopProvider } from './providers/noop-provider';
 import { createPlausibleProvider } from './providers/plausible-provider';
 import type { AnalyticsProvider, EventProps } from './types';
@@ -43,7 +44,10 @@ function buildCoreProviders(): AnalyticsProvider[] {
 function buildGatedProviders(): AnalyticsProvider[] {
   const config = getAnalyticsConfig();
   const providers: AnalyticsProvider[] = [];
-  if (config.ga4MeasurementId) providers.push(createGa4Provider(config.ga4MeasurementId));
+  // GTM supersedes direct GA4: GA4 is then configured inside the container,
+  // and loading both would double-count every hit.
+  if (config.gtmContainerId) providers.push(createGtmProvider(config.gtmContainerId));
+  else if (config.ga4MeasurementId) providers.push(createGa4Provider(config.ga4MeasurementId));
   if (config.clarityProjectId) providers.push(createClarityProvider(config.clarityProjectId));
   return providers;
 }
