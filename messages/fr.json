@@ -1205,8 +1205,9 @@
           "id": "analytics",
           "title": "Analyse & statistiques",
           "paragraphs": [
-            "Nous n’utilisons actuellement aucun outil d’analyse ou de suivi. Une fonction statistique optionnelle peut être activée via les paramètres de cookies de ce site ; elle reste inactive tant que vous n’y avez pas expressément consenti.",
-            "Si un service de statistiques venait à être utilisé à l’avenir, cette déclaration serait complétée avant son activation par le nom, la finalité, la base juridique et la durée de conservation du service concerné (TODO(kunde))."
+            "Pour mesurer l’audience, nous utilisons Plausible Analytics. Plausible fonctionne sans cookies et sans collecte de données personnelles ; les visiteurs ne sont pas reconnus d’une page ou d’un appareil à l’autre.",
+            "En outre – exclusivement avec votre consentement explicite via le bandeau de cookies – nous utilisons Google Tag Manager et, par son intermédiaire, Google Analytics 4 (fournisseur : Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlande). Des cookies peuvent alors être déposés et des données d’utilisation (p. ex. pages consultées, clics sur les moyens de contact, envoi d’une demande) ainsi que votre adresse IP peuvent être traitées ; un transfert vers des pays tiers, notamment les États-Unis, ne peut être exclu. La base juridique est votre consentement (art. 6, par. 1, point a) RGPD, § 25, al. 1 TDDDG). Les fonctions publicitaires de Google sont désactivées. Sans votre consentement, ni Google Tag Manager ni Google Analytics ne sont chargés.",
+            "Vous pouvez retirer votre consentement à tout moment, avec effet pour l’avenir, via les paramètres de cookies. Les précisions sur les durées de conservation et les contrats de sous-traitance seront ajoutées après examen juridique (TODO(kunde))."
           ]
         },
         {

@@ -1861,8 +1861,9 @@
           "id": "analytics",
           "title": "Analiz & istatistik",
           "paragraphs": [
-            "Şu anda herhangi bir analiz veya izleme aracı kullanmıyoruz. Bu sitenin çerez ayarları üzerinden isteğe bağlı bir istatistik işlevi etkinleştirilebilir; bu işlev, siz açıkça onay verene kadar devre dışı kalır.",
-            "İleride bir istatistik hizmeti kullanılırsa, bu metin etkinleştirilmeden önce ilgili hizmetin adı, amacı, hukuki dayanağı ve saklama süresiyle tamamlanacaktır (TODO(kunde))."
+            "Erişimi ölçmek için Plausible Analytics kullanıyoruz. Plausible çerezsiz çalışır ve kişisel veri toplamaz; ziyaretçiler sayfalar veya cihazlar arasında tanınmaz.",
+            "Buna ek olarak – yalnızca çerez bannerı üzerinden vereceğiniz açık onay ile – Google Tag Manager'ı ve onun aracılığıyla Google Analytics 4'ü kullanıyoruz (sağlayıcı: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, İrlanda). Bu sırada çerezler yerleştirilebilir, kullanım verileri (ör. görüntülenen sayfalar, iletişim seçeneklerine tıklamalar, talep gönderimi) ve IP adresiniz işlenebilir; üçüncü ülkelere, özellikle ABD'ye aktarım hariç tutulamaz. Hukuki dayanak onayınızdır (GDPR m. 6/1-a, TDDDG § 25/1). Google'ın reklam işlevleri kapalıdır. Onayınız olmadan ne Google Tag Manager ne de Google Analytics yüklenir.",
+            "Onayınızı çerez ayarlarından dilediğiniz zaman, ileriye dönük olarak geri çekebilirsiniz. Saklama süreleri ve veri işleme sözleşmelerine ilişkin ayrıntılar hukuki inceleme sonrası eklenecektir (TODO(kunde))."
           ]
         },
         {

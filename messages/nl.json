@@ -1205,8 +1205,9 @@
           "id": "analytics",
           "title": "Analyse & statistiek",
           "paragraphs": [
-            "Op dit moment zetten wij geen analyse- of trackingtool in. Via de cookie-instellingen van deze website kan optioneel een statistiekfunctie worden geactiveerd; deze blijft inactief totdat u daar uitdrukkelijk mee instemt.",
-            "Mocht in de toekomst een statistiekdienst worden ingezet, dan wordt deze verklaring vóór activering aangevuld met de naam, het doel, de rechtsgrondslag en de bewaartermijn van die dienst (TODO(kunde))."
+            "Voor het meten van het bereik gebruiken wij Plausible Analytics. Plausible werkt zonder cookies en zonder persoonsgegevens te verzamelen; bezoekers worden niet over pagina's of apparaten heen herkend.",
+            "Daarnaast gebruiken wij – uitsluitend met uw uitdrukkelijke toestemming via de cookiebanner – Google Tag Manager en daarmee Google Analytics 4 (aanbieder: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ierland). Daarbij kunnen cookies worden geplaatst en gebruiksgegevens (bijv. bekeken pagina's, klikken op contactopties, verzenden van een aanvraag) en uw IP-adres worden verwerkt; doorgifte aan derde landen, met name de VS, kan niet worden uitgesloten. Rechtsgrondslag is uw toestemming (art. 6 lid 1 sub a AVG, § 25 lid 1 TDDDG). De advertentiefuncties van Google zijn uitgeschakeld. Zonder toestemming worden Google Tag Manager en Google Analytics niet geladen.",
+            "U kunt uw toestemming op elk moment met werking voor de toekomst intrekken via de cookie-instellingen. Gegevens over bewaartermijnen en verwerkersovereenkomsten vullen wij aan na juridische toetsing (TODO(kunde))."
           ]
         },
         {

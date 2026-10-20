@@ -1206,8 +1206,9 @@
           "id": "analytics",
           "title": "Analîz & îstatîstîk",
           "paragraphs": [
-            "Niha em tu amûrekî analîz an şopandinê bi kar naynin. Bi mîhengên çerezan ên vê malperê fonksiyoneke îstatîstîkê dikare bi dilxwazî were çalakkirin; ev heta ku hûn bi eşkereyî razîbûna xwe nedin ne çalak dimîne.",
-            "Heke di pêşerojê de xizmeteke îstatîstîkê were bikaranîn, ev beyanname beriya çalakkirinê bi nav, armanc, bingeha hiqûqî û dema tomarkirinê ya wê xizmetê tê temamkirin (TODO(kunde))."
+            "Ji bo pîvandina gihîştinê em Plausible Analytics bi kar tînin. Plausible bêyî çerez û bêyî berhevkirina daneyên kesane dixebite; mêvan di nav rûpel an amûran de nayên nasîn.",
+            "Her wiha – tenê bi razîbûna weya eşkere bi rêya banera çerezan – em Google Tag Manager û bi wê re Google Analytics 4 bi kar tînin (pêşkêşkar: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Îrlanda). Di vê rewşê de dibe ku çerez werin danîn û daneyên bikaranînê (mînak rûpelên hatine dîtin, klîkên li ser vebijêrkên têkiliyê, şandina daxwazekê) û navnîşana IP ya we werin pêvajokirin; veguhastina bo welatên sêyem, bi taybetî DYA, nayê derxistin. Bingeha hiqûqî razîbûna we ye (xala 6(1)(a) GDPR, § 25(1) TDDDG). Fonksiyonên reklamê yên Google neçalak in. Bêyî razîbûna we ne Google Tag Manager û ne jî Google Analytics tê barkirin.",
+            "Hûn dikarin razîbûna xwe her dem bi bandor ji bo pêşerojê bi rêya mîhengên çerezan vekişînin. Agahiyên li ser dema tomarkirinê û peymanên pêvajoker piştî vekolîna hiqûqî têne zêdekirin (TODO(kunde))."
           ]
         },
         {

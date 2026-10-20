@@ -1860,8 +1860,9 @@
           "id": "analytics",
           "title": "Analytics & statistics",
           "paragraphs": [
-            "We currently do not use any analytics or tracking tool. An optional statistics feature can be enabled via this website's cookie settings; it remains inactive until you explicitly consent to it.",
-            "Should a statistics service be introduced in the future, this policy will be updated before activation with the name, purpose, legal basis and retention period of that service (TODO(kunde))."
+            "We use Plausible Analytics to measure reach. Plausible works without cookies and without collecting personal data; visitors are not recognised across pages or devices.",
+            "In addition – solely with your explicit consent via the cookie banner – we use Google Tag Manager and, through it, Google Analytics 4 (provider: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland). This may set cookies and process usage data (e.g. pages viewed, clicks on contact options, submission of an enquiry) and your IP address; a transfer to third countries, in particular the United States, cannot be ruled out. The legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG). Google's advertising features are disabled. Without your consent, neither Google Tag Manager nor Google Analytics is loaded.",
+            "You can withdraw your consent at any time with effect for the future via the cookie settings. Details on retention periods and data processing agreements will be added after legal review (TODO(kunde))."
           ]
         },
         {
