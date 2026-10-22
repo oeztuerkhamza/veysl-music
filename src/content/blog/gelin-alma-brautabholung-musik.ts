@@ -490,6 +490,98 @@ entrées et les cérémonies, et anime en allemand, en turc et en anglais. Pour 
 reste de votre journée, une demande gratuite pour votre date est une bonne prochaine étape.
 `.trim();
 
+export const gelinAlmaNl = `
+## Gelin alma: wanneer de bruiloft de straat op gaat
+
+Bij veel Turkse bruiloften begint de trouwdag niet in de zaal, maar bij de voordeur van de bruid. De
+familie van de bruidegom komt haar ophalen: **gelin alma** (de bruid ophalen) of, vanuit haar familie
+gezien, **gelin çıkarma** (de bruid uit het huis leiden). Het moment is kort maar intens: afscheid van
+ouders en broers en zussen, muziek op straat, foto's, vaak tranen en gelach tegelijk. In Duitsland
+wordt het volledig gevierd, ingekort of bewust weggelaten, afhankelijk van de familie. Wie het plant,
+moet weten welke onderdelen gebruik zijn, welke organisatie vragen en waar de muziek thuishoort.
+
+## Wat er vaak gebeurt bij het ophalen van de bruid
+
+Er is geen vast draaiboek; regio en familie bepalen veel. Deze elementen komen vaak voor:
+
+- **De stoet.** De familie van de bruidegom arriveert in een colonne auto's, vaak versierd.
+- **De muziek bij aankomst.** Afhankelijk van de familie kondigen davul en zurna, een fanfare of muziek
+  uit een mobiele installatie de aankomst aan.
+- **De deur.** In sommige families wordt de weg naar de bruid speels geblokkeerd tot de gasten van de
+  andere kant iets toestoppen.
+- **Het rode lint.** De vader van de bruid of een broer bindt haar vaak een rood lint om de taille, als
+  teken van bescherming en zegen.
+- **Het afscheid.** De bruid verlaat het huis met haar familie; veel families hebben daarvoor een
+  bijzonder, vaak zeer emotioneel nummer.
+- **De rit naar de volgende plek:** het burgerlijk huwelijk, de fotoshoot of de zaal.
+
+Niet alles hoort overal bij, en het is prima om slechts enkele elementen over te nemen.
+
+## Muziek en techniek op straat
+
+Buiten gelden andere regels dan in de zaal. Davul en zurna zijn in de hele straat te horen en zijn zonder
+versterking luid genoeg. Een mobiele installatie heeft daarentegen stroom nodig (accu of een
+stopcontact in de buurt), ruimte om op te stellen en windbescherming voor de microfoons. Vraag vooraf of
+de muziek live, van de dj of gemengd moet zijn, en wie op het beslissende moment, het afscheid van de
+bruid, het startsein geeft. Als dat niet is afgesproken, klinkt midden in het afscheid het verkeerde
+nummer, of helemaal geen.
+
+## Buren, geluid en verkeer
+
+Het ophalen met muziek en een stoet vindt plaats in de openbare ruimte. Dat is geen probleem zolang het
+kort blijft en de buren het vooraf weten. Drie punten voorkomen de meeste problemen:
+
+- **Vooraf melden.** Een kort briefje of een praatje met de buren vooraf kost niets en voorkomt later
+  ruzie.
+- **Tijdstip.** Op zondag en tijdens de middagrust zijn muziek op straat en getoeter veel gevoeliger dan
+  op een zaterdagmiddag.
+- **Verkeer.** Stoeten en getoeter vallen onder de verkeersregels. Wie een straat wil afsluiten of een
+  optocht wil aanmelden, moet dat vooraf met de bevoegde instantie afstemmen; regels en bevoegdheden
+  verschillen per stad.
+
+Voor geluid en sluitingstijden bij het feest zelf geeft de gids over Baden-Württemberg een overzicht.
+
+## Checklist voor het ophalen van de bruid
+
+| Onderdeel | Vraag om te regelen |
+|---|---|
+| Tijd en duur | Wanneer begint het, hoe lang mag het duren, wat volgt erna? |
+| Muziek | Live, dj of beide, en wie geeft het startsein voor het afscheid? |
+| Afscheidsnummer | Welk stuk, welke versie, hoe lang? |
+| Stroom en ruimte | Waar komt de installatie te staan, is er een stopcontact, is er genoeg ruimte? |
+| Stoet | Hoeveel voertuigen, waarheen gaat de rit, wie rijdt voorop? |
+| Buren | Weten ze het, zijn er rusttijden om rekening mee te houden? |
+| Foto en video | Waar staan de fotografen zonder in de weg te lopen? |
+| Overdracht | Wie meldt de groep wanneer het tijd is voor het volgende onderdeel? |
+
+## Veelvoorkomende valkuilen
+
+- **Het afscheid heeft geen regisseur.** Zonder duidelijk startsein gaat het meest emotionele moment van
+  de dag voorbij zonder muziek of met het verkeerde nummer.
+- **Een te lange pauze voordat het verdergaat.** Als niemand weet wat er na het afscheid volgt, vallen
+  groepen uiteen en loopt het schema een halfuur uit.
+- **Te veel apparatuur voor te weinig ruimte.** Een installatie die de stoep blokkeert, wordt snel een
+  probleem.
+- **Ongecoördineerde muziek.** Livemuzikanten en de dj spelen tegen elkaar in als niemand vooraf
+  afspreekt wie wanneer speelt.
+- **Geen afstemming met de rest van de dag.** Het ophalen beïnvloedt de ceremonie, de foto's en de
+  binnenkomst in de zaal; een buffer van minstens een halfuur is zelden overbodig.
+
+## Hoeveel tijd u moet reserveren
+
+Als globale richtlijn, die per familie merkbaar verschilt: 30 tot 60 minuten voor aankomst, ritueel en
+afscheid, plus de reistijd naar de volgende plek. Belangrijker dan het exacte getal is een buffer die
+voorkomt dat vertragingen doorwerken in de ceremonie, de foto's en de binnenkomst in de zaal.
+
+## Conclusie
+
+Het ophalen van de bruid is geen bijzaak, maar het eerste grote moment van de dag, en het moment waarop
+muziek en organisatie het meest zichtbaar moeten samenwerken. Wie startsein, stroom, buren en tijdsbuffer
+vooraf regelt, krijgt een opening die iedereen bijblijft. DJ Veys stemt af met livemuzikanten en
+davul-zurnaspelers voor binnenkomsten en ceremonies en presenteert in het Duits, Turks en Engels. Voor
+de afstemming met de rest van uw dag is een vrijblijvende aanvraag voor uw datum een goede volgende stap.
+`.trim();
+
 export const gelinAlmaPost: BlogPost = {
   id: 'gelin-alma-brautabholung-musik',
   slug: 'gelin-alma-brautabholung-musik',
@@ -565,6 +657,18 @@ export const gelinAlmaPost: BlogPost = {
         metaTitle: 'Gelin alma : aller chercher la mariée | DJ Veys',
         metaDescription:
           'Gelin alma : ce qui se passe quand on va chercher la mariée et comment organiser musique, matériel, voisins et circulation, avec check-list.',
+      },
+    },
+    nl: {
+      slug: 'gelin-alma-de-bruid-ophalen',
+      title: 'Gelin alma: het ophalen van de bruid op een Turkse bruiloft, en de muziek erbij',
+      excerpt:
+        'Het ophalen van de bruid is het eerste grote moment van de trouwdag: stoet, muziek, rood lint, afscheid. Deze gids laat zien wat er vaak bij hoort, waar u op moet letten bij apparatuur, buren en verkeer, en waar de planning misgaat.',
+      body: gelinAlmaNl,
+      seo: {
+        metaTitle: 'Gelin alma: de bruid ophalen en de muziek | DJ Veys',
+        metaDescription:
+          'Gelin alma: wat er gebeurt bij het ophalen van de bruid en hoe u muziek, apparatuur, buren en verkeer regelt, met checklist.',
       },
     },
   },

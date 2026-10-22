@@ -670,6 +670,126 @@ chaque formule figurent sur la page des formules, et une demande sans engagement
 votre propre date.
 `.trim();
 
+export const hochzeitsbudgetMusikAnteilNl = `
+## Waarom een vast percentage niet werkt
+
+De vraag naar het muziekbudget wordt bijna altijd gesteld als een percentagevraag: een vast deel van het
+totaal dat op elke bruiloft kan worden toegepast. Juist dat werkt niet, en de reden ligt niet bij de
+muziek, maar bij hoe het budget zelf is opgebouwd. De grote posten van een bruiloft gedragen zich
+volledig verschillend wanneer de bruiloft verandert. Zodra dat mechanisme duidelijk is, is er geen
+vuistregel meer nodig: de beslissing kan dan vanuit het eigen feest worden genomen.
+
+## Vaste kosten en kosten die met de gasten meegroeien
+
+De belangrijkste scheidslijn in een bruiloftsbudget ligt niet tussen belangrijk en onbelangrijk. Ze
+loopt tussen posten die met elke extra gast groeien en posten die grotendeels gelijk blijven.
+
+| Post | Gedrag bij een stijgend aantal gasten |
+|---|---|
+| Catering en drank | groeit vrijwel direct met elk couvert |
+| Locatie en inrichting | groeit in stappen, met de benodigde zaalgrootte |
+| Drukwerk, bedankjes, tafeldecoratie | groeit per persoon |
+| Fotografie | blijft grotendeels gelijk; een langere dag kost meer, een langere gastenlijst niet |
+| Muziek en techniek | blijft grotendeels gelijk; groeit alleen in stappen, via de geluidsinstallatie |
+
+Dat is het echte antwoord op de percentagevraag. Een feest met tachtig gasten en hetzelfde feest met
+tweehonderd verschillen aanzienlijk in catering. Aan de dj-kant verandert veel minder: dezelfde
+voorbereiding, dezelfde reis, dezelfde speeltijd, een installatie een maat groter, eventueel een tweede
+geluidszone. Het aandeel van de muziek in het totaal daalt dus vrijwel automatisch naarmate de bruiloft
+groeit, zonder dat iemand een beslissing heeft genomen. Een percentageregel die bij het kleine feest past,
+is voor het grote al verkeerd, en omgekeerd.
+
+## Wat het muziekbudget eigenlijk koopt
+
+Nuttiger dan een percentage is de vraag wat er concreet in het muziekbudget zit. Dat zijn in wezen vier
+dingen:
+
+- **Speeltijd.** Een avondset is een andere opdracht dan doorlopende begeleiding van de receptie via het
+  diner tot diep in de nacht. Het verschil zit niet in kwaliteit, maar in uren.
+- **Technische omvang.** Geluid afgestemd op de zaal en het aantal gasten, licht, extra zones,
+  microfoons voor speeches. Dit is de enige post die echt meegroeit met het aantal gasten, en dat
+  gebeurt in stappen in plaats van geleidelijk.
+- **Live-elementen.** Of er naast de dj-set iets live wordt gespeeld, of er een liveformatie bijkomt, of
+  er presentatie nodig is, en in welke talen.
+- **Aantal leveranciers.** Of muziek, techniek en presentatie uit één hand komen, of over meerdere
+  aanbieders zijn verdeeld die elk apart moeten worden geboekt, gecoördineerd en gebriefd.
+
+Dat laatste punt wordt bij vergelijkingen regelmatig over het hoofd gezien. Twee budgetten die op papier
+identiek lijken, kunnen in het ene geval één aanspreekpunt bevatten en in het andere drie: drie
+contracten, drie reizen en drie aparte coördinatielijnen die iemand moet beheren.
+
+## Waarom bezuinigen hier de duurste bezuiniging is
+
+Op bruiloftsfora komt één zorg opvallend vaak terug, en die gaat nooit over het eten: dat de dansvloer
+leeg blijft. Dat is geen marketingclaim, maar een observatie over wat bruidsparen vooraf vrezen en wat
+ze achteraf onthouden. Er zit een structurele reden achter.
+
+Bijna elke post in een bruiloftsbudget raakt slechts een afgebakend deel van de dag: de jurk bij aankomst
+en op de foto's, de catering bij het diner, de decoratie in de zaal. Muziek loopt daarentegen door de
+hele planning en geeft ook de curve ervan vorm: wanneer het rustig blijft, wanneer de stemming omslaat,
+wanneer de avond zijn hoogtepunt bereikt en hoe hij afloopt. Het is de enige post die niet alleen aan één
+moment bijdraagt, maar de volgorde van de momenten bepaalt.
+
+Daar komt een tweede punt bij. Een zwakkere post kan meestal elders worden gecompenseerd. Een avond
+waarop niemand danst, valt niet te compenseren: die is voorbij.
+
+## Een prioriteitenoefening van tien minuten
+
+In plaats van naar een percentage te zoeken, kan de beslissing direct worden genomen. De oefening werkt
+het best als stel, met een vel papier:
+
+1. **Schrijf elk apart op** welke drie dingen u over vijf jaar van deze bruiloft wilt onthouden. Niet de
+   drie duurste posten, maar de drie herinneringen.
+2. **Vergelijk de lijsten.** De overeenkomsten zijn de echte gedeelde prioriteiten; de verschillen zijn
+   het gesprek dat echt gevoerd moet worden.
+3. **Koppel aan elke prioriteit de post die haar oplevert.** «Iedereen heeft gedanst» hangt af van muziek
+   en draaiboek; «het zag er prachtig uit» van fotografie en decoratie.
+4. **Noem twee posten die niemand heeft opgeschreven.** Daar zit de ruimte: het budget voor uw
+   prioriteiten komt daarvandaan, en bijna altijd uit posten die per persoon groeien.
+5. **Vraag pas dan offertes aan**, en wel in volgorde van prioriteit. Wie eerst vraagt naar wat het
+   belangrijkst is, kent de werkelijke omvang voordat de rest al is vastgelegd.
+
+De waarde van de oefening zit niet in de uitkomst, maar in de volgorde: eerst de prioriteiten, dan de
+getallen. Andersom wordt het budget verdeeld in de volgorde waarin de offertes toevallig binnenkomen.
+
+## Wanneer een kleiner muziekbudget echt prima is
+
+Er zijn feesten waarbij een groter muziekbudget simpelweg niets toevoegt, en het zou oneerlijk zijn dat
+weg te laten:
+
+- **De avond eindigt vroeg.** Als het feest na het diner afloopt, heeft een volledig avondprogramma geen
+  zin.
+- **Er wordt bewust niet gedanst.** Sommige bruidsparen plannen een receptie, een lange maaltijd en
+  gesprekken. Dat vraagt om schoon achtergrondgeluid en werkende microfoons voor de speeches, en niets
+  meer.
+- **Weinig gasten in een vergevingsgezinde ruimte.** Waar de akoestiek ongecompliceerd is en weinig gasten
+  met geluid bereikt hoeven te worden, is de technische eis echt lager.
+- **De locatie heeft een vaste installatie.** Dan valt een deel van de technische omvang weg, mits iemand
+  vooraf controleert of de bestaande installatie de geplande avond echt aankan.
+
+In al deze gevallen is de kleinere omvang geen besparing, maar de juiste boeking. Het verschil tussen
+kleiner boeken en op de verkeerde plek bezuinigen zit in de vraag of de omvang past bij de avond die u
+heeft gepland, of dat de avond achteraf moet worden ingekort om in een te krappe omvang te passen.
+
+## Wanneer het muziekbudget moet worden vastgelegd
+
+In de praktijk is de volgorde bijna belangrijker dan het bedrag. Locatie en aantal gasten liggen meestal
+eerst vast, omdat beide al het andere bepalen. Daarna loont het om de posten te boeken die maar één keer
+per datum beschikbaar zijn, en muziek hoort daarbij, omdat zaterdagen in het hoogseizoen vroeg vergeven
+zijn. Wie de muziek naar het einde van de planning schuift, beslist niet meer over wat past, maar over
+wat er overblijft: in het budget en in de agenda.
+
+## Conclusie
+
+Het eerlijke antwoord op de percentagevraag is geen getal, maar een onderscheid: posten die met het
+aantal gasten meegroeien, en posten die dat niet doen. Muziek hoort bij de tweede groep en is tegelijk de
+post die de boog van de hele avond vormt. Bruidsparen die de prioriteitenoefening doen voordat de eerste
+offertes binnenkomen, nemen de beslissing bewust in plaats van op volgorde van binnenkomst. Hoe de prijs
+van een bruiloft-dj werkelijk is opgebouwd, staat in het uitgebreide artikel over de kosten van een
+bruiloft-dj; welke diensten in welk pakket zitten, ziet u op de pakkettenpagina, en een vrijblijvende
+aanvraag regelt de rest voor uw eigen datum.
+`.trim();
+
 export const hochzeitsbudgetMusikAnteilPost: BlogPost = {
   id: 'hochzeitsbudget-musik-anteil',
   slug: 'hochzeitsbudget-musik-anteil',
@@ -741,6 +861,18 @@ export const hochzeitsbudgetMusikAnteilPost: BlogPost = {
         metaTitle: 'Budget mariage : quelle part pour la musique ? | DJ Veys',
         metaDescription:
           'Pourquoi un pourcentage fixe ne marche pas pour la musique du mariage : coûts fixes contre coûts par invité, et un exercice de priorités.',
+      },
+    },
+    nl: {
+      slug: 'bruiloftsbudget-aandeel-muziek',
+      title: 'Welk deel van het bruiloftsbudget moet naar de muziek?',
+      excerpt:
+        'Voor de percentagevraag bestaat geen bruikbare vuistregel, omdat de posten van een bruiloft zich verschillend gedragen: catering groeit met elke gast, muziek en techniek blijven grotendeels gelijk. Dit artikel legt het mechanisme uit, biedt een prioriteitenoefening van tien minuten en is eerlijk over wanneer een kleiner muziekbudget echt prima is.',
+      body: hochzeitsbudgetMusikAnteilNl,
+      seo: {
+        metaTitle: 'Bruiloftsbudget: hoeveel voor de muziek? | DJ Veys',
+        metaDescription:
+          'Waarom een vast percentage niet werkt voor bruiloftsmuziek: vaste kosten tegenover kosten per gast, en een prioriteitenoefening.',
       },
     },
   },

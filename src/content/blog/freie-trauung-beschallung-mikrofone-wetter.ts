@@ -514,6 +514,101 @@ plutôt qu'improvisés le jour même. Ce sont précisément ces points qui sont 
 l'entretien de préparation, à partir du lieu réel.
 `.trim();
 
+export const freieTrauungNl = `
+## Waarom een ceremonie in de buitenlucht technisch veeleisender is dan het lijkt
+
+Op het eerste gezicht lijkt een ceremonie in de buitenlucht technisch eenvoudig: een microfoon, wat
+achtergrondmuziek en klaar. In de praktijk is het vaak het meest veeleisende programmaonderdeel van de
+hele dag: geen vast stopcontact, wisselende wind, onvoorspelbaar weer en meerdere sprekers (de
+ceremoniemeester, het bruidspaar, vaak ook de getuigen) die allemaal verstaanbaar moeten zijn zonder
+dat de techniek het moment zichtbaar overheerst.
+
+## Drie kernproblemen buiten
+
+| Probleem | Waarom het belangrijk is |
+|---|---|
+| Stroomvoorziening | Zelden een stopcontact binnen bereik, vooral op ceremonieplekken ver van het hoofdgebouw |
+| Wind en weer | Windgeruis op de microfoon, regenrisico voor gevoelige apparatuur |
+| Meerdere sprekers | Ceremoniemeester, bruidspaar en getuigen hebben allemaal helder geluid nodig zonder voortdurend een microfoon door te geven |
+
+## Stroomvoorziening: oplossingen die echt werken
+
+Als er geen vast stopcontact bij de ceremonie is, zijn er in wezen twee werkbare routes: een
+voldoende lange, veilig gelegde kabel naar de dichtstbijzijnde beschikbare stroombron, of een
+zelfvoorzienende oplossing op accu voor de duur van de ceremonie. Welke zinvol is, hangt af van de
+afstand tot het dichtstbijzijnde stopcontact en de lengte van de ceremonie, en moet tijdens het
+locatiebezoek worden opgehelderd, niet op de dag zelf.
+
+## De microfoonopstelling: meer dan één handmicrofoon
+
+Bij een ceremonie in de buitenlucht met meerdere sprekers is één handmicrofoon zelden de beste
+oplossing: het betekent voortdurend doorgeven en onderbrekingen in het spreken. Wat beter werkt:
+
+- **Dasspeldmicrofoons** voor de ceremoniemeester en, waar relevant, het bruidspaar.
+- **Een extra handmicrofoon** voor gasten die spontaan iets willen zeggen.
+- **Discrete maar voldoende geplaatste speakers**, zodat de achterste rijen alles horen zonder dat de
+  voorste rijen door het volume worden overweldigd.
+
+## Wind: de onderschatte stoorzender
+
+Wind is bij ceremonies in de buitenlucht vaak een groter probleem dan regen: zelfs lichte wind
+veroorzaakt duidelijk hoorbaar geruis op een onbeschermde microfoon. Een windkap op de microfoon is
+daarom standaard, niet optioneel.
+
+## Een regenplan: vooraf besloten, niet geïmproviseerd
+
+Elke ceremonie in de buitenlucht zou een duidelijk plan B moeten hebben: een overdekt alternatief in
+de buurt, vooraf technisch doordacht en niet geïmproviseerd zodra de wolken zich samenpakken.
+
+## Hoeveel speakers heeft een ceremonie in de buitenlucht echt nodig?
+
+Het antwoord hangt minder af van alleen het aantal gasten dan van de vorm van de ceremonieruimte. Een
+lang, smal gebied vraagt om een andere verdeling dan een brede, halfronde opstelling. Als grove
+vuistregel: vanaf ongeveer 60 tot 80 gasten buiten loont een tweede paar speakers meestal, zodat de
+achterste rijen alles duidelijk horen zonder dat de voorste rijen door het volume worden overweldigd.
+
+## Reserveapparatuur: waarom een tweede microfoon niet onderhandelbaar zou moeten zijn
+
+Bij een evenement binnen kan een technische storing vaak snel worden verholpen. Bij een ceremonie in de
+buitenlucht, zonder werkplaats of reserveonderdelen in de buurt, is dat anders: een microfoon die
+midden in de ceremonie uitvalt, kan niet ter plekke worden gerepareerd. Daarom is een gebruiksklare
+tweede microfoon standaarduitrusting bij elke professionele geluidsopstelling buiten, geen optionele
+extra.
+
+## Achtergrondmuziek vóór en na de ceremonie
+
+Naast het versterken van speeches en het ritueel zelf loont het om ook de muzikale omlijsting van de
+ceremonie te doordenken: een rustig nummer terwijl de gasten aankomen, een bewust gekozen
+binnenkomstnummer voor het bruidspaar en een passend stuk voor het moment direct na het «ja», vaak de
+meest emotionele overgang van de hele ceremonie. Deze muziek loopt via hetzelfde systeem als het
+spraakgeluid en moet daarom technisch worden meegepland, niet als apart detail worden behandeld. Als op
+dit moment livemuziek op saz of gitaar wordt ingezet, heeft die buiten vaak een bijzonder heldere,
+directe uitwerking, zonder de akoestiek van een gesloten ruimte.
+
+## Als de ceremonie op een andere plek plaatsvindt dan het feest
+
+Bij veel bruiloften vindt de ceremonie in de buitenlucht op een andere plek plaats dan het latere
+feest, bijvoorbeeld in een wijngaard, terwijl het feest zelf in een zaal wordt gehouden. Dat vraagt om
+twee aparte technische opstellingen of om een duidelijk getimede verhuizing van de apparatuur tussen
+beide plekken. Beide zijn mogelijk, maar moeten vanaf het begin in de planning worden meegenomen, zodat
+er tussen ceremonie en feest genoeg buffer overblijft voor de wissel.
+
+## Een checklist voor het locatiebezoek
+
+1. Waar is het dichtstbijzijnde stopcontact en hoe lang is de kabelafstand?
+2. Is er een overdekt alternatief bij regen?
+3. Wat is de gebruikelijke windrichting op deze plek?
+4. Hoeveel mensen gaan er spreken?
+5. Hoe ver staat de achterste rij stoelen van de voorste?
+
+## Conclusie
+
+Een ceremonie in de buitenlucht is technisch meestal netjes op te lossen, maar alleen als stroom, aantal
+microfoons, wind en een regenplan vooraf worden doordacht in plaats van op de dag zelf te worden
+geïmproviseerd. Precies deze punten komen aan bod in het voorgesprek, op basis van de werkelijke
+locatie.
+`.trim();
+
 export const freieTrauungPost: BlogPost = {
   id: 'freie-trauung-beschallung-mikrofone-wetter',
   slug: 'freie-trauung-beschallung-mikrofone-wetter',
@@ -586,6 +681,18 @@ export const freieTrauungPost: BlogPost = {
         metaTitle: 'Sonoriser une cérémonie en plein air | DJ Veys',
         metaDescription:
           'Cérémonie en plein air : électricité, micros-cravates, protection contre le vent, plan pluie et check-list pour la visite du lieu.',
+      },
+    },
+    nl: {
+      slug: 'ceremonie-buitenlucht-geluid-microfoons-weer',
+      title: 'Ceremonie in de buitenlucht: geluid, microfoons en weer',
+      excerpt:
+        'Een ceremonie in de buitenlucht is technisch vaak veeleisender dan het lijkt: geen stopcontact, wind, meerdere sprekers. Deze gids laat praktische oplossingen zien voor stroom, de microfoonopstelling en een regenplan.',
+      body: freieTrauungNl,
+      seo: {
+        metaTitle: 'Geluid voor een ceremonie in de buitenlucht | DJ Veys',
+        metaDescription:
+          'Ceremonie in de buitenlucht: stroom, dasspeldmicrofoons, windbescherming, regenplan en een checklist voor het locatiebezoek.',
       },
     },
   },

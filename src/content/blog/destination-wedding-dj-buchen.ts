@@ -485,6 +485,93 @@ en témoignent entre autres des prestations à Vienne, et présente la logistiqu
 transparente dans le devis individuel.
 `.trim();
 
+export const destinationNl = `
+## Waarom een dj van thuis vaak een betere keuze is dan een dj ter plaatse
+
+Bij een bruiloft in het buitenland ligt het voor de hand om gewoon een lokale dj te boeken. In de
+praktijk kiezen veel bruidsparen daar bewust niet voor, omdat een dj die hun wensenlijst, de cultuur
+van hun familie en, bij biculturele paren, beide taalwerelden al kent, één risico minder betekent op
+een dag waarop al genoeg nieuw en onbekend is.
+
+## De logistieke basisvragen
+
+| Vraag | Waarom u die vroeg moet regelen |
+|---|---|
+| Reis over de weg of per vliegtuig | Bepaalt reiskosten en een realistisch aankomsttijdstip vóór het feest |
+| Accommodatie | Geregeld door het bruidspaar of door de dj? |
+| Apparatuur ter plaatse | Eigen apparatuur meenemen (meer moeite) of ter plaatse huren (kwaliteit vooraf controleren) |
+| Stroomvoorziening op de bestemming | Netspanning en stekkertypes verschillen per land |
+| Douane en transport | Relevant bij het meenemen van eigen apparatuur, afhankelijk van de bestemming |
+
+## Eigen apparatuur meenemen of ter plaatse huren?
+
+Beide routes werken, met verschillende afwegingen. Eigen apparatuur meenemen betekent vertrouwd,
+beproefd materiaal, maar meer transportmoeite en mogelijke douanevragen. Ter plaatse huren bespaart
+transport, maar vraagt om een zorgvuldige controle van kwaliteit en beschikbaarheid vooraf.
+
+## Wat er in de offerte hoort
+
+Een offerte voor een bruiloft in het buitenland verschilt structureel van een regionale: naast de
+dj-dienst zelf komen reis of vluchten, accommodatie en eventueel het huren van apparatuur ter plaatse
+erbij. Een serieuze offerte vermeldt deze afzonderlijk in plaats van ze in een vaag vast bedrag te
+verstoppen.
+
+## Taal en muzikale continuïteit als voordeel
+
+Vooral bij Duits-Turkse of andere biculturele bruiloften in het buitenland is een meereizende dj vaak
+de enige manier om muzikale en taalkundige continuïteit over het hele feest te garanderen, van de
+ceremonie in de buitenlucht tot de peaktime.
+
+## Een praktische planningstijdlijn
+
+1. **6 tot 12 maanden vooraf:** in principe beslissen of een meereizende dj een optie is en een eerste
+   beschikbaarheidsaanvraag sturen.
+2. **4 tot 6 maanden vooraf:** de logistiek regelen: reis, accommodatie, apparatuur ter plaatse of
+   meegebracht.
+3. **2 tot 3 maanden vooraf:** de wensenlijst en het draaiboek afronden, aangepast aan de lokale
+   omstandigheden.
+4. **Laatste weken:** technische details bevestigen, zoals stroomvoorziening en toegang tot de locatie.
+
+## Hoe het voorgesprek verschilt bij een bruiloft in het buitenland
+
+Ook al blijft het basisprincipe van het voorgesprek hetzelfde (draaiboek, muzieksmaak, no-go's,
+timing), een bruiloft in het buitenland voegt extra onderwerpen toe: de klimaatomstandigheden op de
+bestemming en hun effect op apparatuur buiten, de beschikbare stroomvoorziening op de locatie zelf, en
+of de locatie ervaring heeft met externe dj's of eigen regels rond geluid hanteert. Deze vragen kunnen
+meestal per videogesprek en met foto's of een plattegrond van de locatie worden opgehelderd, zonder
+fysiek bezoek vóór de eigenlijke reis.
+
+## Tijdzones en reizen: een vaak onderschatte factor
+
+Een punt dat bij de planning makkelijk over het hoofd wordt gezien: als de dj meerdere tijdzones
+doorkruist, heeft hij realistisch gezien minstens een volle dag buffer nodig vóór het feest om het
+tijdsverschil, de reisstress en een rustige technische controle op te vangen. Een reisplan dat op de
+dag van het feest zelf wordt geperst, verhoogt onnodig het risico als vluchten vertraging hebben of het
+transport langer duurt dan gepland.
+
+## Communicatie op afstand: waarom die anders werkt
+
+Bij een bruiloft in het buitenland verloopt bijna alle voorbereiding noodgedwongen via videogesprekken
+en schriftelijke communicatie in plaats van persoonlijke ontmoetingen. Dat werkt in de praktijk goed,
+maar vraagt iets meer discipline in de vastlegging: afspraken over de wensenlijst, het draaiboek en de
+technische opstelling moeten consequent op schrift worden gezet, zodat op de dag zelf, met
+tijdsverschil en zonder mogelijkheid om snel persoonlijk iets te vragen, niets onduidelijk blijft.
+
+## Een test vóór de eigenlijke reis
+
+Voor bijzonder belangrijke technische details, zoals een zelden gebruikte stekkercombinatie of een
+ongebruikelijke spanningseis, loont het om vóór vertrek een technische test te doen met de apparatuur
+die wordt meegenomen of besteld. Dat kost vooraf tijd, maar voorkomt dat een technisch probleem pas op
+de bestemming wordt ontdekt, waar een snelle oplossing veel moeilijker te regelen is dan thuis.
+
+## Conclusie
+
+Een dj boeken voor een bruiloft in het buitenland is geen onplanbaar uitzonderingsgeval: het vraagt
+alleen meer voorbereidingstijd en een duidelijke uitsplitsing van reis, accommodatie en apparatuur. DJ
+Veys is naast Baden-Württemberg ook internationaal te boeken, onder meer aangetoond door optredens in
+Wenen, en zet logistiek en kosten transparant uiteen in de individuele offerte.
+`.trim();
+
 export const destinationPost: BlogPost = {
   id: 'destination-wedding-dj-buchen',
   slug: 'destination-wedding-dj-buchen',
@@ -556,6 +643,18 @@ export const destinationPost: BlogPost = {
         metaTitle: 'DJ pour un mariage à l\'étranger | DJ Veys',
         metaDescription:
           'Réserver un DJ pour un mariage à l\'étranger : voyage, matériel, hébergement, contenu du devis et calendrier de préparation réaliste.',
+      },
+    },
+    nl: {
+      slug: 'dj-boeken-bruiloft-buitenland',
+      title: 'Bruiloft in het buitenland: een dj boeken voor uw bestemming',
+      excerpt:
+        'Bij een bruiloft in het buitenland kiezen veel bruidsparen bewust niet voor een lokale dj, maar voor een dj die hun wensenlijst en beide taalwerelden al kent. Deze gids behandelt de logistieke basis en een realistische tijdlijn.',
+      body: destinationNl,
+      seo: {
+        metaTitle: 'Dj voor een bruiloft in het buitenland | DJ Veys',
+        metaDescription:
+          'Een dj boeken voor een bruiloft in het buitenland: reis, apparatuur, accommodatie, wat er in de offerte hoort en een realistische tijdlijn.',
       },
     },
   },

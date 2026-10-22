@@ -676,6 +676,130 @@ sans cesse sur l'entrée, la première danse et la piste de danse a déjà la r�
 nulle part peut construire la playlist en toute sérénité.
 `.trim();
 
+export const hochzeitOhneDjSpotifyPlaylistNl = `
+## Eerst het eerlijke antwoord
+
+Er zijn bruiloften waarbij een zorgvuldig voorbereide playlist volstrekt voldoende is. En er zijn
+bruiloften waarbij die zichtbaar de avond kost. Wie deze vraag stelt, zoekt meestal een betrouwbare
+inschatting in plaats van een verkooppraatje, en die inschatting is mogelijk zodra u drie dingen uit
+elkaar houdt: wat een playlist goed doet, wat ze principieel niet kan, en wat voor feest er werkelijk
+wordt gepland.
+
+## Wanneer een playlist echt volstaat
+
+Een playlist is geen noodoplossing. Voor bepaalde formats is ze het juiste antwoord, en een geboekte dj
+zou simpelweg overgedimensioneerd zijn. Ze draagt een avond wanneer meerdere van deze punten samenkomen:
+
+- **Het feest blijft klein en overzichtelijk**, binnen de naaste familie of vriendenkring.
+- **De avond draait om gesprekken**, niet om een dansvloer die vol moet blijven. De muziek speelt op de
+  achtergrond en hoort daar ook te blijven.
+- **Er zijn nauwelijks programmaonderdelen** die precies moeten vallen: geen uitgewerkte binnenkomst,
+  geen speech met muzikale start, geen verrassing waarvan het effect van de timing afhangt.
+- **De locatie heeft een werkende geluidsinstallatie** waarop een afspeelapparaat betrouwbaar kan worden
+  aangesloten.
+- **Vooraf is afgesproken wie het beheert**: iemand die niet het bruidspaar is en de hele avond
+  bereikbaar blijft.
+
+Een lunchreceptie na het gemeentehuis, een diner in kleine kring, een tuinfeest met achtergrondmuziek:
+daar is zelden een dj voor nodig. Daar een playlist plannen bespaart geld op een plek waar het geen pijn
+doet. De vraag wordt pas interessant zodra er echt gedanst wordt.
+
+## Wat een playlist niet kan
+
+### Reageren op de zaal
+
+Een playlist is klaar op het moment dat ze is samengesteld. Ze merkt niet dat de dansvloer na het
+derde nummer leegliep, dat de oudere generatie net als groep is opgestaan of dat een nummer dat op papier
+perfect leek de stemming doet kantelen. Die realtimecorrectie (ander nummer, ander tempo, ander
+decennium) is de eigenlijke kern van het dj-werk. Al het andere kan vooraf worden voorbereid; dat niet.
+
+### Overgangen en volume
+
+Tussen twee nummers in een playlist zit een gat, en in dat gat zakt de energie in de zaal. Daar komen
+volumeverschillen bij: nummers uit verschillende decennia en van verschillende labels zijn op
+verschillende niveaus gemasterd, wat op een grote installatie duidelijk hoorbaar is en om iemand aan de
+fader vraagt.
+
+### Aankondigingen en programmaonderdelen
+
+Wie nodigt iedereen uit voor de openingsdans? Wie zorgt ervoor dat de zaal vol is bij het aansnijden van
+de taart en dat de muziek precies op het juiste moment zachter gaat? Die taken verdwijnen niet zonder
+dj: ze verschuiven naar iemand onder de gasten, meestal ongepland en meestal naar de getuige. Bij een
+tweetalige gastenlijst komt daar nog bij dat aankondigingen in meer dan één taal nodig zijn, zodat geen
+enkele groep de avond alleen maar toekijkt.
+
+### Apparatuur en een terugvaloptie
+
+De praktische kant wordt het meest onderschat. Een apparaat dat de hele avond draagt, is ook een apparaat
+dat gesprekken en meldingen ontvangt. Streamingdiensten voegen zonder betaald abonnement reclame in, en
+een playlist zonder offline kopie hangt af van het draadloze netwerk van de locatie. Kabels,
+adapters, een tweede afspeelapparaat en een installatie die bij de zaal en het aantal gasten past:
+iemand moet alles meebrengen, opbouwen, testen en na afloop weer afbreken. En als er tijdens de avond
+iets uitvalt, is er een plan B nodig; een playlist heeft er geen.
+
+### Verzoekjes van gasten
+
+Spontane verzoekjes komen op bijna elke bruiloft voor. Met een playlist zijn er twee routes, en beide
+zijn ongemakkelijk: of elk verzoekje wordt ertussen geperst, waardoor de vorm van de avond uiteenvalt;
+of niemand voelt zich verantwoordelijk om een verzoekje af te wijzen, en de discussie belandt bij het
+bruidspaar. Beide zijn te vermijden wanneer er één persoon met een duidelijk mandaat achter de
+draaitafel staat.
+
+## Een vriend wil voor ons draaien: is dat genoeg?
+
+Deze optie ligt tussen de twee uitersten en wordt vaak te snel afgedaan. Ze kan werken, maar alleen
+onder voorwaarden die u vooraf hardop zou moeten uitspreken.
+
+Er pleit veel voor: een vriend kent het bruidspaar en de gastenmix meestal beter dan welke externe
+aanbieder ook. Als hij echt ervaring heeft met het lezen van een publiek (en niet alleen een goede
+muziekcollectie), brengt hij het beslissende deel al mee.
+
+Drie punten pleiten ertegen, en die worden zelden vooraf besproken. Ten eerste: hij is een gast. Wie de
+hele avond achter de draaitafel staat, gaat niet zitten om te eten, danst niet en proost niet mee. Die
+rol zou bewust gekozen moeten worden, niet uit beleefdheid geaccepteerd. Ten tweede: de apparatuur
+ontbreekt meestal. Een laptop en een controller zijn geen geluidsversterking voor een volle zaal, en de
+huisinstallatie van een locatie is daar niet automatisch op gebouwd. Ten derde: er is geen vervanger.
+Als een geboekte aanbieder uitvalt, is vooraf in een contract schriftelijk vastgelegd hoe er in zo'n
+geval wordt gehandeld; als een vriend op het laatste moment afhaakt, staat het feest zonder muziek.
+
+Een eerlijk compromis is verdelen: de vriend neemt een duidelijk afgebakend deel van de avond voor zijn
+rekening (de receptie, de dinermuziek of het laatste uur), terwijl de apparatuur en de
+programmaonderdelen professioneel worden verzorgd. De persoonlijke touch blijft, zonder dat een gast de
+verantwoordelijkheid voor de hele nacht draagt.
+
+## Een eerlijk beslissingshulpmiddel
+
+| Pleit voor de playlist | Pleit voor een dj |
+|---|---|
+| Kleine groep, gesprekken staan centraal | De dansvloer moet de avond dragen |
+| Geen vast programma met muzikale startmomenten | Binnenkomst, openingsdans, taart, speeches |
+| De huisinstallatie van de locatie volstaat | Eigen geluid en licht zijn nodig |
+| Eén gedeelde muzieksmaak | Meerdere generaties of culturen in de zaal |
+| Er is een verantwoordelijke persoon aangewezen | Aankondigingen in meerdere talen gewenst |
+| Geen behoefte aan spontane verzoekjes | Verzoekjes van gasten moeten worden gemodereerd |
+
+Als u op drie of meer rijen in de rechterkolom uitkomt, zal een playlist alleen de avond waarschijnlijk
+niet dragen. Als de linkerkolom duidelijk overheerst, heeft u geen dj nodig en kunt u het budget elders
+inzetten: dat is een legitieme uitkomst van deze oefening, geen compromis.
+
+## Als de beslissing naar een dj gaat
+
+De vraag verschuift dan van «of» naar «wat er precies bij inbegrepen is». Bij DJ Veys omvat het
+standaardpakket zijn eigen geluids- en lichtapparatuur inclusief op- en afbouw, presentatie in het
+Duits, Turks en Engels, een voorgesprek vóór het feest en reizen binnen een vastgestelde straal rond
+Stuttgart; welk pakket bij welk feest past, staat op de pakkettenpagina, en hoe het voorgesprek verloopt,
+wordt beschreven op de pagina over het verloop. De pagina bruiloften en evenementen laat zien welke
+bouwstenen er überhaupt zijn, van eenvoudige geluidsversterking tot livemuziek met blazers.
+
+## Conclusie
+
+De vraag is niet of een playlist werkt. Ze werkt, en voor bepaalde feesten beter dan welke geboekte
+oplossing ook. De vraag is of uw feest afhankelijk is van reactie, apparatuur en presentatie. Wie het
+geplande draaiboek eerlijk doorloopt en steeds blijft haken bij de binnenkomst, de openingsdans en de
+dansvloer, heeft het antwoord al. Wie nergens blijft haken, kan de playlist met een gerust hart
+samenstellen.
+`.trim();
+
 export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
   id: 'hochzeit-ohne-dj-spotify-playlist',
   slug: 'hochzeit-ohne-dj-spotify-playlist',
@@ -751,6 +875,18 @@ export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
         metaTitle: 'Mariage sans DJ : une playlist Spotify suffit-elle ? | DJ Veys',
         metaDescription:
           'Une playlist Spotify suffit-elle pour votre mariage ? Réponse honnête : quand elle fonctionne, ce qu\'elle ne peut pas faire et l\'option d\'un ami DJ.',
+      },
+    },
+    nl: {
+      slug: 'bruiloft-zonder-dj-spotify-playlist',
+      title: 'Bruiloft zonder dj: is een Spotify-playlist genoeg?',
+      excerpt:
+        'Voor kleine feesten waar gesprekken centraal staan, is een Spotify-playlist echt genoeg, en dit artikel zegt dat ronduit. Het wordt pas kritiek zodra er echt gedanst wordt: de dansvloer lezen, overgangen, aankondigingen, apparatuur en een terugvaloptie zijn niet vooraf in een lijst te schrijven. Met een eerlijke blik op de optie «een vriend draait wel» en een beslissingstabel.',
+      body: hochzeitOhneDjSpotifyPlaylistNl,
+      seo: {
+        metaTitle: 'Bruiloft zonder dj: is een Spotify-playlist genoeg? | DJ Veys',
+        metaDescription:
+          'Is een Spotify-playlist genoeg voor uw bruiloft? Eerlijk antwoord: wanneer het werkt, wat een playlist niet kan en de optie van een vriend als dj.',
       },
     },
   },

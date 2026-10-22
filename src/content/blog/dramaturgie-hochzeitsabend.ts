@@ -466,6 +466,89 @@ point culminant. Les couples qui réfléchissent à cette courbe dès le départ
 dont on se souvient comme d'un tout.
 `.trim();
 
+export const dramaturgieNl = `
+## Een bruiloftsavond is dramaturgie, geen vlak verloop
+
+De meest gemaakte planningsfout bij de muziek van een bruiloft is volume en energie gelijkmatig over
+de avond te verdelen, alsof de bruiloft vanaf de ontvangst één doorlopend feest is. In werkelijkheid
+werkt een goede bruiloftsavond als een curve met bewuste hoogte- en dieptepunten: rustige fases om
+aan te komen en te praten, een spanningsopbouw richting het diner en een bewust geplaatst hoogtepunt,
+de zogeheten peaktime, in plaats van een vlakke, constante muur van muziek.
+
+## De vier fases in één oogopslag
+
+| Fase | Doel | Typische muziek |
+|---|---|---|
+| Ontvangst | Aankomst, welkom, eerste gesprekken | Rustig, op de achtergrond, gespreksvriendelijk |
+| Diner en speeches | Aandacht voor het moment, geen afleiding | Ingetogen, laag volume |
+| Opbouw | Overgang van zitten naar dansen | Het tempo stijgt geleidelijk, eerste dansimpulsen |
+| Peaktime | Het energieke hoogtepunt van de avond | Dansbaar, voor alle generaties, veel energie |
+
+Na de peaktime volgt meestal een afbouwfase waarin tempo en volume weer dalen: voor gasten die eerder
+vertrekken, en voor een rustiger maar nog steeds dansbaar slot voor iedereen die blijft.
+
+## Waarom timing belangrijker is dan de afzonderlijke nummers
+
+Twee identieke playlists kunnen volledig anders uitpakken, afhankelijk van wanneer elk nummer wordt
+gedraaid. Een energiek nummer direct na het welkom valt plat, omdat nog niemand wil dansen. Hetzelfde
+nummer 90 minuten later, na diner en speeches, kan de dansvloer meteen vullen.
+
+## Hoe de peaktime bewust wordt opgebouwd
+
+1. **Plan momenten als het aansnijden van de taart of het gooien van het boeket** kort vóór de
+   geplande energieopbouw, niet er middenin.
+2. **Verhoog het tempo geleidelijk** in plaats van abrupt van rustige dinermuziek naar vol volume te
+   springen.
+3. **Plan bewust bekende nummers voor alle generaties** aan het begin van de peaktime, zodat zoveel
+   mogelijk gasten tegelijk de dansvloer op gaan.
+4. **Plan reservemomenten**, bijvoorbeeld een tweede energieboost later in de nacht als de eerste
+   golf wegebt.
+
+## Veelgemaakte dramaturgiefouten
+
+- **De energie te vroeg opbouwen**, waardoor het eigenlijke hoogtepunt al is «opgebruikt» voordat de
+  meeste gasten er klaar voor zijn.
+- **Te veel rustige programmaonderdelen achter elkaar**, die de vaart uit de avond halen.
+- **Geen bewuste overgang tussen de fases**, waardoor stemmingswisselingen abrupt in plaats van
+  natuurlijk aanvoelen.
+
+## Wat als de peaktime te vroeg komt?
+
+Een concreet scenario dat in de praktijk vaak voorkomt: een bijzonder dansgrage vriendengroep wil al
+tijdens het diner de dansvloer op, ruim voordat het draaiboek dat voorziet. Een ervaren dj reageert
+niet met een abrupte stop, maar met bewuste dosering: één of twee dansbare nummers als korte uitlaatklep,
+daarna terug naar rustigere muziek, zodat het eigenlijke hoogtepunt later nog zijn volle effect kan
+hebben.
+
+## De tweede energieboost
+
+Niet elke bruiloft heeft maar één hoogtepunt. Bij langere feesten die tot in de vroege ochtend duren,
+werkt een tweede, bewust geplaatste energieboost vaak goed: rond één of twee uur 's nachts, wanneer
+een deel van de oudere gasten is vertrokken en het overgebleven publiek nieuwe vaart nodig heeft.
+
+## Hoe de dramaturgie zich aanpast aan de locatie
+
+Niet elke locatie maakt dezelfde curve mogelijk. Een zaal met een vroege sluitingstijd of een
+contractueel vastgelegde eindtijd vraagt om een compactere dramaturgie, waarin de peaktime eerder
+begint en intenser maar korter is. Een locatie zonder vaste tijdsgrens laat juist een langere, rustigere
+opbouw toe.
+
+## De rol van de presentatie in de dramaturgie
+
+Muziek alleen draagt de curve van een avond niet: ook de presentatie tussendoor bepaalt hoe soepel de
+overgangen aanvoelen. Een korte, goed geplaatste aankondiging vóór een energieopbouw kan gasten bewust
+naar de dansvloer trekken, terwijl een ongelukkige of te lange aankondiging juist op dat moment de vaart
+eruit kan halen. Bij meertalige gastenlijsten kan een aankondiging in de verkeerde taal op het
+verkeerde moment een hele gastengroep kort uit de actie halen, voordat de muziek hen weer meeneemt.
+
+## Conclusie
+
+Een goed doordachte bruiloftsavond is geen toevallig product van goede nummers, maar het resultaat van
+bewuste dramaturgie: wanneer het rustig wordt, wanneer de energie stijgt en waar het hoogtepunt ligt.
+Bruidsparen die die curve vanaf het begin doordenken, krijgen een avond die in de herinnering als één
+geheel voelt.
+`.trim();
+
 export const dramaturgiePost: BlogPost = {
   id: 'dramaturgie-hochzeitsabend',
   slug: 'dramaturgie-hochzeitsabend',
@@ -538,6 +621,18 @@ export const dramaturgiePost: BlogPost = {
         metaTitle: 'La dramaturgie d\'une soirée de mariage | DJ Veys',
         metaDescription:
           'Vin d\'honneur, dîner, peak time : comment construire la dramaturgie musicale d\'une soirée de mariage, avec tableau des phases et erreurs fréquentes.',
+      },
+    },
+    nl: {
+      slug: 'dramaturgie-van-een-bruiloftsavond',
+      title: 'Van ontvangst tot peaktime: de dramaturgie van een bruiloftsavond',
+      excerpt:
+        'Een goede bruiloftsavond is een curve van bewuste hoogte- en dieptepunten, geen vlakke muur van constante muziek. Deze gids legt de vier fases van een avond uit en hoe de peaktime bewust wordt opgebouwd.',
+      body: dramaturgieNl,
+      seo: {
+        metaTitle: 'De dramaturgie van een bruiloftsavond | DJ Veys',
+        metaDescription:
+          'Ontvangst, diner, peaktime: hoe de muzikale dramaturgie van een bruiloftsavond bewust wordt opgebouwd, met fasetabel en veelgemaakte fouten.',
       },
     },
   },

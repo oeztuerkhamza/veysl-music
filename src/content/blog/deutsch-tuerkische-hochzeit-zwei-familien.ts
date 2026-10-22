@@ -490,6 +490,94 @@ forts de la soirée. Cela demande un peu plus de temps de préparation qu'une f�
 cela paie précisément le soir où les deux côtés de la famille font la fête ensemble.
 `.trim();
 
+export const deutschTuerkischeNl = `
+## De echte uitdaging is niet de muziek, maar de verwachtingen
+
+Bij Duits-Turkse bruiloften begint het gesprek meestal bij de muziek: hoeveel halay, hoeveel Duitse
+hits, hoeveel Engels. Maar de echte uitdaging ligt meestal een niveau dieper: twee families met
+verschillende verwachtingen over draaiboek, tempo en feestcultuur moeten samen één avond maken die voor
+beide kanten goed voelt, niet alleen voor één.
+
+## Waar verwachtingen doorgaans uiteenlopen
+
+| Gebied | Veelvoorkomende Duitse verwachting | Veelvoorkomende Turkse verwachting |
+|---|---|---|
+| Begin van de avond | Stipt begin, duidelijk getimed draaiboek | Iets meer flexibiliteit in de tijd, de familie eerst |
+| Ceremonie | Ceremonie in de buitenlucht of burgerlijk huwelijk centraal | Ringceremonie, soms met een eigen ritueel, een belangrijk programmaonderdeel |
+| Duur van het dansen | De dansvloer gaat meestal later op de avond open | Dansen en halay beginnen vaak eerder in het programma |
+| Volume en energie | Een gelijkmatiger, gematigd niveau heeft de voorkeur | Hogere energie en meer volume tijdens de peaktime zijn gebruikelijk |
+| Einde van de avond | Meestal een vroeger, duidelijk afgebakend einde | Het feest duurt vaak tot diep in de nacht |
+
+Deze tabel geeft een globale tendens weer, geen natuurwet: elke familie is anders. Maar ze laat zien
+waarom een draaiboek dat rond slechts één kant is opgebouwd de andere kant bijna onvermijdelijk
+ontevreden laat.
+
+## Drie principes voor een avond die beide kanten recht doet
+
+### 1. Beide families vroeg bij de planning betrekken
+
+In plaats van muzieksmaak en draaiboek alleen als bruidspaar te bepalen, helpt het om beide families,
+of op zijn minst de belangrijkste contactpersonen aan elke kant, vroeg bij het proces te betrekken.
+
+### 2. Muziek en presentatie bewust mengen, niet scheiden
+
+In plaats van een «Duits blok» en een «Turks blok» werkt een gemengde playlist meestal beter: Duitse en
+internationale nummers wisselen af met halay, Roman Havası en Turkse hits, in plaats van in aparte
+tijdslots te draaien.
+
+### 3. Programmaonderdelen uit beide tradities in het draaiboek verankeren
+
+Ringceremonie, ceremonie in de buitenlucht, het aansnijden van de taart, het gooien van het boeket, de
+opening van de halay: niet elk onderdeel hoeft plaats te vinden, maar elk onderdeel dat plaatsvindt,
+heeft een vast slot in het draaiboek nodig, geen spontaan tussendoortje.
+
+## De rol van de presentatie
+
+Bij gemengde gastenlijsten is de presentatie vaak de plek waar waardering het meest direct zichtbaar
+wordt. Aankondigingen die consequent één taal bevoordelen, geven onbedoeld aan wiens feest het «echt»
+is. Een presentatie die actief wisselt tussen Duits en Turks, afhankelijk van het programmaonderdeel,
+laat voelen dat beide families evenzeer bedoeld zijn.
+
+## Een concreet voorbeeld: de ceremonie
+
+Eén punt waar verschillende verwachtingen bijzonder tastbaar worden, is de ceremonie zelf. Sommige
+families willen een klassieke ceremonie in de buitenlucht in Duitse stijl, andere hechten veel waarde
+aan een ringceremonie met een rode sjerp en de betrokkenheid van meerdere familieleden. Beide zijn in
+één draaiboek te combineren (bijvoorbeeld een korte ceremonie in de buitenlucht, gevolgd door de
+ringceremonie als eigen, bewust gevierd onderdeel), zolang beide elementen vanaf het begin worden
+ingepland en niet achteraf aan elkaar worden geplakt.
+
+## Als de ene familie meer waarde hecht aan traditie dan de andere
+
+In de praktijk is een perfect evenwicht tussen «evenveel Duits» en «evenveel Turks» zeldzaam: meestal
+hecht de ene kant van de familie meer aan bepaalde tradities dan de andere. Dat is geen probleem,
+zolang het openlijk wordt besproken. Een eerlijk gesprek tussen het bruidspaar en beide families over
+welke onderdelen echt belangrijk zijn en welke bespreekbaar, voorkomt dat één kant zich gepasseerd
+voelt omdat verwachtingen nooit hardop zijn uitgesproken.
+
+## De gastenlijst als eigen uitdaging
+
+Duits-Turkse bruiloften hebben bovendien vaak een bijzonder grote gastenlijst, omdat aan beide kanten
+een ruimere definitie van familie gebruikelijk is. Dat heeft direct invloed op de grootte van de
+locatie, de technische behoeften en de tafelindeling: factoren die u beter vroeg in de planning
+doordenkt dan kort voor het feest ontdekt, wanneer de gastenlijst al verdubbeld is.
+
+## Eten en drinken als cultureel kruispunt
+
+Ook de catering brengt bij Duits-Turkse bruiloften vaak verschillende verwachtingen samen, van een
+klassiek menu met meerdere gangen tot een buffet met Turkse meze en hoofdgerechten. Veel bruidsparen
+kiezen voor een bewuste mix in plaats van een of-ofbeslissing. Dit onderwerp raakt de muziek niet
+direct, maar beïnvloedt indirect de dramaturgie van de avond: een langer menu met meerdere gangen
+schuift het begin van de dansfase merkbaar op en moet in de muzikale timing worden meegenomen.
+
+## Conclusie
+
+Een Duits-Turkse bruiloft slaagt niet door een perfecte 50:50-verdeling van de muziek, maar doordat
+beide families zich terugvinden in het draaiboek, de presentatie en de centrale momenten van de avond.
+Dat vraagt iets meer voorbereidingstijd dan een eentalig feest, maar het betaalt zich uit op precies de
+avond waarop beide kanten van de familie samen feestvieren.
+`.trim();
+
 export const deutschTuerkischePost: BlogPost = {
   id: 'deutsch-tuerkische-hochzeit-zwei-familien',
   slug: 'deutsch-tuerkische-hochzeit-zwei-familien',
@@ -562,6 +650,18 @@ export const deutschTuerkischePost: BlogPost = {
         metaTitle: 'Mariage germano-turc : deux familles, une soirée | DJ Veys',
         metaDescription:
           'Planifier un mariage germano-turc qui rende justice aux deux familles : attentes différentes, programme, animation et musique équilibrés.',
+      },
+    },
+    nl: {
+      slug: 'duits-turkse-bruiloft-twee-families',
+      title: 'Duits-Turkse bruiloft: twee families, één avond',
+      excerpt:
+        'Bij Duits-Turkse bruiloften is de echte uitdaging zelden alleen de muziek, maar de verschillende verwachtingen over draaiboek en tempo. Deze gids laat zien waar verwachtingen doorgaans uiteenlopen en hoe u een avond opbouwt die voor beide kanten werkt.',
+      body: deutschTuerkischeNl,
+      seo: {
+        metaTitle: 'Duits-Turkse bruiloft: twee families, één avond | DJ Veys',
+        metaDescription:
+          'Een Duits-Turkse bruiloft plannen die beide families recht doet: verschillende verwachtingen, draaiboek, presentatie en muziek in balans.',
       },
     },
   },
