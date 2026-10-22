@@ -290,6 +290,94 @@ peak sits. Couples who think through that curve from the start get an evening th
 feels whole in memory.
 `.trim();
 
+export const dramaturgieEs = `
+## Una noche de boda es dramaturgia, no un flujo uniforme
+
+El error de planificación más habitual con la música de una boda es repartir el volumen y la
+energía de forma pareja a lo largo de la noche, como si la boda fuera una fiesta continua
+desde el cóctel de bienvenida. En realidad, una buena noche de boda funciona como una curva
+con altos y bajos deliberados: fases tranquilas para llegar y conversar, una tensión que
+crece hacia la cena y un punto álgido colocado a propósito, el llamado «peak time», en lugar
+de un bombardeo de música plano y constante.
+
+## Las cuatro fases de un vistazo
+
+| Fase | Objetivo | Música típica |
+|---|---|---|
+| Cóctel de bienvenida | Llegada, recibimiento, primeras conversaciones | Tranquila, de fondo, que permita hablar |
+| Cena y discursos | Atención en el momento, sin distracciones | Contenida, a volumen bajo |
+| Subida de energía | Transición de estar sentados a bailar | El tempo sube poco a poco, primeros impulsos para bailar |
+| Peak time | El punto álgido de energía de la noche | Bailable, para todas las generaciones, con mucha energía |
+
+Después del peak time suele venir una fase de descenso, con el tempo y el volumen bajando de
+nuevo: para quienes se marchan antes, y un cierre más sereno pero todavía bailable para todos
+los que se quedan.
+
+## Por qué el momento importa más que cada canción
+
+Dos listas idénticas pueden funcionar de forma completamente distinta según el momento en que
+suena cada canción. Un tema de mucha energía justo después de la bienvenida se queda sin
+efecto, porque nadie quiere bailar todavía. La misma canción 90 minutos más tarde, tras la
+cena y los discursos, puede llenar la pista al instante.
+
+## Cómo se construye el peak time de forma deliberada
+
+1. **Coloque momentos como el corte de la tarta o el lanzamiento del ramo** poco antes de la
+   subida de energía prevista, no en mitad de ella.
+2. **Suba el tempo poco a poco** en lugar de pasar de golpe de una música de cena tranquila al
+   volumen máximo.
+3. **Programe a propósito canciones conocidas y de todas las generaciones** al comienzo del
+   peak time, para que el mayor número posible de invitados llegue a la pista a la vez.
+4. **Prevea momentos de reserva**, por ejemplo un segundo impulso de energía más avanzada la
+   noche si la primera ola se apaga.
+
+## Errores frecuentes de dramaturgia
+
+- **Subir la energía demasiado pronto**, de modo que el verdadero punto álgido ya está «gastado»
+  antes de que la mayoría de los invitados esté preparada.
+- **Demasiados puntos tranquilos del programa seguidos**, que agotan el impulso de la noche.
+- **Ninguna transición deliberada entre fases**, de modo que los cambios de ambiente resultan
+  bruscos en lugar de orgánicos.
+
+## ¿Qué ocurre si el peak time llega demasiado pronto?
+
+Un caso concreto que se da a menudo en la práctica: un grupo de amigos especialmente
+bailones empuja hacia la pista ya durante la cena, mucho antes de lo que marca el programa.
+Un DJ con experiencia no responde con un corte brusco, sino con una dosificación deliberada:
+una o dos canciones bailables como breve válvula de escape y luego de vuelta a una música más
+tranquila, para que el verdadero punto álgido siga teniendo todo su efecto más adelante.
+
+## El segundo impulso de energía
+
+No todas las bodas tienen un solo punto álgido. En celebraciones más largas que llegan hasta
+la madrugada, un segundo impulso de energía colocado a propósito suele funcionar bien: hacia
+la una o las dos de la mañana, cuando algunos invitados mayores ya se han marchado y el
+público que queda necesita un nuevo empuje.
+
+## Cómo se adapta la dramaturgia al lugar
+
+No todos los lugares permiten la misma curva. Un salón con hora de cierre temprana o con una
+hora de finalización fijada por contrato exige una dramaturgia más comprimida, en la que el
+peak time empieza antes y resulta más intenso pero más corto. Un lugar sin límite horario
+permite, en cambio, una subida más larga y gradual.
+
+## El papel de la presentación en la dramaturgia
+
+La música por sí sola no sostiene la curva de una noche: la presentación entre medias también
+decide lo fluidas que resultan las transiciones. Un aviso breve y bien situado antes de una
+subida de energía puede llevar a los invitados a la pista con intención, mientras que un aviso
+poco acertado o demasiado largo puede apagar el impulso justo en ese momento. En listas de
+invitados con varios idiomas, un aviso en el idioma equivocado en el momento equivocado puede
+sacar brevemente a todo un grupo de la acción antes de que la música vuelva a atraparlo.
+
+## Conclusión
+
+Una noche de boda bien pensada no es el producto casual de buenas canciones, sino el
+resultado de una dramaturgia deliberada: cuándo se calma, cuándo sube la energía y dónde está
+el punto álgido. Las parejas que piensan esa curva desde el principio consiguen una noche que
+se recuerda como un todo.
+`.trim();
+
 export const dramaturgiePost: BlogPost = {
   id: 'dramaturgie-hochzeitsabend',
   slug: 'dramaturgie-hochzeitsabend',
@@ -338,6 +426,18 @@ export const dramaturgiePost: BlogPost = {
         metaTitle: 'The Dramaturgy of a Wedding Evening | DJ Veys',
         metaDescription:
           'Champagne reception, dinner, peak time: how the musical dramaturgy of a wedding evening is deliberately built, with a phase table and common mistakes.',
+      },
+    },
+    es: {
+      slug: 'dramaturgia-de-una-noche-de-boda',
+      title: 'Del cóctel al peak time: la dramaturgia de una noche de boda',
+      excerpt:
+        'Una buena noche de boda es una curva de altos y bajos deliberados, no un bombardeo plano y constante de música. Esta guía explica las cuatro fases de una noche y cómo se construye el peak time de forma deliberada.',
+      body: dramaturgieEs,
+      seo: {
+        metaTitle: 'La dramaturgia de una noche de boda | DJ Veys',
+        metaDescription:
+          'Cóctel, cena, peak time: cómo se construye de forma deliberada la dramaturgia musical de una noche de boda, con tabla de fases y errores habituales.',
       },
     },
   },

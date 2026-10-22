@@ -318,6 +318,105 @@ rather than improvised on the day. Exactly these points are discussed during the
 planning call, based on the actual venue.
 `.trim();
 
+export const freieTrauungEs = `
+## Por qué una ceremonia al aire libre es técnicamente más exigente de lo que parece
+
+A primera vista, una ceremonia al aire libre parece técnicamente sencilla: un micrófono, algo
+de música de fondo y listo. En la práctica suele ser el punto más exigente de todo el día: no
+hay una toma de corriente fija, el viento cambia, el tiempo es impredecible y hablan varias
+personas (el oficiante, la pareja y a menudo también los testigos) que deben entenderse todas
+sin que el equipo domine visiblemente el momento.
+
+## Tres problemas básicos al aire libre
+
+| Problema | Por qué importa |
+|---|---|
+| Suministro eléctrico | Rara vez hay una toma al alcance, sobre todo en lugares de ceremonia alejados del recinto principal |
+| Viento y tiempo | Ruido de viento en el micrófono y riesgo de lluvia para el equipo sensible |
+| Varios oradores | El oficiante, la pareja y los testigos necesitan un sonido claro sin pasarse el micrófono continuamente |
+
+## Suministro eléctrico: soluciones que funcionan de verdad
+
+Si no hay una toma fija cerca de la ceremonia, existen básicamente dos vías viables: un cable
+suficientemente largo y tendido con seguridad hasta la fuente de corriente disponible más
+cercana, o una solución autónoma alimentada por baterías durante el tiempo de la ceremonia.
+Cuál tiene sentido depende de la distancia hasta la toma más próxima y de la duración de la
+ceremonia, y debe aclararse durante la visita al lugar, no el mismo día.
+
+## El montaje de micrófonos: más que un solo micrófono de mano
+
+En una ceremonia al aire libre con varias personas que hablan, un único micrófono de mano
+rara vez es la mejor solución: obliga a pasarlo constantemente e interrumpe el hilo del
+discurso. Funciona mejor lo siguiente:
+
+- **Micrófonos de solapa** para el oficiante y, si procede, para la pareja.
+- **Un micrófono de mano adicional** para los invitados que hablen de forma espontánea.
+- **Altavoces discretos pero bien colocados**, para que las filas de atrás lo oigan todo sin
+  que las de delante se vean abrumadas por el volumen.
+
+## El viento: el perturbador infravalorado
+
+En las ceremonias al aire libre, el viento suele ser un problema mayor que la lluvia: incluso
+un viento ligero produce un ruido claramente audible en un micrófono sin protección. Por eso
+un antiviento en el micrófono es estándar, no opcional.
+
+## Un plan para la lluvia: decidido de antemano, no improvisado
+
+Toda ceremonia al aire libre debería tener un plan B claro: una alternativa cubierta cercana,
+ya pensada técnicamente de antemano y no improvisada cuando se acumulan las nubes.
+
+## ¿Cuántos altavoces necesita realmente una ceremonia al aire libre?
+
+La respuesta depende menos del número de invitados que de la forma del espacio de la
+ceremonia. Una zona larga y estrecha necesita una distribución distinta de la de una
+disposición ancha en semicírculo. Como regla orientativa: a partir de unos 60 a 80 invitados
+al aire libre, un segundo par de altavoces suele compensar, para que las filas de atrás lo
+oigan todo con claridad sin que las de delante se vean abrumadas por el volumen.
+
+## Equipo de reserva: por qué un segundo micrófono no debería ser negociable
+
+En un evento en interior, un fallo técnico suele poder resolverse rápido. En una ceremonia al
+aire libre, sin taller ni piezas de repuesto cerca, es distinto: un micrófono que falla en
+mitad de la ceremonia no puede repararse en el momento. Por eso un segundo micrófono listo
+para usar es equipamiento estándar en cualquier montaje de sonido profesional al aire libre,
+no un extra opcional.
+
+## Música de fondo antes y después de la ceremonia
+
+Además de amplificar los discursos y el propio ritual, conviene pensar también el marco
+musical de la ceremonia: una pieza tranquila mientras llegan los invitados, una canción de
+entrada elegida a propósito para la pareja y una pieza adecuada para el momento justo después
+del «sí, quiero», a menudo la transición más emotiva de toda la ceremonia. Esta música pasa
+por el mismo sistema que el sonido de los discursos y, por tanto, debe planificarse
+técnicamente y no tratarse como un detalle aparte. Si en ese momento se usa música en directo
+con saz o guitarra, suele tener al aire libre un efecto especialmente claro y directo, sin la
+acústica de una sala cerrada.
+
+## Cuando la ceremonia se celebra en un lugar distinto al del banquete
+
+En muchas bodas, la ceremonia al aire libre tiene lugar en un sitio distinto al del banquete
+posterior (por ejemplo, en un viñedo, mientras que la fiesta se celebra en un salón). Eso
+exige o bien dos montajes técnicos separados o bien un traslado de equipo con horario claro
+entre los dos lugares. Ambas cosas son posibles, pero deben incluirse en el calendario desde
+el principio, de modo que quede margen suficiente entre la ceremonia y el banquete para el
+cambio.
+
+## Una lista de comprobación para la visita al lugar
+
+1. ¿Dónde está la toma de corriente más cercana y qué distancia de cable hay que cubrir?
+2. ¿Hay una alternativa cubierta en caso de lluvia?
+3. ¿Cuál es la dirección habitual del viento en este lugar?
+4. ¿Cuántas personas se espera que hablen?
+5. ¿A qué distancia está la última fila de asientos de la primera?
+
+## Conclusión
+
+Una ceremonia al aire libre suele poder resolverse limpiamente desde el punto de vista
+técnico, pero solo si la electricidad, el número de micrófonos, el viento y un plan para la
+lluvia se piensan de antemano y no se improvisan el mismo día. Estos puntos se tratan
+precisamente en la reunión de planificación, a partir del lugar real.
+`.trim();
+
 export const freieTrauungPost: BlogPost = {
   id: 'freie-trauung-beschallung-mikrofone-wetter',
   slug: 'freie-trauung-beschallung-mikrofone-wetter',
@@ -366,6 +465,18 @@ export const freieTrauungPost: BlogPost = {
         metaTitle: 'Outdoor Ceremony: Sound & Microphones | DJ Veys',
         metaDescription:
           'How do you get clean sound for an outdoor ceremony? Power without a socket, microphone setup, wind protection and a rain plan.',
+      },
+    },
+    es: {
+      slug: 'ceremonia-al-aire-libre-sonido-microfonos-clima',
+      title: 'Ceremonia al aire libre: sonido, micrófonos y clima',
+      excerpt:
+        'Una ceremonia al aire libre suele ser técnicamente más exigente de lo que parece: sin toma de corriente, con viento y con varios oradores. Esta guía muestra soluciones prácticas para la electricidad, el montaje de micrófonos y un plan para la lluvia.',
+      body: freieTrauungEs,
+      seo: {
+        metaTitle: 'Sonido para ceremonias al aire libre | DJ Veys',
+        metaDescription:
+          'Ceremonia de boda al aire libre: suministro eléctrico, micrófonos de solapa, protección contra el viento, plan para la lluvia y una lista de comprobación para la visita al lugar.',
       },
     },
   },

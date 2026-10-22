@@ -292,6 +292,106 @@ Veys coordinates with live musicians and davul-zurna players for entrances and c
 and hosts in German, Turkish and English. For coordinating with the rest of your day, a free enquiry for your date is a good next step.
 `.trim();
 
+export const gelinAlmaEs = `
+## Gelin alma: cuando la boda sale a la calle
+
+En muchas bodas turcas, el día de la boda no empieza en el salón, sino en la puerta de casa de
+la novia. La familia del novio acude a buscarla: **gelin alma** (recoger a la novia) o, desde
+el lado de su familia, **gelin çıkarma** (sacar a la novia de la casa). El momento es breve
+pero intenso: una despedida de padres y hermanos, música en la calle, fotos, a menudo
+lágrimas y risas a la vez. En Alemania se celebra completo, abreviado o se omite
+deliberadamente, según la familia. Quien lo planifique debería saber qué partes son
+costumbre, cuáles requieren organización y dónde encaja la música.
+
+## Qué suele ocurrir en la recogida de la novia
+
+No existe un programa fijo; la región y la familia deciden mucho. Estos elementos son
+habituales:
+
+- **El cortejo de coches.** La familia del novio llega en una caravana de coches, a menudo
+  decorados.
+- **La música a la llegada.** Según la familia, davul y zurna, una banda de música o música de
+  un sistema móvil anuncian la llegada.
+- **La puerta.** En algunas familias se bloquea el paso hacia la novia de forma lúdica hasta
+  que los invitados del otro lado entregan algo.
+- **La cinta roja.** El padre de la novia o un hermano suele atarle una cinta roja a la
+  cintura, como señal de protección y bendición.
+- **La despedida.** La novia sale de la casa con su familia; muchas familias tienen para ello
+  una canción concreta, a menudo muy emotiva.
+- **El trayecto hasta el siguiente lugar:** la ceremonia civil, la sesión de fotos o el salón.
+
+No todo encaja en todas partes, y está perfectamente bien adoptar solo algunos elementos.
+
+## Música y técnica en la calle
+
+En el exterior rigen reglas distintas a las del salón. El davul y la zurna se oyen por toda la
+calle y suenan lo bastante fuerte sin amplificación. Un sistema móvil, en cambio, necesita
+corriente (batería o una toma cercana), espacio para instalarse y protección contra el viento
+para los micrófonos. Pregunte de antemano si la música debe ser en directo, del DJ o mixta, y
+quién da la señal en el momento decisivo, la despedida de la novia. Si eso no se acuerda,
+suena la canción equivocada en plena despedida, o ninguna.
+
+## Vecinos, ruido y tráfico
+
+Una recogida con música y caravana tiene lugar en el espacio público. No es problemático
+mientras sea breve y los vecinos lo sepan de antemano. Tres puntos evitan los problemas más
+frecuentes:
+
+- **Aviso previo.** Una breve nota o unas palabras con los vecinos de antemano no cuestan nada
+  y ahorran una discusión después.
+- **Hora.** Los domingos y durante el descanso de mediodía, la música en la calle y los
+  bocinazos son mucho más sensibles que un sábado por la tarde.
+- **Tráfico.** Las caravanas y los bocinazos están sujetos a las normas de circulación. Quien
+  quiera cortar una calle o notificar una procesión debería acordarlo antes con la autoridad
+  competente; las normas y las competencias varían de una ciudad a otra.
+
+Para el ruido y los horarios de silencio de la propia celebración, la guía sobre
+Baden-Württemberg ofrece una visión general.
+
+## Lista de comprobación para la recogida de la novia
+
+| Punto | Cuestión que aclarar |
+|---|---|
+| Hora y duración | ¿Cuándo empieza, cuánto puede durar, qué viene después? |
+| Música | En directo, DJ o ambos, y ¿quién da la señal para la despedida? |
+| Canción de despedida | ¿Qué pieza, qué versión, cuánta duración? |
+| Electricidad y espacio | ¿Dónde se instala el sistema, hay toma de corriente, hay espacio suficiente? |
+| Caravana | ¿Cuántos vehículos, adónde va el trayecto, quién abre la marcha? |
+| Vecinos | ¿Lo saben, hay horas de descanso que respetar? |
+| Foto y vídeo | ¿Dónde se sitúan los fotógrafos sin estorbar? |
+| Relevo | ¿Quién avisa al grupo de que toca el siguiente punto? |
+
+## Escollos frecuentes
+
+- **La despedida no tiene director.** Sin una señal clara, el momento más emotivo del día
+  pasa sin música o con la canción equivocada.
+- **Una pausa demasiado larga antes de continuar.** Si nadie sabe qué viene después de la
+  despedida, los grupos se dispersan y el programa se retrasa media hora.
+- **Demasiado equipo para tan poco espacio.** Un sistema que bloquea la acera se convierte
+  enseguida en un problema.
+- **Música sin coordinar.** Los músicos en directo y el DJ tocan unos contra otros si nadie
+  aclara de antemano quién toca cuándo.
+- **Ninguna coordinación con el resto del día.** La recogida afecta a la ceremonia, a las fotos
+  y a la entrada al salón; un margen de al menos media hora rara vez sobra.
+
+## Cuánto tiempo prever
+
+Como orientación, que varía notablemente de una familia a otra: de 30 a 60 minutos para la
+llegada, el ritual y la despedida, más el tiempo de traslado hasta el siguiente lugar. Lo que
+importa es menos la cifra exacta que un margen que impida que los retrasos se trasladen a la
+ceremonia, a las fotos y a la entrada al salón.
+
+## Conclusión
+
+La recogida de la novia no es un espectáculo secundario, sino el primer gran momento del día,
+y aquel en el que la música y la organización tienen que trabajar juntas de la forma más
+visible. Quien acuerda de antemano la señal, la electricidad, los vecinos y el margen de
+tiempo consigue una apertura que todos recuerdan. DJ Veys se coordina con músicos en directo
+y con intérpretes de davul-zurna para entradas y ceremonias, y presenta en alemán, turco e
+inglés. Para coordinarlo con el resto de su día, una consulta gratuita para su fecha es un buen
+siguiente paso.
+`.trim();
+
 export const gelinAlmaPost: BlogPost = {
   id: 'gelin-alma-brautabholung-musik',
   slug: 'gelin-alma-brautabholung-musik',
@@ -343,6 +443,18 @@ export const gelinAlmaPost: BlogPost = {
         metaTitle: "Gelin Alma: Bride's Collection & Music | DJ Veys",
         metaDescription:
           "Gelin alma at a Turkish wedding: typical elements of the bride's collection, music and equipment on the street, neighbours, a checklist and common pitfalls.",
+      },
+    },
+    es: {
+      slug: 'gelin-alma-recogida-de-la-novia',
+      title: 'Gelin alma: la recogida de la novia en una boda turca y su música',
+      excerpt:
+        'La recogida de la novia es el primer gran momento del día de la boda: caravana, música, cinta roja y despedida. Esta guía muestra qué suele formar parte de ella, a qué prestar atención con el equipo, los vecinos y el tráfico, y dónde falla la planificación.',
+      body: gelinAlmaEs,
+      seo: {
+        metaTitle: 'Gelin alma: la recogida de la novia y su música | DJ Veys',
+        metaDescription:
+          'Qué ocurre en el gelin alma, cómo organizar música, equipo, vecinos y tráfico, con lista de comprobación y los escollos más frecuentes de la recogida de la novia.',
       },
     },
   },

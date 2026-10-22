@@ -301,6 +301,98 @@ other things by appearances in Vienna — and lays out logistics and cost transp
 in the individual quote.
 `.trim();
 
+export const destinationEs = `
+## Por qué un DJ de casa suele ser mejor opción que uno del lugar
+
+Para una boda en destino, lo evidente parece ser contratar a un DJ local. En la práctica,
+muchas parejas deciden conscientemente no hacerlo, porque un DJ que ya conoce su lista de
+deseos, la cultura de su familia y, en el caso de parejas biculturales, los dos mundos
+lingüísticos supone un riesgo menos en un día en el que ya hay mucho nuevo y desconocido.
+
+## Las preguntas logísticas básicas
+
+| Pregunta | Por qué conviene resolverla pronto |
+|---|---|
+| Viaje por carretera o en avión | Afecta a los costes de desplazamiento y a una hora de llegada realista antes de la celebración |
+| Alojamiento | ¿Lo organiza la pareja o el DJ? |
+| Equipo en el lugar | Traer el propio (más esfuerzo) o alquilarlo allí (comprobar la calidad con antelación) |
+| Suministro eléctrico en el destino | La tensión y los tipos de enchufe varían de un país a otro |
+| Aduanas y transporte | Relevante si se lleva equipo propio, según el destino |
+
+## ¿Traer el equipo propio o alquilarlo en el lugar?
+
+Ambos caminos funcionan, con ventajas e inconvenientes distintos. Llevar el equipo propio
+significa material conocido y probado, pero más esfuerzo de transporte y posibles cuestiones
+de aduana. Alquilar en el lugar ahorra transporte, pero exige comprobar con cuidado la
+calidad y la disponibilidad con antelación.
+
+## Qué debe incluir el presupuesto
+
+Un presupuesto para una boda en destino se distingue estructuralmente de uno regional: además
+del servicio de DJ en sí, se añaden el viaje o los vuelos, el alojamiento y, en su caso, el
+alquiler de equipo local. Un presupuesto serio lo desglosa por separado en lugar de ocultarlo
+en una vaga tarifa plana.
+
+## El idioma y la continuidad musical como ventaja
+
+Sobre todo en bodas germano-turcas u otras bodas biculturales en destino, un DJ que viaja es
+a menudo la única manera de garantizar la continuidad musical y lingüística durante toda la
+celebración, desde la ceremonia al aire libre hasta el peak time.
+
+## Un calendario de planificación práctico
+
+1. **De 6 a 12 meses antes:** decidir en principio si un DJ que viaja es una opción y enviar
+   una primera consulta de disponibilidad.
+2. **De 4 a 6 meses antes:** aclarar la logística: viaje, alojamiento, equipo en el lugar o
+   traído de casa.
+3. **De 2 a 3 meses antes:** cerrar la lista de deseos y el programa, adaptados a las
+   condiciones locales.
+4. **Últimas semanas:** confirmar detalles técnicos como el suministro eléctrico y el acceso
+   al lugar.
+
+## En qué se diferencia la reunión de planificación en una boda en destino
+
+Aunque el principio básico de la reunión de planificación sigue siendo el mismo (programa,
+gusto musical, vetos, horarios), una boda en destino añade temas adicionales: las condiciones
+climáticas del destino y su efecto en el equipo al aire libre, el suministro eléctrico
+disponible en el lugar concreto y si el recinto tiene experiencia con DJ externos o normas
+propias sobre el sonido. Estas cuestiones suelen poder aclararse por videollamada y con
+fotos o un plano del lugar, sin necesidad de una visita física antes del viaje.
+
+## Husos horarios y viaje: un factor a menudo subestimado
+
+Un punto fácil de pasar por alto al planificar: si el DJ cruza varios husos horarios,
+necesita de forma realista al menos un día completo de margen antes de la celebración para
+absorber el cambio horario, el estrés del viaje y una comprobación técnica sin prisas. Un
+plan de viaje comprimido en el propio día de la celebración eleva innecesariamente el riesgo
+si los vuelos se retrasan o el transporte tarda más de lo previsto.
+
+## La comunicación a distancia: por qué funciona de otra manera
+
+En una boda en destino, casi toda la preparación transcurre por fuerza a través de
+videollamadas y comunicación escrita en lugar de encuentros en persona. En la práctica
+funciona bien, pero exige algo más de disciplina en la documentación: los acuerdos sobre la
+lista de deseos, el programa y el montaje técnico deben ponerse por escrito de forma
+sistemática, para que el propio día, con diferencia horaria y sin posibilidad de hacer una
+pregunta rápida en persona, nada quede sin aclarar.
+
+## Una prueba antes del viaje
+
+Para detalles técnicos especialmente importantes, como una combinación de enchufes poco
+habitual o un requisito de tensión inusual, merece la pena hacer una prueba técnica con el
+equipo que se llevará o se encargará antes de que empiece el viaje. Cuesta tiempo por
+adelantado, pero evita descubrir un problema técnico solo en el destino, donde resolverlo
+con rapidez es mucho más difícil que en casa.
+
+## Conclusión
+
+Contratar a un DJ para una boda en destino no es un caso especial imposible de planificar:
+simplemente requiere más antelación y un desglose claro de viaje, alojamiento y equipo. DJ
+Veys también puede contratarse a nivel internacional además de en Baden-Württemberg, algo que
+documentan, entre otras cosas, actuaciones en Viena, y presenta la logística y los costes de
+forma transparente en el presupuesto individual.
+`.trim();
+
 export const destinationPost: BlogPost = {
   id: 'destination-wedding-dj-buchen',
   slug: 'destination-wedding-dj-buchen',
@@ -348,6 +440,18 @@ export const destinationPost: BlogPost = {
         metaTitle: 'Destination Wedding: Booking a DJ Abroad | DJ Veys',
         metaDescription:
           'How do you book a DJ for a destination wedding abroad? Logistics, equipment on site or brought along, cost, and a realistic timeframe.',
+      },
+    },
+    es: {
+      slug: 'contratar-dj-boda-en-destino',
+      title: 'Boda en destino: cómo contratar a un DJ en el extranjero',
+      excerpt:
+        'En una boda en destino, muchas parejas deciden conscientemente no contratar a un DJ local, sino a uno que ya conozca su lista de deseos y los dos mundos lingüísticos. Esta guía repasa la logística básica y un calendario realista.',
+      body: destinationEs,
+      seo: {
+        metaTitle: 'DJ para boda en destino: logística y calendario | DJ Veys',
+        metaDescription:
+          'Contratar a un DJ para una boda en el extranjero: viaje, equipo, alojamiento, qué debe incluir el presupuesto y un calendario de planificación realista.',
       },
     },
   },

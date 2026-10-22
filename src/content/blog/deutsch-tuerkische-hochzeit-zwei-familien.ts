@@ -303,6 +303,99 @@ celebration — but it pays off exactly on the night both sides of the family ce
 together.
 `.trim();
 
+export const deutschTuerkischeEs = `
+## El verdadero reto no es la música, sino las expectativas
+
+En las bodas germano-turcas, la conversación suele empezar por la música: cuánto halay,
+cuántos éxitos alemanes, cuánto inglés. Pero el verdadero reto suele estar un nivel más
+abajo: dos familias con expectativas distintas sobre el programa, el ritmo y la cultura de la
+celebración tienen que construir una única noche compartida que se sienta bien para ambas
+partes, no solo para una.
+
+## Dónde suelen divergir las expectativas
+
+| Ámbito | Expectativa alemana habitual | Expectativa turca habitual |
+|---|---|---|
+| Inicio de la noche | Comienzo puntual, programa con horarios claros | Algo más de flexibilidad en los horarios, la familia primero |
+| Ceremonia | Ceremonia al aire libre o civil como centro | Ceremonia de los anillos, a veces con ritual propio, un punto importante del programa |
+| Duración del baile | La pista suele abrirse más tarde en la noche | El baile y el halay suelen empezar antes en el programa |
+| Volumen y energía | Se prefiere un nivel más uniforme y moderado | Es habitual una energía y un volumen más altos durante el peak time |
+| Final de la noche | Suele preferirse un cierre más temprano y bien definido | La celebración suele prolongarse hasta bien entrada la noche |
+
+Esta tabla recoge una tendencia aproximada, no una ley de la naturaleza: cada familia es
+distinta. Pero muestra por qué un programa construido pensando solo en una de las partes deja
+casi inevitablemente insatisfecha a la otra.
+
+## Tres principios para una noche que haga justicia a ambas partes
+
+### 1. Implicar pronto a las dos familias en la planificación
+
+En lugar de decidir el gusto musical y el programa solo como pareja, ayuda incorporar pronto
+al proceso a las dos familias, o al menos a las personas de contacto clave de cada lado.
+
+### 2. Combinar música y presentación de forma deliberada, sin separarlas
+
+En lugar de un «bloque alemán» y un «bloque turco», suele funcionar mejor una lista mezclada:
+las canciones alemanas e internacionales se alternan con halay, Roman Havası y éxitos turcos,
+en lugar de sonar en franjas horarias separadas.
+
+### 3. Anclar en el programa los puntos de ambas tradiciones
+
+Ceremonia de los anillos, ceremonia al aire libre, corte de la tarta, lanzamiento del ramo,
+apertura del halay: no hace falta que se celebren todos los puntos, pero cada uno que se
+celebre necesita una franja fija en el programa, no un hueco improvisado.
+
+## El papel de la presentación
+
+En listas de invitados mixtas, la presentación es a menudo donde más directamente se nota el
+aprecio. Los avisos que favorecen de forma constante un idioma señalan sin querer de quién es
+«realmente» la celebración. Una presentación que cambia activamente entre alemán y turco
+según el punto del programa hace sentir que ambas familias están igualmente incluidas.
+
+## Un ejemplo concreto: la ceremonia
+
+Un punto en el que las expectativas distintas se vuelven especialmente tangibles es la propia
+ceremonia. Algunas familias quieren una ceremonia clásica al aire libre al estilo alemán;
+otras dan mucha importancia a una ceremonia de los anillos con una banda roja y la
+participación de varios familiares. Ambas pueden combinarse en un mismo programa (por
+ejemplo, una breve ceremonia al aire libre seguida de la ceremonia de los anillos como punto
+propio y celebrado a propósito), siempre que los dos elementos se planifiquen desde el
+principio y no se unan a posteriori.
+
+## Cuando una familia da más peso a la tradición que la otra
+
+En la práctica, un equilibrio perfecto entre «igual de alemán» e «igual de turco» es raro: lo
+habitual es que un lado de la familia se preocupe más que el otro por ciertas tradiciones. No
+es un problema mientras se hable con franqueza. Una conversación honesta entre la pareja y las
+dos familias sobre qué puntos del programa importan de verdad y cuáles son negociables evita
+que una de las partes se sienta pasada por alto porque las expectativas nunca se expresaron en
+voz alta.
+
+## La lista de invitados como reto propio
+
+Las bodas germano-turcas suelen tener además una lista de invitados especialmente larga,
+porque en ambos lados es habitual una definición más amplia de familia. Eso afecta
+directamente al tamaño del lugar, a las necesidades técnicas y a la distribución de las
+mesas: factores que conviene pensar pronto en la planificación y no descubrir poco antes de la
+celebración, cuando la lista de invitados ya se ha duplicado.
+
+## La comida y la bebida como punto de encuentro cultural
+
+El catering también reúne a menudo expectativas distintas en las bodas germano-turcas, desde
+un menú clásico de varios platos hasta un bufé de mezze y platos principales turcos. Muchas
+parejas eligen una mezcla deliberada en lugar de una decisión excluyente. Este tema no afecta
+directamente a la música, pero sí indirectamente a la dramaturgia de la noche: un menú más
+largo y de varios platos retrasa de forma notable el inicio de la fase de baile y debe
+reflejarse en consecuencia en el calendario musical.
+
+## Conclusión
+
+Una boda germano-turca no sale bien por un reparto perfecto 50:50 de la música, sino porque
+las dos familias se encuentran reflejadas en el programa, en la presentación y en los momentos
+centrales de la noche. Eso requiere algo más de tiempo de preparación que una celebración
+monolingüe, pero compensa justo la noche en que ambos lados de la familia celebran juntos.
+`.trim();
+
 export const deutschTuerkischePost: BlogPost = {
   id: 'deutsch-tuerkische-hochzeit-zwei-familien',
   slug: 'deutsch-tuerkische-hochzeit-zwei-familien',
@@ -351,6 +444,18 @@ export const deutschTuerkischePost: BlogPost = {
         metaTitle: 'Planning a German-Turkish Wedding | DJ Veys',
         metaDescription:
           'How does a German-Turkish wedding work for both families? Typical expectation gaps, three guiding principles, and the role of hosting.',
+      },
+    },
+    es: {
+      slug: 'boda-germano-turca-dos-familias',
+      title: 'Boda germano-turca: dos familias, una noche',
+      excerpt:
+        'En las bodas germano-turcas, el verdadero reto rara vez es solo la música: son las expectativas distintas sobre el programa y el ritmo. Esta guía muestra dónde suelen divergir las expectativas y cómo construir una noche que funcione para ambas partes.',
+      body: deutschTuerkischeEs,
+      seo: {
+        metaTitle: 'Boda germano-turca: dos familias, una noche | DJ Veys',
+        metaDescription:
+          'Cómo planificar una boda germano-turca que haga justicia a ambas familias: expectativas distintas, programa, presentación y música combinados de forma equilibrada.',
       },
     },
   },

@@ -411,6 +411,141 @@ order and keeps snagging on the entrance, the first dance and the dance floor al
 the answer. Anyone who snags nowhere can build the playlist with a clear conscience.
 `.trim();
 
+export const hochzeitOhneDjSpotifyPlaylistEs = `
+## Primero, la respuesta sincera
+
+Hay bodas en las que una lista de reproducción cuidadosamente preparada basta por completo. Y
+hay bodas en las que cuesta visiblemente la noche. Quien se hace esta pregunta suele buscar una
+valoración fiable y no un discurso de venta, y esa valoración es posible si se separan tres
+cosas: qué hace bien una lista, qué no puede hacer por principio y qué tipo de celebración se
+está planificando realmente.
+
+## Cuándo una lista de reproducción basta de verdad
+
+Una lista no es un recurso de emergencia. Para ciertos formatos es la respuesta correcta, y un
+DJ contratado sería sencillamente desproporcionado. Sostiene una noche cuando coinciden varios
+de estos puntos:
+
+- **La celebración sigue siendo pequeña y manejable**, dentro de la familia cercana o de un
+  círculo de amigos.
+- **La noche gira en torno a la conversación**, no a una pista de baile que deba mantenerse
+  llena. La música suena de fondo y está pensada para quedarse ahí.
+- **Apenas hay momentos del programa** que deban encajar con precisión: ninguna entrada
+  elaborada, ningún discurso con entrada musical, ninguna sorpresa cuyo efecto dependa del
+  momento.
+- **El lugar ofrece un sistema de sonido que funciona** y al que se puede conectar de forma
+  fiable un dispositivo de reproducción.
+- **Se ha acordado de antemano quién se ocupa**: alguien que no sea la pareja y que siga
+  localizable toda la noche.
+
+Un aperitivo al mediodía tras el registro civil, una cena con un grupo reducido, una fiesta en
+el jardín con música de fondo: para todo eso rara vez hace falta un DJ. Planificar una lista
+ahí ahorra dinero donde no duele. La pregunta solo se vuelve interesante cuando hay baile de
+verdad.
+
+## Lo que una lista de reproducción no puede hacer
+
+### Reaccionar a la sala
+
+Una lista está terminada en el momento en que se construye. No percibe que la pista se vació
+tras la tercera canción, que la generación mayor acaba de levantarse en bloque o que un tema
+que sobre el papel parecía perfecto está haciendo caer el ambiente. Esa corrección en tiempo
+real (otra canción, otro tempo, otra década) es el verdadero núcleo del trabajo de un DJ. Todo
+lo demás puede prepararse de antemano; eso no.
+
+### Transiciones y volumen
+
+Entre dos temas de una lista hay un hueco, y en ese hueco baja la energía de la sala. A ello se
+suman las diferencias de volumen: las canciones de distintas décadas y de distintos sellos se
+masterizan a niveles diferentes, lo que se nota claramente en un equipo grande y exige a una
+persona en el fader.
+
+### Avisos y momentos del programa
+
+¿Quién invita a todos al primer baile? ¿Quién se asegura de que la sala esté llena cuando se
+corta la tarta y de que la música baje exactamente en el momento adecuado? Esas tareas no
+desaparecen cuando no hay DJ: pasan a alguien entre los invitados, normalmente sin planificar
+y casi siempre al padrino o a la dama de honor. En una lista de invitados bilingüe se suma que
+los avisos hacen falta en más de un idioma, para que ningún grupo pase la noche limitándose a
+mirar.
+
+### Equipo y plan de reserva
+
+El aspecto práctico es el más subestimado. Un dispositivo que sostiene toda la noche es también
+un dispositivo que recibe llamadas y notificaciones. Los servicios de streaming insertan
+anuncios sin suscripción de pago, y una lista sin copia sin conexión depende de la red
+inalámbrica del lugar. Cables, adaptadores, un segundo dispositivo de reproducción y un sistema
+adecuado a la sala y al número de invitados: alguien tiene que traerlo todo, montarlo,
+probarlo y recogerlo después. Y si algo falla durante la noche, hace falta un plan B; una lista
+no lo tiene.
+
+### Peticiones de los invitados
+
+Las peticiones espontáneas surgen en casi todas las bodas. Con una lista hay dos caminos, y
+ambos resultan incómodos: o se cuela cada petición, con lo que se desmorona la forma de la
+noche, o nadie se siente responsable de rechazar una petición y la discusión acaba en manos de
+la pareja. Ambas cosas se evitan cuando hay una persona con un mandato claro detrás de la
+mesa.
+
+## Un amigo quiere hacer de DJ para nosotros: ¿basta?
+
+Esta opción queda entre los dos extremos y a menudo se descarta demasiado deprisa. Puede
+funcionar, pero solo bajo condiciones que conviene decir en voz alta de antemano.
+
+Hay mucho a su favor: un amigo suele conocer a la pareja y la mezcla de invitados mejor que
+cualquier proveedor externo. Si de verdad tiene experiencia en leer al público (no solo una
+buena colección de música), ya aporta la parte decisiva.
+
+Hay tres puntos en contra, y rara vez se hablan de antemano. Primero: es un invitado. Quien se
+pasa toda la noche detrás de la mesa no se sienta a comer, no baila y no brinda. Ese papel
+debería elegirse a propósito, no aceptarse por cortesía. Segundo: normalmente falta el equipo.
+Un portátil y un controlador no son una instalación de sonido para un salón lleno, y el sistema
+propio de un local no está construido automáticamente para ello. Tercero: no hay sustituto. Si
+falla un proveedor contratado, se ha pactado de antemano y por escrito en un contrato cómo
+proceder en ese caso; si un amigo falla en el último momento, la celebración se queda sin
+música.
+
+Un compromiso justo es repartirlo: el amigo asume una parte claramente delimitada de la noche
+(el aperitivo, la música de la cena o la última hora), mientras que el equipo y los momentos
+del programa quedan cubiertos de forma profesional. Se conserva el toque personal sin que un
+invitado cargue con la responsabilidad de toda la noche.
+
+## Una ayuda justa para decidir
+
+| A favor de la lista | A favor de un DJ |
+|---|---|
+| Grupo pequeño, conversación en el centro | La pista de baile debe sostener la noche |
+| Sin programa fijo con entradas musicales | Entrada, primer baile, tarta, discursos |
+| El sistema propio del local es suficiente | Se necesita sonido e iluminación propios |
+| Un gusto musical compartido | Varias generaciones o culturas en la sala |
+| Hay una persona responsable designada | Se quieren avisos en varios idiomas |
+| No hacen falta peticiones espontáneas | Las peticiones de los invitados deben moderarse |
+
+Si en tres o más filas se queda en la columna de la derecha, una lista por sí sola
+probablemente no sostendrá la noche. Si domina claramente la columna de la izquierda, no
+necesita un DJ y puede destinar el presupuesto a otra cosa: es un resultado legítimo de este
+ejercicio, no un compromiso.
+
+## Si la decisión se inclina por un DJ
+
+La pregunta pasa entonces de «si» a «qué incluye exactamente». Con DJ Veys, el alcance
+estándar abarca su propio equipo de sonido e iluminación con montaje y desmontaje, la
+presentación en alemán, turco e inglés, una reunión de planificación antes de la celebración
+y el desplazamiento dentro de un radio definido en torno a Stuttgart; qué alcance encaja con
+cada celebración se explica en la página de paquetes, y cómo transcurre la reunión de
+planificación se describe en la página del desarrollo. La página de bodas y eventos muestra qué
+módulos existen en general, desde la simple amplificación de sonido hasta la música en directo
+con instrumentos de viento.
+
+## Conclusión
+
+La pregunta no es si una lista funciona. Funciona, y para ciertas celebraciones mejor que
+cualquier solución contratada. La pregunta es si su celebración depende de la reacción, del
+equipo y de la presentación. Quien repasa con sinceridad el programa previsto y se atasca una y
+otra vez en la entrada, el primer baile y la pista de baile ya tiene la respuesta. Quien no se
+atasca en ninguna parte puede construir la lista con la conciencia tranquila.
+`.trim();
+
 export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
   id: 'hochzeit-ohne-dj-spotify-playlist',
   slug: 'hochzeit-ohne-dj-spotify-playlist',
@@ -462,6 +597,18 @@ export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
         metaTitle: 'Wedding Without a DJ: Is a Playlist Enough? | DJ Veys',
         metaDescription:
           'Is a Spotify playlist enough instead of a wedding DJ? When a playlist really is enough, what it cannot do, the friend-as-DJ option and a decision table.',
+      },
+    },
+    es: {
+      slug: 'boda-sin-dj-lista-de-spotify',
+      title: 'Boda sin DJ: ¿basta una lista de Spotify?',
+      excerpt:
+        'Para celebraciones pequeñas y centradas en la conversación, una lista de Spotify basta de verdad, y este artículo lo dice sin rodeos. Solo se vuelve crítico cuando hay baile de verdad: leer la pista, las transiciones, los avisos, el equipo y un plan de reserva no pueden escribirse de antemano en una lista. Incluye una mirada sincera a la opción «un amigo hará de DJ» y una tabla de decisión.',
+      body: hochzeitOhneDjSpotifyPlaylistEs,
+      seo: {
+        metaTitle: 'Boda sin DJ: ¿basta una lista de Spotify? | DJ Veys',
+        metaDescription:
+          '¿Basta una lista de Spotify para su boda? Respuesta sincera con tabla de decisión: cuándo funciona, qué no puede hacer una lista y cómo valorar la opción de un amigo como DJ.',
       },
     },
   },
