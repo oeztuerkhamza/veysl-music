@@ -508,6 +508,98 @@ personnelle comprenant une liste noire explicite fait partie de chaque réservat
 ensemble lors de l'entretien de préparation.
 `.trim();
 
+export const musikwuenscheNl = `
+## Twee lijsten, niet één
+
+Bij het plannen van de muziek richten de meeste bruidsparen zich op één wensenlijst: nummers die absoluut
+gedraaid moeten worden. Even belangrijk, en vaak vergeten: de no-golijst. Pas samen geven de twee een dj
+echte kaders om de avond met vertrouwen te sturen, ook wanneer er spontane verzoekjes van gasten
+binnenkomen.
+
+## De wensenlijst: wat er echt toe doet
+
+Een goede wensenlijst is geen willekeurige verzameling lievelingsnummers, maar is ingedeeld naar
+momenten van de avond:
+
+| Moment | Typische muzikale richting |
+|---|---|
+| Ontvangst | Rustig, op de achtergrond, gespreksvriendelijk |
+| Diner | Ingetogener, maar niet slaapverwekkend |
+| Openingsdans | Eén zorgvuldig gekozen nummer |
+| Peaktime | Dansbaar, energiek, voor alle generaties |
+| Afsluiting | Rustiger of meer clubgericht, afhankelijk van het publiek |
+
+In plaats van 200 losse nummers op te sommen, is het meestal nuttiger om per moment een paar
+referentieartiesten of -nummers te noemen en de dj ruimte te laten voor de overgangen.
+
+## De no-golijst: concreet, niet vaag
+
+«Niets te geks, alstublieft» is geen bruikbare no-go, omdat het niet echt kan worden toegepast.
+Concrete no-go's daarentegen zijn direct bruikbaar:
+
+- **Bepaalde genres**, bijvoorbeeld «geen schlager», «geen metal».
+- **Bepaalde artiesten of nummers**, vaak om persoonlijke redenen.
+- **Bepaalde thema's in de tekst**, bijvoorbeeld breakupnummers tijdens de openingsdans.
+- **Volume- of tempogrenzen** op bepaalde momenten, bijvoorbeeld tijdens het diner.
+
+## Hoe spontane verzoekjes van gasten worden behandeld
+
+Verzoekjes van gasten tijdens de avond zijn normaal en meestal welkom; de beslissende vraag is hoe ze
+worden afgezet tegen de vooraf afgesproken lijst. Een spontaan verzoekje dat past bij de no-golijst en de
+toon van de avond, kan meestal worden ingepast. Een verzoekje dat duidelijk ingaat tegen het afgesproken
+kader, moet de dj beleefd maar beslist afwijzen: daar is de lijst precies voor.
+
+## Een praktisch kader voor het opstellen van de lijsten
+
+1. **Begin samen als bruidspaar:** vijf tot tien nummers die gedraaid moeten worden, en vijf tot tien die
+   beslist niet mogen.
+2. **Betrek beide families**, vooral bij gemengde of multiculturele gastenlijsten: muzieksmaak verschilt
+   vaak meer tussen generaties dan tussen culturen.
+3. **Denk in momenten, niet alleen in nummers**, zoals in de tabel hierboven.
+4. **Bespreek de lijst tijdig met de dj**, niet op de trouwdag zelf.
+5. **Vertrouw op de lijst** in plaats van haar tijdens de avond steeds te herschrijven.
+
+## Een voorbeeld van een goed gestructureerde no-golijst
+
+In plaats van een lange, onduidelijke lijst werkt een korte, concrete reeks punten die de dj echt kan
+toepassen beter:
+
+| Categorie | Voorbeeld |
+|---|---|
+| Genre | «Geen schlager na 22 uur» |
+| Artiest | «Geen nummers van artiest X, om persoonlijke redenen» |
+| Tekstthema | «Geen breakup- of liefdesverdrietnummers tijdens de openingsdans» |
+| Volume | «Alleen achtergrondvolume tijdens het diner» |
+| Bijzonder geval | «Geen nummer dat met een bepaalde vroegere relatie wordt geassocieerd» |
+
+## Wie zou er verder nog inspraak in de lijst moeten hebben?
+
+Naast het bruidspaar zelf loont het om kort na te gaan of bepaalde familieleden eigen belangrijke no-go's
+hebben: een nummer dat met een overleden familielid wordt geassocieerd en dat bewust moet worden
+vermeden, bijvoorbeeld. Zulke punten kunnen stilletjes in de gezamenlijke lijst worden opgenomen, zonder
+dat iemand tijdens de avond hoeft uit te leggen waarom een bepaald nummer niet wordt gedraaid.
+
+## De lijst is geen teken van wantrouwen
+
+Sommige bruidsparen aarzelen om een gedetailleerde no-golijst op te stellen, uit angst dat die gebrek aan
+vertrouwen in de dj uitstraalt. Het tegendeel is waar: een duidelijke lijst geeft beide kanten
+zekerheid. De dj hoeft niet te gissen of het risico te lopen per ongeluk een gevoelig punt te raken, en
+het bruidspaar hoeft zich op de trouwavond zelf nergens zorgen over te maken, omdat de kaders al vastliggen.
+
+## Hoe vaak moet de lijst vóór de bruiloft worden bijgewerkt?
+
+Een eenmaal opgestelde lijst is geen vast document. Tussen het eerste concept en de trouwdag liggen vaak
+maanden waarin voorkeuren kunnen verschuiven of nieuwe nummers opduiken. Een korte controle twee tot drie
+weken vóór het feest, waarbij het bruidspaar de lijst nog één keer samen doorneemt, is zinvol: niet om
+haar opnieuw uit te vinden, maar om te bevestigen dat ze nog actueel is.
+
+## Conclusie
+
+Een goed doordachte wensen- en no-golijst is een van de effectiefste en minst tijdrovende hulpmiddelen
+in de bruiloftsplanning. Bij DJ Veys is een persoonlijke muziekwensenlijst inclusief een expliciete
+no-golijst een standaardonderdeel van elke boeking en wordt die samen opgesteld tijdens het voorgesprek.
+`.trim();
+
 export const musikwuenschePost: BlogPost = {
   id: 'musikwuensche-no-go-liste',
   slug: 'musikwuensche-no-go-liste',
@@ -579,6 +671,18 @@ export const musikwuenschePost: BlogPost = {
         metaTitle: 'Souhaits musicaux et liste noire | DJ Veys',
         metaDescription:
           'Établir la liste de souhaits et la liste noire pour la musique de votre mariage, par moment de la soirée et avec des exemples concrets.',
+      },
+    },
+    nl: {
+      slug: 'muziekwensen-en-no-golijst',
+      title: 'Muziekwensen en de no-golijst: een praktische gids',
+      excerpt:
+        'Een goede muziekplanning heeft twee lijsten nodig, niet één: de wensenlijst ÉN een concrete no-golijst. Deze gids laat zien hoe u beide gestructureerd opstelt en hoe spontane verzoekjes van gasten tijdens de avond worden behandeld.',
+      body: musikwuenscheNl,
+      seo: {
+        metaTitle: 'Muziekwensen en no-golijst | DJ Veys',
+        metaDescription:
+          'De wensenlijst en de no-golijst voor de muziek van uw bruiloft opstellen, per moment van de avond en met concrete voorbeelden.',
       },
     },
   },

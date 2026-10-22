@@ -447,6 +447,91 @@ musicale et un budget fiable. DJ Veys répond aux demandes sous 24 heures ; dans
 demande, vous pouvez vérifier directement la disponibilité pour votre propre date.
 `.trim();
 
+export const wannBuchenNl = `
+## Het korte antwoord: zodra datum en locatie vastliggen
+
+Er is geen vaste deadline waarna een bruiloft-dj «te laat» wordt geboekt. Een bruikbare vuistregel:
+**vraag het aan zodra datum en locatie vastliggen.** Populaire data (zaterdagen tussen het voorjaar en
+de vroege herfst, brugdagen, bijzondere kalenderdata) zijn meestal vroeg vergeven, en een dj die bij uw
+avond past, kan maar één feest per datum doen. Aanvragen op korte termijn zijn vaak nog mogelijk, maar
+geen plan om op te vertrouwen.
+
+Als richtlijn voor DJ Veys: zaterdagen in het hoogseizoen van mei tot september vragen doorgaans 12 tot
+18 maanden aanlooptijd. Doordeweekse dagen, data buiten het seizoen en annuleringen op het laatste
+moment van andere boekingen leveren regelmatig vrije plekken op. De beschikbaarheid voor een specifieke
+datum wordt binnen 24 uur gecontroleerd, ook op korte termijn.
+
+## Waarom vroeg aanvragen loont
+
+- **Meer keus.** Wie vroeg vraagt, kan de dj kiezen die bij de avond past, in plaats van degene die nog
+  vrij is.
+- **Meer tijd om af te stemmen.** Een goede muziekplanning (openingsdans, wensen, no-golijst, twee talen)
+  vraagt om meerdere gesprekken. Hoe eerder die beginnen, hoe ontspannener ze verlopen.
+- **Duidelijkheid over het budget.** Wie vroeg een offerte heeft, weet vroeg wat muziek, apparatuur en
+  presentatie kosten, en kan catering en locatie daar realistisch omheen plannen.
+- **Een buffer voor wijzigingen.** Aantal gasten, draaiboek en locatie veranderen vaak nog een keer. Met
+  aanlooptijd is dat zonder haast op te vangen.
+
+## Wat een vroege datum niet betekent
+
+Een vroege aanvraag legt u niet vast op elk detail. Draaiboek, wensen en nummers worden geregeld in het
+voorgesprek, per video of persoonlijk. De boeking wordt pas bindend met het schriftelijke contract. Wat
+daarin hoort, wordt behandeld in de gids over de dj-checklist.
+
+## Wat u voor de aanvraag klaar moet hebben
+
+Hoe preciezer het eerste bericht, hoe sneller en betrouwbaarder de offerte. Nuttige gegevens:
+
+| Gegeven | Waarom het belangrijk is |
+|---|---|
+| Datum | Zonder datum kan de beschikbaarheid niet worden gecontroleerd. |
+| Locatie en plaats | Reis, apparatuur ter plaatse en sluitingstijden hangen ervan af. |
+| Aantal gasten en leeftijdsmix | Bepaalt de installatie, het repertoire en de planning van de dansvloer. |
+| Globaal draaiboek | Ceremonie, diner, feest, afterparty, en waar muziek nodig is. |
+| Talen | Presentatie in het Duits, Turks, Engels of gemengd? |
+| Bijzondere onderdelen | Bijvoorbeeld kına, gelin çıkarma, livemuziek of een gebed. |
+| Budgetindicatie | Zelfs een grove indicatie helpt om een passend pakket aan te bevelen. |
+
+Niet alles hoeft al vast te liggen. Wie een datum en een plaats noemt, kan al naar de beschikbaarheid
+vragen.
+
+## Bijzonderheden bij Turkse en Duits-Turkse bruiloften
+
+Veel Turkse en Duits-Turkse feesten omvatten gelegenheden die andere bruiloften niet hebben: een
+kına-avond vóór de bruiloft, een nişan, meerdere feesten in één weekend. In dat geval:
+
+- **Eén weekend, meerdere avonden.** Als kına gecesi en bruiloft op twee dagen vallen, moet vanaf het
+  begin duidelijk zijn of dezelfde dj beide avonden begeleidt: dat maakt apparatuur, afspraken en
+  muziekplanning aanzienlijk eenvoudiger.
+- **Data uit de religieuze kalender.** Veel families vieren niet tijdens de ramadan of rond de
+  feestdagen. De data verschuiven elk jaar, dus het loont om de kalender van dat jaar te raadplegen
+  voordat de datum wordt vastgelegd.
+- **Afstemming in de familie.** Wie de datum pas vastlegt na overleg met beide families, voorkomt dat
+  die later moet worden verschoven.
+
+## En als het snel moet?
+
+Op korte termijn kan het nog lukken, als de datum nog vrij is. Dan helpt een volledig eerste bericht met
+datum, plaats en aantal gasten het meest, zodat meteen duidelijk is of en in welk kader een avond
+mogelijk is. Plan in dat geval minder afstemmingsrondes in en concentreer u op de essentie: de opening,
+het draaiboek en de twee of drie nummers die niet mogen ontbreken.
+
+## De volgorde die zich heeft bewezen
+
+1. **Datum en locatie vastleggen.**
+2. **Dj en presentator aanvragen**, tegelijk met fotografie en catering, niet erna.
+3. **De offerte bekijken en schriftelijk bevestigen.**
+4. **Voorgesprek**, per video of persoonlijk: draaiboek, wensen, no-go's.
+5. **Laatste afstemming** in de week ervoor: tijden, aanspreekpunt op de dag zelf.
+
+## Conclusie
+
+Het beste moment om aan te vragen is wanneer datum en locatie vastliggen, niet wanneer al het andere
+geregeld is. Wie vroeg vraagt, krijgt meer keus, meer tijd voor de muziekplanning en een budget waarop
+u kunt vertrouwen. DJ Veys beantwoordt aanvragen binnen 24 uur; in het aanvraagformulier kunt u direct
+de beschikbaarheid voor uw eigen datum controleren.
+`.trim();
+
 export const wannBuchenPost: BlogPost = {
   id: 'wann-hochzeits-dj-buchen',
   slug: 'wann-hochzeits-dj-buchen',
@@ -518,6 +603,18 @@ export const wannBuchenPost: BlogPost = {
         metaTitle: 'Quand réserver un DJ de mariage ? | DJ Veys',
         metaDescription:
           'Combien de temps à l\'avance réserver un DJ de mariage, quelles informations préparer et que prévoir pour les mariages turcs et germano-turcs.',
+      },
+    },
+    nl: {
+      slug: 'wanneer-bruiloft-dj-boeken',
+      title: 'Wanneer moet u een bruiloft-dj boeken? Aanlooptijd, gegevens en volgorde',
+      excerpt:
+        'Er is geen vaste deadline, maar wel een goede vuistregel: vraag het aan zodra datum en locatie vastliggen. Deze gids laat zien waarom vroeg aanvragen loont, welke gegevens de aanvraag nodig heeft en wat er bij Turkse bruiloften bijkomt.',
+      body: wannBuchenNl,
+      seo: {
+        metaTitle: 'Wanneer een bruiloft-dj boeken? | DJ Veys',
+        metaDescription:
+          'Hoe lang van tevoren u een bruiloft-dj boekt, welke gegevens u klaar heeft en waar u op let bij Turkse en Duits-Turkse bruiloften.',
       },
     },
   },

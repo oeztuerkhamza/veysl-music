@@ -580,6 +580,111 @@ kilomètres autour de Stuttgart est inclus. Les demandes envoyées via la page d
 généralement une réponse sous 24 heures.
 `.trim();
 
+export const hochzeitslocationStuttgartNl = `
+## Waarom hier geen specifieke locatie wordt aanbevolen
+
+Dit artikel noemt bewust geen enkele locatie, niet als aanbeveling en niet als waarschuwing. Daar is
+een eenvoudige reden voor: hier wordt geen samenwerking met welke zaal dan ook geclaimd, en een ruimte
+die voor de ene bruiloft precies goed is, kan voor de volgende de verkeerde zijn. Wat wel eerlijk kan
+worden doorgegeven, zijn de criteria die los van het gebouw gelden. Twaalf jaar en meer dan 200
+evenementen hebben die omgevormd tot een checklist die tijdens een bezichtiging in ongeveer twintig
+minuten kan worden doorlopen.
+
+## Capaciteit is niet hetzelfde als een dansvloer
+
+Het getal in de brochure beschrijft hoeveel mensen zittend in de zaal passen, niet hoeveel er tegelijk
+kunnen dansen. Twee andere maten bepalen dat: de vloeroppervlakte die echt vrij blijft zodra alle tafels
+zijn neergezet, en waar die oppervlakte ligt. Een dansvloer aan het uiteinde van een lange zaal trekt de
+avond uit elkaar, omdat de achterste tafels akoestisch en visueel worden afgesneden. Een centrale ruimte
+met tafels eromheen houdt het feest bij elkaar. Vraag dus om de tafelindeling voor uw eigen aantal
+gasten, en beoordeel nooit een lege zaal.
+
+## Akoestiek: plafondhoogte, glas, harde oppervlakken
+
+Hoge plafonds, grote glazen puien en kale muren veroorzaken nagalm die apparatuur maar tot op zekere
+hoogte kan corrigeren: het volume hoger zetten maakt het erger, niet beter. Gordijnen, vloerbedekking,
+hout en een volle zaal absorberen het. Deze gids heeft een apart artikel over de details: «Akoestiek van
+de locatie: wat u bij een bezichtiging controleert». In de fase van locatiekeuze is een grove test
+genoeg: klap één keer in uw handen en luister hoe lang de ruimte naklinkt.
+
+## Stroom: het punt dat het vaakst wordt onderschat
+
+In veel gebouwen draaien geluid, licht, rookmachine, keuken en koffiemachines op dezelfde groep. Als er
+een zekering springt, is het bijna nooit de keuken die stil valt. Vast te stellen is dus: hoeveel aparte
+groepen zijn er aan de podiumkant beschikbaar, met welke capaciteit, en kan één ervan exclusief voor de
+techniek worden gereserveerd? De beheerder of gebouwtechnicus beantwoordt dit betrouwbaar; het
+verhuurkantoor vaak niet.
+
+## Laden, looproutes en de plek van de apparatuur
+
+Hoe ver is het van de parkeerplaats naar de deur, zijn er treden, is er een lift, zijn de deuren breed
+genoeg, en mag er tijdens op- en afbouw bij de ingang worden gestopt? Bij DJ Veys zijn de geluids- en
+lichtapparatuur, inclusief op- en afbouw, onderdeel van de boeking, maar het huurcontract moet de tijd
+toelaten die dat kost. Voor de plek zelf geldt een eenvoudige regel: vrij zicht op de dansvloer, een
+stopcontact in de buurt en geen kabels die vluchtwegen of looproutes van gasten kruisen.
+
+## Sluitingstijden en geluidsregels: binnen en buiten zijn aparte vragen
+
+Binnen- en buitenruimtes vallen meestal onder verschillende regels, en de beslissende bepalingen staan
+in het huurcontract in plaats van in een wet. De vragen die u moet stellen: hoe laat mag het feest binnen
+doorgaan, vanaf wanneer geldt buiten stilte, is er een volumebegrenzer geïnstalleerd, en wie beslist in
+het gebouw over uitzonderingen? Het juridische kader wordt uitgebreid behandeld in het artikel
+«Geluidsbescherming en sluitingstijden in Baden-Württemberg».
+
+## Huisinstallatie of eigen apparatuur
+
+Hier lopen twee soorten gebouwen uiteen. Gemeenschaps- en dorpshuizen hebben vaak een eenvoudige
+geluidsinstallatie die prima is voor speeches, maar niet voor een dansvloer. Grotere feestzalen in
+hotels hebben vaak een vast geïnstalleerd systeem, en soms een contractuele voorwaarde dat juist dat
+systeem moet worden gebruikt. De vraag is dus niet «is er apparatuur», maar: mag onze eigen apparatuur
+worden gebruikt, en zo ja, vanaf welk aansluitpunt?
+
+## De timing van de catering
+
+De overgang van het diner naar de dansvloer is het meest delicate moment van de avond. Als het dessert
+komt terwijl de muziek aan het opbouwen is, verliest u allebei. Het loont om bij de bezichtiging op te
+helderen of de keuken met vaste serveertijden werkt of flexibel blijft, en of er afstemming tussen
+bediening en muziek is voorzien. Een locatie die hier routineus op antwoordt, heeft het al vaak
+opgelost.
+
+## Wat er verandert bij grote Turkse bruiloften
+
+Bij Turkse en Duits-Turkse feesten verschuiven meerdere criteria merkbaar. Halay wordt in een kring of
+ketting gedanst, en een ketting groeit naar buiten: die heeft één doorlopende ruimte nodig zonder pilaar,
+trede of podium in het midden. De binnenkomst van het bruidspaar vraagt om een vrije route van de deur
+naar de dansvloer; bij live-elementen gebruiken nog meer mensen diezelfde route, waar in de
+tafelindeling rekening mee moet worden gehouden en wat vooraf moet worden afgestemd. En omdat meerdere
+generaties tegelijk feestvieren, telt de balans tussen zitplaatsen en dansvloer: oudere familieleden
+willen zien wat er gebeurt, maar niet pal naast een speaker zitten. Een ruimte die beide mogelijk maakt,
+is meer waard dan een mooiere zaal die dat niet doet.
+
+## De vragenlijst voor de bezichtiging
+
+| Onderwerp | Vraag aan de locatie |
+|---|---|
+| Vloeroppervlakte | Hoe ziet de tafelindeling eruit voor ons aantal gasten, en hoeveel dansvloer blijft er over? |
+| Stroom | Hoeveel aparte groepen zijn er aan de podiumkant? |
+| Apparatuur | Mag onze eigen geluids- en lichtapparatuur worden gebruikt? |
+| Volume | Is er een begrenzer geïnstalleerd, en op welk niveau? |
+| Tijden | Hoe laat binnen, hoe laat buiten? |
+| Opbouw | Vanaf hoe laat is toegang voor de opbouw mogelijk? |
+| Laden | Treden, lift, deurbreedtes, stoppen bij de ingang? |
+| Catering | Vaste serveertijden, of afgestemd op het draaiboek? |
+
+Deze acht punten vóór het tekenen schriftelijk vastleggen kost één e-mail en haalt het grootste deel van
+de improvisatie van de trouwdag zelf weg.
+
+## Conclusie
+
+Een locatie wordt zelden gekozen om haar technische kwaliteiten, en terecht: de eerste indruk, de ligging
+en het gevoel gaan om goede redenen voor. Maar de technische criteria zijn de criteria die later niet
+meer te veranderen zijn, en juist daarom horen ze bij de bezichtiging en niet in de week vóór het feest.
+Bruidsparen die al een ruimte op het oog hebben, kunnen de lijst gewoon tijdens het voorgesprek
+doorlopen; de stadspagina's voor Esslingen, Ludwigsburg en Heilbronn en het overzicht van
+Baden-Württemberg laten zien waar reis en lokale kennis al geregeld zijn: reizen binnen 50 kilometer van
+Stuttgart is inbegrepen. Aanvragen via de aanvraagpagina worden meestal binnen 24 uur beantwoord.
+`.trim();
+
 export const hochzeitslocationStuttgartPost: BlogPost = {
   id: 'hochzeitslocation-stuttgart-dj-perspektive',
   slug: 'hochzeitslocation-stuttgart-dj-perspektive',
@@ -652,6 +757,18 @@ export const hochzeitslocationStuttgartPost: BlogPost = {
         metaTitle: 'Lieu de mariage près de Stuttgart : le regard du DJ | DJ Veys',
         metaDescription:
           'Que vérifier en choisissant un lieu de mariage près de Stuttgart : piste, acoustique, électricité, horaires et questions pour la visite.',
+      },
+    },
+    nl: {
+      slug: 'trouwlocatie-kiezen-stuttgart-dj-perspectief',
+      title: 'Een trouwlocatie kiezen bij Stuttgart: wat een dj controleert',
+      excerpt:
+        'Capaciteit, dansvloer, stroom, akoestiek en sluitingstijden bepalen de avond lang voordat de decoratie wordt opgehangen. Deze gids verzamelt de acht criteria die een dj bij een trouwlocatie in de regio Stuttgart echt controleert, plus een vragenlijst voor de bezichtiging. Er wordt bewust geen specifieke zaal aanbevolen.',
+      body: hochzeitslocationStuttgartNl,
+      seo: {
+        metaTitle: 'Trouwlocatie bij Stuttgart: het dj-perspectief | DJ Veys',
+        metaDescription:
+          'Wat u controleert bij het kiezen van een trouwlocatie bij Stuttgart: dansvloer, akoestiek, stroom, tijden en vragen voor de bezichtiging.',
       },
     },
   },

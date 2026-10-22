@@ -520,6 +520,107 @@ en turc et en anglais. Pour coordonner la musique et le déroulé, une demande g
 est une bonne prochaine étape.
 `.trim();
 
+export const nisanNl = `
+## De nişan: wanneer twee families elkaar officieel ontmoeten
+
+De nişan, het verlovingsfeest, is in Turkse en Duits-Turkse families een feest op zich en niet alleen een
+voorspel van de bruiloft. Het is het moment waarop het paar en beide families zich publiekelijk aan
+elkaar verbinden. In Duitsland vindt het, afhankelijk van de familie, weken of maanden vóór de bruiloft
+plaats, soms thuis in kleine kring, soms in een gehuurde zaal met enkele honderden gasten. Wie het plant
+als een kleine bruiloft, mist wat het kenmerkt: het is rustiger, persoonlijker en meer op de families
+gericht.
+
+## Wat er vaak aan de nişan voorafgaat
+
+Veel families kennen twee stappen vóór het feest, die per regio en familie verschillen:
+
+- **Kız isteme** (om de hand van de bruid vragen): de familie van de bruidegom bezoekt de familie van de
+  bruid en vraagt formeel om haar hand. Een bekend gebruik is de bruidegom koffie met zout in plaats van
+  suiker te serveren, als vriendelijke test.
+- **Söz** (de belofte): de twee families stemmen in met de verbintenis, soms tijdens een eigen kleine
+  bijeenkomst, soms pas op de dag van de nişan.
+
+Niet elke familie volgt deze stappen, en sommige combineren alles op één avond. Voor de planning
+betekent dat: verduidelijk vroeg welke onderdelen bij uw familie horen en of ze op dezelfde avond moeten
+plaatsvinden.
+
+## Het typische verloop van een nişan
+
+Er is geen bindend plan. Een veelvoorkomende opzet ziet er zo uit:
+
+1. **Welkom en aankomst**: de gasten worden begroet, op de achtergrond speelt rustige muziek.
+2. **De binnenkomst van het paar**: vaak op een gekozen nummer en met klappen op de maat.
+3. **Toespraak en gebed**: een ouder familielid zegt een paar woorden, en in sommige families volgt een
+   kort gebed.
+4. **Ringceremonie**: de ringen worden omgedaan, vaak door een ouder familielid. Een rood lint verbindt
+   vaak de twee ringen of het paar.
+5. **Felicitaties en takı**: de gasten feliciteren het paar en spelden geld of gouden sieraden op. Met veel
+   gasten duurt dit langer dan verwacht.
+6. **Eten, taart, foto's.**
+7. **Dansen**: van de eerste dans van het paar tot halay in groepsverband.
+
+De ringceremonie en de takı zijn de momenten waarop de muziek niet op de voorgrond staat, maar de zaal
+draagt. Juist daar bepaalt helder geluid of alle aanwezigen de woorden kunnen verstaan.
+
+## De muziek: rustiger dan op de bruiloft, maar niet bijkomstig
+
+De nişan heeft twee tempo's: het plechtige deel (binnenkomst, ringen, takı) en het feestelijke deel.
+Voor het eerste volstaan goed gekozen stukken die niet te luid zijn. Belangrijk is dat toespraken en de
+ringceremonie verstaanbaar blijven: een draadloze microfoon voor iedereen die spreekt en een installatie
+die de ruimte niet overstuurt. Voor het tweede deel geldt hetzelfde als op de bruiloft: wie mensen wil
+laten dansen, heeft een voorbereid repertoire van Turkse en Duitse stukken nodig, afgestemd op de
+aanwezige leeftijdsgroepen.
+
+## Checklist voor de nişan
+
+| Onderdeel | Vraag om te regelen |
+|---|---|
+| Binnenkomstnummer | Welk stuk, wanneer precies, hoe lang? |
+| Ringceremonie | Wie spreekt, wie doet de ringen om, is er een gebed? |
+| Microfoon | Wie heeft een draadloze microfoon nodig, en wie doet de aankondigingen: in het Duits, Turks of beide? |
+| Takı-moment | Hoeveel gasten, hoe lang, welke rustige muziek speelt er tijdens? |
+| Eten en taart | Wanneer wordt er geserveerd, zodat de muziek niet met de borden concurreert? |
+| Begin van het dansen | Wie opent, en is er een halaymoment gepland? |
+| Volume en tijd | Is er een sluitingstijd in de zaal of de woonwijk? |
+| Foto en video | Zijn er momenten die bewust stil moeten zijn? |
+
+## Veelvoorkomende valkuilen
+
+- **Een ringceremonie zonder microfoon.** In een volle zaal hoort de achterste helft van de gasten niets,
+  en gaat het belangrijkste moment van de avond aan hen voorbij.
+- **Te veel onderdelen.** Wie elk gebruik wil opnemen, krijgt een avond zonder adempauze. Drie momenten
+  goed gedaan zijn beter dan zeven gehaaste.
+- **Onduidelijke verantwoordelijkheid voor de aankondigingen.** Als niemand de leiding heeft, ontstaat er
+  vóór elk onderdeel een pauze waarin iedereen naar iedereen kijkt.
+- **Eén taal voor een gemengd publiek.** Bij Duits-Turkse gastenlijsten begrijpt niet iedereen beide talen
+  even goed; tweetalige aankondigingen lossen dat op.
+- **Techniek en ruimte niet vooraf gecontroleerd.** Stroom, opstelruimte en buren zijn vaak de echte
+  knelpunten, in een woonkamer net zo goed als in een buurthuis.
+
+## Nişan en bruiloft samen denken
+
+De nişan hoeft niet de kleine versie van de bruiloft te zijn, maar de twee avonden kunnen elkaar kennen.
+Een nummer dat voor het eerst op de nişan klinkt, kan op de bruiloft terugkomen. En wie kına gecesi,
+nişan en bruiloft apart plant, moet ervoor zorgen dat de playlists niet drie keer hetzelfde verhaal
+vertellen. De gids over de Turkse bruiloft in Duitsland geeft een overzicht van de hele reeks.
+
+## Hoeveel tijd u moet inplannen
+
+Als globale richtlijn, die per familie sterk verschilt: welkom en aankomst iets minder dan een uur,
+binnenkomst en ringceremonie 20 tot 40 minuten, felicitaties en takı ongeveer even lang afhankelijk van
+het aantal gasten, daarna het eten en het dansen. Plan een buffer in: rituelen met veel deelnemers duren
+bijna altijd langer dan gepland.
+
+## Conclusie
+
+Een goede nişan leeft van een paar goed voorbereide momenten: een binnenkomst die draagt, een
+ringceremonie die iedereen kan volgen en een overgang naar het dansen die niet uit het niets begint. Wie
+deze drie punten vooraf met de dj of presentator afspreekt, heeft het grootste deel van de planning al
+gedaan. DJ Veys begeleidt ook verlovingen en hennaavonden en presenteert in het Duits, Turks en Engels.
+Voor de afstemming van muziek en verloop is een vrijblijvende aanvraag voor uw datum een goede volgende
+stap.
+`.trim();
+
 export const nisanPost: BlogPost = {
   id: 'nisan-verlobung-planen',
   slug: 'nisan-verlobung-planen',
@@ -595,6 +696,18 @@ export const nisanPost: BlogPost = {
         metaTitle: 'Nişan : guide des fiançailles turques | DJ Veys',
         metaDescription:
           'Préparer un nişan : kız isteme, cérémonie des bagues, takı, musique et micros, avec check-list et pièges fréquents des fiançailles turques.',
+      },
+    },
+    nl: {
+      slug: 'nisan-turkse-verloving-gids',
+      title: 'Een nişan (Turkse verloving) plannen: verloop, ringceremonie en muziek',
+      excerpt:
+        'De nişan is een feest op zich, rustiger en meer op de familie gericht dan de bruiloft. Deze gids behandelt het typische verloop van kız isteme tot takı, een checklist voor muziek en microfoons en de meest voorkomende valkuilen.',
+      body: nisanNl,
+      seo: {
+        metaTitle: 'Nişan: gids voor de Turkse verloving | DJ Veys',
+        metaDescription:
+          'Een nişan plannen: kız isteme, ringceremonie, takı, muziek en microfoons, met checklist en de meest voorkomende valkuilen.',
       },
     },
   },

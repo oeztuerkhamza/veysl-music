@@ -526,6 +526,105 @@ la musique, les éléments live et le minutage, la page mariages et événements
 gratuite pour votre date sont une bonne prochaine étape.
 `.trim();
 
+export const kinaGecesiNl = `
+## De kına gecesi is een eigen feest, geen generale repetitie voor de bruiloft
+
+Bij de planning wordt de kına gecesi (hennaavond) vaak onderschat: ze wordt behandeld als een kleinere,
+grotendeels zichzelf organiserende avond vóór de bruiloft. In werkelijkheid heeft ze een eigen ritme, een
+eigen emotionele lading en eigen eisen aan muziek en draaiboek die duidelijk verschillen van de bruiloft
+zelf. Bruidsparen die haar plannen als een zelfstandig evenement, en niet als een kleinere kopie van de
+bruiloft, krijgen een avond die even gedenkwaardig is.
+
+## Het klassieke verloop van een kına gecesi
+
+Families geven de avond verschillend vorm, maar er is een veelvoorkomend globaal kader ontstaan:
+
+1. **Ontvangst van de gasten**, meestal met rustigere achtergrondmuziek.
+2. **De binnenkomst van de bruid**, meestal onder een rode sluier, begeleid door een specifiek, vaak
+   langzaam en emotioneel nummer.
+3. **Het hennaritueel zelf**: er wordt henna in de handpalm van de bruid gelegd, vaak met een gouden munt
+   erin, omringd door vrouwelijke familieleden en goede vriendinnen.
+4. **Emotionele nummers en soms tranen**: dit deel van de avond is bewust ingetogener dan de rest van het
+   feest.
+5. **De overgang naar het feest**: zodra het ritueel eindigt, slaat de stemming merkbaar om, vaak met
+   livemuzikanten, davul-zurna en dansen tot diep in de nacht.
+
+## Waarom de muziekplanning hier extra zorg vraagt
+
+Bijna geen ander moment in een bruiloftsseizoen vraagt om zo'n scherpe stemmingswisseling binnen enkele
+minuten: van een rustig, bijna ceremonieel moment rechtstreeks naar een levendig feest. Slecht getimed
+voelt het ritueel gehaast of komt het feest te langzaam op gang. Daarom loont het om de exacte timing van
+het hennanummer, de duur van het ritueel en de muzikale start van het feest vooraf met de dj of de
+livemuzikanten af te spreken.
+
+## Planningschecklist
+
+| Onderdeel | Vraag om op te helderen |
+|---|---|
+| Binnenkomstnummer | Welk nummer, welke versie, hoe lang? |
+| Hennaritueel | Hoeveel mensen zijn er direct bij betrokken, hoe lang duurt het realistisch? |
+| Livemuziek | Zijn davul-zurna of andere livemuzikanten geboekt, en hoe wordt de timing met de dj afgestemd? |
+| Licht | Past het licht bij het rustigere ritueel en schakelt het netjes om voor het feest? |
+| Opmerking over kleding | Rode elementen zijn traditioneel maar niet overal verplicht: communiceer dit duidelijk naar de gasten |
+| Locatie | Is er een aparte ruimte of zaal gereserveerd voor het ritueel zelf? |
+
+## Veelvoorkomende valkuilen
+
+- **Te weinig tijd ingepland voor het ritueel.** In de praktijk duurt het moment met foto's en meerdere
+  betrokken familieleden vaak langer dan verwacht.
+- **De overgang naar het feest is niet voorbereid.** Zonder duidelijke afspraak ontstaat er een
+  ongemakkelijk gat tussen het ritueel en het begin van het dansen.
+- **De kına-playlist is identiek aan de bruiloftsplaylist.** De avond verliest zijn eigen karakter.
+- **Livemuzikanten en dj zijn niet op elkaar afgestemd**, waardoor volume of tempo bij de overgang
+  botsen.
+
+## Hoeveel tijd u realistisch moet inplannen
+
+Als globale richtlijn: de ontvangst van de gasten duurt ongeveer 30 tot 45 minuten, het ritueel zelf,
+inclusief foto's, vaak 20 tot 40 minuten, gevolgd door een overgang naar het feest die afhankelijk van de
+familie uren kan duren. Dit is een richtlijn, geen star sjabloon: de werkelijke duur hangt sterk af van
+hoeveel mensen actief bij het ritueel betrokken zijn.
+
+## Wie er vandaag wordt uitgenodigd: de kına gecesi is veranderd
+
+Traditioneel was de kına gecesi strikt een vrouwenavond: mannen sloten, als ze al werden uitgenodigd,
+pas aan bij een later, apart deel van de avond. In veel families in Duitsland is dat verschoven:
+gemengde gastenlijsten, waarbij mannen en vrouwen vanaf het begin samen feestvieren, zijn vandaag
+gebruikelijk zonder dat het ritueel zelf zijn betekenis verliest. Belangrijk voor de planning is dit
+vroeg met beide families af te stemmen in plaats van stilzwijgend van een bepaald format uit te gaan:
+verwachtingen kunnen tussen generaties en families merkbaar verschillen.
+
+## Kledingvoorschrift en rode elementen: wat gasten moeten weten
+
+Rode sjaals, rode kleding of een rood accessoire horen traditioneel bij de kına gecesi, maar zijn lang
+niet in elke familie verplicht. Als een bepaald kledingvoorschrift gewenst is, loont het om dat duidelijk
+en vroeg op de uitnodiging te vermelden, inclusief een korte toelichting voor gasten die de traditie niet
+kennen, vooral bij gemengde Duits-Turkse gastenlijsten.
+
+## Budgetoverwegingen voor de hennaavond
+
+In de budgetplanning van de bruiloft wordt de kına gecesi vaak als bijzaak behandeld, terwijl ze eigen
+kosten heeft: een locatie of privéomgeving, catering, decoratie in rode en gouden tinten, eventueel
+livemuzikanten en een aparte dj of geluidsoplossing. Wie de hennaavond vanaf het begin als eigen
+budgetpost behandelt, in plaats van haar met de bruiloft te laten «meelopen», voorkomt dat er voor de
+bruiloft zelf minder budget overblijft dan gepland.
+
+## Wie leidt het ritueel?
+
+Anders dan de bruiloft zelf heeft de kına gecesi meestal geen doorlopende presentatie nodig, maar wel
+iemand die duidelijk het startsein geeft voor de overgang van ritueel naar feest: de dj, een familielid
+of beiden samen. Als niemand concreet voor die overgang is aangewezen, ontstaat er in de praktijk vaak een
+onzekere pauze waarin onduidelijk is of het ritueel voorbij is en wanneer het dansen kan beginnen.
+
+## Conclusie
+
+Een goed geplande kına gecesi heeft vooral een duidelijk muzikaal plan nodig voor de overgang van ritueel
+naar feest. Bewust vormgegeven in plaats van aan het toeval overgelaten, wordt de hennaavond een van de
+meest emotionele en dansrijkste avonden van het hele bruiloftsseizoen. Voor de concrete afstemming van
+muziek, live-elementen en timing zijn de pagina bruiloften en evenementen en een vrijblijvende aanvraag
+voor uw datum een goede volgende stap.
+`.trim();
+
 export const kinaGecesiPost: BlogPost = {
   id: 'kina-gecesi-henna-abend-planen',
   slug: 'kina-gecesi-henna-abend-planen',
@@ -597,6 +696,18 @@ export const kinaGecesiPost: BlogPost = {
         metaTitle: 'Kına gecesi : guide de la soirée du henné | DJ Veys',
         metaDescription:
           'Préparer une kına gecesi : déroulé classique, rituel du henné, musique, check-list et erreurs de minutage fréquentes.',
+      },
+    },
+    nl: {
+      slug: 'kina-gecesi-hennaavond-gids',
+      title: 'Een kına gecesi (hennaavond) plannen: de praktische gids',
+      excerpt:
+        'De kına gecesi heeft een eigen ritme: een rustig ritueel, daarna een abrupte stemmingswisseling naar het feest. Deze gids behandelt het klassieke verloop, een planningschecklist en de meest voorkomende timingfouten.',
+      body: kinaGecesiNl,
+      seo: {
+        metaTitle: 'Kına gecesi: gids voor de hennaavond | DJ Veys',
+        metaDescription:
+          'Een kına gecesi plannen: klassiek verloop, hennaritueel, muziek, checklist en de meest voorkomende timingfouten bij de hennaavond.',
       },
     },
   },

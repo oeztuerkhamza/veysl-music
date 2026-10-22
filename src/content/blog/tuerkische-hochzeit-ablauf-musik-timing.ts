@@ -534,6 +534,104 @@ Pour l'aspect pratique, la vue d'ensemble mariages et événements et un entreti
 gratuit sont la prochaine étape naturelle pour fixer le déroulé de votre propre fête.
 `.trim();
 
+export const tuerkischeHochzeitNl = `
+## De typische vorm van een Turkse bruiloft in Duitsland
+
+Een Turkse of Duits-Turkse bruiloft in Duitsland volgt zelden het standaard Duitse draaiboek van
+ceremonie, ontvangst, diner en een dansgedeelte dat rond 21 uur begint. De avond is in plaats daarvan
+vaak compacter, ceremoniëler en veel dansrijker, met eigen rituelen vóór en tijdens het feest. Wie deze
+structuur kent, kan locatie, fotograaf en muziek realistisch plannen in plaats van op de dag zelf
+verrast te worden.
+
+Dit artikel beschrijft een veelvoorkomend, wijdverbreid kader, geen vaste regel: families uit
+verschillende regio's van Turkije geven het verloop verschillend vorm.
+
+## Vóór de bruiloft: nişan en kına gecesi
+
+Twee evenementen gaan vaak aan de trouwdag zelf vooraf:
+
+- **Nişan (verloving):** een zelfstandig feest, vaak met een ringceremonie, waarop beide families
+  formeel samenkomen. Muzikaal meestal iets ingetogener dan de bruiloft zelf, maar met een eigen
+  programma.
+- **Kına gecesi (hennaavond):** meestal de avond vóór de bruiloft, traditioneel een vrouwenfeest,
+  tegenwoordig in veel families opengesteld voor alle gasten. De binnenkomst van de bruid, het
+  hennaritueel en emotionelere, langzamere nummers bepalen het begin van de avond, voordat die
+  overgaat in een feest met livemuziek en davul-zurna.
+
+## De trouwdag: een compactere ceremonie
+
+Op veel Turkse bruiloften is het ceremoniële deel dichter op elkaar gepakt dan bij een gewoon Duits
+feest: de binnenkomst van het paar met eigen muziek, vaak een ringceremonie met een rode sjerp die door
+de vader van de bruid wordt omgebonden, en momenten die bewust voor foto en video worden
+gechoreografeerd. Deze programmaonderdelen hebben eigen vaste tijdslots in het draaiboek nodig, zodat
+fotograaf, dj en locatie op één lijn blijven.
+
+## De nacht: meer dansen, langere duur
+
+Na het formele deel verschuift het zwaartepunt duidelijk naar de dansvloer, vaak langer en intenser dan
+gebruikelijk op een gewone Duitse bruiloft. Halay, Roman Havası en actuele Turkse hits wisselen af met
+Duitse en internationale sets, meestal gemengd in plaats van in aparte blokken gedraaid, zodat elke
+generatie en beide kanten van de gastenlijst betrokken blijven.
+
+## Een voorbeeld van een tijdsindeling
+
+| Tijd | Programmaonderdeel |
+|---|---|
+| Middag | Burgerlijk huwelijk of ceremonie in de buitenlucht |
+| Vroege avond | Receptie, foto's, aankomst van de gasten |
+| Avond | Binnenkomst van het paar, ringceremonie, toespraken |
+| Avond | Diner, eerste dansrondes |
+| Late avond tot nacht | Hoofddansprogramma: halay, hits, live-elementen |
+| Nacht | Afbouw, muziek voor de late uurtjes |
+
+Dit is een voorbeeldkader, geen sjabloon per uur: de werkelijke duur hangt sterk af van de locatie, de
+leeftijdsmix van de gasten en de familietraditie.
+
+## Regionale verschillen binnen Turkije
+
+Een punt dat bij de planning makkelijk over het hoofd wordt gezien: «Turkse bruiloft» is geen eenvormig
+patroon. Families uit het Zwarte Zeegebied, Centraal-Anatolië, het zuidoosten of de grote steden brengen
+elk hun eigen gebruiken, muzikale voorkeuren en soms hun eigen dialect mee naar het feest. Beide families
+vragen waar hun eigen traditie vandaan komt, in plaats van uit te gaan van één generiek «Turks
+draaiboek», levert meestal nauwkeuriger en persoonlijker houvast op voor de eigenlijke bruiloft.
+
+## De rol van de uitgebreide familie in het draaiboek
+
+Een verschil dat bij de planning vaak wordt onderschat: op Turkse en Duits-Turkse bruiloften is de
+uitgebreide familie meestal meer bij het draaiboek betrokken dan bij een gewoon Duits feest. Ouders en
+grootouders aan beide kanten hebben vaak eigen verwachtingen over bepaalde programmaonderdelen: wie waar
+staat tijdens de binnenkomst, welke nummers voor welke generatie belangrijk zijn, of hoe de ringceremonie
+precies moet verlopen. Vroeg naar deze verwachtingen vragen, in plaats van ze op de trouwdag te
+ontdekken, voorkomt wrijving precies wanneer er het minst mis mag gaan.
+
+## Hoe de leeftijdsspreiding van de gasten het muziekplan bepaalt
+
+Turkse en Duits-Turkse bruiloften brengen vaak een bijzonder brede leeftijdsspreiding samen, van kleine
+kinderen via de generatie van de ouders tot de grootouders, en allemaal moeten ze zich op verschillende
+momenten van de avond aangesproken voelen. In de praktijk helpt het om de peaktime te zien als twee
+bewuste fases: een eerdere fase voor alle generaties, met vertrouwde halay- en hitklassiekers die ook
+oudere gasten de dansvloer op krijgen, en een latere fase met actuelere nummers en meer energie zodra de
+jongere gasten de dansvloer voor zichzelf hebben.
+
+## Vijf praktische planningstips
+
+1. **Plan de kına gecesi en de bruiloft apart**: andere muziek, ander tempo en andere verwachtingen.
+2. **Bouw tijdsbuffers in voor de ceremonie**: ringceremonies en fotomomenten duren meestal langer dan
+   verwacht.
+3. **Zorg dat de muziekwensenlijst beide taalwerelden dekt**, niet slechts één.
+4. **Stem davul-zurna-elementen vooraf af op het dj-programma**, zodat de overgang niet abrupt aanvoelt.
+5. **Plan een tweetalige presentatie als de gastenlijst gemengd is**: anders voelt één kant zich al snel
+   buitengesloten.
+
+## Conclusie
+
+Een Turkse of Duits-Turkse bruiloft in Duitsland volgt een eigen boog, die verschilt van een gewoon Duits
+draaiboek: meer ceremonie, meer dansen, een breder muzikaal spectrum. Bruidsparen die daar vanaf het
+begin rekening mee houden, krijgen een avond die beide kanten van de familie recht doet. Voor de
+praktische kant zijn het overzicht van bruiloften en evenementen en een vrijblijvend voorgesprek de
+logische volgende stap om het draaiboek voor uw eigen feest vast te leggen.
+`.trim();
+
 export const tuerkischeHochzeitPost: BlogPost = {
   id: 'tuerkische-hochzeit-ablauf-musik-timing',
   slug: 'tuerkische-hochzeit-ablauf-musik-timing',
@@ -606,6 +704,18 @@ export const tuerkischeHochzeitPost: BlogPost = {
         metaTitle: 'Mariage turc en Allemagne : déroulé et musique | DJ Veys',
         metaDescription:
           'Mariage turc ou germano-turc en Allemagne : nişan, kına gecesi, cérémonie des bagues, exemple de déroulé et conseils pour la musique.',
+      },
+    },
+    nl: {
+      slug: 'turkse-bruiloft-duitsland-verloop-muziek',
+      title: 'Turkse bruiloft in Duitsland: verloop, muziek en timing',
+      excerpt:
+        'Een Turkse of Duits-Turkse bruiloft in Duitsland volgt zelden het standaard Duitse draaiboek: een compactere ceremonie, een langer dansprogramma en eigen rituelen zoals de kına gecesi en de ringceremonie. Deze gids legt het typische kader en een voorbeeldtijdlijn uit.',
+      body: tuerkischeHochzeitNl,
+      seo: {
+        metaTitle: 'Turkse bruiloft in Duitsland: verloop en muziek | DJ Veys',
+        metaDescription:
+          'Turkse of Duits-Turkse bruiloft in Duitsland: nişan, kına gecesi, ringceremonie, voorbeeldtijdlijn en tips voor muziek en presentatie.',
       },
     },
   },

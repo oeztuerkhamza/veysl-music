@@ -503,6 +503,98 @@ du claquement de mains, et qui transmettent ces observations au DJ, s'assurent q
 réglé sur la salle dès le départ.
 `.trim();
 
+export const akustikNl = `
+## Akoestiek bepaalt de avond meer dan decoratie
+
+Bij een locatiebezoek gaat de aandacht meestal eerst naar decoratiemogelijkheden, lichtsfeer en
+fotoplekken; de akoestiek van de ruimte wordt zelden actief gecontroleerd, terwijl die direct bepaalt hoe
+goed muziek, speeches en presentatie in de ruimte overkomen.
+
+## Waarom akoestiek niet zomaar «met apparatuur te verhelpen» is
+
+Een veelvoorkomend misverstand: «de geluidsinstallatie maakt het wel goed». Goede apparatuur kan veel
+compenseren, maar een ruimte met extreme nagalm, door hoge stenen muren, glazen oppervlakken en harde
+vloeren zonder zachte stoffering, blijft akoestisch lastig, ook met hoogwaardige apparatuur.
+
+## Wat u tijdens het bezoek echt controleert
+
+| Kenmerk | Waarom het belangrijk is |
+|---|---|
+| Plafondhoogte | Hoge plafonds veroorzaken vaak meer nagalm, vooral in grote, lege ruimtes |
+| Oppervlakken | Steen, glas en harde vloeren weerkaatsen geluid meer dan hout, stof of tapijt |
+| Vorm van de ruimte | Lange, smalle ruimtes verdelen geluid anders dan vierkante of ronde |
+| Aanwezige zachte stoffering | Gordijnen, tafelkleden en tapijten verminderen nagalm merkbaar |
+| Aantal gasten in de ruimte | Een volle zaal klinkt akoestisch merkbaar anders dan een lege bij de bezichtiging |
+| Aangrenzende ruimtes | Als er tegelijk een tweede ruimte wordt gebruikt, beïnvloedt dat het geluidsplan |
+
+## De klaptest
+
+Een eenvoudige test die u ter plekke kunt doen: klap één keer hard in uw handen en luister naar het
+uitsterven. Als het geluid snel wegvalt, is de ruimte relatief «droog» en akoestisch ongecompliceerd. Als
+het merkbaar naklinkt, wijst dat op een ruimte die vatbaar is voor een wazig geluidsbeeld bij muziek en
+spraak.
+
+## Waarom een lege ruimte misleidend klinkt
+
+Een belangrijk, vaak over het hoofd gezien punt: een lege zaal klinkt bij een bezichtiging akoestisch
+bijna altijd «harder» dan dezelfde ruimte vol gasten. Mensen, kleding en gedekte tafels absorberen
+geluid merkbaar.
+
+## Vragen die het waard zijn om bij de bezichtiging te stellen
+
+1. Hoeveel gasten hebben bij eerdere feesten in deze ruimte gedanst, en hoe kwam het geluid over?
+2. Zijn er vaste volumebeperkingen, bijvoorbeeld door buren of door het gebouw zelf?
+3. Is er een tweede ruimte gepland voor de receptie of het afsluiten, en welk akoestisch karakter heeft
+   die?
+4. Waar zitten de stroomaansluitingen, en passen die bij de geplande plek van de apparatuur?
+
+## Waarom akoestiek niet «op te lossen» is door simpelweg het volume op te schroeven
+
+Een veelvoorkomende reflex bij akoestische problemen is het volume hoger zetten. In een galmende ruimte
+maakt dat het effect meestal erger in plaats van het op te lossen: meer volume betekent ook meer
+weerkaatst geluid. De echte oplossing ligt bijna altijd in een bewuste plaatsing van de speakers, een
+aangepaste equalizer en de hierboven beschreven geluidsabsorberende elementen, niet in een hoger
+uitgangsniveau.
+
+## Tent- en buitenlocaties: een andere akoestische logica
+
+Bij feesten in een tent of volledig buiten gelden andere regels dan in een gesloten zaal. Er is hier
+nauwelijks nagalm, omdat het geluid vrij naar boven en opzij ontsnapt; de uitdaging is juist om genoeg
+volume tot achter in het gebied te krijgen zonder de voorste rijen te overweldigen. Wind kan het geluid
+bovendien in onverwachte richtingen meenemen.
+
+## Wat als twee locaties elkaar technisch tegenspreken?
+
+Bij sommige bruiloften vindt de ceremonie plaats in een akoestisch eenvoudige ruimte, terwijl het feest
+zelf in een sterk galmende zaal wordt gehouden, of andersom. In dat geval loont het om het geluid per
+locatie apart te plannen in plaats van één systeemconfiguratie voor beide ruimtes te gebruiken.
+
+## Kleine, goedkope maatregelen met groot effect
+
+Niet elke akoestische uitdaging vraagt om dure verbouwingen. Zelfs eenvoudige elementen maken een
+merkbaar verschil:
+
+- **Lange gordijnen** voor grote glazen of stenen oppervlakken.
+- **Tapijten of lopers** op harde vloeren, op zijn minst rond de dansvloer.
+- **Zitplaatsen en gedekte tafels**, die tijdens het feest toch al aanwezig zijn en zelf een deel van de
+  nagalm absorberen.
+- **Bloemstukken en decoratie van stof** in plaats van alleen glas en metaal.
+
+## Akoestiek en presentatie: waarom spraak anders reageert dan muziek
+
+Een punt dat bij akoestische controles vaak over het hoofd wordt gezien: gesproken taal reageert anders
+op nagalm dan muziek. Terwijl muziek wat nagalm vaak als aangenaam «vol» ervaart, wordt spraak in een
+sterk galmende ruimte al snel moeilijk verstaanbaar: lettergrepen lopen in elkaar over. Dat betekent dat
+een ruimte die voor dansmuziek prima klinkt, toch een aparte technische oplossing nodig kan hebben voor
+speeches en presentatie.
+
+## Conclusie
+
+Akoestiek laat zich niet wegdecoreren, maar wel met genoeg voorbereidingstijd inplannen. Bruidsparen die
+bij de bezichtiging plafondhoogte, oppervlakken en de klaptest controleren en die observaties aan de dj
+doorgeven, zorgen ervoor dat de apparatuur vanaf het begin op de ruimte is afgestemd.
+`.trim();
+
 export const akustikPost: BlogPost = {
   id: 'location-akustik-checkliste',
   slug: 'location-akustik-checkliste',
@@ -575,6 +667,18 @@ export const akustikPost: BlogPost = {
         metaTitle: 'Acoustique du lieu de mariage : check-list | DJ Veys',
         metaDescription:
           'Que vérifier de l\'acoustique lors de la visite d\'un lieu de mariage : plafond, surfaces, test du claquement de mains et mesures simples.',
+      },
+    },
+    nl: {
+      slug: 'akoestiek-trouwlocatie-checklist',
+      title: 'Akoestiek van de locatie: wat u bij een bezichtiging controleert',
+      excerpt:
+        'Akoestiek bepaalt het geluid van de avond veel meer dan welke apparatuur alleen ook, en wordt bij locatiebezichtigingen bijna nooit actief gecontroleerd. Deze gids biedt een checklist, de eenvoudige klaptest en legt uit waarom een lege ruimte misleidend klinkt.',
+      body: akustikNl,
+      seo: {
+        metaTitle: 'Akoestiek van de trouwlocatie: checklist | DJ Veys',
+        metaDescription:
+          'Wat u aan de akoestiek controleert bij de bezichtiging van een trouwlocatie: plafond, oppervlakken, klaptest en eenvoudige maatregelen.',
       },
     },
   },

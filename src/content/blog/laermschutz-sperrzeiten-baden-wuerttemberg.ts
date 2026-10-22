@@ -466,6 +466,87 @@ remplace pas un conseil juridique ; les règles et compétences exactes varient 
 doivent être vérifiées directement pour votre lieu.
 `.trim();
 
+export const laermschutzNl = `
+## In het kort
+
+Samen met Bremen is Baden-Württemberg een van de laatste twee Duitse deelstaten met een echte wettelijke
+sluitingstijd («Sperrzeit») voor horeca: normaal van 3 tot 6 uur 's ochtends, en in de nachten vóór
+zaterdag en zondag van 5 tot 6 uur. Voor bruiloften kan deze sluitingstijd worden verlengd of opgeheven
+via een aanvraag voor een zogeheten «Sperrzeitverkürzung» bij de lokale afdeling openbare orde
+(Ordnungsamt): dat is de praktisch relevante hefboom, niet de wettelijke regel zelf. Dit artikel is een
+algemene oriëntatie op basis van openbare bronnen, geen juridisch advies.
+
+## Het juridische uitgangspunt in Baden-Württemberg
+
+Volgens § 9 van de horecaverordening van Baden-Württemberg (Gaststättenverordnung, GastVO) begint de
+algemene sluitingstijd voor horecagelegenheden en vergelijkbare inrichtingen om 3 uur en eindigt ze om 6
+uur; in de nachten vóór zaterdag en zondag begint ze pas om 5 uur. Anders dan in de meeste andere Duitse
+deelstaten, waar een vaste sluitingstijd grotendeels is afgeschaft, hanteert Baden-Württemberg in principe
+nog een echte wettelijke grens.
+
+Op 1 januari 2026 is bovendien een hervorming van het horecarecht van de deelstaat in werking getreden,
+die procedures vereenvoudigt en verschuift van een vergunningsplicht naar een meldingsplicht. Voor de
+praktische bruiloftsplanning betekent dit vooral: details veranderen, en de actuele stand bij de
+bevoegde gemeente nagaan is belangrijker dan ooit.
+
+## De Sperrzeitverkürzung: de praktisch relevante hefboom
+
+Het goede nieuws voor bruidsparen: de wettelijke sluitingstijd kan voor afzonderlijke gelegenheden
+worden ingekort of opgeheven, via de zogeheten Sperrzeitverkürzung. Die wordt aangevraagd bij het
+Ordnungsamt van de gemeente, meestal met voldoende aanlooptijd vóór het evenement. Voor besloten feesten
+in gehuurde zalen, hotels of evenementenlocaties is dit een gevestigde, routinematige procedure, geen
+uitzondering.
+
+## Sluitingstijd is niet hetzelfde als geluidsbescherming
+
+Een veelvoorkomend misverstand: de sluitingstijd regelt hoe laat een horeca-achtig bedrijf open mag
+blijven; ze is niet de enige wettelijke grens voor muziek en volume. Algemene regels ter bescherming van
+de nachtrust en ter beperking van geluidsoverlast kunnen ook los van de sluitingstijd gelden, vooral bij
+feesten in de buitenlucht, tenten in de tuin of locaties zonder klassieke horecavergunning.
+
+## Een praktische planningschecklist
+
+| Vraag | Waarom het belangrijk is |
+|---|---|
+| Heeft de locatie een eigen contractuele eindtijd? | Vaak een relevantere grens dan de wet zelf |
+| Is een Sperrzeitverkürzung nodig, en is die aangevraagd? | Bepaalt hoe laat er wettelijk gefeest mag worden |
+| Hanteert de locatie een aparte geluidsvoorwaarde? | Vooral relevant bij feesten buiten of in een tent |
+| Hoe dichtbij staat de dichtstbijzijnde woning? | Bepaalt hoe gevoelig buren en instanties reageren |
+| Wie is het verantwoordelijke aanspreekpunt bij de gemeente? | Voor snelle vragen op de dag van het evenement |
+
+## Feestvieren in een privétuin: een bijzonder geval
+
+Als het feest niet op een commercieel uitgebate locatie plaatsvindt, maar in een privétuin of op
+privéterrein, geldt de sluitingstijd van de GastVO meestal niet direct; dan komen de algemene regels ter
+bescherming van de nachtrust op de voorgrond. In de praktijk betekent dit: ook zonder commerciële
+sluitingstijd is volume na een bepaald tijdstip, vaak 22 uur, een gevoelig onderwerp bij de buren en
+wordt het bij een geschil door de lokale afdeling openbare orde beoordeeld.
+
+## Waarom een kort gesprek met de buren vaak meer helpt dan welke regel ook
+
+Een praktisch, vaak onderschat punt: de meeste geluidsklachten bij besloten feesten ontstaan niet omdat
+een wettelijke grens werd overschreden, maar omdat buren zich gepasseerd voelen. Een korte persoonlijke
+waarschuwing vooraf, met een globale verwachte eindtijd en een direct contact voor noodgevallen,
+ontmijnt in de praktijk veel situaties die anders zouden eindigen in een geluidsklacht en een bezoek van
+de afdeling openbare orde.
+
+## Wat als de locatie zelf geen duidelijke antwoorden heeft
+
+Niet elke locatie kan op vragen over sluitingstijden en geluidsvoorwaarden meteen een precies antwoord
+geven. In dat geval loont het om het Ordnungsamt van de bevoegde gemeente direct te vragen: liever één
+keer te veel vragen dan op de trouwavond zelf tegen een onverwachte grens aanlopen.
+
+## Conclusie
+
+Baden-Württemberg is een van de twee deelstaten die nog een echte wettelijke sluitingstijd hanteren,
+maar er is een duidelijke, gevestigde manier om die voor uw eigen bruiloft aan te passen: de aanvraag
+voor een Sperrzeitverkürzung bij het lokale Ordnungsamt. Bruidsparen die vooruit plannen (de eindtijd
+van de locatie ophelderen, indien nodig een verlenging aanvragen en geluidsbescherming los van de
+sluitingstijd bekijken), voorkomen onaangename verrassingen op de avond zelf. Dit artikel vervangt geen
+juridisch advies; precieze regels en bevoegdheden verschillen per gemeente en moeten direct voor uw
+locatie worden nagegaan.
+`.trim();
+
 export const laermschutzPost: BlogPost = {
   id: 'laermschutz-sperrzeiten-baden-wuerttemberg',
   slug: 'laermschutz-sperrzeiten-baden-wuerttemberg',
@@ -538,6 +619,18 @@ export const laermschutzPost: BlogPost = {
         metaTitle: 'Bruit et heure de fermeture en Bade-Wurtemberg | DJ Veys',
         metaDescription:
           'Heure de fermeture légale en Bade-Wurtemberg, Sperrzeitverkürzung pour les mariages et protection contre le bruit. Orientation, pas un conseil juridique.',
+      },
+    },
+    nl: {
+      slug: 'geluid-en-sluitingstijden-baden-wuerttemberg',
+      title: 'Geluidsbescherming en sluitingstijden in Baden-Württemberg',
+      excerpt:
+        'Baden-Württemberg is een van de twee Duitse deelstaten met een echte wettelijke sluitingstijd (normaal 3 tot 6 uur, 5 tot 6 uur in de nachten vóór zaterdag en zondag); voor bruiloften kan die via een aanvraag bij de lokale afdeling openbare orde worden aangepast. Dit artikel is oriëntatie op basis van openbare bronnen, geen juridisch advies.',
+      body: laermschutzNl,
+      seo: {
+        metaTitle: 'Geluid en sluitingstijd in Baden-Württemberg | DJ Veys',
+        metaDescription:
+          'Wettelijke sluitingstijd in Baden-Württemberg, Sperrzeitverkürzung voor bruiloften en geluidsbescherming. Oriëntatie, geen juridisch advies.',
       },
     },
   },

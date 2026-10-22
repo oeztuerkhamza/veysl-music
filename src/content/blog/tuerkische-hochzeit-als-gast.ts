@@ -681,6 +681,129 @@ mariages et événements et la page consacrée aux mariages turcs à Stuttgart s
 naturel.
 `.trim();
 
+export const tuerkischeHochzeitAlsGastNl = `
+## Waarom een Turkse bruiloft anders aanvoelt
+
+Wie voor het eerst op een Turkse of Duits-Turkse bruiloft is uitgenodigd, merkt het meestal zodra hij of
+zij de zaal binnenstapt: de avond volgt een andere boog dan een gewoon Duits feest. Meer gasten, meer
+ceremonie, veel meer dansen en een draaiboek dat rond momenten in plaats van vaste kloktijden is
+opgebouwd. Niemand verwacht voorkennis. Het helpt wel om de terugkerende bouwstenen te kennen: dan hoeft
+u niet te raden wanneer er iets belangrijks gebeurt.
+
+Eerst een kanttekening: «de» Turkse bruiloft bestaat niet. Families uit verschillende regio's, en met
+een verschillende mate van traditie, vieren merkbaar anders. Wat volgt beschrijft wat gebruikelijk is,
+niet wat verplicht is.
+
+## De avond vanuit het oogpunt van de gast
+
+| Moment | Wat gasten kunnen verwachten |
+|---|---|
+| Aankomst | Begroeting door de familie, de zaal loopt langzaam vol |
+| Binnenkomst van het paar | Eigen muziek, vaak een live-element, iedereen staat en applaudisseert |
+| Ceremonieel deel | Toespraken, ringceremonie, rode sjerp: het rustigste deel van de avond |
+| Takı | Gasten komen naar voren en overhandigen hun cadeau zichtbaar |
+| Eten | Later dan een Duits draaiboek zou doen verwachten |
+| Dansprogramma | Halay, Roman Havası, Turkse en internationale nummers afwisselend |
+| Afsluiting | Meestal veel later dan bij een Duits feest |
+
+De volgorde verschilt per familie. Als het uw eerste keer is, is de presentatie het eenvoudigste
+houvast: bij een gemengde gastenlijst worden aankondigingen normaal in het Duits en Turks gedaan.
+
+## De binnenkomst: het moment dat niemand mag missen
+
+De binnenkomst van het paar is het eerste grote hoogtepunt van de avond en wordt bewust geënsceneerd:
+eigen muziek, vaak een live-element en licht langs de route naar het podium. In veel families gaat er
+een apart programmaonderdeel aan vooraf: de gelin çıkarma, het moment waarop de bruid bij haar
+ouderlijk huis wordt opgehaald of de zaal in wordt geleid.
+
+Voor gasten betekent dat: op tijd in de zaal zijn, opstaan, het middenpad vrijhouden en niet in het
+beeld van de fotograaf gaan staan. Foto's met de telefoon zijn bijna overal welkom, vanaf de tweede rij.
+
+## Het cadeau: hoe takı werkt
+
+Op een Duitse bruiloft verdwijnt de envelop discreet in een doos. Op een Turkse bruiloft is het
+overhandigen van het cadeau een eigen programmaonderdeel: takı. Het paar staat vooraan, gasten komen
+een voor een, als stel of als familie naar voren, en het cadeau wordt zichtbaar overhandigd:
+traditioneel geld, of goud dat aan een lint op de jurk en het pak wordt gespeld. De presentatie
+begeleidt dit deel vaak.
+
+Wat dat in de praktijk betekent:
+
+- **Geld in een envelop en goud zijn allebei normaal.** Een gewoon cadeau is de uitzondering.
+- **Er bestaat geen bedragentabel**, en niemand van buitenaf kan er geloofwaardig een opstellen. Laat u
+  leiden door hoe dicht u bij de familie staat.
+- **Schrijf uw naam vooraf op de envelop.** Bij een grote gastenlijst is die naam de enige kans van het
+  paar om u achteraf persoonlijk te bedanken.
+- **Wacht op het moment.** Het cadeau tussendoor aan tafel overhandigen is goed bedoeld, maar haalt de
+  betekenis uit het ritueel.
+
+Het takı-moment is openbaar, maar warm: de aandacht ligt bij het paar, niet bij een afzonderlijke envelop.
+
+## Kledingvoorschrift: wat mensen echt dragen
+
+Turkse bruiloften zijn meestal formeler dan een gemiddeld Duits feest. Een pak of een donker colbert met
+pantalon, een jurk of een nette broekpak zijn de veilige keuze. Twee punten komen steeds terug:
+
+- **Wit blijft voorbehouden aan de bruid**: dezelfde regel als op een Duitse bruiloft.
+- **Hoe conservatief het kledingvoorschrift is, verschilt sterk per familie.** Als u de familie niet goed
+  kent, is een klassiek formele keuze altijd veilig.
+
+Belangrijker dan de snit van een jurk: comfortabele schoenen. Er wordt lang gedanst, en het begint
+eerder dan Duitse gasten meestal verwachten.
+
+## Halay voor beginners: u wordt erbij gehaald
+
+Halay is een kettingdans: dansers haken hun pinken in elkaar of houden een doek vast en bewegen in een
+rij of open kring, geleid door één persoon vooraan die het tempo en de figuren bepaalt. Het is een
+gezamenlijke dans, en juist daarom pakt iemand op een gegeven moment uw hand. Dat is bedoeld als
+uitnodiging, niet als uitdaging.
+
+Een eerlijk overlevingsplan voor de basispas:
+
+1. **Sluit aan het einde van de ketting aan**, niet in het midden. Daar is de pas het eenvoudigst.
+2. **Kijk naar de voeten van de persoon twee plaatsen voor u**, niet naar uw eigen voeten.
+3. **Maak kleine passen.** Het basispatroon beweegt vooral zijwaarts, heeft één accent in het ritme en
+   herhaalt zich.
+4. **Probeer niet te leiden.** Figuren, tempowisselingen en het einde komen allemaal van de kop van de
+   ketting.
+5. **Geef het twee of drie rondes.** Daarna zit het patroon meestal goed genoeg.
+
+Er bestaat geen enkele halaypas: regionale varianten verschillen in pasvolgorde en tempo. Voor een gast
+zonder voorkennis is dat een opluchting: ook Turkse gasten dansen niet elke variant blind.
+
+## Etiquette: wat goed valt en wat niet
+
+| Valt goed | Beter vermijden |
+|---|---|
+| Op de aangekondigde begintijd aankomen | Kort voor het eten binnenkomen |
+| Kort de ouders aan beide kanten begroeten | Alleen het paar begroeten en doorlopen |
+| Op uw beurt wachten bij de takı | De envelop tussendoor aan tafel overhandigen |
+| Meedansen, ook zonder de passen te kennen | De hele avond opvallend blijven zitten |
+| Fotograferen vanaf de tweede rij | Tijdens de binnenkomst het middenpad op stappen |
+| Eén muziekverzoek beleefd bij de draaitafel doen | Herhaaldelijk vragen, of midden in de ceremonie naar de draaitafel gaan |
+
+Twee vragen komen bijzonder vaak voor. Of er alcohol wordt geschonken, is de beslissing van de familie en
+verschilt per feest: wat er op tafel staat, is het antwoord. En niet iedereen kennen is normaal: de
+uitgebreide familie en de bredere kennissenkring horen vanzelfsprekend op de lijst.
+
+## Als er ook een kına gecesi is
+
+Sommige uitnodigingen gelden voor een tweede avond: de kına gecesi, meestal de avond ervoor,
+traditioneel een vrouwenfeest en tegenwoordig in veel families open voor alle gasten. Die begint
+emotioneler en langzamer dan de bruiloft zelf: de binnenkomst van de bruid en het hennaritueel staan
+centraal, waarna de avond overgaat in een feest. Het is een zelfstandig feest, geen kleinere voorproef
+van de bruiloft. Of daar een apart cadeau gebruikelijk is, vraagt u het best na bij degene die de
+uitnodiging heeft doorgegeven.
+
+## Conclusie
+
+Gast zijn op een Turkse bruiloft vraagt geen specialistische kennis, maar drie dingen: op tijd komen, het
+cadeau klaar hebben voor het takı-moment en de dansvloer niet ontwijken. Al het andere wijst zich in de
+loop van de avond vanzelf, niet in de laatste plaats door een presentatie die elk programmaonderdeel in
+beide talen aankondigt. Wie zo'n feest plant, vindt in het overzicht van bruiloften en evenementen en de
+pagina over Turkse bruiloften in Stuttgart het logische vertrekpunt.
+`.trim();
+
 export const tuerkischeHochzeitAlsGastPost: BlogPost = {
   id: 'tuerkische-hochzeit-als-gast',
   slug: 'tuerkische-hochzeit-als-gast',
@@ -757,6 +880,18 @@ export const tuerkischeHochzeitAlsGastPost: BlogPost = {
         metaTitle: 'Invité à un mariage turc : le guide pratique | DJ Veys',
         metaDescription:
           'À quoi s\'attendre en tant qu\'invité à un mariage turc : entrée, takı et cadeau, tenue, halay pour débutants et usages.',
+      },
+    },
+    nl: {
+      slug: 'uitgenodigd-op-een-turkse-bruiloft',
+      title: 'Uitgenodigd op een Turkse bruiloft: een gids voor gasten',
+      excerpt:
+        'Als gast op een Turkse bruiloft heeft u geen specialistische kennis nodig, maar wel drie oriëntatiepunten: het takı-moment, waarop het cadeau zichtbaar wordt overhandigd, een kledingvoorschrift dat formeler is dan u misschien verwacht, en een basispas van de halay waar u vroeg of laat bij wordt gehaald. Deze gids loopt de avond door vanuit de gast.',
+      body: tuerkischeHochzeitAlsGastNl,
+      seo: {
+        metaTitle: 'Uitgenodigd op een Turkse bruiloft: de gids | DJ Veys',
+        metaDescription:
+          'Wat u als gast op een Turkse bruiloft kunt verwachten: binnenkomst, takı en cadeau, kleding, halay voor beginners en etiquette.',
       },
     },
   },
