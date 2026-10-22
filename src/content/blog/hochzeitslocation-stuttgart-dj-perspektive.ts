@@ -754,7 +754,7 @@ export const hochzeitslocationStuttgartPost: BlogPost = {
         'La capacité, la piste de danse, l\'électricité, l\'acoustique et les heures de fermeture façonnent la soirée bien avant l\'installation de la décoration. Ce guide rassemble les huit critères qu\'un DJ vérifie réellement dans un lieu de mariage de la région de Stuttgart, avec une liste de questions pour la visite. Aucune salle précise n\'est recommandée, délibérément.',
       body: hochzeitslocationStuttgartFr,
       seo: {
-        metaTitle: 'Lieu de mariage près de Stuttgart : le regard du DJ | DJ Veys',
+        metaTitle: 'Lieu de mariage à Stuttgart : le regard du DJ | DJ Veys',
         metaDescription:
           'Que vérifier en choisissant un lieu de mariage près de Stuttgart : piste, acoustique, électricité, horaires et questions pour la visite.',
       },

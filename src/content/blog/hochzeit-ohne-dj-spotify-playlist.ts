@@ -872,7 +872,7 @@ export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
         'Pour les petites fêtes centrées sur la conversation, une playlist Spotify suffit vraiment, et cet article le dit clairement. Cela ne devient critique qu\'à partir du moment où l\'on danse vraiment : lire la piste, les transitions, les annonces, le matériel et une solution de secours ne peuvent pas être écrits à l\'avance dans une liste. Avec un regard honnête sur l\'option « un ami fera le DJ » et un tableau d\'aide à la décision.',
       body: hochzeitOhneDjSpotifyPlaylistFr,
       seo: {
-        metaTitle: 'Mariage sans DJ : une playlist Spotify suffit-elle ? | DJ Veys',
+        metaTitle: 'Mariage sans DJ : une playlist suffit-elle ? | DJ Veys',
         metaDescription:
           'Une playlist Spotify suffit-elle pour votre mariage ? Réponse honnête : quand elle fonctionne, ce qu\'elle ne peut pas faire et l\'option d\'un ami DJ.',
       },
@@ -884,7 +884,7 @@ export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
         'Voor kleine feesten waar gesprekken centraal staan, is een Spotify-playlist echt genoeg, en dit artikel zegt dat ronduit. Het wordt pas kritiek zodra er echt gedanst wordt: de dansvloer lezen, overgangen, aankondigingen, apparatuur en een terugvaloptie zijn niet vooraf in een lijst te schrijven. Met een eerlijke blik op de optie «een vriend draait wel» en een beslissingstabel.',
       body: hochzeitOhneDjSpotifyPlaylistNl,
       seo: {
-        metaTitle: 'Bruiloft zonder dj: is een Spotify-playlist genoeg? | DJ Veys',
+        metaTitle: 'Bruiloft zonder dj: is een playlist genoeg? | DJ Veys',
         metaDescription:
           'Is een Spotify-playlist genoeg voor uw bruiloft? Eerlijk antwoord: wanneer het werkt, wat een playlist niet kan en de optie van een vriend als dj.',
       },
