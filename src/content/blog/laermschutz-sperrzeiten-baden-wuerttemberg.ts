@@ -293,6 +293,93 @@ night itself. This article does not replace legal advice; exact rules and
 responsibilities vary by municipality and should be confirmed directly for your venue.
 `.trim();
 
+export const laermschutzEs = `
+## En resumen
+
+Junto con Bremen, Baden-Württemberg es uno de los dos últimos estados federados alemanes con un
+horario de cierre legal real («Sperrzeit») para los locales: normalmente de 3 a 6 de la mañana, y
+en las noches previas al sábado y al domingo de 5 a 6 de la mañana. Para las celebraciones de
+boda, este horario de cierre puede ampliarse o suprimirse mediante una solicitud de la llamada
+«Sperrzeitverkürzung» ante la oficina de orden público local (Ordnungsamt): esa es la palanca
+relevante en la práctica, no la norma legal en sí. Este artículo es una orientación general
+basada en fuentes públicas, no asesoramiento jurídico.
+
+## El punto de partida legal en Baden-Württemberg
+
+Según el § 9 del reglamento de hostelería de Baden-Württemberg (Gaststättenverordnung, GastVO),
+el horario de cierre general para locales y establecimientos similares empieza a las 3 de la
+mañana y termina a las 6; en las noches previas al sábado y al domingo solo empieza a las 5. A
+diferencia de la mayoría de los demás estados federados alemanes, donde el horario de cierre
+fijo se ha suprimido en gran medida, Baden-Württemberg sigue aplicando en principio un límite
+legal real.
+
+El 1 de enero de 2026 entró además en vigor una reforma de la legislación de hostelería del
+estado, que simplifica los procedimientos y pasa de un sistema basado en autorizaciones a otro
+basado en comunicaciones. Para la planificación práctica de una boda significa sobre todo que
+los detalles están cambiando y que confirmar la situación actual con el municipio competente
+importa más que nunca.
+
+## La Sperrzeitverkürzung: la palanca relevante en la práctica
+
+La buena noticia para las parejas: el horario de cierre legal puede acortarse o suprimirse para
+ocasiones concretas, mediante la llamada Sperrzeitverkürzung. Se solicita en el Ordnungsamt del
+municipio local, normalmente con suficiente antelación al evento. Para celebraciones privadas en
+salones alquilados, hoteles o espacios para eventos es un procedimiento consolidado y rutinario,
+no un caso especial.
+
+## El horario de cierre no es lo mismo que la protección contra el ruido
+
+Un malentendido frecuente: el horario de cierre regula hasta qué hora puede permanecer abierto un
+negocio de tipo hostelero; no es el único límite legal para la música y el volumen. Las normas
+generales de protección del descanso nocturno y de control de emisiones pueden aplicarse
+también con independencia del horario de cierre, sobre todo en celebraciones al aire libre,
+carpas en jardines o lugares sin una licencia de hostelería clásica.
+
+## Una lista de comprobación práctica para la planificación
+
+| Pregunta | Por qué importa |
+|---|---|
+| ¿Tiene el lugar una hora de finalización contractual propia? | A menudo es un límite más relevante que la propia ley |
+| ¿Hace falta una Sperrzeitverkürzung y se ha solicitado? | Determina hasta qué hora se puede celebrar legalmente |
+| ¿Impone el lugar una condición aparte de protección contra el ruido? | Especialmente relevante en celebraciones al aire libre o en carpa |
+| ¿A qué distancia está el edificio residencial más cercano? | Influye en lo sensible que reaccionan los vecinos y las autoridades |
+| ¿Quién es la persona de contacto responsable en el municipio? | Para consultas rápidas el día del evento |
+
+## Celebrar en un jardín privado: un caso especial
+
+Si la celebración no tiene lugar en un local de explotación comercial, sino en un jardín o una
+propiedad privada, el horario de cierre de la GastVO no suele aplicarse directamente; en su
+lugar pasan a primer plano las normas generales de protección del descanso nocturno. En la
+práctica significa que, incluso sin horario de cierre comercial, el volumen a partir de cierta
+hora, a menudo las 10 de la noche, es un tema sensible con los vecinos y, en caso de conflicto,
+lo valora la oficina de orden público local.
+
+## Por qué una breve conversación con los vecinos suele ayudar más que cualquier norma
+
+Un punto práctico y a menudo infravalorado: la mayoría de las quejas por ruido en celebraciones
+privadas no surgen porque se haya superado un límite legal, sino porque los vecinos se sienten
+ignorados. Un breve aviso personal de antemano, con una hora de finalización aproximada y un
+contacto directo para emergencias, desactiva en la práctica muchas situaciones que de otro modo
+acabarían en una queja por ruido y una visita de la oficina de orden público.
+
+## Qué hacer si el propio lugar no tiene respuestas claras
+
+No todos los lugares pueden dar de inmediato una respuesta precisa sobre horarios de cierre y
+condiciones de ruido cuando se les pregunta. En ese caso conviene preguntar directamente al
+Ordnungsamt del municipio competente: mejor preguntar una vez de más que encontrarse con un
+límite inesperado la misma noche de la boda.
+
+## Conclusión
+
+Baden-Württemberg es uno de los dos estados que todavía aplican un horario de cierre legal real,
+pero existe una vía clara y consolidada para adaptarlo a la propia boda: la solicitud de
+Sperrzeitverkürzung ante el Ordnungsamt local. Las parejas que planifican con antelación
+(aclarando la hora de finalización del lugar, solicitando una ampliación si es necesario y
+tratando la protección contra el ruido por separado del horario de cierre) evitan sorpresas
+desagradables la misma noche. Este artículo no sustituye el asesoramiento jurídico; las normas y
+competencias exactas varían según el municipio y deben confirmarse directamente para su lugar.
+`.trim();
+
 export const laermschutzPost: BlogPost = {
   id: 'laermschutz-sperrzeiten-baden-wuerttemberg',
   slug: 'laermschutz-sperrzeiten-baden-wuerttemberg',
@@ -341,6 +428,18 @@ export const laermschutzPost: BlogPost = {
         metaTitle: 'Wedding Closing Times in Baden-Württemberg | DJ Veys',
         metaDescription:
           'How late can a wedding celebration run in Baden-Württemberg? Closing times, extension applications and noise protection explained — not legal advice.',
+      },
+    },
+    es: {
+      slug: 'ruido-y-horarios-de-cierre-baden-wuerttemberg',
+      title: 'Protección contra el ruido y horarios de cierre en Baden-Württemberg',
+      excerpt:
+        'Baden-Württemberg es uno de los dos estados federados alemanes con un horario de cierre legal real (normalmente de 3 a 6 h, de 5 a 6 h en las noches previas a sábado y domingo); para las bodas puede ajustarse mediante una solicitud a la oficina de orden público local. Este artículo es una orientación basada en fuentes públicas, no asesoramiento jurídico.',
+      body: laermschutzEs,
+      seo: {
+        metaTitle: 'Ruido y horario de cierre en Baden-Württemberg | DJ Veys',
+        metaDescription:
+          'Horario de cierre legal en Baden-Württemberg, Sperrzeitverkürzung para bodas, protección contra el ruido y lista de comprobación. Orientación general, no asesoramiento jurídico.',
       },
     },
   },

@@ -310,6 +310,112 @@ Turkish and English. For coordinating music and running order, a free enquiry fo
 is a good next step.
 `.trim();
 
+export const nisanEs = `
+## El nişan: cuando dos familias se encuentran oficialmente
+
+El nişan, la celebración del compromiso, es en las familias turcas y germano-turcas una
+celebración propia y no solo un preludio de la boda. Es el momento en que la pareja y ambas
+familias se comprometen públicamente. En Alemania se celebra semanas o meses antes de la boda,
+según la familia, unas veces en casa con un círculo reducido y otras en un salón alquilado con
+varios cientos de invitados. Planificarlo como una boda pequeña pasa por alto lo que lo define:
+es más tranquilo, más personal y está más centrado en las familias.
+
+## Lo que suele preceder al nişan
+
+Muchas familias conocen dos pasos previos a la celebración, que varían según la región y la
+familia:
+
+- **Kız isteme** (pedir la mano de la novia): la familia del novio visita a la familia de la novia
+  y pide formalmente su mano. Una costumbre conocida es servir al novio un café con sal en lugar
+  de azúcar, como prueba amistosa.
+- **Söz** (la promesa): las dos familias acuerdan la unión, a veces en un pequeño encuentro propio
+  y a veces solo el mismo día del nişan.
+
+No todas las familias siguen estos pasos, y algunas lo reúnen todo en una sola velada. Para la
+planificación significa: aclarar pronto qué partes forman parte de su familia y si deben
+celebrarse la misma noche.
+
+## El programa típico de un nişan
+
+No existe un plan obligatorio. Un esquema habitual es el siguiente:
+
+1. **Recibimiento y llegada**: se saluda a los invitados y suena música tranquila de fondo.
+2. **La entrada de la pareja**: a menudo con una canción elegida y palmas al compás.
+3. **Discurso y oración**: un familiar de mayor edad dice unas palabras y, en algunas familias,
+   sigue una breve oración.
+4. **Ceremonia de los anillos**: se colocan los anillos, a menudo a cargo de un familiar de mayor
+   edad. Con frecuencia, una cinta roja une los dos anillos o a la pareja.
+5. **Felicitaciones y takı**: los invitados felicitan a la pareja y les prenden dinero o joyas de
+   oro. Con muchos invitados, esto dura más de lo esperado.
+6. **Comida, tarta y fotos.**
+7. **Baile**: desde el primer baile de la pareja hasta el halay en grupo.
+
+La ceremonia de los anillos y el takı son los momentos en los que la música no está en primer
+plano, pero sostiene la sala. Justo ahí, un sonido limpio decide si todos los presentes pueden
+oír las palabras.
+
+## La música: más tranquila que en la boda, pero no accesoria
+
+El nişan tiene dos tempos: la parte solemne (entrada, anillos, takı) y la parte festiva. Para la
+primera bastan piezas bien elegidas y no demasiado fuertes. Lo importante es que los discursos y
+la ceremonia de los anillos sigan siendo audibles: un micrófono inalámbrico para todos los que
+hablan y un sistema que no sature la sala. Para la segunda parte vale lo mismo que en la boda:
+quien deba bailar necesita un repertorio preparado de piezas turcas y alemanas, adaptado a los
+grupos de edad presentes.
+
+## Lista de comprobación para el nişan
+
+| Punto | Cuestión que aclarar |
+|---|---|
+| Canción de entrada | ¿Qué pieza, en qué momento exacto, cuánta duración? |
+| Ceremonia de los anillos | ¿Quién habla, quién coloca los anillos, hay oración? |
+| Micrófono | ¿Quién necesita un micrófono inalámbrico y quién hace los avisos: en alemán, en turco o en ambos? |
+| Momento del takı | ¿Cuántos invitados, cuánto tiempo, qué música tranquila suena mientras tanto? |
+| Comida y tarta | ¿Cuándo se sirve, para que la música no compita con los platos? |
+| Inicio del baile | ¿Quién abre y está previsto un momento de halay? |
+| Volumen y horario | ¿Hay horario de silencio en el salón o en la zona residencial? |
+| Foto y vídeo | ¿Hay momentos que deban ser deliberadamente silenciosos? |
+
+## Escollos frecuentes
+
+- **Una ceremonia de los anillos sin micrófono.** En un salón lleno, la mitad trasera de los
+  invitados no oye nada, y el momento más importante de la noche pasa de largo para ellos.
+- **Demasiados puntos.** Incluir todas las costumbres deja una noche sin respiro. Tres momentos
+  bien hechos valen más que siete apresurados.
+- **Responsabilidad poco clara de los avisos.** Si nadie se encarga, aparece antes de cada punto
+  una pausa en la que todos se miran entre sí.
+- **Un solo idioma para un público mixto.** En listas de invitados germano-turcas, no todos
+  entienden igual de bien ambos idiomas; los avisos bilingües lo resuelven.
+- **Técnica y espacio sin comprobar de antemano.** La electricidad, el espacio de montaje y los
+  vecinos suelen ser los verdaderos cuellos de botella, tanto en un salón de casa como en un
+  salón municipal.
+
+## Pensar el nişan y la boda juntos
+
+El nişan no tiene por qué ser la versión pequeña de la boda, pero las dos noches pueden
+conocerse. Una canción que se oye por primera vez en el nişan puede volver en la boda. Y quien
+planifica por separado la kına gecesi, el nişan y la boda debería asegurarse de que las listas no
+cuenten tres veces la misma historia. La guía sobre la boda turca en Alemania ofrece una visión
+general de toda la secuencia.
+
+## Cuánto tiempo prever
+
+Como orientación, que varía mucho de una familia a otra: el recibimiento y la llegada, algo
+menos de una hora; la entrada y la ceremonia de los anillos, de 20 a 40 minutos; las
+felicitaciones y el takı, aproximadamente otro tanto según el número de invitados; y después la
+comida y el baile. Prevea un margen: los rituales con muchos participantes casi siempre duran
+más de lo previsto.
+
+## Conclusión
+
+Un buen nişan vive de unos pocos momentos bien preparados: una entrada que funciona, una
+ceremonia de los anillos que todos pueden seguir y una transición al baile que no empieza de
+cero. Quien acuerda de antemano estos tres puntos con el DJ o el presentador ya tiene hecha la
+mayor parte de la planificación. DJ Veys también acompaña compromisos y noches de la henna, y
+presenta en alemán, turco e inglés. Para coordinar la música y el programa, una consulta gratuita
+para su fecha es un buen siguiente paso.
+`.trim();
+
 export const nisanPost: BlogPost = {
   id: 'nisan-verlobung-planen',
   slug: 'nisan-verlobung-planen',
@@ -361,6 +467,18 @@ export const nisanPost: BlogPost = {
         metaTitle: 'Planning a Nişan: Order, Rings, Music | DJ Veys',
         metaDescription:
           'How does a nişan (Turkish engagement) run? The typical sequence from söz to takı, a checklist for music and microphones, and the most common planning mistakes.',
+      },
+    },
+    es: {
+      slug: 'nisan-compromiso-turco-guia',
+      title: 'Planificar un nişan (compromiso turco): programa, ceremonia de los anillos y música',
+      excerpt:
+        'El nişan es una celebración propia, más tranquila y más centrada en la familia que la boda. Esta guía repasa el orden típico desde el kız isteme hasta el takı, una lista de comprobación para la música y los micrófonos, y los escollos más frecuentes.',
+      body: nisanEs,
+      seo: {
+        metaTitle: 'Nişan: guía del compromiso turco | DJ Veys',
+        metaDescription:
+          'Cómo planificar un nişan: kız isteme, ceremonia de los anillos, takı, música y micrófonos, con lista de comprobación y los escollos más habituales del compromiso turco.',
       },
     },
   },

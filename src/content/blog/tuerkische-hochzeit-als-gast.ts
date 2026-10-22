@@ -422,6 +422,135 @@ this will find the weddings and events overview and the page for Turkish wedding
 Stuttgart the natural place to start.
 `.trim();
 
+export const tuerkischeHochzeitAlsGastEs = `
+## Por qué una boda turca se vive de otra manera
+
+Quien está invitado por primera vez a una boda turca o germano-turca suele notarlo en cuanto entra
+en el salón: la noche sigue un arco distinto al de una celebración alemana sin más. Más invitados,
+más ceremonia, mucho más baile y un programa construido en torno a momentos más que a horas
+fijas. Nadie espera conocimientos previos. Pero ayuda conocer los elementos que se repiten: así no
+hay que adivinar cuándo está ocurriendo algo importante.
+
+Una advertencia previa: no existe «la» boda turca. Las familias de distintas regiones, y con
+distintos grados de tradición, celebran de forma notablemente diferente. Lo que sigue describe lo
+habitual, no lo obligatorio.
+
+## La noche desde el punto de vista del invitado
+
+| Momento | Qué pueden esperar los invitados |
+|---|---|
+| Llegada | Saludo de la familia, el salón se va llenando poco a poco |
+| Entrada de la pareja | Música propia, a menudo un elemento en directo, todos de pie aplaudiendo |
+| Parte ceremonial | Discursos, ceremonia de los anillos, banda roja: el tramo más tranquilo de la noche |
+| Takı | Los invitados se acercan y entregan su regalo de forma visible |
+| Comida | Más tarde de lo que haría esperar un programa alemán |
+| Programa de baile | Halay, Roman Havası, temas turcos e internacionales alternándose |
+| Final de la noche | Normalmente mucho más tarde que en una celebración alemana |
+
+El orden varía de una familia a otra. Si es su primera vez, el punto de referencia más sencillo es
+la presentación: con una lista de invitados mixta, los avisos suelen hacerse en alemán y en turco.
+
+## La entrada: el momento que nadie debería perderse
+
+La entrada de la pareja es el primer gran punto álgido de la noche y se escenifica a propósito:
+música propia, a menudo un elemento en directo y luz a lo largo del recorrido hasta el escenario.
+En muchas familias, antes hay un punto propio del programa: el gelin çıkarma, el momento en que se
+recoge a la novia en la casa familiar o se la conduce al salón.
+
+Para los invitados significa: estar a tiempo en el salón, ponerse de pie, dejar libre el pasillo
+central y no cruzarse en la línea del fotógrafo. Las fotos con el móvil son bienvenidas casi en
+todas partes, desde la segunda fila.
+
+## El regalo: cómo funciona el takı
+
+En una boda alemana, el sobre desaparece discretamente en una caja. En una boda turca, entregar el
+regalo es un punto propio del programa: el takı. La pareja se coloca delante, los invitados se
+acercan de uno en uno, en pareja o en familia, y el regalo se entrega de forma visible:
+tradicionalmente dinero, u oro prendido en una cinta sobre el vestido y el traje. La presentación
+suele acompañar este tramo.
+
+Lo que significa en la práctica:
+
+- **El dinero en sobre y el oro son ambos normales.** Un regalo convencional es la excepción.
+- **No existe una tabla de importes**, y nadie desde fuera puede elaborar una de forma creíble.
+  Oriéntese por lo cercana que sea su relación con la familia.
+- **Escriba su nombre en el sobre de antemano.** Con una lista de invitados larga, ese nombre es
+  la única oportunidad de la pareja de darle las gracias personalmente después.
+- **Espere al momento.** Entregar el regalo en la mesa entre medias es bienintencionado, pero quita
+  sentido al ritual.
+
+El momento del takı es público, pero cálido: la atención está en la pareja, no en ningún sobre
+concreto.
+
+## Vestimenta: lo que se lleva realmente
+
+Las bodas turcas suelen ser más formales que una celebración alemana media. Un traje o una
+chaqueta oscura con pantalón, un vestido o un traje pantalón elegante son la opción segura. Hay
+dos puntos que se repiten una y otra vez:
+
+- **El blanco queda reservado para la novia**: la misma regla que en una boda alemana.
+- **Lo conservadora que sea la vestimenta varía considerablemente de una familia a otra.** Si no
+  conoce bien a la familia, una elección clásicamente formal siempre es una apuesta segura.
+
+Más importante que el corte de un vestido: unos zapatos cómodos. El baile dura mucho y empieza
+antes de lo que suelen esperar los invitados alemanes.
+
+## Halay para principiantes: le van a sacar a bailar
+
+El halay es un baile en cadena: los bailarines se enlazan por el meñique o sostienen un pañuelo y
+se mueven en línea o en un círculo abierto, guiados por una persona a la cabeza que marca el tempo
+y las figuras. Es un baile comunitario, y precisamente por eso, en algún momento, alguien le
+tenderá la mano. Es una invitación, no un desafío.
+
+Un plan de supervivencia sincero para el paso básico:
+
+1. **Únase al final de la cadena**, no en medio. Ahí el paso es más sencillo.
+2. **Fíjese en los pies de la persona que está dos puestos por delante**, no en los suyos.
+3. **Dé pasos pequeños.** El patrón básico se desplaza sobre todo hacia un lado, lleva un acento
+   en el ritmo y se repite.
+4. **No intente dirigir.** Las figuras, los cambios de tempo y el final vienen todos de la cabeza
+   de la cadena.
+5. **Dese dos o tres vueltas.** Después, el patrón suele estar lo bastante asentado.
+
+No existe un único paso de halay: las variantes regionales difieren en la secuencia de pasos y en
+el tempo. Para un invitado sin conocimientos previos es un alivio: los invitados turcos tampoco
+bailan todas las variantes a ciegas.
+
+## Etiqueta: lo que se recibe bien y lo que no
+
+| Se recibe bien | Mejor evitarlo |
+|---|---|
+| Llegar a la hora de inicio anunciada | Presentarse poco antes de la comida |
+| Saludar brevemente a los padres de ambos lados | Saludar solo a la pareja y seguir de largo |
+| Esperar su turno en el takı | Entregar el sobre en la mesa entre medias |
+| Sumarse al baile aunque no conozca los pasos | Quedarse sentado ostensiblemente toda la noche |
+| Fotografiar desde la segunda fila | Meterse en el pasillo central durante la entrada |
+| Hacer con educación una petición musical en la mesa del DJ | Insistir varias veces o acudir a la mesa en mitad de la ceremonia |
+
+Dos preguntas surgen con especial frecuencia. Si se sirve alcohol es decisión de la familia y
+cambia de una celebración a otra: lo que hay en la mesa es la respuesta. Y no conocer a todo el
+mundo es normal: la familia extensa y el círculo amplio de conocidos forman parte de la lista con
+toda naturalidad.
+
+## Si además hay una kına gecesi
+
+Algunas invitaciones incluyen una segunda velada: la kına gecesi, normalmente la noche anterior,
+tradicionalmente una celebración de mujeres y hoy abierta a todos los invitados en muchas
+familias. Empieza de forma más emotiva y más lenta que la propia boda: la entrada de la novia y el
+ritual de la henna están en el centro, y después la velada pasa a ser una fiesta. Es una
+celebración independiente, no un anticipo más pequeño de la boda. Si allí se acostumbra un regalo
+aparte, lo mejor es aclararlo con quien le transmitió la invitación.
+
+## Conclusión
+
+Ser invitado a una boda turca no requiere conocimientos especiales, solo tres cosas: llegar a
+tiempo, tener el regalo preparado para el momento del takı y no evitar la pista de baile. Todo lo
+demás se explica solo a lo largo de la noche, no en último lugar gracias a una presentación que
+anuncia cada punto del programa en los dos idiomas. Quien planifique una celebración así
+encontrará en la visión general de bodas y eventos y en la página sobre bodas turcas en Stuttgart
+el punto de partida natural.
+`.trim();
+
 export const tuerkischeHochzeitAlsGastPost: BlogPost = {
   id: 'tuerkische-hochzeit-als-gast',
   slug: 'tuerkische-hochzeit-als-gast',
@@ -474,6 +603,18 @@ export const tuerkischeHochzeitAlsGastPost: BlogPost = {
         metaTitle: 'Turkish Wedding as a Guest: Guide | DJ Veys',
         metaDescription:
           'Invited to a Turkish wedding? Running order, the taki gift moment, dress code, a basic halay step and etiquette explained for first-time guests.',
+      },
+    },
+    es: {
+      slug: 'invitado-a-una-boda-turca',
+      title: 'Invitado a una boda turca: la guía para invitados',
+      excerpt:
+        'Como invitado a una boda turca no necesita conocimientos especiales, pero sí tres puntos de orientación: el momento del takı, en el que el regalo se entrega de forma visible, una vestimenta más formal de lo que quizá espere y un paso básico de halay al que tarde o temprano le sacarán. Esta guía recorre la noche desde el lado del invitado.',
+      body: tuerkischeHochzeitAlsGastEs,
+      seo: {
+        metaTitle: 'Invitado a una boda turca: guía práctica | DJ Veys',
+        metaDescription:
+          'Qué esperar como invitado a una boda turca: entrada, takı y regalo, vestimenta, halay para principiantes y etiqueta, con una tabla de lo que se recibe bien y lo que no.',
       },
     },
   },

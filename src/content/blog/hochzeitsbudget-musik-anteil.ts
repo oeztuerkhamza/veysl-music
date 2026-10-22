@@ -409,6 +409,138 @@ detailed article on wedding DJ costs; which services sit within which scope is s
 the packages page, and a no-obligation enquiry settles the rest for your own date.
 `.trim();
 
+export const hochzeitsbudgetMusikAnteilEs = `
+## Por qué no funciona una regla de porcentaje fijo
+
+La pregunta por el presupuesto de la música casi siempre se plantea como una pregunta de
+porcentaje: una porción fija del total que pueda aplicarse a cualquier boda. Eso es justo lo
+que no funciona, y el motivo no está en la música, sino en cómo se construye el propio
+presupuesto. Las grandes partidas de una boda se comportan de manera completamente distinta
+cuando la boda cambia. Una vez entendido ese mecanismo, no hace falta ninguna regla general:
+la decisión puede tomarse a partir de la propia celebración.
+
+## Costes fijos y costes que crecen con los invitados
+
+La línea divisoria más importante de un presupuesto de boda no separa lo importante de lo
+secundario. Separa las partidas que crecen con cada invitado adicional de las que se mantienen
+prácticamente iguales.
+
+| Partida | Comportamiento al aumentar los invitados |
+|---|---|
+| Catering y bebidas | crece casi directamente con cada cubierto |
+| Lugar y mobiliario | crece por escalones, según el tamaño de sala necesario |
+| Papelería, detalles para invitados, decoración de mesa | crece por persona |
+| Fotografía | se mantiene en gran medida igual; un día más largo cuesta más, una lista de invitados más larga no |
+| Música y técnica | se mantiene en gran medida igual; solo crece por escalones, a través del equipo de sonido |
+
+Esa es la verdadera respuesta a la pregunta del porcentaje. Una celebración con ochenta
+invitados y la misma celebración con doscientos se diferencian considerablemente en el
+catering. En el lado del DJ cambia mucho menos: la misma preparación, el mismo desplazamiento,
+el mismo tiempo de actuación, un equipo de una talla más y quizá una segunda zona de sonido.
+Por tanto, la parte que la música ocupa del total baja casi automáticamente a medida que crece
+la boda, sin que nadie lo haya decidido. Una regla de porcentaje que encaja en la celebración
+pequeña ya es errónea para la grande, y viceversa.
+
+## Qué compra realmente el presupuesto de la música
+
+Más útil que un porcentaje es preguntarse qué hay concretamente dentro del presupuesto de la
+música. Básicamente son cuatro cosas:
+
+- **Tiempo de actuación.** Un set de noche es un encargo distinto de un acompañamiento continuo
+  desde el aperitivo, pasando por la cena, hasta la madrugada. La diferencia no es de calidad,
+  sino de horas.
+- **Alcance técnico.** Sonido adaptado a la sala y al número de invitados, iluminación, zonas
+  adicionales, micrófonos para los discursos. Es la única partida que crece realmente con los
+  invitados, y lo hace por escalones, no de forma continua.
+- **Elementos en directo.** Si se toca algo en directo además del set del DJ, si se suma una
+  formación en directo, si hace falta presentación y en qué idiomas.
+- **Número de proveedores.** Si la música, la técnica y la presentación vienen de una sola
+  fuente o se reparten entre varios proveedores que hay que contratar, coordinar e informar por
+  separado.
+
+Este último punto se pasa por alto con regularidad al comparar. Dos presupuestos que sobre el
+papel parecen idénticos pueden incluir en un caso una sola persona de contacto y en el otro
+tres: tres contratos, tres desplazamientos y tres hilos de coordinación que alguien tiene que
+llevar.
+
+## Por qué recortar aquí es el recorte más caro
+
+En los foros de bodas aparece una preocupación con llamativa frecuencia, y nunca tiene que ver
+con la comida: que la pista de baile se quede vacía. No es una afirmación de marketing, sino una
+observación sobre lo que las parejas temen antes y lo que recuerdan después. Detrás hay un
+motivo estructural.
+
+Casi todas las partidas de un presupuesto de boda afectan solo a una parte acotada del día: el
+vestido a la llegada y en las fotos, el catering en la cena, la decoración en la sala. La
+música, en cambio, recorre todo el horario y además da forma a su curva: cuándo hay calma,
+cuándo cambia el ambiente, cuándo llega el punto álgido de la noche y cómo termina. Es la única
+partida que no solo aporta a un momento, sino que ordena los momentos.
+
+A eso se suma un segundo punto. Una partida más floja suele poder compensarse en otro sitio.
+Una noche en la que nadie baila no se compensa: ya ha pasado.
+
+## Un ejercicio de prioridades de diez minutos
+
+En lugar de buscar un porcentaje, la decisión puede tomarse directamente. El ejercicio funciona
+mejor en pareja, con una hoja de papel:
+
+1. **Escriban por separado** qué tres cosas quieren recordar de esta boda dentro de cinco años.
+   No las tres partidas más caras, sino los tres recuerdos.
+2. **Comparen las listas.** Las coincidencias son las verdaderas prioridades compartidas; las
+   diferencias son la conversación que de verdad hay que tener.
+3. **Asignen a cada prioridad la partida que la produce.** «Todo el mundo bailó» depende de la
+   música y del programa; «quedó precioso», de la fotografía y la decoración.
+4. **Nombren dos partidas que nadie haya anotado.** Ahí está el margen: el presupuesto para sus
+   prioridades sale de allí, y casi siempre de partidas que crecen por persona.
+5. **Solo entonces pidan presupuestos**, y en el orden de sus prioridades. Preguntar primero por
+   lo más importante permite conocer el alcance real antes de que el resto ya esté comprometido.
+
+El valor del ejercicio no está en el resultado, sino en el orden: primero las prioridades,
+después los números. Si se hace al revés, el presupuesto se reparte en el orden en que van
+llegando los presupuestos.
+
+## Cuándo un presupuesto de música más pequeño está realmente bien
+
+Hay celebraciones en las que un presupuesto de música mayor sencillamente no aporta nada, y
+sería deshonesto omitirlo:
+
+- **La noche termina pronto.** Si la celebración concluye tras la cena, un programa de noche
+  completo no tiene sentido.
+- **Deliberadamente no habrá baile.** Algunas parejas planifican un aperitivo, una comida larga
+  y conversación. Eso requiere un sonido de fondo limpio y micrófonos que funcionen para los
+  discursos, y nada más.
+- **Pocos invitados en una sala agradecida.** Donde la acústica es sencilla y hay que llegar con
+  el sonido a pocos invitados, la exigencia técnica es realmente menor.
+- **El lugar dispone de un sistema instalado.** Entonces desaparece parte del alcance técnico,
+  siempre que alguien compruebe de antemano si el sistema existente está realmente a la altura
+  de la noche prevista.
+
+En todos estos casos, el alcance menor no es un ahorro, sino la contratación correcta. La
+diferencia entre contratar menos y recortar en el lugar equivocado está en si el alcance encaja
+con la noche que se ha planificado, o si después hay que recortar la noche para que quepa en un
+alcance demasiado escaso.
+
+## Cuándo conviene fijar el presupuesto de la música
+
+En la práctica, el orden importa casi más que la cantidad. El lugar y el número de invitados
+suelen fijarse primero, porque ambos condicionan todo lo demás. Después compensa contratar las
+partidas que solo están disponibles una vez por fecha, y la música es una de ellas, porque los
+sábados de temporada alta se ocupan pronto. Si la música se deja para el final de la
+planificación, la decisión deja de tratarse de lo que encaja y pasa a tratarse de lo que queda:
+tanto en el presupuesto como en el calendario.
+
+## Conclusión
+
+La respuesta sincera a la pregunta del porcentaje no es un número, sino una distinción: partidas
+que crecen con el número de invitados y partidas que no. La música pertenece al segundo grupo
+y es, a la vez, la partida que da forma al arco de toda la noche. Las parejas que hacen el
+ejercicio de prioridades antes de que lleguen los primeros presupuestos toman la decisión de
+forma deliberada y no por orden de llegada. Cómo se compone realmente el precio de un DJ de
+bodas se explica en el artículo detallado sobre su coste; qué servicios incluye cada alcance se
+muestra en la página de paquetes, y una consulta sin compromiso resuelve el resto para su
+propia fecha.
+`.trim();
+
 export const hochzeitsbudgetMusikAnteilPost: BlogPost = {
   id: 'hochzeitsbudget-musik-anteil',
   slug: 'hochzeitsbudget-musik-anteil',
@@ -456,6 +588,18 @@ export const hochzeitsbudgetMusikAnteilPost: BlogPost = {
         metaTitle: 'Wedding Budget: How Much for Music? | DJ Veys',
         metaDescription:
           'How much of the wedding budget should go to music? Why fixed share rules fail, what the music budget actually buys, and a ten-minute priorities exercise.',
+      },
+    },
+    es: {
+      slug: 'presupuesto-boda-cuanto-para-la-musica',
+      title: '¿Qué parte del presupuesto de la boda debería ir a la música?',
+      excerpt:
+        'No existe una regla general útil para la pregunta del porcentaje, porque las partidas de una boda se comportan de forma distinta: el catering crece con cada invitado, la música y la técnica se mantienen en gran medida iguales. Este artículo explica el mecanismo, propone un ejercicio de prioridades de diez minutos y es sincero sobre cuándo un presupuesto de música más pequeño está realmente bien.',
+      body: hochzeitsbudgetMusikAnteilEs,
+      seo: {
+        metaTitle: 'Presupuesto de boda: ¿cuánto para la música? | DJ Veys',
+        metaDescription:
+          'Por qué no sirve un porcentaje fijo para la música de la boda: costes fijos frente a costes por invitado, qué compra el presupuesto de la música y un ejercicio de prioridades.',
       },
     },
   },

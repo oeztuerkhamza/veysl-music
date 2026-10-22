@@ -326,6 +326,111 @@ family. For the practical side, the weddings and events overview and a free plan
 call are the natural next step to lock in the running order for your own celebration.
 `.trim();
 
+export const tuerkischeHochzeitEs = `
+## La forma típica de una boda turca en Alemania
+
+Una boda turca o germano-turca en Alemania rara vez sigue el programa alemán estándar de
+ceremonia, cóctel de bienvenida, cena y un tramo de baile que empieza hacia las nueve de la
+noche. En su lugar, la noche suele ser más densa, más ceremonial y con mucho más baile, con
+rituales propios antes y durante la celebración. Conocer esta estructura permite planificar el
+lugar, el fotógrafo y la música de forma realista en lugar de llevarse sorpresas el mismo día.
+
+Este artículo describe un marco habitual y extendido, no una regla fija: las familias de distintas
+regiones de Turquía dan forma al programa de maneras diferentes.
+
+## Antes de la boda: nişan y kına gecesi
+
+Dos eventos suelen preceder al propio día de la boda:
+
+- **Nişan (compromiso):** una celebración independiente, a menudo con ceremonia de los anillos,
+  en la que ambas familias se reúnen formalmente. Musicalmente suele ser algo más contenida que
+  la boda, pero con un programa propio.
+- **Kına gecesi (noche de la henna):** normalmente la víspera de la boda, tradicionalmente una
+  celebración de mujeres y hoy abierta a todos los invitados en muchas familias. La entrada de la
+  novia, el ritual de la henna y canciones más emotivas y lentas marcan el inicio de la noche
+  antes de que pase a una fiesta con música en directo y davul-zurna.
+
+## El día de la boda: una ceremonia más densa
+
+En muchas bodas turcas, la parte ceremonial está más concentrada que en una celebración alemana
+sin más: la entrada de la pareja con música propia, a menudo una ceremonia de los anillos con
+una banda roja atada por el padre de la novia, y momentos coreografiados a propósito para fotos y
+vídeo. Estos puntos del programa necesitan franjas horarias fijas propias en el programa, para
+que el fotógrafo, el DJ y el lugar estén coordinados.
+
+## La noche: más baile, más duración
+
+Tras la parte formal, el peso se desplaza claramente hacia la pista de baile, a menudo durante
+más tiempo y con más intensidad de lo habitual en una boda alemana sin más. El halay, el Roman
+Havası y los éxitos turcos actuales se alternan con sets alemanes e internacionales, normalmente
+mezclados en lugar de sonar en bloques separados, para que todas las generaciones y ambos lados
+de la lista de invitados sigan implicados.
+
+## Un marco horario de ejemplo
+
+| Hora | Punto del programa |
+|---|---|
+| Tarde | Ceremonia civil o ceremonia al aire libre |
+| Primera hora de la noche | Recepción, fotos, llegada de los invitados |
+| Noche | Entrada de la pareja, ceremonia de los anillos, discursos |
+| Noche | Cena, primeras rondas de baile |
+| Noche avanzada hasta la madrugada | Programa principal de baile: halay, éxitos, elementos en directo |
+| Madrugada | Descenso, música para el final de la noche |
+
+Es un marco de ejemplo, no una plantilla hora por hora: la duración real depende mucho del lugar,
+de la mezcla de edades de los invitados y de la tradición familiar.
+
+## Diferencias regionales dentro de Turquía
+
+Un punto fácil de pasar por alto al planificar: «boda turca» no es un patrón único y uniforme.
+Las familias de la región del mar Negro, de Anatolia central, del sudeste o de las grandes
+ciudades aportan cada una sus propias costumbres, preferencias musicales y a veces su propio
+dialecto a la celebración. Preguntar a ambas familias de dónde viene su propia tradición, en
+lugar de dar por supuesto un «programa turco» genérico, suele dar una orientación más precisa y
+más personal para la boda concreta.
+
+## El papel de la familia extensa en el programa
+
+Una diferencia que a menudo se subestima en la planificación: en las bodas turcas y
+germano-turcas, la familia extensa suele participar en el programa más que en una celebración
+alemana sin más. Los padres y los abuelos de ambos lados tienen a menudo expectativas propias
+sobre determinados puntos del programa: quién se coloca dónde durante la entrada, qué canciones
+importan a qué generación o cómo exactamente debe desarrollarse la ceremonia de los anillos.
+Preguntar pronto por estas expectativas, en lugar de descubrirlas el día de la boda, ahorra
+fricciones justo cuando menos debe salir mal.
+
+## Cómo influye el rango de edades de los invitados en el plan musical
+
+Las bodas turcas y germano-turcas reúnen a menudo un rango de edades especialmente amplio,
+desde niños pequeños, pasando por la generación de los padres, hasta los abuelos, y todos
+deberían sentirse interpelados en distintos momentos de la noche. En la práctica ayuda pensar el
+peak time como dos fases deliberadas: una fase anterior, para todas las generaciones, con
+clásicos conocidos de halay y de éxitos que también llevan a los invitados mayores a la pista, y
+una fase posterior con temas más actuales y más energía cuando los invitados más jóvenes tienen
+la pista para ellos.
+
+## Cinco recomendaciones prácticas de planificación
+
+1. **Planifiquen por separado la kına gecesi y la boda**: distinta música, distinto ritmo y
+   distintas expectativas.
+2. **Prevean márgenes de tiempo para la ceremonia**: las ceremonias de los anillos y los momentos
+   de fotos suelen durar más de lo esperado.
+3. **Asegúrense de que la lista de deseos musicales cubra los dos mundos lingüísticos**, no solo
+   uno.
+4. **Coordinen de antemano los elementos de davul-zurna con el programa del DJ**, para que la
+   transición no resulte brusca.
+5. **Planifiquen una presentación bilingüe si la lista de invitados es mixta**: de lo contrario,
+   uno de los lados se siente enseguida excluido.
+
+## Conclusión
+
+Una boda turca o germano-turca en Alemania sigue su propio arco, distinto de un programa alemán
+sin más: más ceremonia, más baile y un abanico musical más amplio. Las parejas que lo tienen en
+cuenta desde el principio consiguen una noche que hace justicia a ambos lados de la familia. Para
+la parte práctica, la visión general de bodas y eventos y una reunión de planificación gratuita
+son el siguiente paso natural para fijar el programa de la propia celebración.
+`.trim();
+
 export const tuerkischeHochzeitPost: BlogPost = {
   id: 'tuerkische-hochzeit-ablauf-musik-timing',
   slug: 'tuerkische-hochzeit-ablauf-musik-timing',
@@ -374,6 +479,18 @@ export const tuerkischeHochzeitPost: BlogPost = {
         metaTitle: 'Turkish Wedding in Germany: Running Order | DJ Veys',
         metaDescription:
           'How does a Turkish wedding in Germany actually run? Nişan, kına gecesi, ceremony, music and timing explained, with an example timeline.',
+      },
+    },
+    es: {
+      slug: 'boda-turca-alemania-programa-musica',
+      title: 'Boda turca en Alemania: programa, música y horarios',
+      excerpt:
+        'Una boda turca o germano-turca en Alemania rara vez sigue el programa alemán estándar: una ceremonia más densa, un programa de baile más largo y rituales propios como la kına gecesi y la ceremonia de los anillos. Esta guía explica el marco típico y un horario de ejemplo.',
+      body: tuerkischeHochzeitEs,
+      seo: {
+        metaTitle: 'Boda turca en Alemania: programa y música | DJ Veys',
+        metaDescription:
+          'Cómo es una boda turca o germano-turca en Alemania: nişan, kına gecesi, ceremonia de los anillos, horario de ejemplo y recomendaciones para la música y la presentación.',
       },
     },
   },

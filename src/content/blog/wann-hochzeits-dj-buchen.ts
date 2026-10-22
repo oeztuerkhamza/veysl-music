@@ -263,6 +263,99 @@ budget that can be relied on. DJ Veys replies to enquiries within 24 hours; in t
 form you can check availability for your own date directly.
 `.trim();
 
+export const wannBuchenEs = `
+## La respuesta corta: en cuanto estén fijados la fecha y el lugar
+
+No existe una fecha límite fija a partir de la cual contratar a un DJ de bodas sea «demasiado
+tarde». Una regla práctica útil: **pregunte en cuanto estén fijados la fecha y el lugar.** Las
+fechas populares (los sábados entre la primavera y principios de otoño, los puentes y las fechas
+especiales del calendario) suelen ocuparse pronto, y un DJ que encaja con su noche solo puede
+tocar en una celebración por fecha. Las consultas con poca antelación a menudo siguen siendo
+posibles, pero no son un plan en el que confiar.
+
+Como orientación para DJ Veys: los sábados de la temporada alta, de mayo a septiembre, suelen
+requerir de 12 a 18 meses de antelación. Los días laborables, las fechas fuera de temporada y las
+cancelaciones de última hora de otras reservas abren con regularidad huecos libres. La
+disponibilidad para una fecha concreta se comprueba en un plazo de 24 horas, también con poca
+antelación.
+
+## Por qué compensa preguntar pronto
+
+- **Más donde elegir.** Quien pregunta pronto puede elegir al DJ que encaja con la noche, y no al
+  que todavía está libre.
+- **Más tiempo para coordinar.** Una buena planificación musical (primer baile, peticiones, lista
+  de vetos, dos idiomas) requiere varias conversaciones. Cuanto antes empiecen, más relajadas son.
+- **Claridad sobre el presupuesto.** Quien tiene pronto un presupuesto sabe pronto lo que cuestan
+  la música, el equipo y la presentación, y puede planificar de forma realista el catering y el
+  lugar en torno a ello.
+- **Margen para cambios.** El número de invitados, el programa y el lugar a menudo cambian una vez
+  más. Con antelación, esto puede asumirse sin prisas.
+
+## Lo que no significa una fecha temprana
+
+Una consulta temprana no le compromete con cada detalle. El programa, las peticiones y las
+canciones se acuerdan en la reunión de planificación, por vídeo o en persona. La reserva solo es
+vinculante con el contrato por escrito. Qué debe incluir se explica en la guía de la lista de
+comprobación del DJ.
+
+## Qué tener preparado para la consulta
+
+Cuanto más precisa sea la primera consulta, más rápido y fiable será el presupuesto. Datos útiles:
+
+| Dato | Por qué importa |
+|---|---|
+| Fecha | Sin fecha no se puede comprobar la disponibilidad. |
+| Lugar y localidad | De ello dependen el desplazamiento, el equipo del lugar y los horarios de cierre. |
+| Número de invitados y mezcla de edades | Determina el sistema, el repertorio y la planificación de la pista. |
+| Programa aproximado | Ceremonia, cena, fiesta, sobremesa, y dónde hace falta música. |
+| Idiomas | ¿Presentación en alemán, turco, inglés o mixta? |
+| Puntos especiales | Por ejemplo, kına, gelin çıkarma, música en directo o una oración. |
+| Rango de presupuesto | Incluso un rango aproximado ayuda a recomendar un paquete adecuado. |
+
+No hace falta tenerlo todo resuelto. Quien indica una fecha y un lugar ya puede preguntar por la
+disponibilidad.
+
+## Particularidades de las bodas turcas y germano-turcas
+
+Muchas celebraciones turcas y germano-turcas incluyen ocasiones que otras bodas no tienen: una
+noche de kına antes de la boda, un nişan, varias celebraciones en un mismo fin de semana. En ese
+caso:
+
+- **Un fin de semana, varias noches.** Si la kına gecesi y la boda caen en dos días, debería estar
+  claro desde el principio si el mismo DJ acompaña ambas noches: eso facilita considerablemente el
+  equipo, los acuerdos y la planificación musical.
+- **Fechas del calendario religioso.** Muchas familias no celebran durante el Ramadán ni en torno a
+  las festividades. Las fechas cambian cada año, por lo que conviene consultar el calendario de ese
+  año antes de fijar la fecha.
+- **Acuerdo familiar.** Quien fija la fecha solo después de consultarla con ambas familias evita
+  tener que cambiarla más tarde.
+
+## ¿Y si tiene que ser rápido?
+
+Con poca antelación todavía puede funcionar, si la fecha sigue libre. Entonces lo que más ayuda es
+un primer mensaje completo con fecha, lugar y número de invitados, para que quede claro de
+inmediato si es posible una noche y en qué marco. En ese caso, prevea menos rondas de coordinación
+y céntrese en lo esencial: la apertura, el programa y las dos o tres canciones que no pueden
+faltar.
+
+## El orden que ha demostrado funcionar
+
+1. **Fijar la fecha y el lugar.**
+2. **Preguntar al DJ y presentador**, al mismo tiempo que a la fotografía y al catering, no
+   después.
+3. **Revisar el presupuesto y confirmarlo por escrito.**
+4. **Reunión de planificación**, por vídeo o en persona: programa, peticiones, vetos.
+5. **Coordinación final** en la semana previa: horarios, persona de contacto el día de la boda.
+
+## Conclusión
+
+El mejor momento para consultar es cuando la fecha y el lugar están fijados, no cuando todo lo
+demás está resuelto. Quien pregunta pronto consigue más donde elegir, más tiempo para la
+planificación musical y un presupuesto en el que se puede confiar. DJ Veys responde a las
+consultas en un plazo de 24 horas; en el formulario de solicitud puede comprobar directamente la
+disponibilidad para su propia fecha.
+`.trim();
+
 export const wannBuchenPost: BlogPost = {
   id: 'wann-hochzeits-dj-buchen',
   slug: 'wann-hochzeits-dj-buchen',
@@ -310,6 +403,18 @@ export const wannBuchenPost: BlogPost = {
         metaTitle: 'When to Book a Wedding DJ: Lead Time | DJ Veys',
         metaDescription:
           'How early should you book a wedding DJ? A rule of thumb, the benefits of asking early, the details an enquiry needs and specifics for Turkish weddings.',
+      },
+    },
+    es: {
+      slug: 'cuando-contratar-dj-de-bodas',
+      title: '¿Cuándo contratar a un DJ de bodas? Antelación, datos y orden',
+      excerpt:
+        'No existe una fecha límite fija, pero sí una buena regla práctica: pregunte en cuanto estén fijados la fecha y el lugar. Esta guía muestra por qué compensa preguntar pronto, qué datos necesita la consulta y qué se añade en las bodas turcas.',
+      body: wannBuchenEs,
+      seo: {
+        metaTitle: '¿Cuándo contratar a un DJ de bodas? | DJ Veys',
+        metaDescription:
+          'Con cuánta antelación contratar a un DJ de bodas, qué datos preparar para la consulta y qué tener en cuenta en bodas turcas y germano-turcas. Con un orden de planificación probado.',
       },
     },
   },

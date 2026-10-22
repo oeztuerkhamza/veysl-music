@@ -307,6 +307,103 @@ those observations on to the DJ, make sure the equipment is tuned to the room fr
 start.
 `.trim();
 
+export const akustikEs = `
+## La acústica da forma a la noche más que la decoración
+
+En una visita a un lugar, la atención suele ir primero al potencial decorativo, al ambiente de
+la iluminación y a los rincones para fotos; la acústica de la sala rara vez se comprueba de forma
+activa, aunque decide directamente lo bien que llegan la música, los discursos y la presentación
+en la sala.
+
+## Por qué la acústica no puede «arreglarse con equipo» sin más
+
+Un error frecuente: «el sistema de sonido ya lo compensará». Un buen equipo puede compensar
+mucho, pero una sala con una reverberación extrema, por altos muros de piedra, superficies de
+cristal y suelos duros sin elementos blandos, sigue siendo acústicamente complicada incluso con
+material de alta calidad.
+
+## Qué comprobar realmente durante la visita
+
+| Característica | Por qué importa |
+|---|---|
+| Altura del techo | Los techos altos suelen generar más reverberación, sobre todo en salas grandes y vacías |
+| Superficies | La piedra, el cristal y los suelos duros reflejan el sonido más que la madera, la tela o la alfombra |
+| Forma de la sala | Las salas largas y estrechas distribuyen el sonido de otra manera que las cuadradas o redondas |
+| Elementos blandos existentes | Las cortinas, los manteles y las alfombras reducen notablemente la reverberación |
+| Número de invitados en la sala | Una sala llena suena acústicamente muy distinta de una vacía en la visita |
+| Salas contiguas | Si se usa una segunda sala al mismo tiempo, afecta al plan de sonido |
+
+## La prueba de la palmada
+
+Una prueba sencilla que puede hacer en el momento: dé una palmada fuerte y escuche cómo se
+apaga. Si el sonido se corta rápido, la sala es relativamente «seca» y acústicamente sencilla. Si
+resuena de forma notable, indica una sala propensa a una imagen sonora borrosa para la música y
+la voz.
+
+## Por qué una sala vacía suena de forma engañosa
+
+Un punto clave y a menudo pasado por alto: un salón vacío en una visita casi siempre suena
+acústicamente más «duro» que la misma sala llena de invitados. Las personas, la ropa y las mesas
+vestidas absorben notablemente el sonido.
+
+## Preguntas que conviene hacer en la visita
+
+1. ¿Cuántos invitados bailaron en esta sala en celebraciones anteriores y cómo llegaba el sonido?
+2. ¿Hay restricciones de volumen fijas, por ejemplo por los vecinos o por el propio edificio?
+3. ¿Está prevista una segunda sala para el aperitivo o para el final de la noche, y qué carácter
+   acústico tiene?
+4. ¿Dónde están las conexiones eléctricas y encajan con la posición prevista del equipo?
+
+## Por qué la acústica no se «resuelve» simplemente subiendo el volumen
+
+Un reflejo habitual ante problemas acústicos es subir el volumen. En una sala con reverberación,
+eso suele empeorar el efecto en lugar de corregirlo: más volumen también significa más sonido
+reflejado. La verdadera solución casi siempre está en una colocación deliberada de los
+altavoces, una ecualización ajustada y los elementos absorbentes descritos arriba, no en una
+mayor potencia de salida.
+
+## Carpas y lugares al aire libre: otra lógica acústica
+
+En celebraciones en una carpa o completamente al aire libre rigen otras reglas que en un salón
+cerrado. Aquí casi no hay reverberación, porque el sonido escapa libremente hacia arriba y hacia
+los lados; el reto consiste más bien en llevar suficiente volumen al fondo de la zona sin abrumar
+a las primeras filas. El viento también puede desviar el sonido en direcciones inesperadas.
+
+## ¿Qué pasa si dos lugares se contradicen técnicamente?
+
+En algunas bodas, la ceremonia se celebra en una sala acústicamente sencilla mientras que el
+banquete tiene lugar en un salón con mucha reverberación, o al revés. En ese caso conviene
+planificar el sonido por separado para cada lugar, en lugar de usar una única configuración del
+sistema para ambos espacios.
+
+## Medidas pequeñas y baratas con un gran efecto
+
+No todos los retos acústicos requieren costosas obras. Incluso elementos sencillos marcan una
+diferencia notable:
+
+- **Cortinas largas** delante de grandes superficies de cristal o piedra.
+- **Alfombras o pasillos** sobre suelos duros, al menos alrededor de la pista de baile.
+- **Asientos y mesas vestidas**, que de todos modos estarán durante la celebración y absorben por
+  sí solos parte de la reverberación.
+- **Arreglos florales y decoración de tela** en lugar de solo cristal y metal.
+
+## Acústica y presentación: por qué la voz reacciona distinto que la música
+
+Un punto que a menudo se pasa por alto en las comprobaciones acústicas: la palabra hablada
+reacciona a la reverberación de forma distinta que la música. Mientras que en la música algo de
+reverberación suele percibirse como agradablemente «llena», la voz en una sala con mucha
+reverberación se vuelve enseguida difícil de entender: las sílabas se mezclan. Eso significa que
+una sala que suena perfectamente bien para música de baile puede necesitar aun así una solución
+técnica aparte para los discursos y la presentación.
+
+## Conclusión
+
+La acústica no se puede tapar con decoración, pero sí puede planificarse con suficiente
+antelación. Las parejas que comprueban en la visita la altura del techo, las superficies y la
+prueba de la palmada, y transmiten esas observaciones al DJ, se aseguran de que el equipo esté
+ajustado a la sala desde el principio.
+`.trim();
+
 export const akustikPost: BlogPost = {
   id: 'location-akustik-checkliste',
   slug: 'location-akustik-checkliste',
@@ -355,6 +452,18 @@ export const akustikPost: BlogPost = {
         metaTitle: 'Venue Acoustics: A Viewing Checklist | DJ Veys',
         metaDescription:
           'What should you check about a wedding venue\'s acoustics? A checklist, the clap test, and why empty rooms sound misleading.',
+      },
+    },
+    es: {
+      slug: 'acustica-del-lugar-de-boda-lista',
+      title: 'Acústica del lugar: qué comprobar en una visita',
+      excerpt:
+        'La acústica da forma al sonido de la noche mucho más que cualquier equipo por sí solo, y casi nunca se comprueba de forma activa en las visitas a los lugares. Esta guía ofrece una lista de comprobación, la sencilla prueba de la palmada y explica por qué una sala vacía suena de forma engañosa.',
+      body: akustikEs,
+      seo: {
+        metaTitle: 'Acústica del lugar de boda: lista de comprobación | DJ Veys',
+        metaDescription:
+          'Qué comprobar de la acústica en la visita a un lugar de boda: altura del techo, superficies, prueba de la palmada, carpas al aire libre y medidas sencillas con gran efecto.',
       },
     },
   },

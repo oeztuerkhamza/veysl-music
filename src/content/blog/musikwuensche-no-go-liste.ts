@@ -317,6 +317,100 @@ including an explicit no-go list is a standard part of every booking, built toge
 during the planning call.
 `.trim();
 
+export const musikwuenscheEs = `
+## Dos listas, no una
+
+Al planificar la música, la mayoría de las parejas se centran en una sola lista de deseos: las
+canciones que tienen que sonar sí o sí. Igual de importante, y a menudo olvidada, es la lista de
+vetos. Solo juntas dan al DJ unas pautas reales para dirigir la noche con seguridad, incluso
+cuando llegan peticiones espontáneas de los invitados.
+
+## La lista de deseos: lo que de verdad importa
+
+Una buena lista de deseos no es una colección aleatoria de canciones favoritas, sino que se
+organiza por momentos de la noche:
+
+| Momento | Dirección musical típica |
+|---|---|
+| Cóctel de bienvenida | Tranquila, de fondo, que permita conversar |
+| Cena | Más contenida, pero sin adormecer |
+| Primer baile | Una canción elegida con cuidado |
+| Peak time | Bailable, con energía, para todas las generaciones |
+| Final de la noche | Más tranquila o más de club, según el público |
+
+En lugar de enumerar 200 temas sueltos, suele ser más útil nombrar algunos artistas o canciones
+de referencia por momento y dejar al DJ margen para las transiciones.
+
+## La lista de vetos: concreta, no vaga
+
+«Nada demasiado raro, por favor» no es un veto útil, porque no puede aplicarse. Los vetos
+concretos, en cambio, se pueden usar de inmediato:
+
+- **Géneros concretos**, por ejemplo «nada de schlager» o «nada de metal».
+- **Artistas o canciones concretos**, a menudo por motivos personales.
+- **Temas concretos en las letras**, por ejemplo canciones de ruptura durante el primer baile.
+- **Límites de volumen o de tempo** en determinados momentos, por ejemplo durante la cena.
+
+## Cómo se gestionan las peticiones espontáneas de los invitados
+
+Las peticiones de los invitados durante la noche son normales y suelen ser bienvenidas; la
+cuestión decisiva es cómo se contrastan con la lista acordada de antemano. Una petición
+espontánea que encaja con la lista de vetos y con el tono de la noche suele poder incorporarse.
+Una que contradice claramente el marco acordado debe rechazarla el DJ con amabilidad pero con
+firmeza: para eso está precisamente la lista.
+
+## Un marco práctico para elaborar las listas
+
+1. **Empiecen juntos como pareja:** de cinco a diez canciones que tienen que sonar y de cinco a
+   diez que no deben sonar en ningún caso.
+2. **Impliquen a las dos familias**, sobre todo en listas de invitados mixtas o multiculturales:
+   el gusto musical suele diferir más entre generaciones que entre culturas.
+3. **Piensen en momentos, no solo en canciones**, como en la tabla anterior.
+4. **Comenten la lista con el DJ con tiempo**, no el mismo día de la boda.
+5. **Confíen en la lista** en lugar de reescribirla constantemente durante la noche.
+
+## Un ejemplo de lista de vetos bien estructurada
+
+En lugar de una lista larga e inespecífica, funciona mejor un conjunto breve y concreto de puntos
+que el DJ pueda aplicar realmente:
+
+| Categoría | Ejemplo de entrada |
+|---|---|
+| Género | «Nada de schlager después de las 10 de la noche» |
+| Artista | «Ninguna canción del artista X, por motivos personales» |
+| Tema de la letra | «Ninguna canción de ruptura o desamor durante el primer baile» |
+| Volumen | «Solo volumen de fondo durante la cena» |
+| Caso especial | «Ninguna canción asociada a una relación pasada concreta» |
+
+## ¿Quién más debería opinar sobre la lista?
+
+Además de la propia pareja, conviene pensar brevemente si algunos familiares tienen vetos
+propios importantes: por ejemplo, una canción asociada a un familiar fallecido que deba evitarse
+a propósito. Estos puntos pueden incorporarse discretamente a la lista común, sin que nadie
+tenga que explicar durante la noche por qué no suena una canción concreta.
+
+## La lista no es una señal de desconfianza
+
+Algunas parejas dudan en elaborar una lista de vetos detallada por miedo a que transmita falta de
+confianza en el DJ. Ocurre lo contrario: una lista clara da seguridad a ambas partes. El DJ no
+tiene que adivinar ni arriesgarse a tocar sin querer un punto sensible, y la pareja no tiene que
+preocuparse de nada la misma noche de la boda, porque las pautas ya están fijadas.
+
+## ¿Con qué frecuencia debe actualizarse la lista antes de la boda?
+
+Una lista elaborada una vez no es un documento fijo. Entre el primer borrador y el día de la boda
+suelen pasar meses en los que las preferencias pueden cambiar o surgir canciones nuevas. Tiene
+sentido una breve revisión dos o tres semanas antes de la celebración, en la que la pareja repase
+la lista juntos una vez más: no para reinventarla, sino para confirmar que sigue vigente.
+
+## Conclusión
+
+Una lista de deseos y una lista de vetos bien pensadas son una de las herramientas más eficaces
+y que menos tiempo requieren en la planificación de una boda. Con DJ Veys, una lista personal de
+deseos musicales que incluye una lista explícita de vetos es parte estándar de cada contratación
+y se elabora juntos en la reunión de planificación.
+`.trim();
+
 export const musikwuenschePost: BlogPost = {
   id: 'musikwuensche-no-go-liste',
   slug: 'musikwuensche-no-go-liste',
@@ -364,6 +458,18 @@ export const musikwuenschePost: BlogPost = {
         metaTitle: 'Music Wishlist & No-Go List: How-To | DJ Veys',
         metaDescription:
           'How do you build a music wishlist and a no-go list for your wedding? Structured by moment, with concrete examples and how guest requests are handled.',
+      },
+    },
+    es: {
+      slug: 'peticiones-musicales-y-lista-de-vetos',
+      title: 'Peticiones musicales y lista de vetos: guía práctica',
+      excerpt:
+        'Una buena planificación musical necesita dos listas, no una: la lista de deseos Y una lista de vetos concreta. Esta guía muestra cómo elaborar ambas de forma estructurada y cómo se gestionan durante la noche las peticiones espontáneas de los invitados.',
+      body: musikwuenscheEs,
+      seo: {
+        metaTitle: 'Peticiones musicales y lista de vetos | DJ Veys',
+        metaDescription:
+          'Cómo elaborar la lista de deseos y la lista de vetos para la música de su boda: por momentos de la noche, con ejemplos concretos y cómo gestionar las peticiones de los invitados.',
       },
     },
   },
