@@ -455,7 +455,7 @@ export const deutschTuerkischePost: BlogPost = {
       seo: {
         metaTitle: 'Boda germano-turca: dos familias, una noche | DJ Veys',
         metaDescription:
-          'Cómo planificar una boda germano-turca que haga justicia a ambas familias: expectativas distintas, programa, presentación y música combinados de forma equilibrada.',
+          'Cómo planificar una boda germano-turca que haga justicia a ambas familias: expectativas, programa, presentación y música.',
       },
     },
   },

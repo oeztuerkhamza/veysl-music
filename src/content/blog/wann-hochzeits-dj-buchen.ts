@@ -414,7 +414,7 @@ export const wannBuchenPost: BlogPost = {
       seo: {
         metaTitle: '¿Cuándo contratar a un DJ de bodas? | DJ Veys',
         metaDescription:
-          'Con cuánta antelación contratar a un DJ de bodas, qué datos preparar para la consulta y qué tener en cuenta en bodas turcas y germano-turcas. Con un orden de planificación probado.',
+          'Con cuánta antelación contratar a un DJ de bodas, qué datos preparar y qué tener en cuenta en bodas turcas y germano-turcas.',
       },
     },
   },

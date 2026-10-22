@@ -490,7 +490,7 @@ export const tuerkischeHochzeitPost: BlogPost = {
       seo: {
         metaTitle: 'Boda turca en Alemania: programa y música | DJ Veys',
         metaDescription:
-          'Cómo es una boda turca o germano-turca en Alemania: nişan, kına gecesi, ceremonia de los anillos, horario de ejemplo y recomendaciones para la música y la presentación.',
+          'Boda turca o germano-turca en Alemania: nişan, kına gecesi, ceremonia de los anillos, horario de ejemplo y consejos para la música.',
       },
     },
   },

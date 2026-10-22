@@ -439,7 +439,7 @@ export const laermschutzPost: BlogPost = {
       seo: {
         metaTitle: 'Ruido y horario de cierre en Baden-Württemberg | DJ Veys',
         metaDescription:
-          'Horario de cierre legal en Baden-Württemberg, Sperrzeitverkürzung para bodas, protección contra el ruido y lista de comprobación. Orientación general, no asesoramiento jurídico.',
+          'Horario de cierre en Baden-Württemberg, Sperrzeitverkürzung para bodas y protección contra el ruido. Orientación, no asesoramiento jurídico.',
       },
     },
   },

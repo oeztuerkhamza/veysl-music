@@ -529,7 +529,7 @@ export const hochzeitslocationStuttgartPost: BlogPost = {
       seo: {
         metaTitle: 'Lugar de boda cerca de Stuttgart: la visión del DJ | DJ Veys',
         metaDescription:
-          'Qué comprobar al elegir un lugar de boda en la región de Stuttgart: pista de baile, acústica, electricidad, horarios de cierre y una lista de preguntas para la visita.',
+          'Qué comprobar al elegir un lugar de boda cerca de Stuttgart: pista, acústica, electricidad, horarios y preguntas para la visita.',
       },
     },
   },

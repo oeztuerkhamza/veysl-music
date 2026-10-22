@@ -454,7 +454,7 @@ export const gelinAlmaPost: BlogPost = {
       seo: {
         metaTitle: 'Gelin alma: la recogida de la novia y su música | DJ Veys',
         metaDescription:
-          'Qué ocurre en el gelin alma, cómo organizar música, equipo, vecinos y tráfico, con lista de comprobación y los escollos más frecuentes de la recogida de la novia.',
+          'Gelin alma: qué ocurre en la recogida de la novia y cómo organizar música, equipo, vecinos y tráfico, con lista de comprobación.',
       },
     },
   },

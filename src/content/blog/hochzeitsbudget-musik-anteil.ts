@@ -599,7 +599,7 @@ export const hochzeitsbudgetMusikAnteilPost: BlogPost = {
       seo: {
         metaTitle: 'Presupuesto de boda: ¿cuánto para la música? | DJ Veys',
         metaDescription:
-          'Por qué no sirve un porcentaje fijo para la música de la boda: costes fijos frente a costes por invitado, qué compra el presupuesto de la música y un ejercicio de prioridades.',
+          'Por qué no sirve un porcentaje fijo para la música de la boda: costes fijos frente a costes por invitado y un ejercicio de prioridades.',
       },
     },
   },

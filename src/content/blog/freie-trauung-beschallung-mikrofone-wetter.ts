@@ -476,7 +476,7 @@ export const freieTrauungPost: BlogPost = {
       seo: {
         metaTitle: 'Sonido para ceremonias al aire libre | DJ Veys',
         metaDescription:
-          'Ceremonia de boda al aire libre: suministro eléctrico, micrófonos de solapa, protección contra el viento, plan para la lluvia y una lista de comprobación para la visita al lugar.',
+          'Ceremonia al aire libre: electricidad, micrófonos de solapa, viento, plan para la lluvia y lista de comprobación para la visita.',
       },
     },
   },

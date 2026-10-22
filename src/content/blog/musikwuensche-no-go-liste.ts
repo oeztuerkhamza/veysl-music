@@ -469,7 +469,7 @@ export const musikwuenschePost: BlogPost = {
       seo: {
         metaTitle: 'Peticiones musicales y lista de vetos | DJ Veys',
         metaDescription:
-          'Cómo elaborar la lista de deseos y la lista de vetos para la música de su boda: por momentos de la noche, con ejemplos concretos y cómo gestionar las peticiones de los invitados.',
+          'Cómo elaborar la lista de deseos y la de vetos para la música de su boda, por momentos de la noche y con ejemplos concretos.',
       },
     },
   },

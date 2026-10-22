@@ -478,7 +478,7 @@ export const nisanPost: BlogPost = {
       seo: {
         metaTitle: 'Nişan: guía del compromiso turco | DJ Veys',
         metaDescription:
-          'Cómo planificar un nişan: kız isteme, ceremonia de los anillos, takı, música y micrófonos, con lista de comprobación y los escollos más habituales del compromiso turco.',
+          'Cómo planificar un nişan: kız isteme, ceremonia de los anillos, takı, música y micrófonos, con lista de comprobación.',
       },
     },
   },

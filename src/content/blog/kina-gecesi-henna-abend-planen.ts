@@ -481,7 +481,7 @@ export const kinaGecesiPost: BlogPost = {
       seo: {
         metaTitle: 'Kına gecesi: guía para la noche de la henna | DJ Veys',
         metaDescription:
-          'Cómo planificar una kına gecesi: programa clásico, ritual de la henna, música, lista de comprobación y los errores de horario más habituales en la noche de la henna.',
+          'Cómo planificar una kına gecesi: programa clásico, ritual de la henna, música, lista de comprobación y errores de horario frecuentes.',
       },
     },
   },

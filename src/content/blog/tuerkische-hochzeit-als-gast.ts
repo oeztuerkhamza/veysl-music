@@ -614,7 +614,7 @@ export const tuerkischeHochzeitAlsGastPost: BlogPost = {
       seo: {
         metaTitle: 'Invitado a una boda turca: guía práctica | DJ Veys',
         metaDescription:
-          'Qué esperar como invitado a una boda turca: entrada, takı y regalo, vestimenta, halay para principiantes y etiqueta, con una tabla de lo que se recibe bien y lo que no.',
+          'Invitado a una boda turca: entrada, takı y regalo, vestimenta, halay para principiantes y etiqueta.',
       },
     },
   },

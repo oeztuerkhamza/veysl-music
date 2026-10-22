@@ -608,7 +608,7 @@ export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
       seo: {
         metaTitle: 'Boda sin DJ: ¿basta una lista de Spotify? | DJ Veys',
         metaDescription:
-          '¿Basta una lista de Spotify para su boda? Respuesta sincera con tabla de decisión: cuándo funciona, qué no puede hacer una lista y cómo valorar la opción de un amigo como DJ.',
+          '¿Basta una lista de Spotify para su boda? Respuesta sincera: cuándo funciona, qué no puede hacer y la opción de un amigo como DJ.',
       },
     },
   },

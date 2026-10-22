@@ -463,7 +463,7 @@ export const akustikPost: BlogPost = {
       seo: {
         metaTitle: 'Acústica del lugar de boda: lista de comprobación | DJ Veys',
         metaDescription:
-          'Qué comprobar de la acústica en la visita a un lugar de boda: altura del techo, superficies, prueba de la palmada, carpas al aire libre y medidas sencillas con gran efecto.',
+          'Qué comprobar de la acústica al visitar un lugar de boda: techo, superficies, prueba de la palmada y medidas sencillas.',
       },
     },
   },
