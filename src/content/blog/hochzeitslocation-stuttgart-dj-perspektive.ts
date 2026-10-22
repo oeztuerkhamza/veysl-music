@@ -470,6 +470,116 @@ asegurados: el desplazamiento dentro de 50 kilómetros de Stuttgart está inclui
 enviadas a través de la página de solicitud suelen responderse en un plazo de 24 horas.
 `.trim();
 
+export const hochzeitslocationStuttgartFr = `
+## Pourquoi aucun lieu précis n'est recommandé ici
+
+Cet article ne cite délibérément aucun lieu, ni comme recommandation ni comme mise en garde. La
+raison est simple : aucun partenariat avec une salle n'est revendiqué ici, et une salle parfaitement
+adaptée à un mariage peut être la mauvaise pour le suivant. Ce que l'on peut transmettre honnêtement,
+ce sont les critères qui s'appliquent quel que soit le bâtiment. Douze ans et plus de 200 événements
+en ont fait une check-list que l'on peut parcourir en une vingtaine de minutes lors d'une visite.
+
+## La capacité n'est pas la même chose que la piste de danse
+
+Le chiffre de la brochure indique combien de personnes tiennent assises dans la salle, pas combien
+peuvent danser en même temps. Deux autres mesures en décident : la surface qui reste réellement libre
+une fois toutes les tables installées, et l'endroit où se trouve cette surface. Une piste au fond
+d'une longue salle coupe la soirée en deux, car les tables du fond sont isolées acoustiquement et
+visuellement. Une zone centrale entourée de tables maintient la fête soudée. Demandez donc à voir le
+plan de table pour votre nombre d'invités, et ne jugez jamais une salle vide.
+
+## L'acoustique : hauteur sous plafond, verre, surfaces dures
+
+Les plafonds hauts, les grandes baies vitrées et les murs nus produisent une réverbération que le
+matériel ne peut corriger que jusqu'à un certain point : monter le volume l'aggrave au lieu de
+l'améliorer. Les rideaux, la moquette, le bois et une salle pleine l'absorbent. Ce guide consacre un
+article spécifique au détail : « Acoustique du lieu : que vérifier lors d'une visite ». Au stade du
+choix du lieu, un test approximatif suffit : frappez une fois dans vos mains et écoutez combien de
+temps la salle résonne.
+
+## L'électricité : le point le plus souvent sous-estimé
+
+Dans de nombreux bâtiments, la sono, l'éclairage, la machine à brouillard, la cuisine et les machines
+à café fonctionnent sur le même circuit. Quand un fusible saute, ce n'est presque jamais la cuisine
+qui se tait. Il faut donc établir : combien de circuits séparés sont disponibles côté scène, avec
+quelle puissance, et l'un d'eux peut-il être réservé exclusivement à la technique ? Le gardien ou le
+technicien du bâtiment répond à cela de façon fiable ; le service de location souvent pas.
+
+## Accès, trajets et emplacement du matériel
+
+Quelle distance sépare le parking de la porte, y a-t-il des marches, un ascenseur, les portes
+sont-elles assez larges, et le stationnement près de l'entrée est-il autorisé pendant le montage et
+le démontage ? Chez DJ Veys, le matériel de sonorisation et d'éclairage, montage et démontage
+compris, fait partie de la réservation, mais le contrat de location doit permettre le temps
+nécessaire. Pour l'emplacement lui-même, la règle est simple : une vue dégagée sur la piste, une
+prise à proximité, et aucun câble qui traverse les issues de secours ou les passages des invités.
+
+## Heures de fermeture et règles sur le bruit : l'intérieur et l'extérieur sont deux questions distinctes
+
+Les espaces intérieurs et extérieurs sont généralement soumis à des règles différentes, et les
+clauses décisives figurent dans le contrat de location plutôt que dans une loi. Les questions à poser
+: jusqu'à quelle heure la fête peut-elle durer à l'intérieur, à partir de quand le calme s'impose-t-il
+à l'extérieur, un limiteur de volume est-il installé, et qui décide des exceptions dans le bâtiment ?
+Le cadre légal est traité en détail dans l'article « Protection contre le bruit et heures de
+fermeture dans le Bade-Wurtemberg ».
+
+## Système de la salle ou matériel apporté
+
+C'est ici que deux types de bâtiments se distinguent. Les salles communales et des fêtes disposent
+souvent d'une sonorisation de base qui convient aux discours, mais pas à une piste de danse. Les
+grandes salles de réception d'hôtels ont fréquemment un système installé à demeure, et parfois une
+condition contractuelle imposant l'utilisation de ce système précis. La question n'est donc pas « y
+a-t-il du matériel ? », mais : pouvons-nous utiliser notre propre matériel, et si oui, à partir de
+quel point de raccordement ?
+
+## Le timing du traiteur
+
+Le passage du dîner à la piste de danse est le moment le plus délicat de la soirée. Si le dessert
+arrive pendant que la musique monte en puissance, on perd les deux. Il vaut la peine de clarifier lors
+de la visite si la cuisine travaille avec des horaires de service fixes ou reste flexible, et si une
+coordination entre le service et la musique est prévue. Un lieu qui répond à cela avec aisance l'a
+déjà résolu de nombreuses fois.
+
+## Ce qui change pour les grands mariages turcs
+
+Lors des fêtes turques et germano-turques, plusieurs critères évoluent sensiblement. Le halay se
+danse en cercle ou en chaîne, et une chaîne grandit vers l'extérieur : il lui faut une surface
+continue sans pilier, marche ni estrade au milieu. L'entrée du couple nécessite un passage dégagé de
+la porte jusqu'à la piste ; lorsqu'il y a des éléments live, d'autres personnes empruntent ce même
+passage, ce qui doit être pris en compte dans le plan de table et coordonné à l'avance. Et comme
+plusieurs générations font la fête en même temps, l'équilibre entre places assises et piste compte :
+les parents âgés veulent voir ce qui se passe, mais pas être assis juste à côté d'une enceinte. Une
+salle qui permet les deux vaut plus qu'une salle plus belle qui ne le permet pas.
+
+## La liste de questions pour la visite
+
+| Thème | Question pour le lieu |
+|---|---|
+| Surface | À quoi ressemble le plan de table pour notre nombre d'invités, et combien de piste reste-t-il ? |
+| Électricité | Combien de circuits séparés y a-t-il côté scène ? |
+| Matériel | Pouvons-nous utiliser notre propre matériel de sonorisation et d'éclairage ? |
+| Volume | Un limiteur est-il installé, et à quel niveau ? |
+| Horaires | Jusqu'à quelle heure à l'intérieur, jusqu'à quelle heure à l'extérieur ? |
+| Montage | À partir de quelle heure l'accès pour le montage est-il possible ? |
+| Accès | Marches, ascenseur, largeur des portes, arrêt devant l'entrée ? |
+| Traiteur | Horaires de service fixes, ou coordonnés avec le programme ? |
+
+Régler ces huit points par écrit avant de signer coûte un e-mail et supprime la majeure partie de
+l'improvisation le jour du mariage.
+
+## Conclusion
+
+On choisit rarement un lieu pour ses qualités techniques, et c'est normal : la première impression,
+l'emplacement et le ressenti passent en premier pour de bonnes raisons. Mais les critères techniques
+sont ceux que l'on ne peut plus changer ensuite, et c'est précisément pour cela qu'ils ont leur place
+lors de la visite et non la semaine précédant la fête. Les couples qui ont déjà une salle en tête
+peuvent simplement parcourir la liste lors de l'entretien de préparation ; les pages consacrées à
+Esslingen, Ludwigsburg et Heilbronn ainsi que la vue d'ensemble du Bade-Wurtemberg montrent où le
+déplacement et la connaissance locale sont déjà acquis : le déplacement dans un rayon de 50
+kilomètres autour de Stuttgart est inclus. Les demandes envoyées via la page de demande reçoivent
+généralement une réponse sous 24 heures.
+`.trim();
+
 export const hochzeitslocationStuttgartPost: BlogPost = {
   id: 'hochzeitslocation-stuttgart-dj-perspektive',
   slug: 'hochzeitslocation-stuttgart-dj-perspektive',
@@ -530,6 +640,18 @@ export const hochzeitslocationStuttgartPost: BlogPost = {
         metaTitle: 'Lugar de boda cerca de Stuttgart: la visión del DJ | DJ Veys',
         metaDescription:
           'Qué comprobar al elegir un lugar de boda cerca de Stuttgart: pista, acústica, electricidad, horarios y preguntas para la visita.',
+      },
+    },
+    fr: {
+      slug: 'choisir-lieu-mariage-stuttgart-regard-dj',
+      title: 'Choisir un lieu de mariage près de Stuttgart : ce que vérifie un DJ',
+      excerpt:
+        'La capacité, la piste de danse, l\'électricité, l\'acoustique et les heures de fermeture façonnent la soirée bien avant l\'installation de la décoration. Ce guide rassemble les huit critères qu\'un DJ vérifie réellement dans un lieu de mariage de la région de Stuttgart, avec une liste de questions pour la visite. Aucune salle précise n\'est recommandée, délibérément.',
+      body: hochzeitslocationStuttgartFr,
+      seo: {
+        metaTitle: 'Lieu de mariage près de Stuttgart : le regard du DJ | DJ Veys',
+        metaDescription:
+          'Que vérifier en choisissant un lieu de mariage près de Stuttgart : piste, acoustique, électricité, horaires et questions pour la visite.',
       },
     },
   },

@@ -431,6 +431,109 @@ la parte práctica, la visión general de bodas y eventos y una reunión de plan
 son el siguiente paso natural para fijar el programa de la propia celebración.
 `.trim();
 
+export const tuerkischeHochzeitFr = `
+## La forme typique d'un mariage turc en Allemagne
+
+Un mariage turc ou germano-turc en Allemagne suit rarement le déroulé allemand standard (cérémonie,
+vin d'honneur, dîner et une partie dansante commençant vers 21 h). La soirée est plutôt plus dense,
+plus cérémonielle et bien plus dansante, avec ses propres rituels avant et pendant la fête. Connaître
+cette structure permet de planifier le lieu, le photographe et la musique de façon réaliste plutôt
+que d'être surpris le jour même.
+
+Cet article décrit un cadre courant et répandu, pas une règle fixe : les familles de différentes
+régions de Turquie façonnent le déroulé de manière différente.
+
+## Avant le mariage : nişan et kına gecesi
+
+Deux événements précèdent souvent le jour du mariage lui-même :
+
+- **Nişan (fiançailles) :** une fête à part entière, souvent avec une cérémonie des bagues, où les
+  deux familles se réunissent officiellement. Musicalement, généralement un peu plus retenue que le
+  mariage, mais avec son propre programme.
+- **Kına gecesi (soirée du henné) :** généralement la veille du mariage, traditionnellement une fête
+  de femmes, aujourd'hui ouverte à tous les invités dans de nombreuses familles. L'entrée de la
+  mariée, le rituel du henné et des chansons plus émouvantes et plus lentes marquent le début de la
+  soirée, avant qu'elle ne bascule dans une fête avec musique live et davul-zurna.
+
+## Le jour du mariage : une cérémonie plus dense
+
+Dans de nombreux mariages turcs, la partie cérémonielle est plus resserrée que lors d'une fête
+allemande classique : l'entrée du couple sur sa propre musique, souvent une cérémonie des bagues avec
+un ruban rouge noué par le père de la mariée, et des moments délibérément chorégraphiés pour les
+photos et la vidéo. Ces moments du programme ont besoin de leurs propres créneaux fixes dans le
+déroulé, pour que le photographe, le DJ et le lieu restent coordonnés.
+
+## La nuit : plus de danse, plus de durée
+
+Après la partie formelle, l'accent se déplace nettement vers la piste de danse, souvent plus
+longtemps et plus intensément qu'il n'est d'usage lors d'un mariage allemand classique. Le halay, le
+Roman Havası et les tubes turcs actuels alternent avec des sets allemands et internationaux,
+généralement mêlés plutôt que joués en blocs séparés, pour que chaque génération et les deux côtés de
+la liste d'invités restent impliqués.
+
+## Un exemple de déroulé horaire
+
+| Moment | Point du programme |
+|---|---|
+| Après-midi | Mariage civil ou cérémonie laïque |
+| Début de soirée | Réception, photos, arrivée des invités |
+| Soirée | Entrée du couple, cérémonie des bagues, discours |
+| Soirée | Dîner, premières danses |
+| Fin de soirée à la nuit | Programme de danse principal : halay, tubes, éléments live |
+| Nuit | Redescente, musique de fin de soirée |
+
+C'est un cadre d'exemple, pas un modèle heure par heure : la durée réelle dépend beaucoup du lieu, du
+mélange d'âges des invités et de la tradition familiale.
+
+## Les différences régionales au sein de la Turquie
+
+Un point facile à oublier lors de la préparation : le « mariage turc » n'est pas un modèle unique et
+uniforme. Les familles de la région de la mer Noire, d'Anatolie centrale, du sud-est ou des grandes
+métropoles apportent chacune leurs propres coutumes, préférences musicales et parfois leur propre
+dialecte à la fête. Demander aux deux familles d'où vient leur propre tradition, plutôt que de
+supposer un « déroulé turc » générique, donne généralement des repères plus précis et plus personnels
+pour le mariage concret.
+
+## Le rôle de la famille élargie dans le déroulé
+
+Une différence souvent sous-estimée lors de la préparation : dans les mariages turcs et
+germano-turcs, la famille élargie participe généralement davantage au déroulé que lors d'une fête
+allemande classique. Les parents et grands-parents des deux côtés ont souvent leurs propres attentes
+sur certains moments du programme : qui se place où pendant l'entrée, quelles chansons comptent pour
+quelle génération, ou comment exactement doit se dérouler la cérémonie des bagues. Interroger tôt ces
+attentes, plutôt que de les découvrir le jour du mariage, évite des frictions précisément au moment
+où rien ne doit mal tourner.
+
+## Comment l'éventail d'âges des invités façonne le plan musical
+
+Les mariages turcs et germano-turcs réunissent souvent un éventail d'âges particulièrement large, des
+petits enfants à la génération des parents en passant par les grands-parents, et tous doivent se
+sentir concernés à différents moments de la soirée. En pratique, il est utile de penser le peak time
+en deux phases délibérées : une première phase intergénérationnelle, avec des classiques connus du
+halay et des tubes qui attirent aussi les invités plus âgés sur la piste, et une phase plus tardive,
+avec des titres plus actuels et plus d'énergie, lorsque les invités plus jeunes ont la piste pour eux.
+
+## Cinq recommandations pratiques de préparation
+
+1. **Planifiez séparément la kına gecesi et le mariage** : musique, rythme et attentes différents.
+2. **Prévoyez des marges de temps pour la cérémonie** : les cérémonies des bagues et les moments photo
+   durent généralement plus longtemps que prévu.
+3. **Veillez à ce que la liste de souhaits musicaux couvre les deux univers linguistiques**, pas un
+   seul.
+4. **Coordonnez à l'avance les éléments de davul-zurna avec le programme du DJ**, pour que la
+   transition ne paraisse pas abrupte.
+5. **Prévoyez une animation bilingue si la liste d'invités est mixte** : sinon, un des deux côtés se
+   sent vite mis à l'écart.
+
+## Conclusion
+
+Un mariage turc ou germano-turc en Allemagne suit son propre arc, distinct d'un déroulé allemand
+classique : plus de cérémonie, plus de danse, un éventail musical plus large. Les couples qui en
+tiennent compte dès le départ obtiennent une soirée qui rend justice aux deux côtés de la famille.
+Pour l'aspect pratique, la vue d'ensemble mariages et événements et un entretien de préparation
+gratuit sont la prochaine étape naturelle pour fixer le déroulé de votre propre fête.
+`.trim();
+
 export const tuerkischeHochzeitPost: BlogPost = {
   id: 'tuerkische-hochzeit-ablauf-musik-timing',
   slug: 'tuerkische-hochzeit-ablauf-musik-timing',
@@ -491,6 +594,18 @@ export const tuerkischeHochzeitPost: BlogPost = {
         metaTitle: 'Boda turca en Alemania: programa y música | DJ Veys',
         metaDescription:
           'Boda turca o germano-turca en Alemania: nişan, kına gecesi, ceremonia de los anillos, horario de ejemplo y consejos para la música.',
+      },
+    },
+    fr: {
+      slug: 'mariage-turc-allemagne-deroule-musique',
+      title: 'Mariage turc en Allemagne : déroulé, musique et minutage',
+      excerpt:
+        'Un mariage turc ou germano-turc en Allemagne suit rarement le déroulé allemand standard : une cérémonie plus dense, un programme de danse plus long et ses propres rituels comme la kına gecesi et la cérémonie des bagues. Ce guide explique le cadre typique et un exemple de déroulé horaire.',
+      body: tuerkischeHochzeitFr,
+      seo: {
+        metaTitle: 'Mariage turc en Allemagne : déroulé et musique | DJ Veys',
+        metaDescription:
+          'Mariage turc ou germano-turc en Allemagne : nişan, kına gecesi, cérémonie des bagues, exemple de déroulé et conseils pour la musique.',
       },
     },
   },

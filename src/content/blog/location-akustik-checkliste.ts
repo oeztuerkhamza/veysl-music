@@ -404,6 +404,105 @@ prueba de la palmada, y transmiten esas observaciones al DJ, se aseguran de que 
 ajustado a la sala desde el principio.
 `.trim();
 
+export const akustikFr = `
+## L'acoustique façonne la soirée plus que la décoration
+
+Lors de la visite d'un lieu, l'attention se porte généralement d'abord sur le potentiel de
+décoration, l'ambiance lumineuse et les coins photo ; l'acoustique de la salle est rarement vérifiée
+activement, alors qu'elle détermine directement la façon dont la musique, les discours et l'animation
+passent dans la salle.
+
+## Pourquoi l'acoustique ne se « corrige » pas simplement avec du matériel
+
+Une idée reçue courante : « la sono compensera ». Un bon matériel peut compenser beaucoup de choses,
+mais une salle à la réverbération extrême, due à de hauts murs de pierre, des surfaces vitrées et des
+sols durs sans éléments souples, reste acoustiquement difficile même avec un équipement de grande
+qualité.
+
+## Ce qu'il faut réellement vérifier lors de la visite
+
+| Caractéristique | Pourquoi c'est important |
+|---|---|
+| Hauteur sous plafond | Les plafonds hauts créent souvent plus de réverbération, surtout dans les grandes salles vides |
+| Surfaces | La pierre, le verre et les sols durs réfléchissent le son plus que le bois, le tissu ou la moquette |
+| Forme de la salle | Les salles longues et étroites répartissent le son différemment des salles carrées ou rondes |
+| Éléments souples existants | Les rideaux, les nappes et les tapis réduisent sensiblement la réverbération |
+| Nombre d'invités dans la salle | Une salle pleine sonne acoustiquement très différemment d'une salle vide lors de la visite |
+| Salles attenantes | Si une deuxième salle est utilisée en même temps, cela influe sur le plan de sonorisation |
+
+## Le test du claquement de mains
+
+Un test simple à faire sur place : frappez fort une fois dans vos mains et écoutez comment le son
+s'éteint. S'il s'arrête rapidement, la salle est relativement « sèche » et acoustiquement simple.
+S'il résonne nettement, cela indique une salle propice à une image sonore brouillée pour la musique et
+la parole.
+
+## Pourquoi une salle vide sonne de façon trompeuse
+
+Un point essentiel et souvent négligé : une salle vide lors d'une visite sonne presque toujours plus «
+dure » acoustiquement que la même salle remplie d'invités. Les personnes, les vêtements et les tables
+dressées absorbent sensiblement le son.
+
+## Questions à poser lors de la visite
+
+1. Combien d'invités ont dansé dans cette salle lors de fêtes précédentes, et comment le son
+   passait-il ?
+2. Existe-t-il des restrictions de volume fixes, par exemple à cause des voisins ou du bâtiment
+   lui-même ?
+3. Une deuxième salle est-elle prévue pour le vin d'honneur ou la fin de soirée, et quel est son
+   caractère acoustique ?
+4. Où se trouvent les branchements électriques, et correspondent-ils à l'emplacement prévu du
+   matériel ?
+
+## Pourquoi on ne « règle » pas l'acoustique en montant simplement le volume
+
+Un réflexe courant face aux problèmes acoustiques consiste à monter le son. Dans une salle
+réverbérante, cela aggrave généralement l'effet au lieu de le corriger : plus de volume signifie aussi
+plus de son réfléchi. La vraie solution réside presque toujours dans un placement réfléchi des
+enceintes, un égaliseur ajusté et les éléments absorbants décrits plus haut, et non dans un niveau de
+sortie plus élevé.
+
+## Tentes et lieux en plein air : une autre logique acoustique
+
+Lors de fêtes sous une tente ou entièrement en plein air, d'autres règles s'appliquent que dans une
+salle fermée. Il n'y a presque pas de réverbération, car le son s'échappe librement vers le haut et
+sur les côtés ; le défi consiste plutôt à apporter assez de volume au fond de l'espace sans submerger
+les premiers rangs. Le vent peut aussi porter le son dans des directions inattendues.
+
+## Et si deux lieux se contredisent techniquement ?
+
+Dans certains mariages, la cérémonie a lieu dans une salle acoustiquement simple tandis que la
+réception se tient dans une salle très réverbérante, ou l'inverse. Dans ce cas, il vaut la peine de
+planifier la sonorisation séparément pour chaque lieu plutôt que d'utiliser une seule configuration
+du système pour les deux espaces.
+
+## De petites mesures peu coûteuses à grand effet
+
+Tous les défis acoustiques ne nécessitent pas de coûteux travaux. Même des éléments simples font une
+différence sensible :
+
+- **De longs rideaux** devant les grandes surfaces vitrées ou en pierre.
+- **Des tapis ou des chemins** sur les sols durs, au moins autour de la piste de danse.
+- **Les places assises et les tables dressées**, présentes de toute façon pendant la fête, qui
+  absorbent à elles seules une partie de la réverbération.
+- **Des compositions florales et une décoration en tissu** plutôt que du verre et du métal seulement.
+
+## Acoustique et animation : pourquoi la parole réagit autrement que la musique
+
+Un point souvent oublié lors des vérifications acoustiques : la parole réagit différemment de la
+musique à la réverbération. Alors qu'en musique un peu de réverbération est souvent perçue comme
+agréablement « pleine », la parole dans une salle très réverbérante devient vite difficile à
+comprendre : les syllabes se mélangent. Une salle qui sonne parfaitement bien pour la musique de danse
+peut donc avoir besoin d'une solution technique distincte pour les discours et l'animation.
+
+## Conclusion
+
+On ne peut pas masquer l'acoustique avec de la décoration, mais on peut la prévoir avec suffisamment
+d'avance. Les couples qui vérifient lors de la visite la hauteur sous plafond, les surfaces et le test
+du claquement de mains, et qui transmettent ces observations au DJ, s'assurent que le matériel est
+réglé sur la salle dès le départ.
+`.trim();
+
 export const akustikPost: BlogPost = {
   id: 'location-akustik-checkliste',
   slug: 'location-akustik-checkliste',
@@ -464,6 +563,18 @@ export const akustikPost: BlogPost = {
         metaTitle: 'Acústica del lugar de boda: lista de comprobación | DJ Veys',
         metaDescription:
           'Qué comprobar de la acústica al visitar un lugar de boda: techo, superficies, prueba de la palmada y medidas sencillas.',
+      },
+    },
+    fr: {
+      slug: 'acoustique-lieu-de-mariage-check-list',
+      title: 'Acoustique du lieu : que vérifier lors d\'une visite',
+      excerpt:
+        'L\'acoustique façonne le son de la soirée bien plus que n\'importe quel matériel seul, et elle n\'est presque jamais vérifiée activement lors des visites de lieux. Ce guide propose une check-list, le simple test du claquement de mains et explique pourquoi une salle vide sonne de façon trompeuse.',
+      body: akustikFr,
+      seo: {
+        metaTitle: 'Acoustique du lieu de mariage : check-list | DJ Veys',
+        metaDescription:
+          'Que vérifier de l\'acoustique lors de la visite d\'un lieu de mariage : plafond, surfaces, test du claquement de mains et mesures simples.',
       },
     },
   },

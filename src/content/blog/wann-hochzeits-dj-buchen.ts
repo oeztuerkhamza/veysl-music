@@ -356,6 +356,97 @@ consultas en un plazo de 24 horas; en el formulario de solicitud puede comprobar
 disponibilidad para su propia fecha.
 `.trim();
 
+export const wannBuchenFr = `
+## La réponse courte : dès que la date et le lieu sont fixés
+
+Il n'existe pas de date limite fixe à partir de laquelle il serait « trop tard » pour réserver un DJ
+de mariage. Une règle empirique utile : **renseignez-vous dès que la date et le lieu sont fixés.** Les
+dates prisées (les samedis entre le printemps et le début de l'automne, les ponts, les dates
+particulières du calendrier) sont généralement prises tôt, et un DJ qui convient à votre soirée ne
+peut jouer qu'une seule fête par date. Les demandes de dernière minute restent souvent possibles, mais
+ce n'est pas un plan sur lequel compter.
+
+À titre indicatif pour DJ Veys : les samedis de la haute saison, de mai à septembre, demandent
+généralement 12 à 18 mois d'avance. Les jours de semaine, les dates hors saison et les annulations de
+dernière minute d'autres réservations libèrent régulièrement des créneaux. La disponibilité pour une
+date précise est vérifiée sous 24 heures, même à court terme.
+
+## Pourquoi il vaut la peine de se renseigner tôt
+
+- **Plus de choix.** En se renseignant tôt, on peut choisir le DJ qui correspond à la soirée, plutôt
+  que celui qui est encore libre.
+- **Plus de temps pour se coordonner.** Une bonne préparation musicale (première danse, souhaits,
+  liste noire, deux langues) demande plusieurs échanges. Plus ils commencent tôt, plus ils sont
+  détendus.
+- **De la clarté sur le budget.** Avec un devis obtenu tôt, on sait tôt ce que coûtent la musique, le
+  matériel et l'animation, et on peut planifier de façon réaliste le traiteur et le lieu autour.
+- **Une marge pour les changements.** Le nombre d'invités, le déroulé et le lieu changent souvent
+  encore une fois. Avec de l'avance, cela s'absorbe sans précipitation.
+
+## Ce qu'une date précoce ne signifie pas
+
+Une demande précoce ne vous engage pas sur chaque détail. Le déroulé, les souhaits et les chansons
+sont réglés lors de l'entretien de préparation, en visioconférence ou en personne. La réservation ne
+devient ferme qu'avec le contrat écrit. Ce qu'il doit contenir est expliqué dans le guide de la
+check-list du DJ.
+
+## Ce qu'il faut préparer pour la demande
+
+Plus le premier message est précis, plus le devis est rapide et fiable. Informations utiles :
+
+| Information | Pourquoi c'est important |
+|---|---|
+| Date | Sans date, impossible de vérifier la disponibilité. |
+| Lieu et localité | Le déplacement, le matériel sur place et les heures de fermeture en dépendent. |
+| Nombre d'invités et mélange d'âges | Détermine la sonorisation, le répertoire et la planification de la piste. |
+| Déroulé approximatif | Cérémonie, dîner, fête, after, et où la musique est nécessaire. |
+| Langues | Animation en allemand, en turc, en anglais ou mixte ? |
+| Moments particuliers | Par exemple kına, gelin çıkarma, musique live ou une prière. |
+| Fourchette de budget | Même une fourchette approximative aide à recommander une formule adaptée. |
+
+Tout n'a pas besoin d'être réglé. Avec une date et un lieu, on peut déjà se renseigner sur la
+disponibilité.
+
+## Les particularités des mariages turcs et germano-turcs
+
+De nombreuses fêtes turques et germano-turques comprennent des occasions que d'autres mariages n'ont
+pas : une soirée de kına avant le mariage, un nişan, plusieurs fêtes sur un même week-end. Dans ce
+cas :
+
+- **Un week-end, plusieurs soirées.** Si la kına gecesi et le mariage tombent sur deux jours, il doit
+  être clair dès le départ si le même DJ accompagne les deux soirées : cela simplifie
+  considérablement le matériel, les accords et la préparation musicale.
+- **Les dates du calendrier religieux.** De nombreuses familles ne font pas la fête pendant le
+  Ramadan ni autour des fêtes religieuses. Les dates changent chaque année ; il vaut donc la peine de
+  consulter le calendrier de l'année concernée avant de fixer la date.
+- **L'accord des familles.** En ne fixant la date qu'après concertation avec les deux familles, on
+  évite d'avoir à la déplacer plus tard.
+
+## Et si cela doit aller vite ?
+
+À court terme, cela peut encore fonctionner si la date est encore libre. Ce qui aide le plus, c'est
+alors un premier message complet avec la date, le lieu et le nombre d'invités, pour qu'il soit
+immédiatement clair si une soirée est possible et dans quel cadre. Prévoyez dans ce cas moins de
+tours de coordination et concentrez-vous sur l'essentiel : l'ouverture, le déroulé et les deux ou
+trois chansons qui ne doivent pas manquer.
+
+## L'ordre qui a fait ses preuves
+
+1. **Fixer la date et le lieu.**
+2. **Se renseigner auprès du DJ et animateur**, en même temps que pour la photographie et le
+   traiteur, pas après.
+3. **Examiner le devis et le confirmer par écrit.**
+4. **Entretien de préparation**, en visioconférence ou en personne : déroulé, souhaits, interdits.
+5. **Coordination finale** la semaine précédente : horaires, interlocuteur le jour J.
+
+## Conclusion
+
+Le meilleur moment pour faire une demande est quand la date et le lieu sont fixés, et non quand tout
+le reste est réglé. En se renseignant tôt, on obtient plus de choix, plus de temps pour la préparation
+musicale et un budget fiable. DJ Veys répond aux demandes sous 24 heures ; dans le formulaire de
+demande, vous pouvez vérifier directement la disponibilité pour votre propre date.
+`.trim();
+
 export const wannBuchenPost: BlogPost = {
   id: 'wann-hochzeits-dj-buchen',
   slug: 'wann-hochzeits-dj-buchen',
@@ -415,6 +506,18 @@ export const wannBuchenPost: BlogPost = {
         metaTitle: '¿Cuándo contratar a un DJ de bodas? | DJ Veys',
         metaDescription:
           'Con cuánta antelación contratar a un DJ de bodas, qué datos preparar y qué tener en cuenta en bodas turcas y germano-turcas.',
+      },
+    },
+    fr: {
+      slug: 'quand-reserver-un-dj-de-mariage',
+      title: 'Quand réserver un DJ de mariage ? Délai, informations et ordre',
+      excerpt:
+        'Il n\'existe pas de date limite fixe, mais une bonne règle empirique : renseignez-vous dès que la date et le lieu sont fixés. Ce guide montre pourquoi il vaut la peine de s\'y prendre tôt, quelles informations la demande nécessite et ce qui s\'ajoute pour les mariages turcs.',
+      body: wannBuchenFr,
+      seo: {
+        metaTitle: 'Quand réserver un DJ de mariage ? | DJ Veys',
+        metaDescription:
+          'Combien de temps à l\'avance réserver un DJ de mariage, quelles informations préparer et que prévoir pour les mariages turcs et germano-turcs.',
       },
     },
   },

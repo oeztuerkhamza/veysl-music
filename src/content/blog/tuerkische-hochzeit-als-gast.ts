@@ -551,6 +551,136 @@ encontrará en la visión general de bodas y eventos y en la página sobre bodas
 el punto de partida natural.
 `.trim();
 
+export const tuerkischeHochzeitAlsGastFr = `
+## Pourquoi un mariage turc se vit différemment
+
+Quand on est invité pour la première fois à un mariage turc ou germano-turc, on le remarque
+généralement dès l'entrée dans la salle : la soirée suit un autre arc qu'une fête allemande classique.
+Plus d'invités, plus de cérémonie, beaucoup plus de danse, et un programme construit autour de
+moments plutôt que d'horaires fixes. Personne n'attend de connaissances préalables. Il est toutefois
+utile de connaître les éléments qui reviennent : on ne devine plus alors quand se passe quelque chose
+d'important.
+
+Une précision d'abord : « le » mariage turc n'existe pas. Les familles de régions différentes, et
+plus ou moins attachées à la tradition, font la fête de manière sensiblement différente. Ce qui suit
+décrit ce qui est courant, pas ce qui est obligatoire.
+
+## La soirée du point de vue de l'invité
+
+| Moment | Ce à quoi les invités peuvent s'attendre |
+|---|---|
+| Arrivée | Accueil par la famille, la salle se remplit peu à peu |
+| Entrée du couple | Sa propre musique, souvent un élément live, tout le monde debout applaudit |
+| Partie cérémonielle | Discours, cérémonie des bagues, ruban rouge : la séquence la plus calme de la nuit |
+| Takı | Les invités s'avancent et remettent leur cadeau de façon visible |
+| Repas | Plus tard que ne le laisserait penser un déroulé allemand |
+| Programme de danse | Halay, Roman Havası, titres turcs et internationaux en alternance |
+| Fin de soirée | Généralement bien plus tard que lors d'une fête allemande |
+
+L'ordre varie d'une famille à l'autre. Si c'est votre première fois, le repère le plus simple est
+l'animation : avec une liste d'invités mixte, les annonces se font normalement en allemand et en turc.
+
+## L'entrée : le moment à ne pas manquer
+
+L'entrée du couple est le premier grand temps fort de la soirée et elle est délibérément mise en scène
+: sa propre musique, souvent un élément live et de la lumière le long du chemin vers la scène. Dans de
+nombreuses familles, un moment distinct du programme la précède : le gelin çıkarma, le moment où l'on
+va chercher la mariée dans la maison familiale ou où on la conduit dans la salle.
+
+Pour les invités, cela signifie : être dans la salle à temps, se lever, laisser l'allée centrale
+libre et ne pas se mettre dans le champ du photographe. Les photos au téléphone sont bienvenues
+presque partout, depuis le deuxième rang.
+
+## Le cadeau : comment fonctionne le takı
+
+Lors d'un mariage allemand, l'enveloppe disparaît discrètement dans une boîte. Lors d'un mariage turc,
+la remise du cadeau est un moment du programme à part entière : le takı. Le couple se tient devant,
+les invités s'avancent seuls, en couple ou en famille, et le cadeau est remis de façon visible :
+traditionnellement de l'argent, ou de l'or épinglé à un ruban sur la robe et le costume. L'animation
+accompagne souvent cette séquence.
+
+Concrètement :
+
+- **L'argent en enveloppe et l'or sont tous deux normaux.** Un cadeau classique est l'exception.
+- **Il n'existe pas de barème de montants**, et personne d'extérieur ne peut en établir un de façon
+  crédible. Fiez-vous à votre degré de proximité avec la famille.
+- **Écrivez votre nom sur l'enveloppe à l'avance.** Avec une longue liste d'invités, ce nom est la
+  seule possibilité pour le couple de vous remercier personnellement ensuite.
+- **Attendez le moment prévu.** Remettre le cadeau à table entre-temps part d'une bonne intention,
+  mais retire son sens au rituel.
+
+Le moment du takı est public, mais chaleureux : l'attention porte sur le couple, pas sur une enveloppe
+en particulier.
+
+## La tenue : ce que l'on porte vraiment
+
+Les mariages turcs sont généralement plus habillés qu'une fête allemande moyenne. Un costume ou une
+veste sombre avec pantalon, une robe ou un tailleur-pantalon élégant sont le choix sûr. Deux points
+reviennent sans cesse :
+
+- **Le blanc reste réservé à la mariée** : la même règle que lors d'un mariage allemand.
+- **Le degré de conservatisme de la tenue varie considérablement d'une famille à l'autre.** Si vous
+  connaissez mal la famille, un choix classique et habillé est toujours une valeur sûre.
+
+Plus important que la coupe d'une robe : des chaussures confortables. La danse dure longtemps et
+commence plus tôt que ne s'y attendent généralement les invités allemands.
+
+## Le halay pour débutants : on vous y entraînera
+
+Le halay est une danse en chaîne : les danseurs se tiennent par le petit doigt ou tiennent un foulard
+et avancent en ligne ou en cercle ouvert, menés par une personne en tête qui donne le tempo et les
+figures. C'est une danse collective, et c'est précisément pour cela qu'à un moment donné, quelqu'un
+vous tendra la main. C'est une invitation, pas un défi.
+
+Un plan de survie honnête pour le pas de base :
+
+1. **Rejoignez la fin de la chaîne**, pas le milieu. C'est là que le pas est le plus simple.
+2. **Regardez les pieds de la personne située deux places devant vous**, pas les vôtres.
+3. **Faites de petits pas.** Le motif de base se déplace surtout latéralement, porte un accent dans le
+   rythme et se répète.
+4. **N'essayez pas de mener.** Les figures, les changements de tempo et la fin viennent tous de la
+   tête de la chaîne.
+5. **Laissez-vous deux ou trois tours.** Ensuite, le motif est généralement assez bien acquis.
+
+Il n'existe pas un seul pas de halay : les variantes régionales diffèrent par l'enchaînement des pas
+et le tempo. Pour un invité sans connaissances préalables, c'est un soulagement : les invités turcs ne
+dansent pas non plus toutes les variantes les yeux fermés.
+
+## Les usages : ce qui est bien perçu et ce qui ne l'est pas
+
+| Bien perçu | Plutôt à éviter |
+|---|---|
+| Arriver à l'heure de début annoncée | Arriver juste avant le repas |
+| Saluer brièvement les parents des deux côtés | Saluer seulement le couple puis passer son chemin |
+| Attendre son tour au takı | Remettre l'enveloppe à table entre-temps |
+| Se joindre à la danse même sans connaître les pas | Rester ostensiblement assis toute la soirée |
+| Photographier depuis le deuxième rang | S'avancer dans l'allée centrale pendant l'entrée |
+| Faire poliment une demande musicale à la régie | Insister plusieurs fois, ou aller à la régie en pleine cérémonie |
+
+Deux questions reviennent particulièrement souvent. Le service d'alcool est une décision de la famille
+et varie d'une fête à l'autre : ce qui est sur la table vous donne la réponse. Et ne pas connaître
+tout le monde est normal : la famille élargie et le cercle plus large des connaissances font
+naturellement partie de la liste.
+
+## S'il y a aussi une kına gecesi
+
+Certaines invitations portent sur une deuxième soirée : la kına gecesi, généralement la veille,
+traditionnellement une fête de femmes et aujourd'hui ouverte à tous les invités dans de nombreuses
+familles. Elle commence de façon plus émouvante et plus lente que le mariage lui-même : l'entrée de la
+mariée et le rituel du henné sont au centre, puis la soirée bascule dans la fête. C'est une fête à
+part entière, pas un avant-goût réduit du mariage. Pour savoir si un cadeau distinct y est d'usage, le
+mieux est de demander à la personne qui vous a transmis l'invitation.
+
+## Conclusion
+
+Être invité à un mariage turc ne demande aucune connaissance particulière, seulement trois choses :
+arriver à l'heure, avoir le cadeau prêt pour le moment du takı et ne pas éviter la piste de danse. Tout
+le reste s'explique de lui-même au fil de la soirée, notamment grâce à une animation qui annonce
+chaque moment du programme dans les deux langues. Pour planifier une telle fête, la vue d'ensemble
+mariages et événements et la page consacrée aux mariages turcs à Stuttgart sont le point de départ
+naturel.
+`.trim();
+
 export const tuerkischeHochzeitAlsGastPost: BlogPost = {
   id: 'tuerkische-hochzeit-als-gast',
   slug: 'tuerkische-hochzeit-als-gast',
@@ -615,6 +745,18 @@ export const tuerkischeHochzeitAlsGastPost: BlogPost = {
         metaTitle: 'Invitado a una boda turca: guía práctica | DJ Veys',
         metaDescription:
           'Invitado a una boda turca: entrada, takı y regalo, vestimenta, halay para principiantes y etiqueta.',
+      },
+    },
+    fr: {
+      slug: 'invite-a-un-mariage-turc',
+      title: 'Invité à un mariage turc : le guide de l\'invité',
+      excerpt:
+        'En tant qu\'invité à un mariage turc, vous n\'avez besoin d\'aucune connaissance particulière, mais de trois repères : le moment du takı, où le cadeau est remis de façon visible, une tenue plus habillée que vous ne l\'imaginez peut-être, et un pas de halay de base dans lequel on finira par vous entraîner. Ce guide parcourt la soirée du point de vue de l\'invité.',
+      body: tuerkischeHochzeitAlsGastFr,
+      seo: {
+        metaTitle: 'Invité à un mariage turc : le guide pratique | DJ Veys',
+        metaDescription:
+          'À quoi s\'attendre en tant qu\'invité à un mariage turc : entrée, takı et cadeau, tenue, halay pour débutants et usages.',
       },
     },
   },

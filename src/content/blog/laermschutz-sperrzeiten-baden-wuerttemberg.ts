@@ -380,6 +380,92 @@ desagradables la misma noche. Este artículo no sustituye el asesoramiento jurí
 competencias exactas varían según el municipio y deben confirmarse directamente para su lugar.
 `.trim();
 
+export const laermschutzFr = `
+## En bref
+
+Avec Brême, le Bade-Wurtemberg est l'un des deux derniers Länder allemands à appliquer une véritable
+heure de fermeture légale (« Sperrzeit ») pour les établissements : normalement de 3 h à 6 h du
+matin, et les nuits précédant le samedi et le dimanche de 5 h à 6 h. Pour les fêtes de mariage, cette
+heure de fermeture peut être prolongée ou levée grâce à une demande de « Sperrzeitverkürzung »
+(réduction de l'heure de fermeture) auprès du service d'ordre public local (Ordnungsamt) : c'est le
+levier pertinent en pratique, et non la règle légale elle-même. Cet article est une orientation
+générale fondée sur des sources publiques, pas un conseil juridique.
+
+## Le point de départ juridique dans le Bade-Wurtemberg
+
+Selon le § 9 du règlement sur la restauration du Bade-Wurtemberg (Gaststättenverordnung, GastVO),
+l'heure de fermeture générale des établissements et structures similaires commence à 3 h et se
+termine à 6 h ; les nuits précédant le samedi et le dimanche, elle ne commence qu'à 5 h.
+Contrairement à la plupart des autres Länder allemands, où l'heure de fermeture fixe a largement été
+supprimée, le Bade-Wurtemberg applique encore en principe une véritable limite légale.
+
+Le 1er janvier 2026, une réforme du droit de la restauration du Land est également entrée en
+vigueur : elle simplifie les procédures et passe d'un régime d'autorisation à un régime de
+déclaration. Pour la préparation concrète d'un mariage, cela signifie surtout que les détails
+évoluent et qu'il est plus important que jamais de vérifier la situation actuelle auprès de la
+commune compétente.
+
+## La Sperrzeitverkürzung : le levier pertinent en pratique
+
+La bonne nouvelle pour les couples : l'heure de fermeture légale peut être réduite ou levée pour des
+occasions particulières, grâce à la Sperrzeitverkürzung. La demande se fait auprès de l'Ordnungsamt
+de la commune, généralement avec une avance suffisante avant l'événement. Pour les fêtes privées dans
+des salles louées, des hôtels ou des lieux événementiels, c'est une procédure établie et courante, pas
+un cas exceptionnel.
+
+## L'heure de fermeture n'est pas la même chose que la protection contre le bruit
+
+Un malentendu fréquent : l'heure de fermeture régit jusqu'à quelle heure un établissement de type
+restauration peut rester ouvert ; ce n'est pas la seule limite légale pour la musique et le volume.
+Les règles générales de protection du repos nocturne et de lutte contre les nuisances peuvent
+s'appliquer indépendamment de l'heure de fermeture, en particulier pour les fêtes en plein air, les
+tentes dans un jardin ou les lieux sans licence de restauration classique.
+
+## Une check-list pratique de préparation
+
+| Question | Pourquoi c'est important |
+|---|---|
+| Le lieu a-t-il sa propre heure de fin contractuelle ? | C'est souvent une limite plus déterminante que la loi elle-même |
+| Une Sperrzeitverkürzung est-elle nécessaire, et a-t-elle été demandée ? | Détermine jusqu'à quelle heure on peut légalement faire la fête |
+| Le lieu impose-t-il une condition distincte de protection contre le bruit ? | Particulièrement pertinent pour les fêtes en plein air ou sous tente |
+| À quelle distance se trouve l'habitation la plus proche ? | Influe sur la sensibilité des voisins et des autorités |
+| Qui est l'interlocuteur responsable à la commune ? | Pour les questions rapides le jour de l'événement |
+
+## Faire la fête dans un jardin privé : un cas particulier
+
+Si la fête n'a pas lieu dans un établissement commercial mais dans un jardin privé ou sur un terrain
+privé, l'heure de fermeture de la GastVO ne s'applique généralement pas directement ; ce sont alors
+les règles générales de protection du repos nocturne qui passent au premier plan. En pratique, cela
+signifie que même sans heure de fermeture commerciale, le volume au-delà d'une certaine heure,
+souvent 22 h, est un sujet sensible avec les voisins et qu'en cas de litige, c'est le service d'ordre
+public local qui en juge.
+
+## Pourquoi une courte discussion avec les voisins aide souvent plus que n'importe quel règlement
+
+Un point pratique souvent sous-estimé : la plupart des plaintes pour bruit lors de fêtes privées ne
+naissent pas du dépassement d'une limite légale, mais du sentiment des voisins d'être ignorés. Un
+court préavis personnel, avec une heure de fin approximative et un contact direct en cas de besoin,
+désamorce en pratique de nombreuses situations qui se termineraient sinon par une plainte et une
+visite du service d'ordre public.
+
+## Que faire si le lieu lui-même n'a pas de réponses claires
+
+Tous les lieux ne peuvent pas répondre immédiatement avec précision aux questions sur les heures de
+fermeture et les conditions de bruit. Dans ce cas, il vaut la peine de s'adresser directement à
+l'Ordnungsamt de la commune compétente : mieux vaut demander une fois de trop que de se heurter à une
+limite inattendue le soir même du mariage.
+
+## Conclusion
+
+Le Bade-Wurtemberg est l'un des deux Länder qui appliquent encore une véritable heure de fermeture
+légale, mais il existe une voie claire et établie pour l'adapter à son propre mariage : la demande de
+Sperrzeitverkürzung auprès de l'Ordnungsamt local. Les couples qui anticipent (en clarifiant l'heure
+de fin du lieu, en demandant une prolongation si nécessaire et en traitant la protection contre le
+bruit séparément de l'heure de fermeture) évitent les mauvaises surprises le soir même. Cet article ne
+remplace pas un conseil juridique ; les règles et compétences exactes varient selon les communes et
+doivent être vérifiées directement pour votre lieu.
+`.trim();
+
 export const laermschutzPost: BlogPost = {
   id: 'laermschutz-sperrzeiten-baden-wuerttemberg',
   slug: 'laermschutz-sperrzeiten-baden-wuerttemberg',
@@ -440,6 +526,18 @@ export const laermschutzPost: BlogPost = {
         metaTitle: 'Ruido y horario de cierre en Baden-Württemberg | DJ Veys',
         metaDescription:
           'Horario de cierre en Baden-Württemberg, Sperrzeitverkürzung para bodas y protección contra el ruido. Orientación, no asesoramiento jurídico.',
+      },
+    },
+    fr: {
+      slug: 'bruit-et-heures-de-fermeture-bade-wurtemberg',
+      title: 'Protection contre le bruit et heures de fermeture dans le Bade-Wurtemberg',
+      excerpt:
+        'Le Bade-Wurtemberg est l\'un des deux Länder allemands avec une véritable heure de fermeture légale (normalement de 3 h à 6 h, de 5 h à 6 h les nuits précédant samedi et dimanche) ; pour les mariages, elle peut être adaptée par une demande auprès du service d\'ordre public local. Cet article est une orientation fondée sur des sources publiques, pas un conseil juridique.',
+      body: laermschutzFr,
+      seo: {
+        metaTitle: 'Bruit et heure de fermeture en Bade-Wurtemberg | DJ Veys',
+        metaDescription:
+          'Heure de fermeture légale en Bade-Wurtemberg, Sperrzeitverkürzung pour les mariages et protection contre le bruit. Orientation, pas un conseil juridique.',
       },
     },
   },

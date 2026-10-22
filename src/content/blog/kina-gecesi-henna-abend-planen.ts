@@ -423,6 +423,109 @@ Para coordinar en concreto la música, los elementos en directo y los horarios, 
 bodas y eventos y una consulta gratuita para su fecha son un buen siguiente paso.
 `.trim();
 
+export const kinaGecesiFr = `
+## La kına gecesi est une fête à part entière, pas une répétition du mariage
+
+Lors de la préparation, la kına gecesi (soirée du henné) est souvent sous-estimée : on la traite
+comme une soirée plus petite, presque autogérée, avant le mariage. En réalité, elle a son propre
+rythme, son propre registre émotionnel et ses propres exigences en matière de musique et de
+programme, nettement différentes de celles du mariage. Les couples qui la planifient comme un
+événement à part entière, et non comme une copie réduite du mariage, obtiennent une soirée tout
+aussi mémorable.
+
+## Le déroulé classique d'une kına gecesi
+
+Chaque famille façonne la soirée à sa manière, mais un cadre approximatif courant s'est imposé :
+
+1. **L'accueil des invités**, généralement avec une musique de fond plus calme.
+2. **L'entrée de la mariée**, le plus souvent sous un voile rouge, accompagnée d'une chanson
+   précise, souvent lente et émouvante.
+3. **Le rituel du henné lui-même** : on dépose du henné dans la paume de la mariée, souvent avec une
+   pièce d'or à l'intérieur, entourée des femmes de la famille et d'amies proches.
+4. **Des chansons émouvantes et parfois des larmes** : cette partie de la soirée est délibérément
+   plus retenue que le reste de la fête.
+5. **Le passage à la fête** : une fois le rituel terminé, l'ambiance change nettement, souvent avec
+   des musiciens live, du davul-zurna et de la danse jusque tard dans la nuit.
+
+## Pourquoi la préparation musicale demande ici un soin particulier
+
+Presque aucun autre moment d'une saison de mariage n'exige un changement d'ambiance aussi marqué en
+quelques minutes : d'un moment calme, presque cérémoniel, directement à une fête animée. Mal minuté,
+le rituel paraît précipité ou la fête met trop de temps à démarrer. C'est pourquoi il vaut la peine
+de convenir à l'avance avec le DJ ou les musiciens live du moment exact de la chanson du henné, de la
+durée du rituel et de l'entrée musicale dans la fête.
+
+## Check-list de préparation
+
+| Élément | Question à clarifier |
+|---|---|
+| Chanson d'entrée | Quel morceau, quelle version, quelle durée ? |
+| Rituel du henné | Combien de personnes y participent directement, combien de temps cela prend-il réellement ? |
+| Musique live | Du davul-zurna ou d'autres musiciens live sont-ils réservés, et comment l'horaire est-il coordonné avec le DJ ? |
+| Éclairage | La lumière convient-elle à la partie plus calme du rituel et bascule-t-elle proprement pour la fête ? |
+| Indication de tenue | Les éléments rouges sont traditionnels mais pas obligatoires partout : communiquez-le clairement aux invités |
+| Lieu | Un espace ou une salle séparée est-il prévu pour le rituel lui-même ? |
+
+## Pièges fréquents
+
+- **Trop peu de temps prévu pour le rituel.** En pratique, le moment avec les photos et plusieurs
+  membres de la famille impliqués dure souvent plus longtemps que prévu.
+- **Le passage à la fête n'est pas préparé.** Sans accord clair, un blanc gênant s'installe entre le
+  rituel et le début de la danse.
+- **La playlist de la kına est identique à celle du mariage.** La soirée perd son caractère propre.
+- **Les musiciens live et le DJ ne sont pas coordonnés**, si bien que le volume ou le tempo se
+  heurtent au moment de la transition.
+
+## Combien de temps prévoir de façon réaliste
+
+À titre indicatif : l'accueil des invités prend environ 30 à 45 minutes, le rituel lui-même, photos
+comprises, souvent 20 à 40 minutes, suivi d'un passage à la fête qui peut durer des heures selon la
+famille. C'est un repère, pas un modèle rigide : la durée réelle dépend beaucoup du nombre de
+personnes activement impliquées dans le rituel.
+
+## Qui est invité aujourd'hui : la kına gecesi a évolué
+
+Traditionnellement, la kına gecesi était strictement une soirée de femmes : les hommes, s'ils étaient
+inclus, ne rejoignaient qu'une partie ultérieure et séparée de la soirée. Dans de nombreuses familles
+en Allemagne, cela a changé : les listes d'invités mixtes, où hommes et femmes font la fête ensemble
+dès le début, sont aujourd'hui courantes sans que le rituel perde son sens. Ce qui compte pour la
+préparation, c'est de clarifier cela tôt avec les deux familles plutôt que de supposer tacitement un
+format précis : les attentes peuvent différer sensiblement selon les générations et les familles.
+
+## Tenue et éléments rouges : ce que les invités doivent savoir
+
+Les foulards rouges, les vêtements rouges ou un accessoire rouge font traditionnellement partie de la
+kına gecesi, mais sont loin d'être obligatoires dans toutes les familles. Si une tenue particulière
+est souhaitée, il vaut la peine de la communiquer clairement et tôt sur l'invitation, avec une courte
+note pour les invités qui ne connaissent pas la tradition, en particulier pour les listes d'invités
+germano-turques mixtes.
+
+## Réflexions budgétaires pour la soirée du henné
+
+Dans la planification du budget du mariage, la kına gecesi est souvent traitée comme accessoire, alors
+qu'elle a ses propres coûts : un lieu ou un cadre privé, un traiteur, une décoration aux tons rouges
+et dorés, éventuellement des musiciens live et un DJ ou une solution de sonorisation distincte.
+Traiter la soirée du henné dès le départ comme une ligne budgétaire à part entière, plutôt que de la
+laisser « suivre » le mariage, évite de se retrouver avec moins de budget que prévu pour le mariage
+lui-même.
+
+## Qui mène le rituel ?
+
+Contrairement au mariage, la kına gecesi n'a généralement pas besoin d'une animation continue, mais
+elle a besoin d'une personne clairement chargée de donner le signal du passage du rituel à la fête :
+le DJ, un membre de la famille, ou les deux ensemble. Si personne n'est concrètement chargé de cette
+transition, il se forme souvent en pratique une pause incertaine où l'on ne sait ni si le rituel est
+terminé ni quand la danse peut commencer.
+
+## Conclusion
+
+Une kına gecesi bien préparée a surtout besoin d'un plan musical clair pour le passage du rituel à la
+fête. Conçue délibérément plutôt que laissée au hasard, la soirée du henné devient l'une des soirées
+les plus émouvantes et les plus dansantes de toute la saison du mariage. Pour coordonner concrètement
+la musique, les éléments live et le minutage, la page mariages et événements ainsi qu'une demande
+gratuite pour votre date sont une bonne prochaine étape.
+`.trim();
+
 export const kinaGecesiPost: BlogPost = {
   id: 'kina-gecesi-henna-abend-planen',
   slug: 'kina-gecesi-henna-abend-planen',
@@ -482,6 +585,18 @@ export const kinaGecesiPost: BlogPost = {
         metaTitle: 'Kına gecesi: guía para la noche de la henna | DJ Veys',
         metaDescription:
           'Cómo planificar una kına gecesi: programa clásico, ritual de la henna, música, lista de comprobación y errores de horario frecuentes.',
+      },
+    },
+    fr: {
+      slug: 'kina-gecesi-soiree-du-henne-guide',
+      title: 'Préparer une kına gecesi (soirée du henné) : le guide pratique',
+      excerpt:
+        'La kına gecesi a son propre rythme : un rituel calme, puis un changement d\'ambiance brusque vers la fête. Ce guide présente le déroulé classique, une check-list de préparation et les erreurs de minutage les plus fréquentes.',
+      body: kinaGecesiFr,
+      seo: {
+        metaTitle: 'Kına gecesi : guide de la soirée du henné | DJ Veys',
+        metaDescription:
+          'Préparer une kına gecesi : déroulé classique, rituel du henné, musique, check-list et erreurs de minutage fréquentes.',
       },
     },
   },

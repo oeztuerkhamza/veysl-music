@@ -411,6 +411,103 @@ deseos musicales que incluye una lista explícita de vetos es parte estándar de
 y se elabora juntos en la reunión de planificación.
 `.trim();
 
+export const musikwuenscheFr = `
+## Deux listes, pas une seule
+
+Pour la préparation musicale, la plupart des couples se concentrent sur une seule liste de souhaits :
+les chansons qui doivent absolument passer. Tout aussi importante, et souvent oubliée : la liste
+noire. Ce n'est qu'ensemble que les deux donnent au DJ de vrais repères pour mener la soirée en toute
+confiance, même lorsque des demandes spontanées d'invités arrivent.
+
+## La liste de souhaits : ce qui compte vraiment
+
+Une bonne liste de souhaits n'est pas une collection aléatoire de chansons préférées, elle est
+organisée selon les moments de la soirée :
+
+| Moment | Orientation musicale typique |
+|---|---|
+| Vin d'honneur | Calme, en fond, propice à la conversation |
+| Dîner | Plus retenue, mais pas soporifique |
+| Première danse | Une chanson choisie avec soin |
+| Peak time | Dansante, énergique, intergénérationnelle |
+| Fin de soirée | Plus calme ou plus club, selon le public |
+
+Plutôt que de lister 200 titres individuels, il est généralement plus utile de citer quelques
+artistes ou chansons de référence par moment et de laisser au DJ une marge pour les transitions.
+
+## La liste noire : précise, pas vague
+
+« Rien de trop bizarre, s'il vous plaît » n'est pas un interdit utilisable, car on ne peut pas
+l'appliquer concrètement. Des interdits précis, en revanche, sont immédiatement exploitables :
+
+- **Des genres précis**, par exemple « pas de schlager », « pas de metal ».
+- **Des artistes ou chansons précis**, souvent pour des raisons personnelles.
+- **Des thèmes précis dans les paroles**, par exemple des chansons de rupture pendant la première
+  danse.
+- **Des limites de volume ou de tempo** à certains moments, par exemple pendant le dîner.
+
+## Comment gérer les demandes spontanées des invités
+
+Les demandes des invités pendant la soirée sont normales et généralement bienvenues ; la question
+décisive est de savoir comment elles sont confrontées à la liste convenue à l'avance. Une demande
+spontanée qui respecte la liste noire et le ton de la soirée peut généralement être intégrée. Une
+demande qui contredit clairement le cadre convenu doit être refusée poliment mais fermement par le DJ
+: c'est précisément à cela que sert la liste.
+
+## Un cadre pratique pour établir les listes
+
+1. **Commencez ensemble en couple :** cinq à dix chansons qui doivent passer, et cinq à dix qui ne
+   doivent surtout pas passer.
+2. **Impliquez les deux familles**, en particulier pour les listes d'invités mixtes ou
+   multiculturelles : les goûts musicaux diffèrent souvent davantage entre générations qu'entre
+   cultures.
+3. **Pensez en moments, pas seulement en chansons**, comme dans le tableau ci-dessus.
+4. **Discutez de la liste avec le DJ suffisamment tôt**, pas le jour même du mariage.
+5. **Faites confiance à la liste** plutôt que de la réécrire sans cesse pendant la soirée.
+
+## Exemple de liste noire bien structurée
+
+Plutôt qu'une longue liste imprécise, un ensemble court et concret de points que le DJ peut réellement
+appliquer fonctionne mieux :
+
+| Catégorie | Exemple d'entrée |
+|---|---|
+| Genre | « Pas de schlager après 22 h » |
+| Artiste | « Aucune chanson de l'artiste X, pour des raisons personnelles » |
+| Thème des paroles | « Pas de chansons de rupture ou de chagrin d'amour pendant la première danse » |
+| Volume | « Uniquement un volume de fond pendant le dîner » |
+| Cas particulier | « Aucune chanson associée à une relation passée précise » |
+
+## Qui d'autre devrait avoir son mot à dire sur la liste ?
+
+Au-delà du couple lui-même, il vaut la peine de se demander brièvement si certains membres de la
+famille ont leurs propres interdits importants : une chanson associée à un proche disparu qu'il faut
+délibérément éviter, par exemple. Ces points peuvent être discrètement intégrés à la liste commune,
+sans que personne n'ait à expliquer pendant la soirée pourquoi une chanson précise ne passe pas.
+
+## La liste n'est pas un signe de méfiance
+
+Certains couples hésitent à établir une liste noire détaillée, de peur qu'elle traduise un manque de
+confiance envers le DJ. C'est l'inverse : une liste claire rassure les deux parties. Le DJ n'a pas à
+deviner ni à risquer de toucher par mégarde un point sensible, et le couple n'a à s'inquiéter de rien
+le soir du mariage, car les repères sont déjà posés.
+
+## À quelle fréquence mettre à jour la liste avant le mariage ?
+
+Une liste établie une fois n'est pas un document figé. Entre le premier brouillon et le jour du
+mariage passent souvent des mois pendant lesquels les préférences peuvent évoluer ou de nouvelles
+chansons apparaître. Une courte vérification deux à trois semaines avant la fête, où le couple
+reparcourt la liste ensemble une dernière fois, a du sens : non pas pour la réinventer, mais pour
+confirmer qu'elle est toujours d'actualité.
+
+## Conclusion
+
+Une liste de souhaits et une liste noire bien pensées sont l'un des outils les plus efficaces et les
+moins chronophages de la préparation d'un mariage. Chez DJ Veys, une liste de souhaits musicaux
+personnelle comprenant une liste noire explicite fait partie de chaque réservation et est établie
+ensemble lors de l'entretien de préparation.
+`.trim();
+
 export const musikwuenschePost: BlogPost = {
   id: 'musikwuensche-no-go-liste',
   slug: 'musikwuensche-no-go-liste',
@@ -470,6 +567,18 @@ export const musikwuenschePost: BlogPost = {
         metaTitle: 'Peticiones musicales y lista de vetos | DJ Veys',
         metaDescription:
           'Cómo elaborar la lista de deseos y la de vetos para la música de su boda, por momentos de la noche y con ejemplos concretos.',
+      },
+    },
+    fr: {
+      slug: 'souhaits-musicaux-et-liste-noire',
+      title: 'Souhaits musicaux et liste noire : le guide pratique',
+      excerpt:
+        'Une bonne préparation musicale nécessite deux listes, pas une seule : la liste de souhaits ET une liste noire précise. Ce guide montre comment établir les deux de façon structurée et comment gérer pendant la soirée les demandes spontanées des invités.',
+      body: musikwuenscheFr,
+      seo: {
+        metaTitle: 'Souhaits musicaux et liste noire | DJ Veys',
+        metaDescription:
+          'Établir la liste de souhaits et la liste noire pour la musique de votre mariage, par moment de la soirée et avec des exemples concrets.',
       },
     },
   },
