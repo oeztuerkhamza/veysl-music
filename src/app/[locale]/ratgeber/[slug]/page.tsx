@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
-import { Link } from '@/i18n/navigation';
+import { Link, getPathname } from '@/i18n/navigation';
 import { absoluteUrl } from '@/lib/seo';
 import { JsonLd } from '@/lib/json-ld';
 import { Container } from '@/components/ui/container';
@@ -10,6 +10,7 @@ import { Section } from '@/components/ui/section';
 import { Eyebrow } from '@/components/ui/eyebrow';
 import { Reveal } from '@/components/motion/reveal';
 import {
+  BLOG_LOCALES,
   getPublishedGuides,
   getPostBySlugForLocale,
   getPostSlug,
@@ -54,6 +55,29 @@ function loadPost(slug: string, locale: Locale) {
   return post;
 }
 
+/**
+ * A slug that belongs to ANOTHER locale's version of an article that does exist
+ * in this one (`/tr/rehber/wedding-dj-checklist` — the English slug on a
+ * Turkish path) is a URL Google learned from the old language switcher. The
+ * article has a real address here, so send the request there with a permanent
+ * redirect instead of a 404. Derived from the content itself, so a newly
+ * translated guide needs no extra table.
+ *
+ * Returns `null` when there is no such article in this locale (never translated,
+ * or restricted away from it) — those stay 404, the correct answer for a page
+ * that was never published here.
+ */
+function localizedPathForForeignSlug(slug: string, locale: Locale): string | null {
+  const post = getPublishedGuides().find((candidate) =>
+    BLOG_LOCALES.some((other) => other !== locale && getPostSlug(candidate, other) === slug),
+  );
+  if (!post || !getReadyLocalesForPost(post).includes(locale)) return null;
+  return getPathname({
+    href: { pathname: '/ratgeber/[slug]', params: { slug: getPostSlug(post, locale) } },
+    locale,
+  });
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const post = loadPost(slug, locale);
@@ -67,7 +91,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function RatgeberPostPage({ params }: PageProps) {
   const { locale, slug } = await params;
   const post = loadPost(slug, locale);
-  if (!post) notFound();
+  if (!post) {
+    const target = localizedPathForForeignSlug(slug, locale);
+    if (target) permanentRedirect(target);
+    notFound();
+  }
   const content = resolveBlogLocale(post, locale);
   if (!content) notFound();
 
