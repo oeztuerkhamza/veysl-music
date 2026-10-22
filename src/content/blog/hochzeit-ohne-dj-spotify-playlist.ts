@@ -546,6 +546,136 @@ otra vez en la entrada, el primer baile y la pista de baile ya tiene la respuest
 atasca en ninguna parte puede construir la lista con la conciencia tranquila.
 `.trim();
 
+export const hochzeitOhneDjSpotifyPlaylistFr = `
+## D'abord, la réponse honnête
+
+Il existe des mariages pour lesquels une playlist soigneusement préparée suffit amplement. Et il en
+existe où elle coûte visiblement la soirée. Ceux qui se posent cette question cherchent
+généralement une évaluation fiable plutôt qu'un argumentaire de vente, et cette évaluation est
+possible dès que l'on distingue trois choses : ce qu'une playlist fait bien, ce qu'elle ne peut
+fondamentalement pas faire, et le type de fête réellement prévu.
+
+## Quand une playlist suffit vraiment
+
+Une playlist n'est pas un pis-aller. Pour certains formats, c'est la bonne réponse, et un DJ réservé
+serait tout simplement surdimensionné. Elle porte une soirée lorsque plusieurs de ces points sont
+réunis :
+
+- **La fête reste petite et gérable**, dans le cercle de la famille proche ou des amis.
+- **La soirée est construite autour de la conversation**, et non autour d'une piste de danse qui
+  doit rester pleine. La musique tourne en fond et doit y rester.
+- **Il n'y a pratiquement aucun moment du programme** qui doive tomber pile : pas d'entrée élaborée,
+  pas de discours lancé en musique, pas de surprise dont l'effet dépend du timing.
+- **Le lieu dispose d'une sonorisation fonctionnelle** à laquelle un appareil de lecture peut être
+  branché de façon fiable.
+- **On a convenu à l'avance de qui s'en occupe** : quelqu'un qui n'est pas le couple et qui reste
+  joignable toute la soirée.
+
+Un vin d'honneur à midi après la mairie, un dîner en petit comité, une fête au jardin avec musique de
+fond : un DJ est rarement nécessaire pour cela. Prévoir une playlist dans ces cas économise de
+l'argent là où cela ne fait pas mal. La question ne devient intéressante qu'à partir du moment où
+l'on danse vraiment.
+
+## Ce qu'une playlist ne peut pas faire
+
+### Réagir à la salle
+
+Une playlist est terminée au moment où elle est construite. Elle ne remarque pas que la piste s'est
+vidée après la troisième chanson, que la génération plus âgée vient de se lever en groupe ou qu'un
+titre qui semblait parfait sur le papier fait retomber l'ambiance. Cette correction en temps réel
+(autre chanson, autre tempo, autre décennie) est le véritable cœur du métier de DJ. Tout le reste
+peut se préparer à l'avance ; cela, non.
+
+### Transitions et volume
+
+Entre deux titres d'une playlist, il y a un blanc, et dans ce blanc l'énergie de la salle retombe.
+S'y ajoutent les différences de volume : les chansons de décennies et de labels différents sont
+masterisées à des niveaux différents, ce qui s'entend nettement sur une grande sonorisation et
+exige quelqu'un au fader.
+
+### Annonces et moments du programme
+
+Qui invite tout le monde à la première danse ? Qui veille à ce que la salle soit pleine lors de la
+découpe du gâteau et à ce que la musique baisse exactement au bon moment ? Ces tâches ne
+disparaissent pas en l'absence de DJ : elles passent à quelqu'un parmi les invités, généralement
+sans préparation et le plus souvent au témoin. Avec une liste d'invités bilingue, il faut en plus des
+annonces dans plusieurs langues, pour qu'aucun groupe ne passe la soirée à simplement regarder.
+
+### Matériel et solution de secours
+
+L'aspect pratique est le plus sous-estimé. Un appareil qui porte toute la soirée est aussi un
+appareil qui reçoit des appels et des notifications. Les services de streaming insèrent des
+publicités sans abonnement payant, et une playlist sans copie hors ligne dépend du réseau sans fil du
+lieu. Câbles, adaptateurs, un deuxième appareil de lecture et une sonorisation adaptée à la salle et
+au nombre d'invités : quelqu'un doit tout apporter, installer, tester et remballer ensuite. Et si
+quelque chose tombe en panne pendant la soirée, il faut un plan B ; une playlist n'en a pas.
+
+### Les demandes des invités
+
+Les demandes spontanées surviennent à presque tous les mariages. Avec une playlist, il y a deux
+options, et elles sont toutes deux inconfortables : soit on case chaque demande, et la forme de la
+soirée se délite ; soit personne ne se sent responsable de refuser une demande, et la discussion
+retombe sur le couple. Les deux sont évitables lorsqu'une personne avec un mandat clair se tient
+derrière la régie.
+
+## Un ami veut être notre DJ : est-ce suffisant ?
+
+Cette option se situe entre les deux extrêmes et est souvent écartée trop vite. Elle peut
+fonctionner, mais seulement à des conditions qu'il vaut mieux formuler à voix haute à l'avance.
+
+Beaucoup d'arguments plaident en sa faveur : un ami connaît généralement le couple et le mélange
+d'invités mieux que n'importe quel prestataire extérieur. S'il a réellement l'expérience de lire un
+public (et pas seulement une bonne collection de musique), il apporte déjà l'essentiel.
+
+Trois points plaident contre, et ils sont rarement abordés à l'avance. Premièrement : c'est un
+invité. Celui qui passe toute la soirée derrière la régie ne s'assoit pas pour manger, ne danse pas
+et ne trinque pas. Ce rôle devrait être choisi délibérément, pas accepté par politesse.
+Deuxièmement : le matériel manque généralement. Un ordinateur portable et un contrôleur ne
+constituent pas une sonorisation pour une salle pleine, et le système d'un lieu n'est pas
+automatiquement conçu pour cela. Troisièmement : il n'y a pas de remplaçant. Si un prestataire
+réservé fait défaut, une procédure pour ce cas a été convenue à l'avance et mise par écrit dans un
+contrat ; si un ami se désiste au dernier moment, la fête se retrouve sans musique.
+
+Un compromis équitable consiste à partager : l'ami prend en charge une partie clairement délimitée de
+la soirée (le vin d'honneur, la musique du dîner ou la dernière heure), tandis que le matériel et
+les moments du programme sont assurés de façon professionnelle. La touche personnelle demeure, sans
+qu'un invité porte la responsabilité de toute la nuit.
+
+## Une aide à la décision équitable
+
+| Plutôt en faveur de la playlist | Plutôt en faveur d'un DJ |
+|---|---|
+| Petit groupe, conversation au centre | La piste de danse doit porter la soirée |
+| Pas de programme fixe avec des signaux musicaux | Entrée, première danse, gâteau, discours |
+| La sonorisation du lieu suffit | Une sono et un éclairage propres sont nécessaires |
+| Un goût musical commun | Plusieurs générations ou cultures dans la salle |
+| Une personne responsable est désignée | Des annonces en plusieurs langues sont souhaitées |
+| Pas besoin de demandes spontanées | Les demandes des invités doivent être modérées |
+
+Si vous vous retrouvez dans la colonne de droite sur trois lignes ou plus, une playlist seule ne
+portera probablement pas la soirée. Si la colonne de gauche domine nettement, vous n'avez pas besoin
+de DJ et pouvez consacrer le budget à autre chose : c'est un résultat légitime de cet exercice, pas
+un compromis.
+
+## Si la décision penche vers un DJ
+
+La question passe alors du « si » au « ce qui est inclus exactement ». Chez DJ Veys, la prestation
+standard comprend son propre matériel de sonorisation et d'éclairage, montage et démontage inclus,
+l'animation en allemand, en turc et en anglais, un entretien de préparation avant la fête et le
+déplacement dans un rayon défini autour de Stuttgart ; quelle prestation convient à quelle fête est
+présenté sur la page des formules, et le déroulement de l'entretien de préparation est décrit sur
+la page du déroulé. La page mariages et événements montre quels éléments sont disponibles, de la
+simple sonorisation jusqu'à la musique live avec cuivres.
+
+## Conclusion
+
+La question n'est pas de savoir si une playlist fonctionne. Elle fonctionne, et pour certaines fêtes
+mieux que n'importe quelle solution réservée. La question est de savoir si votre fête dépend de la
+réactivité, du matériel et de l'animation. Celui qui parcourt honnêtement le programme prévu et bute
+sans cesse sur l'entrée, la première danse et la piste de danse a déjà la réponse. Celui qui ne bute
+nulle part peut construire la playlist en toute sérénité.
+`.trim();
+
 export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
   id: 'hochzeit-ohne-dj-spotify-playlist',
   slug: 'hochzeit-ohne-dj-spotify-playlist',
@@ -609,6 +739,18 @@ export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
         metaTitle: 'Boda sin DJ: ¿basta una lista de Spotify? | DJ Veys',
         metaDescription:
           '¿Basta una lista de Spotify para su boda? Respuesta sincera: cuándo funciona, qué no puede hacer y la opción de un amigo como DJ.',
+      },
+    },
+    fr: {
+      slug: 'mariage-sans-dj-playlist-spotify',
+      title: 'Mariage sans DJ : une playlist Spotify suffit-elle ?',
+      excerpt:
+        'Pour les petites fêtes centrées sur la conversation, une playlist Spotify suffit vraiment, et cet article le dit clairement. Cela ne devient critique qu\'à partir du moment où l\'on danse vraiment : lire la piste, les transitions, les annonces, le matériel et une solution de secours ne peuvent pas être écrits à l\'avance dans une liste. Avec un regard honnête sur l\'option « un ami fera le DJ » et un tableau d\'aide à la décision.',
+      body: hochzeitOhneDjSpotifyPlaylistFr,
+      seo: {
+        metaTitle: 'Mariage sans DJ : une playlist Spotify suffit-elle ? | DJ Veys',
+        metaDescription:
+          'Une playlist Spotify suffit-elle pour votre mariage ? Réponse honnête : quand elle fonctionne, ce qu\'elle ne peut pas faire et l\'option d\'un ami DJ.',
       },
     },
   },

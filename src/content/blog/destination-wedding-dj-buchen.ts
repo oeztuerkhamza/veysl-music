@@ -393,6 +393,98 @@ documentan, entre otras cosas, actuaciones en Viena, y presenta la logística y 
 forma transparente en el presupuesto individual.
 `.trim();
 
+export const destinationFr = `
+## Pourquoi un DJ de chez soi est souvent un meilleur choix qu'un DJ sur place
+
+Pour un mariage à l'étranger, l'idée évidente est de réserver simplement un DJ local. En pratique,
+de nombreux couples y renoncent délibérément, car un DJ qui connaît déjà leur liste de souhaits, la
+culture de leur famille et, pour les couples biculturels, les deux univers linguistiques représente
+un risque de moins lors d'une journée où beaucoup de choses sont déjà nouvelles et inconnues.
+
+## Les questions logistiques de base
+
+| Question | Pourquoi la régler tôt |
+|---|---|
+| Voyage par la route ou en avion | Influence les frais de déplacement et une heure d'arrivée réaliste avant la fête |
+| Hébergement | Organisé par le couple ou par le DJ ? |
+| Matériel sur place | Apporter le sien (plus d'effort) ou louer sur place (vérifier la qualité à l'avance) |
+| Alimentation électrique sur place | La tension et les types de prises varient d'un pays à l'autre |
+| Douane et transport | Pertinent si l'on apporte son propre matériel, selon la destination |
+
+## Apporter son matériel ou louer sur place ?
+
+Les deux options fonctionnent, avec des avantages et des inconvénients différents. Apporter son
+propre matériel signifie un équipement connu et éprouvé, mais davantage d'efforts de transport et
+d'éventuelles questions douanières. Louer sur place économise le transport, mais exige de vérifier
+soigneusement la qualité et la disponibilité à l'avance.
+
+## Ce que doit contenir le devis
+
+Un devis pour un mariage à l'étranger se distingue structurellement d'un devis régional : en plus de
+la prestation de DJ elle-même s'ajoutent le voyage ou les vols, l'hébergement et éventuellement la
+location de matériel sur place. Un devis sérieux les détaille séparément au lieu de les fondre dans
+un vague forfait.
+
+## La langue et la continuité musicale comme atout
+
+En particulier pour les mariages germano-turcs ou autres mariages biculturels à l'étranger, un DJ
+qui se déplace est souvent le seul moyen de garantir la continuité musicale et linguistique pendant
+toute la fête, de la cérémonie laïque en plein air jusqu'au peak time.
+
+## Un calendrier de préparation pratique
+
+1. **De 6 à 12 mois avant :** décider en principe si un DJ qui se déplace est une option et envoyer
+   une première demande de disponibilité.
+2. **De 4 à 6 mois avant :** clarifier la logistique : voyage, hébergement, matériel sur place ou
+   apporté.
+3. **De 2 à 3 mois avant :** finaliser la liste de souhaits et le programme, adaptés aux conditions
+   locales.
+4. **Dernières semaines :** confirmer les détails techniques comme l'alimentation électrique et
+   l'accès au lieu.
+
+## En quoi l'entretien de préparation diffère pour un mariage à l'étranger
+
+Même si le principe de base de l'entretien de préparation reste le même (programme, goûts musicaux,
+interdits, horaires), un mariage à l'étranger ajoute des sujets supplémentaires : les conditions
+climatiques sur place et leur effet sur le matériel en extérieur, l'alimentation électrique
+disponible sur le lieu même, et le fait de savoir si le lieu a l'habitude des DJ extérieurs ou
+applique ses propres règles en matière de son. Ces questions peuvent généralement être réglées par
+visioconférence, avec des photos ou un plan du lieu, sans visite physique avant le voyage.
+
+## Fuseaux horaires et voyage : un facteur souvent sous-estimé
+
+Un point facile à oublier lors de la planification : si le DJ traverse plusieurs fuseaux horaires,
+il lui faut de façon réaliste au moins une journée complète de marge avant la fête pour absorber le
+décalage horaire, la fatigue du voyage et une vérification technique sans précipitation. Un plan de
+voyage comprimé sur le jour même de la fête augmente inutilement le risque si les vols ont du
+retard ou si le transport prend plus de temps que prévu.
+
+## La communication à distance : pourquoi elle fonctionne différemment
+
+Pour un mariage à l'étranger, presque toute la préparation passe nécessairement par des
+visioconférences et des échanges écrits plutôt que par des rencontres en personne. Cela fonctionne
+bien en pratique, mais demande un peu plus de rigueur dans la documentation : les accords sur la
+liste de souhaits, le programme et l'installation technique doivent être systématiquement mis par
+écrit, afin que le jour même, avec un décalage horaire et sans possibilité de poser rapidement une
+question en personne, rien ne reste flou.
+
+## Un test avant le départ
+
+Pour les détails techniques particulièrement importants, comme une combinaison de prises rarement
+utilisée ou une exigence de tension inhabituelle, il vaut la peine de faire un test technique avec
+le matériel emporté ou commandé avant le départ. Cela prend du temps en amont, mais évite de
+découvrir un problème technique seulement sur place, où une solution rapide est bien plus difficile
+à organiser qu'à la maison.
+
+## Conclusion
+
+Réserver un DJ pour un mariage à l'étranger n'est pas un cas particulier impossible à planifier :
+cela demande simplement plus d'anticipation et une ventilation claire du voyage, de l'hébergement et
+du matériel. DJ Veys peut également être réservé à l'international en plus du Bade-Wurtemberg, comme
+en témoignent entre autres des prestations à Vienne, et présente la logistique et les coûts de façon
+transparente dans le devis individuel.
+`.trim();
+
 export const destinationPost: BlogPost = {
   id: 'destination-wedding-dj-buchen',
   slug: 'destination-wedding-dj-buchen',
@@ -452,6 +544,18 @@ export const destinationPost: BlogPost = {
         metaTitle: 'DJ para boda en destino: logística y calendario | DJ Veys',
         metaDescription:
           'Contratar a un DJ para una boda en el extranjero: viaje, equipo, alojamiento, qué debe incluir el presupuesto y un calendario de planificación realista.',
+      },
+    },
+    fr: {
+      slug: 'reserver-dj-mariage-a-l-etranger',
+      title: 'Mariage à l\'étranger : réserver un DJ hors de chez soi',
+      excerpt:
+        'Pour un mariage à l\'étranger, de nombreux couples renoncent délibérément à un DJ local au profit d\'un DJ qui connaît déjà leur liste de souhaits et les deux univers linguistiques. Ce guide présente la logistique de base et un calendrier réaliste.',
+      body: destinationFr,
+      seo: {
+        metaTitle: 'DJ pour un mariage à l\'étranger | DJ Veys',
+        metaDescription:
+          'Réserver un DJ pour un mariage à l\'étranger : voyage, matériel, hébergement, contenu du devis et calendrier de préparation réaliste.',
       },
     },
   },

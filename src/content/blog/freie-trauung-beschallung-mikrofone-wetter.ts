@@ -417,6 +417,103 @@ lluvia se piensan de antemano y no se improvisan el mismo día. Estos puntos se 
 precisamente en la reunión de planificación, a partir del lugar real.
 `.trim();
 
+export const freieTrauungFr = `
+## Pourquoi une cérémonie en plein air est plus exigeante techniquement qu'il n'y paraît
+
+À première vue, une cérémonie en plein air semble techniquement simple : un micro, un peu de
+musique de fond, et c'est tout. En pratique, c'est souvent le moment le plus exigeant de toute la
+journée : pas de prise de courant fixe, un vent changeant, une météo imprévisible et plusieurs
+personnes qui prennent la parole (l'officiant, le couple, souvent aussi les témoins) et qui doivent
+toutes être comprises sans que le matériel domine visiblement le moment.
+
+## Trois problèmes de base en extérieur
+
+| Problème | Pourquoi c'est important |
+|---|---|
+| Alimentation électrique | Rarement une prise à portée, surtout sur les lieux de cérémonie éloignés du bâtiment principal |
+| Vent et météo | Bruit de vent dans le micro, risque de pluie pour le matériel sensible |
+| Plusieurs intervenants | L'officiant, le couple et les témoins ont besoin d'un son clair sans se passer constamment un micro |
+
+## Alimentation électrique : des solutions qui fonctionnent vraiment
+
+S'il n'y a pas de prise fixe à proximité de la cérémonie, il existe pour l'essentiel deux options
+viables : un câble suffisamment long et posé en toute sécurité jusqu'à la source de courant la plus
+proche, ou une solution autonome sur batterie pour la durée de la cérémonie. Laquelle est pertinente
+dépend de la distance jusqu'à la prise la plus proche et de la durée de la cérémonie, et doit être
+clarifié lors de la visite du lieu, pas le jour même.
+
+## L'installation des micros : plus qu'un seul micro à main
+
+Pour une cérémonie en plein air avec plusieurs intervenants, un seul micro à main est rarement la
+meilleure solution : il impose des passages de main en main constants et des interruptions dans le
+fil du discours. Ce qui fonctionne mieux :
+
+- **Des micros-cravates** pour l'officiant et, le cas échéant, pour le couple.
+- **Un micro à main supplémentaire** pour les invités qui prennent la parole spontanément.
+- **Des enceintes discrètes mais en nombre suffisant**, pour que les derniers rangs entendent tout
+  sans que les premiers soient submergés par le volume.
+
+## Le vent : le perturbateur sous-estimé
+
+En plein air, le vent pose souvent plus de problèmes que la pluie : même un vent léger produit un
+bruit nettement audible sur un micro non protégé. Une bonnette anti-vent sur le micro est donc la
+norme, pas une option.
+
+## Un plan pluie : décidé à l'avance, pas improvisé
+
+Toute cérémonie en plein air devrait avoir un plan B clair : une alternative couverte à proximité,
+déjà pensée techniquement à l'avance et non improvisée lorsque les nuages s'accumulent.
+
+## De combien d'enceintes une cérémonie en plein air a-t-elle vraiment besoin ?
+
+La réponse dépend moins du seul nombre d'invités que de la forme de l'espace de cérémonie. Une zone
+longue et étroite demande une répartition différente d'une disposition large en demi-cercle. En
+règle générale : à partir d'environ 60 à 80 invités en extérieur, une deuxième paire d'enceintes est
+généralement utile, pour que les derniers rangs entendent tout clairement sans que les premiers
+soient submergés par le volume.
+
+## Matériel de secours : pourquoi un deuxième micro ne devrait pas être négociable
+
+Lors d'un événement en intérieur, une panne technique peut souvent être réglée rapidement. En plein
+air, sans atelier ni pièces de rechange à proximité, c'est différent : un micro qui lâche en pleine
+cérémonie ne peut pas être réparé sur place. C'est pourquoi un deuxième micro prêt à l'emploi fait
+partie de l'équipement standard de toute sonorisation professionnelle en extérieur, et n'est pas un
+supplément optionnel.
+
+## La musique de fond avant et après la cérémonie
+
+Au-delà de la sonorisation des discours et du rituel lui-même, il vaut la peine de penser aussi au
+cadre musical de la cérémonie : un morceau calme pendant l'arrivée des invités, une chanson d'entrée
+choisie délibérément pour le couple et un morceau adapté au moment qui suit le « oui », souvent la
+transition la plus émouvante de toute la cérémonie. Cette musique passe par le même système que le
+son des discours et doit donc être prévue techniquement, et non traitée comme un détail à part. Si
+de la musique live au saz ou à la guitare est utilisée à ce moment-là, elle a souvent en extérieur
+un effet particulièrement clair et direct, sans l'acoustique d'une salle fermée.
+
+## Quand la cérémonie a lieu ailleurs que la réception
+
+Dans de nombreux mariages, la cérémonie en plein air a lieu à un autre endroit que la réception qui
+suit, par exemple dans un vignoble, tandis que la fête elle-même se déroule dans une salle. Cela
+exige soit deux installations techniques distinctes, soit un déplacement du matériel clairement
+minuté entre les deux endroits. Les deux sont possibles, mais doivent être intégrés au planning dès
+le départ, pour qu'il reste assez de marge entre la cérémonie et la réception pour le changement.
+
+## Une check-list pour la visite du lieu
+
+1. Où se trouve la prise de courant la plus proche et quelle distance de câble faut-il couvrir ?
+2. Existe-t-il une alternative couverte en cas de pluie ?
+3. Quelle est la direction habituelle du vent à cet endroit ?
+4. Combien de personnes doivent prendre la parole ?
+5. À quelle distance se trouve le dernier rang de sièges par rapport au premier ?
+
+## Conclusion
+
+Une cérémonie en plein air peut généralement être résolue proprement sur le plan technique, mais
+seulement si l'électricité, le nombre de micros, le vent et un plan pluie sont pensés à l'avance
+plutôt qu'improvisés le jour même. Ce sont précisément ces points qui sont abordés lors de
+l'entretien de préparation, à partir du lieu réel.
+`.trim();
+
 export const freieTrauungPost: BlogPost = {
   id: 'freie-trauung-beschallung-mikrofone-wetter',
   slug: 'freie-trauung-beschallung-mikrofone-wetter',
@@ -477,6 +574,18 @@ export const freieTrauungPost: BlogPost = {
         metaTitle: 'Sonido para ceremonias al aire libre | DJ Veys',
         metaDescription:
           'Ceremonia al aire libre: electricidad, micrófonos de solapa, viento, plan para la lluvia y lista de comprobación para la visita.',
+      },
+    },
+    fr: {
+      slug: 'ceremonie-plein-air-sono-micros-meteo',
+      title: 'Cérémonie en plein air : sonorisation, micros, météo',
+      excerpt:
+        'Une cérémonie en plein air est souvent plus exigeante techniquement qu\'il n\'y paraît : pas de prise de courant, du vent, plusieurs intervenants. Ce guide présente des solutions pratiques pour l\'électricité, l\'installation des micros et un plan pluie.',
+      body: freieTrauungFr,
+      seo: {
+        metaTitle: 'Sonoriser une cérémonie en plein air | DJ Veys',
+        metaDescription:
+          'Cérémonie en plein air : électricité, micros-cravates, protection contre le vent, plan pluie et check-list pour la visite du lieu.',
       },
     },
   },

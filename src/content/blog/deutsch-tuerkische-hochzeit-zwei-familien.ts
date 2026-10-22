@@ -396,6 +396,100 @@ centrales de la noche. Eso requiere algo más de tiempo de preparación que una 
 monolingüe, pero compensa justo la noche en que ambos lados de la familia celebran juntos.
 `.trim();
 
+export const deutschTuerkischeFr = `
+## Le vrai défi n'est pas la musique, mais les attentes
+
+Lors des mariages germano-turcs, la conversation commence généralement par la musique : combien de
+halay, combien de tubes allemands, combien d'anglais. Mais le vrai défi se situe le plus souvent un
+niveau plus bas : deux familles aux attentes différentes en matière de programme, de rythme et de
+culture festive doivent produire une seule soirée commune qui convienne aux deux côtés, et pas
+seulement à l'un.
+
+## Là où les attentes divergent généralement
+
+| Domaine | Attente allemande fréquente | Attente turque fréquente |
+|---|---|---|
+| Début de la soirée | Début ponctuel, programme clairement minuté | Un peu plus de souplesse dans les horaires, la famille d'abord |
+| Cérémonie | Cérémonie laïque ou civile au centre | Cérémonie des alliances, parfois avec son propre rituel, un moment important du programme |
+| Durée de la danse | La piste s'ouvre généralement plus tard dans la soirée | La danse et le halay commencent souvent plus tôt dans le programme |
+| Volume et énergie | Un niveau plus égal et modéré est préféré | Une énergie et un volume plus élevés pendant le peak time sont courants |
+| Fin de la soirée | Fin généralement plus précoce et clairement définie | La fête se prolonge souvent tard dans la nuit |
+
+Ce tableau décrit une tendance approximative, pas une loi de la nature : chaque famille est
+différente. Mais il montre pourquoi un programme conçu autour d'un seul côté laisse presque
+inévitablement l'autre insatisfait.
+
+## Trois principes pour une soirée qui rende justice aux deux côtés
+
+### 1. Impliquer tôt les deux familles dans la préparation
+
+Plutôt que de décider des goûts musicaux et du programme uniquement en couple, il est utile
+d'associer tôt au processus les deux familles, ou au moins les personnes de contact clés de chaque
+côté.
+
+### 2. Mêler délibérément musique et animation, sans les séparer
+
+Plutôt qu'un « bloc allemand » et un « bloc turc », une playlist mêlée fonctionne généralement
+mieux : les chansons allemandes et internationales alternent avec le halay, le Roman Havası et les
+tubes turcs, au lieu de passer dans des créneaux séparés.
+
+### 3. Ancrer dans le programme des moments issus des deux traditions
+
+Cérémonie des alliances, cérémonie laïque, découpe du gâteau, lancer du bouquet, ouverture du halay :
+tous les moments n'ont pas besoin d'avoir lieu, mais chacun de ceux qui ont lieu a besoin d'un
+créneau fixe dans le programme, pas d'une place improvisée au dernier moment.
+
+## Le rôle de l'animation
+
+Avec des listes d'invités mixtes, c'est souvent dans l'animation que la considération se voit le
+plus directement. Des annonces qui privilégient systématiquement une langue signalent sans le
+vouloir à qui appartient « vraiment » la fête. Une animation qui alterne activement entre l'allemand
+et le turc selon le moment du programme fait sentir que les deux familles sont pareillement
+concernées.
+
+## Un exemple concret : la cérémonie
+
+Un point où les attentes différentes deviennent particulièrement tangibles est la cérémonie
+elle-même. Certaines familles souhaitent une cérémonie laïque classique à l'allemande, d'autres
+accordent une grande importance à une cérémonie des alliances avec un ruban rouge et la
+participation de plusieurs membres de la famille. Les deux peuvent être combinées dans un même
+programme (par exemple une courte cérémonie laïque suivie de la cérémonie des alliances comme moment
+à part entière, délibérément célébré), à condition que les deux éléments soient prévus dès le départ
+au lieu d'être assemblés après coup.
+
+## Quand une famille accorde plus de poids à la tradition que l'autre
+
+En pratique, un équilibre parfait entre « autant allemand » et « autant turc » est rare : le plus
+souvent, un côté de la famille tient davantage à certaines traditions que l'autre. Ce n'est pas un
+problème tant que le sujet est abordé ouvertement. Une conversation honnête entre le couple et les
+deux familles sur les moments du programme qui comptent vraiment et ceux qui sont négociables évite
+qu'un côté se sente oublié parce que les attentes n'ont jamais été exprimées à voix haute.
+
+## La liste d'invités comme défi à part entière
+
+Les mariages germano-turcs ont souvent aussi une liste d'invités particulièrement longue, car une
+définition plus large de la famille est courante des deux côtés. Cela influe directement sur la
+taille du lieu, les besoins techniques et le plan de table : des facteurs à anticiper tôt dans la
+préparation plutôt que de les découvrir peu avant la fête, une fois que la liste d'invités a déjà
+doublé.
+
+## Le repas comme point de rencontre culturel
+
+Le traiteur réunit lui aussi souvent des attentes différentes lors des mariages germano-turcs, d'un
+menu classique en plusieurs plats à un buffet de mezzés et de plats principaux turcs. De nombreux
+couples choisissent un mélange délibéré plutôt qu'une décision exclusive. Ce sujet ne concerne pas
+directement la musique, mais il influe indirectement sur la dramaturgie de la soirée : un menu plus
+long en plusieurs plats repousse sensiblement le début de la phase de danse et doit être pris en
+compte en conséquence dans le minutage musical.
+
+## Conclusion
+
+Un mariage germano-turc ne réussit pas grâce à une répartition parfaite à 50:50 de la musique, mais
+parce que les deux familles se retrouvent dans le programme, dans l'animation et dans les moments
+forts de la soirée. Cela demande un peu plus de temps de préparation qu'une fête monolingue, mais
+cela paie précisément le soir où les deux côtés de la famille font la fête ensemble.
+`.trim();
+
 export const deutschTuerkischePost: BlogPost = {
   id: 'deutsch-tuerkische-hochzeit-zwei-familien',
   slug: 'deutsch-tuerkische-hochzeit-zwei-familien',
@@ -456,6 +550,18 @@ export const deutschTuerkischePost: BlogPost = {
         metaTitle: 'Boda germano-turca: dos familias, una noche | DJ Veys',
         metaDescription:
           'Cómo planificar una boda germano-turca que haga justicia a ambas familias: expectativas, programa, presentación y música.',
+      },
+    },
+    fr: {
+      slug: 'mariage-germano-turc-deux-familles',
+      title: 'Mariage germano-turc : deux familles, une soirée',
+      excerpt:
+        'Lors des mariages germano-turcs, le vrai défi est rarement la musique seule, mais les attentes différentes en matière de programme et de rythme. Ce guide montre où les attentes divergent généralement et comment construire une soirée qui fonctionne pour les deux côtés.',
+      body: deutschTuerkischeFr,
+      seo: {
+        metaTitle: 'Mariage germano-turc : deux familles, une soirée | DJ Veys',
+        metaDescription:
+          'Planifier un mariage germano-turc qui rende justice aux deux familles : attentes différentes, programme, animation et musique équilibrés.',
       },
     },
   },

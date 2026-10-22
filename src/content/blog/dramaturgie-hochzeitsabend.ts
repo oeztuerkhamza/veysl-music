@@ -378,6 +378,94 @@ el punto álgido. Las parejas que piensan esa curva desde el principio consiguen
 se recuerda como un todo.
 `.trim();
 
+export const dramaturgieFr = `
+## Une soirée de mariage est une dramaturgie, pas un déroulé uniforme
+
+L'erreur de planification la plus fréquente pour la musique d'un mariage consiste à répartir le
+volume et l'énergie de façon égale sur toute la soirée, comme si le mariage était une fête
+continue dès le vin d'honneur. En réalité, une bonne soirée de mariage fonctionne comme une
+courbe faite de hauts et de bas voulus : des phases calmes pour arriver et discuter, une montée en
+tension vers le dîner, et un point culminant placé délibérément, le fameux « peak time », plutôt
+qu'un mur de musique plat et constant.
+
+## Les quatre phases en un coup d'œil
+
+| Phase | Objectif | Musique typique |
+|---|---|---|
+| Vin d'honneur | Arrivée, accueil, premières conversations | Calme, en fond, propice à la conversation |
+| Dîner et discours | Attention sur le moment, aucune distraction | Retenue, à faible volume |
+| Montée en puissance | Passer de la position assise à la danse | Le tempo monte progressivement, premières envies de danser |
+| Peak time | Le point culminant de l'énergie de la soirée | Dansante, intergénérationnelle, très énergique |
+
+Après le peak time vient généralement une phase de redescente, où le tempo et le volume baissent à
+nouveau : pour les invités qui partent plus tôt, et pour offrir une fin plus douce mais encore
+dansante à tous ceux qui restent.
+
+## Pourquoi le moment compte plus que chaque chanson
+
+Deux playlists identiques peuvent produire un effet complètement différent selon le moment où
+chaque morceau est joué. Un titre très énergique juste après l'accueil tombe à plat, car personne
+n'a encore envie de danser. Le même titre 90 minutes plus tard, après le dîner et les discours,
+peut remplir la piste instantanément.
+
+## Comment construire délibérément le peak time
+
+1. **Placez les moments comme la découpe du gâteau ou le lancer du bouquet** peu avant la montée
+   d'énergie prévue, et non au milieu de celle-ci.
+2. **Augmentez le tempo progressivement** plutôt que de passer brusquement d'une musique de dîner
+   calme au volume maximal.
+3. **Programmez délibérément des chansons connues et intergénérationnelles** au début du peak time,
+   afin que le plus grand nombre d'invités rejoigne la piste en même temps.
+4. **Prévoyez des moments de réserve**, par exemple une deuxième relance d'énergie plus tard dans
+   la nuit si la première vague retombe.
+
+## Erreurs de dramaturgie fréquentes
+
+- **Faire monter l'énergie trop tôt**, si bien que le véritable point culminant est déjà « épuisé »
+  avant que la plupart des invités ne soient prêts.
+- **Trop de moments calmes du programme d'affilée**, qui vident la soirée de son élan.
+- **Aucune transition voulue entre les phases**, de sorte que les changements d'ambiance semblent
+  brusques plutôt que naturels.
+
+## Que se passe-t-il si le peak time arrive trop tôt ?
+
+Un scénario concret qui se présente souvent en pratique : un groupe d'amis particulièrement
+amateurs de danse pousse vers la piste dès le dîner, bien avant ce que prévoit le programme. Un DJ
+expérimenté ne répond pas par un arrêt brutal, mais par un dosage réfléchi : une ou deux chansons
+dansantes comme brève soupape, puis retour à une musique plus calme, pour que le véritable point
+culminant produise encore tout son effet plus tard.
+
+## La deuxième relance d'énergie
+
+Tous les mariages n'ont pas qu'un seul point culminant. Lors des fêtes plus longues qui se
+prolongent jusqu'au petit matin, une deuxième relance d'énergie placée délibérément fonctionne
+souvent bien : vers une ou deux heures du matin, lorsque certains invités plus âgés sont partis et
+que le public restant a besoin d'un nouvel élan.
+
+## Comment la dramaturgie s'adapte au lieu
+
+Tous les lieux ne permettent pas la même courbe. Une salle avec une heure de fermeture précoce ou
+une heure de fin fixée par contrat impose une dramaturgie plus resserrée, où le peak time commence
+plus tôt et se révèle plus intense mais plus court. Un lieu sans contrainte horaire permet au
+contraire une montée plus longue et plus douce.
+
+## Le rôle de l'animation dans la dramaturgie
+
+La musique seule ne porte pas la courbe d'une soirée : l'animation entre les morceaux décide aussi
+de la fluidité des transitions. Une annonce brève et bien placée avant une montée d'énergie peut
+attirer délibérément les invités sur la piste, tandis qu'une annonce mal choisie ou trop longue
+peut briser l'élan précisément à ce moment-là. Avec une liste d'invités multilingue, une annonce
+dans la mauvaise langue au mauvais moment peut sortir brièvement tout un groupe de l'action avant
+que la musique ne le rattrape.
+
+## Conclusion
+
+Une soirée de mariage bien pensée n'est pas le fruit du hasard de bonnes chansons, mais le
+résultat d'une dramaturgie voulue : quand tout se calme, quand l'énergie monte, où se situe le
+point culminant. Les couples qui réfléchissent à cette courbe dès le départ obtiennent une soirée
+dont on se souvient comme d'un tout.
+`.trim();
+
 export const dramaturgiePost: BlogPost = {
   id: 'dramaturgie-hochzeitsabend',
   slug: 'dramaturgie-hochzeitsabend',
@@ -438,6 +526,18 @@ export const dramaturgiePost: BlogPost = {
         metaTitle: 'La dramaturgia de una noche de boda | DJ Veys',
         metaDescription:
           'Cóctel, cena, peak time: cómo se construye de forma deliberada la dramaturgia musical de una noche de boda, con tabla de fases y errores habituales.',
+      },
+    },
+    fr: {
+      slug: 'dramaturgie-soiree-de-mariage',
+      title: 'Du vin d\'honneur au peak time : la dramaturgie d\'une soirée de mariage',
+      excerpt:
+        'Une bonne soirée de mariage est une courbe faite de hauts et de bas voulus, pas un mur de musique plat et constant. Ce guide explique les quatre phases d\'une soirée et comment construire délibérément le peak time.',
+      body: dramaturgieFr,
+      seo: {
+        metaTitle: 'La dramaturgie d\'une soirée de mariage | DJ Veys',
+        metaDescription:
+          'Vin d\'honneur, dîner, peak time : comment construire la dramaturgie musicale d\'une soirée de mariage, avec tableau des phases et erreurs fréquentes.',
       },
     },
   },

@@ -425,6 +425,108 @@ exactamente los momentos adecuados con auténtica energía en directo y exactame
 adecuados con un programa de baile continuo.
 `.trim();
 
+export const davulZurnaFr = `
+## Trois termes souvent confondus
+
+Davul-zurna, halay et Roman Havası reviennent souvent ensemble dans les conversations sur les
+mariages turcs, mais ils désignent des choses différentes : un duo d'instruments, une danse et un
+style musical. Savoir les distinguer permet de planifier sa propre fête avec plus de précision que
+de commander simplement de la « musique traditionnelle ».
+
+## Davul-zurna : le duo d'instruments
+
+Le davul (un grand tambour sur cadre, puissant et sonore) et la zurna (un instrument à vent
+perçant, proche du hautbois) forment ensemble un duo traditionnel joué depuis des générations lors
+des mariages, des fiançailles et des fêtes dans toute l'aire culturelle turque. On l'utilise
+typiquement pour l'entrée du couple ou le début d'une cérémonie : fort, impossible à manquer et
+très invitant.
+
+## Halay : la danse, pas la musique
+
+Le halay est avant tout une danse : une danse en ligne ou en chaîne où les participants se tiennent
+par la main ou par le petit doigt et avancent en ligne ou en cercle, menés par une personne tenant
+un foulard ou levant la main. La musique de halay comprend aussi bien des pièces traditionnelles de
+davul-zurna que des productions modernes construites sur le même schéma rythmique.
+
+## Roman Havası : un style musical à part entière
+
+Roman Havası désigne un style musical à part entière, enraciné dans la musique de la communauté rom
+de Turquie, caractérisé par un rythme entraînant, souvent rapide, et un caractère inimitable qui
+invite à danser.
+
+## Tableau récapitulatif
+
+| Terme | Ce que c'est | Usage typique dans le programme |
+|---|---|---|
+| Davul-zurna | Duo d'instruments (tambour et instrument à vent) | Entrée, début de cérémonie, moments live ciblés |
+| Halay | Forme de danse (en ligne ou en chaîne) | Peak time, moments de danse collective |
+| Roman Havası | Style musical | Peak time, séquences de danse très énergiques |
+
+## Comment intégrer les trois de façon cohérente dans la soirée
+
+Un schéma fréquent : le davul-zurna ouvre un moment cérémoniel, comme l'entrée ou le début de la
+kına gecesi, avec une forte présence live. Lorsque l'attention se déplace ensuite vers la piste,
+les titres de halay et le Roman Havası prennent le relais comme éléments dansants et fédérateurs,
+souvent mêlés aux tubes turcs et aux sets internationaux.
+
+## Ce que le davul-zurna en live implique sur le plan organisationnel
+
+Une prestation live avec davul et zurna se distingue techniquement de la musique enregistrée : elle
+n'a pas besoin de micro au sens classique, mais d'espace pour les musiciens, d'une coordination avec
+le lieu sur le volume et l'horaire (le davul-zurna est acoustiquement très présent) et d'un créneau
+clair dans le programme qui ne peut pas être déplacé au dernier moment sans s'accorder avec les
+musiciens eux-mêmes.
+
+## Comment on danse vraiment le halay
+
+Pour les invités qui ne connaissent pas le halay, une courte explication les aide à ne pas se
+sentir exclus : les participants se tiennent par le petit doigt ou tiennent un foulard et avancent
+en ligne ou en cercle, menés par une personne qui donne l'enchaînement des pas. Les débutants peuvent
+rejoindre la fin de la chaîne à tout moment. Une petite indication de l'animateur au début,
+expliquant comment se joindre à la danse sans maîtriser parfaitement les pas, abaisse la barrière
+pour de nombreux invités et remplit la piste plus vite.
+
+## Les variantes régionales du halay
+
+Le halay n'est pas une danse unique et uniforme : selon la région, il présente des variantes dans
+l'enchaînement des pas et le tempo, des formes plus calmes et retenues jusqu'aux variantes rapides
+et très énergiques. Les familles venant de différentes régions de Turquie apportent souvent leur
+propre version familière. Ce n'est pas une contradiction, mais une raison de demander lors de
+l'entretien de préparation quelle variante est particulièrement familière à votre famille.
+
+## En quoi le Roman Havası sonne différemment de la musique de halay
+
+Musicalement, le Roman Havası se distingue souvent de la musique de halay classique par son
+instrumentation et son tempo : davantage de clarinette et d'accordéon, un rythme souvent plus
+syncopé et une tendance à un jeu plus rapide et plus virtuose. En pratique, les deux styles sont
+souvent combinés dans un même set, car ils se complètent sur le plan énergétique au lieu de se
+concurrencer.
+
+## Combien de temps prévoir pour ces éléments dans le programme
+
+À titre indicatif : un moment de davul-zurna live pour l'entrée dure généralement de cinq à dix
+minutes, assez pour un moment marquant mais pas lassant. Les blocs de halay et de Roman Havası
+pendant le peak time peuvent en revanche être modulés plus librement et répartis plusieurs fois au
+cours de la soirée plutôt que concentrés en un seul long bloc, afin que l'énergie se répartisse sur
+toute la nuit au lieu de s'épuiser trop tôt.
+
+## Une courte explication pour les invités sans connaissances préalables
+
+Avec une liste d'invités mixte, il est utile de donner un bref contexte aux trois termes : par une
+ligne dans le programme du mariage, une courte indication de l'animateur ou simplement de bouche à
+oreille entre amis. Les invités qui comprennent que le halay est une danse collective à laquelle
+chacun peut se joindre sont bien plus enclins à rejoindre la piste que ceux qui entendent seulement
+une mélodie inconnue sans en connaître le contexte.
+
+## Conclusion
+
+Davul-zurna, halay et Roman Havası (un duo d'instruments, une danse et un style musical) forment
+ensemble une grande partie de l'identité musicale des mariages turcs et germano-turcs. Les couples
+qui les planifient délibérément plutôt que de façon générique obtiennent une soirée qui associe
+précisément les bons moments à une véritable énergie live, et précisément les bons moments à un
+programme de danse continu.
+`.trim();
+
 export const davulZurnaPost: BlogPost = {
   id: 'davul-zurna-halay-roman-havasi',
   slug: 'davul-zurna-halay-roman-havasi',
@@ -484,6 +586,18 @@ export const davulZurnaPost: BlogPost = {
         metaTitle: 'Davul-zurna, halay y Roman Havası explicados | DJ Veys',
         metaDescription:
           'Qué son el davul-zurna, el halay y el Roman Havası y cuándo encajan en una boda turca o germano-turca: con tabla resumen y consejos de planificación.',
+      },
+    },
+    fr: {
+      slug: 'davul-zurna-halay-roman-havasi-mariage-turc',
+      title: 'Davul-zurna, halay et Roman Havası : ce qui se joue et quand',
+      excerpt:
+        'Davul-zurna, halay et Roman Havası sont souvent confondus, mais ils désignent un duo d\'instruments, une danse et un style musical. Ce guide explique les différences et montre quand chacun trouve sa place dans le programme.',
+      body: davulZurnaFr,
+      seo: {
+        metaTitle: 'Davul-zurna, halay et Roman Havası expliqués | DJ Veys',
+        metaDescription:
+          'Davul-zurna, halay et Roman Havası : ce qu\'ils sont et quand ils trouvent leur place dans un mariage turc ou germano-turc, avec tableau récapitulatif.',
       },
     },
   },

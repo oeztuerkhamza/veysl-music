@@ -392,6 +392,104 @@ inglés. Para coordinarlo con el resto de su día, una consulta gratuita para su
 siguiente paso.
 `.trim();
 
+export const gelinAlmaFr = `
+## Gelin alma : quand le mariage descend dans la rue
+
+Dans de nombreux mariages turcs, la journée ne commence pas dans la salle, mais devant la porte de
+la mariée. La famille du marié vient la chercher : c'est le **gelin alma** (aller chercher la mariée)
+ou, du point de vue de sa famille, le **gelin çıkarma** (faire sortir la mariée de la maison). Le
+moment est court mais intense : des adieux aux parents et aux frères et sœurs, de la musique dans la
+rue, des photos, souvent des larmes et des rires en même temps. En Allemagne, il est célébré en
+entier, raccourci ou volontairement omis, selon la famille. Pour le planifier, il faut savoir
+quelles parties relèvent de la coutume, lesquelles demandent de l'organisation et où se place la
+musique.
+
+## Ce qui se passe souvent lors du gelin alma
+
+Il n'existe pas de déroulé fixe ; la région et la famille décident de beaucoup de choses. Ces
+éléments sont courants :
+
+- **Le cortège.** La famille du marié arrive en colonne de voitures, souvent décorées.
+- **La musique à l'arrivée.** Selon la famille, davul et zurna, une fanfare ou la musique d'un
+  système mobile annoncent l'arrivée.
+- **La porte.** Dans certaines familles, le chemin vers la mariée est bloqué de façon ludique
+  jusqu'à ce que les invités de l'autre côté glissent quelque chose.
+- **Le ruban rouge.** Le père de la mariée ou un frère lui noue souvent un ruban rouge autour de la
+  taille, en signe de protection et de bénédiction.
+- **Les adieux.** La mariée quitte la maison avec sa famille ; beaucoup de familles ont pour cela
+  une chanson particulière, souvent très émouvante.
+- **Le trajet vers le lieu suivant :** la mairie, la séance photo ou la salle.
+
+Tout n'a pas sa place partout, et il est tout à fait possible de ne reprendre que certains éléments.
+
+## Musique et technique dans la rue
+
+À l'extérieur, d'autres règles s'appliquent que dans la salle. Le davul et la zurna portent dans
+toute la rue et sont assez forts sans amplification. Un système mobile, en revanche, a besoin de
+courant (batterie ou prise à proximité), de place pour être installé et d'une protection contre le
+vent pour les micros. Demandez à l'avance si la musique doit être live, assurée par le DJ ou mixte,
+et qui donne le signal au moment décisif, les adieux de la mariée. Si ce n'est pas convenu, c'est la
+mauvaise chanson qui passe en plein milieu des adieux, ou aucune.
+
+## Voisins, bruit et circulation
+
+Un gelin alma avec musique et cortège a lieu dans l'espace public. Ce n'est pas un problème tant
+qu'il reste bref et que les voisins sont prévenus. Trois points évitent les ennuis les plus courants :
+
+- **Prévenir.** Un petit mot ou quelques paroles échangées avec les voisins à l'avance ne coûtent
+  rien et évitent une dispute plus tard.
+- **L'horaire.** Le dimanche et pendant la pause de midi, la musique dans la rue et les coups de
+  klaxon sont bien plus sensibles qu'un samedi après-midi.
+- **La circulation.** Les cortèges et les coups de klaxon sont soumis au code de la route. Pour
+  bloquer une rue ou déclarer un cortège, il faut s'adresser au préalable à l'autorité compétente ;
+  les règles et les compétences varient d'une ville à l'autre.
+
+Pour le bruit et les horaires de fermeture lors de la fête elle-même, le guide sur le
+Bade-Wurtemberg donne une vue d'ensemble.
+
+## Check-list pour le gelin alma
+
+| Élément | Question à régler |
+|---|---|
+| Horaire et durée | Quand cela commence-t-il, combien de temps cela peut-il durer, que se passe-t-il ensuite ? |
+| Musique | Live, DJ ou les deux, et qui donne le signal pour les adieux ? |
+| Chanson des adieux | Quel morceau, quelle version, quelle durée ? |
+| Électricité et espace | Où se place le système, y a-t-il une prise, assez de place ? |
+| Cortège | Combien de véhicules, quel trajet, qui ouvre la marche ? |
+| Voisins | Sont-ils prévenus, y a-t-il des heures de repos à respecter ? |
+| Photo et vidéo | Où se placent les photographes sans gêner ? |
+| Passage de relais | Qui annonce au groupe qu'il est temps de passer au point suivant ? |
+
+## Pièges fréquents
+
+- **Les adieux n'ont pas de chef d'orchestre.** Sans signal clair, le moment le plus émouvant de la
+  journée passe sans musique ou avec la mauvaise chanson.
+- **Une pause trop longue avant de repartir.** Si personne ne sait ce qui suit les adieux, les
+  groupes se dispersent et le programme prend une demi-heure de retard.
+- **Trop de matériel pour trop peu d'espace.** Un système qui bloque le trottoir devient vite un
+  problème.
+- **Une musique non coordonnée.** Les musiciens live et le DJ jouent les uns contre les autres si
+  personne ne précise à l'avance qui joue quand.
+- **Aucune coordination avec le reste de la journée.** Le gelin alma influe sur la cérémonie, les
+  photos et l'entrée dans la salle ; une marge d'au moins une demi-heure est rarement de trop.
+
+## Combien de temps prévoir
+
+À titre indicatif, et avec des écarts sensibles d'une famille à l'autre : de 30 à 60 minutes pour
+l'arrivée, le rituel et les adieux, plus le temps de trajet jusqu'au lieu suivant. L'important est
+moins le chiffre exact qu'une marge qui empêche les retards de se reporter sur la cérémonie, les
+photos et l'entrée dans la salle.
+
+## Conclusion
+
+Le gelin alma n'est pas un à-côté, mais le premier grand moment de la journée, et celui où la musique
+et l'organisation doivent fonctionner ensemble de la façon la plus visible. En réglant à l'avance le
+signal, l'électricité, les voisins et la marge de temps, on obtient une ouverture dont tout le monde
+se souvient. DJ Veys se coordonne avec les musiciens live et les joueurs de davul-zurna pour les
+entrées et les cérémonies, et anime en allemand, en turc et en anglais. Pour la coordination avec le
+reste de votre journée, une demande gratuite pour votre date est une bonne prochaine étape.
+`.trim();
+
 export const gelinAlmaPost: BlogPost = {
   id: 'gelin-alma-brautabholung-musik',
   slug: 'gelin-alma-brautabholung-musik',
@@ -455,6 +553,18 @@ export const gelinAlmaPost: BlogPost = {
         metaTitle: 'Gelin alma: la recogida de la novia y su música | DJ Veys',
         metaDescription:
           'Gelin alma: qué ocurre en la recogida de la novia y cómo organizar música, equipo, vecinos y tráfico, con lista de comprobación.',
+      },
+    },
+    fr: {
+      slug: 'gelin-alma-aller-chercher-la-mariee',
+      title: 'Gelin alma : aller chercher la mariée lors d\'un mariage turc, et sa musique',
+      excerpt:
+        'Aller chercher la mariée est le premier grand moment de la journée du mariage : cortège, musique, ruban rouge, adieux. Ce guide montre ce qui en fait souvent partie, à quoi faire attention pour le matériel, les voisins et la circulation, et où la préparation échoue.',
+      body: gelinAlmaFr,
+      seo: {
+        metaTitle: 'Gelin alma : aller chercher la mariée | DJ Veys',
+        metaDescription:
+          'Gelin alma : ce qui se passe quand on va chercher la mariée et comment organiser musique, matériel, voisins et circulation, avec check-list.',
       },
     },
   },
