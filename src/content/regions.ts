@@ -199,7 +199,7 @@ export function hasRegionProse(region: Region, locale: Locale): boolean {
  */
 const CANDIDATE_LOCALES_BY_SLUG: Record<string, readonly Locale[]> = {
   oesterreich: BASE_SUPPORTED_LOCALES,
-  schweiz: BASE_SUPPORTED_LOCALES,
+  schweiz: [...BASE_SUPPORTED_LOCALES, 'fr'],
   niederlande: ['de', 'en', 'nl', 'tr'],
   belgien: ['de', 'en', 'nl', 'tr', 'fr'],
   frankreich: ['de', 'en', 'tr', 'fr'],
@@ -284,7 +284,7 @@ export const allRegionEntries: Region[] = [
   },
   {
     slug: 'schweiz',
-    name: { de: 'Schweiz', en: 'Switzerland', tr: 'İsviçre' },
+    name: { de: 'Schweiz', en: 'Switzerland', tr: 'İsviçre', fr: 'Suisse' },
     referenceCity: 'Zürich',
     distanceKm: 200,
     verified: false,
@@ -294,26 +294,31 @@ export const allRegionEntries: Region[] = [
       de: 'Die Schweiz ist geografisch die nächstgelegene Auslandsdestination – und gleichzeitig die einzige der fünf Länder außerhalb der EU und der Eurozone. Das ändert praktische Details (Zoll für mitgeführte Technik, Abrechnung in Franken), nicht aber den Anspruch: derselbe Ablauf, dasselbe Setup, dieselbe dreisprachige Moderation wie in Stuttgart.',
       en: 'Switzerland is geographically the closest destination abroad — and, at the same time, the only one of these five countries outside the EU and the eurozone. That changes a few practical details (customs for equipment crossing the border, billing in francs), not the standard: the same process, the same setup, the same trilingual hosting as in Stuttgart.',
       tr: 'İsviçre coğrafi olarak en yakın yurt dışı hedef — aynı zamanda bu beş ülke arasında AB ve euro bölgesi dışında kalan tek ülke. Bu, bazı pratik ayrıntıları değiştirir (taşınan ekipman için gümrük, frank cinsinden faturalama), ama standardı değiştirmez: Stuttgart’takiyle aynı süreç, aynı kurulum, aynı üç dilli sunum.',
+      fr: "La Suisse est géographiquement la destination étrangère la plus proche, et en même temps le seul de ces cinq pays situé hors de l'UE et de la zone euro. Cela change quelques détails pratiques (douane pour le matériel transporté, facturation en francs), mais pas l'exigence : le même déroulement, la même installation, la même animation trilingue qu'à Stuttgart.",
     },
     logistics: {
       de: 'Rund 200 Kilometer Luftlinie trennen Stuttgart von Zürich – oft an einem Tag machbar, ohne zwingende Übernachtung, was die Anfahrtskosten gegenüber weiter entfernten Zielen spürbar senkt. Trotzdem wird auch hier die Fahrtstrecke im individuellen Angebot offen ausgewiesen, inklusive eines Hinweises, falls für den Grenzübertritt der mitgeführten Technik zusätzliche Zeit eingeplant werden muss.',
       en: 'About 200 km of straight-line distance separates Stuttgart from Zürich — often manageable in a single day without a mandatory overnight stay, which noticeably lowers travel costs compared to further destinations. Even so, the distance is itemised openly in your individual quote, including a note if extra time needs to be planned for equipment crossing the border.',
       tr: 'Stuttgart ile Zürih arasında kuş uçuşu yaklaşık 200 kilometre var — genellikle tek günde, zorunlu bir gecelemeye gerek kalmadan halledilebilir; bu da daha uzak hedeflere kıyasla ulaşım maliyetini belirgin şekilde düşürür. Yine de mesafe teklifte açıkça belirtilir; ekipmanın sınırdan geçişi için ek zaman gerekirse bu da ayrıca not edilir.',
+      fr: "Environ 200 kilomètres à vol d'oiseau séparent Stuttgart de Zurich : souvent faisable en une journée, sans nuitée obligatoire, ce qui réduit sensiblement les frais de déplacement par rapport à des destinations plus lointaines. Le trajet est malgré tout indiqué clairement dans le devis individuel, avec une mention si du temps supplémentaire doit être prévu pour le passage de la frontière avec le matériel.",
     },
     whatChanges: {
       de: 'Die Schweiz nutzt einen eigenen Steckertyp (Typ J) und teils andere Vorschriften für Veranstaltungstechnik als Deutschland – ob ein Adapter reicht oder Teile der Anlage vor Ort geliehen werden, wird vorab mit der Location geklärt. Größter praktischer Unterschied zu den EU-Ländern in dieser Übersicht: Die Schweiz liegt außerhalb der EU-Zollunion, mitgeführte Technik wird deshalb über ein ATA-Carnet (internationales Zolldokument für vorübergehend ausgeführte Berufsausrüstung) verzollt – ein bekanntes, planbares Verfahren, kein Hindernis, aber ein zusätzlicher Vorbereitungsschritt. Lautstärkeauflagen sind in vielen Schweizer Gemeinden strenger reguliert als in Baden-Württemberg, insbesondere bei Freiluft-Feiern; das wird nicht pauschal angenommen, sondern direkt mit dem Veranstaltungsort abgestimmt.',
       en: "Switzerland uses its own plug standard (Type J) and, in places, different regulations for event equipment than Germany — whether an adapter is enough or part of the setup needs to be rented locally is clarified with the venue in advance. The biggest practical difference from the EU countries in this overview: Switzerland sits outside the EU customs union, so equipment travelling across the border is cleared via an ATA Carnet (the international customs document for temporarily exported professional equipment) — a well-established, plannable process, not an obstacle, just an extra preparation step. Noise limits in many Swiss municipalities are stricter than in Baden-Württemberg, especially for outdoor celebrations; that's never assumed, only coordinated directly with the venue.",
       tr: 'İsviçre, Almanya’dan farklı bir priz standardı kullanır (Tip J) ve etkinlik ekipmanına dair kimi zaman farklı kurallar geçerlidir — bir adaptörün yeterli olup olmayacağı ya da kurulumun bir kısmının yerinde kiralanması gerekip gerekmediği önceden mekânla netleştirilir. Bu genel bakıştaki AB ülkelerinden en büyük pratik fark: İsviçre, AB gümrük birliğinin dışında yer alır, bu yüzden taşınan ekipman bir ATA Karnesi (geçici olarak ihraç edilen mesleki ekipman için uluslararası gümrük belgesi) ile gümrükten geçirilir — bilinen, planlanabilir bir süreç, bir engel değil, sadece ek bir hazırlık adımı. Birçok İsviçre belediyesinde ses seviyesi kısıtlamaları, özellikle açık hava kutlamalarında, Baden-Württemberg’e göre daha sıkı olabilir; bu asla varsayılmaz, doğrudan mekânla netleştirilir.',
+      fr: "La Suisse utilise son propre type de prise (type J) et parfois d'autres règles que l'Allemagne pour le matériel événementiel : on clarifie à l'avance avec le lieu si un adaptateur suffit ou si une partie de l'installation doit être louée sur place. La plus grande différence pratique avec les pays de l'UE de cette présentation : la Suisse se trouve hors de l'union douanière de l'UE, le matériel transporté est donc dédouané au moyen d'un carnet ATA (document douanier international pour l'équipement professionnel exporté temporairement), une procédure connue et planifiable, pas un obstacle, mais une étape de préparation supplémentaire. Les contraintes de volume sont plus strictes dans de nombreuses communes suisses que dans le Bade-Wurtemberg, en particulier pour les fêtes en plein air ; ce n'est jamais supposé, mais toujours coordonné directement avec le lieu.",
     },
     diaspora: {
       de: 'Auch die Schweiz hat, insbesondere im Raum Zürich und Basel, eine gewachsene türkische Community. Für deutsch-türkische Paare mit Familie diesseits und jenseits der Grenze ist ein Anbieter attraktiv, der beide Sprachen und beide Feierkulturen gleichermaßen sicher bedient – ohne dass die Schweizer Seite der Familie sich mit einem rein türkischen Programm oder die türkische Seite mit einem rein deutschen Programm abfinden muss.',
       en: 'Switzerland also has a well-established Turkish community, particularly around Zürich and Basel. For German-Turkish couples with family on both sides of the border, a provider who handles both languages and both celebration styles equally confidently is genuinely appealing — neither side of the family has to settle for a programme built around only one culture.',
       tr: 'İsviçre’de de, özellikle Zürih ve Basel çevresinde, köklü bir Türk topluluğu var. Sınırın iki tarafında da ailesi olan Alman-Türk çiftler için, her iki dili ve her iki kutlama kültürünü de aynı özgüvenle sunan bir sağlayıcı gerçekten cazip — ailenin İsviçre tarafının sadece Türkçe, Türk tarafının sadece Almanca bir programa razı olması gerekmiyor.',
+      fr: "La Suisse compte elle aussi une communauté turque bien établie, en particulier dans les régions de Zurich et de Bâle. Pour les couples germano-turcs dont la famille vit des deux côtés de la frontière, un prestataire qui maîtrise avec la même assurance les deux langues et les deux cultures festives est réellement attrayant : aucun côté de la famille ne doit se contenter d'un programme construit autour d'une seule culture.",
     },
     languagesNote: {
       de: 'Moderiert wird live auf Deutsch, Türkisch und Englisch. Für die Deutschschweiz passt das direkt; für die französisch- oder italienischsprachige Schweiz ist das offen zu sagen: Live-Moderation auf Französisch oder Italienisch bieten wir nicht an.',
       en: "Live hosting is in German, Turkish and English. That fits German-speaking Switzerland directly; for French- or Italian-speaking Switzerland, we're upfront: we don't offer live hosting in French or Italian.",
       tr: 'Canlı sunum Almanca, Türkçe ve İngilizce yapılır. Bu, Almanca konuşulan İsviçre bölgeleri için doğrudan uygundur; Fransızca veya İtalyanca konuşulan İsviçre bölgeleri için açıkça belirtmek gerekir: Fransızca veya İtalyanca canlı sunum sunmuyoruz.',
+      fr: "L'animation se fait en direct en allemand, en turc et en anglais. Cela convient directement à la Suisse alémanique ; pour la Suisse romande ou italienne, il faut le dire clairement : nous ne proposons pas d'animation en direct en français ou en italien.",
     },
     faq: [
       {
@@ -321,11 +326,13 @@ export const allRegionEntries: Region[] = [
           de: 'Ist die Schweiz trotz Nicht-EU-Land problemlos buchbar?',
           en: 'Is Switzerland straightforward to book despite not being an EU country?',
           tr: 'İsviçre, AB üyesi olmamasına rağmen sorunsuz rezerve edilebiliyor mu?',
+          fr: "La Suisse est-elle facile à réserver bien qu'elle ne soit pas membre de l'UE ?",
         },
         answer: {
           de: 'Ja. Der Ablauf ist derselbe wie bei jeder anderen Auslandsanfrage – Anfahrt, Zoll für die Technik und Übernachtung (falls nötig) werden im Angebot einzeln ausgewiesen, bevor Sie sich festlegen.',
           en: 'Yes. The process is the same as any other international enquiry — travel, customs for the equipment and accommodation (if needed) are itemised in the quote before you commit.',
           tr: 'Evet. Süreç diğer her yurt dışı talebiyle aynı — ulaşım, ekipman için gümrük ve gerekiyorsa konaklama, siz karar vermeden önce teklifte ayrı ayrı gösterilir.',
+          fr: "Oui. Le déroulement est le même que pour toute autre demande à l'étranger : le déplacement, la douane pour le matériel et l'hébergement (si nécessaire) sont détaillés séparément dans le devis avant que vous ne vous engagiez.",
         },
       },
       {
@@ -333,11 +340,13 @@ export const allRegionEntries: Region[] = [
           de: 'Spielen Sie auch in der französisch- oder italienischsprachigen Schweiz?',
           en: 'Do you also play in French- or Italian-speaking Switzerland?',
           tr: 'Fransızca veya İtalyanca konuşulan İsviçre bölgelerinde de çalıyor musunuz?',
+          fr: "Jouez-vous aussi en Suisse romande ou en Suisse italienne ?",
         },
         answer: {
           de: 'Musikalisch ja, moderiert wird dort aber weiterhin auf Deutsch, Türkisch und Englisch – nicht auf Französisch oder Italienisch. Bitte vorab abklären, ob das für Ihre Feier passt.',
           en: "Musically, yes — but hosting there is still in German, Turkish and English, not French or Italian. Please confirm in advance whether that fits your celebration.",
           tr: 'Müzik açısından evet — ancak orada da sunum Almanca, Türkçe ve İngilizce yapılır, Fransızca veya İtalyanca değil. Bunun kutlamanıza uygun olup olmadığını lütfen önceden netleştirin.',
+          fr: "Musicalement, oui, mais l'animation s'y fait toujours en allemand, en turc et en anglais, pas en français ni en italien. Merci de vérifier à l'avance si cela convient à votre fête.",
         },
       },
     ],

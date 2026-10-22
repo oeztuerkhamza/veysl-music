@@ -73,12 +73,12 @@ based in Stuttgart is a logistics detail, not a disqualifier.
 
 | Route | Content | Locales live now |
 |---|---|---|
-| `/hochzeits-dj-europa` | Hub: non-geographic intent Q&A, the five country cards, remaining-countries chips (reads `site.europeCountries` live), hosting-language honesty note, general destination-wedding FAQ | de, en, nl |
-| `/hochzeits-dj-europa/oesterreich` | Austria — the one **verified** booking (Wien) | de, en |
-| `/hochzeits-dj-europa/schweiz` | Switzerland — closest destination, only non-EU-customs-union country in the set | de, en |
-| `/hochzeits-dj-europa/niederlande` | Netherlands — diaspora-led case, real Dutch (`nl`) prose | de, en, nl |
-| `/hochzeits-dj-europa/belgien` | Belgium — split Flanders(`nl`)/Wallonia(`fr`) framing | de, en, nl |
-| `/hochzeits-dj-europa/frankreich` | France — Alsace-adjacent vs. rest-of-France logistics split | de, en |
+| `/hochzeits-dj-europa` | Hub: non-geographic intent Q&A, the five country cards, remaining-countries chips (reads `site.europeCountries` live), hosting-language honesty note, general destination-wedding FAQ | de, en, nl, tr, fr |
+| `/hochzeits-dj-europa/oesterreich` | Austria — the one **verified** booking (Wien) | de, en, tr |
+| `/hochzeits-dj-europa/schweiz` | Switzerland — closest destination, only non-EU-customs-union country in the set; `fr` for Romandie (hosting stays DE/TR/EN, said on the page) | de, en, tr, fr |
+| `/hochzeits-dj-europa/niederlande` | Netherlands — diaspora-led case, real Dutch (`nl`) prose | de, en, nl, tr |
+| `/hochzeits-dj-europa/belgien` | Belgium — split Flanders(`nl`)/Wallonia(`fr`) framing | de, en, nl, tr, fr |
+| `/hochzeits-dj-europa/frankreich` | France — Alsace-adjacent vs. rest-of-France logistics split | de, en, tr, fr |
 
 **Why these five, not twelve:** `site.europeCountries` lists eleven "bookable" countries
 (Österreich, Schweiz, Niederlande, Belgien, Luxemburg, Frankreich, Italien, Spanien,
