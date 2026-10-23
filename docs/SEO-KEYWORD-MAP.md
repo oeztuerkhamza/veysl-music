@@ -46,14 +46,15 @@ the `home` row below for a 56-character alternative that keeps the keyword front
 
 ### `/hochzeit-events` — meta key: `services`
 
-- **Primary keyword:** `dj für hochzeit und events stuttgart`
-- **Secondary:** `dj verlobung stuttgart`, `dj kına gecesi stuttgart`, `dj firmenfeier stuttgart`, `hochzeits-dj leistungen`, `ton- und lichttechnik mieten hochzeit`, `dj moderation hochzeit`
+- **Primary keyword:** `event-dj stuttgart`
+- **Secondary:** `dj firmenfeier stuttgart`, `dj weihnachtsfeier stuttgart`, `dj gala stuttgart`, `live-musik event stuttgart`, `dj mit live-musiker`, `dj und live-band firmenevent`
 - **Intent:** Commercial investigation (what exactly is included)
 - **Volume:** estimate — lower than the head term; long-tail service queries are typically 10–30% of the head term's volume in this niche. **Not measured.**
-- **Difficulty:** Easy-Medium — most competitor "services" pages found were thin (a bullet list), easy to out-depth with genuine specifics (equipment brands, what a Kına-night set actually includes).
+- **Difficulty:** Easy-Medium — most competitor "services" pages found were thin (a bullet list), easy to out-depth with genuine specifics (equipment, live line-up, what a corporate run-of-show includes).
 - **H1:** "Leistungen für Hochzeit & Events"
-- **Recommended title** (42 chars): `DJ für Hochzeit & Events Stuttgart | DJ Veys`
-- **Recommended description** (138 chars): `DJ für Hochzeit, Verlobung, Kına Gecesi, After-Party und Firmenevent in Stuttgart. Leistungen, Technik und Moderation transparent erklärt.`
+- **Recommended title** (54 chars): `Event-DJ Stuttgart: Firmenfeier & Live-Musik | DJ Veys`
+- **Recommended description** (151 chars): `Event-DJ für Firmenfeier, Gala, Sommerfest und After-Party in Stuttgart – auf Wunsch mit Saz, Gitarre oder Live-Orchester. Moderation in drei Sprachen.`
+- **Refocus (Oktober 2026):** The previous title `DJ für Hochzeit & Events Stuttgart` sat too close to the homepage's `Hochzeits-DJ Stuttgart` and split the wedding intent across two URLs. The wedding head term now belongs to `/` alone; Kına Gecesi and Nişan moved to `/tuerkischer-dj-stuttgart`, whose title already carries them. This page takes the event, corporate and live-music intent the rest of the site leaves open. The H1 and the four service blocks (wedding included) are unchanged — only the SERP targeting moved. TR/EN follow the same split (`meta.services` in `messages/{tr,en}.json`).
 
 ### `/pakete` — meta key: `packages`
 
@@ -196,8 +197,9 @@ differentiation-per-effort locale, not an afterthought. Per
 | `türk düğün dj almanya` | Broader "Turkish wedding DJ Germany" — nationwide framing, lower local intent but high topical relevance | `/` intro copy, `reach.tr` messaging |
 | `almanya düğün dj` | Variant word order of the above — Turkish search behavior often reorders noun phrases; include both, don't force one "correct" order | `/` |
 | `stuttgart türk dj` | Reordered variant of `türkischer dj stuttgart` | `/hochzeits-dj/stuttgart` (TR slug) if a Stuttgart-specific city page is built, else `/` |
-| `kına gecesi dj stuttgart` | Henna-night event, a distinct booking type from the wedding itself — real secondary revenue line | `/hochzeit-events` (TR: `/dugun-etkinlik`) |
-| `nişan dj stuttgart` | Engagement-party DJ — same logic as Kına | `/hochzeit-events` |
+| `kına gecesi dj stuttgart` | Henna-night event, a distinct booking type from the wedding itself — real secondary revenue line | `/tuerkischer-dj-stuttgart` (TR: `/turk-dj-stuttgart`) — moved from `/hochzeit-events` in Oct 2026, see §1 |
+| `nişan dj stuttgart` | Engagement-party DJ — same logic as Kına | `/tuerkischer-dj-stuttgart` |
+| `etkinlik dj stuttgart` | TR equivalent of `event-dj stuttgart` — corporate and private events, not the wedding itself | `/hochzeit-events` (TR: `/dugun-etkinlik`) |
 | `davul zurna dj stuttgart` | Traditional drum/horn act — DJ Veys doesn't necessarily perform this himself (verify with client before targeting), but the query proves demand for traditional-instrument acts alongside a modern DJ. If DJ Veys can credibly offer or partner for this, it's a nearly uncontested Stuttgart-specific query (see competitive analysis — only a nationwide network found, no Stuttgart-specific dedicated page) | `/musik` or a future dedicated section — **needs client confirmation of capability before publishing a claim** |
 | `deutsch-türkische hochzeit dj stuttgart` | The exact bicultural-couple framing from the client's own copy | `/` and city pages |
 
@@ -225,7 +227,8 @@ crowd to read).
 |---|---|---|
 | `wedding dj stuttgart germany` | Head term for the EN locale | `/` (EN: home) |
 | `wedding dj baden-württemberg` | Regional variant | `/` |
-| `german turkish wedding dj` | Matches the bicultural positioning for English-speaking family members of a Turkish-German couple | `/hochzeit-events` (EN: `/weddings-events`) |
+| `german turkish wedding dj` | Matches the bicultural positioning for English-speaking family members of a Turkish-German couple | `/tuerkischer-dj-stuttgart` — moved from `/hochzeit-events` in Oct 2026, see §1 |
+| `event dj stuttgart` | Corporate / expat events (company parties, galas) — the EN side of the `/hochzeit-events` refocus | `/hochzeit-events` (EN: `/weddings-events`) |
 | `multilingual wedding dj germany` | Corporate-expat angle (Stuttgart hosts Mercedes-Benz, Porsche, Bosch HQs — a plausible but unverified source of English-speaking demand) | `/` |
 | `destination wedding dj germany` | Lower-intent, aspirational — only worth targeting once EN content exists in depth; don't lead with it | `/musik`, `/echte-hochzeiten` |
 
