@@ -18,7 +18,9 @@ const AI_CRAWLERS = [
   'OAI-SearchBot', // OpenAI/ChatGPT search
   'ChatGPT-User', // ChatGPT browsing on a user's behalf
   'PerplexityBot', // Perplexity search/answers
+  'Perplexity-User', // Perplexity fetching a page on a user's behalf
   'ClaudeBot', // Anthropic training crawler
+  'Claude-SearchBot', // Claude search index
   'Claude-User', // Claude browsing on a user's behalf
   'Google-Extended', // Governs Gemini/AI Overviews use of Google-crawled content
   'CCBot', // Common Crawl (feeds many downstream LLMs)

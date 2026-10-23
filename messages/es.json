@@ -699,6 +699,7 @@
       "musik": "Música y repertorio",
       "technik": "Sonido e iluminación",
       "tuerkisch": "Bodas turcas y multiculturales",
+      "islamisch": "Bodas islámicas y religiosas",
       "location": "Espacio y desplazamiento",
       "recht": "Contrato y aspectos legales"
     },
@@ -1463,10 +1464,15 @@
       "kosten": "Costes",
       "musik": "Música",
       "tuerkische-hochzeit": "Boda turca",
+      "islamische-hochzeit": "Boda islámica",
       "technik": "Técnica",
       "recht": "Legal",
       "international": "Internacional",
       "real-wedding": "Boda real"
+    },
+    "guideLinks": {
+      "eyebrow": "Guía",
+      "title": "Guías relacionadas"
     },
     "post": {
       "backToOverview": "Volver a la guía",

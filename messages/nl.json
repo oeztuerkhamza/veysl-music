@@ -699,6 +699,7 @@
       "musik": "Muziek & repertoire",
       "technik": "Geluid & licht",
       "tuerkisch": "Turkse & multiculturele bruiloften",
+      "islamisch": "Islamitische & religieuze bruiloften",
       "location": "Locatie & reizen",
       "recht": "Contract & juridisch"
     },
@@ -1463,10 +1464,15 @@
       "kosten": "Kosten",
       "musik": "Muziek",
       "tuerkische-hochzeit": "Turkse bruiloft",
+      "islamische-hochzeit": "Islamitische bruiloft",
       "technik": "Techniek",
       "recht": "Juridisch",
       "international": "Internationaal",
       "real-wedding": "Echte bruiloft"
+    },
+    "guideLinks": {
+      "eyebrow": "Gids",
+      "title": "Bijpassende gidsen"
     },
     "post": {
       "backToOverview": "Terug naar de gids",

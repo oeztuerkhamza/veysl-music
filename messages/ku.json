@@ -1470,6 +1470,10 @@
       "international": "Navneteweyî",
       "real-wedding": "Daweta rastîn"
     },
+    "guideLinks": {
+      "eyebrow": "Rêbername",
+      "title": "Rêbernameyên têkildar"
+    },
     "post": {
       "backToOverview": "Vegerin rêbernameyê",
       "byAuthor": "Ji {author}",

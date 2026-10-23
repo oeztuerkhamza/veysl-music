@@ -1346,6 +1346,7 @@
       "musik": "Music & Repertoire",
       "technik": "Sound & Lighting",
       "tuerkisch": "Turkish & Multicultural Weddings",
+      "islamisch": "Islamic & Faith-Based Weddings",
       "location": "Location & Travel",
       "recht": "Contract & Legal"
     },
@@ -2223,6 +2224,7 @@
       "kosten": "Cost",
       "musik": "Music",
       "tuerkische-hochzeit": "Turkish Wedding",
+      "islamische-hochzeit": "Islamic Wedding",
       "technik": "Technology",
       "recht": "Legal",
       "international": "International",

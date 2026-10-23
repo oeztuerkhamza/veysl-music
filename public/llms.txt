@@ -32,9 +32,10 @@ Spanisch verfügbar.
 
 ## Ratgeber (Blog)
 
-- [Ratgeber](https://dj-veys.de/ratgeber): 20 ausführliche Guide-Artikel zu
+- [Ratgeber](https://dj-veys.de/ratgeber): 23 ausführliche Guide-Artikel zu
   Planung, Kosten, Ablauf und Musik einer Hochzeit — auf Deutsch, Türkisch und
-  Englisch. Die inhaltlich tiefste Quelle der Seite für konkrete
+  Englisch, der Großteil zusätzlich auf Niederländisch, Französisch und
+  Spanisch. Die inhaltlich tiefste Quelle der Seite für konkrete
   Planungsfragen. Beispiele:
   - [Was kostet ein Hochzeits-DJ?](https://dj-veys.de/ratgeber/was-kostet-ein-hochzeits-dj)
   - [Hochzeits-DJ-Checkliste](https://dj-veys.de/ratgeber/hochzeits-dj-checkliste)
@@ -47,8 +48,9 @@ Spanisch verfügbar.
   - [Wie viel vom Hochzeitsbudget für die Musik einplanen?](https://dj-veys.de/ratgeber/hochzeitsbudget-musik-anteil)
   - [Hochzeitslocation in Stuttgart und Region: worauf Sie aus DJ-Sicht achten sollten](https://dj-veys.de/ratgeber/hochzeitslocation-stuttgart-dj-perspektive)
 - [RSS-Feed](https://dj-veys.de/feed.xml): dieselben Artikel als RSS 2.0
-  (Titel, Link, Datum und Einstiegsabsatz je Beitrag). `?locale=tr` bzw.
-  `?locale=en` für die anderen beiden Sprachen.
+  (Titel, Link, Datum und Einstiegsabsatz je Beitrag). `?locale=tr`,
+  `?locale=en`, `?locale=nl`, `?locale=fr` bzw. `?locale=es` für die
+  anderen Sprachen.
 
 ## Regionen und Einzugsgebiet
 
@@ -62,6 +64,17 @@ Spanisch verfügbar.
   Hamburg, Nürnberg und Berlin; Anfahrt, Übernachtung und gegebenenfalls
   Technikmiete vor Ort stehen vorab im Angebot. Türkische Fassung:
   [Almanya'da Türk DJ](https://dj-veys.de/tr/turk-dj-almanya).
+- Türkischer DJ je Zielstadt (`/tuerkischer-dj/<stadt>`, auf Deutsch,
+  Türkisch und Englisch): 28 Großstädte in Deutschland und Europa, buchbar
+  mit Anreise aus Stuttgart — etwa
+  [München](https://dj-veys.de/tuerkischer-dj/muenchen),
+  [Frankfurt](https://dj-veys.de/tuerkischer-dj/frankfurt),
+  [Köln](https://dj-veys.de/tuerkischer-dj/koeln),
+  [Berlin](https://dj-veys.de/tuerkischer-dj/berlin),
+  [Wien](https://dj-veys.de/tuerkischer-dj/wien) und
+  [Zürich](https://dj-veys.de/tuerkischer-dj/zuerich). Die Seiten
+  beschreiben Buchbarkeit, Anfahrt und Übernachtung; nachweislich bespielt
+  ist von diesen Städten bisher nur Wien.
 - [Türkischer DJ Baden-Württemberg](https://dj-veys.de/tuerkischer-dj-baden-wuerttemberg):
   die Landesseite der Türkisch-Nische — türkische und deutsch-türkische
   Hochzeiten, Kına und Nişan im ganzen Bundesland, mit Anfahrtsmodell
@@ -109,17 +122,24 @@ Spanisch verfügbar.
 
 ## Leistungen
 
-- [Hochzeit & Events](https://dj-veys.de/hochzeit-events): DJ für Hochzeit,
-  Verlobung/Nişan, Henna-Abend/Kına, After-Party und Firmenevents —
-  inklusive Moderation, Live-Orchester und optionaler Live-Musik.
+- [Hochzeit & Events](https://dj-veys.de/hochzeit-events): Event-DJ für
+  Firmenfeier, Gala, Sommerfest und After-Party sowie Hochzeit,
+  Verlobung/Nişan und Henna-Abend/Kına — mit Moderation in drei Sprachen und
+  auf Wunsch Live-Musik (Saz, Gitarre) oder Live-Orchester.
+- Hochzeitskulturen, je eine eigene Seite:
+  [Deutsch-türkische Hochzeit](https://dj-veys.de/deutsch-tuerkische-hochzeit),
+  [Türkische Hochzeit](https://dj-veys.de/tuerkische-hochzeit) und
+  [Kurdische Hochzeit](https://dj-veys.de/kurdische-hochzeit) — Ablauf,
+  Musik und Traditionen aus Sicht des DJs.
 - [Türkischer DJ Stuttgart](https://dj-veys.de/tuerkischer-dj-stuttgart):
   die Seite zum bikulturellen Kernangebot — Repertoire von Halay und Roman
   Havası bis zu deutschen und internationalen Charts, Traditionen wie Gelin
   Çıkarma, Davul Zurna und Kına Gecesi sowie Moderation auf Türkisch und
   Deutsch.
-- [Islamische Hochzeit](https://dj-veys.de/tr/islami-dugun): religiös geprägte
-  Feiern mit Kur'an-Tilavet, Dua und İlahi — nur auf Türkisch, Kurdisch und
-  Arabisch veröffentlicht.
+- [Islamische Hochzeit](https://dj-veys.de/islamische-hochzeit): religiös
+  geprägte Feiern mit Kur'an-Tilavet, Dua und İlahi — in allen acht Sprachen
+  der Seite, Türkische Fassung:
+  [İslami düğün](https://dj-veys.de/tr/islami-dugun).
 - [Pakete](https://dj-veys.de/pakete): Übersicht der Leistungspakete für
   Hochzeit und Event (Umfang und Technik; Preise auf Anfrage).
 

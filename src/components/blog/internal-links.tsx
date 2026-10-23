@@ -6,7 +6,7 @@ import type { StaticPathname } from '@/lib/seo';
 import { getAnswerById, isReligiousAnswer, resolveAnswerText } from '@/content/answers';
 import { isIslamicLocale } from '@/content/islamic';
 import { getCityBySlug } from '@/content/cities';
-import { BLOG_ROUTE_LABEL_KEY } from './route-labels';
+import { BLOG_ROUTE_LABEL_KEY, BLOG_ROUTE_LOCALES } from './route-labels';
 
 /**
  * Resolves `BlogPost.links` / `.relatedAnswers` / `.relatedCities` — the
@@ -36,6 +36,7 @@ export interface FurtherReadingLinksProps {
 /** `post.links` — static site pages (packages, process, booking, …) worth linking to from this article. */
 export async function FurtherReadingLinks({ links, locale, title }: FurtherReadingLinksProps) {
   const resolved = links
+    .filter((href) => BLOG_ROUTE_LOCALES[href]?.includes(locale) ?? true)
     .map((href) => ({ href, labelKey: BLOG_ROUTE_LABEL_KEY[href] }))
     .filter((entry): entry is { href: StaticPathname; labelKey: string } => Boolean(entry.labelKey));
   if (resolved.length === 0) return null;
