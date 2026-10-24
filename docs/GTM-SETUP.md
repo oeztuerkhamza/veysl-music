@@ -89,6 +89,20 @@ angelegt sind.
 
 - Consent Mode v2: `ad_storage`, `ad_user_data`, `ad_personalization` = `denied`,
   `analytics_storage` = `granted` (erst nach Einwilligung gesetzt).
+- **Warnung „Einwilligungsrate von 0 % / 100 % abgelehnt“ (GA4, Oktober 2026): erwartet,
+  kein Fehler.** Sie betrifft die Werbesignale (`ad_user_data`, `ad_personalization`). Das
+  Banner fragt nur nach Statistik, also gibt es keine Einwilligung für Werbung, die gemeldet
+  werden könnte. Die Analysesignale stehen bei jedem gemessenen Besuch auf „granted“, weil
+  `gtm.js` ohne Einwilligung gar nicht lädt — Ablehnende sieht Google überhaupt nicht.
+  Prüfen: GA4 → Verwalten → Datenerfassung und -änderung → Einwilligungseinstellungen; dort
+  muss „Analysen“ aktiv sein und „Personalisierung von Anzeigen“ 0 % zeigen.
+  Die Warnung verschwindet erst, wenn Werbung eingeführt wird. Dann braucht das Banner eine
+  eigene Kategorie „Marketing“, deren Auswahl auf die drei `ad_*`-Signale wirkt, und die
+  Datenschutzerklärung einen Abschnitt dazu. Die Werbesignale hier einfach auf `granted` zu
+  setzen, wäre eine Einwilligung, die niemand gegeben hat.
+- Kein „erweiterter“ Consent Mode (Container vor der Einwilligung laden, cookielose Pings):
+  Das Laden von `gtm.js` und die Übermittlung an Google ohne Einwilligung ist nach § 25 TDDDG
+  nicht gedeckt.
 - Keine Google-Ads-/Remarketing-Tags im Container anlegen, solange Werbung nicht
   datenschutzrechtlich geprüft ist.
 - Keine personenbezogenen Daten (Name, E-Mail, Telefon) als Ereignisparameter senden.
