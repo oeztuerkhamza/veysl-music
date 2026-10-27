@@ -27,6 +27,9 @@
  *   GET  /oauth/edit     → login form; afterwards back to the site in edit mode
  *   GET  /oauth/session  → who is logged in (401 if nobody)
  *   POST /oauth/save     → writes changed texts to the repo, one commit per file
+ *   GET  /oauth/hours    → the opening hours as they are in the repo now
+ *   POST /oauth/hours    → replaces them (slots can be added and removed)
+ *   POST /oauth/photo    → replaces a photo that is already on the site (JPEG, ≤ 4 MB)
  *   POST /oauth/logout
  *
  * Env (see docker-compose.yml next to this file):
@@ -259,29 +262,27 @@ const github = (path, init = {}) =>
  * the changed lines. If someone else committed the file in between, GitHub
  * refuses the stale sha and the whole thing is redone once on the new version.
  */
-async function saveFile(file, changes, mail) {
+/**
+ * Replaces one EXISTING file: `build(before)` gets the current content (a
+ * Buffer, or null when GitHub does not send it for a large file) and returns
+ * the new content, or null for "nothing to change". Never creates a file, so
+ * the editor cannot add anything to the repo that is not already there.
+ */
+async function commitFile(file, build, message, mail) {
   for (let attempt = 0; attempt < 2; attempt++) {
     const got = await github(`${file}?ref=${encodeURIComponent(CMS_BRANCH)}`);
+    if (got.status === 404) throw new SaveError(404, `Unbekannte Datei: ${file}`);
     if (!got.ok) throw new SaveError(502, `read ${file}: GitHub ${got.status}`);
     const { content, sha } = await got.json();
-    const before = Buffer.from(content, 'base64').toString('utf8');
-    const data = JSON.parse(before);
-    for (const c of changes) {
-      if (!setText(data, c.path, c.value)) throw new SaveError(422, `Unbekannter Text: ${file} ${c.path.join('.')}`);
-    }
-    if (file === HOURS_FILE && !hoursOrdered(data)) throw new SaveError(422, 'Der Beginn muss vor dem Ende liegen.');
-    const after = JSON.stringify(data, null, 2) + '\n';
-    if (after === before) return null;
-    const n = changes.length;
+    const before = content ? Buffer.from(content, 'base64') : null;
+    const after = build(before);
+    if (after === null || (before && after.equals(before))) return null;
     const put = await github(file, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message:
-          file === HOURS_FILE
-            ? `Öffnungszeiten geändert (${n} ${n === 1 ? 'Zeit' : 'Zeiten'}, Seiteneditor)`
-            : `Seitentext geändert: ${file} (${n} ${n === 1 ? 'Text' : 'Texte'}, Seiteneditor)`,
-        content: Buffer.from(after, 'utf8').toString('base64'),
+        message,
+        content: after.toString('base64'),
         sha,
         branch: CMS_BRANCH,
         // Who changed it, so the history tells the editors apart even though they share one token.
@@ -292,6 +293,115 @@ async function saveFile(file, changes, mail) {
     if (put.status !== 409 || attempt === 1) throw new SaveError(502, `write ${file}: GitHub ${put.status}`);
   }
   return null;
+}
+
+/**
+ * Applies the changes to one JSON file. It is written back the way it is
+ * stored (2-space JSON, final newline), so the commit shows only the changed
+ * lines. A file someone else changed in between is redone once on the new version.
+ */
+function saveFile(file, changes, mail) {
+  const n = changes.length;
+  const message =
+    file === HOURS_FILE
+      ? `Öffnungszeiten geändert (${n} ${n === 1 ? 'Zeit' : 'Zeiten'}, Seiteneditor)`
+      : `Seitentext geändert: ${file} (${n} ${n === 1 ? 'Text' : 'Texte'}, Seiteneditor)`;
+  return commitFile(
+    file,
+    (before) => {
+      const data = JSON.parse(before.toString('utf8'));
+      for (const c of changes) {
+        if (!setText(data, c.path, c.value)) throw new SaveError(422, `Unbekannter Text: ${file} ${c.path.join('.')}`);
+      }
+      if (file === HOURS_FILE && !hoursOrdered(data)) throw new SaveError(422, 'Der Beginn muss vor dem Ende liegen.');
+      return Buffer.from(JSON.stringify(data, null, 2) + '\n', 'utf8');
+    },
+    message,
+    mail,
+  );
+}
+
+// --- Opening hours as a whole: slots can be added and removed -------------
+
+const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const MAX_SLOTS = 3;
+
+/**
+ * { mon: [{from, to}, ...], ... } for all seven days, or null. At most three
+ * slots a day, each starting before it ends, in order and not overlapping.
+ * Returns a fresh object holding only the known fields.
+ */
+function validHours(h) {
+  if (!h || typeof h !== 'object' || Array.isArray(h)) return null;
+  const keys = Object.keys(h);
+  if (keys.length !== DAYS.length || !DAYS.every((d) => keys.includes(d))) return null;
+  const out = {};
+  for (const day of DAYS) {
+    const slots = h[day];
+    if (!Array.isArray(slots) || slots.length > MAX_SLOTS) return null;
+    let previousEnd = '';
+    out[day] = [];
+    for (const s of slots) {
+      if (!s || typeof s.from !== 'string' || typeof s.to !== 'string' || !TIME.test(s.from) || !TIME.test(s.to)) return null;
+      if (s.from >= s.to || s.from < previousEnd) return null;
+      previousEnd = s.to;
+      out[day].push({ from: s.from, to: s.to });
+    }
+  }
+  return out;
+}
+
+const saveHours = (hours, mail) =>
+  commitFile(HOURS_FILE, () => Buffer.from(JSON.stringify(hours, null, 2) + '\n', 'utf8'), 'Öffnungszeiten geändert (Zeitfenster, Seiteneditor)', mail);
+
+// --- Photos: replace one that is already on the site ----------------------
+
+const PHOTO_FILE = /^src\/assets\/photos\/[a-z0-9-]{1,64}\.jpg$/;
+/** The editor sends photos of about 1 MB; the container has little memory, so the limit is tight. */
+const PHOTO_MAX_BYTES = 4 * 1024 * 1024;
+const PHOTO_MIN_EDGE = 300;
+const PHOTO_MAX_EDGE = 6000;
+
+/** Width and height from the first start-of-frame marker of a JPEG, or null when it is not one. */
+function jpegSize(buf) {
+  if (buf.length < 4 || buf[0] !== 0xff || buf[1] !== 0xd8) return null;
+  let i = 2;
+  while (i + 9 < buf.length) {
+    if (buf[i] !== 0xff) {
+      i++;
+      continue;
+    }
+    const marker = buf[i + 1];
+    if (marker === 0xff) {
+      i++;
+      continue;
+    }
+    if (marker === 0xd8 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) {
+      i += 2;
+      continue;
+    }
+    // SOF0-SOF15 except DHT (c4), JPG (c8) and DAC (cc)
+    if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+      return { height: buf.readUInt16BE(i + 5), width: buf.readUInt16BE(i + 7) };
+    }
+    i += 2 + buf.readUInt16BE(i + 2);
+  }
+  return null;
+}
+
+const savePhoto = (file, image, mail) => commitFile(file, () => image, `Foto ersetzt: ${file} (Seiteneditor)`, mail);
+
+async function readBuffer(req, limit) {
+  const declared = Number(req.headers['content-length']);
+  if (declared > limit) throw new Error('too large');
+  const chunks = [];
+  let size = 0;
+  for await (const chunk of req) {
+    size += chunk.length;
+    if (size > limit) throw new Error('too large');
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks);
 }
 
 createServer(async (req, res) => {
@@ -349,9 +459,26 @@ createServer(async (req, res) => {
     return s ? sendJson(res, 200, { mail: s.mail }) : sendJson(res, 401, {});
   }
 
+  // The hours as they are in the repo right now, which is ahead of the site
+  // until the builder has run: the editor compares the page with it and lets
+  // the hours dialog start from it.
+  if (path === '/hours' && req.method === 'GET' && MAIL_LOGIN) {
+    if (!sessionOf(req)) return sendJson(res, 401, { error: 'Nicht angemeldet.' });
+    try {
+      const got = await github(`${HOURS_FILE}?ref=${encodeURIComponent(CMS_BRANCH)}`);
+      if (!got.ok) throw new SaveError(502, `read hours: GitHub ${got.status}`);
+      const hours = validHours(JSON.parse(Buffer.from((await got.json()).content, 'base64').toString('utf8')));
+      if (!hours) throw new SaveError(502, 'hours.json has an unexpected shape');
+      return sendJson(res, 200, { hours });
+    } catch (err) {
+      console.error('hours read failed:', err instanceof Error ? err.message : err);
+      return sendJson(res, 502, { error: 'Die Zeiten konnten nicht gelesen werden.' });
+    }
+  }
+
   // Changes only from the site itself: the session cookie is SameSite=Strict
   // already, the Origin check makes a forged cross-site request fail twice.
-  if ((path === '/save' || path === '/logout') && req.method === 'POST' && MAIL_LOGIN) {
+  if ((path === '/save' || path === '/logout' || path === '/hours' || path === '/photo') && req.method === 'POST' && MAIL_LOGIN) {
     if (req.headers.origin !== ALLOWED_ORIGIN) return sendJson(res, 403, { error: 'Falscher Ursprung.' });
     const s = sessionOf(req);
 
@@ -366,7 +493,53 @@ createServer(async (req, res) => {
     }
 
     if (!s) return sendJson(res, 401, { error: 'Nicht angemeldet.' });
+
+    if (path === '/photo') {
+      const file = url.searchParams.get('path') ?? '';
+      if (!PHOTO_FILE.test(file)) return sendJson(res, 400, { error: 'Unbekanntes Foto.' });
+      if ((req.headers['content-type'] ?? '') !== 'image/jpeg') return sendJson(res, 415, { error: 'JPEG erwartet.' });
+      let image;
+      try {
+        image = await readBuffer(req, PHOTO_MAX_BYTES);
+      } catch {
+        return sendJson(res, 413, { error: 'Das Foto ist zu groß (höchstens 4 MB).' });
+      }
+      const size = jpegSize(image);
+      if (!size || image.at(-2) !== 0xff || image.at(-1) !== 0xd9) return sendJson(res, 400, { error: 'Das ist kein gültiges JPEG-Foto.' });
+      if (Math.max(size.width, size.height) < PHOTO_MIN_EDGE || Math.max(size.width, size.height) > PHOTO_MAX_EDGE) {
+        return sendJson(res, 400, { error: `Die längere Seite muss zwischen ${PHOTO_MIN_EDGE} und ${PHOTO_MAX_EDGE} Pixel liegen.` });
+      }
+      try {
+        const sha = await savePhoto(file, image, s.mail);
+        console.log(`replaced ${file} (${image.length} bytes, ${size.width}x${size.height}) for ${s.mail}`);
+        return sendJson(res, 200, { commit: sha });
+      } catch (err) {
+        console.error('photo save failed:', err instanceof Error ? err.message : err);
+        const status = err instanceof SaveError ? err.status : 502;
+        return sendJson(res, status, { error: status === 404 ? 'Dieses Foto gibt es nicht.' : 'Speichern bei GitHub fehlgeschlagen.' });
+      }
+    }
+
     if (!(req.headers['content-type'] ?? '').startsWith('application/json')) return sendJson(res, 415, { error: 'JSON erwartet.' });
+
+    if (path === '/hours') {
+      let hours;
+      try {
+        hours = validHours(JSON.parse(await readBody(req, 16 * 1024)).hours);
+      } catch {
+        hours = null;
+      }
+      if (!hours) return sendJson(res, 400, { error: 'Ungültige Zeiten.' });
+      try {
+        const sha = await saveHours(hours, s.mail);
+        console.log(`saved opening hours for ${s.mail}`);
+        return sendJson(res, 200, { commit: sha });
+      } catch (err) {
+        console.error('hours save failed:', err instanceof Error ? err.message : err);
+        return sendJson(res, 502, { error: 'Speichern bei GitHub fehlgeschlagen.' });
+      }
+    }
+
     let changes;
     try {
       changes = JSON.parse(await readBody(req, 256 * 1024)).changes;
