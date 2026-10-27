@@ -11,7 +11,7 @@
 #                       das Panel) etwas veröffentlicht wurde (builder.sh).
 #
 # .env (vom Workflow aus GitHub-Secrets geschrieben, nie im Repo):
-#   GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, ALLOWED_ORIGIN
+#   ALLOWED_ORIGIN, CMS_USERS, CMS_GITHUB_TOKEN, optional GITHUB_CLIENT_ID/SECRET
 
 services:
   oauth:
