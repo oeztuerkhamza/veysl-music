@@ -31,7 +31,9 @@ services:
       - '8787'
     networks:
       - site
-    mem_limit: 96m
+    # A photo upload is held in memory several times over (body, base64, JSON
+    # for GitHub), so this is more than the login alone would need.
+    mem_limit: 192m
     logging:
       driver: json-file
       options: { max-size: '5m', max-file: '2' }
