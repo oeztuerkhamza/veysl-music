@@ -192,8 +192,13 @@ const sendJson = (res, code, body, headers = {}) =>
   send(res, code, JSON.stringify(body), { 'Content-Type': 'application/json; charset=utf-8', ...headers });
 
 /** The text files the on-page editor may change. Blog posts and images stay with the panel. */
-const EDITABLE_FILE = /^src\/(i18n\/(locales|legal)\/[a-z]{2}|data\/topics)\.json$/;
+const EDITABLE_FILE = /^src\/(i18n\/(locales|legal)\/[a-z]{2}|data\/(topics|hours))\.json$/;
 const PATH_PART = /^[A-Za-z0-9_-]{1,64}$/;
+
+/** Opening hours: only the times of existing slots, as HH:MM. */
+const HOURS_FILE = 'src/data/hours.json';
+const TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
+const hoursOrdered = (hours) => Object.values(hours).every((slots) => slots.every((s) => s.from < s.to));
 
 /**
  * One change: { file, path: ["home", "hero", "title"], value }. Only an
@@ -211,7 +216,8 @@ function validChange(c) {
     c.path.every((p) => (typeof p === 'string' && PATH_PART.test(p)) || (Number.isInteger(p) && p >= 0 && p < 1000)) &&
     c.path.at(-1) !== 'slug' &&
     typeof c.value === 'string' &&
-    c.value.length <= 10_000
+    c.value.length <= 10_000 &&
+    (c.file !== HOURS_FILE || TIME.test(c.value))
   );
 }
 
@@ -263,6 +269,7 @@ async function saveFile(file, changes, mail) {
     for (const c of changes) {
       if (!setText(data, c.path, c.value)) throw new SaveError(422, `Unbekannter Text: ${file} ${c.path.join('.')}`);
     }
+    if (file === HOURS_FILE && !hoursOrdered(data)) throw new SaveError(422, 'Der Beginn muss vor dem Ende liegen.');
     const after = JSON.stringify(data, null, 2) + '\n';
     if (after === before) return null;
     const n = changes.length;
@@ -270,7 +277,10 @@ async function saveFile(file, changes, mail) {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: `Seitentext geändert: ${file} (${n} ${n === 1 ? 'Text' : 'Texte'}, Seiteneditor)`,
+        message:
+          file === HOURS_FILE
+            ? `Öffnungszeiten geändert (${n} ${n === 1 ? 'Zeit' : 'Zeiten'}, Seiteneditor)`
+            : `Seitentext geändert: ${file} (${n} ${n === 1 ? 'Text' : 'Texte'}, Seiteneditor)`,
         content: Buffer.from(after, 'utf8').toString('base64'),
         sha,
         branch: CMS_BRANCH,
