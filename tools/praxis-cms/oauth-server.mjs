@@ -21,6 +21,14 @@
  * repo, contents: write). Passwords never leave this server in clear text;
  * CMS_USERS holds only scrypt hashes (make them with hash-password.mjs).
  *
+ * On-page editor (www.praxis-gueltekin.de/bearbeiten): the same e-mail login,
+ * but instead of a token the browser gets a session cookie, and the texts are
+ * saved through this server. The token never reaches the browser.
+ *   GET  /oauth/edit     → login form; afterwards back to the site in edit mode
+ *   GET  /oauth/session  → who is logged in (401 if nobody)
+ *   POST /oauth/save     → writes changed texts to the repo, one commit per file
+ *   POST /oauth/logout
+ *
  * Env (see docker-compose.yml next to this file):
  *   CMS_USERS            "mail:hash,mail:hash" (hash from hash-password.mjs)
  *   CMS_GITHUB_TOKEN     token handed to users who log in by e-mail
@@ -32,6 +40,8 @@
  *   HOST             default 127.0.0.1; the container sets 0.0.0.0 so the
  *                    nginx container can reach it over the docker network
  *   GITHUB_SCOPE     default "repo" (use "public_repo" if the repo is public)
+ *   CMS_REPO / CMS_BRANCH   where the on-page editor saves; default
+ *                    oeztuerkhamza/praxis-gueltekin, master
  *   GITHUB_URL / GITHUB_API   only for tests against a fake GitHub
  */
 import { createServer } from 'node:http';
@@ -45,8 +55,11 @@ const {
   HOST = '127.0.0.1',
   GITHUB_SCOPE = 'repo',
   GITHUB_URL = 'https://github.com',
+  GITHUB_API = 'https://api.github.com',
   CMS_USERS = '',
   CMS_GITHUB_TOKEN,
+  CMS_REPO = 'oeztuerkhamza/praxis-gueltekin',
+  CMS_BRANCH = 'master',
 } = process.env;
 
 const GITHUB_LOGIN = Boolean(CLIENT_ID && CLIENT_SECRET);
@@ -82,31 +95,64 @@ const WINDOW_MS = 15 * 60_000;
 const tooMany = (key) => (failures.get(key) ?? []).filter((t) => Date.now() - t < WINDOW_MS).length >= 5;
 const fail = (key) => failures.set(key, [...(failures.get(key) ?? []).filter((t) => Date.now() - t < WINDOW_MS), Date.now()]);
 
+/**
+ * The visitor's address as nginx saw it. nginx overwrites X-Real-IP on every
+ * request; X-Forwarded-For it passes through as the client sent it, so
+ * keying the limit on that would let anyone pick a fresh "address" per try.
+ */
+const clientIp = (req) => req.headers['x-real-ip'] ?? req.socket.remoteAddress;
+
+/** Sessions of the on-page editor. In memory: a restart (every deploy) just means logging in again. */
+const sessions = new Map();
+const SESSION_MS = 8 * 60 * 60_000;
+const SESSION_COOKIE = 'cms_session';
+/** Readable by the page script, holds no secret: only tells every page to load the editor. */
+const EDIT_HINT = 'cms_edit';
+
+function sessionOf(req) {
+  const id = cookieOf(req, SESSION_COOKIE);
+  const s = id && sessions.get(id);
+  if (!s) return null;
+  if (s.expires < Date.now()) {
+    sessions.delete(id);
+    return null;
+  }
+  return s;
+}
+
+/** Only a path on the site itself, never "//other.host" or "/\other.host". */
+const safeNext = (n) => (typeof n === 'string' && /^\/(?![/\\])[^\\\s]*$/.test(n) ? n : '/');
+
 const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 
-function loginPage(state, error = '') {
+/** `next` set: the on-page editor's login, which returns to that page instead of handing out a token. */
+function loginPage(state, error = '', next = null) {
   return `<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Anmelden – Praxis Gültekin</title>
 <style>body{font:16px system-ui,sans-serif;max-width:22rem;margin:3rem auto;padding:0 1rem}label{display:block;margin:1rem 0 .25rem}input{width:100%;box-sizing:border-box;padding:.6rem;font:inherit}button,.gh{display:block;width:100%;box-sizing:border-box;margin-top:1.25rem;padding:.7rem;font:inherit;text-align:center;border:0;border-radius:6px;background:#0b5c5c;color:#fff;text-decoration:none;cursor:pointer}.gh{background:#24292f}.err{color:#b00020}</style>
 <h1>Anmelden</h1>${error ? `<p class="err" role="alert">${esc(error)}</p>` : ''}
 ${
   MAIL_LOGIN
-    ? `<form method="post" action="/oauth/login"><input type="hidden" name="state" value="${esc(state)}">
+    ? `<form method="post" action="/oauth/login"><input type="hidden" name="state" value="${esc(state)}">${next === null ? '' : `<input type="hidden" name="next" value="${esc(next)}">`}
 <label for="m">E-Mail</label><input id="m" name="email" type="email" autocomplete="username" required autofocus>
 <label for="p">Passwort</label><input id="p" name="password" type="password" autocomplete="current-password" required>
 <button type="submit">Anmelden</button></form>`
     : ''
 }
-${GITHUB_LOGIN ? `<a class="gh" href="/oauth/github">Mit GitHub anmelden</a>` : ''}</html>`;
+${GITHUB_LOGIN && next === null ? `<a class="gh" href="/oauth/github">Mit GitHub anmelden</a>` : ''}</html>`;
 }
 
-async function readForm(req) {
-  let raw = '';
+async function readBody(req, limit) {
+  const chunks = [];
+  let size = 0;
   for await (const chunk of req) {
-    raw += chunk;
-    if (raw.length > 4096) throw new Error('too large');
+    size += chunk.length;
+    if (size > limit) throw new Error('too large');
+    chunks.push(chunk);
   }
-  return new URLSearchParams(raw);
+  return Buffer.concat(chunks).toString('utf8');
 }
+
+const readForm = async (req) => new URLSearchParams(await readBody(req, 4096));
 
 const STATE_COOKIE = 'cms_oauth_state';
 
@@ -142,17 +188,115 @@ const send = (res, code, body, headers = {}) => {
   res.end(body);
 };
 
+const sendJson = (res, code, body, headers = {}) =>
+  send(res, code, JSON.stringify(body), { 'Content-Type': 'application/json; charset=utf-8', ...headers });
+
+/** The text files the on-page editor may change. Blog posts and images stay with the panel. */
+const EDITABLE_FILE = /^src\/(i18n\/(locales|legal)\/[a-z]{2}|data\/topics)\.json$/;
+const PATH_PART = /^[A-Za-z0-9_-]{1,64}$/;
+
+/**
+ * One change: { file, path: ["home", "hero", "title"], value }. Only an
+ * existing string may be replaced — the editor can reword a text, never add
+ * keys, change the shape of the file or touch a URL slug.
+ */
+function validChange(c) {
+  return (
+    c &&
+    typeof c.file === 'string' &&
+    EDITABLE_FILE.test(c.file) &&
+    Array.isArray(c.path) &&
+    c.path.length > 0 &&
+    c.path.length <= 12 &&
+    c.path.every((p) => (typeof p === 'string' && PATH_PART.test(p)) || (Number.isInteger(p) && p >= 0 && p < 1000)) &&
+    c.path.at(-1) !== 'slug' &&
+    typeof c.value === 'string' &&
+    c.value.length <= 10_000
+  );
+}
+
+/** Sets an existing string inside parsed JSON. Returns false if the path does not lead to one. */
+function setText(data, path, value) {
+  let node = data;
+  for (const p of path.slice(0, -1)) {
+    if (node === null || typeof node !== 'object' || !Object.hasOwn(node, p)) return false;
+    node = node[p];
+  }
+  const last = path.at(-1);
+  if (node === null || typeof node !== 'object' || !Object.hasOwn(node, last) || typeof node[last] !== 'string') return false;
+  node[last] = value;
+  return true;
+}
+
+class SaveError extends Error {
+  constructor(status, message) {
+    super(message);
+    this.status = status;
+  }
+}
+
+const github = (path, init = {}) =>
+  fetch(`${GITHUB_API}/repos/${CMS_REPO}/contents/${path}`, {
+    ...init,
+    headers: {
+      Authorization: `Bearer ${CMS_GITHUB_TOKEN}`,
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'User-Agent': 'praxis-cms',
+      ...init.headers,
+    },
+  });
+
+/**
+ * Applies the changes to one file and commits it. The file is written back
+ * the way it is stored (2-space JSON, final newline), so the commit shows only
+ * the changed lines. If someone else committed the file in between, GitHub
+ * refuses the stale sha and the whole thing is redone once on the new version.
+ */
+async function saveFile(file, changes, mail) {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const got = await github(`${file}?ref=${encodeURIComponent(CMS_BRANCH)}`);
+    if (!got.ok) throw new SaveError(502, `read ${file}: GitHub ${got.status}`);
+    const { content, sha } = await got.json();
+    const before = Buffer.from(content, 'base64').toString('utf8');
+    const data = JSON.parse(before);
+    for (const c of changes) {
+      if (!setText(data, c.path, c.value)) throw new SaveError(422, `Unbekannter Text: ${file} ${c.path.join('.')}`);
+    }
+    const after = JSON.stringify(data, null, 2) + '\n';
+    if (after === before) return null;
+    const n = changes.length;
+    const put = await github(file, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: `Seitentext geändert: ${file} (${n} ${n === 1 ? 'Text' : 'Texte'}, Seiteneditor)`,
+        content: Buffer.from(after, 'utf8').toString('base64'),
+        sha,
+        branch: CMS_BRANCH,
+        // Who changed it, so the history tells the editors apart even though they share one token.
+        author: { name: mail, email: mail },
+      }),
+    });
+    if (put.ok) return (await put.json()).commit?.sha ?? null;
+    if (put.status !== 409 || attempt === 1) throw new SaveError(502, `write ${file}: GitHub ${put.status}`);
+  }
+  return null;
+}
+
 createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   const path = url.pathname.replace(/^\/oauth/, '');
 
-  if (path === '/auth' && MAIL_LOGIN) {
+  const stateCookie = (state) => `${STATE_COOKIE}=${state}; HttpOnly; Secure; SameSite=Strict; Path=/oauth; Max-Age=600`;
+  const showLogin = (code, error = '', next = null) => {
     const state = randomBytes(16).toString('hex');
-    return send(res, 200, loginPage(state), {
-      'Set-Cookie': `${STATE_COOKIE}=${state}; HttpOnly; Secure; SameSite=Strict; Path=/oauth; Max-Age=600`,
-      'X-Frame-Options': 'DENY',
-    });
-  }
+    return send(res, code, loginPage(state, error, next), { 'Set-Cookie': stateCookie(state), 'X-Frame-Options': 'DENY' });
+  };
+
+  if (path === '/auth' && MAIL_LOGIN) return showLogin(200);
+
+  if (path === '/edit' && MAIL_LOGIN) return showLogin(200, '', safeNext(url.searchParams.get('next')));
 
   if (path === '/login' && req.method === 'POST' && MAIL_LOGIN) {
     let form;
@@ -161,20 +305,82 @@ createServer(async (req, res) => {
     } catch {
       return send(res, 413, 'Too large');
     }
+    const next = form.has('next') ? safeNext(form.get('next')) : null;
     const state = form.get('state') ?? '';
-    if (!safeEqual(state, cookieOf(req, STATE_COOKIE))) return send(res, 400, loginPage(randomBytes(16).toString('hex'), 'Sitzung abgelaufen. Bitte erneut versuchen.'));
+    if (!safeEqual(state, cookieOf(req, STATE_COOKIE))) return showLogin(400, 'Sitzung abgelaufen. Bitte erneut versuchen.', next);
     const mail = (form.get('email') ?? '').trim().toLowerCase();
-    const key = `${mail}|${req.headers['x-forwarded-for'] ?? req.socket.remoteAddress}`;
-    const retry = (msg) =>
-      send(res, 401, loginPage(state, msg), { 'Set-Cookie': `${STATE_COOKIE}=${state}; HttpOnly; Secure; SameSite=Strict; Path=/oauth; Max-Age=600` });
+    const key = `${mail}|${clientIp(req)}`;
+    const retry = (msg) => send(res, 401, loginPage(state, msg, next), { 'Set-Cookie': stateCookie(state), 'X-Frame-Options': 'DENY' });
     if (tooMany(key)) return retry('Zu viele Versuche. Bitte in 15 Minuten erneut versuchen.');
     if (!checkPassword(mail, form.get('password') ?? '')) {
       fail(key);
       return retry('E-Mail oder Passwort falsch.');
     }
-    return send(res, 200, resultPage('success', { token: CMS_GITHUB_TOKEN, provider: 'github' }), {
-      'Set-Cookie': `${STATE_COOKIE}=; HttpOnly; Secure; SameSite=Strict; Path=/oauth; Max-Age=0`,
-    });
+    const clearState = `${STATE_COOKIE}=; HttpOnly; Secure; SameSite=Strict; Path=/oauth; Max-Age=0`;
+    if (next !== null) {
+      for (const [id, s] of sessions) if (s.expires < Date.now()) sessions.delete(id);
+      const id = randomBytes(32).toString('hex');
+      sessions.set(id, { mail, expires: Date.now() + SESSION_MS });
+      const age = SESSION_MS / 1000;
+      return send(res, 303, '', {
+        Location: new URL(next, ALLOWED_ORIGIN).toString(),
+        'Set-Cookie': [
+          clearState,
+          `${SESSION_COOKIE}=${id}; HttpOnly; Secure; SameSite=Strict; Path=/oauth; Max-Age=${age}`,
+          `${EDIT_HINT}=1; Secure; SameSite=Strict; Path=/; Max-Age=${age}`,
+        ],
+      });
+    }
+    return send(res, 200, resultPage('success', { token: CMS_GITHUB_TOKEN, provider: 'github' }), { 'Set-Cookie': clearState });
+  }
+
+  if (path === '/session' && MAIL_LOGIN) {
+    const s = sessionOf(req);
+    return s ? sendJson(res, 200, { mail: s.mail }) : sendJson(res, 401, {});
+  }
+
+  // Changes only from the site itself: the session cookie is SameSite=Strict
+  // already, the Origin check makes a forged cross-site request fail twice.
+  if ((path === '/save' || path === '/logout') && req.method === 'POST' && MAIL_LOGIN) {
+    if (req.headers.origin !== ALLOWED_ORIGIN) return sendJson(res, 403, { error: 'Falscher Ursprung.' });
+    const s = sessionOf(req);
+
+    if (path === '/logout') {
+      sessions.delete(cookieOf(req, SESSION_COOKIE));
+      return send(res, 204, '', {
+        'Set-Cookie': [
+          `${SESSION_COOKIE}=; HttpOnly; Secure; SameSite=Strict; Path=/oauth; Max-Age=0`,
+          `${EDIT_HINT}=; Secure; SameSite=Strict; Path=/; Max-Age=0`,
+        ],
+      });
+    }
+
+    if (!s) return sendJson(res, 401, { error: 'Nicht angemeldet.' });
+    if (!(req.headers['content-type'] ?? '').startsWith('application/json')) return sendJson(res, 415, { error: 'JSON erwartet.' });
+    let changes;
+    try {
+      changes = JSON.parse(await readBody(req, 256 * 1024)).changes;
+    } catch {
+      return sendJson(res, 400, { error: 'Ungültige Anfrage.' });
+    }
+    if (!Array.isArray(changes) || changes.length === 0 || changes.length > 200 || !changes.every(validChange)) {
+      return sendJson(res, 400, { error: 'Ungültige Änderung.' });
+    }
+    const byFile = Map.groupBy(changes, (c) => c.file);
+    const commits = [];
+    try {
+      for (const [file, list] of byFile) {
+        const sha = await saveFile(file, list, s.mail);
+        if (sha) commits.push(sha);
+      }
+    } catch (err) {
+      console.error('save failed:', err instanceof Error ? err.message : err);
+      const status = err instanceof SaveError ? err.status : 502;
+      // Files saved before the failure stay saved; the editor reports the rest as not saved.
+      return sendJson(res, status, { error: status === 422 ? err.message : 'Speichern bei GitHub fehlgeschlagen.', commits });
+    }
+    console.log(`saved ${changes.length} text(s) in ${byFile.size} file(s) for ${s.mail}`);
+    return sendJson(res, 200, { saved: changes.length, commits });
   }
 
   if (path === '/github' || path === '/auth') {
