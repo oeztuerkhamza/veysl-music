@@ -105,6 +105,11 @@ export async function buildRatgeberPostMetadata(
     locale,
     pathname: '/ratgeber/[slug]',
     params: { slug: getPostSlug(post, locale) },
+    // `/ratgeber/[slug]` shares the index's `blog.meta` namespace, whose
+    // description is a `{count, plural, …}` string. Without a value next-intl
+    // logs FORMATTING_ERROR on every article. The formatted string is
+    // discarded below in favour of `content.seo`, so any number will do.
+    values: { count: 0 },
     // Each language's alternate has to point at that language's own slug —
     // `/en/guide/wedding-dj-checklist`, not the German slug under an English
     // prefix. Built for every locale this post exists in, so hreflang, the
