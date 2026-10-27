@@ -714,7 +714,7 @@ export const wasKostetEinHochzeitsDjPost: BlogPost = {
         'Eine seriöse Einheitszahl für "was kostet ein Hochzeits-DJ" gibt es nicht — wohl aber nachvollziehbare Preistreiber und eine grobe Marktorientierung. Dieser Artikel erklärt beides, ohne DJ Veys’ eigene Preise zu erfinden: Die bleiben "Preis auf Anfrage", bis echte Zahlen vorliegen.',
       body: wasKostetDe,
       seo: {
-        metaTitle: 'Was kostet ein Hochzeits-DJ? Preise 2026 | DJ Veys',
+        metaTitle: 'Hochzeits-DJ Kosten: Was kostet ein DJ? (2026) | DJ Veys',
         metaDescription:
           'Was kostet ein Hochzeits-DJ wirklich? Preistreiber, Marktspannen aus mehreren Quellen und eine Checkliste zum Angebotsvergleich, unabhängig eingeordnet.',
       },

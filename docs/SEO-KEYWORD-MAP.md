@@ -5,12 +5,50 @@ set, search intent, and a ready-to-use title/meta description in German. Charact
 counts are exact (JS `[...string].length`, so umlauts count as one character each — this
 matches how German copy actually measures, not a byte count).
 
-**No search-volume tool was used for this map** (no Ahrefs/Semrush/GSC access to this
-domain — it's pre-launch). Every volume figure below is explicitly labelled
-**"estimate"** and is a qualitative read from SERP crowding (see
-`docs/SEO-COMPETITIVE-ANALYSIS.md`), never a measured number. Difficulty is rated
-Easy/Medium/Hard per the method in the skill's `keyword-research.md` reference (SERP
-domain quality + content depth + review density), not a tool score.
+**Measured volumes now exist — see §00 below.** The rest of this map was written
+pre-launch without any volume tool; figures labelled **"estimate"** in §1–§5 are a
+qualitative read from SERP crowding (see `docs/SEO-COMPETITIVE-ANALYSIS.md`). Where §00
+contradicts an estimate, §00 wins. Difficulty is rated Easy/Medium/Hard per the method
+in the skill's `keyword-research.md` reference (SERP domain quality + content depth +
+review density), not a tool score.
+
+---
+
+## 00. Google Keyword Planner data (Okt 2025 – Sep 2026, DE, German)
+
+Source: Keyword Planner export "Keyword Stats 2026-10-27 at 12_38_37" (seed: wedding-DJ
+Stuttgart, 423 keywords). Planner shows bucketed volumes (50 / 500 / 5 000 / 50 000), so
+read these as orders of magnitude, not exact counts. Bids are top-of-page, EUR.
+**The export contains no Turkish, Kurdish or English keywords** — §3, §4 and §5 remain
+unmeasured.
+
+### Clusters → owning URL
+
+| Cluster (variants Planner groups together) | Ø / month | Competition | Bid | Owner | Status |
+|---|---|---|---|---|---|
+| `dj hochzeit`, `hochzeit dj`, `hochzeits dj` | 5 000 each | Mittel | 1,0–2,6 € | `/` | Nationwide head term. Title already says "Hochzeits-DJ"; description now opens with "DJ für Ihre Hochzeit" to cover the reversed word order. |
+| `hochzeits dj kosten`, `kosten dj für hochzeit`, `dj kosten für hochzeit` | 5 000 each | Mittel | 0,6–1,6 € | Ratgeber `was-kostet-ein-hochzeits-dj` | **10× bigger than "preise"** — biggest correction to the old map. Blog metaTitle now front-loads "Hochzeits-DJ Kosten". |
+| `hochzeits dj preise`, `dj hochzeit preise`, `dj für hochzeit preise`, `preise dj hochzeit` | 500 each | Mittel | 0,6–1,6 € | `/pakete` | Unchanged ("Hochzeits-DJ Preise & Pakete Stuttgart"). Pakete keeps "Preise", the blog keeps "Kosten" — one head word each, no cannibalization. |
+| `hochzeits dj stuttgart`, `dj stuttgart`, `dj aus stuttgart` | 500 each | Mittel | 0,9–3,1 € | `/` | Confirmed as the local primary. `dj hochzeit stuttgart` / `dj stuttgart hochzeit` only 50. |
+| `dj buchen hochzeit`, `dj für hochzeit buchen`, `dj buchen für hochzeit` | 500 each | Mittel (66) | 1,0–2,9 € | `/anfrage` | Was untargeted ("Termin prüfen & Angebot anfragen"). Now "Hochzeits-DJ buchen – …"; `/ablauf` drops its claim on "buchen". |
+| `dj für hochzeit finden`, `hochzeits dj finden`, `dj finden hochzeit` | 500 each | Hoch | 1,0–2,9 € | `/anfrage`, `/` | Same intent as "buchen"; covered by description copy. |
+| `hochzeits dj in der nähe`, `dj umgebung` | 500 / 50 | Hoch | 0,8–2,8 € | Google Business Profile, `/` | "Near me" is won by Maps, not by a title — see `docs/GOOGLE-BUSINESS-PROFILE.md`. Home H2 "für Stuttgart und Umgebung" stays. |
+| `party dj` | 500 | Niedrig | 0,9–5,1 € | `/hochzeit-events` | Title now "Party- & Event-DJ Stuttgart". "event dj" itself does not appear in the export. |
+| `musik hochzeit`, `musik für (die) hochzeit`, `hochzeit musik`, `musik bei/auf hochzeit` | 500 each | Mittel | 0,7–1,8 € | Ratgeber `musik-fuer-die-hochzeit-lieder` | Was the only cluster with volume and no page. Closed 2026-10-27: song lists per wedding culture (türkisch / kurdisch / deutsch), metaTitle "Hochzeitslieder: …". Also targets `lieder bei hochzeit` (5 000, Niedrig) and `hochzeit party lieder` (500). **Song lists still need Veysel's check against his own sets.** |
+| `ablauf hochzeit`, `ablauf einer hochzeit`, `ablauf hochzeitsfeier` | 500 each | Hoch | 0,5–2,4 € | Ratgeber `hochzeits-timeline-musterablauf` | metaTitle now "Ablauf einer Hochzeit mit DJ – Muster-Timeline". |
+| `dj esslingen`, `hochzeits dj esslingen` | 50 each | Mittel | 0,5–2,8 € | `/hochzeits-dj/esslingen` | Exists. |
+| `dj hochzeit baden württemberg` | 50 | Hoch | 0,8–1,2 € | `/hochzeits-dj-baden-wuerttemberg` | Exists, low volume — keep, don't expand. |
+| `karaoke hochzeit`, `dj silberhochzeit`, `dj für familienfeier` | 50 each | — | — | none | Too small for a page; answer in `/fragen` only if Veysel actually offers it (check `.claude/BRAND-FACTS.md` first). |
+
+### Not ours — negative-keyword list for Google Ads
+
+High-volume rows in the export that a wedding DJ should never bid on or write for:
+anniversary years (`hochzeiten jahre`, `10 jahren hochzeit`, `70 jahre hochzeit` …),
+`hoch zeit` (50 000, a typo cluster), attire (`hochzeitsanzug`, `hochzeitskleider`,
+`rock hochzeit`), venues (`location für hochzeit`, `weingut hochzeit`), photo/video
+(`hochzeitsfotos stuttgart`, `hochzeitsvideo stuttgart`), cards and texts
+(`willkommen zur hochzeit`, `hochzeitssprüche …`, `speisekarten hochzeit`), guest games
+(`hochzeitsspiel gäste`), and other DJs' names (`dj andy`, `dj rene`, `dj alex`).
 
 Each row's **meta key** is the exact key from `src/lib/seo.ts` /
 `messages/{de,en,tr}.json` `meta.*` namespace — so this table can be pasted straight into
@@ -52,8 +90,8 @@ the `home` row below for a 56-character alternative that keeps the keyword front
 - **Volume:** estimate — lower than the head term; long-tail service queries are typically 10–30% of the head term's volume in this niche. **Not measured.**
 - **Difficulty:** Easy-Medium — most competitor "services" pages found were thin (a bullet list), easy to out-depth with genuine specifics (equipment, live line-up, what a corporate run-of-show includes).
 - **H1:** "Leistungen für Hochzeit & Events"
-- **Recommended title** (54 chars): `Event-DJ Stuttgart: Firmenfeier & Live-Musik | DJ Veys`
-- **Recommended description** (151 chars): `Event-DJ für Firmenfeier, Gala, Sommerfest und After-Party in Stuttgart – auf Wunsch mit Saz, Gitarre oder Live-Orchester. Moderation in drei Sprachen.`
+- **Title** (50 chars, live since 2026-10-27): `Party- & Event-DJ Stuttgart: Firmenfeier | DJ Veys` — `party dj` is measured at 500/month, `event dj` does not appear in the Planner export at all (§00).
+- **Description** (live): `Party- und Event-DJ für Firmenfeier, Gala, Sommerfest und After-Party in Stuttgart – mit Saz, Gitarre oder Live-Orchester, moderiert in drei Sprachen.`
 - **Refocus (Oktober 2026):** The previous title `DJ für Hochzeit & Events Stuttgart` sat too close to the homepage's `Hochzeits-DJ Stuttgart` and split the wedding intent across two URLs. The wedding head term now belongs to `/` alone; Kına Gecesi and Nişan moved to `/tuerkischer-dj-stuttgart`, whose title already carries them. This page takes the event, corporate and live-music intent the rest of the site leaves open. The H1 and the four service blocks (wedding included) are unchanged — only the SERP targeting moved. TR/EN follow the same split (`meta.services` in `messages/{tr,en}.json`).
 
 ### `/pakete` — meta key: `packages`
@@ -97,19 +135,18 @@ the `home` row below for a 56-character alternative that keeps the keyword front
 - **Volume:** estimate — low standalone volume, but strong FAQ-rich-result candidate (`FAQPage` schema) which can win SERP real estate regardless of raw volume.
 - **Difficulty:** Easy
 - **H1:** "So läuft die Buchung ab"
-- **Recommended title** (41 chars): `Hochzeits-DJ buchen: Ablauf & FAQ | DJ Veys`
+- **Recommended title:** keep the live `Ablauf & häufige Fragen — Hochzeits-DJ | DJ Veys`. The older suggestion `Hochzeits-DJ buchen: Ablauf & FAQ` is withdrawn — "buchen" belongs to `/anfrage` since §00.
 - **Recommended description** (126 chars): `Vom ersten Gespräch bis zum letzten Song: der Ablauf in vier Schritten und Antworten auf die häufigsten Fragen zur DJ-Buchung.`
 
 ### `/anfrage` — meta key: `booking`
 
-- **Primary keyword:** `hochzeits-dj verfügbarkeit prüfen`
-- **Secondary:** `dj hochzeit termin anfragen stuttgart`, `hochzeits-dj angebot einholen`
-- **Intent:** Transactional (the conversion page — should stay lean, not keyword-stuffed)
-- **Volume:** not applicable — this page converts, it doesn't need to rank broadly; keep title/description focused on clarity, not keyword density.
-- **Difficulty:** n/a
-- **H1:** "Termin prüfen & Angebot anfragen"
-- **Recommended title** (40 chars): `Termin prüfen & Angebot anfragen | DJ Veys`
-- **Recommended description** (140 chars): `Datum eingeben, Verfügbarkeit für deine Hochzeit in Stuttgart prüfen und unverbindliches Angebot erhalten. Antwort innerhalb von 24 Stunden.`
+- **Primary keyword:** `dj buchen hochzeit` (measured 500/month, plus three 500/month variants — see §00)
+- **Secondary:** `dj für hochzeit finden`, `hochzeits-dj verfügbarkeit prüfen`, `hochzeits-dj angebot einholen`
+- **Intent:** Transactional (the conversion page — still lean, but the "buchen" cluster is real volume with exactly this intent, so the title now carries it)
+- **Difficulty:** Medium (competition index 66)
+- **H1:** "Ist Ihr Datum noch frei?" (eyebrow: "Hochzeits-DJ buchen")
+- **Title** (55 chars, live since 2026-10-27): `Hochzeits-DJ buchen – Termin prüfen & Angebot | DJ Veys`
+- **Description** (134 chars, live): `DJ für die Hochzeit buchen: Datum eingeben, Verfügbarkeit prüfen, unverbindliches Angebot erhalten — Antwort innerhalb von 24 Stunden.`
 
 ### `/galerie` — meta key: `gallery`
 

@@ -54,11 +54,11 @@
   "meta": {
     "home": {
       "title": "Hochzeits-DJ {city} – DJ, Musiker & Moderator | DJ Veys",
-      "description": "Hochzeits-DJ, Musiker (Saz & Gitarre) und Moderator in {city} für deutsch-türkische & multikulturelle Hochzeiten. Deutsch, Türkisch, Englisch. Termin prüfen."
+      "description": "DJ für Ihre Hochzeit in {city}: Hochzeits-DJ, Musiker (Saz & Gitarre) und Moderator für deutsch-türkische & multikulturelle Feiern. Termin prüfen."
     },
     "services": {
-      "title": "Event-DJ Stuttgart: Firmenfeier & Live-Musik | DJ Veys",
-      "description": "Event-DJ für Firmenfeier, Gala, Sommerfest und After-Party in Stuttgart – auf Wunsch mit Saz, Gitarre oder Live-Orchester. Moderation in drei Sprachen."
+      "title": "Party- & Event-DJ Stuttgart: Firmenfeier | DJ Veys",
+      "description": "Party- und Event-DJ für Firmenfeier, Gala, Sommerfest und After-Party in Stuttgart – mit Saz, Gitarre oder Live-Orchester, moderiert in drei Sprachen."
     },
     "packages": {
       "title": "Hochzeits-DJ Preise & Pakete Stuttgart | DJ Veys",
@@ -77,8 +77,8 @@
       "description": "Vom ersten Gespräch bis zum letzten Song: der Ablauf in vier Schritten und Antworten auf die häufigsten Fragen zur DJ-Buchung."
     },
     "booking": {
-      "title": "Termin prüfen & Angebot anfragen | DJ Veys",
-      "description": "Datum eingeben, Verfügbarkeit prüfen, unverbindliches Angebot erhalten — Antwort innerhalb von 24 Stunden."
+      "title": "Hochzeits-DJ buchen – Termin prüfen & Angebot | DJ Veys",
+      "description": "DJ für die Hochzeit buchen: Datum eingeben, Verfügbarkeit prüfen, unverbindliches Angebot erhalten — Antwort innerhalb von 24 Stunden."
     },
     "gallery": {
       "title": "Galerie & Videos — Hochzeits-DJ | DJ Veys",
@@ -1369,7 +1369,7 @@
   },
   "booking": {
     "hero": {
-      "eyebrow": "Anfrage",
+      "eyebrow": "Hochzeits-DJ buchen",
       "title": "Ist Ihr Datum noch frei?",
       "subtitle": "Drei kurze Schritte, unter zwei Minuten. Sie erhalten innerhalb von 24 Stunden eine persönliche Rückmeldung — unverbindlich."
     },

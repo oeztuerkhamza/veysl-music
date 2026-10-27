@@ -48,6 +48,9 @@ import { hochzeitslocationStuttgartPost } from './hochzeitslocation-stuttgart-dj
 import { nisanPost } from './nisan-verlobung-planen';
 import { gelinAlmaPost } from './gelin-alma-brautabholung-musik';
 import { wannBuchenPost } from './wann-hochzeits-dj-buchen';
+// Keyword-Planner-Daten 2026-10-27: „lieder bei hochzeit" / „musik für die
+// hochzeit" war der einzige Cluster mit Volumen und ohne Seite.
+import { musikHochzeitPost } from './musik-fuer-die-hochzeit-lieder';
 
 export type {
   BlogPost,
@@ -91,6 +94,7 @@ export const blogPosts: BlogPost[] = [
   nisanPost,
   gelinAlmaPost,
   wannBuchenPost,
+  musikHochzeitPost,
   // Recap templates — status: 'template', excluded from getPublishedGuides().
   echteHochzeitGrosseFeierPost,
   echteHochzeitKinaAbendPost,

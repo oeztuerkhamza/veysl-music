@@ -885,7 +885,7 @@ export const timelinePost: BlogPost = {
         'Eine belastbare Hochzeits-Timeline lebt von bewussten Zeitpuffern, nicht von minutengenauer Planung. Dieser Guide zeigt eine Beispiel-Timeline von 13 bis 2 Uhr, die drei häufigsten Timing-Fehler und wie sich der Ablauf bei türkischen Hochzeiten verschiebt.',
       body: timelineDe,
       seo: {
-        metaTitle: 'Ablauf einer DJ-begleiteten Hochzeit – Timeline | DJ Veys',
+        metaTitle: 'Ablauf einer Hochzeit mit DJ – Muster-Timeline | DJ Veys',
         metaDescription:
           'Wie läuft eine Hochzeit mit DJ ab? Sieben Phasen, Beispiel-Timeline von 13 bis 2 Uhr, kompakte Abend-Variante, Timing-Fehler und Vorlage zum Ausfüllen.',
       },
