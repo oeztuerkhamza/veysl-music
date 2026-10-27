@@ -52,6 +52,12 @@ echo
 echo "== Container bauen und starten =="
 docker compose build --quiet
 docker compose up -d
+# oauth-server.mjs is bind-mounted into the container. `up -d` leaves a running
+# container alone when only that file changed, so Node would keep serving the
+# old code from memory (and an extract that replaces the file would leave the
+# mount pointing at the old one). Recreate it on every deploy; the builder is
+# left alone so a build in progress is not cut off.
+docker compose up -d --force-recreate --no-deps oauth
 sleep 8
 
 echo
