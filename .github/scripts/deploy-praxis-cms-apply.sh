@@ -67,11 +67,12 @@ for c in praxis-cms-oauth praxis-builder; do
   [ "$status" = running ] || ok=0
 done
 
-# Die Anmeldung antwortet mit einer Weiterleitung zu GitHub. Geprueft mit
+# Die Anmeldung zeigt das E-Mail-Formular (200, sobald CMS_USERS gesetzt ist)
+# oder leitet direkt zu GitHub weiter (302, nur GitHub-Login). Geprueft mit
 # Node im Container selbst: BusyBox-wget (Alpine) kennt --max-redirect nicht
 # und lieferte deshalb beim ersten Deploy ein falsches "antwortet nicht".
-if docker exec praxis-cms-oauth node -e "fetch('http://127.0.0.1:8787/oauth/auth',{redirect:'manual'}).then(r=>process.exit(r.status===302&&/github\.com\/login\/oauth/.test(r.headers.get('location')||'')?0:1),()=>process.exit(1))"; then
-  echo "OAuth-Bruecke: antwortet (302 zu GitHub)"
+if docker exec praxis-cms-oauth node -e "fetch('http://127.0.0.1:8787/oauth/auth',{redirect:'manual'}).then(async r=>process.exit((r.status===302&&/github\.com\/login\/oauth/.test(r.headers.get('location')||''))||(r.status===200&&/action=\"\/oauth\/login\"/.test(await r.text()))?0:1),()=>process.exit(1))"; then
+  echo "OAuth-Bruecke: antwortet (Anmeldeformular oder 302 zu GitHub)"
 else
   echo "OAuth-Bruecke: antwortet NICHT wie erwartet"
   ok=0
@@ -81,8 +82,8 @@ fi
 # /oauth/-Regel deployt ist (eigener Workflow) — daher nur ein Hinweis.
 if command -v curl >/dev/null; then
   code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 https://www.praxis-gueltekin.de/oauth/auth || true)"
-  if [ "$code" = 302 ]; then
-    echo "Ueber nginx: OK (https://www.praxis-gueltekin.de/oauth/auth → 302)"
+  if [ "$code" = 302 ] || [ "$code" = 200 ]; then
+    echo "Ueber nginx: OK (https://www.praxis-gueltekin.de/oauth/auth → $code)"
   else
     echo "Ueber nginx: noch nicht erreichbar (HTTP $code — Website-Deploy mit der /oauth/-Regel abwarten)"
   fi
