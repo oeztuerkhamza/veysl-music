@@ -92,6 +92,35 @@ die Dramaturgie des Abends; oder niemand fühlt sich zuständig, einen Wunsch ab
 und die Diskussion landet beim Brautpaar. Beides ist vermeidbar, wenn eine Person mit
 klarem Mandat am Pult steht.
 
+## Eine Playlist für die Hochzeitsgäste erstellen: so wird sie tragfähig
+
+Wer sich für die Playlist entscheidet, sollte sie nicht als eine lange Liste anlegen. Eine
+Hochzeit hat Phasen mit sehr unterschiedlichem Bedarf, und eine einzige Liste im
+Zufallsmodus spielt früher oder später das falsche Stück im falschen Moment.
+
+- **Nach Phasen trennen.** Je eine eigene Liste für Empfang, Essen und Party. Beim Essen
+  soll Musik Gespräche tragen, nicht übertönen; für die Party gelten andere Regeln.
+- **Länger planen als die Feier dauert.** Jede Liste sollte deutlich mehr Laufzeit haben
+  als ihr Abschnitt, damit bei einer Verzögerung nichts von vorn beginnt.
+- **Gästewünsche vorher einsammeln, nicht am Abend.** Ein Feld in der Einladung oder eine
+  gemeinsame Wunschliste genügt. Entscheidend ist, dass das Paar auswählt und einsortiert —
+  eine offene Liste, in die jeder bis zuletzt hineinschreibt, hat keine Dramaturgie mehr.
+- **Die Generationen mitdenken.** Eine Liste, die nur den eigenen Freundeskreis bedient,
+  lässt Eltern und Großeltern sitzen. Bei zwei Kulturen im Raum gilt dasselbe für beide
+  Seiten der Gästeliste.
+- **Offline speichern und Übergänge einstellen.** Das WLAN einer Location ist kein
+  verlässlicher Partner. Listen herunterladen, Überblendung aktivieren, Lautstärke-Ausgleich
+  einschalten und Benachrichtigungen am Abspielgerät stummschalten.
+- **Eine Person benennen.** Jemand muss wissen, wann welche Liste startet, wo der
+  Lautstärkeregler ist und was bei einem Ausfall zu tun ist — und sollte dafür nicht das
+  Brautpaar selbst sein.
+- **Vorher in der Location testen.** Einmal mit der tatsächlichen Anlage im tatsächlichen
+  Raum abspielen. Was im Wohnzimmer ausgewogen klingt, ist in einem Saal oft zu leise oder
+  zu bassarm.
+
+Eine so vorbereitete Playlist löst die Aufgabe „Musik läuft" zuverlässig. Was sie auch dann
+nicht übernimmt, steht im vorherigen Abschnitt: reagieren, ansagen, Wünsche moderieren.
+
 ## Ein Freund will bei uns auflegen — reicht das?
 
 Diese Variante liegt zwischen den beiden Extremen und wird oft zu schnell abgeräumt. Sie
@@ -115,7 +144,7 @@ des Abends — den Empfang, die Dinner-Musik oder die letzte Stunde —, währen
 Programmmomente professionell abgesichert sind. So bleibt die persönliche Note, ohne dass
 ein Gast die Verantwortung für den gesamten Abend trägt.
 
-## Eine faire Entscheidungshilfe
+## DJ oder Playlist: eine faire Entscheidungshilfe
 
 | Spricht für die Playlist | Spricht für einen DJ |
 |---|---|
@@ -819,7 +848,7 @@ export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
   relatedPosts: ['dj-live-band-oder-beides', 'dramaturgie-hochzeitsabend'],
   translations: {
     de: {
-      title: 'Hochzeit ohne DJ: Reicht eine Spotify-Playlist?',
+      title: 'DJ oder Playlist? Hochzeit ohne DJ – reicht Spotify?',
       excerpt:
         'Für kleine, gesprächsorientierte Feiern reicht eine Spotify-Playlist tatsächlich aus — dieser Artikel sagt das ausdrücklich. Kritisch wird es erst, wenn getanzt werden soll: Reaktion auf die Tanzfläche, Übergänge, Ansagen, Technik und Ausfallsicherheit lassen sich nicht vorab in eine Liste schreiben. Inklusive einer ehrlichen Abwägung der Variante "ein Freund legt auf" und einer Entscheidungstabelle.',
       body: hochzeitOhneDjDe,

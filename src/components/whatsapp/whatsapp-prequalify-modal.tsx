@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { X } from 'lucide-react';
 import { AvailabilityCalendar } from '@/components/booking/availability-calendar';
 import { Link } from '@/i18n/navigation';
+import { trackWhatsappClick } from '@/lib/analytics';
 import { cn } from '@/lib/utils';
 import { formatDate } from '@/lib/utils';
 import {
@@ -224,6 +225,12 @@ export function WhatsappPrequalifyModal({ open, onClose, whatsappNumber, source 
       } catch {
         // ignore
       }
+
+      // Der Weg über dieses Modal ist ein `window.location`-Sprung, kein
+      // `<a href="https://wa.me/…">` — der delegierte Klick-Listener in
+      // `<AutoTrack>` sieht ihn also nicht. Ohne diesen Aufruf blieben FAB,
+      // Sticky-Leiste und alle WhatsApp-Karten in GA4 unsichtbar.
+      trackWhatsappClick(window.location.pathname);
 
       onClose();
       window.location.href = url;

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { Loader2 } from 'lucide-react';
+import { trackAvailabilityChecked } from '@/lib/analytics';
 import { cn } from '@/lib/utils';
 import { isFutureIsoDate, isValidIsoDate, type AvailabilityStatus, type EnquiryFormInput } from '@/lib/booking';
 
@@ -68,6 +69,7 @@ export function AvailabilityIndicator({ onAnnounce }: { onAnnounce: (message: st
     const message =
       status === 'free' ? t('free') : status === 'taken' ? t('taken') : status === 'past' ? t('pastDate') : t('unknown');
     onAnnounce(message);
+    trackAvailabilityChecked(status);
     // onAnnounce is a stable callback from the parent; only re-announce on status change.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);

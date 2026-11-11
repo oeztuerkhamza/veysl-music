@@ -12,7 +12,12 @@ import {
   stepKeys,
   type EnquiryFormInput,
 } from '@/lib/booking';
-import { trackEnquirySubmitted } from '@/lib/analytics';
+import {
+  trackEnquiryFailed,
+  trackEnquiryStepCompleted,
+  trackEnquirySubmitted,
+  type EnquiryFailureReason,
+} from '@/lib/analytics';
 import { BookingProgress } from './progress';
 import { StepDatePlace } from './step-date-place';
 import { StepDetails } from './step-details';
@@ -25,6 +30,14 @@ const STORAGE_KEY = 'veysl:booking-enquiry';
 const TOTAL_STEPS = stepFieldGroups.length;
 
 type Phase = 'form' | 'success' | 'error';
+
+function mapSubmitErrorReason(error: string | undefined, status: number): EnquiryFailureReason {
+  if (error === 'rate_limited') return 'rate_limited';
+  if (error === 'delivery_failed') return 'delivery_failed';
+  if (error === 'validation' || error === 'invalid_request' || error === 'invalid_json') return 'validation';
+  if (status >= 500) return 'server_error';
+  return 'unknown';
+}
 
 export function EnquiryForm() {
   const t = useTranslations('booking');
@@ -142,6 +155,7 @@ export function EnquiryForm() {
       }
       return;
     }
+    trackEnquiryStepCompleted(step, stepKeys[step - 1]);
     if (step < TOTAL_STEPS) goToStep(step + 1);
   }, [form, goToStep, setFocus, step, t, trigger]);
 
@@ -158,8 +172,15 @@ export function EnquiryForm() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...parsed, locale }),
         });
-        const json = (await res.json()) as { ok: boolean };
-        if (!res.ok || !json.ok) throw new Error('submit_failed');
+        const json = (await res.json()) as { ok: boolean; error?: string };
+        if (!res.ok || !json.ok) {
+          // Direkt hier gemeldet und nicht über das `catch` unten geleitet —
+          // sonst zählte jede Server-Ablehnung doppelt (einmal mit Grund,
+          // einmal als „network“).
+          trackEnquiryFailed(mapSubmitErrorReason(json.error, res.status));
+          setPhase('error');
+          return;
+        }
 
         // Die eine Conversion, für die die ganze Seite existiert — war bis
         // November 2026 nirgends aufgerufen, GA4 zeigte deshalb 0
@@ -180,6 +201,8 @@ export function EnquiryForm() {
           // ignore
         }
       } catch {
+        // fetch selbst ist gescheitert (offline, Antwort kein JSON, …).
+        trackEnquiryFailed('network');
         setPhase('error');
       }
     },

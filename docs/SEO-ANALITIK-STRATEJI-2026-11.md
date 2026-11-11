@@ -255,9 +255,89 @@ değişikliği yapma.
   ve `email_click` son 28 günde hiç gelmediği için GA4 listesinde yok; işaretlenemedi.
   Deploy'dan sonra ilk geldikleri gün Verwaltung → Ereignisse → Letzte Ereignisse'de
   yıldızla işaretle.
+- **WhatsApp penceresi (ikinci tur):** FAB, mobil alt çubuk ve WhatsApp kartları
+  `wa.me`'ye `<a>` ile değil `window.location` ile gidiyor; `AutoTrack` bunu göremiyordu.
+  GA4'teki `whatsapp_click` sayısı bu yüzden yalnızca düz linkleri (ör. `/anfrage` yan
+  sütunu) içeriyordu. `whatsapp-prequalify-modal.tsx` artık yönlendirmeden önce
+  `whatsapp_click` gönderiyor. **Deploy'dan sonra bu sayı sıçrar; trafik artışı değil,
+  ölçüm düzeltmesi.**
+- **Form hunisi (ikinci tur):** `enquiry_step_completed` (adım 1–2), `enquiry_failed`
+  (neden ile) ve `availability_checked` bağlandı. `docs/ANALYTICS.md` §6 bunları tarif
+  ediyordu, hiçbiri çağrılmıyordu. Artık "formu başlatan kaç kişi hangi adımda bırakıyor"
+  görülebilir.
+- **Playlist yazısı:** H1 ve karar tablosu başlığı da "DJ oder Playlist" kalıbına alındı.
+- **Tarayıcıda doğrulandı (localhost, sahte GTM kimliği):** `page_view` gerçek yolla
+  (`/hochzeits-dj/heilbronn` → `/hochzeits-dj/esslingen`), `city_page_view` `esslingen`
+  ile, `enquiry_step_completed` 1 ve 2, `enquiry_submitted`, `availability_checked`,
+  modal üzerinden tek `whatsapp_click`.
+- **Bilinen, dokunulmayan:** onay verilmeden önceki ilk sayfada `city_page_view` kaybolur
+  (onaydan sonra yalnızca `page_view` yeniden gönderilir); sayfa geçişinde eski kaydırma
+  konumu yüzünden `scroll_depth` 25/50 hemen tetiklenebilir. `mix_played` bağlanmadı
+  (müzik sayfası kapalı).
 - **Yapılmadı:** SC–GA4 bağlantısı, dahili trafik filtresi.
 - **Yapılmadı (müşteri girdisi ister):** şehir sayfalarına gerçek mekân/düğün/foto,
   GBP yorumları, Balkan/Belçika soruları.
+
+## 8. Kanibalizasyon: Türk-DJ kümesi (Search Console, 90 gün, sayfa filtresiyle)
+
+Aynı dört sorgu iki ayrı sayfada, ikisi de 4.–7. sayfada:
+
+| Sorgu | `/tuerkischer-dj-deutschland` | `/tuerkischer-dj-stuttgart` |
+|---|---|---|
+| `türkischer hochzeits dj` | 54 gösterim, poz. 69,0 | 55 gösterim, poz. 52,0 |
+| `türkischer dj` | 67, poz. 25,8 | 50, poz. 39,8 |
+| `dj deutsch türkische hochzeit` | 51, poz. 66,8 | 50, poz. 54,1 |
+| `deutsch türkischer hochzeits dj` | 37, poz. 65,0 | 40, poz. 51,2 |
+
+Bu nişte sitede en az yedi sayfa var (`/`, `-stuttgart`, `-baden-wuerttemberg`,
+`-deutschland`, `/tuerkischer-dj/[stadt]`, `/tuerkische-hochzeit`,
+`/deutsch-tuerkische-hochzeit`). Başlıklar zaten ayrıştırılmış; Google yine de hangisinin
+"asıl" sayfa olduğuna karar veremiyor. **Bu kümeye yeni sayfa ya da yazı eklemek sorunu
+büyütür.**
+
+**Uygulandı (11.11.2026, 1. ve 2. seçenek; URL değişmedi, 301 yok):**
+- Sorgu sahipleri: coğrafyasız `türkischer hochzeits-dj` → `/tuerkischer-dj-deutschland`;
+  `deutsch-türkisch` kalıbı → `/deutsch-tuerkische-hochzeit`; `türkischer dj stuttgart`
+  → `/tuerkischer-dj-stuttgart`.
+- `/tuerkischer-dj-deutschland` (DE): H1 "Türkischer **Hochzeits-DJ** für ganz
+  Deutschland"; açıklamadan "und deutsch-türkischer" çıktı.
+- `/tuerkischer-dj-stuttgart` (DE): açıklama artık "Türkischer DJ in Stuttgart für
+  Hochzeit, Kına und Nişan" ile başlıyor (baş ifade "Türkischer Hochzeits-DJ" değil).
+- `/deutsch-tuerkische-hochzeit` (DE): title "DJ für deutsch-türkische Hochzeit –
+  Hochzeits-DJ | DJ Veys" (ölçülen kelime sırası; "in Stuttgart" çıktı).
+- İç linkler (de/tr/en): Stuttgart sayfası → Deutschland sayfası ("Türkischer
+  Hochzeits-DJ deutschlandweit") ve → DE-TR sayfası; Deutschland sayfası → DE-TR sayfası.
+  Kümenin en güçlü sayfası (Stuttgart) daha önce ikisine de link vermiyordu.
+- **Kontrol:** 28 gün sonra bu dört sorguyu sayfa filtresiyle yeniden oku. Hâlâ iki
+  sayfa aynı sorguda görünüyorsa 3. seçenek (birleştirme) gündeme gelir.
+
+Seçenekler:
+
+1. Coğrafyasız baş sorgu (`türkischer hochzeits-dj`) için tek sahip seç
+   (`/tuerkischer-dj-deutschland`) ve diğer altı sayfadan ona bu çapa metniyle link ver;
+   Stuttgart sayfasının açıklamasından "Türkischer Hochzeits-DJ" baş ifadesini çıkar.
+2. `deutsch-türkisch` kalıbını yalnızca `/deutsch-tuerkische-hochzeit` taşısın.
+3. 28 gün sonra hâlâ iki sayfa aynı sorguda görünüyorsa zayıf olanı birleştir (301).
+
+## 9. Üçüncü tur: eklenen içerik (11.11.2026)
+
+Kural: yalnızca ölçülmüş talebi olup sayfada cevabı olmayan sorular; yalnızca
+`BRAND-FACTS.md` / `answers.ts` ile doğrulanmış bilgiler; fiyat yok (`priceFrom` null).
+
+- `/hochzeits-dj/heilbronn`: 3 yeni SSS (de/en/tr) – sunuculuk (`moderator heilbronn` 38),
+  maliyet (`dj kosten heilbronn` 10, `dj buchen heilbronn` 11), şirket/özel etkinlik
+  (`event dj heilbronn` 8). `FAQPage` şeması 2 → 5 soru.
+- `/hochzeits-dj/pforzheim`: 3 yeni SSS (de/en/tr) – rezervasyon + fiyat etkenleri
+  (`dj buchen` 7, `dj kosten` 7), ajans mı doğrudan mı (`dj agentur pforzheim` 5),
+  etkinlik (`event dj pforzheim` 6).
+- `hochzeit-ohne-dj-spotify-playlist` (DE): yeni bölüm "Eine Playlist für die
+  Hochzeitsgäste erstellen" (`playlist für hochzeitsgäste erstellen` 48 gösterim, bu
+  yazıya düşüyordu, cevabı yoktu).
+
+**Bilerek eklenmeyenler:** Ludwigsburg/Karlsruhe için veri yalnızca genel `dj {şehir}`
+sorgusu gösteriyor; uydurma olmadan eklenecek şehre özgü bilgi yok (gerçek mekân/düğün
+gerekir). Balkan ve Belçika içerikleri müşteri onayı bekliyor. Yeni Felemenkçe yazı:
+anadil kontrolü olmadan yayınlanmamalı.
 
 ## Açık sorular (müşteriye)
 1. Balkan düğünü (Sırp/Bosna/Arnavut) veriyor mu?

@@ -192,6 +192,22 @@ export default async function TurkishDjPage({ params }: PageProps) {
               {t('cities.bwLink')}
             </Link>
           </p>
+          {/* Search Console Aug–Nov 2026: Diese Seite und die Deutschland-Seite
+              erschienen für dieselben ortslosen Abfragen („türkischer hochzeits
+              dj", „dj deutsch türkische hochzeit"), beide jenseits von Position
+              50. Die stärkste Seite der Nische zeigt deshalb mit genau diesen
+              Ankertexten auf die jeweilige Besitzerin der Abfrage — bis dahin
+              gab es von hier weder den einen noch den anderen Link. */}
+          <p className="mt-3 text-sm text-ink-faint">
+            <Link href="/tuerkischer-dj-deutschland" className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold">
+              {t('cities.deLink')}
+            </Link>
+          </p>
+          <p className="mt-3 text-sm text-ink-faint">
+            <Link href="/deutsch-tuerkische-hochzeit" className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold">
+              {t('cities.germanTurkishLink')}
+            </Link>
+          </p>
         </Container>
       </Section>
 

@@ -202,6 +202,16 @@ export default async function TurkishDjGermanyPage({ params }: PageProps) {
               {t('metros.stuttgartLink')}
             </Link>
           </p>
+          {/* „deutsch-türkisch" gehört der Kulturseite, nicht dieser — siehe
+              Kommentar an gleicher Stelle in tuerkischer-dj-stuttgart/page.tsx. */}
+          <p className="mt-3 text-sm text-ink-faint">
+            <Link
+              href="/deutsch-tuerkische-hochzeit"
+              className="underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold"
+            >
+              {t('metros.germanTurkishLink')}
+            </Link>
+          </p>
         </Container>
       </Section>
 

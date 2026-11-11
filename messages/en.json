@@ -1095,7 +1095,9 @@
       "eyebrow": "Service area",
       "title": "Turkish DJ for Stuttgart and the region",
       "lead": "Stuttgart is home base — plus the cities of the region, many with their own page covering venues and travel.",
-      "bwLink": "Turkish DJ across Baden-Württemberg — see the state page"
+      "bwLink": "Turkish DJ across Baden-Württemberg — see the state page",
+      "deLink": "Turkish wedding DJ across Germany — to the Germany page",
+      "germanTurkishLink": "DJ for German-Turkish weddings — to the dedicated page"
     },
     "faq": {
       "eyebrow": "Frequently asked questions",
@@ -1297,7 +1299,8 @@
       ],
       "note": "Your city not named? The list is examples — what matters is the date, not the postcode.",
       "bwLink": "Baden-Württemberg with all its city pages — see the state page",
-      "stuttgartLink": "Turkish DJ Stuttgart — see the home-base page"
+      "stuttgartLink": "Turkish DJ Stuttgart — see the home-base page",
+      "germanTurkishLink": "DJ for German-Turkish weddings — to the dedicated page"
     },
     "faq": {
       "eyebrow": "Frequently asked questions",

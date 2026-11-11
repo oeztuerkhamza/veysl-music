@@ -590,6 +590,47 @@ export const allCityEntries: City[] = [
           tr: 'Evet. Heilbronn ve Weinsberg çevresindeki bağ yamaçlarındaki açık hava mekânları için elektrik, hava durumu ve ses seviyesi önceden netleştirilir.',
         },
       },
+      // Ergänzt 2026-11 aus Search-Console-Daten (Aug–Nov 2026): „moderator
+      // heilbronn“ (38 Impr.), „dj kosten heilbronn“ (10), „dj buchen heilbronn“
+      // (11), „event dj heilbronn“ (8) landeten auf dieser Seite, ohne dass sie
+      // die Frage beantwortet hat. Antworten nur aus BRAND-FACTS/answers.ts —
+      // keine Preise, solange `packages.priceFrom` null ist.
+      {
+        question: {
+          de: 'Übernehmen Sie in Heilbronn auch die Moderation – oder nur die Musik?',
+          en: 'Do you also host the evening in Heilbronn — or only play the music?',
+          tr: 'Heilbronn’da sunuculuğu da üstleniyor musunuz, yoksa sadece müzik mi?',
+        },
+        answer: {
+          de: 'Beides. Veysel moderiert selbst und live auf Deutsch, Türkisch und Englisch: Einzug, Reden, Programmpunkte und Übergänge. Ein zusätzlicher Moderator muss für eine Feier in Heilbronn nicht gebucht werden – DJ und Moderator sind dieselbe Person.',
+          en: 'Both. Veysel hosts live himself in German, Turkish and English: the entrance, speeches, programme points and transitions. There is no need to book a separate host for a celebration in Heilbronn — the DJ and the host are the same person.',
+          tr: 'İkisi de. Veysel sunuculuğu bizzat ve canlı olarak Almanca, Türkçe ve İngilizce yapıyor: giriş, konuşmalar, program akışı ve geçişler. Heilbronn’daki bir kutlama için ayrıca sunucu tutmanız gerekmez — DJ ve sunucu aynı kişi.',
+        },
+      },
+      {
+        question: {
+          de: 'Was kostet ein DJ für eine Hochzeit in Heilbronn?',
+          en: 'What does a wedding DJ in Heilbronn cost?',
+          tr: 'Heilbronn’da bir düğün DJ’i ne kadar tutar?',
+        },
+        answer: {
+          de: 'Der Preis hängt von Spielzeit, Gästezahl und Technikbedarf ab – und davon, ob Moderation oder Live-Musik dazukommen. Die Anfahrt nach Heilbronn ist bereits inklusive. Nach einem kurzen Planungsgespräch erhalten Sie ein verbindliches schriftliches Angebot; die Anfrage dafür ist unverbindlich.',
+          en: 'The price depends on playing time, guest count and the equipment needed — and on whether hosting or live music is added. Travel to Heilbronn is already included. After a short planning call you receive a binding written quote; the enquiry itself is non-binding.',
+          tr: 'Fiyat; çalma süresine, davetli sayısına ve teknik ihtiyaca, ayrıca sunuculuk ya da canlı müzik eklenip eklenmediğine bağlıdır. Heilbronn’a ulaşım zaten dahildir. Kısa bir planlama görüşmesinden sonra bağlayıcı yazılı teklif alırsınız; talep göndermek sizi bağlamaz.',
+        },
+      },
+      {
+        question: {
+          de: 'Kann ich Sie in Heilbronn auch für eine Firmenfeier, Verlobung oder einen Geburtstag buchen?',
+          en: 'Can I also book you in Heilbronn for a company party, an engagement or a birthday?',
+          tr: 'Sizi Heilbronn’da şirket etkinliği, nişan ya da doğum günü için de ayarlayabilir miyim?',
+        },
+        answer: {
+          de: 'Ja. Hochzeiten sind der Schwerpunkt, gebucht werden aber auch Verlobungen, Henna-Abende, Geburtstage und Firmenfeiern – auf Wunsch mit eigener Ton- und Lichttechnik und Moderation.',
+          en: 'Yes. Weddings are the core, but engagements, henna nights, birthdays and company events are booked as well — with our own sound and lighting equipment and hosting on request.',
+          tr: 'Evet. Ağırlık düğünlerde, ancak nişan, kına gecesi, doğum günü ve şirket etkinlikleri için de rezervasyon alınıyor — istenirse kendi ses ve ışık sistemi ve sunuculukla.',
+        },
+      },
     ],
   },
   {
@@ -648,6 +689,45 @@ export const allCityEntries: City[] = [
           de: 'Ja, das ist ein häufiges Format in der Region. Zeitpläne und Technik-Transport zwischen zwei Locations werden im Vorgespräch minutengenau abgestimmt.',
           en: "Yes, that's a common format in the region. Timings and equipment transport between two venues are coordinated to the minute during the planning call.",
           tr: 'Evet, bölgede sık görülen bir format. İki mekân arasındaki zamanlama ve ekipman taşıması, ön görüşmede dakikası dakikasına planlanır.',
+        },
+      },
+      // Ergänzt 2026-11 aus Search-Console-Daten (Aug–Nov 2026): „dj buchen
+      // pforzheim“ (7 Impr.), „dj kosten pforzheim“ (7), „event dj pforzheim“ (6),
+      // „dj agentur pforzheim“ (5). Gleiche Regel wie bei Heilbronn: keine Preise.
+      {
+        question: {
+          de: 'Wie buche ich einen DJ für Pforzheim – und wovon hängt der Preis ab?',
+          en: 'How do I book a DJ for Pforzheim — and what does the price depend on?',
+          tr: 'Pforzheim için nasıl DJ ayarlarım ve fiyat neye bağlı?',
+        },
+        answer: {
+          de: 'Mit einer unverbindlichen Anfrage samt Datum, über das Formular oder per WhatsApp; die Antwort kommt innerhalb von 24 Stunden. Der Preis richtet sich nach Spielzeit, Gästezahl und Technikbedarf. Die Anfahrt nach Pforzheim steht als eigener Posten im schriftlichen Angebot.',
+          en: 'With a non-binding enquiry including your date, via the form or WhatsApp; you get a reply within 24 hours. The price depends on playing time, guest count and the equipment needed. Travel to Pforzheim is shown as its own line in the written quote.',
+          tr: 'Tarihinizi içeren, bağlayıcı olmayan bir taleple; form ya da WhatsApp üzerinden. Yanıt 24 saat içinde gelir. Fiyat; çalma süresine, davetli sayısına ve teknik ihtiyaca göre belirlenir. Pforzheim’a ulaşım yazılı teklifte ayrı bir kalem olarak yer alır.',
+        },
+      },
+      {
+        question: {
+          de: 'Buche ich in Pforzheim über eine DJ-Agentur oder direkt?',
+          en: 'In Pforzheim, do I book through a DJ agency or directly?',
+          tr: 'Pforzheim’da DJ’i ajans üzerinden mi, doğrudan mı ayarlarım?',
+        },
+        answer: {
+          de: 'Direkt. DJ Veys ist ausschließlich direkt buchbar: Die Person aus dem ersten Gespräch steht am Abend auch am Pult. Vertrag, Planungsgespräch und Musikabstimmung laufen ohne Zwischenstufe.',
+          en: 'Directly. DJ Veys can only be booked directly: the person from the first call is the one behind the decks on the night. Contract, planning call and music planning run without a middleman.',
+          tr: 'Doğrudan. DJ Veys yalnızca doğrudan ayarlanabilir: ilk görüşmedeki kişi, gece de DJ masasının başındadır. Sözleşme, planlama görüşmesi ve müzik planı aracısız yürür.',
+        },
+      },
+      {
+        question: {
+          de: 'Spielen Sie in Pforzheim auch bei Firmenfeiern und privaten Events?',
+          en: 'Do you also play company parties and private events in Pforzheim?',
+          tr: 'Pforzheim’da şirket etkinliklerinde ve özel kutlamalarda da çalıyor musunuz?',
+        },
+        answer: {
+          de: 'Ja. Neben Hochzeiten werden Verlobungen, Henna-Abende, Geburtstage und Firmenfeiern begleitet – mit eigener Ton- und Lichttechnik und auf Wunsch mit Moderation auf Deutsch, Türkisch oder Englisch.',
+          en: 'Yes. Besides weddings, engagements, henna nights, birthdays and company events are covered — with our own sound and lighting equipment and, on request, hosting in German, Turkish or English.',
+          tr: 'Evet. Düğünlerin yanı sıra nişan, kına gecesi, doğum günü ve şirket etkinlikleri de üstleniliyor — kendi ses ve ışık sistemiyle, istenirse Almanca, Türkçe ya da İngilizce sunuculukla.',
         },
       },
     ],

@@ -761,7 +761,7 @@
   "weddingCulture": {
     "germanTurkish": {
       "meta": {
-        "title": "Deutsch-türkischer Hochzeits-DJ in Stuttgart | DJ Veys",
+        "title": "DJ für deutsch-türkische Hochzeit – Hochzeits-DJ | DJ Veys",
         "description": "Deutsch-türkischer Hochzeits-DJ: türkische und deutsche Musik, zweisprachige Moderation, Gelin Çıkarma und Halay. Jetzt Termin prüfen und Angebot anfragen."
       },
       "serviceType": "Hochzeits-DJ für deutsch-türkische Hochzeiten",
@@ -1061,7 +1061,7 @@
   "turkishDj": {
     "meta": {
       "title": "Türkischer DJ Stuttgart: Hochzeit, Kına & Nişan | DJ Veys",
-      "description": "Türkischer Hochzeits-DJ in Stuttgart: Halay, Davul Zurna und aktuelle Charts, Moderation auf Türkisch & Deutsch. Jetzt Termin prüfen und Angebot anfragen."
+      "description": "Türkischer DJ in Stuttgart für Hochzeit, Kına und Nişan: Halay, Davul Zurna und aktuelle Charts, Moderation auf Türkisch & Deutsch. Jetzt Termin anfragen."
     },
     "hero": {
       "eyebrow": "Türkischer DJ · Stuttgart & Baden-Württemberg",
@@ -1095,7 +1095,9 @@
       "eyebrow": "Einsatzgebiet",
       "title": "Türkischer DJ für Stuttgart und die Region",
       "lead": "Stuttgart ist Wohn- und Arbeitsort — dazu kommen die Städte der Region, viele mit eigener Seite samt Locations und Anfahrt.",
-      "bwLink": "Türkischer DJ für ganz Baden-Württemberg — zur Landesseite"
+      "bwLink": "Türkischer DJ für ganz Baden-Württemberg — zur Landesseite",
+      "deLink": "Türkischer Hochzeits-DJ deutschlandweit — zur Deutschland-Seite",
+      "germanTurkishLink": "DJ für deutsch-türkische Hochzeiten — zur eigenen Seite"
     },
     "faq": {
       "eyebrow": "Häufige Fragen",
@@ -1231,11 +1233,11 @@
   "turkishDjDe": {
     "meta": {
       "title": "Türkischer Hochzeits-DJ Deutschland – Kına & Nişan | DJ Veys",
-      "description": "Türkischer und deutsch-türkischer Hochzeits-DJ, bundesweit buchbar: Hochzeit, Kına und Nişan mit Moderation auf Türkisch & Deutsch. Jetzt Termin anfragen."
+      "description": "Türkischer Hochzeits-DJ, bundesweit buchbar: Hochzeit, Kına und Nişan mit Halay, Davul Zurna und Moderation auf Türkisch & Deutsch. Jetzt Termin anfragen."
     },
     "hero": {
       "eyebrow": "Türkischer DJ · deutschlandweit",
-      "title": "Türkischer DJ für ganz Deutschland",
+      "title": "Türkischer Hochzeits-DJ für ganz Deutschland",
       "subtitle": "Ob München oder Berlin, Frankfurt oder Hamburg: Halay, Gelin Çıkarma und eine Moderation auf Türkisch und Deutsch reisen komplett mit — aus Stuttgart, mit über {years} Jahren Erfahrung und mehr als {events} Feiern im Rücken."
     },
     "intro": {
@@ -1297,7 +1299,8 @@
       ],
       "note": "Ihre Stadt ist nicht genannt? Die Liste sind Beispiele — entscheidend ist der Termin, nicht die Postleitzahl.",
       "bwLink": "Baden-Württemberg mit allen Stadtseiten — zur Landesseite",
-      "stuttgartLink": "Türkischer DJ Stuttgart — zur Seite der Heimatstadt"
+      "stuttgartLink": "Türkischer DJ Stuttgart — zur Seite der Heimatstadt",
+      "germanTurkishLink": "DJ für deutsch-türkische Hochzeiten — zur eigenen Seite"
     },
     "faq": {
       "eyebrow": "Häufige Fragen",

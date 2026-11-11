@@ -1095,7 +1095,9 @@
       "eyebrow": "Hizmet bölgesi",
       "title": "Stuttgart ve bölgesi için Türk DJ",
       "lead": "Stuttgart, Veysel'in yaşadığı ve çalıştığı şehir — buna bölgenin şehirleri ekleniyor; birçoğunun mekânlar ve ulaşım bilgileriyle kendi sayfası var.",
-      "bwLink": "Baden-Württemberg genelinde Türk DJ — eyalet sayfasına git"
+      "bwLink": "Baden-Württemberg genelinde Türk DJ — eyalet sayfasına git",
+      "deLink": "Almanya genelinde Türk düğün DJ'i — Almanya sayfasına",
+      "germanTurkishLink": "Alman-Türk düğünleri için DJ — ilgili sayfaya"
     },
     "faq": {
       "eyebrow": "Sık sorulan sorular",
@@ -1297,7 +1299,8 @@
       ],
       "note": "Şehriniz geçmiyor mu? Bu liste örnektir — belirleyici olan posta kodu değil, tarihtir.",
       "bwLink": "Tüm şehir sayfalarıyla Baden-Württemberg — eyalet sayfasına git",
-      "stuttgartLink": "Stuttgart'ta Türk DJ — ayrıntılı sayfaya git"
+      "stuttgartLink": "Stuttgart'ta Türk DJ — ayrıntılı sayfaya git",
+      "germanTurkishLink": "Alman-Türk düğünleri için DJ — ilgili sayfaya"
     },
     "faq": {
       "eyebrow": "Sık sorulan sorular",
