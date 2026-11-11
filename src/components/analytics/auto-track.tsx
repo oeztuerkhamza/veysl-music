@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useParams, usePathname as useRoutePathname } from 'next/navigation';
 import { usePathname } from '@/i18n/navigation';
 import {
   trackCityPageView,
@@ -24,7 +25,10 @@ const SCROLL_MILESTONES: readonly ScrollDepthMilestone[] = [25, 50, 75, 100];
 // (`pathname === '/anfrage'`). That's what makes these two checks locale-safe
 // without needing to enumerate every localized slug from `src/i18n/routing.ts`.
 const BOOKING_PATHNAME = '/anfrage';
-const CITY_PATHNAME_PATTERN = /^\/hochzeits-dj\/([^/]+)$/;
+// Bei dynamischen Routen gibt next-intl den Routen-Schlüssel zurück, nicht die
+// ausgefüllte URL — der Stadt-Slug kommt deshalb aus `useParams()`. Ein Regex
+// auf den Pfad hätte hier den Literal `[stadt]` als Stadt gemeldet.
+const CITY_ROUTE = '/hochzeits-dj/[stadt]';
 
 /**
  * Global, zero-per-component instrumentation. Mount exactly once near the
@@ -58,24 +62,30 @@ const CITY_PATHNAME_PATTERN = /^\/hochzeits-dj\/([^/]+)$/;
  * `docs/CRO-AUDIT.md` / `docs/ANALYTICS.md` for those exact call sites.
  */
 export function AutoTrack() {
+  // `pathname` = kanonischer Routen-Schlüssel (für die `/anfrage`-Prüfung),
+  // `routePathname` = echte URL (für alles, was als Seite gemeldet wird, und
+  // als Auslöser — der Schlüssel bleibt beim Wechsel Stadt → Stadt gleich).
   const pathname = usePathname();
+  const routePathname = useRoutePathname();
+  const params = useParams<{ stadt?: string }>();
+  const citySlug = pathname === CITY_ROUTE ? (params?.stadt ?? null) : null;
   const pathnameRef = useRef(pathname);
+  const pagePathRef = useRef(routePathname);
   const firedThresholds = useRef<Set<ScrollDepthMilestone>>(new Set());
   const enquiryStartedRef = useRef(false);
   const cityViewedRef = useRef<string | null>(null);
 
   useEffect(() => {
     pathnameRef.current = pathname;
+    pagePathRef.current = window.location.pathname;
     firedThresholds.current = new Set();
     enquiryStartedRef.current = false;
 
-    const cityMatch = CITY_PATHNAME_PATTERN.exec(pathname);
-    const citySlug = cityMatch?.[1] ?? null;
     if (citySlug && cityViewedRef.current !== citySlug) {
       cityViewedRef.current = citySlug;
       trackCityPageView(citySlug);
     }
-  }, [pathname]);
+  }, [pathname, routePathname, citySlug]);
 
   // Scroll depth — rAF-throttled, re-armed per page via the effect above.
   useEffect(() => {
@@ -89,7 +99,7 @@ export function AutoTrack() {
       for (const milestone of SCROLL_MILESTONES) {
         if (percent >= milestone && !firedThresholds.current.has(milestone)) {
           firedThresholds.current.add(milestone);
-          trackScrollDepth(pathnameRef.current, milestone);
+          trackScrollDepth(pagePathRef.current, milestone);
         }
       }
     }
@@ -103,7 +113,7 @@ export function AutoTrack() {
     window.addEventListener('scroll', onScroll, { passive: true });
     evaluate(); // a short page can already satisfy every milestone with zero scrolling
     return () => window.removeEventListener('scroll', onScroll);
-  }, [pathname]);
+  }, [routePathname]);
 
   // Delegated click / focus / toggle capture — registered once for the
   // whole app lifetime; reads the current pathname via the ref above so
@@ -114,15 +124,15 @@ export function AutoTrack() {
       if (!(target instanceof Element)) return;
 
       if (target.closest('a[href^="https://wa.me/"]')) {
-        trackWhatsappClick(pathnameRef.current);
+        trackWhatsappClick(pagePathRef.current);
         return; // a link only ever matches one of these three href patterns
       }
       if (target.closest('a[href^="tel:"]')) {
-        trackPhoneClick(pathnameRef.current);
+        trackPhoneClick(pagePathRef.current);
         return;
       }
       if (target.closest('a[href^="mailto:"]')) {
-        trackEmailClick(pathnameRef.current);
+        trackEmailClick(pagePathRef.current);
         return;
       }
 

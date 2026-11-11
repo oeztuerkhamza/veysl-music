@@ -12,6 +12,7 @@ import {
   stepKeys,
   type EnquiryFormInput,
 } from '@/lib/booking';
+import { trackEnquirySubmitted } from '@/lib/analytics';
 import { BookingProgress } from './progress';
 import { StepDatePlace } from './step-date-place';
 import { StepDetails } from './step-details';
@@ -159,6 +160,17 @@ export function EnquiryForm() {
         });
         const json = (await res.json()) as { ok: boolean };
         if (!res.ok || !json.ok) throw new Error('submit_failed');
+
+        // Die eine Conversion, für die die ganze Seite existiert — war bis
+        // November 2026 nirgends aufgerufen, GA4 zeigte deshalb 0
+        // Schlüsselereignisse. Nur kategoriale Werte, nie Name/E-Mail/Telefon.
+        trackEnquirySubmitted({
+          eventType: parsed.eventType || undefined,
+          package: parsed.package || undefined,
+          budget: parsed.budget || undefined,
+          hasServices: (parsed.services?.length ?? 0) > 0,
+          source: 'form',
+        });
 
         setSubmitted({ firstName: parsed.firstName, eventDate: parsed.eventDate });
         setPhase('success');

@@ -824,9 +824,13 @@ export const hochzeitOhneDjSpotifyPlaylistPost: BlogPost = {
         'Für kleine, gesprächsorientierte Feiern reicht eine Spotify-Playlist tatsächlich aus — dieser Artikel sagt das ausdrücklich. Kritisch wird es erst, wenn getanzt werden soll: Reaktion auf die Tanzfläche, Übergänge, Ansagen, Technik und Ausfallsicherheit lassen sich nicht vorab in eine Liste schreiben. Inklusive einer ehrlichen Abwägung der Variante "ein Freund legt auf" und einer Entscheidungstabelle.',
       body: hochzeitOhneDjDe,
       seo: {
-        metaTitle: 'Hochzeit ohne DJ: Spotify-Playlist genug? | DJ Veys',
+        // GSC Aug–Nov 2026: „playlist oder dj event“ (60), „live dj oder
+        // playlist“ (30), „professioneller dj oder spotify“ (14) landen auf
+        // diesem Artikel, Ø-Position 58 — die Suchenden vergleichen „DJ oder
+        // Playlist“, der alte Titel fragte nur „Hochzeit ohne DJ“.
+        metaTitle: 'DJ oder Playlist? Hochzeit ohne DJ im Check | DJ Veys',
         metaDescription:
-          'Reicht eine Spotify-Playlist statt DJ? Wann eine Playlist genügt, was sie nicht leisten kann, ob ein Freund auflegen sollte — mit Entscheidungstabelle.',
+          'DJ oder Playlist für die Hochzeit? Wann Spotify reicht, was eine Playlist nicht kann, wie Gästewünsche laufen – mit Entscheidungstabelle.',
       },
     },
     tr: {

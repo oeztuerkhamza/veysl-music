@@ -705,9 +705,12 @@ export const nisanPost: BlogPost = {
         'De nişan is een feest op zich, rustiger en meer op de familie gericht dan de bruiloft. Deze gids behandelt het typische verloop van kız isteme tot takı, een checklist voor muziek en microfoons en de meest voorkomende valkuilen.',
       body: nisanNl,
       seo: {
-        metaTitle: 'Nişan: gids voor de Turkse verloving | DJ Veys',
+        // GSC Aug–Nov 2026: „nisan turks“, „nisan“, „nisan betekenis turks“,
+        // „turkse verloving“ — Ø-Position 9, 0 Klicks. Gesucht wird zuerst die
+        // Bedeutung; der Snippet beantwortet jetzt „wat is een nişan“.
+        metaTitle: 'Nişan: de Turkse verloving uitgelegd | DJ Veys',
         metaDescription:
-          'Een nişan plannen: kız isteme, ringceremonie, takı, muziek en microfoons, met checklist en de meest voorkomende valkuilen.',
+          'Wat is een nişan? De Turkse verloving uitgelegd: kız isteme, ringceremonie, takı en muziek, met checklist en de meest voorkomende valkuilen.',
       },
     },
   },
