@@ -22,7 +22,7 @@ const AI_CRAWLERS = [
   'ClaudeBot', // Anthropic training crawler
   'Claude-SearchBot', // Claude search index
   'Claude-User', // Claude browsing on a user's behalf
-  'Google-Extended', // Governs Gemini/AI Overviews use of Google-crawled content
+  'Google-Extended', // Gemini training/grounding opt-out; does NOT affect AI Overviews or AI Mode (those use Googlebot's index)
   'CCBot', // Common Crawl (feeds many downstream LLMs)
   'Applebot-Extended', // Governs Apple Intelligence use of Applebot-crawled content
 ];
